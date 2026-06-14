@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X6K2H9YW2V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X6K2H9YW2V');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sleep Need Calculator — SageMyHealth</title>
+  <meta name="description" content="Find out exactly how many hours of sleep you need based on your age and lifestyle — and whether you're carrying a sleep debt." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       SageMyHealth — Brand Colour Tokens
+    ============================================================ */
+    :root {
+      --sage:        #3B6A3A;
+      --sage-dark:   #0A3D2A;
+      --sage-mid:    #5C8A5C;
+      --sage-light:  #EBF2EC;
+      --sage-pale:   #F2F7F3;
+      --cream:       #E3FFB3;
+      --white:       #FFFFFF;
+      --text-dark:   #1A2E1E;
+      --text-mid:    #4A5568;
+      --text-light:  #718096;
+      --placeholder: #AAB0B8;
+      --border:      #E2EBE4;
+      --border-mid:  #C8D9CC;
+      --shadow-xs:   0 1px 2px rgba(59,106,58,0.06);
+      --shadow-sm:   0 1px 6px rgba(59,106,58,0.08);
+      --shadow-md:   0 4px 16px rgba(59,106,58,0.12);
+      --shadow-lg:   0 8px 32px rgba(59,106,58,0.16);
+      --r-sm: 8px; --r: 12px; --r-lg: 20px; --r-xl: 28px;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text-dark); background: var(--sage-pale); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; }
+
+    /* ── NAV ── */
+    .site-nav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.96); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; flex: 1; justify-content: center; }
+    .nav-links a { color: var(--text-mid); font-size: 15px; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--sage); }
+    .nav-btn { background: var(--sage); color: white; border: none; padding: 9px 20px; border-radius: var(--r-sm); font-size: 14px; font-weight: 600; transition: background .2s; }
+    .nav-btn:hover { background: var(--sage-dark); }
+
+    /* ── PAGE WRAPPER ── */
+    .calc-page { padding: 36px 0 72px; }
+    .calc-wrapper { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-light); margin-bottom: 24px; flex-wrap: wrap; }
+    .breadcrumb a { color: var(--sage); }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .bc-sep { color: var(--border-mid); }
+
+    /* ── PAGE HEADER ── */
+    .page-header { margin-bottom: 28px; }
+    .calc-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--sage); background: var(--white); padding: 5px 12px; border-radius: 20px; margin-bottom: 12px; letter-spacing: .3px; border: 1px solid var(--border); }
+    .page-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 42px); font-weight: 700; color: var(--text-dark); letter-spacing: -.5px; margin-bottom: 10px; line-height: 1.15; }
+    .page-header p { font-size: 15px; color: var(--text-mid); line-height: 1.7; max-width: 700px; }
+
+    /* ── TWO-COLUMN LAYOUT ── */
+    .calc-columns { display: grid; grid-template-columns: 480px 1fr; gap: 24px; align-items: start; }
+
+    /* ── FORM CARD ── */
+    .form-card { background: white; border-radius: var(--r-xl); box-shadow: var(--shadow-lg); overflow: hidden; }
+    .form-card-header { padding: 20px 28px 0; }
+    .form-card-title { font-size: 14px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
+    .form-body { padding: 20px 28px 28px; }
+
+    .form-section { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+    .section-title { font-size: 13px; font-weight: 700; color: var(--text-dark); text-transform: uppercase; letter-spacing: .6px; margin-bottom: 10px; }
+    .field-label { display: block; font-size: 13px; font-weight: 600; color: var(--text-dark); margin-bottom: 6px; }
+    .field-hint { font-size: 11px; color: var(--text-light); margin-top: 4px; line-height: 1.5; }
+    .field-input { width: 100%; padding: 11px 14px; border: 1.5px solid var(--border); border-radius: var(--r-sm); font-size: 15px; font-family: inherit; color: var(--text-dark); background: white; transition: border-color .18s, box-shadow .18s; appearance: none; -webkit-appearance: none; }
+    .field-input:focus { outline: none; border-color: var(--sage); box-shadow: 0 0 0 3px rgba(74,124,89,.1); }
+    .field-input::placeholder { color: #AAB0B8; }
+
+    .pill-group { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pill { padding: 7px 14px; border: 1.5px solid var(--border); border-radius: 20px; font-size: 13px; font-weight: 500; color: var(--text-mid); background: white; transition: all .18s; }
+    .pill:hover { border-color: var(--sage-mid); color: var(--sage); }
+    .pill.active { background: var(--sage); color: white; border-color: var(--sage); font-weight: 600; }
+
+    .symptom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+    .symptom-card { display: flex; align-items: flex-start; gap: 8px; padding: 10px 12px; border: 1.5px solid var(--border); border-radius: var(--r); cursor: pointer; transition: all .18s; }
+    .symptom-card input[type="checkbox"] { margin-top: 2px; accent-color: var(--sage); cursor: pointer; flex-shrink: 0; }
+    .symptom-card label { font-size: 12px; color: var(--text-mid); line-height: 1.4; cursor: pointer; }
+    .symptom-card:has(input:checked) { border-color: var(--sage); background: var(--sage-light); }
+
+    .calc-btn { width: 100%; background: var(--sage); color: white; border: none; padding: 14px; border-radius: var(--r); font-size: 16px; font-weight: 700; transition: all .18s; margin-top: 6px; }
+    .calc-btn:hover { background: var(--sage-dark); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+    .calc-btn:active { transform: translateY(0); }
+    .disclaimer { font-size: 11px; color: var(--text-light); margin-top: 10px; line-height: 1.6; text-align: center; }
+
+    /* ── RESULTS COLUMN ── */
+    .results-col { display: flex; flex-direction: column; gap: 20px; }
+
+    /* Result card */
+    .result-card { background: white; border-radius: var(--r-xl); box-shadow: var(--shadow-lg); overflow: hidden; animation: slideUp .35s ease; }
+    @keyframes slideUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+    .result-band { height: 5px; width: 100%; }
+    .result-band.rested  { background: linear-gradient(90deg, var(--sage-mid), var(--sage)); }
+    .result-band.mild    { background: linear-gradient(90deg, #FBBF24, #F59E0B); }
+    .result-band.deprived { background: linear-gradient(90deg, #F97316, #EF4444); }
+    .result-body { padding: 24px; }
+
+    /* Hero sleep display */
+    .sleep-hero { text-align: center; margin-bottom: 22px; }
+    .sleep-icon { font-size: 40px; margin-bottom: 6px; }
+    .sleep-status-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .7px; margin-bottom: 4px; }
+    .sleep-status-label.rested   { color: var(--sage); }
+    .sleep-status-label.mild     { color: #D97706; }
+    .sleep-status-label.deprived { color: #DC2626; }
+    .sleep-headline { font-size: 20px; font-weight: 700; color: var(--text-dark); line-height: 1.3; }
+
+    /* Metrics row */
+    .metrics-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px; }
+    .metric-card { background: var(--sage-pale); border-radius: var(--r); padding: 14px 16px; text-align: center; }
+    .metric-val { font-size: 28px; font-weight: 800; color: var(--text-dark); letter-spacing: -1px; }
+    .metric-val span { font-size: 13px; font-weight: 500; color: var(--text-mid); }
+    .metric-label { font-size: 11px; color: var(--text-light); margin-top: 3px; line-height: 1.4; }
+
+    /* Debt / surplus badge */
+    .debt-badge { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 18px; border-radius: var(--r); margin-bottom: 18px; }
+    .debt-badge.surplus  { background: #DCFCE7; }
+    .debt-badge.even     { background: var(--sage-light); }
+    .debt-badge.deficit  { background: #FEF3C7; }
+    .debt-badge.high-def { background: #FEE2E2; }
+    .debt-badge-val { font-size: 24px; font-weight: 800; color: var(--text-dark); }
+    .debt-badge-label { font-size: 13px; color: var(--text-mid); line-height: 1.4; }
+
+    /* Bar */
+    .bar-section { margin-bottom: 18px; }
+    .bar-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+    .bar-title { font-size: 12px; font-weight: 600; color: var(--text-light); text-transform: uppercase; letter-spacing: .5px; }
+    .bar-pct { font-size: 14px; font-weight: 700; color: var(--text-dark); }
+    .bar-wrap { position: relative; height: 10px; background: var(--border); border-radius: 5px; overflow: hidden; margin-bottom: 6px; }
+    .bar-fill { height: 100%; border-radius: 5px; transition: width .8s cubic-bezier(.34,1.56,.64,1); }
+    .bar-fill.rested   { background: linear-gradient(90deg, var(--sage-mid), var(--sage)); }
+    .bar-fill.mild     { background: linear-gradient(90deg, #FBBF24, #F59E0B); }
+    .bar-fill.deprived { background: linear-gradient(90deg, #F97316, #EF4444); }
+    .bar-zones { display: flex; justify-content: space-between; }
+    .bar-zone { font-size: 10px; color: var(--text-light); }
+
+    /* Message */
+    .message-block { border-radius: var(--r); padding: 16px; border-left: 4px solid; margin-bottom: 18px; }
+    .message-block.rested   { background: var(--sage-pale); border-color: var(--sage); }
+    .message-block.mild     { background: #FFFBEB; border-color: #F59E0B; }
+    .message-block.deprived { background: #FFF7ED; border-color: #F97316; }
+    .message-block p { font-size: 13px; color: var(--text-mid); line-height: 1.7; }
+
+    /* Tips */
+    .tips-title { font-size: 13px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; margin-top: 4px; }
+    .tips-grid { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
+    .tip-item { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; background: var(--sage-pale); border-radius: var(--r-sm); }
+    .tip-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+    .tip-text { font-size: 12.5px; color: var(--text-mid); line-height: 1.6; }
+    .tip-text strong { display: block; font-weight: 600; color: var(--text-dark); margin-bottom: 2px; font-size: 13px; }
+
+    /* Note block */
+    .note-block { background: var(--cream); border-radius: var(--r); padding: 13px 16px; font-size: 12px; color: var(--text-light); line-height: 1.7; display: flex; gap: 8px; align-items: flex-start; }
+    .note-block svg { flex-shrink: 0; margin-top: 1px; }
+
+    /* ── INFO CARD ── */
+    .info-card { background: white; border-radius: var(--r-xl); box-shadow: var(--shadow-sm); padding: 22px 24px; }
+    .info-card h3 { font-size: 14px; font-weight: 700; margin-bottom: 8px; color: var(--text-dark); }
+    .info-card p  { font-size: 13px; color: var(--text-mid); line-height: 1.75; }
+
+    /* ── RELATED SECTION ── */
+    .related-section { }
+    .related-title { font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; text-transform: none; letter-spacing: normal; }
+    .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .related-card { background: white; border: 1.5px solid var(--border); border-radius: var(--r); padding: 14px 16px; display: flex; align-items: center; gap: 12px; transition: all .18s; text-decoration: none; color: inherit; }
+    .related-card:hover { border-color: var(--sage); box-shadow: var(--shadow-sm); transform: translateY(-1px); }
+    .related-icon { width: 36px; height: 36px; background: var(--sage-light); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+    .related-info strong { display: block; font-size: 13px; font-weight: 600; color: var(--text-dark); }
+    .related-info span { font-size: 11px; color: var(--text-light); }
+
+    /* ── FOOTER ── */
+    .site-footer { background: var(--text-dark); color: #94A99A; padding: 48px 0 0; margin-top: 48px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 40px; }
+    .footer-logo { display: flex; align-items: center; gap: 8px; color: white; font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+    .footer-brand p { font-size: 14px; line-height: 1.7; max-width: 260px; color: #7A958E; }
+    .footer-col h5 { color: white; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; margin-bottom: 14px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { font-size: 14px; color: #7A958E; transition: color .2s; }
+    .footer-col a:hover { color: white; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding: 22px 0; display: flex; flex-direction: column; gap: 6px; }
+    .footer-disclaimer { font-size: 12px; color: #5A7568; line-height: 1.7; }
+    .footer-copy { font-size: 12px; color: #5A7568; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1000px) { .calc-columns { grid-template-columns: 1fr; } }
+    @media (max-width: 900px)  { .footer-grid { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: 1 / -1; } }
+    @media (max-width: 660px)  { .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-btn { display: none; } .symptom-grid { grid-template-columns: 1fr; } .related-grid { grid-template-columns: 1fr; } .metrics-row { grid-template-columns: 1fr; } }
+    @media (max-width: 520px)  { .footer-grid { grid-template-columns: 1fr; } }
+  
+    /* ── MOBILE HAMBURGER ────────────────────────────── */
+    .nav-hamburger {
+      display: none; flex-direction: column; justify-content: center; gap: 5px;
+      background: none; border: none; padding: 8px; margin-left: 8px;
+      border-radius: 8px; cursor: pointer; transition: background .15s; flex-shrink: 0;
+    }
+    .nav-hamburger:hover { background: var(--sage-light, #EBF2EC); }
+    .nav-hamburger span {
+      display: block; width: 22px; height: 2.5px;
+      background: var(--text-dark, #1A2E1E); border-radius: 2px; transition: all .2s;
+    }
+    /* ── MOBILE DRAWER ───────────────────────────────── */
+    .mobile-menu { display: none; position: fixed; inset: 0; z-index: 999; }
+    .mobile-menu.open { display: block; }
+    .mobile-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.45); backdrop-filter: blur(2px); }
+    .mobile-drawer {
+      position: absolute; top: 0; right: 0;
+      width: min(300px, 84vw); height: 100%;
+      background: #fff; display: flex; flex-direction: column;
+      box-shadow: -4px 0 40px rgba(0,0,0,.18);
+      animation: drawerIn .22s cubic-bezier(.22,.61,.36,1);
+    }
+    @keyframes drawerIn { from{transform:translateX(100%)} to{transform:translateX(0)} }
+    .mobile-drawer-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 20px 14px; border-bottom: 1px solid var(--border, #E2EBE4);
+    }
+    .mobile-drawer-logo { font-size: 15px; font-weight: 700; color: var(--text-dark, #1A2E1E); }
+    .mobile-close {
+      background: none; border: none; font-size: 20px; padding: 4px 8px;
+      cursor: pointer; color: var(--text-light, #718096); border-radius: 6px; line-height: 1;
+      transition: background .15s, color .15s;
+    }
+    .mobile-close:hover { background: var(--sage-light, #EBF2EC); color: var(--text-dark, #1A2E1E); }
+    .mobile-nav-links { padding: 14px 12px; flex: 1; display: flex; flex-direction: column; gap: 4px; }
+    .mobile-nav-link {
+      display: flex; align-items: center; gap: 14px;
+      padding: 13px 16px; border-radius: 12px;
+      font-size: 16px; font-weight: 600; color: var(--text-dark, #1A2E1E);
+      text-decoration: none; transition: background .15s, color .15s;
+    }
+    .mobile-nav-link:hover { background: var(--sage-light, #EBF2EC); color: var(--sage, #3B6A3A); }
+    .mobile-link-icon {
+      width: 40px; height: 40px; background: var(--sage-light, #EBF2EC);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .mobile-browse-btn {
+      display: block; margin: 0 12px 20px; padding: 14px;
+      background: var(--sage, #3B6A3A); color: #fff; border-radius: 12px;
+      font-size: 15px; font-weight: 700; text-align: center;
+      text-decoration: none; transition: background .15s;
+    }
+    .mobile-browse-btn:hover { background: var(--sage-dark, #0A3D2A); }
+
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <img src="assets/logo.png" alt="SageMyHealth" style="height: 54px; width: auto; object-fit: contain;"/>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html#categories">Calculators</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../blog.html">Health Guides</a></li>
+    </ul>
+    <a href="../index.html#categories" class="nav-btn">Browse All</a>
+    <button class="nav-hamburger" id="nav-hamburger"
+            onclick="openMobileMenu()" aria-label="Open navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site navigation">
+  <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-drawer">
+    <div class="mobile-drawer-head">
+      <span class="mobile-drawer-logo">SageMyHealth</span>
+      <button class="mobile-close" onclick="closeMobileMenu()" aria-label="Close menu">&#x2715;</button>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="../index.html#categories" class="mobile-nav-link" onclick="closeMobileMenu()">
+        <span class="mobile-link-icon">&#x1F9EE;</span>Calculators
+      </a>
+      <a href="../about.html" class="mobile-nav-link" onclick="closeMobileMenu()">
+        <span class="mobile-link-icon">&#x1F49A;</span>About
+      </a>
+      <a href="../blog.html" class="mobile-nav-link" onclick="closeMobileMenu()">
+        <span class="mobile-link-icon">&#x1F4D6;</span>Health Guides
+      </a>
+    </nav>
+    <a href="../index.html#categories" class="mobile-browse-btn" onclick="closeMobileMenu()">Browse All Calculators &#x2192;</a>
+  </div>
+</div>
+
+<!-- PAGE -->
+<main class="calc-page">
+  <div class="calc-wrapper">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="bc-sep">›</span>
+      <a href="../index.html#categories">Sleep</a>
+      <span class="bc-sep">›</span>
+      <span>Sleep Need Calculator</span>
+    </nav>
+
+    <header class="page-header">
+      <div class="calc-tag">😴 Sleep</div>
+      <h1>Sleep Need Calculator</h1>
+      <p>Find out how many hours of sleep your body actually needs — and whether you're running a sleep debt. Based on National Sleep Foundation recommendations.</p>
+    </header>
+
+    <div class="calc-columns">
+
+      <!-- LEFT: Form -->
+      <div class="form-card">
+        <div class="form-card-header">
+          <span class="form-card-title">Tell us about your sleep</span>
+        </div>
+        <div class="form-body">
+
+          <!-- Age Group -->
+          <div class="form-section">
+            <div class="section-title">Age Group</div>
+            <div class="pill-group" id="age-pills">
+              <button class="pill" data-val="child"  onclick="setPill('age-pills',this)">Child (6–12)</button>
+              <button class="pill" data-val="teen"   onclick="setPill('age-pills',this)">Teen (13–17)</button>
+              <button class="pill active" data-val="adult"  onclick="setPill('age-pills',this)">Adult (18–64)</button>
+              <button class="pill" data-val="older"  onclick="setPill('age-pills',this)">65 and over</button>
+            </div>
+          </div>
+
+          <!-- Current Sleep -->
+          <div class="form-section">
+            <div class="section-title">How much do you currently sleep?</div>
+            <label class="field-label" for="current-sleep">Average hours per night</label>
+            <input class="field-input" type="number" id="current-sleep" placeholder="7" min="1" max="14" step="0.5" />
+            <p class="field-hint">Include weekdays and weekends. Don't include time awake in bed.</p>
+          </div>
+
+          <!-- Physical Activity -->
+          <div class="form-section">
+            <div class="section-title">Physical Activity Level</div>
+            <div class="pill-group" id="activity-pills">
+              <button class="pill active" data-val="sedentary" onclick="setPill('activity-pills',this)">Sedentary</button>
+              <button class="pill" data-val="moderate"  onclick="setPill('activity-pills',this)">Moderately active</button>
+              <button class="pill" data-val="active"    onclick="setPill('activity-pills',this)">Very active</button>
+            </div>
+            <p class="field-hint" style="margin-top:8px">Athletes and those doing regular intense training often need 30–60 min more sleep per night.</p>
+          </div>
+
+          <!-- Stress -->
+          <div class="form-section">
+            <div class="section-title">Stress Level</div>
+            <div class="pill-group" id="stress-pills">
+              <button class="pill active" data-val="low"  onclick="setPill('stress-pills',this)">Low</button>
+              <button class="pill" data-val="moderate"    onclick="setPill('stress-pills',this)">Moderate</button>
+              <button class="pill" data-val="high"        onclick="setPill('stress-pills',this)">High</button>
+              <button class="pill" data-val="very-high"   onclick="setPill('stress-pills',this)">Very high</button>
+            </div>
+          </div>
+
+          <!-- Work Schedule -->
+          <div class="form-section">
+            <div class="section-title">Work Schedule</div>
+            <div class="pill-group" id="schedule-pills">
+              <button class="pill active" data-val="regular"   onclick="setPill('schedule-pills',this)">Regular hours</button>
+              <button class="pill" data-val="variable"         onclick="setPill('schedule-pills',this)">Variable hours</button>
+              <button class="pill" data-val="shift"            onclick="setPill('schedule-pills',this)">Shift work / nights</button>
+            </div>
+          </div>
+
+          <!-- Symptoms -->
+          <div class="form-section" style="border-bottom:none;padding-bottom:0;margin-bottom:0">
+            <div class="section-title">How do you feel day-to-day?</div>
+            <p class="field-hint" style="margin-bottom:10px">Check everything that applies to you most days</p>
+            <div class="symptom-grid">
+              <div class="symptom-card"><input type="checkbox" id="sym1"><label for="sym1">Wake feeling tired or unrefreshed</label></div>
+              <div class="symptom-card"><input type="checkbox" id="sym2"><label for="sym2">Need an alarm to wake up</label></div>
+              <div class="symptom-card"><input type="checkbox" id="sym3"><label for="sym3">Fall asleep within minutes of lying down</label></div>
+              <div class="symptom-card"><input type="checkbox" id="sym4"><label for="sym4">Need caffeine to function in the morning</label></div>
+              <div class="symptom-card"><input type="checkbox" id="sym5"><label for="sym5">Difficulty concentrating during the day</label></div>
+              <div class="symptom-card"><input type="checkbox" id="sym6"><label for="sym6">Mood swings or irritability</label></div>
+              <div class="symptom-card"><input type="checkbox" id="sym7"><label for="sym7">Napping regularly during the day</label></div>
+              <div class="symptom-card"><input type="checkbox" id="sym8"><label for="sym8">Feel "second wind" past your bedtime</label></div>
+            </div>
+          </div>
+
+          <button class="calc-btn" onclick="calculate()" style="margin-top:20px">Calculate my sleep need</button>
+          <p class="disclaimer">Based on National Sleep Foundation guidelines. Individual needs vary — use this as a starting point, not a strict prescription.</p>
+        </div>
+      </div>
+
+      <!-- RIGHT: Results column -->
+      <div class="results-col">
+
+        <!-- Result panel: hidden until calculate() -->
+        <div id="result-panel" style="display:none">
+          <div class="result-card">
+            <div class="result-band rested" id="res-band"></div>
+            <div class="result-body">
+
+              <div class="sleep-hero">
+                <div class="sleep-icon" id="res-icon">😴</div>
+                <div class="sleep-status-label rested" id="res-label">WELL RESTED</div>
+                <div class="sleep-headline" id="res-headline">Your sleep looks good</div>
+              </div>
+
+              <div class="metrics-row">
+                <div class="metric-card">
+                  <div class="metric-val" id="res-need">—<span>hrs</span></div>
+                  <div class="metric-label">Your recommended sleep need</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-val" id="res-current">—<span>hrs</span></div>
+                  <div class="metric-label">Your reported current sleep</div>
+                </div>
+              </div>
+
+              <div class="debt-badge surplus" id="res-debt-badge">
+                <div>
+                  <div class="debt-badge-val" id="res-debt-val">—</div>
+                  <div class="debt-badge-label" id="res-debt-label">—</div>
+                </div>
+              </div>
+
+              <div class="bar-section">
+                <div class="bar-header">
+                  <div class="bar-title">Sleep adequacy</div>
+                  <div class="bar-pct" id="res-pct">—%</div>
+                </div>
+                <div class="bar-wrap">
+                  <div class="bar-fill rested" id="res-bar" style="width:0%"></div>
+                </div>
+                <div class="bar-zones">
+                  <span class="bar-zone">Deprived</span>
+                  <span class="bar-zone">Sufficient</span>
+                  <span class="bar-zone">Optimal+</span>
+                </div>
+              </div>
+
+              <div class="message-block rested" id="res-message">
+                <p id="res-message-text">—</p>
+              </div>
+
+              <div class="tips-title" id="tips-title">How to improve your sleep</div>
+              <div class="tips-grid" id="tips-grid"></div>
+
+              <div class="note-block">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#5C8A5C" stroke-width="2"/><path d="M12 8v4M12 16h.01" stroke="#5C8A5C" stroke-width="2" stroke-linecap="round"/></svg>
+                <p><strong>Note:</strong> Sleep needs vary by individual. If you're consistently sleeping the recommended amount and still feel tired, consider speaking with a doctor about sleep quality or underlying conditions such as sleep apnoea.</p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- About (always visible) -->
+        <div class="info-card">
+          <h3>About sleep need</h3>
+          <p>Sleep need is the total amount of sleep your body requires to function optimally — and it's largely biological, not a matter of willpower. The <strong>National Sleep Foundation</strong> sets guidelines by age: adults need 7–9 hours, teens 8–10, school-age children 9–12, and older adults 7–8. But your personal need can shift based on physical activity, stress load, health status, and accumulated sleep debt. Chronically sleeping even 1–2 hours less than you need leads to cumulative impairment in memory, mood, reaction time, and immune function.</p>
+        </div>
+
+        <!-- You might also like (always visible) -->
+        <div class="related-section">
+          <p class="related-title">You might also like</p>
+          <div class="related-grid">
+            <a href="brain-fatigue.html" class="related-card">
+              <div class="related-icon">🧠</div>
+              <div class="related-info"><strong>Brain Fatigue</strong><span>Mental exhaustion check</span></div>
+            </a>
+            <a href="anxiety-score.html" class="related-card">
+              <div class="related-icon">💭</div>
+              <div class="related-info"><strong>Anxiety Score (GAD-7)</strong><span>Worry & anxiety levels</span></div>
+            </a>
+            <a href="iron-deficiency.html" class="related-card">
+              <div class="related-icon">🩸</div>
+              <div class="related-info"><strong>Iron Deficiency Risk</strong><span>A hidden cause of fatigue</span></div>
+            </a>
+            <a href="lung-capacity.html" class="related-card">
+              <div class="related-icon">🫁</div>
+              <div class="related-info"><strong>Lung Capacity</strong><span>Respiratory fitness</span></div>
+            </a>
+          </div>
+        </div>
+
+      </div><!-- /.results-col -->
+
+    </div><!-- /.calc-columns -->
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="assets/logo-white.png" alt="SageMyHealth" style="height: 45px; width: auto; object-fit: contain;"/>
+        </div>
+        <p>Free, trusted health calculators with warm guidance — helping you understand your numbers.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Calculators</h5>
+        <ul>
+          <li><a href="bmi.html">BMI</a></li>
+          <li><a href="tdee.html">Daily Calories</a></li>
+          <li><a href="heart-rate.html">Heart Rate Zones</a></li>
+          <li><a href="blood-glucose.html">Blood Glucose</a></li>
+          <li><a href="anxiety-score.html">Anxiety Score</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>More Tools</h5>
+        <ul>
+          <li><a href="brain-fatigue.html">Brain Fatigue</a></li>
+          <li><a href="iron-deficiency.html">Iron Deficiency</a></li>
+          <li><a href="lung-capacity.html">Lung Capacity</a></li>
+          <li><a href="calories-burned.html">Calories Burned</a></li>
+          <li><a href="hair-loss-risk.html">Hair Loss Risk</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Info</h5>
+        <ul>
+          <li><a href="../about.html">About Us</a></li>
+          <li><a href="../privacy.html">Privacy Policy</a></li>
+          <li><a href="../terms.html">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-disclaimer"><strong style="color:#7A958E">Medical Disclaimer:</strong> This calculator is for informational purposes only and is not a substitute for professional medical advice. If you have persistent sleep problems, please consult a healthcare provider.</p>
+      <p class="footer-copy">© 2025 SageMyHealth.com — All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function setPill(groupId, btn) {
+    document.querySelectorAll('#' + groupId + ' .pill').forEach(function(p) { p.classList.remove('active'); });
+    btn.classList.add('active');
+  }
+
+  function getActivePill(groupId) {
+    var active = document.querySelector('#' + groupId + ' .pill.active');
+    return active ? active.getAttribute('data-val') : null;
+  }
+
+  // NSF base recommendations (optimal midpoint hours)
+  var baseNeeds = { child: 10.5, teen: 9.0, adult: 8.0, older: 7.5 };
+  var baseRanges = { child: '9–12 hrs', teen: '8–10 hrs', adult: '7–9 hrs', older: '7–8 hrs' };
+
+  function calculate() {
+    var ageGroup = getActivePill('age-pills') || 'adult';
+    var activity  = getActivePill('activity-pills') || 'sedentary';
+    var stress    = getActivePill('stress-pills') || 'low';
+    var schedule  = getActivePill('schedule-pills') || 'regular';
+    var currentSleep = parseFloat(document.getElementById('current-sleep').value);
+
+    if (!currentSleep || currentSleep < 0.5 || currentSleep > 14) {
+      alert('Please enter your current average hours of sleep per night.');
+      return;
+    }
+
+    // Symptom score
+    var sympCount = 0;
+    for (var i = 1; i <= 8; i++) {
+      if (document.getElementById('sym' + i).checked) sympCount++;
+    }
+
+    // Calculate personal sleep need
+    var need = baseNeeds[ageGroup];
+    if (activity === 'active') need += 0.5;
+    if (stress === 'high') need += 0.25;
+    if (stress === 'very-high') need += 0.5;
+    if (schedule === 'shift') need += 0.5;
+    // Symptom pressure: many symptoms suggest higher actual need
+    if (sympCount >= 5) need += 0.5;
+    else if (sympCount >= 3) need += 0.25;
+    need = Math.round(need * 2) / 2; // round to nearest 0.5
+
+    var diff = currentSleep - need; // positive = surplus, negative = deficit
+    var pct  = Math.round((currentSleep / need) * 100);
+    var barPct = Math.min(Math.max(pct, 0), 120); // clamp for bar display
+
+    // Determine level
+    var level;
+    if (diff >= 0 && sympCount <= 2)     level = 'rested';
+    else if (diff >= -1 && sympCount <= 4) level = 'mild';
+    else                                   level = 'deprived';
+
+    // Override: many symptoms always push to at least mild
+    if (sympCount >= 5 && level === 'rested') level = 'mild';
+    if (sympCount >= 7) level = 'deprived';
+
+    // Icons & labels
+    var icons    = { rested: '😴', mild: '🥱', deprived: '😩' };
+    var labels   = { rested: 'WELL RESTED', mild: 'MILD SLEEP DEFICIT', deprived: 'SLEEP DEPRIVED' };
+    var headlines = {
+      rested:   'Your sleep looks good',
+      mild:     'You may have a small sleep debt',
+      deprived: 'Your body needs more sleep'
+    };
+
+    // Debt badge
+    var absDiff = Math.abs(diff);
+    var diffStr = (absDiff % 1 === 0 ? absDiff.toFixed(0) : absDiff.toFixed(1));
+    var debtBadgeClass, debtBadgeVal, debtBadgeLabel;
+    if (diff >= 0.5) {
+      debtBadgeClass = 'surplus';
+      debtBadgeVal = '+' + diffStr + ' hrs/night';
+      debtBadgeLabel = 'Sleep surplus — you\'re banking extra rest';
+    } else if (diff > -0.25) {
+      debtBadgeClass = 'even';
+      debtBadgeVal = 'On target';
+      debtBadgeLabel = 'You\'re sleeping right at your personal need';
+    } else if (diff >= -1) {
+      debtBadgeClass = 'deficit';
+      debtBadgeVal = '−' + diffStr + ' hrs/night';
+      debtBadgeLabel = 'Mild deficit — try adding 30 min of sleep per night';
+    } else {
+      debtBadgeClass = 'high-def';
+      debtBadgeVal = '−' + diffStr + ' hrs/night';
+      debtBadgeLabel = 'Significant deficit — prioritise sleep this week';
+    }
+
+    // Messages
+    var messages = {
+      rested:   'Based on your age group, lifestyle, and reported symptoms, you appear to be meeting your sleep need. Keep up the routine — sleep consistency matters as much as duration.',
+      mild:     'You\'re getting close to your need, but a small gap combined with your reported symptoms suggests your body may want more. Even 30 minutes of extra sleep per night can meaningfully improve energy, focus, and mood within a week.',
+      deprived: 'Your reported sleep is significantly below your personal need, and your symptoms reinforce this. Sleep debt is cumulative — it doesn\'t fully clear in one night. Prioritising sleep this week, and being consistent with bedtime, will start to make a real difference.'
+    };
+
+    // Tips
+    var tipsMap = {
+      rested: [
+        { icon: '🌙', title: 'Keep your sleep window consistent', body: 'Even on weekends, staying within an hour of your usual bedtime preserves your circadian rhythm and the quality of your sleep stages.' },
+        { icon: '📵', title: 'Protect the hour before bed', body: 'Avoiding screens, bright lights, and stimulating content in the last hour before sleep gives melatonin a chance to rise naturally.' },
+        { icon: '🌡️', title: 'Cool room, better sleep', body: 'Core body temperature needs to drop about 1–2°C to initiate deep sleep. A bedroom temperature of 16–19°C is ideal for most adults.' }
+      ],
+      mild: [
+        { icon: '⏰', title: 'Move bedtime 30 minutes earlier', body: 'The single most effective change for a mild deficit. Moving sleep forward (not sleeping in later) aligns better with your natural circadian rhythm.' },
+        { icon: '☕', title: 'Watch caffeine timing', body: 'Caffeine has a half-life of 5–6 hours. A 3pm coffee still has significant stimulant effect at bedtime. Try cutting off caffeine by 1pm.' },
+        { icon: '😮‍💨', title: 'Wind-down ritual matters', body: 'A consistent 15–20 minute wind-down routine (reading, light stretching, journaling) signals your nervous system to shift into sleep mode.' }
+      ],
+      deprived: [
+        { icon: '🛏️', title: 'Prioritise sleep over everything else this week', body: 'Sleep debt accumulates slowly and clears slowly. Commit to getting one extra hour per night for 5 consecutive nights — the effects on cognitive function and mood are measurable.' },
+        { icon: '🩺', title: 'Consider ruling out a sleep disorder', body: 'If you\'re spending enough time in bed but still waking unrefreshed, conditions like sleep apnoea, restless legs, or insomnia may be interfering. Worth mentioning to your doctor.' },
+        { icon: '📵', title: 'No screens in the bedroom', body: 'The combination of blue light, mental stimulation, and screen anxiety (doom-scrolling, news, messages) is one of the most common modern drivers of late bedtimes and poor sleep quality.' }
+      ]
+    };
+
+    // Update DOM
+    document.getElementById('res-icon').textContent     = icons[level];
+    var labelEl = document.getElementById('res-label');
+    labelEl.textContent  = labels[level];
+    labelEl.className    = 'sleep-status-label ' + level;
+    document.getElementById('res-headline').textContent = headlines[level];
+
+    document.getElementById('res-need').innerHTML    = need + '<span>hrs</span>';
+    document.getElementById('res-current').innerHTML = currentSleep + '<span>hrs</span>';
+    document.getElementById('res-pct').textContent   = pct + '%';
+
+    var debtBadge = document.getElementById('res-debt-badge');
+    debtBadge.className = 'debt-badge ' + debtBadgeClass;
+    document.getElementById('res-debt-val').textContent   = debtBadgeVal;
+    document.getElementById('res-debt-label').textContent = debtBadgeLabel;
+
+    var bar = document.getElementById('res-bar');
+    bar.className  = 'bar-fill ' + level;
+    // Map pct to bar width: 50%=min (deprived), 100%=optimal, 120%=surplus cap
+    var barW = Math.min(Math.max(((pct - 50) / 70) * 100, 5), 100);
+    setTimeout(function() { bar.style.width = barW + '%'; }, 80);
+
+    var band = document.getElementById('res-band');
+    band.className = 'result-band ' + level;
+
+    var msgBlock = document.getElementById('res-message');
+    msgBlock.className = 'message-block ' + level;
+    document.getElementById('res-message-text').textContent = messages[level];
+
+    var tipsGrid = document.getElementById('tips-grid');
+    tipsGrid.innerHTML = '';
+    document.getElementById('tips-title').textContent = level === 'deprived' ? 'Steps to recover your sleep' : 'Tips to protect your sleep quality';
+    tipsMap[level].forEach(function(t) {
+      var el = document.createElement('div');
+      el.className = 'tip-item';
+      el.innerHTML = '<div class="tip-icon">' + t.icon + '</div><div class="tip-text"><strong>' + t.title + '</strong>' + t.body + '</div>';
+      tipsGrid.appendChild(el);
+    });
+
+    document.getElementById('result-panel').style.display = '';
+    setTimeout(function() { document.getElementById('result-panel').scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 80);
+  }
+</script>
+
+
+<script>
+  /* Mobile menu */
+  function openMobileMenu() {
+    document.getElementById('mobile-menu').classList.add('open');
+    document.getElementById('nav-hamburger').setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.getElementById('nav-hamburger').setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMobileMenu(); });
+</script>
+</body>
+</html>

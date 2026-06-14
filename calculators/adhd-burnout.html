@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X6K2H9YW2V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X6K2H9YW2V');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adult ADHD Burnout Screener — SageMyHealth</title>
+  <meta name="description" content="ADHD burnout is different from ordinary burnout — it's what happens when the constant effort of compensating, masking, and managing finally runs out. Take this 12-question screener to understand where you are and what to do next." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sage:        #3B6A3A;
+      --sage-dark:   #0A3D2A;
+      --sage-mid:    #5C8A5C;
+      --sage-light:  #EBF2EC;
+      --sage-pale:   #F2F7F3;
+      --cream:       #E3FFB3;
+      --white:       #FFFFFF;
+      --text-dark:   #1A2E1E;
+      --text-mid:    #4A5568;
+      --text-light:  #718096;
+      --border:      #E2EBE4;
+      --border-mid:  #C8D9CC;
+      --shadow-xs:   0 1px 2px rgba(59,106,58,0.06);
+      --shadow-sm:   0 1px 6px rgba(59,106,58,0.08);
+      --shadow-md:   0 4px 16px rgba(59,106,58,0.12);
+      --shadow-lg:   0 8px 32px rgba(59,106,58,0.16);
+      --r-sm: 8px; --r: 12px; --r-lg: 20px; --r-xl: 28px;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text-dark); background: var(--sage-pale); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; }
+
+    /* NAV */
+    .site-nav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.96); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; flex: 1; justify-content: center; }
+    .nav-links a { color: var(--text-mid); font-size: 15px; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--sage); }
+    .nav-btn { background: var(--sage); color: white; border: none; padding: 9px 20px; border-radius: var(--r-sm); font-size: 14px; font-weight: 600; transition: background .2s; }
+    .nav-btn:hover { background: var(--sage-dark); }
+
+    /* PAGE */
+    .calc-page { padding: 36px 0 72px; }
+    .calc-wrapper { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* BREADCRUMB */
+    .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-light); margin-bottom: 24px; flex-wrap: wrap; }
+    .breadcrumb a { color: var(--sage); }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .bc-sep { color: var(--border-mid); }
+
+    /* PAGE HEADER */
+    .page-header { margin-bottom: 28px; }
+    .calc-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--sage); background: var(--white); padding: 5px 12px; border-radius: 20px; margin-bottom: 12px; letter-spacing: .3px; border: 1px solid var(--border); }
+    .page-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 42px); font-weight: 700; color: var(--text-dark); letter-spacing: -.5px; margin-bottom: 10px; line-height: 1.15; }
+    .page-header p { font-size: 15px; color: var(--text-mid); line-height: 1.7; max-width: 700px; }
+
+    /* CONTEXT BANNER */
+    .context-banner { background: var(--sage-pale); border: 1px solid var(--border); border-radius: var(--r); padding: 14px 18px; margin-bottom: 28px; font-size: 13px; color: var(--text-mid); line-height: 1.7; display: flex; gap: 10px; align-items: flex-start; max-width: 700px; }
+    .context-banner-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+    /* TWO-COLUMN LAYOUT */
+    .calc-wrapper-inner { display: grid; grid-template-columns: 480px 1fr; gap: 24px; align-items: start; }
+
+    /* FORM CARD */
+    .form-card { background: white; border-radius: var(--r-xl); box-shadow: var(--shadow-lg); overflow: hidden; }
+    .form-card-header { padding: 24px 28px 0; }
+    .form-card-title { font-size: 15px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
+    .form-card-sub { font-size: 13px; color: var(--text-light); margin-bottom: 16px; }
+    .form-body { padding: 0 28px 28px; }
+
+    /* PROGRESS */
+    .progress-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+    .progress-label { font-size: 12px; color: var(--text-light); }
+    .progress-bar { height: 4px; background: var(--sage-light); border-radius: 4px; margin-bottom: 18px; }
+    .progress-fill { height: 100%; background: var(--sage); border-radius: 4px; transition: width .3s; }
+
+    /* DOMAIN SECTION */
+    .domain-label { display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .7px; color: var(--text-light); margin-bottom: 10px; margin-top: 18px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+    .domain-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+    /* QUESTION */
+    .question { margin-bottom: 14px; }
+    .q-text { font-size: 13px; font-weight: 500; color: var(--text-dark); line-height: 1.6; margin-bottom: 8px; }
+    .q-num { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; background: var(--sage-light); border-radius: 50%; font-size: 10px; font-weight: 700; color: var(--sage); flex-shrink: 0; margin-right: 6px; }
+
+    /* RADIO OPTIONS */
+    .options { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; }
+    .option-item { display: flex; flex-direction: column; align-items: center; }
+    .option-item input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
+    .option-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; padding: 8px 4px 6px; border-radius: var(--r-sm); border: 1.5px solid var(--border); cursor: pointer; transition: all .15s; background: white; text-align: center; gap: 2px; }
+    .option-btn .opt-val { font-size: 15px; font-weight: 700; color: var(--text-mid); line-height: 1; }
+    .option-btn .opt-lab { font-size: 9px; font-weight: 500; color: var(--text-light); letter-spacing: .2px; line-height: 1.2; text-align: center; }
+    .option-item input[type="radio"]:checked + .option-btn { border-color: var(--sage); background: var(--sage-light); }
+    .option-item input[type="radio"]:checked + .option-btn .opt-val { color: var(--sage); }
+    .option-item input[type="radio"]:checked + .option-btn .opt-lab { color: var(--sage-mid); }
+    .option-btn:hover { border-color: var(--sage-mid); background: var(--sage-pale); }
+
+    .err-banner { display: none; background: #FEF2F2; border: 1px solid #FECACA; border-radius: var(--r-sm); padding: 10px 14px; font-size: 13px; color: #DC2626; margin-bottom: 12px; font-weight: 500; }
+
+    .calc-btn { width: 100%; background: var(--sage); color: white; border: none; padding: 14px; border-radius: var(--r); font-size: 16px; font-weight: 700; transition: all .18s; margin-top: 4px; }
+    .calc-btn:hover { background: var(--sage-dark); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+    .calc-btn:active { transform: translateY(0); }
+
+    /* RESULTS COL */
+    .results-col { display: flex; flex-direction: column; gap: 20px; }
+
+    /* RESULT CARD */
+    .result-card { background: white; border-radius: var(--r-xl); box-shadow: var(--shadow-lg); overflow: hidden; display: none; }
+    .result-card.visible { display: block; animation: slideUp .35s ease; }
+    @keyframes slideUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+    .result-band { height: 6px; width: 100%; }
+    .result-body { padding: 24px; }
+
+    /* Score display */
+    .score-display { display: flex; align-items: flex-end; justify-content: center; gap: 4px; margin-bottom: 8px; }
+    .score-num { font-size: 72px; font-weight: 800; line-height: 1; letter-spacing: -3px; }
+    .score-denom { font-size: 24px; font-weight: 400; color: var(--text-light); padding-bottom: 10px; }
+    .score-label { text-align: center; font-size: 13px; color: var(--text-light); margin-bottom: 20px; }
+
+    /* Severity scale */
+    .sev-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+    .sev-box { border-radius: var(--r-sm); padding: 10px 6px; text-align: center; border: 1.5px solid transparent; }
+    .sev-box .sev-name { font-size: 11px; font-weight: 700; margin-bottom: 2px; line-height: 1.3; }
+    .sev-box .sev-range { font-size: 10px; }
+
+    .sev-minimal  { background: #F0FDF4; color: #16A34A; }
+    .sev-minimal.active  { border-color: #16A34A; }
+    .sev-moderate { background: #FEFCE8; color: #CA8A04; }
+    .sev-moderate.active { border-color: #CA8A04; }
+    .sev-high     { background: #FFF7ED; color: #EA580C; }
+    .sev-high.active     { border-color: #EA580C; }
+    .sev-severe   { background: #FEF2F2; color: #DC2626; }
+    .sev-severe.active   { border-color: #DC2626; }
+
+    /* Domain breakdown */
+    .domain-breakdown { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+    .domain-row { background: var(--sage-pale); border-radius: var(--r); padding: 14px 16px; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 16px; }
+    .domain-row-info { }
+    .domain-row-name { font-size: 13px; font-weight: 600; color: var(--text-dark); margin-bottom: 6px; }
+    .domain-bar { height: 6px; background: var(--border); border-radius: 6px; overflow: hidden; }
+    .domain-bar-fill { height: 100%; border-radius: 6px; transition: width .5s; }
+    .domain-score { font-size: 20px; font-weight: 800; color: var(--text-dark); text-align: right; }
+    .domain-max { font-size: 11px; color: var(--text-light); text-align: right; }
+
+    /* Message */
+    .msg-block { border-radius: var(--r); padding: 18px; margin-bottom: 16px; border-left: 4px solid; }
+    .msg-block h3 { font-size: 14px; font-weight: 700; margin-bottom: 6px; color: var(--text-dark); }
+    .msg-block p  { font-size: 13px; color: var(--text-mid); line-height: 1.7; }
+
+    .tips-title { font-size: 13px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; }
+    .tips-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .tips-list li { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+    .tips-list li::before { content: '✤'; color: var(--sage); font-size: 10px; margin-top: 3px; flex-shrink: 0; }
+
+    /* INFO CARDS */
+    .info-card { background: white; border-radius: var(--r-xl); box-shadow: var(--shadow-sm); padding: 22px 24px; }
+    .info-card h3 { font-size: 14px; font-weight: 700; margin-bottom: 8px; color: var(--text-dark); }
+    .info-card p  { font-size: 13px; color: var(--text-mid); line-height: 1.75; }
+    .info-card p + p { margin-top: 10px; }
+
+    /* Stages */
+    .stages-list { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+    .stage-item { display: flex; gap: 12px; align-items: flex-start; }
+    .stage-num { width: 24px; height: 24px; background: var(--sage-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: var(--sage); flex-shrink: 0; margin-top: 1px; }
+    .stage-text strong { display: block; font-size: 13px; font-weight: 600; color: var(--text-dark); }
+    .stage-text span { font-size: 12px; color: var(--text-mid); line-height: 1.6; }
+
+    /* Symptoms chips */
+    .chips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 12px; }
+    .chip { background: var(--sage-pale); border-radius: var(--r-sm); padding: 9px 12px; font-size: 12px; color: var(--text-mid); display: flex; align-items: flex-start; gap: 7px; line-height: 1.4; }
+    .chip-dot { width: 5px; height: 5px; background: var(--sage); border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+
+    /* RELATED */
+    .related-title { font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; }
+    .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .related-card { background: white; border: 1.5px solid var(--border); border-radius: var(--r); padding: 14px 16px; display: flex; align-items: center; gap: 12px; transition: all .18s; }
+    .related-card:hover { border-color: var(--sage); box-shadow: var(--shadow-sm); transform: translateY(-1px); }
+    .related-icon { width: 36px; height: 36px; background: var(--sage-light); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+    .related-info strong { display: block; font-size: 13px; font-weight: 600; }
+    .related-info span  { font-size: 11px; color: var(--text-light); }
+
+    /* DISCLAIMER */
+    .note-block { background: var(--cream); border-radius: var(--r); padding: 13px 16px; font-size: 12px; color: var(--text-light); line-height: 1.7; display: flex; gap: 8px; align-items: flex-start; }
+    .note-block svg { flex-shrink: 0; margin-top: 1px; }
+
+    /* BAND COLORS */
+    .band-minimal  { background: linear-gradient(90deg, #4ADE80, #16A34A); }
+    .band-moderate { background: linear-gradient(90deg, #FDE68A, #D97706); }
+    .band-high     { background: linear-gradient(90deg, #FB923C, #EA580C); }
+    .band-severe   { background: linear-gradient(90deg, #F87171, #DC2626); }
+
+    /* FOOTER */
+    .site-footer { background: var(--text-dark); color: #94A99A; padding: 48px 0 0; margin-top: 48px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 40px; }
+    .footer-logo { display: flex; align-items: center; gap: 8px; color: white; font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+    .footer-brand p { font-size: 14px; line-height: 1.7; max-width: 260px; color: #7A958E; }
+    .footer-col h5 { color: white; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; margin-bottom: 14px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { font-size: 14px; color: #7A958E; transition: color .2s; }
+    .footer-col a:hover { color: white; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding: 22px 0; display: flex; flex-direction: column; gap: 6px; }
+    .footer-disclaimer { font-size: 12px; color: #5A7568; line-height: 1.7; }
+    .footer-copy { font-size: 12px; color: #5A7568; }
+
+    @media (max-width: 900px) {
+      .calc-wrapper-inner { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 660px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-btn { display: none; }
+      .related-grid { grid-template-columns: 1fr; }
+      .sev-row { grid-template-columns: 1fr 1fr; }
+      .chips-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 520px) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  
+    /* ── MOBILE HAMBURGER ────────────────────────────── */
+    .nav-hamburger {
+      display: none; flex-direction: column; justify-content: center; gap: 5px;
+      background: none; border: none; padding: 8px; margin-left: 8px;
+      border-radius: 8px; cursor: pointer; transition: background .15s; flex-shrink: 0;
+    }
+    .nav-hamburger:hover { background: var(--sage-light, #EBF2EC); }
+    .nav-hamburger span {
+      display: block; width: 22px; height: 2.5px;
+      background: var(--text-dark, #1A2E1E); border-radius: 2px; transition: all .2s;
+    }
+    /* ── MOBILE DRAWER ───────────────────────────────── */
+    .mobile-menu { display: none; position: fixed; inset: 0; z-index: 999; }
+    .mobile-menu.open { display: block; }
+    .mobile-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.45); backdrop-filter: blur(2px); }
+    .mobile-drawer {
+      position: absolute; top: 0; right: 0;
+      width: min(300px, 84vw); height: 100%;
+      background: #fff; display: flex; flex-direction: column;
+      box-shadow: -4px 0 40px rgba(0,0,0,.18);
+      animation: drawerIn .22s cubic-bezier(.22,.61,.36,1);
+    }
+    @keyframes drawerIn { from{transform:translateX(100%)} to{transform:translateX(0)} }
+    .mobile-drawer-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 20px 14px; border-bottom: 1px solid var(--border, #E2EBE4);
+    }
+    .mobile-drawer-logo { font-size: 15px; font-weight: 700; color: var(--text-dark, #1A2E1E); }
+    .mobile-close {
+      background: none; border: none; font-size: 20px; padding: 4px 8px;
+      cursor: pointer; color: var(--text-light, #718096); border-radius: 6px; line-height: 1;
+      transition: background .15s, color .15s;
+    }
+    .mobile-close:hover { background: var(--sage-light, #EBF2EC); color: var(--text-dark, #1A2E1E); }
+    .mobile-nav-links { padding: 14px 12px; flex: 1; display: flex; flex-direction: column; gap: 4px; }
+    .mobile-nav-link {
+      display: flex; align-items: center; gap: 14px;
+      padding: 13px 16px; border-radius: 12px;
+      font-size: 16px; font-weight: 600; color: var(--text-dark, #1A2E1E);
+      text-decoration: none; transition: background .15s, color .15s;
+    }
+    .mobile-nav-link:hover { background: var(--sage-light, #EBF2EC); color: var(--sage, #3B6A3A); }
+    .mobile-link-icon {
+      width: 40px; height: 40px; background: var(--sage-light, #EBF2EC);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .mobile-browse-btn {
+      display: block; margin: 0 12px 20px; padding: 14px;
+      background: var(--sage, #3B6A3A); color: #fff; border-radius: 12px;
+      font-size: 15px; font-weight: 700; text-align: center;
+      text-decoration: none; transition: background .15s;
+    }
+    .mobile-browse-btn:hover { background: var(--sage-dark, #0A3D2A); }
+
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <img src="assets/logo.png" alt="SageMyHealth" style="height:54px;width:auto;object-fit:contain;" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html#categories">Calculators</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../blog.html">Health Guides</a></li>
+    </ul>
+    <a href="../index.html#categories" class="nav-btn">Browse All</a>
+    <button class="nav-hamburger" id="nav-hamburger"
+            onclick="openMobileMenu()" aria-label="Open navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site navigation">
+  <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-drawer">
+    <div class="mobile-drawer-head">
+      <span class="mobile-drawer-logo">SageMyHealth</span>
+      <button class="mobile-close" onclick="closeMobileMenu()" aria-label="Close menu">&#x2715;</button>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="../index.html#categories" class="mobile-nav-link" onclick="closeMobileMenu()">
+        <span class="mobile-link-icon">&#x1F9EE;</span>Calculators
+      </a>
+      <a href="../about.html" class="mobile-nav-link" onclick="closeMobileMenu()">
+        <span class="mobile-link-icon">&#x1F49A;</span>About
+      </a>
+      <a href="../blog.html" class="mobile-nav-link" onclick="closeMobileMenu()">
+        <span class="mobile-link-icon">&#x1F4D6;</span>Health Guides
+      </a>
+    </nav>
+    <a href="../index.html#categories" class="mobile-browse-btn" onclick="closeMobileMenu()">Browse All Calculators &#x2192;</a>
+  </div>
+</div>
+
+<!-- PAGE -->
+<main class="calc-page">
+  <div class="calc-wrapper">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="bc-sep">›</span>
+      <a href="../index.html#categories">Mental Health</a>
+      <span class="bc-sep">›</span>
+      <span>Adult ADHD Burnout Screener</span>
+    </nav>
+
+    <header class="page-header">
+      <div class="calc-tag">🧠 Mental Health</div>
+      <h1>Adult ADHD Burnout Screener</h1>
+      <p>ADHD burnout isn't ordinary tiredness. It's what happens when the constant effort of compensating, masking, and keeping up finally runs out — often collapsing abilities that felt managed for years. This 12-question screener helps you understand where you are right now.</p>
+    </header>
+
+    <div class="context-banner">
+      <span class="context-banner-icon">💜</span>
+      <span>This tool is designed for adults who have been diagnosed with ADHD, or who suspect they may have it. It screens specifically for <strong>ADHD burnout</strong> — a distinct state from general burnout, caused by the cumulative cost of executive function strain, masking, and sensory overload. It is not an ADHD diagnostic tool.</span>
+    </div>
+
+    <div class="calc-wrapper-inner">
+
+      <!-- FORM CARD -->
+      <div class="form-card">
+        <div class="form-card-header">
+          <div class="form-card-title">How have you been in the past few weeks?</div>
+          <div class="form-card-sub">Answer honestly based on how things actually are right now — not how you think they should be, and not at your best. There are no right answers.</div>
+          <div class="progress-row">
+            <span class="progress-label" id="prog-label">0 of 12 answered</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="prog-fill" style="width:0%"></div>
+          </div>
+        </div>
+        <div class="form-body">
+
+          <!-- Domain 1 -->
+          <div class="domain-label">
+            <div class="domain-dot" style="background:var(--sage)"></div>
+            Domain 1 — Cognitive &amp; Executive Collapse
+          </div>
+
+          <div class="question">
+            <div class="q-text"><span class="q-num">1</span>Tasks I used to manage — even difficult ones — now feel completely impossible to start or finish.</div>
+            <div class="options">
+              <div class="option-item"><input type="radio" name="q1" id="q1-0" value="0" onchange="onAnswer()"><label for="q1-0" class="option-btn"><span class="opt-val">0</span><span class="opt-lab">Never</span></label></div>
+              <div class="option-item"><input type="radio" name="q1" id="q1-1" value="1" onchange="onAnswer()"><label for="q1-1" class="option-btn"><span class="opt-val">1</span><span class="opt-lab">Rarely</span></label></div>
+              <div class="option-item"><input type="radio" name="q1" id="q1-2" value="2" onchange="onAnswer()"><label for="q1-2" class="option-btn"><span class="opt-val">2</span><span class="opt-lab">Sometimes</span></label></div>
+              <div class="option-item"><input type="radio" name="q1" id="q1-3" value="3" onchange="onAnswer()"><label for="q1-3" class="option-btn"><span class="opt-val">3</span><span class="opt-lab">Often</span></label></div>
+              <div class="option-item"><input type="radio" name="q1" id="q1-4" value="4" onchange="onAnswer()"><label for="q1-4" class="option-btn"><span class="opt-val">4</span><span class="opt-lab">Always</span></label></div>
+            </div>
+          </div>
+
+          <div class="question">
+            <div class="q-text"><span class="q-num">2</span>My ability to plan, organise, or prioritise has noticeably gotten worse — things fall through the cracks more than before.</div>
+            <div class="options">
+              <div class="option-item"><input type="radio" name="q2" id="q2-0" value="0" onchange="onAnswer()"><label for="q2-0" class="option-btn"><span class="opt-val">0</span><span class="opt-lab">Never</span></label></div>
+              <div class="option-item"><input type="radio" name="q2" id="q2-1" value="1" onchange="onAnswer()"><label for="q2-1" class="option-btn"><span class="opt-val">1</span><span class="opt-lab">Rarely</span></label></div>
+              <div class="option-item"><input type="radio" name="q2" id="q2-2" value="2" onchange="onAnswer()"><label for="q2-2" class="option-btn"><span class="opt-val">2</span><span class="opt-lab">Sometimes</span></label></div>
+              <div class="option-item"><input type="radio" name="q2" id="q2-3" value="3" onchange="onAnswer()"><label for="q2-3" class="option-btn"><span class="opt-val">3</span><span class="opt-lab">Often</span></label></div>
+              <div class="option-item"><input type="radio" name="q2" id="q2-4" value="4" onchange="onAnswer()"><label for="q2-4" class="option-btn"><span class="opt-val">4</span><span class="opt-lab">Always</span></label></div>
+            </div>
+          </div>
+
+          <div class="question">
+            <div class="q-text"><span class="q-num">3</span>I find myself freezing, shutting down, or going blank — not just procrastinating, but genuinely unable to move forward.</div>
+            <div class="options">
+              <div class="option-item"><input type="radio" name="q3" id="q3-0" value="0" onchange="onAnswer()"><label for="q3-0" class="option-btn"><span class="opt-val">0</span><span class="opt-lab">Never</span></label></div>
+              <div class="option-item"><input type="radio" name="q3" id="q3-1" value="1" onchange="onAnswer()"><label for="q3-1" class="option-btn"><span class="opt-val">1</span><span class="opt-lab">Rarely</span></label></div>
+              <div class="option-item"><input type="radio" name="q3" id="q3-2" value="2" onchange="onAnswer()"><label for="q3-2" class="option-btn"><span class="opt-val">2</span><span class="opt-lab">Sometimes</span></label></div>
+              <div class="option-item"><input type="radio" name="q3" id="q3-3" value="3" onchange="onAnswer()"><label for="q3-3" class="option-btn"><span class="opt-val">3</span><span class="opt-lab">Often</span></label></div>
+              <div class="option-item"><input type="radio" name="q3" id="q3-4" value="4" onchange="onAnswer()"><label for="q3-4" class="option-btn"><span class="opt-val">4</span><span class="opt-lab">Always</span></label></div>
+            </div>
+          </div>
+
+          <div class="question">
+            <div class="q-text"><span class="q-num">4</span>My working memory and focus feel worse than my baseline — I forget more, lose more, and can't hold thoughts the way I could.</div>
+            <div class="options">
+              <div class="option-item"><input type="radio" name="q4" id="q4-0" value="0" onchange="onAnswer()"><label for="q4-0" class="option-btn"><span class="opt-val">0</span><span class="opt-lab">Never</span></label></div>
+              <div class="option-item"><input type="radio" name="q4" id="q4-1" value="1" onchange="onAnswer()"><label for="q4-1" class="option-btn"><span class="opt-val">1</span><span class="opt-lab">Rarely</span></label></div>
+              <div class="option-item"><input type="radio" name="q4" id="q4-2" value="2" onchange="onAnswer()"><label for="q4-2" class="option-btn"><span class="opt-val">2</span><span class="opt-lab">Sometimes</span></label></div>
+              <div class="option-item"><input type="radio" name="q4" id="q4-3" value="3" onchange="onAnswer()"><label for="q4-3" class="option-btn"><span class="opt-val">3</span><span class="opt-lab">Often</span></label></div>
+              <div class="option-item"><input type="radio" name="q4" id="q4-4" value="4" onchange="onAnswer()"><label for="q4-4" class="option-btn"><span class="opt-val">4</span><span class="opt-lab">Always</span></label></div>
+            </div>
+          </div>
+
+          <!-- Domain 2 -->
+          <div class="domain-label">
+            <div class="domain-dot" style="background:#0891B2"></div>
+            Domain 2 — Masking &amp; Compensating Exhaustion
+          </div>
+
+          <div class="question">
+            <div class="q-text"><span class="q-num">5</span>The effort of appearing "on top of things" or functioning normally feels unbearable — like a performance I can no longer maintain.</div>
+            <div class="options">
+              <div class="option-item"><input type="radio" name="q5" id="q5-0" value="0" onchange="onAnswer()"><label for="q5-0" class="option-btn"><span class="opt-val">0</span><span class="opt-lab">Never</span></label></div>
+              <div class="option-item"><input type="radio" name="q5" id="q5-1" value="1" onchange="onAnswer()"><label for="q5-1" class="option-btn"><span class="opt-val">1</span><span class="opt-lab">Rarely</span></label></div>
+              <div class="option-item"><input type="radio" name="q5" id="q5-2" value="2" onchange="onAnswer()"><label for="q5-2" class="option-btn"><span class="opt-val">2</span><span class="opt-lab">Sometimes</span></label></div>
+              <div class="option-item"><input type="radio" name="q5" id="q5-3" value="3" onchange="onAnswer()"><label for="q5-3" class="option-btn"><span class="opt-val">3</span><span class="opt-lab">Often</span></label></div>
+              <div class="option-item"><input type="radio" name="q5" id="q5-4" value="4" onchange="onAnswer()"><label for="q5-4" class="option-btn"><span class="opt-val">4</span><span class="opt-lab">Always</span></label></div>
+            </div>
+          </div>
+
+          <div class="question">
+            <div class="q-text"><span class="q-num">6</span>I've stopped using coping systems, routines, or strategies that used to help — not because I chose to, but because I just can't anymore.</div>
+            <div class="options">
+              <div class="option-item"><input type="radio" name="q6" id="q6-0" value="0" onchange="onAnswer()"><label for="q6-0" class="option-btn"><span class="opt-val">0</span><span class="opt-lab">Never</span></label></div>
+              <div class="option-item"><input type="radio" name="q6" id="q6-1" value="1" onchange="onAnswer()"><label for="q6-1" class="option-btn"><span class="opt-val">1</span><span class="opt-lab">Rarely</span></label></div>
+              <div class="option-item"><input type="radio" name="q6" id="q6-2" value="2" onchange="onAnswer()"><label for="q6-2" class="option-btn"><span class="opt-val">2</span><span class="opt-lab">Sometimes</span></label></div>
+              <div class="option-item"><input type="radio" name="q6" id="q6-3" value="3" onchange="onAnswer()"><label for="q6-3" class="option-btn"><span class="opt-val">3</span><span class="opt-lab">Often</span></label></div>
+              <div class="option-item"><input type="radio" name="q6" id="q6-4" value="4" onchange="onAnswer()"><label for="q6-4" class="option-btn"><span class="opt-val">4</span><span class="opt-lab">Always</span></label></div>
+            </div>
+          </div>
+
+          <div class="question">
+            <div class="q-text"><span class="q-num">7</span>I feel like I've been running at full capacity for a long time and have finally hit a wall — there's nothing left to push with.</div>
+            <div class="options">
+              <div class="option-item"><input type="radio" name="q7" id="q7-0" value="0" onchange="onAnswer()"><label for="q7-0" class="option-btn"><span class="opt-val">0</span><span class="opt-lab">Never</span></label></div>
+              <div class="option-item"><input type="radio" name="q7" id="q7-1" value="1" onchange="onAnswer()"><label for="q7-1" class="option-btn"><span class="opt-val">1</span><span class="opt-lab">Rarely</span></label></div>
+              <div class="option-item"><input type="radio" name="q7" id="q7-2" value="2" onchange="onAnswer()"><label for="q7-2" class="option-btn"><span class="opt-val">2</span><span class="opt-lab">Sometimes</span></label></div>
+              <div class="option-item"><input type="radio" name="q7" id="q7-3" value="3" onchange="onAnswer()"><label for="q7-3" class="option-btn"><span class="opt-val">3</span><span class="opt-lab">Often</span></label></div>
+              <div class="option-item"><input type="radio" name="q7" id="q7-4" value="4" onchange="onAnswer()"><label for="q7-4" class="option-btn"><span class="opt-val">4</span><span class="opt-lab">Always</span></label></div>
+            </div>
+          </div>
+
+          <div class="question">
+            <div class="q-text"><span class="q-num">8</span>The expectations others have of me feel completely disconnected from what I can actually do right now.</div>
+            <div class="options">
+              <div class="option-item"><input type="radio" name="q8" id="q8-0" value="0" onchange="onAnswer()"><label for="q8-0" class="option-btn"><span class="opt-val">0</span><span class="opt-lab">Never</span></label></div>
+              <div class="option-item"><input type="radio" name="q8" id="q8-1" value="1" onchange="onAnswer()"><label for="q8-1" class="option-btn"><span class="opt-val">1</span><span class="opt-lab">Rarely</span></label></div>
+              <div class="option-item"><input type="radio" name="q8" id="q8-2" value="2" onchange="onAnswer()"><label for="q8-2" class="option-btn"><span class="opt-val">2</span><span class="opt-lab">Sometimes</span></label></div>
+              <div class="option-item"><input type="radio" name="q8" id="q8-3" value="3" onchange="onAnswer()"><label for="q8-3" class="option-btn"><span class="opt-val">3</span><span class="opt-lab">Often</span></label></div>
+              <div class="option-item"><input type="radio" name="q8" id="q8-4" value="4" onchange="onAnswer()"><label for="q8-4" class="option-btn"><span class="opt-val">4</span><span class="opt-lab">Always</span></label></div>
+            </div>
+          </div>
+
+          <!-- Domain 3 -->
+          <div class="domain-label">
+            <div class="domain-dot" style="background:#DC2626"></div>
+            Domain 3 — Emotional Depletion
+          </div>
+
+          <div class="question">
+            <div class="q-text"><span class="q-num">9</span>Small frustrations, criticism, or perceived rejections feel devastating — far more intense than I know they should be.</div>
+            <div class="options">
+              <div class="option-item"><input type="radio" name="q9" id="q9-0" value="0" onchange="onAnswer()"><label for="q9-0" class="option-btn"><span class="opt-val">0</span><span class="opt-lab">Never</span></label></div>
+              <div class="option-item"><input type="radio" name="q9" id="q9-1" value="1" onchange="onAnswer()"><label for="q9-1" class="option-btn"><span class="opt-val">1</span><span class="opt-lab">Rarely</span></label></div>
+              <div class="option-item"><input type="radio" name="q9" id="q9-2" value="2" onchange="onAnswer()"><label for="q9-2" class="option-btn"><span class="opt-val">2</span><span class="opt-lab">Sometimes</span></label></div>
+              <div class="option-item"><input type="radio" name="q9" id="q9-3" value="3" onchange="onAnswer()"><label for="q9-3" class="option-btn"><span class="opt-val">3</span><span class="opt-lab">Often</span></label></div>
+              <div class="option-item"><input type="radio" name="q9" id="q9-4" value="4" onchange="onAnswer()"><label for="q9-4" class="option-btn"><span class="opt-val">4</span><span class="opt-lab">Always</span></label></div>
+            </div>
+          </div>
+
+          <div class="question">
+            <div class="q-text"><span class="q-num">10</span>I feel deep shame or hopelessness about my struggles — like my difficulties are a character flaw, not a neurological difference.</div>
+            <div class="options">
+              <div class="option-item"><input type="radio" name="q10" id="q10-0" value="0" onchange="onAnswer()"><label for="q10-0" class="option-btn"><span class="opt-val">0</span><span class="opt-lab">Never</span></label></div>
+              <div class="option-item"><input type="radio" name="q10" id="q10-1" value="1" onchange="onAnswer()"><label for="q10-1" class="option-btn"><span class="opt-val">1</span><span class="opt-lab">Rarely</span></label></div>
+              <div class="option-item"><input type="radio" name="q10" id="q10-2" value="2" onchange="onAnswer()"><label for="q10-2" class="option-btn"><span class="opt-val">2</span><span class="opt-lab">Sometimes</span></label></div>
+              <div class="option-item"><input type="radio" name="q10" id="q10-3" value="3" onchange="onAnswer()"><label for="q10-3" class="option-btn"><span class="opt-val">3</span><span class="opt-lab">Often</span></label></div>
+              <div class="option-item"><input type="radio" name="q10" id="q10-4" value="4" onchange="onAnswer()"><label for="q10-4" class="option-btn"><span class="opt-val">4</span><span class="opt-lab">Always</span></label></div>
+            </div>
+          </div>
+
+          <div class="question">
+            <div class="q-text"><span class="q-num">11</span>Interacting with people — even people I care about — takes so much energy that I've been pulling away or avoiding social contact.</div>
+            <div class="options">
+              <div class="option-item"><input type="radio" name="q11" id="q11-0" value="0" onchange="onAnswer()"><label for="q11-0" class="option-btn"><span class="opt-val">0</span><span class="opt-lab">Never</span></label></div>
+              <div class="option-item"><input type="radio" name="q11" id="q11-1" value="1" onchange="onAnswer()"><label for="q11-1" class="option-btn"><span class="opt-val">1</span><span class="opt-lab">Rarely</span></label></div>
+              <div class="option-item"><input type="radio" name="q11" id="q11-2" value="2" onchange="onAnswer()"><label for="q11-2" class="option-btn"><span class="opt-val">2</span><span class="opt-lab">Sometimes</span></label></div>
+              <div class="option-item"><input type="radio" name="q11" id="q11-3" value="3" onchange="onAnswer()"><label for="q11-3" class="option-btn"><span class="opt-val">3</span><span class="opt-lab">Often</span></label></div>
+              <div class="option-item"><input type="radio" name="q11" id="q11-4" value="4" onchange="onAnswer()"><label for="q11-4" class="option-btn"><span class="opt-val">4</span><span class="opt-lab">Always</span></label></div>
+            </div>
+          </div>
+
+          <div class="question">
+            <div class="q-text"><span class="q-num">12</span>Things that used to excite or interest me no longer reach me — I feel flat, disconnected, or numb rather than curious or motivated.</div>
+            <div class="options">
+              <div class="option-item"><input type="radio" name="q12" id="q12-0" value="0" onchange="onAnswer()"><label for="q12-0" class="option-btn"><span class="opt-val">0</span><span class="opt-lab">Never</span></label></div>
+              <div class="option-item"><input type="radio" name="q12" id="q12-1" value="1" onchange="onAnswer()"><label for="q12-1" class="option-btn"><span class="opt-val">1</span><span class="opt-lab">Rarely</span></label></div>
+              <div class="option-item"><input type="radio" name="q12" id="q12-2" value="2" onchange="onAnswer()"><label for="q12-2" class="option-btn"><span class="opt-val">2</span><span class="opt-lab">Sometimes</span></label></div>
+              <div class="option-item"><input type="radio" name="q12" id="q12-3" value="3" onchange="onAnswer()"><label for="q12-3" class="option-btn"><span class="opt-val">3</span><span class="opt-lab">Often</span></label></div>
+              <div class="option-item"><input type="radio" name="q12" id="q12-4" value="4" onchange="onAnswer()"><label for="q12-4" class="option-btn"><span class="opt-val">4</span><span class="opt-lab">Always</span></label></div>
+            </div>
+          </div>
+
+          <div class="err-banner" id="err-banner">Please answer all 12 questions to see your results.</div>
+          <button class="calc-btn" onclick="calculate()">See my results</button>
+        </div>
+      </div>
+
+      <!-- RESULTS COL -->
+      <div class="results-col">
+
+        <!-- RESULT CARD -->
+        <div class="result-card" id="result-card">
+          <div class="result-band" id="result-band"></div>
+          <div class="result-body">
+
+            <div class="score-display">
+              <div class="score-num" id="r-score">—</div>
+              <div class="score-denom">/48</div>
+            </div>
+            <div class="score-label">Total ADHD Burnout Score</div>
+
+            <div class="sev-row">
+              <div class="sev-box sev-minimal" id="sev-minimal"><div class="sev-name">Minimal Signs</div><div class="sev-range">0–12</div></div>
+              <div class="sev-box sev-moderate" id="sev-moderate"><div class="sev-name">Moderate Signals</div><div class="sev-range">13–24</div></div>
+              <div class="sev-box sev-high" id="sev-high"><div class="sev-name">Significant Burnout</div><div class="sev-range">25–36</div></div>
+              <div class="sev-box sev-severe" id="sev-severe"><div class="sev-name">Severe Burnout</div><div class="sev-range">37–48</div></div>
+            </div>
+
+            <!-- Domain breakdown -->
+            <div class="domain-breakdown">
+              <div class="domain-row">
+                <div class="domain-row-info">
+                  <div class="domain-row-name">⚡ Cognitive &amp; Executive Collapse</div>
+                  <div class="domain-bar"><div class="domain-bar-fill" id="d1-bar" style="background:var(--sage)"></div></div>
+                </div>
+                <div>
+                  <div class="domain-score" id="d1-score">—</div>
+                  <div class="domain-max">/16</div>
+                </div>
+              </div>
+              <div class="domain-row">
+                <div class="domain-row-info">
+                  <div class="domain-row-name">🎭 Masking &amp; Compensating Exhaustion</div>
+                  <div class="domain-bar"><div class="domain-bar-fill" id="d2-bar" style="background:#0891B2"></div></div>
+                </div>
+                <div>
+                  <div class="domain-score" id="d2-score">—</div>
+                  <div class="domain-max">/16</div>
+                </div>
+              </div>
+              <div class="domain-row">
+                <div class="domain-row-info">
+                  <div class="domain-row-name">💔 Emotional Depletion</div>
+                  <div class="domain-bar"><div class="domain-bar-fill" id="d3-bar" style="background:#DC2626"></div></div>
+                </div>
+                <div>
+                  <div class="domain-score" id="d3-score">—</div>
+                  <div class="domain-max">/16</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="msg-block" id="msg-block">
+              <h3 id="msg-heading">—</h3>
+              <p id="msg-body">—</p>
+            </div>
+
+            <p class="tips-title">What can help:</p>
+            <ul class="tips-list" id="tips-list"></ul>
+          </div>
+        </div>
+
+        <!-- What is ADHD burnout -->
+        <div class="info-card">
+          <h3>What is ADHD burnout?</h3>
+          <p>ADHD burnout occurs when the brain's compensatory resources are depleted. People with ADHD often develop elaborate systems to manage executive dysfunction — hyper-scheduling, overworking, social masking, and relying on anxiety or adrenaline to function. When these coping reserves run out, the result is a state where previously managed symptoms return in full force or collapse entirely.</p>
+          <p>Unlike general burnout, ADHD burnout tends to affect cognitive function specifically — the ability to initiate, organise, regulate emotion, and mask. Recovery requires more than rest; it often requires structural changes and professional support.</p>
+          <p style="font-size:12px;color:var(--text-light);margin-top:8px;">Frameworks informed by: Dodson W (2016) on emotional dysregulation; Barkley RA on executive function deficits; clinical literature on autistic/ADHD burnout including Raymaker et al. (2020) and Phung (2021). This screener is not a formally validated clinical instrument.</p>
+        </div>
+
+        <!-- Stages of ADHD burnout -->
+        <div class="info-card">
+          <h3>How ADHD burnout typically develops</h3>
+          <div class="stages-list">
+            <div class="stage-item">
+              <div class="stage-num">1</div>
+              <div class="stage-text"><strong>High-functioning compensation</strong><span>Hyper-productivity, overcommitting, masking successfully. Often invisible to others and even to yourself.</span></div>
+            </div>
+            <div class="stage-item">
+              <div class="stage-num">2</div>
+              <div class="stage-text"><strong>Cracks appearing</strong><span>Missed deadlines, emotional outbursts, sleep disruption. Strategies start failing. Shame increases.</span></div>
+            </div>
+            <div class="stage-item">
+              <div class="stage-num">3</div>
+              <div class="stage-text"><strong>Compensatory collapse</strong><span>Systems stop working entirely. Basic tasks become impossible. Shutdown or freeze states become frequent.</span></div>
+            </div>
+            <div class="stage-item">
+              <div class="stage-num">4</div>
+              <div class="stage-text"><strong>Full burnout</strong><span>Cognitive and emotional depletion. Withdrawal, numbness, inability to function at previous levels. Recovery requires significant change — not just rest.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Signs -->
+        <div class="info-card">
+          <h3>Common signs of ADHD burnout</h3>
+          <p>These are distinct from baseline ADHD and often mark a significant deterioration from a person's managed baseline:</p>
+          <div class="chips-grid">
+            <div class="chip"><div class="chip-dot"></div>Can't do things that were recently manageable</div>
+            <div class="chip"><div class="chip-dot"></div>Sensory overwhelm that wasn't there before</div>
+            <div class="chip"><div class="chip-dot"></div>Paralysis — not laziness, genuine inability to move</div>
+            <div class="chip"><div class="chip-dot"></div>Emotional flooding or complete emotional numbness</div>
+            <div class="chip"><div class="chip-dot"></div>Loss of special interests or hyperfocus capacity</div>
+            <div class="chip"><div class="chip-dot"></div>Sleep disruption despite exhaustion</div>
+            <div class="chip"><div class="chip-dot"></div>Profound social exhaustion and isolation</div>
+            <div class="chip"><div class="chip-dot"></div>Shame spirals and internal critic amplified</div>
+          </div>
+        </div>
+
+        <!-- Related calculators -->
+        <div>
+          <p class="related-title">You might also like</p>
+          <div class="related-grid">
+            <a href="burnout-risk.html" class="related-card">
+              <div class="related-icon">🔋</div>
+              <div class="related-info"><strong>Burnout Risk Score</strong><span>General burnout screener</span></div>
+            </a>
+            <a href="anxiety-score.html" class="related-card">
+              <div class="related-icon">😰</div>
+              <div class="related-info"><strong>Anxiety Score (GAD-7)</strong><span>ADHD &amp; anxiety often co-occur</span></div>
+            </a>
+            <a href="brain-fatigue.html" class="related-card">
+              <div class="related-icon">🧠</div>
+              <div class="related-info"><strong>Brain Fatigue Index</strong><span>Cognitive exhaustion check</span></div>
+            </a>
+            <a href="sleep-need.html" class="related-card">
+              <div class="related-icon">😴</div>
+              <div class="related-info"><strong>Sleep Need Calculator</strong><span>ADHD frequently disrupts sleep</span></div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="note-block">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#9CA3AF" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span><strong>NOTE:</strong> This is a self-reflection tool, not a clinical diagnostic instrument. It is not designed to diagnose ADHD. If your results are concerning, please speak with a mental health professional experienced in adult ADHD — particularly one familiar with late-identified and masked presentations.</span>
+        </div>
+
+      </div><!-- /.results-col -->
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="assets/logo-white.png" alt="SageMyHealth" style="height:45px;width:auto;object-fit:contain;" />
+        </div>
+        <p>Free, trusted health calculators with warm guidance — helping you understand your numbers.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Calculators</h5>
+        <ul>
+          <li><a href="adhd-burnout.html">ADHD Burnout</a></li>
+          <li><a href="burnout-risk.html">Burnout Risk</a></li>
+          <li><a href="anxiety-score.html">Anxiety Score</a></li>
+          <li><a href="brain-fatigue.html">Brain Fatigue</a></li>
+          <li><a href="sleep-need.html">Sleep Need</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Categories</h5>
+        <ul>
+          <li><a href="../index.html#categories">Mental Health</a></li>
+          <li><a href="../index.html#categories">Cardiovascular</a></li>
+          <li><a href="../index.html#categories">Body Composition</a></li>
+          <li><a href="../index.html#categories">Nutrition</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Info</h5>
+        <ul>
+          <li><a href="../about.html">About Us</a></li>
+          <li><a href="../privacy.html">Privacy Policy</a></li>
+          <li><a href="../terms.html">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-disclaimer"><strong style="color:#7A958E">Medical Disclaimer:</strong> This screener is for educational and self-reflection purposes only. It does not diagnose ADHD or any other condition. If you are experiencing significant distress, please speak with a qualified mental health professional.</p>
+      <p class="footer-copy">© 2025 SageMyHealth.com — All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function onAnswer() {
+    var count = 0;
+    for (var i = 1; i <= 12; i++) {
+      if (document.querySelector('input[name="q' + i + '"]:checked')) count++;
+    }
+    document.getElementById('prog-label').textContent = count + ' of 12 answered';
+    document.getElementById('prog-fill').style.width = (count / 12 * 100) + '%';
+    document.getElementById('err-banner').style.display = 'none';
+  }
+
+  var MSGS = {
+    minimal: {
+      h: 'Minimal signs of ADHD burnout right now.',
+      b: 'Your responses don\'t suggest you\'re currently in ADHD burnout. That said, burnout tends to build gradually — often invisibly until it hits a tipping point. Use this time to audit what\'s working and protect it.',
+      tips: [
+        'Identify your current coping strategies and actively protect them — don\'t let them erode under pressure.',
+        'Notice which environments and demands cost you the most energy, and build in buffer time around them.',
+        'If you\'re currently "pushing through" and functioning on willpower or anxiety as fuel, that\'s a warning sign to address now.',
+        'Regular check-ins with yourself (monthly or quarterly) help you catch early drift before it becomes collapse.'
+      ]
+    },
+    moderate: {
+      h: 'You\'re showing moderate ADHD burnout signals.',
+      b: 'Your score suggests meaningful strain across one or more domains — cognitive, compensatory, or emotional. This is often the stage where people sense something is wrong but haven\'t named it yet. Acting here is much easier than waiting until full collapse.',
+      tips: [
+        'Take stock of what you\'ve been overextending on — perfectionism, masking, over-scheduling — and see what can be reduced.',
+        'Rest that actually restores you for ADHD often looks different: low-stimulation time, not just "doing nothing." Find yours.',
+        'If you don\'t already have an ADHD-informed therapist or psychiatrist, now is a good time to connect with one.',
+        'Talk to someone who understands ADHD — isolation and shame amplify burnout significantly.',
+        'Consider whether any of the domains where you scored highest need structural change, not just better coping.'
+      ]
+    },
+    high: {
+      h: 'Your results indicate significant ADHD burnout.',
+      b: 'This level of burnout suggests that your compensatory systems have become significantly depleted. The things that used to help you manage are probably not working the way they did. Recovery from this level requires more than a weekend off — it typically needs real structural change and support.',
+      tips: [
+        'Speak with an ADHD-aware mental health professional as soon as you can — burnout at this level benefits from clinical support.',
+        'Reduce your load as much as possible, even temporarily. The instinct to push harder will make things worse.',
+        'Prioritise sleep, food, and one restorative activity — these are the foundations of recovery and need to come before productivity.',
+        'Be honest with someone you trust about how you\'re actually doing — you don\'t have to perform being okay.',
+        'Think about what\'s been driving the depletion: too much masking at work? Unsupported ADHD symptoms? Unsuitable environment? Recovery often requires changing the conditions, not just resting within them.'
+      ]
+    },
+    severe: {
+      h: 'Your score indicates severe ADHD burnout.',
+      b: 'This is a serious result and deserves serious attention. Severe ADHD burnout can look a lot like depression — flat affect, inability to function, social withdrawal, loss of interests. The two often co-occur and can reinforce each other. Please don\'t dismiss what you\'re experiencing as laziness, weakness, or a personal failing. You are describing a neurological system that has run out of reserves.',
+      tips: [
+        'Please reach out to a mental health professional who understands adult ADHD — ideally this week. Severe burnout is a health matter.',
+        'If you\'re also experiencing depression, hopelessness, or self-harm thoughts, please contact your doctor or a crisis line today.',
+        'Give yourself explicit permission to stop performing functionality you no longer have. The mask is part of the problem.',
+        'Recovery from severe ADHD burnout is real, but it\'s slow — often months. Track very small improvements rather than expecting a flip.',
+        'Consider whether your current life structure (job, environment, relationships) is compatible with your neurology. Long-term recovery often requires renegotiating that.'
+      ]
+    }
+  };
+
+  function calculate() {
+    var allAnswered = true;
+    var scores = [];
+    for (var i = 1; i <= 12; i++) {
+      var checked = document.querySelector('input[name="q' + i + '"]:checked');
+      if (!checked) { allAnswered = false; break; }
+      scores.push(parseInt(checked.value));
+    }
+    if (!allAnswered) {
+      var eb = document.getElementById('err-banner');
+      eb.style.display = 'block';
+      eb.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      return;
+    }
+
+    var d1 = scores.slice(0, 4).reduce(function(a, b) { return a + b; }, 0);
+    var d2 = scores.slice(4, 8).reduce(function(a, b) { return a + b; }, 0);
+    var d3 = scores.slice(8, 12).reduce(function(a, b) { return a + b; }, 0);
+    var total = d1 + d2 + d3;
+
+    var cat;
+    if (total <= 12)      cat = 'minimal';
+    else if (total <= 24) cat = 'moderate';
+    else if (total <= 36) cat = 'high';
+    else                  cat = 'severe';
+
+    var bands = { minimal: 'band-minimal', moderate: 'band-moderate', high: 'band-high', severe: 'band-severe' };
+    var scoreColors = { minimal: '#16A34A', moderate: '#D97706', high: '#EA580C', severe: '#DC2626' };
+    var msgBgs = { minimal: '#F0FDF4', moderate: '#FEFCE8', high: '#FFF7ED', severe: '#FEF2F2' };
+    var msgBorders = { minimal: '#16A34A', moderate: '#CA8A04', high: '#EA580C', severe: '#DC2626' };
+
+    // Show card
+    var card = document.getElementById('result-card');
+    card.classList.add('visible');
+
+    // Score
+    var rn = document.getElementById('r-score');
+    rn.textContent = total;
+    rn.style.color = scoreColors[cat];
+
+    // Band
+    document.getElementById('result-band').className = 'result-band ' + bands[cat];
+
+    // Severity boxes
+    ['minimal','moderate','high','severe'].forEach(function(c) {
+      document.getElementById('sev-' + c).classList.remove('active');
+    });
+    document.getElementById('sev-' + cat).classList.add('active');
+
+    // Domain bars
+    document.getElementById('d1-score').textContent = d1;
+    document.getElementById('d2-score').textContent = d2;
+    document.getElementById('d3-score').textContent = d3;
+    document.getElementById('d1-bar').style.width = (d1 / 16 * 100) + '%';
+    document.getElementById('d2-bar').style.width = (d2 / 16 * 100) + '%';
+    document.getElementById('d3-bar').style.width = (d3 / 16 * 100) + '%';
+
+    // Message
+    var m = MSGS[cat];
+    var mb = document.getElementById('msg-block');
+    mb.style.background = msgBgs[cat];
+    mb.style.borderLeftColor = msgBorders[cat];
+    document.getElementById('msg-heading').textContent = m.h;
+    document.getElementById('msg-body').textContent = m.b;
+
+    // Tips
+    var tl = document.getElementById('tips-list');
+    tl.innerHTML = '';
+    m.tips.forEach(function(t) {
+      var li = document.createElement('li');
+      li.textContent = t;
+      tl.appendChild(li);
+    });
+
+    card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+</script>
+
+<script>
+  /* Mobile menu */
+  function openMobileMenu() {
+    document.getElementById('mobile-menu').classList.add('open');
+    document.getElementById('nav-hamburger').setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.getElementById('nav-hamburger').setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMobileMenu(); });
+</script>
+</body>
+</html>

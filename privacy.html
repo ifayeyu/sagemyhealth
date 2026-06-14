@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X6K2H9YW2V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X6K2H9YW2V');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — SageMyHealth</title>
+  <meta name="description" content="SageMyHealth's privacy policy. We don't store your health data. Calculations happen entirely in your browser." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sage: #4A7C59; --sage-dark: #3A6147; --sage-mid: #5E9470;
+      --sage-light: #EBF2EC; --sage-pale: #F2F7F3; --cream: #F7F3EE;
+      --text-dark: #1A2E1E; --text-mid: #4A5568; --text-light: #718096;
+      --white: #FFFFFF; --border: #E2EBE4;
+      --shadow-sm: 0 1px 6px rgba(74,124,89,0.08);
+      --r-sm: 8px; --r: 12px; --r-lg: 20px; --r-xl: 28px;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: var(--sage); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    .site-nav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.96); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; flex: 1; justify-content: center; }
+    .nav-links a { color: var(--text-mid); font-size: 15px; font-weight: 500; transition: color .2s; text-decoration: none; }
+    .nav-links a:hover { color: var(--sage); text-decoration: none; }
+    .nav-btn { background: var(--sage); color: white; border: none; padding: 9px 20px; border-radius: var(--r-sm); font-size: 14px; font-weight: 600; transition: background .2s; cursor: pointer; text-decoration: none; display: inline-block; }
+    .nav-btn:hover { background: var(--sage-dark); text-decoration: none; }
+
+    /* PAGE HERO */
+    .page-hero { background: linear-gradient(150deg, var(--sage-pale) 0%, var(--cream) 100%); padding: 56px 24px 64px; }
+    .container-narrow { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    .breadcrumb { display: flex; gap: 8px; font-size: 13px; color: var(--text-light); margin-bottom: 20px; flex-wrap: wrap; }
+    .breadcrumb a { color: var(--sage); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(30px, 4vw, 44px); font-weight: 700; color: var(--text-dark); letter-spacing: -0.8px; margin-bottom: 12px; line-height: 1.15; }
+    .page-hero-meta { font-size: 13px; color: var(--text-light); }
+
+    /* CONTENT */
+    .policy-body { padding: 56px 0 80px; }
+    .callout { background: var(--sage-light); border-left: 4px solid var(--sage); border-radius: var(--r); padding: 20px 24px; margin-bottom: 40px; }
+    .callout p { font-size: 15px; color: var(--text-dark); line-height: 1.75; }
+    .callout strong { color: var(--sage-dark); }
+
+    .policy-section { margin-bottom: 44px; }
+    .policy-section h2 { font-size: 20px; font-weight: 700; color: var(--text-dark); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+    .policy-section h3 { font-size: 15px; font-weight: 700; color: var(--text-dark); margin: 20px 0 8px; }
+    .policy-section p { font-size: 15px; color: var(--text-mid); line-height: 1.85; margin-bottom: 14px; }
+    .policy-section ul { margin: 10px 0 14px 20px; }
+    .policy-section ul li { font-size: 15px; color: var(--text-mid); line-height: 1.75; margin-bottom: 8px; }
+
+    .rights-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 16px 0; }
+    .rights-card { background: var(--sage-pale); border-radius: var(--r); padding: 16px 18px; }
+    .rights-card strong { display: block; font-size: 13px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
+    .rights-card span { font-size: 12px; color: var(--text-mid); line-height: 1.6; }
+
+    .contact-box { background: var(--sage-pale); border-radius: var(--r-lg); padding: 28px 32px; margin-top: 16px; }
+    .contact-box p { font-size: 15px; color: var(--text-mid); line-height: 1.75; margin-bottom: 8px; }
+    .contact-box a { color: var(--sage); font-weight: 600; }
+
+    /* FOOTER */
+    .site-footer { background: var(--text-dark); color: #94A99A; padding: 56px 0 0; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; }
+    .footer-logo { display: flex; align-items: center; gap: 8px; color: white; font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+    .footer-brand p { font-size: 14px; line-height: 1.7; max-width: 260px; color: #7A958E; }
+    .footer-col h5 { color: white; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; margin-bottom: 14px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { font-size: 14px; color: #7A958E; transition: color .2s; text-decoration: none; }
+    .footer-col a:hover { color: white; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding: 22px 0; display: flex; flex-direction: column; gap: 6px; }
+    .footer-disclaimer { font-size: 12px; color: #5A7568; line-height: 1.7; }
+    .footer-copy { font-size: 12px; color: #5A7568; }
+
+    @media (max-width: 660px) { .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-btn { display: none; } .rights-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: 1 / -1; } }
+    @media (max-width: 520px) { .footer-grid { grid-template-columns: 1fr; } }
+  
+    /* ── MOBILE HAMBURGER ────────────────────────────── */
+    .nav-hamburger {
+      display: none; flex-direction: column; justify-content: center; gap: 5px;
+      background: none; border: none; padding: 8px; margin-left: 8px;
+      border-radius: 8px; cursor: pointer; transition: background .15s; flex-shrink: 0;
+    }
+    .nav-hamburger:hover { background: var(--sage-light, #EBF2EC); }
+    .nav-hamburger span {
+      display: block; width: 22px; height: 2.5px;
+      background: var(--text-dark, #1A2E1E); border-radius: 2px; transition: all .2s;
+    }
+    /* ── MOBILE DRAWER ───────────────────────────────── */
+    .mobile-menu { display: none; position: fixed; inset: 0; z-index: 999; }
+    .mobile-menu.open { display: block; }
+    .mobile-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.45); backdrop-filter: blur(2px); }
+    .mobile-drawer {
+      position: absolute; top: 0; right: 0;
+      width: min(300px, 84vw); height: 100%;
+      background: #fff; display: flex; flex-direction: column;
+      box-shadow: -4px 0 40px rgba(0,0,0,.18);
+      animation: drawerIn .22s cubic-bezier(.22,.61,.36,1);
+    }
+    @keyframes drawerIn { from{transform:translateX(100%)} to{transform:translateX(0)} }
+    .mobile-drawer-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 20px 14px; border-bottom: 1px solid var(--border, #E2EBE4);
+    }
+    .mobile-drawer-logo { font-size: 15px; font-weight: 700; color: var(--text-dark, #1A2E1E); }
+    .mobile-close {
+      background: none; border: none; font-size: 20px; padding: 4px 8px;
+      cursor: pointer; color: var(--text-light, #718096); border-radius: 6px; line-height: 1;
+      transition: background .15s, color .15s;
+    }
+    .mobile-close:hover { background: var(--sage-light, #EBF2EC); color: var(--text-dark, #1A2E1E); }
+    .mobile-nav-links { padding: 14px 12px; flex: 1; display: flex; flex-direction: column; gap: 4px; }
+    .mobile-nav-link {
+      display: flex; align-items: center; gap: 14px;
+      padding: 13px 16px; border-radius: 12px;
+      font-size: 16px; font-weight: 600; color: var(--text-dark, #1A2E1E);
+      text-decoration: none; transition: background .15s, color .15s;
+    }
+    .mobile-nav-link:hover { background: var(--sage-light, #EBF2EC); color: var(--sage, #3B6A3A); }
+    .mobile-link-icon {
+      width: 40px; height: 40px; background: var(--sage-light, #EBF2EC);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .mobile-browse-btn {
+      display: block; margin: 0 12px 20px; padding: 14px;
+      background: var(--sage, #3B6A3A); color: #fff; border-radius: 12px;
+      font-size: 15px; font-weight: 700; text-align: center;
+      text-decoration: none; transition: background .15s;
+    }
+    .mobile-browse-btn:hover { background: var(--sage-dark, #0A3D2A); }
+
+  </style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="calculators/assets/logo.png" alt="SageMyHealth" style="height:54px;width:auto;object-fit:contain"/>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#categories">Calculators</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="blog.html">Health Guides</a></li>
+    </ul>
+    <a href="index.html#categories" class="nav-btn">Browse All</a>
+    <button class="nav-hamburger" id="nav-hamburger"
+            onclick="openMobileMenu()" aria-label="Open navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site navigation">
+  <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-drawer">
+    <div class="mobile-drawer-head">
+      <span class="mobile-drawer-logo">SageMyHealth</span>
+      <button class="mobile-close" onclick="closeMobileMenu()" aria-label="Close menu">&#x2715;</button>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="index.html#categories" class="mobile-nav-link" onclick="closeMobileMenu()">
+        <span class="mobile-link-icon">&#x1F9EE;</span>Calculators
+      </a>
+      <a href="about.html" class="mobile-nav-link" onclick="closeMobileMenu()">
+        <span class="mobile-link-icon">&#x1F49A;</span>About
+      </a>
+      <a href="blog.html" class="mobile-nav-link" onclick="closeMobileMenu()">
+        <span class="mobile-link-icon">&#x1F4D6;</span>Health Guides
+      </a>
+    </nav>
+    <a href="index.html#categories" class="mobile-browse-btn" onclick="closeMobileMenu()">Browse All Calculators &#x2192;</a>
+  </div>
+</div>
+
+<div class="page-hero">
+  <div class="container-narrow">
+    <nav class="breadcrumb"><a href="index.html">Home</a> <span>›</span> <span>Privacy Policy</span></nav>
+    <h1>Privacy Policy</h1>
+    <p class="page-hero-meta">Last updated: June 2025 &nbsp;·&nbsp; Effective date: June 2025</p>
+  </div>
+</div>
+
+<div class="policy-body">
+  <div class="container-narrow">
+
+    <div class="callout">
+      <p><strong>The short version:</strong> SageMyHealth does not collect, store, or sell your health data. Every calculation you run happens entirely within your browser. We don't know what you entered, what your result was, or who you are. That's by design.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>1. Who we are</h2>
+      <p>SageMyHealth ("we", "us", "our") operates the website located at sagemyhealth.com. This Privacy Policy explains how we handle information in connection with your use of the site. If you have questions, you can reach us at <a href="mailto:hello@sagemyhealth.com">hello@sagemyhealth.com</a>.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>2. Information we do not collect</h2>
+      <p>SageMyHealth calculators are built to process your inputs locally in your browser. We do not collect, transmit, or store:</p>
+      <ul>
+        <li>Any health data you enter into our calculators (weight, age, blood glucose readings, symptoms, medications, etc.)</li>
+        <li>Your calculator results or health scores</li>
+        <li>Your name, email address, or any other personal information (unless you contact us directly)</li>
+        <li>Account information (we have no accounts or login system)</li>
+      </ul>
+      <p>When you close or navigate away from a calculator page, your inputs are gone. We have no record of them.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>3. Information that may be collected automatically</h2>
+      <p>Like virtually all websites, some technical information may be collected automatically when you visit SageMyHealth. This includes:</p>
+
+      <h3>Web server logs</h3>
+      <p>Our hosting provider may log standard web server data such as your IP address, browser type, the page you visited, and the date and time of your visit. This information is used solely for technical operation and security — not for identifying individuals or profiling visitors.</p>
+
+      <h3>Google Fonts</h3>
+      <p>SageMyHealth uses Google Fonts, a free typography service provided by Google LLC. When a page loads, your browser makes a request to Google's servers to download the fonts used on our site. Google may log this request, which can include your IP address and browser information. This is governed by <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>. We use Google Fonts solely for visual presentation of the site.</p>
+
+      <h3>Analytics (if enabled)</h3>
+      <p>We may use privacy-respecting analytics to understand aggregate traffic patterns — for example, which calculators are most used. If analytics are implemented, they are configured to anonymize IP addresses and avoid cross-site tracking. We do not use Google Analytics' advertising features or share analytics data with third parties.</p>
+
+      <h3>Cookies</h3>
+      <p>SageMyHealth does not use tracking cookies, advertising cookies, or cookies that build a profile of your behavior. Your browser may store basic session data (such as your preference settings on a calculator) locally, but this data never leaves your device.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>4. Information you send to us directly</h2>
+      <p>If you contact us by email (for example, to report an error or ask a question), we will receive and store your email address and the content of your message. We use this information only to respond to you. We do not add you to any mailing list without your explicit consent, and we do not share your contact information with third parties.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>5. Third-party links</h2>
+      <p>Some pages on SageMyHealth contain links to third-party websites, including our Health Guides section which links to external articles. When you click a link to another site, you leave SageMyHealth and that site's own privacy policy applies. We are not responsible for the privacy practices of third-party sites, and we encourage you to review their policies before providing any personal information.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>6. Children's privacy</h2>
+      <p>SageMyHealth is not directed to children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe a child under 13 has provided us with personal information, please contact us at <a href="mailto:hello@sagemyhealth.com">hello@sagemyhealth.com</a> and we will take appropriate steps to delete it.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>7. Your rights under US privacy law (CCPA)</h2>
+      <p>If you are a California resident, the California Consumer Privacy Act (CCPA) provides you with certain rights regarding your personal information. Because we collect very limited personal information, most of these rights have limited practical application to your use of SageMyHealth — but we honor them in full.</p>
+      <div class="rights-grid">
+        <div class="rights-card"><strong>Right to know</strong><span>You can request information about the personal data we have collected about you.</span></div>
+        <div class="rights-card"><strong>Right to delete</strong><span>You can request that we delete personal information we have collected from you.</span></div>
+        <div class="rights-card"><strong>Right to opt out</strong><span>We do not sell personal information. There is nothing to opt out of.</span></div>
+        <div class="rights-card"><strong>Right to non-discrimination</strong><span>We will not treat you differently for exercising any privacy right.</span></div>
+      </div>
+      <p>To exercise any of these rights, contact us at <a href="mailto:hello@sagemyhealth.com">hello@sagemyhealth.com</a>. We will respond within 45 days.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>8. Data security</h2>
+      <p>Because your health inputs are processed entirely in your browser and never transmitted to our servers, the risk of a data breach involving your health information is effectively zero — we simply don't have it. For any contact information we do receive (such as emails), we take reasonable measures to protect it from unauthorized access.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>9. Changes to this policy</h2>
+      <p>We may update this Privacy Policy from time to time. When we do, we will update the "Last updated" date at the top of this page. We encourage you to review this policy periodically. Continued use of SageMyHealth after any changes constitutes your acceptance of the updated policy.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>10. Contact us</h2>
+      <div class="contact-box">
+        <p>If you have questions or concerns about this Privacy Policy, or if you'd like to exercise your privacy rights, please get in touch:</p>
+        <p><strong>Email:</strong> <a href="mailto:hello@sagemyhealth.com">hello@sagemyhealth.com</a></p>
+        <p>We aim to respond to all privacy-related inquiries within 5 business days.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="calculators/assets/logo-white.png" alt="SageMyHealth" style="height:45px;width:auto;object-fit:contain"/>
+        </div>
+        <p>Free, trusted health calculators with warm guidance — helping you understand your numbers.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Calculators</h5>
+        <ul>
+          <li><a href="calculators/bmi.html">BMI</a></li>
+          <li><a href="calculators/tdee.html">Daily Calories</a></li>
+          <li><a href="calculators/heart-rate.html">Heart Rate Zones</a></li>
+          <li><a href="calculators/blood-glucose.html">Blood Glucose</a></li>
+          <li><a href="calculators/anxiety-score.html">Anxiety Score</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>More Tools</h5>
+        <ul>
+          <li><a href="calculators/brain-fatigue.html">Brain Fatigue</a></li>
+          <li><a href="calculators/sleep-need.html">Sleep Need</a></li>
+          <li><a href="calculators/biological-age.html">Biological Age</a></li>
+          <li><a href="calculators/lung-capacity.html">Lung Capacity</a></li>
+          <li><a href="calculators/iron-deficiency.html">Iron Deficiency</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Info</h5>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="blog.html">Health Guides</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-disclaimer"><strong style="color:#7A958E">Medical Disclaimer:</strong> SageMyHealth calculators are for informational purposes only and are not a substitute for professional medical advice, diagnosis, or treatment.</p>
+      <p class="footer-copy">© 2025 SageMyHealth.com — All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  /* Mobile menu */
+  function openMobileMenu() {
+    document.getElementById('mobile-menu').classList.add('open');
+    document.getElementById('nav-hamburger').setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.getElementById('nav-hamburger').setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMobileMenu(); });
+</script>
+</body>
+</html>

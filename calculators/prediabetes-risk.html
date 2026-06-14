@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X6K2H9YW2V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X6K2H9YW2V');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prediabetes Risk Estimator — SageMyHealth</title>
+  <meta name="description" content="Could you have prediabetes and not know it? 1 in 3 American adults does. Take the CDC-validated prediabetes risk test — 8 questions, instant result, clear guidance on what to do next." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sage:        #3B6A3A;
+      --sage-dark:   #0A3D2A;
+      --sage-mid:    #5C8A5C;
+      --sage-light:  #EBF2EC;
+      --sage-pale:   #F2F7F3;
+      --cream:       #E3FFB3;
+      --white:       #FFFFFF;
+      --text-dark:   #1A2E1E;
+      --text-mid:    #4A5568;
+      --text-light:  #718096;
+      --placeholder: #AAB0B8;
+      --border:      #E2EBE4;
+      --border-mid:  #C8D9CC;
+      --shadow-xs:   0 1px 2px rgba(59,106,58,0.06);
+      --shadow-sm:   0 1px 6px rgba(59,106,58,0.08);
+      --shadow-md:   0 4px 16px rgba(59,106,58,0.12);
+      --shadow-lg:   0 8px 32px rgba(59,106,58,0.16);
+      --r-sm: 8px; --r: 12px; --r-lg: 20px; --r-xl: 28px;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text-dark); background: var(--sage-pale); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; border: none; background: none; }
+
+    /* NAV */
+    .site-nav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.96); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+    .nav-logo { display: flex; align-items: center; flex-shrink: 0; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; flex: 1; justify-content: center; }
+    .nav-links a { color: var(--text-mid); font-size: 15px; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--sage); }
+    .nav-btn { background: var(--sage); color: white; padding: 9px 20px; border-radius: var(--r-sm); font-size: 14px; font-weight: 600; transition: background .2s; }
+    .nav-btn:hover { background: var(--sage-dark); }
+
+    /* PAGE */
+    .calc-page { padding: 36px 0 72px; }
+    .calc-wrapper { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* BREADCRUMB */
+    .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-light); margin-bottom: 24px; flex-wrap: wrap; }
+    .breadcrumb a { color: var(--sage); }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .bc-sep { color: var(--border-mid); }
+
+    /* PAGE HEADER */
+    .page-header { margin-bottom: 28px; }
+    .calc-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--sage); background: var(--white); padding: 5px 12px; border-radius: 20px; margin-bottom: 12px; letter-spacing: .3px; border: 1px solid var(--border); }
+    .page-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 42px); font-weight: 700; color: var(--text-dark); letter-spacing: -.5px; margin-bottom: 10px; line-height: 1.15; }
+    .page-header p { font-size: 15px; color: var(--text-mid); line-height: 1.7; max-width: 700px; }
+
+    /* STAT BANNER */
+    .stat-banner { display: flex; align-items: center; gap: 10px; background: #FFF7ED; border: 1px solid #FED7AA; border-radius: var(--r); padding: 12px 18px; margin-bottom: 28px; max-width: 700px; }
+    .stat-banner-num { font-size: 22px; font-weight: 800; color: #EA580C; flex-shrink: 0; }
+    .stat-banner-text { font-size: 13px; color: #9A3412; line-height: 1.5; }
+
+    /* TWO-COLUMN LAYOUT */
+    .calc-wrapper-inner { display: grid; grid-template-columns: 480px 1fr; gap: 24px; align-items: start; }
+
+    /* FORM CARD */
+    .form-card { background: white; border-radius: var(--r-xl); box-shadow: var(--shadow-lg); overflow: hidden; }
+    .form-card-header { padding: 24px 28px 0; }
+    .form-card-title { font-size: 15px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
+    .form-card-sub { font-size: 13px; color: var(--text-light); margin-bottom: 20px; }
+    .form-body { padding: 0 28px 28px; }
+
+    /* PROGRESS */
+    .progress-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+    .progress-label { font-size: 12px; color: var(--text-light); }
+    .progress-bar { height: 4px; background: var(--sage-light); border-radius: 4px; margin-bottom: 22px; }
+    .progress-fill { height: 100%; background: var(--sage); border-radius: 4px; transition: width .3s; }
+
+    /* QUESTION WRAPPER */
+    .q-block { margin-bottom: 20px; }
+    .q-label { font-size: 13px; font-weight: 600; color: var(--text-dark); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+    .q-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; background: var(--sage-light); border-radius: 50%; font-size: 10px; font-weight: 700; color: var(--sage); flex-shrink: 0; }
+    .q-hint { font-size: 11px; color: var(--text-light); font-weight: 400; margin-left: 4px; }
+
+    /* PILL GRID (age, sex, activity etc.) */
+    .pill-grid { display: grid; gap: 6px; }
+    .pill-grid-2 { grid-template-columns: 1fr 1fr; }
+    .pill-grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+    .pill-btn { padding: 10px 8px; border-radius: var(--r-sm); border: 1.5px solid var(--border); background: white; font-size: 12px; font-weight: 600; color: var(--text-mid); text-align: center; transition: all .15s; cursor: pointer; line-height: 1.3; }
+    .pill-btn:hover { border-color: var(--sage-mid); background: var(--sage-pale); color: var(--sage); }
+    .pill-btn.selected { border-color: var(--sage); background: var(--sage-light); color: var(--sage); }
+    .pill-btn .pill-emoji { display: block; font-size: 18px; margin-bottom: 4px; }
+
+    /* YES/NO CARDS */
+    .yn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .yn-btn { padding: 12px 10px; border-radius: var(--r); border: 1.5px solid var(--border); background: white; display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 13px; font-weight: 600; color: var(--text-mid); cursor: pointer; transition: all .15s; }
+    .yn-btn .yn-icon { font-size: 20px; }
+    .yn-btn:hover { border-color: var(--sage-mid); background: var(--sage-pale); color: var(--sage); }
+    .yn-btn.selected-yes { border-color: #DC2626; background: #FEF2F2; color: #DC2626; }
+    .yn-btn.selected-no  { border-color: var(--sage); background: var(--sage-light); color: var(--sage); }
+
+    /* UNIT TOGGLE */
+    .unit-toggle { display: flex; background: var(--sage-pale); border-radius: var(--r-sm); padding: 3px; margin-bottom: 14px; }
+    .unit-btn { flex: 1; padding: 7px; background: transparent; font-size: 12px; font-weight: 600; color: var(--text-light); border-radius: 7px; transition: all .15s; cursor: pointer; }
+    .unit-btn.active { background: white; color: var(--sage); box-shadow: var(--shadow-xs); }
+
+    /* MEASUREMENT INPUTS */
+    .measure-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .measure-group { display: flex; flex-direction: column; gap: 5px; }
+    .measure-label { font-size: 11px; font-weight: 700; color: var(--text-light); text-transform: uppercase; letter-spacing: .4px; }
+    .measure-input { width: 100%; padding: 11px 14px; border: 1.5px solid var(--border); border-radius: var(--r); font-size: 18px; font-weight: 700; color: var(--text-dark); text-align: center; -moz-appearance: textfield; transition: border-color .2s, box-shadow .2s; background: white; }
+    .measure-input::-webkit-inner-spin-button, .measure-input::-webkit-outer-spin-button { -webkit-appearance: none; }
+    .measure-input:focus { outline: none; border-color: var(--sage); box-shadow: 0 0 0 3px rgba(59,106,58,0.1); }
+    .measure-input::placeholder { font-size: 15px; font-weight: 400; color: var(--placeholder); }
+    .measure-unit { font-size: 11px; color: var(--text-light); text-align: center; margin-top: 3px; text-transform: uppercase; font-weight: 600; letter-spacing: .3px; }
+    .error-msg { color: #DC2626; font-size: 11px; margin-top: 4px; display: none; }
+
+    /* BMI PREVIEW */
+    .bmi-preview { background: var(--sage-pale); border-radius: var(--r); padding: 10px 14px; margin-top: 10px; display: flex; align-items: center; justify-content: space-between; }
+    .bmi-preview-label { font-size: 12px; color: var(--text-light); font-weight: 500; }
+    .bmi-preview-val { font-size: 16px; font-weight: 800; color: var(--text-dark); }
+    .bmi-preview-cat { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 8px; }
+
+    /* ETHNICITY */
+    .eth-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    .eth-btn { padding: 9px 8px; border-radius: var(--r-sm); border: 1.5px solid var(--border); background: white; font-size: 11px; font-weight: 600; color: var(--text-mid); text-align: center; cursor: pointer; transition: all .15s; }
+    .eth-btn:hover { border-color: var(--sage-mid); background: var(--sage-pale); }
+    .eth-btn.selected { border-color: var(--sage); background: var(--sage-light); color: var(--sage); }
+
+    /* HIDDEN */
+    .hidden { display: none; }
+
+    .err-banner { display: none; background: #FEF2F2; border: 1px solid #FECACA; border-radius: var(--r-sm); padding: 10px 14px; font-size: 13px; color: #DC2626; margin-bottom: 12px; font-weight: 500; }
+    .calc-btn { width: 100%; background: var(--sage); color: white; padding: 14px; border-radius: var(--r); font-size: 16px; font-weight: 700; transition: all .18s; margin-top: 6px; cursor: pointer; }
+    .calc-btn:hover { background: var(--sage-dark); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+    .calc-btn:active { transform: translateY(0); }
+
+    /* RESULTS COL */
+    .results-col { display: flex; flex-direction: column; gap: 20px; }
+
+    /* RESULT CARD */
+    .result-card { background: white; border-radius: var(--r-xl); box-shadow: var(--shadow-lg); overflow: hidden; display: none; }
+    .result-card.visible { display: block; animation: slideUp .35s ease; }
+    @keyframes slideUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+    .result-band { height: 6px; }
+    .result-body { padding: 24px; }
+
+    /* Score */
+    .score-row { display: flex; align-items: flex-end; gap: 12px; margin-bottom: 6px; }
+    .score-big { font-size: 64px; font-weight: 800; letter-spacing: -3px; line-height: 1; }
+    .score-denom { font-size: 22px; color: var(--text-light); padding-bottom: 8px; }
+    .score-label { font-size: 13px; color: var(--text-light); margin-bottom: 16px; }
+
+    /* Risk meter */
+    .risk-meter { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+    .risk-meter-track { height: 12px; background: linear-gradient(90deg, #16A34A 0%, #D97706 45%, #EA580C 70%, #DC2626 100%); border-radius: 12px; position: relative; margin-bottom: 8px; }
+    .risk-meter-marker { width: 20px; height: 20px; background: white; border: 3px solid var(--text-dark); border-radius: 50%; position: absolute; top: 50%; transform: translateY(-50%); transition: left .5s; }
+    .risk-labels { display: flex; justify-content: space-between; }
+    .risk-labels span { font-size: 10px; font-weight: 600; color: var(--text-light); }
+
+    /* Risk level boxes */
+    .risk-boxes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+    .risk-box { border-radius: var(--r-sm); padding: 9px 6px; text-align: center; border: 1.5px solid transparent; }
+    .risk-box .rb-name  { font-size: 10px; font-weight: 700; line-height: 1.3; margin-bottom: 2px; }
+    .risk-box .rb-range { font-size: 9px; }
+    .rb-low      { background: #F0FDF4; color: #16A34A; }
+    .rb-low.active      { border-color: #16A34A; }
+    .rb-moderate { background: #FEFCE8; color: #CA8A04; }
+    .rb-moderate.active { border-color: #CA8A04; }
+    .rb-high     { background: #FFF7ED; color: #EA580C; }
+    .rb-high.active     { border-color: #EA580C; }
+    .rb-very-high{ background: #FEF2F2; color: #DC2626; }
+    .rb-very-high.active{ border-color: #DC2626; }
+
+    /* Risk factors found */
+    .factors-title { font-size: 13px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; }
+    .factors-list { display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px; }
+    .factor-chip { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: var(--r-sm); font-size: 12px; font-weight: 500; }
+    .factor-chip.present  { background: #FEF2F2; color: #991B1B; }
+    .factor-chip.absent   { background: var(--sage-light); color: var(--sage-dark); }
+    .factor-chip .chip-icon { font-size: 14px; flex-shrink: 0; }
+
+    /* Message */
+    .msg-block { border-radius: var(--r); padding: 18px; margin-bottom: 16px; border-left: 4px solid; }
+    .msg-block h3 { font-size: 14px; font-weight: 700; margin-bottom: 6px; color: var(--text-dark); }
+    .msg-block p  { font-size: 13px; color: var(--text-mid); line-height: 1.7; }
+
+    .tips-title { font-size: 13px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; }
+    .tips-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .tips-list li { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+    .tips-list li::before { content: '✤'; color: var(--sage); font-size: 10px; margin-top: 3px; flex-shrink: 0; }
+
+    /* INFO CARDS */
+    .info-card { background: white; border-radius: var(--r-xl); box-shadow: var(--shadow-sm); padding: 22px 24px; }
+    .info-card h3 { font-size: 14px; font-weight: 700; margin-bottom: 8px; color: var(--text-dark); }
+    .info-card p  { font-size: 13px; color: var(--text-mid); line-height: 1.75; }
+    .info-card p + p { margin-top: 10px; }
+
+    /* Warning signs grid */
+    .signs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 12px; }
+    .sign-chip { background: var(--sage-pale); border-radius: var(--r-sm); padding: 9px 12px; font-size: 12px; color: var(--text-mid); display: flex; align-items: flex-start; gap: 7px; line-height: 1.4; }
+    .sign-chip-dot { width: 5px; height: 5px; background: #EA580C; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+
+    /* Glucose ranges quick ref */
+    .glucose-table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 12px; }
+    .glucose-table th { background: var(--sage-pale); padding: 7px 10px; text-align: left; font-size: 11px; font-weight: 700; color: var(--text-mid); text-transform: uppercase; letter-spacing: .4px; }
+    .glucose-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); color: var(--text-mid); vertical-align: top; }
+    .glucose-table tr:last-child td { border-bottom: none; }
+    .badge-normal   { display: inline-block; background: #DCFCE7; color: #166534; padding: 2px 8px; border-radius: 8px; font-weight: 700; font-size: 10px; }
+    .badge-pre      { display: inline-block; background: #FEF9C3; color: #854D0E; padding: 2px 8px; border-radius: 8px; font-weight: 700; font-size: 10px; }
+    .badge-diabetes { display: inline-block; background: #FEE2E2; color: #991B1B; padding: 2px 8px; border-radius: 8px; font-weight: 700; font-size: 10px; }
+
+    /* RELATED */
+    .related-title { font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; }
+    .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .related-card { background: white; border: 1.5px solid var(--border); border-radius: var(--r); padding: 14px 16px; display: flex; align-items: center; gap: 12px; transition: all .18s; }
+    .related-card:hover { border-color: var(--sage); box-shadow: var(--shadow-sm); transform: translateY(-1px); }
+    .related-icon { width: 36px; height: 36px; background: var(--sage-light); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+    .related-info strong { display: block; font-size: 13px; font-weight: 600; }
+    .related-info span  { font-size: 11px; color: var(--text-light); }
+
+    /* DISCLAIMER */
+    .note-block { background: var(--cream); border-radius: var(--r); padding: 13px 16px; font-size: 12px; color: var(--text-light); line-height: 1.7; display: flex; gap: 8px; align-items: flex-start; }
+    .note-block svg { flex-shrink: 0; margin-top: 1px; }
+
+    /* Band / score colors */
+    .band-low       { background: linear-gradient(90deg, #4ADE80, #16A34A); }
+    .band-moderate  { background: linear-gradient(90deg, #FDE68A, #D97706); }
+    .band-high      { background: linear-gradient(90deg, #FB923C, #EA580C); }
+    .band-very-high { background: linear-gradient(90deg, #F87171, #DC2626); }
+
+    /* FOOTER */
+    .site-footer { background: var(--text-dark); color: #94A99A; padding: 48px 0 0; margin-top: 48px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 40px; }
+    .footer-logo { display: flex; align-items: center; gap: 8px; color: white; font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+    .footer-brand p { font-size: 14px; line-height: 1.7; max-width: 260px; color: #7A958E; }
+    .footer-col h5 { color: white; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; margin-bottom: 14px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { font-size: 14px; color: #7A958E; transition: color .2s; }
+    .footer-col a:hover { color: white; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding: 22px 0; display: flex; flex-direction: column; gap: 6px; }
+    .footer-disclaimer { font-size: 12px; color: #5A7568; line-height: 1.7; }
+    .footer-copy { font-size: 12px; color: #5A7568; }
+
+    @media (max-width: 900px) {
+      .calc-wrapper-inner { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 660px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-btn { display: none; }
+      .related-grid { grid-template-columns: 1fr; }
+      .risk-boxes { grid-template-columns: 1fr 1fr; }
+      .pill-grid-4 { grid-template-columns: 1fr 1fr; }
+      .signs-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 520px) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  
+    /* ── MOBILE HAMBURGER ────────────────────────────── */
+    .nav-hamburger {
+      display: none; flex-direction: column; justify-content: center; gap: 5px;
+      background: none; border: none; padding: 8px; margin-left: 8px;
+      border-radius: 8px; cursor: pointer; transition: background .15s; flex-shrink: 0;
+    }
+    .nav-hamburger:hover { background: var(--sage-light, #EBF2EC); }
+    .nav-hamburger span {
+      display: block; width: 22px; height: 2.5px;
+      background: var(--text-dark, #1A2E1E); border-radius: 2px; transition: all .2s;
+    }
+    /* ── MOBILE DRAWER ───────────────────────────────── */
+    .mobile-menu { display: none; position: fixed; inset: 0; z-index: 999; }
+    .mobile-menu.open { display: block; }
+    .mobile-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.45); backdrop-filter: blur(2px); }
+    .mobile-drawer {
+      position: absolute; top: 0; right: 0;
+      width: min(300px, 84vw); height: 100%;
+      background: #fff; display: flex; flex-direction: column;
+      box-shadow: -4px 0 40px rgba(0,0,0,.18);
+      animation: drawerIn .22s cubic-bezier(.22,.61,.36,1);
+    }
+    @keyframes drawerIn { from{transform:translateX(100%)} to{transform:translateX(0)} }
+    .mobile-drawer-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 20px 14px; border-bottom: 1px solid var(--border, #E2EBE4);
+    }
+    .mobile-drawer-logo { font-size: 15px; font-weight: 700; color: var(--text-dark, #1A2E1E); }
+    .mobile-close {
+      background: none; border: none; font-size: 20px; padding: 4px 8px;
+      cursor: pointer; color: var(--text-light, #718096); border-radius: 6px; line-height: 1;
+      transition: background .15s, color .15s;
+    }
+    .mobile-close:hover { background: var(--sage-light, #EBF2EC); color: var(--text-dark, #1A2E1E); }
+    .mobile-nav-links { padding: 14px 12px; flex: 1; display: flex; flex-direction: column; gap: 4px; }
+    .mobile-nav-link {
+      display: flex; align-items: center; gap: 14px;
+      padding: 13px 16px; border-radius: 12px;
+      font-size: 16px; font-weight: 600; color: var(--text-dark, #1A2E1E);
+      text-decoration: none; transition: background .15s, color .15s;
+    }
+    .mobile-nav-link:hover { background: var(--sage-light, #EBF2EC); color: var(--sage, #3B6A3A); }
+    .mobile-link-icon {
+      width: 40px; height: 40px; background: var(--sage-light, #EBF2EC);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .mobile-browse-btn {
+      display: block; margin: 0 12px 20px; padding: 14px;
+      background: var(--sage, #3B6A3A); color: #fff; border-radius: 12px;
+      font-size: 15px; font-weight: 700; text-align: center;
+      text-decoration: none; transition: background .15s;
+    }
+    .mobile-browse-btn:hover { background: var(--sage-dark, #0A3D2A); }
+
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <img src="assets/logo.png" alt="SageMyHealth" style="height:54px;width:auto;object-fit:contain;" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html#categories">Calculators</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../blog.html">Health Guides</a></li>
+    </ul>
+    <a href="../index.html#categories" class="nav-btn">Browse All</a>
+    <button class="nav-hamburger" id="nav-hamburger"
+            onclick="openMobileMenu()" aria-label="Open navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site navigation">
+  <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-drawer">
+    <div class="mobile-drawer-head">
+      <span class="mobile-drawer-logo">SageMyHealth</span>
+      <button class="mobile-close" onclick="closeMobileMenu()" aria-label="Close menu">&#x2715;</button>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="../index.html#categories" class="mobile-nav-link" onclick="closeMobileMenu()">
+        <span class="mobile-link-icon">&#x1F9EE;</span>Calculators
+      </a>
+      <a href="../about.html" class="mobile-nav-link" onclick="closeMobileMenu()">
+        <span class="mobile-link-icon">&#x1F49A;</span>About
+      </a>
+      <a href="../blog.html" class="mobile-nav-link" onclick="closeMobileMenu()">
+        <span class="mobile-link-icon">&#x1F4D6;</span>Health Guides
+      </a>
+    </nav>
+    <a href="../index.html#categories" class="mobile-browse-btn" onclick="closeMobileMenu()">Browse All Calculators &#x2192;</a>
+  </div>
+</div>
+
+<main class="calc-page">
+  <div class="calc-wrapper">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="bc-sep">›</span>
+      <a href="../index.html#categories">Metabolic Health</a>
+      <span class="bc-sep">›</span>
+      <span>Prediabetes Risk Estimator</span>
+    </nav>
+
+    <header class="page-header">
+      <div class="calc-tag">🩸 Metabolic Health</div>
+      <h1>Prediabetes Risk Estimator</h1>
+      <p>Could you have prediabetes and not know it? Most people with prediabetes have no symptoms at all. Answer 8 questions based on the CDC-validated risk test and find out where you stand — with clear, actionable guidance.</p>
+    </header>
+
+    <div class="stat-banner">
+      <div class="stat-banner-num">1 in 3</div>
+      <div class="stat-banner-text">American adults has prediabetes. More than 80% don't know it. Left unaddressed, prediabetes progresses to type 2 diabetes in 1 in 4 people within 5 years — but it's largely reversible with the right changes.</div>
+    </div>
+
+    <div class="calc-wrapper-inner">
+
+      <!-- FORM CARD -->
+      <div class="form-card">
+        <div class="form-card-header">
+          <div class="form-card-title">Your risk profile</div>
+          <div class="form-card-sub">Based on the CDC & American Diabetes Association Prediabetes Risk Test. Answer as honestly as you can — this is about your actual situation, not your ideal.</div>
+          <div class="progress-row">
+            <span class="progress-label" id="prog-label">0 of 8 answered</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
+        </div>
+        <div class="form-body">
+
+          <!-- Q1: Age -->
+          <div class="q-block">
+            <div class="q-label"><span class="q-num">1</span> What is your age?</div>
+            <div class="pill-grid pill-grid-4">
+              <button class="pill-btn" data-q="age" data-val="0" onclick="selectPill(this,'age')">Under 40</button>
+              <button class="pill-btn" data-q="age" data-val="1" onclick="selectPill(this,'age')">40 – 49</button>
+              <button class="pill-btn" data-q="age" data-val="2" onclick="selectPill(this,'age')">50 – 59</button>
+              <button class="pill-btn" data-q="age" data-val="3" onclick="selectPill(this,'age')">60 or older</button>
+            </div>
+          </div>
+
+          <!-- Q2: Sex -->
+          <div class="q-block">
+            <div class="q-label"><span class="q-num">2</span> What sex were you assigned at birth?</div>
+            <div class="pill-grid pill-grid-2">
+              <button class="pill-btn" data-q="sex" data-val="1" onclick="selectPill(this,'sex'); setSex('male')">
+                <span class="pill-emoji">♂️</span> Male
+              </button>
+              <button class="pill-btn" data-q="sex" data-val="0" onclick="selectPill(this,'sex'); setSex('female')">
+                <span class="pill-emoji">♀️</span> Female
+              </button>
+            </div>
+          </div>
+
+          <!-- Q3: Height + Weight (BMI) -->
+          <div class="q-block">
+            <div class="q-label"><span class="q-num">3</span> Your height and weight <span class="q-hint">(used to estimate BMI)</span></div>
+            <div class="unit-toggle">
+              <button class="unit-btn active" id="unit-metric" onclick="setUnit('metric')">Metric (cm / kg)</button>
+              <button class="unit-btn" id="unit-imperial" onclick="setUnit('imperial')">Imperial (ft, in / lbs)</button>
+            </div>
+            <div class="measure-row" id="metric-inputs">
+              <div class="measure-group">
+                <div class="measure-label">Height</div>
+                <input class="measure-input" type="number" id="height-cm" placeholder="170" min="100" max="280" step="0.1" oninput="calcBMI()" />
+                <div class="measure-unit">cm</div>
+                <div class="error-msg" id="height-cm-err">Enter your height in cm</div>
+              </div>
+              <div class="measure-group">
+                <div class="measure-label">Weight</div>
+                <input class="measure-input" type="number" id="weight-kg" placeholder="75" min="20" max="400" step="0.1" oninput="calcBMI()" />
+                <div class="measure-unit">kg</div>
+                <div class="error-msg" id="weight-kg-err">Enter your weight in kg</div>
+              </div>
+            </div>
+            <div class="measure-row hidden" id="imperial-inputs">
+              <div class="measure-group">
+                <div class="measure-label">Height (feet)</div>
+                <input class="measure-input" type="number" id="height-ft" placeholder="5" min="1" max="9" oninput="calcBMI()" />
+                <div class="measure-unit">ft</div>
+              </div>
+              <div class="measure-group">
+                <div class="measure-label">Height (inches)</div>
+                <input class="measure-input" type="number" id="height-in" placeholder="7" min="0" max="11" oninput="calcBMI()" />
+                <div class="measure-unit">in</div>
+              </div>
+            </div>
+            <div class="measure-row hidden" id="imperial-weight-row" style="margin-top:12px">
+              <div class="measure-group" style="grid-column:1/-1">
+                <div class="measure-label">Weight</div>
+                <input class="measure-input" type="number" id="weight-lbs" placeholder="165" min="40" max="800" step="0.1" oninput="calcBMI()" />
+                <div class="measure-unit">lbs</div>
+                <div class="error-msg" id="weight-lbs-err">Enter your weight in lbs</div>
+              </div>
+            </div>
+            <div class="bmi-preview" id="bmi-preview" style="display:none;">
+              <div class="bmi-preview-label">Your estimated BMI</div>
+              <div style="display:flex;align-items:center;gap:10px;">
+                <div class="bmi-preview-val" id="bmi-val">—</div>
+                <div class="bmi-preview-cat" id="bmi-cat-badge">—</div>
+              </div>
+            </div>
+            <div class="error-msg" id="bmi-err" style="display:none;margin-top:8px;">Please enter valid height and weight to continue</div>
+          </div>
+
+          <!-- Q4: Gestational diabetes (female only) -->
+          <div class="q-block hidden" id="q-gdm">
+            <div class="q-label"><span class="q-num">4</span> Have you ever been diagnosed with gestational diabetes?</div>
+            <div class="yn-grid">
+              <button class="yn-btn" onclick="selectYN(this,'gdm',1)"><span class="yn-icon">✓</span> Yes</button>
+              <button class="yn-btn" onclick="selectYN(this,'gdm',0)"><span class="yn-icon">✗</span> No / Not applicable</button>
+            </div>
+          </div>
+
+          <!-- Q5: Family history -->
+          <div class="q-block">
+            <div class="q-label"><span class="q-num" id="fam-num">4</span> Do you have a parent, brother, or sister with diabetes?</div>
+            <div class="yn-grid">
+              <button class="yn-btn" onclick="selectYN(this,'family',1)"><span class="yn-icon">✓</span> Yes</button>
+              <button class="yn-btn" onclick="selectYN(this,'family',0)"><span class="yn-icon">✗</span> No</button>
+            </div>
+          </div>
+
+          <!-- Q6: High blood pressure -->
+          <div class="q-block">
+            <div class="q-label"><span class="q-num" id="bp-num">5</span> Have you ever been diagnosed with high blood pressure?</div>
+            <div class="yn-grid">
+              <button class="yn-btn" onclick="selectYN(this,'hbp',1)"><span class="yn-icon">✓</span> Yes</button>
+              <button class="yn-btn" onclick="selectYN(this,'hbp',0)"><span class="yn-icon">✗</span> No</button>
+            </div>
+          </div>
+
+          <!-- Q7: Physical activity -->
+          <div class="q-block">
+            <div class="q-label"><span class="q-num" id="act-num">6</span> Are you physically active? <span class="q-hint">(at least 150 min moderate exercise/week)</span></div>
+            <div class="yn-grid">
+              <button class="yn-btn" onclick="selectYN(this,'active',0)"><span class="yn-icon">✓</span> Yes, regularly</button>
+              <button class="yn-btn" onclick="selectYN(this,'active',1)"><span class="yn-icon">✗</span> No / rarely</button>
+            </div>
+          </div>
+
+          <!-- Q8: Race/ethnicity -->
+          <div class="q-block">
+            <div class="q-label"><span class="q-num" id="eth-num">7</span> Which best describes your race or ethnicity? <span class="q-hint">(optional — some groups have higher genetic risk)</span></div>
+            <div class="eth-grid">
+              <button class="eth-btn" onclick="selectEth(this,'high')">African American</button>
+              <button class="eth-btn" onclick="selectEth(this,'high')">Hispanic / Latino</button>
+              <button class="eth-btn" onclick="selectEth(this,'high')">Native American / Alaska Native</button>
+              <button class="eth-btn" onclick="selectEth(this,'high')">Asian American / Pacific Islander</button>
+              <button class="eth-btn" onclick="selectEth(this,'standard')" style="grid-column:1/-1">White / Other / Prefer not to say</button>
+            </div>
+          </div>
+
+          <div class="err-banner" id="err-banner">Please complete all questions before calculating your risk.</div>
+          <button class="calc-btn" onclick="calculate()">Estimate my prediabetes risk</button>
+        </div>
+      </div>
+
+      <!-- RESULTS COL -->
+      <div class="results-col">
+
+        <!-- RESULT CARD -->
+        <div class="result-card" id="result-card">
+          <div class="result-band" id="result-band"></div>
+          <div class="result-body">
+
+            <div class="score-row">
+              <div class="score-big" id="r-score">—</div>
+              <div class="score-denom">/11</div>
+            </div>
+            <div class="score-label">CDC Prediabetes Risk Score</div>
+
+            <!-- Risk meter -->
+            <div class="risk-meter">
+              <div class="risk-meter-track">
+                <div class="risk-meter-marker" id="risk-marker"></div>
+              </div>
+              <div class="risk-labels">
+                <span>Low</span><span>Moderate</span><span>High</span><span>Very High</span>
+              </div>
+            </div>
+
+            <!-- Risk level boxes -->
+            <div class="risk-boxes">
+              <div class="risk-box rb-low"       id="rb-low"><div class="rb-name">Lower Risk</div><div class="rb-range">0 – 3 pts</div></div>
+              <div class="risk-box rb-moderate"  id="rb-moderate"><div class="rb-name">At Risk</div><div class="rb-range">4 – 5 pts</div></div>
+              <div class="risk-box rb-high"       id="rb-high"><div class="rb-name">High Risk</div><div class="rb-range">6 – 8 pts</div></div>
+              <div class="risk-box rb-very-high"  id="rb-very-high"><div class="rb-name">Very High</div><div class="rb-range">9+ pts</div></div>
+            </div>
+
+            <!-- Risk factors identified -->
+            <div class="factors-title">Your risk factors</div>
+            <div class="factors-list" id="factors-list"></div>
+
+            <!-- Message -->
+            <div class="msg-block" id="msg-block">
+              <h3 id="msg-heading">—</h3>
+              <p id="msg-body">—</p>
+            </div>
+
+            <p class="tips-title">Recommended next steps:</p>
+            <ul class="tips-list" id="tips-list"></ul>
+          </div>
+        </div>
+
+        <!-- What is prediabetes -->
+        <div class="info-card">
+          <h3>What is prediabetes?</h3>
+          <p>Prediabetes means your blood sugar levels are higher than normal but not yet high enough to be diagnosed as type 2 diabetes. Your pancreas is still producing insulin, but your cells are becoming resistant to it — so glucose builds up in your blood instead of entering your cells.</p>
+          <p>It's not a life sentence. With the right lifestyle changes, most people with prediabetes can prevent or significantly delay the development of type 2 diabetes — and some can reverse it entirely. The key is catching it early.</p>
+        </div>
+
+        <!-- Blood sugar reference -->
+        <div class="info-card">
+          <h3>What the blood sugar numbers mean</h3>
+          <p>If you've had a blood test, here's how to interpret your glucose results:</p>
+          <table class="glucose-table">
+            <tr><th>Test</th><th>Normal</th><th>Prediabetes</th><th>Diabetes</th></tr>
+            <tr>
+              <td>Fasting glucose</td>
+              <td><span class="badge-normal">Below 100</span></td>
+              <td><span class="badge-pre">100–125 mg/dL</span></td>
+              <td><span class="badge-diabetes">126+ mg/dL</span></td>
+            </tr>
+            <tr>
+              <td>2-hr after glucose drink</td>
+              <td><span class="badge-normal">Below 140</span></td>
+              <td><span class="badge-pre">140–199 mg/dL</span></td>
+              <td><span class="badge-diabetes">200+ mg/dL</span></td>
+            </tr>
+            <tr>
+              <td>HbA1c (3-month average)</td>
+              <td><span class="badge-normal">Below 5.7%</span></td>
+              <td><span class="badge-pre">5.7% – 6.4%</span></td>
+              <td><span class="badge-diabetes">6.5% or above</span></td>
+            </tr>
+          </table>
+          <p style="margin-top:10px;font-size:11px;color:var(--text-light);">Source: American Diabetes Association Standards of Care 2024.</p>
+        </div>
+
+        <!-- Warning signs -->
+        <div class="info-card">
+          <h3>Signs prediabetes may have progressed</h3>
+          <p>Prediabetes itself is usually silent. These signs may suggest your blood sugar has been elevated for some time:</p>
+          <div class="signs-grid">
+            <div class="sign-chip"><div class="sign-chip-dot"></div>Increased thirst and frequent urination</div>
+            <div class="sign-chip"><div class="sign-chip-dot"></div>Fatigue that isn't explained by sleep</div>
+            <div class="sign-chip"><div class="sign-chip-dot"></div>Blurred vision or difficulty focusing</div>
+            <div class="sign-chip"><div class="sign-chip-dot"></div>Darkened skin in neck, armpits, or groin (acanthosis nigricans)</div>
+            <div class="sign-chip"><div class="sign-chip-dot"></div>Cuts or bruises that heal slowly</div>
+            <div class="sign-chip"><div class="sign-chip-dot"></div>Tingling or numbness in hands or feet</div>
+            <div class="sign-chip"><div class="sign-chip-dot"></div>Unexplained weight loss</div>
+            <div class="sign-chip"><div class="sign-chip-dot"></div>Recurring infections (skin, gum, bladder)</div>
+          </div>
+        </div>
+
+        <!-- Related calculators -->
+        <div>
+          <p class="related-title">You might also like</p>
+          <div class="related-grid">
+            <a href="blood-glucose.html" class="related-card">
+              <div class="related-icon">🩸</div>
+              <div class="related-info"><strong>Blood Glucose Interpreter</strong><span>Decode your sugar numbers</span></div>
+            </a>
+            <a href="blood-pressure.html" class="related-card">
+              <div class="related-icon">❤️</div>
+              <div class="related-info"><strong>Blood Pressure</strong><span>Hypertension + diabetes often co-occur</span></div>
+            </a>
+            <a href="waist-to-height.html" class="related-card">
+              <div class="related-icon">📏</div>
+              <div class="related-info"><strong>Waist-to-Height Ratio</strong><span>Central fat drives insulin resistance</span></div>
+            </a>
+            <a href="bmi.html" class="related-card">
+              <div class="related-icon">⚖️</div>
+              <div class="related-info"><strong>BMI Calculator</strong><span>Weight is a key risk factor</span></div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="note-block">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#9CA3AF" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span><strong>NOTE:</strong> This tool is for educational screening purposes only. It does not diagnose prediabetes or diabetes. Only a healthcare provider can diagnose these conditions using blood tests. If you score at risk, please speak with your doctor about getting tested.</span>
+        </div>
+
+      </div><!-- /.results-col -->
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="assets/logo-white.png" alt="SageMyHealth" style="height:45px;width:auto;object-fit:contain;" />
+        </div>
+        <p>Free, trusted health calculators with warm guidance — helping you understand your numbers.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Calculators</h5>
+        <ul>
+          <li><a href="prediabetes-risk.html">Prediabetes Risk</a></li>
+          <li><a href="blood-glucose.html">Blood Glucose</a></li>
+          <li><a href="blood-pressure.html">Blood Pressure</a></li>
+          <li><a href="waist-to-height.html">Waist-to-Height</a></li>
+          <li><a href="bmi.html">BMI</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Categories</h5>
+        <ul>
+          <li><a href="../index.html#categories">Metabolic Health</a></li>
+          <li><a href="../index.html#categories">Cardiovascular</a></li>
+          <li><a href="../index.html#categories">Body Composition</a></li>
+          <li><a href="../index.html#categories">Mental Health</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Info</h5>
+        <ul>
+          <li><a href="../about.html">About Us</a></li>
+          <li><a href="../privacy.html">Privacy Policy</a></li>
+          <li><a href="../terms.html">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-disclaimer"><strong style="color:#7A958E">Medical Disclaimer:</strong> This calculator is for educational screening purposes only. It does not diagnose prediabetes or diabetes. Only a qualified healthcare provider can make a medical diagnosis. Please consult your doctor if your result suggests elevated risk.</p>
+      <p class="footer-copy">© 2025 SageMyHealth.com — All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── State ─────────────────────────────────────────────────────────────────
+  var answers = { age: null, sex: null, bmi: null, gdm: null, family: null, hbp: null, active: null, eth: null };
+  var currentUnit = 'metric';
+  var currentSex  = null;
+  var currentBMI  = null;
+
+  // ── Unit toggle ───────────────────────────────────────────────────────────
+  function setUnit(u) {
+    currentUnit = u;
+    document.getElementById('unit-metric').classList.toggle('active', u === 'metric');
+    document.getElementById('unit-imperial').classList.toggle('active', u === 'imperial');
+    document.getElementById('metric-inputs').classList.toggle('hidden', u !== 'metric');
+    document.getElementById('imperial-inputs').classList.toggle('hidden', u !== 'imperial');
+    document.getElementById('imperial-weight-row').classList.toggle('hidden', u !== 'imperial');
+    currentBMI = null;
+    answers.bmi = null;
+    document.getElementById('bmi-preview').style.display = 'none';
+    updateProgress();
+  }
+
+  // ── Sex toggle ────────────────────────────────────────────────────────────
+  function setSex(s) {
+    currentSex = s;
+    var gdmBlock = document.getElementById('q-gdm');
+    var famNum   = document.getElementById('fam-num');
+    var bpNum    = document.getElementById('bp-num');
+    var actNum   = document.getElementById('act-num');
+    var ethNum   = document.getElementById('eth-num');
+    if (s === 'female') {
+      gdmBlock.classList.remove('hidden');
+      famNum.textContent = '5'; bpNum.textContent = '6'; actNum.textContent = '7'; ethNum.textContent = '8';
+    } else {
+      gdmBlock.classList.add('hidden');
+      answers.gdm = 0;
+      famNum.textContent = '4'; bpNum.textContent = '5'; actNum.textContent = '6'; ethNum.textContent = '7';
+    }
+    updateProgress();
+  }
+
+  // ── Pill select ───────────────────────────────────────────────────────────
+  function selectPill(btn, q) {
+    document.querySelectorAll('[data-q="' + q + '"]').forEach(function(b) { b.classList.remove('selected'); });
+    btn.classList.add('selected');
+    answers[q] = parseInt(btn.dataset.val);
+    updateProgress();
+  }
+
+  // ── Yes/No select ─────────────────────────────────────────────────────────
+  function selectYN(btn, q, val) {
+    var grid = btn.closest('.yn-grid');
+    grid.querySelectorAll('.yn-btn').forEach(function(b) {
+      b.classList.remove('selected-yes', 'selected-no');
+    });
+    btn.classList.add(val === 1 ? 'selected-yes' : 'selected-no');
+    answers[q] = val;
+    updateProgress();
+  }
+
+  // ── Ethnicity select ──────────────────────────────────────────────────────
+  function selectEth(btn, level) {
+    document.querySelectorAll('.eth-btn').forEach(function(b) { b.classList.remove('selected'); });
+    btn.classList.add('selected');
+    answers.eth = (level === 'high') ? 1 : 0;
+    updateProgress();
+  }
+
+  // ── BMI calc ──────────────────────────────────────────────────────────────
+  function calcBMI() {
+    var bmi = null;
+    if (currentUnit === 'metric') {
+      var h = parseFloat(document.getElementById('height-cm').value);
+      var w = parseFloat(document.getElementById('weight-kg').value);
+      if (h > 0 && w > 0) bmi = w / Math.pow(h / 100, 2);
+    } else {
+      var ft = parseFloat(document.getElementById('height-ft').value) || 0;
+      var ins = parseFloat(document.getElementById('height-in').value) || 0;
+      var lbs = parseFloat(document.getElementById('weight-lbs').value);
+      var totalIn = ft * 12 + ins;
+      if (totalIn > 0 && lbs > 0) bmi = 703 * lbs / Math.pow(totalIn, 2);
+    }
+
+    if (bmi && bmi > 10 && bmi < 80) {
+      currentBMI = bmi;
+      // BMI risk points: <25=0, 25-29.9=1, ≥30=2
+      if (bmi < 25)      answers.bmi = 0;
+      else if (bmi < 30) answers.bmi = 1;
+      else               answers.bmi = 2;
+
+      var preview = document.getElementById('bmi-preview');
+      var valEl   = document.getElementById('bmi-val');
+      var catEl   = document.getElementById('bmi-cat-badge');
+      preview.style.display = 'flex';
+      valEl.textContent = bmi.toFixed(1);
+
+      var cat, bg, col;
+      if (bmi < 18.5) { cat='Underweight'; bg='#EEF2FF'; col='#4338CA'; }
+      else if (bmi < 25) { cat='Healthy'; bg='#DCFCE7'; col='#166534'; }
+      else if (bmi < 30) { cat='Overweight'; bg='#FEF9C3'; col='#854D0E'; }
+      else if (bmi < 35) { cat='Obese I'; bg='#FFEDD5'; col='#9A3412'; }
+      else { cat='Obese II+'; bg='#FEE2E2'; col='#991B1B'; }
+      catEl.textContent = cat;
+      catEl.style.background = bg;
+      catEl.style.color = col;
+      document.getElementById('bmi-err').style.display = 'none';
+    } else {
+      currentBMI = null;
+      answers.bmi = null;
+      document.getElementById('bmi-preview').style.display = 'none';
+    }
+    updateProgress();
+  }
+
+  // ── Progress ──────────────────────────────────────────────────────────────
+  function updateProgress() {
+    var required = ['age','sex','bmi','family','hbp','active','eth'];
+    if (currentSex === 'female') required.push('gdm');
+    var filled = required.filter(function(k) { return answers[k] !== null; }).length;
+    var total  = required.length;
+    document.getElementById('prog-label').textContent = filled + ' of ' + total + ' answered';
+    document.getElementById('prog-fill').style.width = (filled / total * 100) + '%';
+  }
+
+  // ── Calculate ─────────────────────────────────────────────────────────────
+  function calculate() {
+    document.getElementById('err-banner').style.display = 'none';
+
+    var required = ['age','sex','bmi','family','hbp','active','eth'];
+    if (currentSex === 'female') required.push('gdm');
+    var missing = required.filter(function(k) { return answers[k] === null; });
+
+    if (missing.length > 0) {
+      if (answers.bmi === null) document.getElementById('bmi-err').style.display = 'block';
+      var eb = document.getElementById('err-banner');
+      eb.style.display = 'block';
+      eb.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      return;
+    }
+
+    var ageScore    = answers.age;
+    var sexScore    = answers.sex;
+    var bmiScore    = answers.bmi;
+    var gdmScore    = (currentSex === 'female') ? answers.gdm : 0;
+    var famScore    = answers.family;
+    var hbpScore    = answers.hbp;
+    var activeScore = answers.active;
+    var ethScore    = answers.eth;
+
+    var total = ageScore + sexScore + bmiScore + gdmScore + famScore + hbpScore + activeScore + ethScore;
+
+    var cat;
+    if (total <= 3)      cat = 'low';
+    else if (total <= 5) cat = 'moderate';
+    else if (total <= 8) cat = 'high';
+    else                 cat = 'very-high';
+
+    // ── Risk factors ───────────────────────────────────────────────────────
+    var factors = [];
+    if (ageScore > 0)    factors.push({ label: 'Age 40 or older', pts: ageScore, present: true });
+    else                 factors.push({ label: 'Age under 40', pts: 0, present: false });
+    if (sexScore > 0)    factors.push({ label: 'Male sex (higher baseline risk)', pts: 1, present: true });
+    if (bmiScore > 0)    factors.push({ label: 'BMI ' + currentBMI.toFixed(1) + ' — ' + (bmiScore === 1 ? 'overweight' : 'obese'), pts: bmiScore, present: true });
+    else                 factors.push({ label: 'BMI ' + currentBMI.toFixed(1) + ' — healthy weight', pts: 0, present: false });
+    if (gdmScore > 0)    factors.push({ label: 'History of gestational diabetes', pts: 1, present: true });
+    if (famScore > 0)    factors.push({ label: 'Family history of diabetes', pts: 1, present: true });
+    else                 factors.push({ label: 'No family history of diabetes', pts: 0, present: false });
+    if (hbpScore > 0)    factors.push({ label: 'Diagnosed high blood pressure', pts: 1, present: true });
+    if (activeScore > 0) factors.push({ label: 'Not meeting physical activity guidelines', pts: 1, present: true });
+    else                 factors.push({ label: 'Physically active — protective factor', pts: 0, present: false });
+    if (ethScore > 0)    factors.push({ label: 'Race/ethnicity with elevated genetic risk', pts: 1, present: true });
+
+    // ── Messages ───────────────────────────────────────────────────────────
+    var msgs = {
+      low: {
+        h: 'Your risk appears lower at this time.',
+        b: 'Based on your answers, your risk profile for prediabetes is currently lower than average. That said, prediabetes risk increases with age — and lifestyle factors like diet, sleep, and activity level matter more than any single data point. Continue with annual check-ins.',
+        tips: [
+          'Get a fasting blood glucose or HbA1c test at your next routine physical — it\'s quick and gives you a real baseline.',
+          'Staying physically active is one of the single most powerful things you can do to maintain insulin sensitivity.',
+          'Limit added sugars and refined carbohydrates — these drive blood sugar spikes more than other foods.',
+          'Maintain a healthy body weight, especially around your waist — central fat is the most metabolically active kind.'
+        ]
+      },
+      moderate: {
+        h: 'You\'re showing some risk factors for prediabetes.',
+        b: 'Your score places you in the "at risk" range according to the CDC risk test. This doesn\'t mean you have prediabetes — it means a blood test is worth having. The CDC recommends that anyone scoring 5 or above speak with their doctor about getting a simple blood glucose check.',
+        tips: [
+          'Ask your doctor for a fasting blood glucose or HbA1c test — this is the only way to know for sure.',
+          'If you haven\'t exercised regularly in a while, start with 20–30 minutes of walking 4–5 days per week. This improves insulin sensitivity quickly.',
+          'The most evidence-supported dietary change: reduce refined carbohydrates and added sugars, and increase fibre.',
+          'Losing 5–7% of body weight (if overweight) reduces diabetes risk by nearly 60% — small changes compound significantly.',
+          'Consider the CDC\'s National Diabetes Prevention Program (DPP) — a structured lifestyle program with strong evidence.'
+        ]
+      },
+      high: {
+        h: 'Your risk profile indicates significant prediabetes risk.',
+        b: 'Several of your risk factors are scoring against you. This doesn\'t diagnose you — only a blood test can do that — but it strongly suggests seeing your doctor soon for screening. Prediabetes is highly reversible with focused lifestyle changes, especially at this stage.',
+        tips: [
+          'Make an appointment with your doctor this month to get a fasting glucose and HbA1c test. Don\'t wait.',
+          'The CDC Diabetes Prevention Program has clinical evidence showing it reduces diabetes risk by 58% in people with prediabetes — ask if you qualify.',
+          'Exercise is medicine: 150 minutes of moderate activity per week improves insulin sensitivity independently of weight loss.',
+          'Prioritise sleep — chronic sleep deprivation of even one hour per night significantly worsens blood sugar regulation.',
+          'Work towards a waist circumference under half your height — this single measure tracks metabolic risk better than BMI alone.',
+          'If you\'ve been avoiding testing because you\'re worried about the result — knowing is always better. Prediabetes caught early is largely reversible.'
+        ]
+      },
+      'very-high': {
+        h: 'Your risk profile is very high — please get tested soon.',
+        b: 'Your answers place you in the highest risk category. Multiple significant risk factors are present. This is not a diagnosis, but it is a strong signal that a blood test is needed promptly. The good news: prediabetes is one of the most reversible metabolic conditions, and catching it now — before it becomes diabetes — gives you the best possible window to act.',
+        tips: [
+          'Please see your doctor soon and ask specifically for a fasting glucose test and HbA1c — do not rely on just one.',
+          'Be honest with your doctor about your diet, activity level, and any symptoms you\'ve been experiencing.',
+          'If diagnosed with prediabetes, ask about the CDC Diabetes Prevention Program — it is covered by Medicare and many insurers.',
+          'A registered dietitian who specialises in metabolic health can make more difference than any supplement or fad diet.',
+          'Physical activity improvement is the single fastest way to improve insulin sensitivity — even before weight changes.',
+          'Small changes are enough: losing 5–10% of body weight and walking 30 minutes daily reduces progression to diabetes by more than half.'
+        ]
+      }
+    };
+
+    // ── Render ─────────────────────────────────────────────────────────────
+    var card = document.getElementById('result-card');
+    card.classList.add('visible');
+
+    // Score
+    var scoreColors = { low: '#16A34A', moderate: '#D97706', high: '#EA580C', 'very-high': '#DC2626' };
+    var rn = document.getElementById('r-score');
+    rn.textContent = total;
+    rn.style.color = scoreColors[cat];
+
+    // Band
+    var bandMap = { low: 'band-low', moderate: 'band-moderate', high: 'band-high', 'very-high': 'band-very-high' };
+    document.getElementById('result-band').className = 'result-band ' + bandMap[cat];
+
+    // Meter marker (0-11 → 0-96% position)
+    var pct = Math.min(96, Math.max(2, (total / 11) * 96));
+    document.getElementById('risk-marker').style.left = 'calc(' + pct + '% - 10px)';
+
+    // Boxes
+    ['low','moderate','high','very-high'].forEach(function(c) {
+      document.getElementById('rb-' + c).classList.remove('active');
+    });
+    document.getElementById('rb-' + cat).classList.add('active');
+
+    // Factors
+    var fl = document.getElementById('factors-list');
+    fl.innerHTML = '';
+    factors.forEach(function(f) {
+      var chip = document.createElement('div');
+      chip.className = 'factor-chip ' + (f.present ? 'present' : 'absent');
+      chip.innerHTML = '<span class="chip-icon">' + (f.present ? '⚠' : '✓') + '</span>' + f.label + (f.present && f.pts > 1 ? ' (+' + f.pts + ' pts)' : '');
+      fl.appendChild(chip);
+    });
+
+    // Message
+    var m = msgs[cat];
+    var msgBgs     = { low: '#F0FDF4', moderate: '#FEFCE8', high: '#FFF7ED', 'very-high': '#FEF2F2' };
+    var msgBorders = { low: '#16A34A', moderate: '#CA8A04', high: '#EA580C', 'very-high': '#DC2626' };
+    var mb = document.getElementById('msg-block');
+    mb.style.background = msgBgs[cat];
+    mb.style.borderLeftColor = msgBorders[cat];
+    document.getElementById('msg-heading').textContent = m.h;
+    document.getElementById('msg-body').textContent = m.b;
+
+    // Tips
+    var tl = document.getElementById('tips-list');
+    tl.innerHTML = '';
+    m.tips.forEach(function(t) {
+      var li = document.createElement('li');
+      li.textContent = t;
+      tl.appendChild(li);
+    });
+
+    card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+</script>
+
+<script>
+  /* Mobile menu */
+  function openMobileMenu() {
+    document.getElementById('mobile-menu').classList.add('open');
+    document.getElementById('nav-hamburger').setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.getElementById('nav-hamburger').setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMobileMenu(); });
+</script>
+</body>
+</html>

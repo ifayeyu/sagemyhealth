@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X6K2H9YW2V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X6K2H9YW2V');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Period Tracker & Calculator — SageMyHealth</title>
+  <meta name="description" content="Predict your next period, track your cycle, and understand your body's natural rhythm. Enter your cycle details and get personalized predictions." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       SageMyHealth — Brand Colour Tokens (from BMI)
+       All hex values confirmed against official brand palette
+    ============================================================ */
+    :root {
+      /* Sage greens */
+      --sage:        #3B6A3A;   /* Primary brand green */
+      --sage-dark:   #0A3D2A;   /* Hover / dark variant */
+      --sage-mid:    #5C8A5C;   /* Mid tone, gradient use */
+      --sage-light:  #EBF2EC;   /* Light fill, badges, tags */
+      --sage-pale:   #F2F7F3;   /* Page background */
+
+      /* Neutrals */
+      --cream:       #E3FFB3;   /* Accent cream */
+      --white:       #FFFFFF;   /* Cards, inputs */
+
+      /* Text */
+      --text-dark:   #1A2E1E;   /* Headings, primary text */
+      --text-mid:    #4A5568;   /* Body copy, descriptions */
+      --text-light:  #718096;   /* Hints, captions, secondary */
+      --placeholder: #AAB0B8;   /* Input placeholder text */
+
+      /* Borders */
+      --border:      #E2EBE4;   /* Default border */
+      --border-mid:  #C8D9CC;   /* Stronger border, separators */
+
+      /* Semantic — result states */
+      --red-soft:    #EDAE71;   --red-text:   #991B1B;   /* Low / warning */
+      --amber-soft:  #EECA8F;   --amber-text: #92400E;   /* Elevated / caution */
+      --green-soft:  #D1FAE5;   --green-text: #3D473D;   /* Healthy / normal */
+
+      /* Shadows (sage-tinted) */
+      --shadow-xs:   0 1px 2px rgba(59,106,58,0.06);
+      --shadow-sm:   0 1px 6px rgba(59,106,58,0.08);
+      --shadow-md:   0 4px 16px rgba(59,106,58,0.12);
+      --shadow-lg:   0 8px 32px rgba(59,106,58,0.16);
+
+      /* Border radii */
+      --r-sm: 8px; --r: 12px; --r-lg: 20px; --r-xl: 28px;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-dark);
+      background: var(--sage-pale);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; }
+
+    /* ---- NAV ---- */
+    .site-nav {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 24px;
+      height: 68px; display: flex; align-items: center;
+      justify-content: space-between; gap: 32px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav-logo-icon {
+      width: 36px; height: 36px; background: var(--sage);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    }
+    .nav-logo-text { font-size: 19px; font-weight: 700; letter-spacing: -0.3px; }
+    .nav-logo-text .accent { color: var(--sage); }
+    .nav-links {
+      display: flex; align-items: center; gap: 28px;
+      list-style: none; flex: 1; justify-content: center;
+    }
+    .nav-links a { color: var(--text-mid); font-size: 15px; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--sage); }
+    .nav-btn {
+      background: var(--sage); color: white; border: none;
+      padding: 9px 20px; border-radius: var(--r-sm);
+      font-size: 14px; font-weight: 600; transition: background .2s;
+    }
+    .nav-btn:hover { background: var(--sage-dark); }
+
+    /* ---- PAGE WRAPPER ---- */
+    .calc-page { padding: 36px 0 72px; }
+    .calc-wrapper { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* ---- BREADCRUMB ---- */
+    .breadcrumb {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; color: var(--text-light);
+      margin-bottom: 24px; flex-wrap: wrap;
+    }
+    .breadcrumb a { color: var(--sage); }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .bc-sep { color: var(--border-mid); }
+
+    /* ---- PAGE HEADER ---- */
+    .page-header { margin-bottom: 28px; }
+    .calc-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 600; color: var(--sage);
+      background: var(--white); padding: 5px 12px;
+      border-radius: 20px; margin-bottom: 12px; letter-spacing: .3px; border: 1px solid var(--border);
+    }
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 42px); font-weight: 700;
+      color: var(--text-dark); letter-spacing: -.5px;
+      margin-bottom: 10px; line-height: 1.15;
+    }
+    .page-header p { font-size: 15px; color: var(--text-mid); line-height: 1.7; max-width: 700px; }
+
+    /* ---- TWO-COLUMN LAYOUT ---- */
+    .calc-columns {
+      display: grid;
+      grid-template-columns: 480px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    /* ---- LEFT: FORM CARD ---- */
+    .form-card {
+      background: white;
+      border-radius: var(--r-xl);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+    .form-card-header {
+      display: flex; align-items: center;
+      justify-content: space-between;
+      padding: 20px 28px 0;
+    }
+    .form-card-title {
+      font-size: 14px; font-weight: 700; color: var(--text-dark);
+    }
+    .form-body { padding: 20px 28px 28px; }
+
+    .input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .field-group { margin-bottom: 16px; }
+    .field-label {
+      display: block; font-size: 13px; font-weight: 600;
+      color: var(--text-dark); margin-bottom: 6px;
+    }
+    .field-hint { font-size: 11px; color: var(--text-light); margin-top: 4px; }
+    .field-input {
+      width: 100%; padding: 11px 14px;
+      border: 1.5px solid var(--border); border-radius: var(--r-sm);
+      font-size: 15px; font-family: inherit; color: var(--text-dark);
+      background: white; transition: border-color .18s, box-shadow .18s;
+      appearance: none; -webkit-appearance: none;
+    }
+    .field-input:focus {
+      outline: none; border-color: var(--sage);
+      box-shadow: 0 0 0 3px rgba(74,124,89,.1);
+    }
+    .field-input::placeholder {
+      color: var(--placeholder);
+      opacity: 1;
+    }
+    .field-select {
+      width: 100%; padding: 11px 14px;
+      border: 1.5px solid var(--border); border-radius: var(--r-sm);
+      font-size: 15px; font-family: inherit; color: var(--text-dark);
+      background: white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234A7C59' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 12px center;
+      appearance: none; -webkit-appearance: none; cursor: pointer;
+      transition: border-color .18s;
+    }
+    .field-select:focus { outline: none; border-color: var(--sage); }
+    .field-select option { color: var(--text-dark); }
+    .field-select option[value=""] { color: var(--placeholder); }
+
+    .calc-btn {
+      width: 100%; background: var(--sage); color: white;
+      border: none; padding: 14px; border-radius: var(--r);
+      font-size: 16px; font-weight: 700; transition: all .18s; margin-top: 6px;
+    }
+    .calc-btn:hover { background: var(--sage-dark); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+    .calc-btn:active { transform: translateY(0); }
+
+    /* ---- RIGHT: RESULTS COLUMN ---- */
+    .results-col { display: flex; flex-direction: column; gap: 20px; }
+
+    /* Result header (shown after calculate) */
+    .result-header {
+      display: none; align-items: baseline; gap: 8px; margin-bottom: 4px;
+    }
+    .result-header.visible { display: flex; }
+    .result-header-label { font-size: 14px; font-weight: 600; color: var(--text-mid); }
+    .result-header-value { font-size: 22px; font-weight: 800; color: var(--text-dark); letter-spacing: -.5px; }
+
+    /* Result card */
+    .result-card {
+      background: white; border-radius: var(--r-xl);
+      box-shadow: var(--shadow-lg); overflow: hidden;
+      display: none;
+    }
+    .result-card.visible { display: block; animation: slideUp .35s ease; }
+    @keyframes slideUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+
+    .result-band { height: 5px; width: 100%; }
+    .result-band.normal { background: linear-gradient(90deg,var(--sage-mid),var(--sage)); }
+
+    .result-body { padding: 24px; }
+
+    /* Timeline display */
+    .timeline-wrap { margin-bottom: 20px; }
+    .timeline-item {
+      display: flex; align-items: center; gap: 14px; margin-bottom: 14px;
+    }
+    .timeline-dot {
+      width: 12px; height: 12px; background: var(--sage);
+      border-radius: 50%; flex-shrink: 0; border: 3px solid white;
+      box-shadow: 0 0 0 1px var(--sage);
+    }
+    .timeline-content {
+      flex: 1;
+    }
+    .timeline-label { font-size: 12px; font-weight: 600; color: var(--text-light); text-transform: uppercase; letter-spacing: .5px; }
+    .timeline-value { font-size: 16px; font-weight: 700; color: var(--text-dark); margin-top: 2px; }
+    .timeline-sub { font-size: 13px; color: var(--text-mid); margin-top: 3px; }
+
+    /* Calendar grid */
+    .calendar-wrap { margin-bottom: 20px; }
+    .calendar-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 12px;
+    }
+    .calendar-month { font-size: 13px; font-weight: 700; color: var(--text-dark); }
+    .calendar-grid {
+      display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px;
+    }
+    .cal-dow { font-size: 11px; font-weight: 600; color: var(--text-light); text-align: center; padding: 6px 0; text-transform: uppercase; letter-spacing: .3px; }
+    .cal-day {
+      aspect-ratio: 1;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; border-radius: 6px; border: 1px solid var(--border);
+      background: white; color: var(--text-light); cursor: default;
+    }
+    .cal-day.in-range { background: var(--sage-light); color: var(--sage); font-weight: 600; }
+    .cal-day.menstrual { background: #FFC3BF; color: #A10000; font-weight: 600; }
+    .cal-day.fertile { background: #FFE1F5; color: #FF6F6F; font-weight: 600; }
+    .cal-day.ovulation { background: #FFE1F5; color: #FF6F6F; font-weight: 600; border: 2px solid #FF6F6F; }
+    .cal-day.other-month { opacity: 0.3; }
+
+    /* Message block */
+    .msg-block {
+      border-radius: var(--r); padding: 18px; margin-bottom: 16px; border-left: 4px solid;
+    }
+    .msg-block.normal { background: var(--sage-pale); border-color: var(--sage); }
+    .msg-block h3 { font-size: 14px; font-weight: 700; margin-bottom: 6px; color: var(--text-dark); }
+    .msg-block p  { font-size: 13px; color: var(--text-mid); line-height: 1.7; }
+
+    .tips-divider { border: none; border-top: 1px solid var(--border); margin: 14px 0; }
+    .tips-title { font-size: 13px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; }
+    .tips-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .tips-list li {
+      display: flex; align-items: flex-start; gap: 8px;
+      font-size: 13px; color: var(--text-mid); line-height: 1.6;
+    }
+    .tips-list li::before {
+      content: '✤'; color: var(--sage); font-size: 10px;
+      margin-top: 3px; flex-shrink: 0;
+    }
+
+    /* Info card */
+    .info-card {
+      background: white; border-radius: var(--r-xl);
+      box-shadow: var(--shadow-sm); padding: 22px 24px;
+    }
+    .info-card h3 { font-size: 14px; font-weight: 700; margin-bottom: 8px; color: var(--text-dark); }
+    .info-card p  { font-size: 13px; color: var(--text-mid); line-height: 1.75; }
+
+    /* Related calculators */
+    .related-section { }
+    .related-title { font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; }
+    .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .related-card {
+      background: white; border: 1.5px solid var(--border);
+      border-radius: var(--r); padding: 14px 16px;
+      display: flex; align-items: center; gap: 12px;
+      transition: all .18s;
+    }
+    .related-card:hover { border-color: var(--sage); box-shadow: var(--shadow-sm); transform: translateY(-1px); }
+    .related-icon {
+      width: 36px; height: 36px; background: var(--sage-light);
+      border-radius: 9px; display: flex; align-items: center;
+      justify-content: center; font-size: 16px; flex-shrink: 0;
+    }
+    .related-info strong { display: block; font-size: 13px; font-weight: 600; }
+    .related-info span  { font-size: 11px; color: var(--text-light); }
+
+    /* Disclaimer */
+    .note-block {
+      background: var(--cream); border-radius: var(--r);
+      padding: 13px 16px; font-size: 12px; color: var(--text-light);
+      line-height: 1.7; display: flex; gap: 8px; align-items: flex-start;
+    }
+    .note-block svg { flex-shrink: 0; margin-top: 1px; }
+
+    /* ---- FOOTER ---- */
+    .site-footer { background: var(--text-dark); color: #94A99A; padding: 48px 0 0; margin-top: 48px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 40px; }
+    .footer-logo {
+      display: flex; align-items: center; gap: 8px;
+      color: white; font-size: 18px; font-weight: 700; margin-bottom: 12px;
+    }
+    .footer-logo-icon {
+      width: 28px; height: 28px; background: var(--sage);
+      border-radius: 7px; display: flex; align-items: center; justify-content: center;
+    }
+    .footer-brand p { font-size: 14px; line-height: 1.7; max-width: 260px; color: #7A958E; }
+    .footer-col h5 {
+      color: white; font-size: 12px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .8px; margin-bottom: 14px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { font-size: 14px; color: #7A958E; transition: color .2s; }
+    .footer-col a:hover { color: white; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.08); padding: 22px 0;
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .footer-disclaimer { font-size: 12px; color: #5A7568; line-height: 1.7; }
+    .footer-copy { font-size: 12px; color: #5A7568; }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 1000px) {
+      .calc-columns { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 900px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 660px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-btn { display: none; }
+      .related-grid { grid-template-columns: 1fr; }
+      .input-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 520px) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  
+    /* ── MOBILE HAMBURGER ────────────────────────────── */
+    .nav-hamburger {
+      display: none; flex-direction: column; justify-content: center; gap: 5px;
+      background: none; border: none; padding: 8px; margin-left: 8px;
+      border-radius: 8px; cursor: pointer; transition: background .15s; flex-shrink: 0;
+    }
+    .nav-hamburger:hover { background: var(--sage-light, #EBF2EC); }
+    .nav-hamburger span {
+      display: block; width: 22px; height: 2.5px;
+      background: var(--text-dark, #1A2E1E); border-radius: 2px; transition: all .2s;
+    }
+    /* ── MOBILE DRAWER ───────────────────────────────── */
+    .mobile-menu { display: none; position: fixed; inset: 0; z-index: 999; }
+    .mobile-menu.open { display: block; }
+    .mobile-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.45); backdrop-filter: blur(2px); }
+    .mobile-drawer {
+      position: absolute; top: 0; right: 0;
+      width: min(300px, 84vw); height: 100%;
+      background: #fff; display: flex; flex-direction: column;
+      box-shadow: -4px 0 40px rgba(0,0,0,.18);
+      animation: drawerIn .22s cubic-bezier(.22,.61,.36,1);
+    }
+    @keyframes drawerIn { from{transform:translateX(100%)} to{transform:translateX(0)} }
+    .mobile-drawer-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 20px 14px; border-bottom: 1px solid var(--border, #E2EBE4);
+    }
+    .mobile-drawer-logo { font-size: 15px; font-weight: 700; color: var(--text-dark, #1A2E1E); }
+    .mobile-close {
+      background: none; border: none; font-size: 20px; padding: 4px 8px;
+      cursor: pointer; color: var(--text-light, #718096); border-radius: 6px; line-height: 1;
+      transition: background .15s, color .15s;
+    }
+    .mobile-close:hover { background: var(--sage-light, #EBF2EC); color: var(--text-dark, #1A2E1E); }
+    .mobile-nav-links { padding: 14px 12px; flex: 1; display: flex; flex-direction: column; gap: 4px; }
+    .mobile-nav-link {
+      display: flex; align-items: center; gap: 14px;
+      padding: 13px 16px; border-radius: 12px;
+      font-size: 16px; font-weight: 600; color: var(--text-dark, #1A2E1E);
+      text-decoration: none; transition: background .15s, color .15s;
+    }
+    .mobile-nav-link:hover { background: var(--sage-light, #EBF2EC); color: var(--sage, #3B6A3A); }
+    .mobile-link-icon {
+      width: 40px; height: 40px; background: var(--sage-light, #EBF2EC);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .mobile-browse-btn {
+      display: block; margin: 0 12px 20px; padding: 14px;
+      background: var(--sage, #3B6A3A); color: #fff; border-radius: 12px;
+      font-size: 15px; font-weight: 700; text-align: center;
+      text-decoration: none; transition: background .15s;
+    }
+    .mobile-browse-btn:hover { background: var(--sage-dark, #0A3D2A); }
+
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <img src="assets/logo.png" alt="SageMyHealth" style="height: 54px; width: auto; object-fit: contain;"/>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html#categories">Calculators</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../blog.html">Health Guides</a></li>
+    </ul>
+    <a href="../index.html#categories" class="nav-btn">Browse All</a>
+    <button class="nav-hamburger" id="nav-hamburger"
+            onclick="openMobileMenu()" aria-label="Open navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site navigation">
+  <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-drawer">
+    <div class="mobile-drawer-head">
+      <span class="mobile-drawer-logo">SageMyHealth</span>
+      <button class="mobile-close" onclick="closeMobileMenu()" aria-label="Close menu">&#x2715;</button>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="../index.html#categories" class="mobile-nav-link" onclick="closeMobileMenu()">
+        <span class="mobile-link-icon">&#x1F9EE;</span>Calculators
+      </a>
+      <a href="../about.html" class="mobile-nav-link" onclick="closeMobileMenu()">
+        <span class="mobile-link-icon">&#x1F49A;</span>About
+      </a>
+      <a href="../blog.html" class="mobile-nav-link" onclick="closeMobileMenu()">
+        <span class="mobile-link-icon">&#x1F4D6;</span>Health Guides
+      </a>
+    </nav>
+    <a href="../index.html#categories" class="mobile-browse-btn" onclick="closeMobileMenu()">Browse All Calculators &#x2192;</a>
+  </div>
+</div>
+
+<!-- PAGE -->
+<main class="calc-page">
+  <div class="calc-wrapper">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="bc-sep">›</span>
+      <a href="../index.html#categories">Women's Health</a>
+      <span class="bc-sep">›</span>
+      <span>Period Calculator</span>
+    </nav>
+
+    <!-- Page header -->
+    <header class="page-header">
+      <div class="calc-tag">🌸 Women's Health</div>
+      <h1>Period Tracker & Calculator</h1>
+      <p>Predict your next period, understand your cycle, and know when to expect fertility windows and key dates. Enter your cycle details below.</p>
+    </header>
+
+    <!-- Two-column layout -->
+    <div class="calc-columns">
+
+      <!-- LEFT: Form -->
+      <div class="form-card">
+        <div class="form-card-header">
+          <span class="form-card-title">Tell us about your cycle</span>
+        </div>
+
+        <div class="form-body">
+          <div class="field-group">
+            <label class="field-label" for="cycle-length">Typical cycle length (days)</label>
+            <input class="field-input" type="number" id="cycle-length" placeholder="28" min="21" max="40" />
+            <p class="field-hint">Average from first day of period to first day of next. Standard is 21–35 days.</p>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="period-length">Period duration (days)</label>
+            <input class="field-input" type="number" id="period-length" placeholder="5" min="2" max="7" />
+            <p class="field-hint">How many days your period typically lasts. Usually 3–7 days.</p>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="last-period">First day of last period</label>
+            <input class="field-input" type="date" id="last-period" />
+            <p class="field-hint">When your last period started. Today or a past date.</p>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="track-months">Show next (months)</label>
+            <select class="field-select" id="track-months">
+              <option value="3">Next 3 months</option>
+              <option value="6">Next 6 months</option>
+              <option value="12">Next 12 months</option>
+            </select>
+          </div>
+
+          <button class="calc-btn" onclick="calculate()">Calculate my cycle</button>
+        </div>
+      </div>
+
+      <!-- RIGHT: Results column -->
+      <div class="results-col">
+
+        <!-- Result header: "Your cycle" -->
+        <div class="result-header" id="result-header">
+          <span class="result-header-label">Your next period:</span>
+          <span class="result-header-value" id="result-header-value">—</span>
+        </div>
+
+        <!-- Result card (hidden until calculated) -->
+        <div class="result-card" id="result-card">
+          <div class="result-band" id="result-band"></div>
+          <div class="result-body">
+
+            <!-- Next 3 key dates (timeline) -->
+            <div class="timeline-wrap">
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <div class="timeline-label">Next period starts</div>
+                  <div class="timeline-value" id="next-period">—</div>
+                  <div class="timeline-sub" id="next-period-days">—</div>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <div class="timeline-label">Ovulation day</div>
+                  <div class="timeline-value" id="ovulation-date">—</div>
+                  <div class="timeline-sub" id="ovulation-days">—</div>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <div class="timeline-label">Fertile window begins</div>
+                  <div class="timeline-value" id="fertile-start">—</div>
+                  <div class="timeline-sub" id="fertile-start-days">—</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Calendar view -->
+            <div class="calendar-wrap">
+              <div id="calendar-container"></div>
+            </div>
+
+            <!-- Message -->
+            <div class="msg-block" id="msg-block">
+              <h3 id="msg-heading">—</h3>
+              <p id="msg-body">—</p>
+            </div>
+
+            <!-- Tips -->
+            <hr class="tips-divider" id="tips-divider" style="display:none" />
+            <p class="tips-title" id="tips-title" style="display:none">Track your cycle:</p>
+            <ul class="tips-list" id="tips-list"></ul>
+
+          </div>
+        </div>
+
+        <!-- What is a menstrual cycle? -->
+        <div class="info-card">
+          <h3>What is a menstrual cycle?</h3>
+          <p>Your menstrual cycle is the monthly process your body goes through to prepare for pregnancy. It typically lasts 21–35 days and has four phases: menstruation (period), follicular, ovulation, and luteal. Cycle tracking helps you understand your body's natural rhythm and predict when your next period, ovulation, and fertile window will occur.</p>
+        </div>
+
+        <!-- Related calculators -->
+        <div class="related-section">
+          <p class="related-title">You might also like</p>
+          <div class="related-grid">
+            <a href="period-tracker.html" class="related-card">
+              <div class="related-icon">🌗</div>
+              <div class="related-info"><strong>Ovulation Window</strong><span>Your fertility days</span></div>
+            </a>
+            <a href="due-date.html" class="related-card">
+              <div class="related-icon">🤰</div>
+              <div class="related-info"><strong>Due Date</strong><span>When baby's due</span></div>
+            </a>
+            <a href="iron-deficiency.html" class="related-card">
+              <div class="related-icon">🩸</div>
+              <div class="related-info"><strong>Iron Deficiency Risk</strong><span>Heavy periods & fatigue</span></div>
+            </a>
+            <a href="anxiety-score.html" class="related-card">
+              <div class="related-icon">⚗️</div>
+              <div class="related-info"><strong>PCOS Risk Score</strong><span>Check your symptoms</span></div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="note-block">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#9CA3AF" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          <span><strong>NOTE:</strong> This calculator uses standard averages and may not account for irregular cycles, hormonal contraceptives, or individual variations. Cycles can be affected by stress, illness, exercise, and other factors. Use this as a guide, not a guarantee.</span>
+        </div>
+
+      </div><!-- end results-col -->
+    </div><!-- end calc-columns -->
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="assets/logo-white.png" alt="SageMyHealth" style="height: 45px; width: auto; object-fit: contain;"/>
+        </div>
+        <p>Free, trusted health calculators with warm guidance — helping you understand your numbers.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Calculators</h5>
+        <ul>
+          <li><a href="bmi.html">BMI</a></li>
+          <li><a href="tdee.html">Daily Calories</a></li>
+          <li><a href="period-tracker.html">Period Tracker</a></li>
+          <li><a href="blood-glucose.html">Blood Glucose</a></li>
+          <li><a href="heart-rate.html">Heart Rate</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Categories</h5>
+        <ul>
+          <li><a href="../index.html#categories">Weight &amp; Body</a></li>
+          <li><a href="../index.html#categories">Women's Health</a></li>
+          <li><a href="../index.html#categories">Mental Health</a></li>
+          <li><a href="../index.html#categories">Nutrition</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Info</h5>
+        <ul>
+          <li><a href="../about.html">About Us</a></li>
+          <li><a href="../privacy.html">Privacy Policy</a></li>
+          <li><a href="../terms.html">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-disclaimer"><strong style="color:#7A958E">Medical Disclaimer:</strong> This calculator is for informational and educational purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider with questions about your menstrual health.</p>
+      <p class="footer-copy">© 2025 SageMyHealth.com — All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function formatDate(d) {
+    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    return months[d.getMonth()] + ' ' + d.getDate();
+  }
+
+  function daysBetween(d1, d2) {
+    var ms = d2 - d1;
+    return Math.floor(ms / (1000 * 60 * 60 * 24));
+  }
+
+  function daysUntil(d) {
+    var today = new Date();
+    today.setHours(0, 0, 0, 0);
+    d.setHours(0, 0, 0, 0);
+    var days = daysBetween(today, d);
+    if (days === 0) return 'Today';
+    if (days === 1) return 'Tomorrow';
+    if (days < 0) return Math.abs(days) + ' days ago';
+    return 'In ' + days + ' days';
+  }
+
+  function renderCalendar(lastPeriodDate, cycleLength, periodLength, monthsToShow) {
+    var container = document.getElementById('calendar-container');
+    container.innerHTML = '';
+
+    var today = new Date();
+    var currentDate = new Date(today);
+    currentDate.setMonth(currentDate.getMonth() - 1); // Start from 1 month ago
+
+    for (var m = 0; m < monthsToShow; m++) {
+      var year = currentDate.getFullYear();
+      var month = currentDate.getMonth();
+      var firstDay = new Date(year, month, 1);
+      var lastDay = new Date(year, month + 1, 0);
+      var daysInMonth = lastDay.getDate();
+      var startingDayOfWeek = firstDay.getDay();
+
+      // Month header
+      var header = document.createElement('div');
+      header.className = 'calendar-header';
+      var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      header.innerHTML = '<div class="calendar-month">' + months[month] + ' ' + year + '</div>';
+      container.appendChild(header);
+
+      // Day of week headers
+      var dow = document.createElement('div');
+      dow.className = 'calendar-grid';
+      ['S', 'M', 'T', 'W', 'T', 'F', 'S'].forEach(function(d) {
+        var dayEl = document.createElement('div');
+        dayEl.className = 'cal-dow';
+        dayEl.textContent = d;
+        dow.appendChild(dayEl);
+      });
+      container.appendChild(dow);
+
+      // Calendar days
+      var grid = document.createElement('div');
+      grid.className = 'calendar-grid';
+
+      // Empty cells before month starts
+      for (var i = 0; i < startingDayOfWeek; i++) {
+        var empty = document.createElement('div');
+        empty.className = 'cal-day other-month';
+        empty.textContent = '';
+        grid.appendChild(empty);
+      }
+
+      // Days of month
+      for (var d = 1; d <= daysInMonth; d++) {
+        var dayEl = document.createElement('div');
+        var cellDate = new Date(year, month, d);
+
+        // Calculate which phase this day is in relative to last period
+        var daysSinceLastPeriod = daysBetween(lastPeriodDate, cellDate);
+        var dayInCycle = daysSinceLastPeriod % cycleLength;
+
+        dayEl.className = 'cal-day';
+        dayEl.textContent = d;
+
+        // Menstrual phase (first ~5 days)
+        if (dayInCycle >= 0 && dayInCycle < periodLength) {
+          dayEl.classList.add('menstrual');
+        }
+        // Ovulation window (usually around day 12–16 of 28-day cycle)
+        else if (dayInCycle >= (cycleLength - 17) && dayInCycle <= (cycleLength - 11)) {
+          dayEl.classList.add('fertile');
+        }
+        // Ovulation day (approximately 14 days before next period)
+        else if (dayInCycle === Math.round(cycleLength - 14)) {
+          dayEl.classList.add('ovulation');
+        }
+        // Rest of cycle
+        else if (dayInCycle >= periodLength && dayInCycle < cycleLength) {
+          dayEl.classList.add('in-range');
+        }
+
+        grid.appendChild(dayEl);
+      }
+
+      container.appendChild(grid);
+      currentDate.setMonth(currentDate.getMonth() + 1);
+    }
+
+    // Legend
+    var legend = document.createElement('div');
+    legend.style.marginTop = '16px';
+    legend.style.fontSize = '12px';
+    legend.style.lineHeight = '1.8';
+    legend.style.color = 'var(--text-mid)';
+    legend.innerHTML = '<div style="display:flex; gap:16px; flex-wrap:wrap;">' +
+      '<div><span style="display:inline-block; width:12px; height:12px; background:#FFC3BF; border-radius:3px; margin-right:6px;"></span>Menstrual period</div>' +
+      '<div><span style="display:inline-block; width:12px; height:12px; background:#FFE1F5; border-radius:3px; margin-right:6px;"></span>Fertile window</div>' +
+      '<div><span style="display:inline-block; width:12px; height:12px; background:#E2EBE4; border-radius:3px; margin-right:6px;"></span>Other days</div>' +
+      '</div>';
+    container.appendChild(legend);
+  }
+
+  function calculate() {
+    var cycleLength = parseFloat(document.getElementById('cycle-length').value);
+    var periodLength = parseFloat(document.getElementById('period-length').value);
+    var lastPeriodStr = document.getElementById('last-period').value;
+    var trackMonths = parseInt(document.getElementById('track-months').value);
+
+    if (!cycleLength || !periodLength || !lastPeriodStr) {
+      alert('Please fill in all fields to calculate your cycle.');
+      return;
+    }
+
+    // Parse date
+    var parts = lastPeriodStr.split('-');
+    var lastPeriodDate = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+
+    // Calculate key dates
+    var nextPeriodDate = new Date(lastPeriodDate);
+    nextPeriodDate.setDate(nextPeriodDate.getDate() + cycleLength);
+
+    var ovulationDate = new Date(lastPeriodDate);
+    ovulationDate.setDate(ovulationDate.getDate() + Math.round(cycleLength - 14)); // Usually 14 days before next period
+
+    var fertileStartDate = new Date(ovulationDate);
+    fertileStartDate.setDate(fertileStartDate.getDate() - 5); // 5 days before ovulation
+
+    // Show result header
+    document.getElementById('result-header').classList.add('visible');
+    document.getElementById('result-header-value').textContent = formatDate(nextPeriodDate);
+
+    // Show result card
+    var card = document.getElementById('result-card');
+    card.classList.add('visible');
+
+    // Set band color
+    document.getElementById('result-band').className = 'result-band normal';
+
+    // Populate timeline
+    document.getElementById('next-period').textContent = formatDate(nextPeriodDate);
+    document.getElementById('next-period-days').textContent = daysUntil(nextPeriodDate);
+
+    document.getElementById('ovulation-date').textContent = formatDate(ovulationDate);
+    document.getElementById('ovulation-days').textContent = daysUntil(ovulationDate);
+
+    document.getElementById('fertile-start').textContent = formatDate(fertileStartDate);
+    document.getElementById('fertile-start-days').textContent = daysUntil(fertileStartDate);
+
+    // Render calendar
+    renderCalendar(lastPeriodDate, cycleLength, periodLength, trackMonths);
+
+    // Message
+    var mb = document.getElementById('msg-block');
+    mb.className = 'msg-block normal';
+    document.getElementById('msg-heading').textContent = 'Your cycle is being tracked. 🌸';
+    document.getElementById('msg-body').textContent = 'Your menstrual cycle is unique to you. These predictions are based on your reported cycle length and may shift if your body runs slightly longer or shorter. If you notice patterns or changes over several cycles, note them—it helps you understand your normal rhythm.';
+
+    // Tips
+    var tips = [
+      'Track your actual period dates in an app or calendar to refine predictions over time.',
+      'Your fertile window is most predictable 5 days before ovulation through ovulation day.',
+      'Cycle length can shift by a few days due to stress, travel, exercise, sleep, and illness.',
+      'If your cycles are irregular (vary by 5+ days), these estimates are less reliable—chat with your doctor.'
+    ];
+
+    var tl = document.getElementById('tips-list');
+    tl.innerHTML = '';
+    tips.forEach(function(t) {
+      var li = document.createElement('li');
+      li.textContent = t;
+      tl.appendChild(li);
+    });
+
+    document.getElementById('tips-divider').style.display = 'block';
+    document.getElementById('tips-title').style.display = 'block';
+  }
+</script>
+
+
+<script>
+  /* Mobile menu */
+  function openMobileMenu() {
+    document.getElementById('mobile-menu').classList.add('open');
+    document.getElementById('nav-hamburger').setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.getElementById('nav-hamburger').setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMobileMenu(); });
+</script>
+</body>
+</html>

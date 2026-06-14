@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X6K2H9YW2V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X6K2H9YW2V');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Burnout Risk Score — SageMyHealth</title>
+  <meta name="description" content="Take the 10-question burnout risk assessment based on the Oldenburg Burnout Inventory. Find out if you're at risk of emotional exhaustion and disengagement — and what to do about it." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sage:        #3B6A3A;
+      --sage-dark:   #0A3D2A;
+      --sage-mid:    #5C8A5C;
+      --sage-light:  #EBF2EC;
+      --sage-pale:   #F2F7F3;
+      --cream:       #E3FFB3;
+      --white:       #FFFFFF;
+      --text-dark:   #1A2E1E;
+      --text-mid:    #4A5568;
+      --text-light:  #718096;
+      --border:      #E2EBE4;
+      --border-mid:  #C8D9CC;
+      --shadow-xs:   0 1px 2px rgba(59,106,58,0.06);
+      --shadow-sm:   0 1px 6px rgba(59,106,58,0.08);
+      --shadow-md:   0 4px 16px rgba(59,106,58,0.12);
+      --shadow-lg:   0 8px 32px rgba(59,106,58,0.16);
+      --r-sm: 8px; --r: 12px; --r-lg: 20px; --r-xl: 28px;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text-dark); background: var(--sage-pale); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; }
+
+    /* NAV */
+    .site-nav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.96); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; flex: 1; justify-content: center; }
+    .nav-links a { color: var(--text-mid); font-size: 15px; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--sage); }
+    .nav-btn { background: var(--sage); color: white; border: none; padding: 9px 20px; border-radius: var(--r-sm); font-size: 14px; font-weight: 600; transition: background .2s; }
+    .nav-btn:hover { background: var(--sage-dark); }
+
+    /* PAGE */
+    .calc-page { padding: 36px 0 72px; }
+    .calc-wrapper { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* BREADCRUMB */
+    .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-light); margin-bottom: 24px; flex-wrap: wrap; }
+    .breadcrumb a { color: var(--sage); }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .bc-sep { color: var(--border-mid); }
+
+    /* PAGE HEADER */
+    .page-header { margin-bottom: 28px; }
+    .calc-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--sage); background: var(--white); padding: 5px 12px; border-radius: 20px; margin-bottom: 12px; letter-spacing: .3px; border: 1px solid var(--border); }
+    .page-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 42px); font-weight: 700; color: var(--text-dark); letter-spacing: -.5px; margin-bottom: 10px; line-height: 1.15; }
+    .page-header p { font-size: 15px; color: var(--text-mid); line-height: 1.7; max-width: 700px; }
+
+    /* TWO-COLUMN LAYOUT */
+    .calc-wrapper-inner { display: grid; grid-template-columns: 480px 1fr; gap: 24px; align-items: start; }
+
+    /* FORM CARD */
+    .form-card { background: white; border-radius: var(--r-xl); box-shadow: var(--shadow-lg); overflow: hidden; }
+    .form-card-header { padding: 24px 28px 0; }
+    .form-card-title { font-size: 15px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
+    .form-card-sub { font-size: 13px; color: var(--text-light); margin-bottom: 16px; }
+    .form-body { padding: 0 28px 28px; }
+
+    /* DOMAIN SECTION */
+    .domain-label { display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .7px; color: var(--text-light); margin-bottom: 10px; margin-top: 18px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+    .domain-label .domain-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+    /* QUESTION */
+    .question { margin-bottom: 14px; }
+    .q-text { font-size: 13px; font-weight: 500; color: var(--text-dark); line-height: 1.6; margin-bottom: 8px; }
+    .q-num { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; background: var(--sage-light); border-radius: 50%; font-size: 10px; font-weight: 700; color: var(--sage); flex-shrink: 0; margin-right: 6px; }
+
+    /* RADIO OPTIONS */
+    .options { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; }
+    .option-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .option-item input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
+    .option-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; padding: 8px 4px 6px; border-radius: var(--r-sm); border: 1.5px solid var(--border); cursor: pointer; transition: all .15s; background: white; text-align: center; gap: 2px; }
+    .option-btn .opt-val { font-size: 15px; font-weight: 700; color: var(--text-mid); line-height: 1; }
+    .option-btn .opt-lab { font-size: 9px; font-weight: 500; color: var(--text-light); letter-spacing: .2px; line-height: 1.2; text-align: center; }
+    .option-item input[type="radio"]:checked + .option-btn { border-color: var(--sage); background: var(--sage-light); }
+    .option-item input[type="radio"]:checked + .option-btn .opt-val { color: var(--sage); }
+    .option-item input[type="radio"]:checked + .option-btn .opt-lab { color: var(--sage-mid); }
+    .option-btn:hover { border-color: var(--sage-mid); background: var(--sage-pale); }
+
+    /* Progress */
+    .progress-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+    .progress-label { font-size: 12px; color: var(--text-light); }
+    .progress-bar { height: 4px; background: var(--sage-light); border-radius: 4px; margin-bottom: 18px; }
+    .progress-fill { height: 100%; background: var(--sage); border-radius: 4px; transition: width .3s; }
+
+    .calc-btn { width: 100%; background: var(--sage); color: white; border: none; padding: 14px; border-radius: var(--r); font-size: 16px; font-weight: 700; transition: all .18s; margin-top: 4px; }
+    .calc-btn:hover { background: var(--sage-dark); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+    .calc-btn:active { transform: translateY(0); }
+    .err-banner { display: none; background: #FEF2F2; border: 1px solid #FECACA; border-radius: var(--r-sm); padding: 10px 14px; font-size: 13px; color: #DC2626; margin-bottom: 12px; font-weight: 500; }
+
+    /* RESULTS COL */
+    .results-col { display: flex; flex-direction: column; gap: 20px; }
+
+    /* RESULT CARD */
+    .result-card { background: white; border-radius: var(--r-xl); box-shadow: var(--shadow-lg); overflow: hidden; display: none; }
+    .result-card.visible { display: block; animation: slideUp .35s ease; }
+    @keyframes slideUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+    .result-band { height: 6px; width: 100%; }
+    .result-body { padding: 24px; }
+
+    /* Score display */
+    .score-display { display: flex; align-items: flex-end; justify-content: center; gap: 4px; margin-bottom: 8px; }
+    .score-num { font-size: 72px; font-weight: 800; line-height: 1; letter-spacing: -3px; }
+    .score-denom { font-size: 24px; font-weight: 400; color: var(--text-light); padding-bottom: 10px; }
+
+    .score-label { text-align: center; font-size: 13px; color: var(--text-light); margin-bottom: 20px; }
+
+    /* Severity */
+    .sev-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+    .sev-box { border-radius: var(--r-sm); padding: 10px 6px; text-align: center; border: 1.5px solid transparent; }
+    .sev-box .sev-name { font-size: 11px; font-weight: 700; margin-bottom: 2px; }
+    .sev-box .sev-range { font-size: 10px; }
+
+    /* Severity colors */
+    .sev-low     { background: #F0FDF4; color: #16A34A; }
+    .sev-low.active { border-color: #16A34A; }
+    .sev-moderate{ background: #FEFCE8; color: #CA8A04; }
+    .sev-moderate.active { border-color: #CA8A04; }
+    .sev-high    { background: #FFF7ED; color: #EA580C; }
+    .sev-high.active { border-color: #EA580C; }
+    .sev-severe  { background: #FEF2F2; color: #DC2626; }
+    .sev-severe.active { border-color: #DC2626; }
+
+    /* Domain breakdown */
+    .domain-breakdown { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+    .domain-card { background: var(--sage-pale); border-radius: var(--r); padding: 14px; }
+    .domain-card-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--text-light); margin-bottom: 4px; }
+    .domain-card-name  { font-size: 13px; font-weight: 600; color: var(--text-dark); margin-bottom: 8px; }
+    .domain-score-row  { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
+    .domain-score-num  { font-size: 20px; font-weight: 800; }
+    .domain-score-max  { font-size: 12px; color: var(--text-light); }
+    .domain-bar        { height: 5px; background: var(--border); border-radius: 5px; overflow: hidden; }
+    .domain-bar-fill   { height: 100%; border-radius: 5px; transition: width .5s; }
+
+    /* Message */
+    .msg-block { border-radius: var(--r); padding: 18px; margin-bottom: 16px; border-left: 4px solid; }
+    .msg-block h3 { font-size: 14px; font-weight: 700; margin-bottom: 6px; color: var(--text-dark); }
+    .msg-block p  { font-size: 13px; color: var(--text-mid); line-height: 1.7; }
+
+    .tips-title { font-size: 13px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; }
+    .tips-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .tips-list li { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+    .tips-list li::before { content: '✤'; color: var(--sage); font-size: 10px; margin-top: 3px; flex-shrink: 0; }
+
+    /* INFO CARDS */
+    .info-card { background: white; border-radius: var(--r-xl); box-shadow: var(--shadow-sm); padding: 22px 24px; }
+    .info-card h3 { font-size: 14px; font-weight: 700; margin-bottom: 8px; color: var(--text-dark); }
+    .info-card p  { font-size: 13px; color: var(--text-mid); line-height: 1.75; }
+    .info-card p + p { margin-top: 10px; }
+
+    /* Warning signs */
+    .signs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .sign-chip { background: var(--sage-pale); border-radius: var(--r-sm); padding: 10px 12px; font-size: 12px; color: var(--text-mid); display: flex; align-items: flex-start; gap: 8px; line-height: 1.4; }
+    .sign-chip::before { content: '⚠'; font-size: 11px; flex-shrink: 0; margin-top: 1px; }
+
+    /* RELATED */
+    .related-title { font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; }
+    .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .related-card { background: white; border: 1.5px solid var(--border); border-radius: var(--r); padding: 14px 16px; display: flex; align-items: center; gap: 12px; transition: all .18s; }
+    .related-card:hover { border-color: var(--sage); box-shadow: var(--shadow-sm); transform: translateY(-1px); }
+    .related-icon { width: 36px; height: 36px; background: var(--sage-light); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+    .related-info strong { display: block; font-size: 13px; font-weight: 600; }
+    .related-info span  { font-size: 11px; color: var(--text-light); }
+
+    /* DISCLAIMER */
+    .note-block { background: var(--cream); border-radius: var(--r); padding: 13px 16px; font-size: 12px; color: var(--text-light); line-height: 1.7; display: flex; gap: 8px; align-items: flex-start; }
+    .note-block svg { flex-shrink: 0; margin-top: 1px; }
+
+    /* Band colors */
+    .band-low      { background: linear-gradient(90deg, #4ADE80, #16A34A); }
+    .band-moderate { background: linear-gradient(90deg, #FDE68A, #D97706); }
+    .band-high     { background: linear-gradient(90deg, #FB923C, #EA580C); }
+    .band-severe   { background: linear-gradient(90deg, #F87171, #DC2626); }
+
+    /* Score colors */
+    .score-low      { color: #16A34A; }
+    .score-moderate { color: #D97706; }
+    .score-high     { color: #EA580C; }
+    .score-severe   { color: #DC2626; }
+
+    /* Msg backgrounds */
+    .msg-low      { background: #F0FDF4; border-left-color: #16A34A !important; }
+    .msg-moderate { background: #FEFCE8; border-left-color: #CA8A04 !important; }
+    .msg-high     { background: #FFF7ED; border-left-color: #EA580C !important; }
+    .msg-severe   { background: #FEF2F2; border-left-color: #DC2626 !important; }
+
+    /* FOOTER */
+    .site-footer { background: var(--text-dark); color: #94A99A; padding: 48px 0 0; margin-top: 48px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 40px; }
+    .footer-logo { display: flex; align-items: center; gap: 8px; color: white; font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+    .footer-brand p { font-size: 14px; line-height: 1.7; max-width: 260px; color: #7A958E; }
+    .footer-col h5 { color: white; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; margin-bottom: 14px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { font-size: 14px; color: #7A958E; transition: color .2s; }
+    .footer-col a:hover { color: white; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding: 22px 0; display: flex; flex-direction: column; gap: 6px; }
+    .footer-disclaimer { font-size: 12px; color: #5A7568; line-height: 1.7; }
+    .footer-copy { font-size: 12px; color: #5A7568; }
+
+    @media (max-width: 900px) {
+      .calc-wrapper-inner { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 660px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-btn { display: none; }
+      .related-grid { grid-template-columns: 1fr; }
+      .sev-row { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 520px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .domain-breakdown { grid-template-columns: 1fr; }
+      .signs-grid { grid-template-columns: 1fr; }
+    }
+  
+    /* ── MOBILE HAMBURGER ────────────────────────────── */
+    .nav-hamburger {
+      display: none; flex-direction: column; justify-content: center; gap: 5px;
+      background: none; border: none; padding: 8px; margin-left: 8px;
+      border-radius: 8px; cursor: pointer; transition: background .15s; flex-shrink: 0;
+    }
+    .nav-hamburger:hover { background: var(--sage-light, #EBF2EC); }
+    .nav-hamburger span {
+      display: block; width: 22px; height: 2.5px;
+      background: var(--text-dark, #1A2E1E); border-radius: 2px; transition: all .2s;
+    }
+    /* ── MOBILE DRAWER ───────────────────────────────── */
+    .mobile-menu { display: none; position: fixed; inset: 0; z-index: 999; }
+    .mobile-menu.open { display: block; }
+    .mobile-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.45); backdrop-filter: blur(2px); }
+    .mobile-drawer {
+      position: absolute; top: 0; right: 0;
+      width: min(300px, 84vw); height: 100%;
+      background: #fff; display: flex; flex-direction: column;
+      box-shadow: -4px 0 40px rgba(0,0,0,.18);
+      animation: drawerIn .22s cubic-bezier(.22,.61,.36,1);
+    }
+    @keyframes drawerIn { from{transform:translateX(100%)} to{transform:translateX(0)} }
+    .mobile-drawer-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 20px 14px; border-bottom: 1px solid var(--border, #E2EBE4);
+    }
+    .mobile-drawer-logo { font-size: 15px; font-weight: 700; color: var(--text-dark, #1A2E1E); }
+    .mobile-close {
+      background: none; border: none; font-size: 20px; padding: 4px 8px;
+      cursor: pointer; color: var(--text-light, #718096); border-radius: 6px; line-height: 1;
+      transition: background .15s, color .15s;
+    }
+    .mobile-close:hover { background: var(--sage-light, #EBF2EC); color: var(--text-dark, #1A2E1E); }
+    .mobile-nav-links { padding: 14px 12px; flex: 1; display: flex; flex-direction: column; gap: 4px; }
+    .mobile-nav-link {
+      display: flex; align-items: center; gap: 14px;
+      padding: 13px 16px; border-radius: 12px;
+      font-size: 16px; font-weight: 600; color: var(--text-dark, #1A2E1E);
+      text-decoration: none; transition: background .15s, color .15s;
+    }
+    .mobile-nav-link:hover { background: var(--sage-light, #EBF2EC); color: var(--sage, #3B6A3A); }
+    .mobile-link-icon {
+      width: 40px; height: 40px; background: var(--sage-light, #EBF2EC);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .mobile-browse-btn {
+      display: block; margin: 0 12px 20px; padding: 14px;
+      background: var(--sage, #3B6A3A); color: #fff; border-radius: 12px;
+      font-size: 15px; font-weight: 700; text-align: center;
+      text-decoration: none; transition: background .15s;
+    }
+    .mobile-browse-btn:hover { background: var(--sage-dark, #0A3D2A); }
+
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <img src="assets/logo.png" alt="SageMyHealth" style="height:54px;width:auto;object-fit:contain;" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html#categories">Calculators</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../blog.html">Health Guides</a></li>
+    </ul>
+    <a href="../index.html#categories" class="nav-btn">Browse All</a>
+    <button class="nav-hamburger" id="nav-hamburger"
+            onclick="openMobileMenu()" aria-label="Open navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site navigation">
+  <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-drawer">
+    <div class="mobile-drawer-head">
+      <span class="mobile-drawer-logo">SageMyHealth</span>
+      <button class="mobile-close" onclick="closeMobileMenu()" aria-label="Close menu">&#x2715;</button>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="../index.html#categories" class="mobile-nav-link" onclick="closeMobileMenu()">
+        <span class="mobile-link-icon">&#x1F9EE;</span>Calculators
+      </a>
+      <a href="../about.html" class="mobile-nav-link" onclick="closeMobileMenu()">
+        <span class="mobile-link-icon">&#x1F49A;</span>About
+      </a>
+      <a href="../blog.html" class="mobile-nav-link" onclick="closeMobileMenu()">
+        <span class="mobile-link-icon">&#x1F4D6;</span>Health Guides
+      </a>
+    </nav>
+    <a href="../index.html#categories" class="mobile-browse-btn" onclick="closeMobileMenu()">Browse All Calculators &#x2192;</a>
+  </div>
+</div>
+
+<!-- PAGE -->
+<main class="calc-page">
+  <div class="calc-wrapper">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="bc-sep">›</span>
+      <a href="../index.html#categories">Mental Health</a>
+      <span class="bc-sep">›</span>
+      <span>Burnout Risk Score</span>
+    </nav>
+
+    <header class="page-header">
+      <div class="calc-tag">🧠 Mental Health</div>
+      <h1>Burnout Risk Score</h1>
+      <p>Answer 10 questions about how you've been feeling over the past two weeks. This assessment measures the two core dimensions of burnout — emotional exhaustion and disengagement — based on the Oldenburg Burnout Inventory (OLBI) framework.</p>
+    </header>
+
+    <div class="calc-wrapper-inner">
+
+      <!-- FORM CARD -->
+      <div class="form-card">
+        <div class="form-card-header">
+          <div class="form-card-title">How have you been feeling?</div>
+          <div class="form-card-sub">Think about the past 2 weeks. Rate each statement honestly — there are no right or wrong answers.</div>
+          <div class="progress-row">
+            <span class="progress-label" id="prog-label">0 of 10 answered</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="prog-fill" style="width:0%"></div>
+          </div>
+        </div>
+        <div class="form-body">
+
+          <div class="domain-label">
+            <div class="domain-dot" style="background:#EA580C"></div>
+            Domain 1 — Emotional Exhaustion
+          </div>
+
+          <div class="question" id="q-wrap-1">
+            <div class="q-text"><span class="q-num">1</span>I feel emotionally drained by my work.</div>
+            <div class="options" id="opts-1">
+              <div class="option-item"><input type="radio" name="q1" id="q1-0" value="0" onchange="onAnswer()"><label for="q1-0" class="option-btn"><span class="opt-val">0</span><span class="opt-lab">Never</span></label></div>
+              <div class="option-item"><input type="radio" name="q1" id="q1-1" value="1" onchange="onAnswer()"><label for="q1-1" class="option-btn"><span class="opt-val">1</span><span class="opt-lab">Rarely</span></label></div>
+              <div class="option-item"><input type="radio" name="q1" id="q1-2" value="2" onchange="onAnswer()"><label for="q1-2" class="option-btn"><span class="opt-val">2</span><span class="opt-lab">Sometimes</span></label></div>
+              <div class="option-item"><input type="radio" name="q1" id="q1-3" value="3" onchange="onAnswer()"><label for="q1-3" class="option-btn"><span class="opt-val">3</span><span class="opt-lab">Often</span></label></div>
+              <div class="option-item"><input type="radio" name="q1" id="q1-4" value="4" onchange="onAnswer()"><label for="q1-4" class="option-btn"><span class="opt-val">4</span><span class="opt-lab">Always</span></label></div>
+            </div>
+          </div>
+
+          <div class="question" id="q-wrap-2">
+            <div class="q-text"><span class="q-num">2</span>At the end of the day, I feel completely used up.</div>
+            <div class="options" id="opts-2">
+              <div class="option-item"><input type="radio" name="q2" id="q2-0" value="0" onchange="onAnswer()"><label for="q2-0" class="option-btn"><span class="opt-val">0</span><span class="opt-lab">Never</span></label></div>
+              <div class="option-item"><input type="radio" name="q2" id="q2-1" value="1" onchange="onAnswer()"><label for="q2-1" class="option-btn"><span class="opt-val">1</span><span class="opt-lab">Rarely</span></label></div>
+              <div class="option-item"><input type="radio" name="q2" id="q2-2" value="2" onchange="onAnswer()"><label for="q2-2" class="option-btn"><span class="opt-val">2</span><span class="opt-lab">Sometimes</span></label></div>
+              <div class="option-item"><input type="radio" name="q2" id="q2-3" value="3" onchange="onAnswer()"><label for="q2-3" class="option-btn"><span class="opt-val">3</span><span class="opt-lab">Often</span></label></div>
+              <div class="option-item"><input type="radio" name="q2" id="q2-4" value="4" onchange="onAnswer()"><label for="q2-4" class="option-btn"><span class="opt-val">4</span><span class="opt-lab">Always</span></label></div>
+            </div>
+          </div>
+
+          <div class="question" id="q-wrap-3">
+            <div class="q-text"><span class="q-num">3</span>I feel burned out from my work.</div>
+            <div class="options" id="opts-3">
+              <div class="option-item"><input type="radio" name="q3" id="q3-0" value="0" onchange="onAnswer()"><label for="q3-0" class="option-btn"><span class="opt-val">0</span><span class="opt-lab">Never</span></label></div>
+              <div class="option-item"><input type="radio" name="q3" id="q3-1" value="1" onchange="onAnswer()"><label for="q3-1" class="option-btn"><span class="opt-val">1</span><span class="opt-lab">Rarely</span></label></div>
+              <div class="option-item"><input type="radio" name="q3" id="q3-2" value="2" onchange="onAnswer()"><label for="q3-2" class="option-btn"><span class="opt-val">2</span><span class="opt-lab">Sometimes</span></label></div>
+              <div class="option-item"><input type="radio" name="q3" id="q3-3" value="3" onchange="onAnswer()"><label for="q3-3" class="option-btn"><span class="opt-val">3</span><span class="opt-lab">Often</span></label></div>
+              <div class="option-item"><input type="radio" name="q3" id="q3-4" value="4" onchange="onAnswer()"><label for="q3-4" class="option-btn"><span class="opt-val">4</span><span class="opt-lab">Always</span></label></div>
+            </div>
+          </div>
+
+          <div class="question" id="q-wrap-4">
+            <div class="q-text"><span class="q-num">4</span>I feel fatigued when I wake up in the morning and have to face another day at work.</div>
+            <div class="options" id="opts-4">
+              <div class="option-item"><input type="radio" name="q4" id="q4-0" value="0" onchange="onAnswer()"><label for="q4-0" class="option-btn"><span class="opt-val">0</span><span class="opt-lab">Never</span></label></div>
+              <div class="option-item"><input type="radio" name="q4" id="q4-1" value="1" onchange="onAnswer()"><label for="q4-1" class="option-btn"><span class="opt-val">1</span><span class="opt-lab">Rarely</span></label></div>
+              <div class="option-item"><input type="radio" name="q4" id="q4-2" value="2" onchange="onAnswer()"><label for="q4-2" class="option-btn"><span class="opt-val">2</span><span class="opt-lab">Sometimes</span></label></div>
+              <div class="option-item"><input type="radio" name="q4" id="q4-3" value="3" onchange="onAnswer()"><label for="q4-3" class="option-btn"><span class="opt-val">3</span><span class="opt-lab">Often</span></label></div>
+              <div class="option-item"><input type="radio" name="q4" id="q4-4" value="4" onchange="onAnswer()"><label for="q4-4" class="option-btn"><span class="opt-val">4</span><span class="opt-lab">Always</span></label></div>
+            </div>
+          </div>
+
+          <div class="question" id="q-wrap-5">
+            <div class="q-text"><span class="q-num">5</span>I feel cynical or detached from the people I work with or for.</div>
+            <div class="options" id="opts-5">
+              <div class="option-item"><input type="radio" name="q5" id="q5-0" value="0" onchange="onAnswer()"><label for="q5-0" class="option-btn"><span class="opt-val">0</span><span class="opt-lab">Never</span></label></div>
+              <div class="option-item"><input type="radio" name="q5" id="q5-1" value="1" onchange="onAnswer()"><label for="q5-1" class="option-btn"><span class="opt-val">1</span><span class="opt-lab">Rarely</span></label></div>
+              <div class="option-item"><input type="radio" name="q5" id="q5-2" value="2" onchange="onAnswer()"><label for="q5-2" class="option-btn"><span class="opt-val">2</span><span class="opt-lab">Sometimes</span></label></div>
+              <div class="option-item"><input type="radio" name="q5" id="q5-3" value="3" onchange="onAnswer()"><label for="q5-3" class="option-btn"><span class="opt-val">3</span><span class="opt-lab">Often</span></label></div>
+              <div class="option-item"><input type="radio" name="q5" id="q5-4" value="4" onchange="onAnswer()"><label for="q5-4" class="option-btn"><span class="opt-val">4</span><span class="opt-lab">Always</span></label></div>
+            </div>
+          </div>
+
+          <div class="domain-label">
+            <div class="domain-dot" style="background:#6B7280"></div>
+            Domain 2 — Disengagement
+          </div>
+
+          <div class="question" id="q-wrap-6">
+            <div class="q-text"><span class="q-num">6</span>I feel less enthusiastic about my work than I used to.</div>
+            <div class="options" id="opts-6">
+              <div class="option-item"><input type="radio" name="q6" id="q6-0" value="0" onchange="onAnswer()"><label for="q6-0" class="option-btn"><span class="opt-val">0</span><span class="opt-lab">Never</span></label></div>
+              <div class="option-item"><input type="radio" name="q6" id="q6-1" value="1" onchange="onAnswer()"><label for="q6-1" class="option-btn"><span class="opt-val">1</span><span class="opt-lab">Rarely</span></label></div>
+              <div class="option-item"><input type="radio" name="q6" id="q6-2" value="2" onchange="onAnswer()"><label for="q6-2" class="option-btn"><span class="opt-val">2</span><span class="opt-lab">Sometimes</span></label></div>
+              <div class="option-item"><input type="radio" name="q6" id="q6-3" value="3" onchange="onAnswer()"><label for="q6-3" class="option-btn"><span class="opt-val">3</span><span class="opt-lab">Often</span></label></div>
+              <div class="option-item"><input type="radio" name="q6" id="q6-4" value="4" onchange="onAnswer()"><label for="q6-4" class="option-btn"><span class="opt-val">4</span><span class="opt-lab">Always</span></label></div>
+            </div>
+          </div>
+
+          <div class="question" id="q-wrap-7">
+            <div class="q-text"><span class="q-num">7</span>I just do what I need to get through the day — I'm going through the motions.</div>
+            <div class="options" id="opts-7">
+              <div class="option-item"><input type="radio" name="q7" id="q7-0" value="0" onchange="onAnswer()"><label for="q7-0" class="option-btn"><span class="opt-val">0</span><span class="opt-lab">Never</span></label></div>
+              <div class="option-item"><input type="radio" name="q7" id="q7-1" value="1" onchange="onAnswer()"><label for="q7-1" class="option-btn"><span class="opt-val">1</span><span class="opt-lab">Rarely</span></label></div>
+              <div class="option-item"><input type="radio" name="q7" id="q7-2" value="2" onchange="onAnswer()"><label for="q7-2" class="option-btn"><span class="opt-val">2</span><span class="opt-lab">Sometimes</span></label></div>
+              <div class="option-item"><input type="radio" name="q7" id="q7-3" value="3" onchange="onAnswer()"><label for="q7-3" class="option-btn"><span class="opt-val">3</span><span class="opt-lab">Often</span></label></div>
+              <div class="option-item"><input type="radio" name="q7" id="q7-4" value="4" onchange="onAnswer()"><label for="q7-4" class="option-btn"><span class="opt-val">4</span><span class="opt-lab">Always</span></label></div>
+            </div>
+          </div>
+
+          <div class="question" id="q-wrap-8">
+            <div class="q-text"><span class="q-num">8</span>It's hard to care about outcomes at work the way I used to.</div>
+            <div class="options" id="opts-8">
+              <div class="option-item"><input type="radio" name="q8" id="q8-0" value="0" onchange="onAnswer()"><label for="q8-0" class="option-btn"><span class="opt-val">0</span><span class="opt-lab">Never</span></label></div>
+              <div class="option-item"><input type="radio" name="q8" id="q8-1" value="1" onchange="onAnswer()"><label for="q8-1" class="option-btn"><span class="opt-val">1</span><span class="opt-lab">Rarely</span></label></div>
+              <div class="option-item"><input type="radio" name="q8" id="q8-2" value="2" onchange="onAnswer()"><label for="q8-2" class="option-btn"><span class="opt-val">2</span><span class="opt-lab">Sometimes</span></label></div>
+              <div class="option-item"><input type="radio" name="q8" id="q8-3" value="3" onchange="onAnswer()"><label for="q8-3" class="option-btn"><span class="opt-val">3</span><span class="opt-lab">Often</span></label></div>
+              <div class="option-item"><input type="radio" name="q8" id="q8-4" value="4" onchange="onAnswer()"><label for="q8-4" class="option-btn"><span class="opt-val">4</span><span class="opt-lab">Always</span></label></div>
+            </div>
+          </div>
+
+          <div class="question" id="q-wrap-9">
+            <div class="q-text"><span class="q-num">9</span>I feel emotionally distant from my work or the people in it.</div>
+            <div class="options" id="opts-9">
+              <div class="option-item"><input type="radio" name="q9" id="q9-0" value="0" onchange="onAnswer()"><label for="q9-0" class="option-btn"><span class="opt-val">0</span><span class="opt-lab">Never</span></label></div>
+              <div class="option-item"><input type="radio" name="q9" id="q9-1" value="1" onchange="onAnswer()"><label for="q9-1" class="option-btn"><span class="opt-val">1</span><span class="opt-lab">Rarely</span></label></div>
+              <div class="option-item"><input type="radio" name="q9" id="q9-2" value="2" onchange="onAnswer()"><label for="q9-2" class="option-btn"><span class="opt-val">2</span><span class="opt-lab">Sometimes</span></label></div>
+              <div class="option-item"><input type="radio" name="q9" id="q9-3" value="3" onchange="onAnswer()"><label for="q9-3" class="option-btn"><span class="opt-val">3</span><span class="opt-lab">Often</span></label></div>
+              <div class="option-item"><input type="radio" name="q9" id="q9-4" value="4" onchange="onAnswer()"><label for="q9-4" class="option-btn"><span class="opt-val">4</span><span class="opt-lab">Always</span></label></div>
+            </div>
+          </div>
+
+          <div class="question" id="q-wrap-10">
+            <div class="q-text"><span class="q-num">10</span>I question whether my work has any real purpose or meaning.</div>
+            <div class="options" id="opts-10">
+              <div class="option-item"><input type="radio" name="q10" id="q10-0" value="0" onchange="onAnswer()"><label for="q10-0" class="option-btn"><span class="opt-val">0</span><span class="opt-lab">Never</span></label></div>
+              <div class="option-item"><input type="radio" name="q10" id="q10-1" value="1" onchange="onAnswer()"><label for="q10-1" class="option-btn"><span class="opt-val">1</span><span class="opt-lab">Rarely</span></label></div>
+              <div class="option-item"><input type="radio" name="q10" id="q10-2" value="2" onchange="onAnswer()"><label for="q10-2" class="option-btn"><span class="opt-val">2</span><span class="opt-lab">Sometimes</span></label></div>
+              <div class="option-item"><input type="radio" name="q10" id="q10-3" value="3" onchange="onAnswer()"><label for="q10-3" class="option-btn"><span class="opt-val">3</span><span class="opt-lab">Often</span></label></div>
+              <div class="option-item"><input type="radio" name="q10" id="q10-4" value="4" onchange="onAnswer()"><label for="q10-4" class="option-btn"><span class="opt-val">4</span><span class="opt-lab">Always</span></label></div>
+            </div>
+          </div>
+
+          <div class="err-banner" id="err-banner">Please answer all 10 questions before seeing your results.</div>
+          <button class="calc-btn" onclick="calculate()">See my burnout score</button>
+        </div>
+      </div>
+
+      <!-- RESULTS COL -->
+      <div class="results-col">
+
+        <!-- RESULT CARD -->
+        <div class="result-card" id="result-card">
+          <div class="result-band" id="result-band"></div>
+          <div class="result-body">
+
+            <div class="score-display">
+              <div class="score-num" id="r-score">—</div>
+              <div class="score-denom">/40</div>
+            </div>
+            <div class="score-label">Total Burnout Score</div>
+
+            <!-- Severity scale -->
+            <div class="sev-row">
+              <div class="sev-box sev-low" id="sev-low">
+                <div class="sev-name">Low Risk</div>
+                <div class="sev-range">0–10</div>
+              </div>
+              <div class="sev-box sev-moderate" id="sev-moderate">
+                <div class="sev-name">Moderate</div>
+                <div class="sev-range">11–20</div>
+              </div>
+              <div class="sev-box sev-high" id="sev-high">
+                <div class="sev-name">High Risk</div>
+                <div class="sev-range">21–30</div>
+              </div>
+              <div class="sev-box sev-severe" id="sev-severe">
+                <div class="sev-name">Severe</div>
+                <div class="sev-range">31–40</div>
+              </div>
+            </div>
+
+            <!-- Domain breakdown -->
+            <div class="domain-breakdown">
+              <div class="domain-card">
+                <div class="domain-card-label">Domain 1</div>
+                <div class="domain-card-name">Emotional Exhaustion</div>
+                <div class="domain-score-row">
+                  <div class="domain-score-num" id="d1-score">—</div>
+                  <div class="domain-score-max">/20</div>
+                </div>
+                <div class="domain-bar"><div class="domain-bar-fill" id="d1-bar" style="background:#EA580C"></div></div>
+              </div>
+              <div class="domain-card">
+                <div class="domain-card-label">Domain 2</div>
+                <div class="domain-card-name">Disengagement</div>
+                <div class="domain-score-row">
+                  <div class="domain-score-num" id="d2-score">—</div>
+                  <div class="domain-score-max">/20</div>
+                </div>
+                <div class="domain-bar"><div class="domain-bar-fill" id="d2-bar" style="background:#6B7280"></div></div>
+              </div>
+            </div>
+
+            <!-- Message -->
+            <div class="msg-block" id="msg-block">
+              <h3 id="msg-heading">—</h3>
+              <p id="msg-body">—</p>
+            </div>
+
+            <p class="tips-title">What to do next:</p>
+            <ul class="tips-list" id="tips-list"></ul>
+
+          </div>
+        </div>
+
+        <!-- What is burnout -->
+        <div class="info-card">
+          <h3>What is burnout?</h3>
+          <p>Burnout is a state of chronic stress that leads to physical and emotional exhaustion, cynicism, and feelings of ineffectiveness. It builds gradually from prolonged exposure to demanding work without adequate rest or recovery.</p>
+          <p>This assessment uses the two core dimensions of the Oldenburg Burnout Inventory (OLBI): <strong>Exhaustion</strong> (feeling depleted and drained) and <strong>Disengagement</strong> (pulling away emotionally from your work and losing your sense of purpose).</p>
+        </div>
+
+        <!-- Warning signs -->
+        <div class="info-card">
+          <h3>Physical &amp; behavioural signs of burnout</h3>
+          <p>Burnout often shows up in the body and in behaviour before it's recognised emotionally. Common signs include:</p>
+          <div class="signs-grid">
+            <div class="sign-chip">Constant fatigue, even after sleep</div>
+            <div class="sign-chip">Frequent headaches or muscle tension</div>
+            <div class="sign-chip">Getting ill more often than usual</div>
+            <div class="sign-chip">Difficulty concentrating or making decisions</div>
+            <div class="sign-chip">Increasing irritability or impatience</div>
+            <div class="sign-chip">Procrastinating or missing deadlines</div>
+            <div class="sign-chip">Withdrawing from friends and colleagues</div>
+            <div class="sign-chip">Feeling like nothing you do makes a difference</div>
+          </div>
+        </div>
+
+        <!-- Related calculators -->
+        <div>
+          <p class="related-title">You might also like</p>
+          <div class="related-grid">
+            <a href="anxiety-score.html" class="related-card">
+              <div class="related-icon">😰</div>
+              <div class="related-info"><strong>Anxiety Score (GAD-7)</strong><span>Measure anxiety symptoms</span></div>
+            </a>
+            <a href="brain-fatigue.html" class="related-card">
+              <div class="related-icon">🧠</div>
+              <div class="related-info"><strong>Brain Fatigue Index</strong><span>Cognitive exhaustion check</span></div>
+            </a>
+            <a href="sleep-need.html" class="related-card">
+              <div class="related-icon">😴</div>
+              <div class="related-info"><strong>Sleep Need Calculator</strong><span>How much sleep you need</span></div>
+            </a>
+            <a href="blood-pressure.html" class="related-card">
+              <div class="related-icon">❤️</div>
+              <div class="related-info"><strong>Blood Pressure</strong><span>Stress can raise BP</span></div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="note-block">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#9CA3AF" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span><strong>NOTE:</strong> This tool is for educational and self-reflection purposes only. It is not a clinical diagnostic instrument. If you are experiencing significant distress, burnout symptoms, or mental health concerns, please speak with a qualified healthcare professional.</span>
+        </div>
+
+      </div><!-- /.results-col -->
+    </div><!-- /.calc-wrapper-inner -->
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="assets/logo-white.png" alt="SageMyHealth" style="height:45px;width:auto;object-fit:contain;" />
+        </div>
+        <p>Free, trusted health calculators with warm guidance — helping you understand your numbers.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Calculators</h5>
+        <ul>
+          <li><a href="anxiety-score.html">Anxiety Score</a></li>
+          <li><a href="burnout-risk.html">Burnout Risk</a></li>
+          <li><a href="blood-pressure.html">Blood Pressure</a></li>
+          <li><a href="heart-rate.html">Heart Rate</a></li>
+          <li><a href="bmi.html">BMI</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Categories</h5>
+        <ul>
+          <li><a href="../index.html#categories">Mental Health</a></li>
+          <li><a href="../index.html#categories">Cardiovascular</a></li>
+          <li><a href="../index.html#categories">Women's Health</a></li>
+          <li><a href="../index.html#categories">Nutrition</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Info</h5>
+        <ul>
+          <li><a href="../about.html">About Us</a></li>
+          <li><a href="../privacy.html">Privacy Policy</a></li>
+          <li><a href="../terms.html">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-disclaimer"><strong style="color:#7A958E">Medical Disclaimer:</strong> This calculator is for educational purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment. If you are experiencing burnout or mental health difficulties, please seek support from a qualified professional.</p>
+      <p class="footer-copy">© 2025 SageMyHealth.com — All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var answered = 0;
+
+  function onAnswer() {
+    var count = 0;
+    for (var i = 1; i <= 10; i++) {
+      if (document.querySelector('input[name="q' + i + '"]:checked')) count++;
+    }
+    answered = count;
+    document.getElementById('prog-label').textContent = count + ' of 10 answered';
+    document.getElementById('prog-fill').style.width = (count / 10 * 100) + '%';
+    document.getElementById('err-banner').style.display = 'none';
+  }
+
+  function calculate() {
+    var scores = [];
+    var allAnswered = true;
+    for (var i = 1; i <= 10; i++) {
+      var checked = document.querySelector('input[name="q' + i + '"]:checked');
+      if (!checked) { allAnswered = false; break; }
+      scores.push(parseInt(checked.value));
+    }
+    if (!allAnswered) {
+      document.getElementById('err-banner').style.display = 'block';
+      document.getElementById('err-banner').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      return;
+    }
+
+    var d1 = scores.slice(0, 5).reduce(function(a,b){return a+b;}, 0);
+    var d2 = scores.slice(5).reduce(function(a,b){return a+b;}, 0);
+    var total = d1 + d2;
+
+    var cat;
+    if (total <= 10)      cat = 'low';
+    else if (total <= 20) cat = 'moderate';
+    else if (total <= 30) cat = 'high';
+    else                  cat = 'severe';
+
+    var msgs = {
+      low: {
+        h: 'Your burnout risk is low.',
+        b: 'Your responses suggest you\'re managing your energy well and remain engaged with your work. That\'s genuinely good news. Continue protecting the boundaries and habits that are working for you — burnout is much easier to prevent than recover from.',
+        tips: [
+          'Keep investing in habits that restore you — sleep, movement, and social connection matter more than productivity hacks.',
+          'Schedule regular check-ins with yourself so early warning signs don\'t go unnoticed.',
+          'Protect your boundaries at work — saying no to non-essential demands keeps your capacity intact.',
+          'Notice what energises vs. drains you and try to do more of the former over time.'
+        ]
+      },
+      moderate: {
+        h: 'You\'re showing moderate signs of burnout.',
+        b: 'Your score suggests you\'re experiencing some level of exhaustion or disengagement. This is the most common place people find themselves — not quite fine, not in crisis, but something is wearing you down. Early action now can prevent this from deepening.',
+        tips: [
+          'Identify your top two or three biggest drains and see if any can be reduced, delegated, or removed.',
+          'Protect recovery time — burnout often accelerates when rest is cut first under pressure.',
+          'Have an honest conversation with someone you trust at work or at home about how you\'re feeling.',
+          'Consider what meaningful rest looks like for you, not just absence from work but genuine restoration.',
+          'If this has been building for weeks, a conversation with your doctor or a therapist is worthwhile.'
+        ]
+      },
+      high: {
+        h: 'Your burnout risk is high.',
+        b: 'Your responses indicate significant levels of emotional exhaustion and/or disengagement. This level of burnout can affect your physical health, relationships, and cognitive function — not just your work performance. Please take this seriously. Recovery is possible, but it takes time and usually requires meaningful change, not just a holiday.',
+        tips: [
+          'Speak with a doctor or mental health professional soon — burnout at this level benefits from professional support.',
+          'Reduce your load where possible, even if temporarily. Burnout doesn\'t recover on a busy schedule.',
+          'Prioritise sleep above everything else — it\'s the foundation of all recovery.',
+          'Consider whether your current situation (workload, culture, values fit) is sustainable long-term.',
+          'Reach out to someone you trust — isolation makes burnout significantly worse.'
+        ]
+      },
+      severe: {
+        h: 'Your score indicates severe burnout.',
+        b: 'This is a serious result. Severe burnout at this level can have significant effects on your mental and physical health — including depression, anxiety, cardiovascular health, and immune function. Please don\'t dismiss what your body and mind are telling you. Recovery is real and possible, but you need support, not just willpower.',
+        tips: [
+          'Please speak with a doctor or therapist as soon as you can. Severe burnout is a health condition, not a character flaw.',
+          'Be honest with someone close to you about how serious this has become.',
+          'If your workplace is the primary driver, consider whether temporary leave, reduced hours, or a role change is possible.',
+          'Focus on the most basic recovery foundations first: sleep, nutrition, gentle movement, and social support.',
+          'Recovery from severe burnout often takes months — be patient with yourself and track small improvements rather than waiting for a big shift.'
+        ]
+      }
+    };
+
+    var m = msgs[cat];
+
+    // Show card
+    var card = document.getElementById('result-card');
+    card.classList.add('visible');
+
+    // Score
+    document.getElementById('r-score').textContent = total;
+    var scoreColors = { low:'#16A34A', moderate:'#D97706', high:'#EA580C', severe:'#DC2626' };
+    document.getElementById('r-score').style.color = scoreColors[cat];
+
+    // Band
+    var bands = { low:'band-low', moderate:'band-moderate', high:'band-high', severe:'band-severe' };
+    document.getElementById('result-band').className = 'result-band ' + bands[cat];
+
+    // Severity boxes
+    ['low','moderate','high','severe'].forEach(function(c) {
+      document.getElementById('sev-' + c).classList.remove('active');
+    });
+    document.getElementById('sev-' + cat).classList.add('active');
+
+    // Domain breakdown
+    document.getElementById('d1-score').textContent = d1;
+    document.getElementById('d2-score').textContent = d2;
+    document.getElementById('d1-bar').style.width = (d1 / 20 * 100) + '%';
+    document.getElementById('d2-bar').style.width = (d2 / 20 * 100) + '%';
+
+    // Message
+    var mb = document.getElementById('msg-block');
+    mb.className = 'msg-block msg-' + cat;
+    document.getElementById('msg-heading').textContent = m.h;
+    document.getElementById('msg-body').textContent = m.b;
+
+    // Tips
+    var tl = document.getElementById('tips-list');
+    tl.innerHTML = '';
+    m.tips.forEach(function(t) {
+      var li = document.createElement('li');
+      li.textContent = t;
+      tl.appendChild(li);
+    });
+
+    card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+</script>
+
+<script>
+  /* Mobile menu */
+  function openMobileMenu() {
+    document.getElementById('mobile-menu').classList.add('open');
+    document.getElementById('nav-hamburger').setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.getElementById('nav-hamburger').setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMobileMenu(); });
+</script>
+</body>
+</html>

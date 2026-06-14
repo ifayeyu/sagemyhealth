@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X6K2H9YW2V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X6K2H9YW2V');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SageMyHealth — Health Calculators for Real Life</title>
+  <meta name="description" content="Free, trusted health calculators across weight, heart health, nutrition, women's health, mental wellbeing, and more. No data stored, no clutter — just clear answers." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sage:       #4A7C59;
+      --sage-dark:  #3A6147;
+      --sage-mid:   #5E9470;
+      --sage-light: #EBF2EC;
+      --sage-pale:  #F2F7F3;
+      --cream:      #F7F3EE;
+      --text-dark:  #1A2E1E;
+      --text-mid:   #4A5568;
+      --text-light: #718096;
+      --white:      #FFFFFF;
+      --border:     #E2EBE4;
+      --amber-soft: #FEF3C7;
+      --amber-text: #92400E;
+      --shadow-xs:  0 1px 2px rgba(74,124,89,0.06);
+      --shadow-sm:  0 1px 6px rgba(74,124,89,0.08);
+      --shadow-md:  0 4px 16px rgba(74,124,89,0.12);
+      --shadow-lg:  0 8px 32px rgba(74,124,89,0.16);
+      --shadow-xl:  0 16px 48px rgba(74,124,89,0.18);
+      --r-sm: 8px; --r: 12px; --r-lg: 20px; --r-xl: 28px;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-dark);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; }
+    img { display: block; max-width: 100%; }
+
+    /* NAV */
+    .site-nav {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 24px;
+      height: 68px; display: flex; align-items: center;
+      justify-content: space-between; gap: 32px;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none; color: var(--text-dark); flex-shrink: 0;
+    }
+    .nav-logo-icon {
+      width: 36px; height: 36px; background: var(--sage);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    }
+    .nav-logo-text { font-size: 19px; font-weight: 700; letter-spacing: -0.3px; }
+    .nav-logo-text .accent { color: var(--sage); }
+    .nav-links {
+      display: flex; align-items: center; gap: 28px;
+      list-style: none; flex: 1; justify-content: center;
+    }
+    .nav-links a {
+      color: var(--text-mid); font-size: 15px; font-weight: 500; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--sage); }
+    .nav-btn {
+      background: var(--sage); color: white; border: none;
+      padding: 9px 20px; border-radius: var(--r-sm);
+      font-size: 14px; font-weight: 600; transition: background 0.2s;
+    }
+    .nav-btn:hover { background: var(--sage-dark); }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(155deg, var(--sage-pale) 0%, var(--cream) 60%, #fff 100%);
+      padding: 88px 24px 96px; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -120px; right: -80px;
+      width: 480px; height: 480px;
+      background: radial-gradient(circle, rgba(74,124,89,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--sage-light); color: var(--sage-dark);
+      padding: 7px 16px; border-radius: 24px;
+      font-size: 13px; font-weight: 600; margin-bottom: 28px;
+      position: relative; z-index: 1;
+    }
+    .hero-badge-dot {
+      width: 7px; height: 7px; background: var(--sage);
+      border-radius: 50%; animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(40px, 6vw, 68px); font-weight: 700;
+      line-height: 1.12; color: var(--text-dark);
+      margin-bottom: 22px; letter-spacing: -1.5px;
+      position: relative; z-index: 1;
+    }
+    .hero h1 em { font-style: normal; color: var(--sage); }
+    .hero-sub {
+      font-size: 18px; color: var(--text-mid);
+      max-width: 540px; margin: 0 auto 44px;
+      line-height: 1.75; position: relative; z-index: 1;
+    }
+    .hero-search-wrap { max-width: 540px; margin: 0 auto 14px; position: relative; z-index: 1; }
+    .hero-search {
+      display: flex; background: white; border: 2px solid var(--border);
+      border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-md);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .hero-search:focus-within { border-color: var(--sage); box-shadow: 0 4px 24px rgba(74,124,89,0.18); }
+    .hero-search input {
+      flex: 1; border: none; outline: none; padding: 16px 20px;
+      font-size: 16px; font-family: 'Inter', sans-serif;
+      color: var(--text-dark); background: transparent;
+    }
+    .hero-search input::placeholder { color: var(--text-light); }
+    .hero-search button {
+      background: var(--sage); color: white; border: none;
+      padding: 0 28px; font-size: 15px; font-weight: 600;
+      font-family: 'Inter', sans-serif; transition: background 0.2s; white-space: nowrap;
+    }
+    .hero-search button:hover { background: var(--sage-dark); }
+    .hero-hint { font-size: 13px; color: var(--text-light); position: relative; z-index: 1; }
+    .hero-hint a { color: var(--sage); font-weight: 500; }
+    .hero-hint a:hover { text-decoration: underline; }
+    .hero-popular {
+      display: flex; align-items: center; justify-content: center;
+      flex-wrap: wrap; gap: 8px; margin-top: 20px; position: relative; z-index: 1;
+    }
+    .hero-popular span { font-size: 12px; color: var(--text-light); font-weight: 500; }
+    .pop-pill {
+      font-size: 13px; font-weight: 500; color: var(--text-mid);
+      background: white; border: 1.5px solid var(--border);
+      border-radius: 20px; padding: 5px 14px; transition: all 0.2s;
+    }
+    .pop-pill:hover { border-color: var(--sage); color: var(--sage); background: var(--sage-light); }
+
+    /* STATS BAR */
+    .stats-bar {
+      background: white;
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 22px 24px;
+    }
+    .stats-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: center; gap: 64px; flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-num { font-size: 24px; font-weight: 800; color: var(--sage); letter-spacing: -0.5px; }
+    .stat-label { font-size: 13px; color: var(--text-light); margin-top: 2px; }
+
+    /* SECTIONS */
+    .section { padding: 80px 0; }
+    .section-sm { padding: 56px 0; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section-header { margin-bottom: 48px; }
+    .section-header.center { text-align: center; }
+    .section-header.center .section-sub { margin: 0 auto; }
+    .section-eyebrow {
+      font-size: 12px; font-weight: 700; letter-spacing: 1.8px;
+      text-transform: uppercase; color: var(--sage); margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(26px, 4vw, 38px); font-weight: 700;
+      color: var(--text-dark); letter-spacing: -0.5px;
+      margin-bottom: 12px; line-height: 1.2;
+    }
+    .section-sub { font-size: 16px; color: var(--text-mid); line-height: 1.7; max-width: 690px; }
+
+    /* CATEGORIES */
+    .cat-section { background: white; }
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+    }
+    .cat-card {
+      background: var(--sage-pale); border: 1.5px solid var(--border);
+      border-radius: var(--r); padding: 22px;
+      display: flex; flex-direction: column; gap: 12px;
+      transition: all 0.22s;
+    }
+    .cat-card:hover {
+      border-color: var(--sage); background: var(--sage-light);
+      box-shadow: var(--shadow-md); transform: translateY(-2px);
+    }
+    .cat-icon-wrap {
+      width: 46px; height: 46px; background: white;
+      border-radius: 12px; display: flex; align-items: center;
+      justify-content: center; font-size: 22px; box-shadow: var(--shadow-xs);
+    }
+    .cat-info-name { font-size: 14px; font-weight: 700; color: var(--text-dark); }
+    .cat-info-count { font-size: 12px; color: var(--text-light); margin-top: 2px; }
+    .cat-arrow {
+      margin-top: auto; font-size: 18px; color: var(--sage);
+      opacity: 0; transition: opacity 0.2s, transform 0.2s;
+    }
+    .cat-card:hover .cat-arrow { opacity: 1; transform: translateX(3px); }
+
+    /* FEATURED CALCULATORS */
+    .featured-section { background: var(--sage-pale); }
+    .calc-feat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .calc-feat-card {
+      background: white; border-radius: var(--r-lg); padding: 28px;
+      box-shadow: var(--shadow-sm); border: 1.5px solid var(--border);
+      transition: all 0.25s; display: block;
+    }
+    .calc-feat-card:hover {
+      box-shadow: var(--shadow-xl); transform: translateY(-4px); border-color: var(--sage);
+    }
+    .feat-card-top {
+      display: flex; align-items: flex-start;
+      justify-content: space-between; margin-bottom: 16px;
+    }
+    .feat-icon {
+      width: 48px; height: 48px; background: var(--sage-light);
+      border-radius: 13px; display: flex; align-items: center;
+      justify-content: center; font-size: 22px;
+    }
+    .feat-badge {
+      font-size: 11px; font-weight: 700; padding: 4px 10px;
+      border-radius: 20px; background: var(--amber-soft); color: var(--amber-text);
+    }
+    .feat-badge.important { background: #E3FFB3; color: #0A3D2A; }
+    .feat-badge.new { background: #C4DFFE; color: #0A3D2A; }
+    .feat-name { font-size: 17px; font-weight: 700; color: var(--text-dark); margin-bottom: 6px; }
+    .feat-desc { font-size: 14px; color: var(--text-mid); line-height: 1.65; margin-bottom: 18px; }
+    .feat-link {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 14px; font-weight: 600; color: var(--sage); transition: gap 0.2s;
+    }
+    .calc-feat-card:hover .feat-link { gap: 10px; }
+
+    /* HOW IT WORKS */
+    .how-section { background: white; }
+    .steps-wrap {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 32px; max-width: 840px; margin: 0 auto; position: relative;
+    }
+    .steps-wrap::before {
+      content: ''; position: absolute; top: 28px;
+      left: calc(16.666% + 16px); right: calc(16.666% + 16px);
+      height: 2px; background: var(--border);
+    }
+    .step { text-align: center; position: relative; }
+    .step-num {
+      width: 56px; height: 56px; background: var(--sage); color: white;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 20px; font-weight: 800; margin: 0 auto 20px;
+      position: relative; z-index: 1;
+      box-shadow: 0 4px 14px rgba(74,124,89,0.3);
+    }
+    .step h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--text-dark); }
+    .step p { font-size: 14px; color: var(--text-mid); line-height: 1.7; }
+
+    /* TRUST */
+    .trust-section { background: var(--cream); }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 4px;
+    }
+    .trust-item {
+      background: white; border-radius: var(--r);
+      padding: 28px 24px; text-align: center; transition: box-shadow 0.2s;
+    }
+    .trust-item:hover { box-shadow: var(--shadow-md); }
+    .trust-icon-wrap {
+      width: 52px; height: 52px; background: var(--sage-light);
+      border-radius: 14px; display: flex; align-items: center;
+      justify-content: center; font-size: 24px; margin: 0 auto 14px;
+    }
+    .trust-item h4 { font-size: 15px; font-weight: 700; color: var(--text-dark); margin-bottom: 6px; }
+    .trust-item p { font-size: 13px; color: var(--text-mid); line-height: 1.65; }
+
+    /* FOOTER */
+    .site-footer { background: var(--text-dark); color: #94A99A; padding: 56px 0 0; }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px; padding-bottom: 48px;
+    }
+    .footer-brand-logo {
+      display: flex; align-items: center; gap: 8px;
+      color: white; font-size: 18px; font-weight: 700; margin-bottom: 14px;
+    }
+    .footer-brand-icon {
+      width: 30px; height: 30px; background: var(--sage);
+      border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    }
+    .footer-brand p { font-size: 14px; line-height: 1.75; max-width: 270px; color: #7A958E; }
+    .footer-col h5 {
+      color: white; font-size: 12px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 16px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 10px; }
+    .footer-col a { font-size: 14px; color: #7A958E; transition: color 0.2s; }
+    .footer-col a:hover { color: white; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 24px 0; display: flex; flex-direction: column; gap: 6px;
+    }
+    .footer-disclaimer { font-size: 12px; color: #5A7568; line-height: 1.7; }
+    .footer-copy { font-size: 12px; color: #5A7568; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 700px) {
+      .steps-wrap { grid-template-columns: 1fr; }
+      .steps-wrap::before { display: none; }
+      .stats-inner { gap: 32px; }
+    }
+    @media (max-width: 660px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-btn { display: none; }
+    }
+    @media (max-width: 520px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .section { padding: 56px 0; }
+      .hero { padding: 64px 20px 72px; }
+      .hero-popular { display: none; }
+    }
+  
+    /* ── MOBILE HAMBURGER ────────────────────────────── */
+    .nav-hamburger {
+      display: none; flex-direction: column; justify-content: center; gap: 5px;
+      background: none; border: none; padding: 8px; margin-left: 8px;
+      border-radius: 8px; cursor: pointer; transition: background .15s; flex-shrink: 0;
+    }
+    .nav-hamburger:hover { background: var(--sage-light, #EBF2EC); }
+    .nav-hamburger span {
+      display: block; width: 22px; height: 2.5px;
+      background: var(--text-dark, #1A2E1E); border-radius: 2px; transition: all .2s;
+    }
+    /* ── MOBILE DRAWER ───────────────────────────────── */
+    .mobile-menu { display: none; position: fixed; inset: 0; z-index: 999; }
+    .mobile-menu.open { display: block; }
+    .mobile-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.45); backdrop-filter: blur(2px); }
+    .mobile-drawer {
+      position: absolute; top: 0; right: 0;
+      width: min(300px, 84vw); height: 100%;
+      background: #fff; display: flex; flex-direction: column;
+      box-shadow: -4px 0 40px rgba(0,0,0,.18);
+      animation: drawerIn .22s cubic-bezier(.22,.61,.36,1);
+    }
+    @keyframes drawerIn { from{transform:translateX(100%)} to{transform:translateX(0)} }
+    .mobile-drawer-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 20px 14px; border-bottom: 1px solid var(--border, #E2EBE4);
+    }
+    .mobile-drawer-logo { font-size: 15px; font-weight: 700; color: var(--text-dark, #1A2E1E); }
+    .mobile-close {
+      background: none; border: none; font-size: 20px; padding: 4px 8px;
+      cursor: pointer; color: var(--text-light, #718096); border-radius: 6px; line-height: 1;
+      transition: background .15s, color .15s;
+    }
+    .mobile-close:hover { background: var(--sage-light, #EBF2EC); color: var(--text-dark, #1A2E1E); }
+    .mobile-nav-links { padding: 14px 12px; flex: 1; display: flex; flex-direction: column; gap: 4px; }
+    .mobile-nav-link {
+      display: flex; align-items: center; gap: 14px;
+      padding: 13px 16px; border-radius: 12px;
+      font-size: 16px; font-weight: 600; color: var(--text-dark, #1A2E1E);
+      text-decoration: none; transition: background .15s, color .15s;
+    }
+    .mobile-nav-link:hover { background: var(--sage-light, #EBF2EC); color: var(--sage, #3B6A3A); }
+    .mobile-link-icon {
+      width: 40px; height: 40px; background: var(--sage-light, #EBF2EC);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .mobile-browse-btn {
+      display: block; margin: 0 12px 20px; padding: 14px;
+      background: var(--sage, #3B6A3A); color: #fff; border-radius: 12px;
+      font-size: 15px; font-weight: 700; text-align: center;
+      text-decoration: none; transition: background .15s;
+    }
+    .mobile-browse-btn:hover { background: var(--sage-dark, #0A3D2A); }
+
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <!-- LOGO: replace SVG block with <img> tag when your logo is ready -->
+    <a href="index.html" class="nav-logo">
+      <img src="calculators/assets/logo.png" alt="SageMyHealth" style="height: 54px; width: auto; object-fit: contain;"/>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#categories">Calculators</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="blog.html">Health Guides</a></li>
+    </ul>
+    <div>
+      <a href="#categories" class="nav-btn">Browse All</a>
+    </div>
+    <button class="nav-hamburger" id="nav-hamburger"
+            onclick="openMobileMenu()" aria-label="Open navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site navigation">
+  <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-drawer">
+    <div class="mobile-drawer-head">
+      <span class="mobile-drawer-logo">SageMyHealth</span>
+      <button class="mobile-close" onclick="closeMobileMenu()" aria-label="Close menu">&#x2715;</button>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="index.html#categories" class="mobile-nav-link" onclick="closeMobileMenu()">
+        <span class="mobile-link-icon">&#x1F9EE;</span>Calculators
+      </a>
+      <a href="about.html" class="mobile-nav-link" onclick="closeMobileMenu()">
+        <span class="mobile-link-icon">&#x1F49A;</span>About
+      </a>
+      <a href="blog.html" class="mobile-nav-link" onclick="closeMobileMenu()">
+        <span class="mobile-link-icon">&#x1F4D6;</span>Health Guides
+      </a>
+    </nav>
+    <a href="index.html#categories" class="mobile-browse-btn" onclick="closeMobileMenu()">Browse All Calculators &#x2192;</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <div class="hero-badge-dot"></div>
+    Your everyday health companion
+  </div>
+  <h1>Know your numbers.<br><em>Understand your health.</em></h1>
+  <p class="hero-sub">Free, evidence-based calculators with warm, clear guidance — because taking care of yourself shouldn't be complicated.</p>
+  <div class="hero-search-wrap">
+    <div class="hero-search">
+      <input type="text" id="searchInput" placeholder="Search calculators… try &quot;BMI&quot; or &quot;period&quot;" autocomplete="off" />
+      <button onclick="doSearch()">Search</button>
+    </div>
+  </div>
+  <p class="hero-hint">Or <a href="#categories">browse by category</a> below</p>
+  <div class="hero-popular">
+    <span>Popular:</span>
+    <a href="calculators/bmi.html" class="pop-pill">BMI</a>
+    <a href="calculators/tdee.html" class="pop-pill">Daily Calories</a>
+    <a href="calculators/period-tracker.html" class="pop-pill">Period Tracker</a>
+    <a href="calculators/blood-glucose.html" class="pop-pill">Blood Glucose</a>
+    <a href="calculators/heart-rate.html" class="pop-pill">Heart Rate Zones</a>
+    <a href="calculators/sleep-need.html" class="pop-pill">Sleep Need</a>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat"><div class="stat-num">13</div><div class="stat-label">Free calculators</div></div>
+    <div class="stat"><div class="stat-num">14</div><div class="stat-label">Health categories</div></div>
+    <div class="stat"><div class="stat-num">0</div><div class="stat-label">Data stored</div></div>
+    <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Health-focused</div></div>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section class="section cat-section" id="categories">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-eyebrow">Browse by Category</p>
+      <h2 class="section-title">Every area of your health, covered in one place</h2>
+      <p class="section-sub">From body composition to brain health — trusted formulas, warm explanations.</p>
+    </div>
+    <div class="category-grid">
+      <a href="calculators/bmi.html" class="cat-card"><div class="cat-icon-wrap">🧍</div><div><div class="cat-info-name">Weight &amp; Body</div></div><div class="cat-arrow">→</div></a>
+      <a href="calculators/heart-rate.html" class="cat-card"><div class="cat-icon-wrap">❤️</div><div><div class="cat-info-name">Heart &amp; Cardiovascular</div></div><div class="cat-arrow">→</div></a>
+      <a href="calculators/tdee.html" class="cat-card"><div class="cat-icon-wrap">🥗</div><div><div class="cat-info-name">Nutrition &amp; Diet</div></div><div class="cat-arrow">→</div></a>
+      <a href="calculators/period-tracker.html" class="cat-card"><div class="cat-icon-wrap">🌸</div><div><div class="cat-info-name">Women's Health</div></div><div class="cat-arrow">→</div></a>
+      <a href="calculators/anxiety-score.html" class="cat-card"><div class="cat-icon-wrap">🧠</div><div><div class="cat-info-name">Mental Health</div></div><div class="cat-arrow">→</div></a>
+      <a href="calculators/iron-deficiency.html" class="cat-card"><div class="cat-icon-wrap">🩸</div><div><div class="cat-info-name">Blood &amp; Iron Health</div></div><div class="cat-arrow">→</div></a>
+      <a href="calculators/blood-glucose.html" class="cat-card"><div class="cat-icon-wrap">💉</div><div><div class="cat-info-name">Diabetes &amp; Blood Sugar</div></div><div class="cat-arrow">→</div></a>
+      <a href="calculators/lung-capacity.html" class="cat-card"><div class="cat-icon-wrap">🫁</div><div><div class="cat-info-name">Respiratory Health</div></div><div class="cat-arrow">→</div></a>
+      <a href="calculators/calories-burned.html" class="cat-card"><div class="cat-icon-wrap">🏃</div><div><div class="cat-info-name">Fitness &amp; Exercise</div></div><div class="cat-arrow">→</div></a>
+      <a href="calculators/period-tracker.html" class="cat-card"><div class="cat-icon-wrap">🤰</div><div><div class="cat-info-name">Pregnancy &amp; Fertility</div></div><div class="cat-arrow">→</div></a>
+      <a href="calculators/brain-fatigue.html" class="cat-card"><div class="cat-icon-wrap">🧬</div><div><div class="cat-info-name">Brain &amp; Cognitive Health</div></div><div class="cat-arrow">→</div></a>
+      <a href="calculators/hair-loss-risk.html" class="cat-card"><div class="cat-icon-wrap">💆</div><div><div class="cat-info-name">Hair &amp; Skin Health</div></div><div class="cat-arrow">→</div></a>
+      <a href="calculators/sleep-need.html" class="cat-card"><div class="cat-icon-wrap">😴</div><div><div class="cat-info-name">Sleep &amp; Recovery</div></div><div class="cat-arrow">→</div></a>
+      <a href="calculators/biological-age.html" class="cat-card"><div class="cat-icon-wrap">⏳</div><div><div class="cat-info-name">Age &amp; Longevity</div></div><div class="cat-arrow">→</div></a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED CALCULATORS -->
+<section class="section featured-section">
+  <div class="container">
+    <div class="section-header center">
+      <p class="section-eyebrow">Most Used</p>
+      <h2 class="section-title">Start here</h2>
+      <p class="section-sub">Our most-visited calculators — quick, clear, and completely free.</p>
+    </div>
+    <div class="calc-feat-grid">
+      <a href="calculators/bmi.html" class="calc-feat-card"><div class="feat-card-top"><div class="feat-icon">⚖️</div><span class="feat-badge">Popular</span></div><div class="feat-name">BMI Calculator</div><p class="feat-desc">Find out where your weight sits relative to your height — and what it means for your health.</p><div class="feat-link">Calculate now <span>→</span></div></a>
+      <a href="calculators/tdee.html" class="calc-feat-card"><div class="feat-card-top"><div class="feat-icon">🔥</div><span class="feat-badge">Popular</span></div><div class="feat-name">Daily Calorie (TDEE)</div><p class="feat-desc">How many calories does your body actually need? Get a number built around your real life.</p><div class="feat-link">Calculate now <span>→</span></div></a>
+      <a href="calculators/period-tracker.html" class="calc-feat-card"><div class="feat-card-top"><div class="feat-icon">🌸</div><span class="feat-badge">Popular</span></div><div class="feat-name">Period Calculator</div><p class="feat-desc">Predict your next cycle, track your window, and understand your body's natural rhythm.</p><div class="feat-link">Calculate now <span>→</span></div></a>
+      <a href="calculators/blood-glucose.html" class="calc-feat-card"><div class="feat-card-top"><div class="feat-icon">💉</div><span class="feat-badge important">Important</span></div><div class="feat-name">Blood Glucose</div><p class="feat-desc">Check whether your blood sugar reading is in a healthy range — with context you can actually use.</p><div class="feat-link">Calculate now <span>→</span></div></a>
+      <a href="calculators/heart-rate.html" class="calc-feat-card"><div class="feat-card-top"><div class="feat-icon">❤️</div><span class="feat-badge">Popular</span></div><div class="feat-name">Heart Rate Zones</div><p class="feat-desc">Find your target training zones for fat burn, cardio, and peak performance.</p><div class="feat-link">Calculate now <span>→</span></div></a>
+      <a href="calculators/biological-age.html" class="calc-feat-card"><div class="feat-card-top"><div class="feat-icon">⏳</div><span class="feat-badge new">New</span></div><div class="feat-name">Biological Age</div><p class="feat-desc">See how your lifestyle affects how old your body actually is — compared to your chronological age.</p><div class="feat-link">Calculate now <span>→</span></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section how-section">
+  <div class="container">
+    <div class="section-header center">
+      <p class="section-eyebrow">How It Works</p>
+      <h2 class="section-title">Simple as it should be</h2>
+    </div>
+    <div class="steps-wrap">
+      <div class="step"><div class="step-num">1</div><h3>Choose a calculator</h3><p>Browse by category or search for what you need. Everything is health-focused — no clutter, no noise.</p></div>
+      <div class="step"><div class="step-num">2</div><h3>Enter your numbers</h3><p>A few quick inputs — age, weight, measurements. We never store or share any of your data.</p></div>
+      <div class="step"><div class="step-num">3</div><h3>Get your result + guidance</h3><p>See your score in context, with warm tips if you're outside range, or encouragement to keep going if you're on track.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="section-sm trust-section">
+  <div class="container">
+    <div class="trust-grid">
+      <div class="trust-item"><div class="trust-icon-wrap">🔬</div><h4>Evidence-Based Formulas</h4><p>Every calculation uses established medical and scientific formulas — the same ones clinicians reference.</p></div>
+      <div class="trust-item"><div class="trust-icon-wrap">🔒</div><h4>Your Data Stays Yours</h4><p>We never store, sell, or share your health data. Calculations happen entirely in your browser.</p></div>
+      <div class="trust-item"><div class="trust-icon-wrap">🌿</div><h4>Health-Only Focus</h4><p>No finance, no engineering, no random calculators. Everything here is about your wellbeing — nothing else.</p></div>
+      <div class="trust-item"><div class="trust-icon-wrap">💬</div><h4>Human, Not Clinical</h4><p>Results are explained in plain language — warm, encouraging, and easy to understand.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-logo">
+          <img src="calculators/assets/logo-white.png" alt="SageMyHealth" style="height: 45px; width: auto; object-fit: contain;"/>
+        </div>
+        <p>Because understanding your health shouldn't be complicated. Simple tools, clear answers, warm guidance — every day.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Calculators</h5>
+        <ul>
+          <li><a href="calculators/bmi.html">BMI</a></li>
+          <li><a href="calculators/tdee.html">Daily Calories</a></li>
+          <li><a href="calculators/period-tracker.html">Period Tracker</a></li>
+          <li><a href="calculators/blood-glucose.html">Blood Glucose</a></li>
+          <li><a href="calculators/heart-rate.html">Heart Rate Zones</a></li>
+          <li><a href="#categories">View All →</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>More Tools</h5>
+        <ul>
+          <li><a href="calculators/anxiety-score.html">Anxiety Score</a></li>
+          <li><a href="calculators/brain-fatigue.html">Brain Fatigue</a></li>
+          <li><a href="calculators/sleep-need.html">Sleep Need</a></li>
+          <li><a href="calculators/biological-age.html">Biological Age</a></li>
+          <li><a href="calculators/lung-capacity.html">Lung Capacity</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Info</h5>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="blog.html">Health Guides</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Use</a></li>
+          <li><a href="mailto:hello@sagemyhealth.com">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-disclaimer"><strong style="color:#7A958E">Medical Disclaimer:</strong> SageMyHealth calculators are for informational purposes only and are not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider with questions about your health.</p>
+      <p class="footer-copy">© 2025 SageMyHealth.com — All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function doSearch() {
+    var q = document.getElementById('searchInput').value.trim().toLowerCase();
+    if (!q) return;
+    var map = {
+      'bmi':'calculators/bmi.html','body mass':'calculators/bmi.html','weight':'calculators/bmi.html',
+      'calorie':'calculators/tdee.html','tdee':'calculators/tdee.html','caloric':'calculators/tdee.html',
+      'period':'calculators/period-tracker.html','menstrual':'calculators/period-tracker.html','cycle':'calculators/period-tracker.html',
+      'blood glucose':'calculators/blood-glucose.html','glucose':'calculators/blood-glucose.html','blood sugar':'calculators/blood-glucose.html','diabetes':'calculators/blood-glucose.html',
+      'heart rate':'calculators/heart-rate.html','heart':'calculators/heart-rate.html','cardio':'calculators/heart-rate.html',
+      'anxiety':'calculators/anxiety-score.html','stress':'calculators/anxiety-score.html','gad':'calculators/anxiety-score.html',
+      'brain':'calculators/brain-fatigue.html','fatigue':'calculators/brain-fatigue.html','cognitive':'calculators/brain-fatigue.html',
+      'sleep':'calculators/sleep-need.html','insomnia':'calculators/sleep-need.html',
+      'biological age':'calculators/biological-age.html','bio age':'calculators/biological-age.html','longevity':'calculators/biological-age.html',
+      'lung':'calculators/lung-capacity.html','breathing':'calculators/lung-capacity.html','respiratory':'calculators/lung-capacity.html',
+      'iron':'calculators/iron-deficiency.html','anemia':'calculators/iron-deficiency.html',
+      'hair':'calculators/hair-loss-risk.html','hair loss':'calculators/hair-loss-risk.html',
+      'calories burned':'calculators/calories-burned.html','exercise':'calculators/calories-burned.html','burn':'calculators/calories-burned.html',
+      'ovulation':'calculators/period-tracker.html','pregnancy':'calculators/period-tracker.html','fertility':'calculators/period-tracker.html'
+    };
+    for (var key in map) {
+      if (q.includes(key)) { window.location.href = map[key]; return; }
+    }
+    document.getElementById('categories').scrollIntoView({ behavior: 'smooth' });
+  }
+  document.getElementById('searchInput').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') doSearch();
+  });
+</script>
+
+
+<script>
+  /* Mobile menu */
+  function openMobileMenu() {
+    document.getElementById('mobile-menu').classList.add('open');
+    document.getElementById('nav-hamburger').setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.getElementById('nav-hamburger').setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMobileMenu(); });
+</script>
+</body>
+</html>

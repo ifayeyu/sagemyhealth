@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X6K2H9YW2V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X6K2H9YW2V');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iron Deficiency Risk Calculator — SageMyHealth</title>
+  <meta name="description" content="Screen your iron deficiency risk in minutes. Answer questions about your lifestyle, diet, and symptoms to get personalised guidance and next steps." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sage:        #3B6A3A;
+      --sage-dark:   #0A3D2A;
+      --sage-mid:    #5C8A5C;
+      --sage-light:  #EBF2EC;
+      --sage-pale:   #F2F7F3;
+      --cream:       #E3FFB3;
+      --text-dark:   #1A2E1E;
+      --text-mid:    #4A5568;
+      --text-light:  #718096;
+      --white:       #FFFFFF;
+      --border:      #E2EBE4;
+      --border-mid:  #C8D9CC;
+      --red-soft:    #EDAE71;   --red-text:   #991B1B;
+      --amber-soft:  #EECA8F;   --amber-text: #92400E;
+      --green-soft:  #D1FAE5;   --green-text: #3D473D;
+      --shadow-xs:   0 1px 2px rgba(59,106,58,0.06);
+      --shadow-sm:   0 1px 6px rgba(59,106,58,0.08);
+      --shadow-md:   0 4px 16px rgba(59,106,58,0.12);
+      --shadow-lg:   0 8px 32px rgba(59,106,58,0.16);
+      --r-sm: 8px; --r: 12px; --r-lg: 20px; --r-xl: 28px;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text-dark); background: var(--sage-pale); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; }
+
+    /* ── NAV ── */
+    .site-nav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.96); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav-logo-icon { width: 36px; height: 36px; background: var(--sage); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+    .nav-logo-text { font-size: 19px; font-weight: 700; letter-spacing: -0.3px; }
+    .nav-logo-text .accent { color: var(--sage); }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; flex: 1; justify-content: center; }
+    .nav-links a { color: var(--text-mid); font-size: 15px; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--sage); }
+    .nav-btn { background: var(--sage); color: white; border: none; padding: 9px 20px; border-radius: var(--r-sm); font-size: 14px; font-weight: 600; transition: background .2s; }
+    .nav-btn:hover { background: var(--sage-dark); }
+
+    /* ── PAGE WRAPPER ── */
+    .calc-page { padding: 36px 0 72px; }
+    .calc-wrapper { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-light); margin-bottom: 24px; flex-wrap: wrap; }
+    .breadcrumb a { color: var(--sage); }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .bc-sep { color: var(--border-mid); }
+
+    /* ── PAGE HEADER ── */
+    .page-header { margin-bottom: 28px; }
+    .calc-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--sage); background: var(--white); padding: 5px 12px; border-radius: 20px; margin-bottom: 12px; letter-spacing: .3px; border: 1px solid var(--border); }
+    .page-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 42px); font-weight: 700; color: var(--text-dark); letter-spacing: -.5px; margin-bottom: 10px; line-height: 1.15; }
+    .page-header p { font-size: 15px; color: var(--text-mid); line-height: 1.7; max-width: 700px; }
+
+    /* ── LAYOUT ── */
+    .calc-columns { display: grid; grid-template-columns: 480px 1fr; gap: 24px; align-items: start; }
+
+    /* ── FORM CARD ── */
+    .calc-card { background: white; border-radius: var(--r-lg); border: 1px solid var(--border); padding: 32px; box-shadow: var(--shadow-sm); }
+    .calc-card > h2 { font-size: 18px; font-weight: 700; color: var(--text-dark); margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+    .form-section { margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+    .form-section:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .section-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .7px; color: var(--sage); margin-bottom: 14px; }
+    .section-hint { font-size: 13px; color: var(--text-light); margin-bottom: 12px; margin-top: -6px; }
+    .field-group { margin-bottom: 16px; }
+    .field-group:last-child { margin-bottom: 0; }
+    .field-label { display: block; font-size: 14px; font-weight: 600; color: var(--text-dark); margin-bottom: 6px; }
+    .field-hint { font-size: 12px; color: var(--text-light); margin-bottom: 7px; margin-top: -2px; }
+    .field-input { width: 100%; padding: 11px 14px; border: 1.5px solid var(--border); border-radius: var(--r-sm); font-size: 15px; font-family: inherit; color: var(--text-dark); background: white; transition: border-color .2s; outline: none; }
+    .field-input:focus { border-color: var(--sage-mid); }
+    .field-input::placeholder { color: #AAB0B8; opacity: 1; }
+
+    /* Pill toggles */
+    .pill-group { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pill { padding: 7px 16px; border-radius: 20px; font-size: 14px; font-weight: 500; border: 1.5px solid var(--border); background: white; color: var(--text-mid); transition: all .15s; }
+    .pill:hover { border-color: var(--sage-mid); color: var(--sage); }
+    .pill.active { background: var(--sage); border-color: var(--sage); color: white; font-weight: 600; }
+
+    /* Checkboxes */
+    .check-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
+    .check-item:last-child { margin-bottom: 0; }
+    .check-item input[type="checkbox"] { width: 17px; height: 17px; accent-color: var(--sage); flex-shrink: 0; margin-top: 2px; cursor: pointer; }
+    .check-item label { font-size: 14px; color: var(--text-dark); cursor: pointer; line-height: 1.5; }
+
+    /* Symptom cards */
+    .symptom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .symptom-item { display: flex; align-items: flex-start; gap: 8px; padding: 10px 12px; border: 1.5px solid var(--border); border-radius: var(--r-sm); cursor: pointer; transition: all .15s; background: white; }
+    .symptom-item:hover { border-color: var(--sage-mid); background: var(--sage-pale); }
+    .symptom-item:has(input:checked) { border-color: var(--sage); background: var(--sage-light); }
+    .symptom-item input[type="checkbox"] { width: 15px; height: 15px; accent-color: var(--sage); flex-shrink: 0; margin-top: 2px; cursor: pointer; pointer-events: none; }
+    .symptom-item span { font-size: 13px; color: var(--text-dark); line-height: 1.4; pointer-events: none; }
+
+    /* CTA */
+    .calc-btn { width: 100%; padding: 15px; background: var(--sage); color: white; border: none; border-radius: var(--r); font-size: 16px; font-weight: 700; margin-top: 24px; transition: background .2s; letter-spacing: .1px; }
+    .calc-btn:hover { background: var(--sage-dark); }
+    .disclaimer { font-size: 12px; color: var(--text-light); margin-top: 12px; line-height: 1.6; text-align: center; padding: 0 4px; }
+
+    /* ── RESULT CARD ── */
+    .result-card { background: white; border-radius: var(--r-lg); border: 1px solid var(--border); padding: 32px; box-shadow: var(--shadow-sm); }
+
+    .risk-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+    .risk-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 26px; }
+    .risk-icon.low      { background: var(--green-soft); }
+    .risk-icon.moderate { background: var(--amber-soft); }
+    .risk-icon.high     { background: var(--red-soft); }
+    .risk-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .7px; margin-bottom: 3px; }
+    .risk-label.low      { color: var(--green-text); }
+    .risk-label.moderate { color: var(--amber-text); }
+    .risk-label.high     { color: var(--red-text); }
+    .risk-title { font-size: 21px; font-weight: 800; color: var(--text-dark); line-height: 1.2; }
+
+    .score-row { display: flex; align-items: center; justify-content: space-between; background: var(--sage-pale); border-radius: var(--r-sm); padding: 12px 16px; margin-bottom: 20px; }
+    .score-num { font-size: 32px; font-weight: 800; color: var(--text-dark); line-height: 1; }
+    .score-sub { font-size: 13px; color: var(--text-mid); margin-top: 2px; }
+    .score-detail { font-size: 13px; color: var(--text-light); text-align: right; }
+
+    /* Risk bar */
+    .bar-label { font-size: 12px; font-weight: 600; color: var(--text-light); text-transform: uppercase; letter-spacing: .6px; margin-bottom: 8px; }
+    .bar-wrap { position: relative; margin-bottom: 6px; }
+    .bar-track { width: 100%; height: 16px; border-radius: 8px; background: linear-gradient(to right, #D1FAE5 0%, #6EE7B7 20%, #FDE68A 35%, #FBBF24 52%, #F97316 68%, #EF4444 100%); position: relative; }
+    .bar-marker { position: absolute; top: 50%; transform: translate(-50%, -50%); width: 22px; height: 22px; background: var(--text-dark); border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,.22); transition: left .85s cubic-bezier(.34,1.56,.64,1); z-index: 2; left: 2%; }
+    .bar-zones { display: flex; justify-content: space-between; margin-top: 5px; margin-bottom: 20px; }
+    .bar-zone { font-size: 11px; font-weight: 600; }
+    .bar-zone.low      { color: #059669; }
+    .bar-zone.moderate { color: #D97706; }
+    .bar-zone.high     { color: #DC2626; }
+
+    /* Message */
+    .message-block { padding: 16px 18px; border-radius: var(--r); margin-bottom: 20px; border: 1.5px solid; }
+    .message-block.low      { background: var(--green-soft); border-color: #A7F3D0; }
+    .message-block.moderate { background: var(--amber-soft); border-color: #FCD34D; }
+    .message-block.high     { background: var(--red-soft);   border-color: #FCA572; }
+    .message-block p { font-size: 14px; line-height: 1.7; color: var(--text-dark); }
+
+    /* Factors */
+    .factors-section { margin-bottom: 20px; }
+    .factors-title { font-size: 13px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; }
+    .factor-item { display: flex; align-items: flex-start; gap: 9px; margin-bottom: 7px; font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+    .factor-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+    .factor-dot.risk    { background: #F97316; }
+    .factor-dot.symptom { background: #FBBF24; }
+    .factor-dot.good    { background: #34D399; }
+
+    /* Tips */
+    .tips-title { font-size: 14px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; }
+    .tips-grid { display: flex; flex-direction: column; gap: 10px; }
+    .tip-item { display: flex; gap: 12px; padding: 12px 14px; background: var(--sage-pale); border-radius: var(--r-sm); }
+    .tip-icon { font-size: 18px; flex-shrink: 0; line-height: 1.4; }
+    .tip-text { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+    .tip-text strong { font-weight: 600; color: var(--text-dark); display: block; margin-bottom: 2px; }
+
+    /* Note */
+    .note-block { display: flex; gap: 12px; padding: 14px 16px; background: var(--sage-light); border-radius: var(--r-sm); border: 1px solid var(--border-mid); margin-top: 20px; }
+    .note-block svg { flex-shrink: 0; margin-top: 1px; }
+    .note-block p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+    .note-block p strong { color: var(--text-dark); }
+
+    /* Related */
+    .related-section { }
+    .related-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .7px; color: var(--text-light); margin-bottom: 10px; }
+    .related-links { display: flex; flex-wrap: wrap; gap: 8px; }
+    .related-link { font-size: 13px; color: var(--sage); font-weight: 500; padding: 5px 12px; border: 1px solid var(--border-mid); border-radius: 20px; transition: all .15s; }
+    .related-link:hover { background: var(--sage-light); border-color: var(--sage-mid); }
+
+    /* ── RESULTS COLUMN ── */
+    .results-col { display: flex; flex-direction: column; gap: 20px; }
+    .info-card { background: white; border-radius: var(--r-lg); border: 1px solid var(--border); box-shadow: var(--shadow-sm); padding: 22px 24px; }
+    .info-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 10px; color: var(--text-dark); }
+    .info-card p  { font-size: 14px; color: var(--text-mid); line-height: 1.75; }
+    .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .related-card { background: white; border: 1.5px solid var(--border); border-radius: var(--r); padding: 14px 16px; display: flex; align-items: center; gap: 12px; transition: all .18s; text-decoration: none; color: inherit; }
+    .related-card:hover { border-color: var(--sage); box-shadow: var(--shadow-sm); transform: translateY(-1px); }
+    .related-icon { width: 36px; height: 36px; background: var(--sage-light); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .related-info strong { display: block; font-size: 13px; font-weight: 600; color: var(--text-dark); }
+    .related-info span { font-size: 11px; color: var(--text-light); }
+    .related-title { font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; text-transform: none; letter-spacing: normal; }
+
+    /* ── FOOTER ── */
+    .site-footer { background: var(--text-dark); color: #94A99A; padding: 48px 0 0; margin-top: 48px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 40px; }
+    .footer-logo { display: flex; align-items: center; gap: 8px; color: white; font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+    .footer-logo-icon { width: 28px; height: 28px; background: var(--sage); border-radius: 7px; display: flex; align-items: center; justify-content: center; }
+    .footer-brand p { font-size: 14px; line-height: 1.7; max-width: 260px; color: #7A958E; }
+    .footer-col h5 { color: white; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; margin-bottom: 14px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col a { font-size: 14px; color: #7A958E; transition: color .2s; }
+    .footer-col a:hover { color: white; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding: 20px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom p { font-size: 13px; }
+    .footer-bottom-links { display: flex; gap: 20px; }
+    .footer-bottom-links a { font-size: 13px; color: #7A958E; transition: color .2s; }
+    .footer-bottom-links a:hover { color: white; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .calc-columns { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 660px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-btn { display: none; }
+      .symptom-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  
+    /* ── MOBILE HAMBURGER ────────────────────────────── */
+    .nav-hamburger {
+      display: none; flex-direction: column; justify-content: center; gap: 5px;
+      background: none; border: none; padding: 8px; margin-left: 8px;
+      border-radius: 8px; cursor: pointer; transition: background .15s; flex-shrink: 0;
+    }
+    .nav-hamburger:hover { background: var(--sage-light, #EBF2EC); }
+    .nav-hamburger span {
+      display: block; width: 22px; height: 2.5px;
+      background: var(--text-dark, #1A2E1E); border-radius: 2px; transition: all .2s;
+    }
+    /* ── MOBILE DRAWER ───────────────────────────────── */
+    .mobile-menu { display: none; position: fixed; inset: 0; z-index: 999; }
+    .mobile-menu.open { display: block; }
+    .mobile-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.45); backdrop-filter: blur(2px); }
+    .mobile-drawer {
+      position: absolute; top: 0; right: 0;
+      width: min(300px, 84vw); height: 100%;
+      background: #fff; display: flex; flex-direction: column;
+      box-shadow: -4px 0 40px rgba(0,0,0,.18);
+      animation: drawerIn .22s cubic-bezier(.22,.61,.36,1);
+    }
+    @keyframes drawerIn { from{transform:translateX(100%)} to{transform:translateX(0)} }
+    .mobile-drawer-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 20px 14px; border-bottom: 1px solid var(--border, #E2EBE4);
+    }
+    .mobile-drawer-logo { font-size: 15px; font-weight: 700; color: var(--text-dark, #1A2E1E); }
+    .mobile-close {
+      background: none; border: none; font-size: 20px; padding: 4px 8px;
+      cursor: pointer; color: var(--text-light, #718096); border-radius: 6px; line-height: 1;
+      transition: background .15s, color .15s;
+    }
+    .mobile-close:hover { background: var(--sage-light, #EBF2EC); color: var(--text-dark, #1A2E1E); }
+    .mobile-nav-links { padding: 14px 12px; flex: 1; display: flex; flex-direction: column; gap: 4px; }
+    .mobile-nav-link {
+      display: flex; align-items: center; gap: 14px;
+      padding: 13px 16px; border-radius: 12px;
+      font-size: 16px; font-weight: 600; color: var(--text-dark, #1A2E1E);
+      text-decoration: none; transition: background .15s, color .15s;
+    }
+    .mobile-nav-link:hover { background: var(--sage-light, #EBF2EC); color: var(--sage, #3B6A3A); }
+    .mobile-link-icon {
+      width: 40px; height: 40px; background: var(--sage-light, #EBF2EC);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .mobile-browse-btn {
+      display: block; margin: 0 12px 20px; padding: 14px;
+      background: var(--sage, #3B6A3A); color: #fff; border-radius: 12px;
+      font-size: 15px; font-weight: 700; text-align: center;
+      text-decoration: none; transition: background .15s;
+    }
+    .mobile-browse-btn:hover { background: var(--sage-dark, #0A3D2A); }
+
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <img src="assets/logo.png" alt="SageMyHealth" style="height: 54px; width: auto; object-fit: contain;"/>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html#categories">Calculators</a></li>
+      <li><a href="../index.html">How it works</a></li>
+      <li><a href="../index.html">About</a></li>
+    </ul>
+    <button class="nav-btn" onclick="location.href='../index.html#categories'">All Calculators</button>
+    <button class="nav-hamburger" id="nav-hamburger"
+            onclick="openMobileMenu()" aria-label="Open navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site navigation">
+  <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-drawer">
+    <div class="mobile-drawer-head">
+      <span class="mobile-drawer-logo">SageMyHealth</span>
+      <button class="mobile-close" onclick="closeMobileMenu()" aria-label="Close menu">&#x2715;</button>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="../index.html#categories" class="mobile-nav-link" onclick="closeMobileMenu()">
+        <span class="mobile-link-icon">&#x1F9EE;</span>Calculators
+      </a>
+      <a href="../about.html" class="mobile-nav-link" onclick="closeMobileMenu()">
+        <span class="mobile-link-icon">&#x1F49A;</span>About
+      </a>
+      <a href="../blog.html" class="mobile-nav-link" onclick="closeMobileMenu()">
+        <span class="mobile-link-icon">&#x1F4D6;</span>Health Guides
+      </a>
+    </nav>
+    <a href="../index.html#categories" class="mobile-browse-btn" onclick="closeMobileMenu()">Browse All Calculators &#x2192;</a>
+  </div>
+</div>
+
+<!-- PAGE -->
+<main class="calc-page">
+  <div class="calc-wrapper">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="bc-sep">›</span>
+      <a href="../index.html#categories">Calculators</a>
+      <span class="bc-sep">›</span>
+      <span>Iron Deficiency Risk</span>
+    </nav>
+
+    <!-- Page header -->
+    <header class="page-header">
+      <div class="calc-tag">🩸 Nutrition &amp; Blood Health</div>
+      <h1>Iron Deficiency Risk Calculator</h1>
+      <p>Answer a few questions about your lifestyle, diet, and symptoms to see whether you might be at risk — and what to do next.</p>
+    </header>
+
+    <div class="calc-columns">
+
+      <!-- LEFT: FORM -->
+      <div class="calc-card">
+        <h2>Check your iron risk</h2>
+
+        <!-- About You -->
+        <div class="form-section">
+          <div class="section-title">About You</div>
+          <div class="field-group">
+            <label class="field-label">Biological sex</label>
+            <div class="pill-group" id="sex-pills">
+              <button class="pill active" data-val="female" onclick="setPill('sex-pills',this)">Female</button>
+              <button class="pill" data-val="male" onclick="setPill('sex-pills',this)">Male</button>
+              <button class="pill" data-val="other" onclick="setPill('sex-pills',this)">Prefer not to say</button>
+            </div>
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="age">Age</label>
+            <input type="number" id="age" class="field-input" placeholder="30" min="5" max="90" />
+          </div>
+        </div>
+
+        <!-- Women's Health (shown for female) -->
+        <div class="form-section" id="womens-section" style="display:none">
+          <div class="section-title">Women's Health</div>
+          <div class="check-item">
+            <input type="checkbox" id="menstruating" />
+            <label for="menstruating">I currently have regular monthly periods</label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="heavy-periods" />
+            <label for="heavy-periods">My periods are heavy or last longer than 7 days</label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="pregnant" />
+            <label for="pregnant">I'm pregnant or gave birth in the last 6 months</label>
+          </div>
+        </div>
+
+        <!-- Lifestyle -->
+        <div class="form-section">
+          <div class="section-title">Lifestyle</div>
+          <div class="field-group">
+            <label class="field-label">Diet type</label>
+            <p class="field-hint">Plant-based iron (non-heme) is significantly less absorbable than meat-based iron</p>
+            <div class="pill-group" id="diet-pills">
+              <button class="pill active" data-val="omnivore"    onclick="setPill('diet-pills',this)">Omnivore</button>
+              <button class="pill"        data-val="pescatarian" onclick="setPill('diet-pills',this)">Pescatarian</button>
+              <button class="pill"        data-val="vegetarian"  onclick="setPill('diet-pills',this)">Vegetarian</button>
+              <button class="pill"        data-val="vegan"       onclick="setPill('diet-pills',this)">Vegan</button>
+            </div>
+          </div>
+          <div class="field-group">
+            <label class="field-label">Exercise level</label>
+            <p class="field-hint">Endurance training increases iron losses through sweat and foot-strike hemolysis</p>
+            <div class="pill-group" id="exercise-pills">
+              <button class="pill active" data-val="light"    onclick="setPill('exercise-pills',this)">Light</button>
+              <button class="pill"        data-val="moderate" onclick="setPill('exercise-pills',this)">Moderate</button>
+              <button class="pill"        data-val="vigorous" onclick="setPill('exercise-pills',this)">Vigorous / Endurance</button>
+            </div>
+          </div>
+          <div class="check-item" style="margin-top:4px">
+            <input type="checkbox" id="blood-donation" />
+            <label for="blood-donation">I've donated blood in the last 3 months</label>
+          </div>
+        </div>
+
+        <!-- Symptoms -->
+        <div class="form-section" style="border-bottom:none; padding-bottom:0; margin-bottom:0">
+          <div class="section-title">Symptoms</div>
+          <p class="section-hint">Select all that apply to you over the past few weeks</p>
+          <div class="symptom-grid">
+            <label class="symptom-item"><input type="checkbox" id="s-fatigue" /><span>Fatigue or low energy most days</span></label>
+            <label class="symptom-item"><input type="checkbox" id="s-pale" /><span>Pale skin or pale inner eyelids</span></label>
+            <label class="symptom-item"><input type="checkbox" id="s-breath" /><span>Shortness of breath on light activity</span></label>
+            <label class="symptom-item"><input type="checkbox" id="s-cold" /><span>Cold hands &amp; feet</span></label>
+            <label class="symptom-item"><input type="checkbox" id="s-nails" /><span>Brittle or weak nails</span></label>
+            <label class="symptom-item"><input type="checkbox" id="s-hair" /><span>Unusual hair loss</span></label>
+            <label class="symptom-item"><input type="checkbox" id="s-headache" /><span>Frequent headaches</span></label>
+            <label class="symptom-item"><input type="checkbox" id="s-focus" /><span>Brain fog or difficulty concentrating</span></label>
+            <label class="symptom-item"><input type="checkbox" id="s-restless" /><span>Restless legs at night</span></label>
+            <label class="symptom-item"><input type="checkbox" id="s-pica" /><span>Cravings for ice, dirt or non-food items</span></label>
+          </div>
+        </div>
+
+        <button class="calc-btn" onclick="calculateRisk()">Check my iron risk</button>
+        <p class="disclaimer">This is a screening tool — not a medical diagnosis. A ferritin blood test is the only way to confirm iron deficiency.</p>
+      </div>
+
+      <!-- RIGHT: RESULTS -->
+      <div class="results-col">
+      <div id="result-panel" style="display:none">
+        <div class="result-card">
+
+          <div class="risk-header">
+            <div class="risk-icon low" id="res-icon">✅</div>
+            <div>
+              <div class="risk-label low" id="res-label">LOW RISK</div>
+              <div class="risk-title" id="res-title">You have few risk factors</div>
+            </div>
+          </div>
+
+          <div class="score-row">
+            <div>
+              <div class="score-num" id="res-score">0</div>
+              <div class="score-sub">Risk score</div>
+            </div>
+            <div class="score-detail" id="res-detail">No significant risk factors found</div>
+          </div>
+
+          <div class="bar-label">Risk Level</div>
+          <div class="bar-wrap">
+            <div class="bar-track">
+              <div class="bar-marker" id="res-marker"></div>
+            </div>
+          </div>
+          <div class="bar-zones">
+            <span class="bar-zone low">Low</span>
+            <span class="bar-zone moderate">Moderate</span>
+            <span class="bar-zone high">High</span>
+          </div>
+
+          <div class="message-block low" id="res-message"></div>
+
+          <div class="factors-section">
+            <div class="factors-title" id="factors-title">Factors contributing to your score</div>
+            <div id="factor-list"></div>
+          </div>
+
+          <div class="tips-title" id="tips-title">What to do next</div>
+          <div class="tips-grid" id="tips-grid"></div>
+
+          <div class="note-block">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#5C8A5C" stroke-width="2"/><path d="M12 8v4M12 16h.01" stroke="#5C8A5C" stroke-width="2" stroke-linecap="round"/></svg>
+            <p><strong>Important:</strong> Only a ferritin blood test can confirm iron deficiency. If you have multiple symptoms, it's worth asking your doctor — it's a simple, low-cost test.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="info-card">
+        <h3>About iron deficiency</h3>
+        <p>Iron deficiency is the most common nutritional deficiency worldwide, affecting roughly 25% of the global population. The key marker is <strong>ferritin</strong> — the protein that stores iron in your body. You can have depleted ferritin stores (and experience symptoms like fatigue, brain fog, and hair loss) even when a basic haemoglobin test comes back "normal." Groups at highest risk include menstruating women, vegetarians and vegans, athletes, and those with GI conditions. A simple blood test checking serum ferritin is the definitive way to check.</p>
+      </div>
+
+      <div class="related-section">
+        <p class="related-title">You might also like</p>
+        <div class="related-grid">
+          <a href="hair-loss-risk.html" class="related-card">
+            <div class="related-icon">💇</div>
+            <div class="related-info"><strong>Hair Loss Risk</strong><span>Iron is a key factor</span></div>
+          </a>
+          <a href="brain-fatigue.html" class="related-card">
+            <div class="related-icon">🧠</div>
+            <div class="related-info"><strong>Brain Fatigue</strong><span>Fatigue & mental fog</span></div>
+          </a>
+          <a href="period-tracker.html" class="related-card">
+            <div class="related-icon">🌗</div>
+            <div class="related-info"><strong>Period Tracker</strong><span>Cycle & blood loss</span></div>
+          </a>
+          <a href="blood-glucose.html" class="related-card">
+            <div class="related-icon">🩺</div>
+            <div class="related-info"><strong>Blood Glucose</strong><span>Metabolic health</span></div>
+          </a>
+        </div>
+      </div>
+
+      </div><!-- /.results-col -->
+
+    </div><!-- /.calc-columns -->
+  </div><!-- /.calc-wrapper -->
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="assets/logo-white.png" alt="SageMyHealth" style="height: 45px; width: auto; object-fit: contain;"/>
+        </div>
+        <p>Free, trusted health calculators with warm guidance — helping you understand your numbers.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Calculators</h5>
+        <ul>
+          <li><a href="bmi.html">BMI</a></li>
+          <li><a href="tdee.html">TDEE &amp; Calories</a></li>
+          <li><a href="blood-glucose.html">Blood Glucose</a></li>
+          <li><a href="heart-rate.html">Heart Rate Zones</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>More Tools</h5>
+        <ul>
+          <li><a href="period-tracker.html">Period Tracker</a></li>
+          <li><a href="anxiety-score.html">Anxiety Score</a></li>
+          <li><a href="iron-deficiency.html">Iron Deficiency Risk</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>About</h5>
+        <ul>
+          <li><a href="../index.html">Our Mission</a></li>
+          <li><a href="../index.html">How It Works</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 SageMyHealth. For informational purposes only — not medical advice.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── Pill helper ──
+  function setPill(groupId, btn) {
+    document.querySelectorAll('#' + groupId + ' .pill').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    if (groupId === 'sex-pills') toggleWomens();
+  }
+
+  function getVal(groupId) {
+    const a = document.querySelector('#' + groupId + ' .pill.active');
+    return a ? a.dataset.val : null;
+  }
+
+  // ── Women's section visibility ──
+  function toggleWomens() {
+    const sex = getVal('sex-pills');
+    const ws = document.getElementById('womens-section');
+    ws.style.display = sex === 'female' ? '' : 'none';
+    if (sex !== 'female') {
+      ['menstruating','heavy-periods','pregnant'].forEach(id => {
+        document.getElementById(id).checked = false;
+      });
+    }
+  }
+
+  // ── Main calculation ──
+  function calculateRisk() {
+    let score = 0;
+    const riskFactors = [];
+    const symptomFactors = [];
+
+    const sex      = getVal('sex-pills');
+    const age      = parseInt(document.getElementById('age').value) || 0;
+    const diet     = getVal('diet-pills');
+    const exercise = getVal('exercise-pills');
+
+    // Demographic
+    if (sex === 'female') {
+      score += 1;
+      riskFactors.push('Biological females have higher daily iron requirements');
+    }
+    if (age > 0 && age < 6) {
+      score += 1;
+      riskFactors.push('Young children (under 6) have increased iron needs for development');
+    }
+
+    // Women's health
+    if (sex === 'female') {
+      if (document.getElementById('menstruating').checked) {
+        score += 1;
+        riskFactors.push('Monthly periods cause regular iron loss');
+      }
+      if (document.getElementById('heavy-periods').checked) {
+        score += 2;
+        riskFactors.push('Heavy or prolonged periods significantly increase iron loss');
+      }
+      if (document.getElementById('pregnant').checked) {
+        score += 3;
+        riskFactors.push('Pregnancy and postpartum are the highest-risk periods for iron deficiency');
+      }
+    }
+
+    // Diet
+    if (diet === 'vegan') {
+      score += 2;
+      riskFactors.push('Vegan diet: plant-based (non-heme) iron is far less absorbable than heme iron');
+    } else if (diet === 'vegetarian') {
+      score += 1;
+      riskFactors.push('Vegetarian diet: no heme iron from meat reduces overall iron availability');
+    }
+
+    // Exercise
+    if (exercise === 'vigorous') {
+      score += 1;
+      riskFactors.push('Vigorous/endurance exercise increases iron losses through sweat and red cell turnover');
+    }
+
+    // Blood donation
+    if (document.getElementById('blood-donation').checked) {
+      score += 1;
+      riskFactors.push('Blood donation temporarily depletes iron stores (takes 8–12 weeks to recover)');
+    }
+
+    // Symptoms
+    const symptomMap = [
+      { id: 's-fatigue',  pts: 1, label: 'Fatigue or low energy' },
+      { id: 's-pale',     pts: 1, label: 'Pale skin or pale inner eyelids' },
+      { id: 's-breath',   pts: 1, label: 'Shortness of breath on light activity' },
+      { id: 's-cold',     pts: 1, label: 'Cold hands & feet' },
+      { id: 's-nails',    pts: 1, label: 'Brittle or weak nails' },
+      { id: 's-hair',     pts: 1, label: 'Unusual hair loss' },
+      { id: 's-headache', pts: 1, label: 'Frequent headaches' },
+      { id: 's-focus',    pts: 1, label: 'Brain fog or difficulty concentrating' },
+      { id: 's-restless', pts: 1, label: 'Restless legs at night' },
+      { id: 's-pica',     pts: 2, label: 'Cravings for ice, dirt or non-food items (pica) — a strong indicator of iron deficiency' },
+    ];
+    symptomMap.forEach(s => {
+      if (document.getElementById(s.id).checked) {
+        score += s.pts;
+        symptomFactors.push(s.label);
+      }
+    });
+
+    // Level
+    let level;
+    if      (score <= 3) level = 'low';
+    else if (score <= 6) level = 'moderate';
+    else                 level = 'high';
+
+    renderResult(score, level, riskFactors, symptomFactors, diet);
+  }
+
+  function renderResult(score, level, riskFactors, symptomFactors, diet) {
+    document.getElementById('result-panel').style.display = '';
+    setTimeout(() => document.getElementById('result-panel').scrollIntoView({ behavior:'smooth', block:'nearest' }), 80);
+
+    // Header
+    const icons  = { low:'✅', moderate:'⚠️', high:'🩺' };
+    const labels = { low:'LOW RISK', moderate:'MODERATE RISK', high:'HIGH RISK' };
+    const titles = {
+      low:      'You have few risk factors',
+      moderate: 'Some factors worth watching',
+      high:     'Worth getting checked out'
+    };
+    const iconEl = document.getElementById('res-icon');
+    iconEl.textContent = icons[level];
+    iconEl.className = 'risk-icon ' + level;
+    const labelEl = document.getElementById('res-label');
+    labelEl.textContent = labels[level];
+    labelEl.className = 'risk-label ' + level;
+    document.getElementById('res-title').textContent = titles[level];
+
+    // Score
+    document.getElementById('res-score').textContent = score;
+    const rf = riskFactors.length, sf = symptomFactors.length;
+    let detail = '';
+    if (rf === 0 && sf === 0) detail = 'No significant risk factors found';
+    else {
+      const parts = [];
+      if (rf > 0) parts.push(rf + ' risk factor' + (rf !== 1 ? 's' : ''));
+      if (sf > 0) parts.push(sf + ' symptom' + (sf !== 1 ? 's' : ''));
+      detail = parts.join(' · ');
+    }
+    document.getElementById('res-detail').textContent = detail;
+
+    // Bar position: score 0→2%, 3→33%, 7→70%, 12→98%
+    let pct;
+    if      (score <= 3)  pct = 2  + (score / 3) * 31;
+    else if (score <= 7)  pct = 33 + ((score - 3) / 4) * 37;
+    else                  pct = 70 + Math.min((score - 7) / 6, 1) * 28;
+    pct = Math.max(2, Math.min(98, pct));
+    setTimeout(() => { document.getElementById('res-marker').style.left = pct + '%'; }, 120);
+
+    // Message
+    const messages = {
+      low:      `<p>Great news! Based on your answers, you have <strong>few risk factors for iron deficiency</strong>. Your diet and lifestyle aren't raising major red flags, and you're not reporting significant symptoms. Keep eating well, stay active, and recheck if anything changes.</p>`,
+      moderate: `<p>You have <strong>some factors that may affect your iron levels</strong>. This doesn't mean you're deficient, but it's worth paying attention. Eating more iron-rich foods alongside vitamin C can make a real difference — and if you're feeling persistently tired or run-down, a quick ferritin blood test is an easy way to get clarity.</p>`,
+      high:     `<p>Based on your answers, you have <strong>several risk factors and symptoms commonly associated with iron deficiency</strong>. We'd really encourage you to speak with your doctor about a ferritin blood test. It's simple, inexpensive, and gives you a definitive answer. The good news: iron deficiency is very treatable once confirmed.</p>`
+    };
+    const msgEl = document.getElementById('res-message');
+    msgEl.className = 'message-block ' + level;
+    msgEl.innerHTML = messages[level];
+
+    // Factor list
+    const factorList = document.getElementById('factor-list');
+    factorList.innerHTML = '';
+    const allFactors = [
+      ...riskFactors.map(t => ({ type:'risk', text:t })),
+      ...symptomFactors.map(t => ({ type:'symptom', text:t }))
+    ];
+    if (allFactors.length === 0) {
+      document.getElementById('factors-title').textContent = 'No significant risk factors identified';
+      factorList.innerHTML = `<div class="factor-item"><div class="factor-dot good"></div><span>No major iron deficiency risk factors detected from your answers</span></div>`;
+    } else {
+      document.getElementById('factors-title').textContent = allFactors.length + ' factor' + (allFactors.length !== 1 ? 's' : '') + ' contributing to your score';
+      allFactors.forEach(f => {
+        const d = document.createElement('div');
+        d.className = 'factor-item';
+        d.innerHTML = `<div class="factor-dot ${f.type}"></div><span>${f.text}</span>`;
+        factorList.appendChild(d);
+      });
+    }
+
+    // Tips
+    const plantBased = diet === 'vegan' || diet === 'vegetarian';
+    const tipSets = {
+      low: [
+        { icon:'🥩', title:'Keep up iron-rich foods', body: plantBased ? 'Pair lentils, tofu, spinach, and fortified grains with vitamin C to maximise absorption.' : 'Red meat, poultry, fish, and fortified cereals are excellent sources. A varied diet keeps your stores topped up.' },
+        { icon:'☕', title:'Watch tea & coffee timing', body:'Tannins in tea and coffee can cut iron absorption by up to 60%. Try waiting at least 1 hour after meals before drinking them.' },
+        { icon:'🔄', title:'Rescreen if your situation changes', body:'Pregnancy, intense training, or new symptoms like fatigue or hair loss are good reasons to recheck — and consider a ferritin test.' },
+      ],
+      moderate: [
+        { icon:'🍊', title:'Pair iron with vitamin C', body:'Vitamin C can triple non-heme iron absorption. Try orange juice, bell peppers, or kiwi alongside iron-rich meals.' },
+        { icon:'🥗', title:'Increase iron-rich foods', body: plantBased ? 'Lentils, chickpeas, tofu, pumpkin seeds, spinach, and fortified cereals are your best plant-based sources. Eat them daily.' : 'Aim for lean red meat 2–3× per week, plus eggs, fortified cereals, and dark leafy greens.' },
+        { icon:'🩺', title:'Consider a ferritin blood test', body:'A simple ferritin test measures your iron stores — not just circulating iron. It\'s inexpensive and can catch deficiency early, before it becomes anaemia.' },
+      ],
+      high: [
+        { icon:'🩺', title:'See your doctor — step one', body:'Ask for a ferritin blood test. It\'s the definitive way to confirm iron deficiency. Multiple symptoms together make this important to investigate promptly.' },
+        { icon:'💊', title:'Don\'t self-supplement without testing', body:'Iron supplements help when deficiency is confirmed, but excess iron is harmful. Get tested first so your doctor can prescribe the right dose and form.' },
+        { icon:'🥗', title:'Optimise your diet now', body: plantBased ? 'Focus on lentils, chickpeas, tofu, and fortified foods every day. Always pair with vitamin C and avoid tea or coffee for 1 hour after meals.' : 'Include lean red meat, shellfish, and eggs regularly. Pair all iron-rich meals with vitamin C. Avoid tea or coffee with meals.' },
+      ]
+    };
+    const tipsGrid = document.getElementById('tips-grid');
+    tipsGrid.innerHTML = '';
+    tipSets[level].forEach(t => {
+      const el = document.createElement('div');
+      el.className = 'tip-item';
+      el.innerHTML = `<div class="tip-icon">${t.icon}</div><div class="tip-text"><strong>${t.title}</strong>${t.body}</div>`;
+      tipsGrid.appendChild(el);
+    });
+    document.getElementById('tips-title').textContent = level === 'high' ? 'Recommended next steps' : 'What to do next';
+  }
+
+  // Init — show women's section since female is default
+  document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('womens-section').style.display = '';
+  });
+</script>
+
+
+<script>
+  /* Mobile menu */
+  function openMobileMenu() {
+    document.getElementById('mobile-menu').classList.add('open');
+    document.getElementById('nav-hamburger').setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.getElementById('nav-hamburger').setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMobileMenu(); });
+</script>
+</body>
+</html>

@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X6K2H9YW2V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X6K2H9YW2V');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blood Pressure Interpreter — SageMyHealth</title>
+  <meta name="description" content="Enter your blood pressure reading and instantly understand what it means. Based on the AHA 2017 guidelines — from normal to hypertensive crisis, with clear guidance on what to do next." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sage:        #3B6A3A;
+      --sage-dark:   #0A3D2A;
+      --sage-mid:    #5C8A5C;
+      --sage-light:  #EBF2EC;
+      --sage-pale:   #F2F7F3;
+      --cream:       #E3FFB3;
+      --white:       #FFFFFF;
+      --text-dark:   #1A2E1E;
+      --text-mid:    #4A5568;
+      --text-light:  #718096;
+      --placeholder: #AAB0B8;
+      --border:      #E2EBE4;
+      --border-mid:  #C8D9CC;
+      --shadow-xs:   0 1px 2px rgba(59,106,58,0.06);
+      --shadow-sm:   0 1px 6px rgba(59,106,58,0.08);
+      --shadow-md:   0 4px 16px rgba(59,106,58,0.12);
+      --shadow-lg:   0 8px 32px rgba(59,106,58,0.16);
+      --r-sm: 8px; --r: 12px; --r-lg: 20px; --r-xl: 28px;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text-dark); background: var(--sage-pale); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; }
+
+    /* NAV */
+    .site-nav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.96); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav-logo-text { font-size: 19px; font-weight: 700; letter-spacing: -0.3px; }
+    .nav-logo-text .accent { color: var(--sage); }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; flex: 1; justify-content: center; }
+    .nav-links a { color: var(--text-mid); font-size: 15px; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--sage); }
+    .nav-btn { background: var(--sage); color: white; border: none; padding: 9px 20px; border-radius: var(--r-sm); font-size: 14px; font-weight: 600; transition: background .2s; }
+    .nav-btn:hover { background: var(--sage-dark); }
+
+    /* PAGE */
+    .calc-page { padding: 36px 0 72px; }
+    .calc-wrapper { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* BREADCRUMB */
+    .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-light); margin-bottom: 24px; flex-wrap: wrap; }
+    .breadcrumb a { color: var(--sage); }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .bc-sep { color: var(--border-mid); }
+
+    /* PAGE HEADER */
+    .page-header { margin-bottom: 28px; }
+    .calc-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--sage); background: var(--white); padding: 5px 12px; border-radius: 20px; margin-bottom: 12px; letter-spacing: .3px; border: 1px solid var(--border); }
+    .page-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 42px); font-weight: 700; color: var(--text-dark); letter-spacing: -.5px; margin-bottom: 10px; line-height: 1.15; }
+    .page-header p { font-size: 15px; color: var(--text-mid); line-height: 1.7; max-width: 700px; }
+
+    /* TWO-COLUMN LAYOUT */
+    .calc-wrapper-inner { display: grid; grid-template-columns: 480px 1fr; gap: 24px; align-items: start; }
+
+    /* FORM CARD */
+    .form-card { background: white; border-radius: var(--r-xl); box-shadow: var(--shadow-lg); overflow: hidden; }
+    .form-card-header { padding: 24px 28px 0; }
+    .form-card-title { font-size: 15px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
+    .form-card-sub { font-size: 13px; color: var(--text-light); margin-bottom: 20px; }
+    .form-body { padding: 0 28px 28px; }
+
+    /* BP Inputs */
+    .bp-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+    .input-group { display: flex; flex-direction: column; gap: 6px; }
+    .input-label { font-size: 13px; font-weight: 600; color: var(--text-dark); }
+    .input-sub { font-size: 11px; color: var(--text-light); margin-top: -4px; }
+    .bp-input { width: 100%; padding: 14px 16px; border: 1.5px solid var(--border); border-radius: var(--r); font-size: 22px; font-weight: 700; color: var(--text-dark); text-align: center; transition: border-color .2s, box-shadow .2s; background: white; -moz-appearance: textfield; }
+    .bp-input::-webkit-inner-spin-button, .bp-input::-webkit-outer-spin-button { -webkit-appearance: none; }
+    .bp-input:focus { outline: none; border-color: var(--sage); box-shadow: 0 0 0 3px rgba(59,106,58,0.12); }
+    .bp-input::placeholder { font-size: 16px; font-weight: 400; color: var(--placeholder); }
+    .input-unit { font-size: 11px; font-weight: 600; color: var(--text-light); text-align: center; margin-top: 4px; letter-spacing: .3px; text-transform: uppercase; }
+
+    /* Reading guide */
+    .reading-guide { background: var(--sage-pale); border-radius: var(--r); padding: 14px 16px; margin-bottom: 20px; }
+    .reading-guide-title { font-size: 12px; font-weight: 700; color: var(--text-mid); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 10px; }
+    .rg-row { display: flex; align-items: center; gap: 10px; padding: 5px 0; border-bottom: 1px solid var(--border); }
+    .rg-row:last-child { border-bottom: none; }
+    .rg-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .rg-label { font-size: 12px; font-weight: 600; color: var(--text-dark); flex: 1; }
+    .rg-range { font-size: 11px; color: var(--text-light); text-align: right; }
+
+    .calc-btn { width: 100%; background: var(--sage); color: white; border: none; padding: 14px; border-radius: var(--r); font-size: 16px; font-weight: 700; transition: all .18s; }
+    .calc-btn:hover { background: var(--sage-dark); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+    .calc-btn:active { transform: translateY(0); }
+
+    /* RESULTS COL */
+    .results-col { display: flex; flex-direction: column; gap: 20px; }
+
+    /* RESULT CARD */
+    .result-card { background: white; border-radius: var(--r-xl); box-shadow: var(--shadow-lg); overflow: hidden; display: none; }
+    .result-card.visible { display: block; animation: slideUp .35s ease; }
+    @keyframes slideUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+    .result-band { height: 6px; width: 100%; }
+    .result-body { padding: 24px; }
+
+    /* Reading display */
+    .reading-display { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 20px; }
+    .reading-number { font-size: 52px; font-weight: 800; line-height: 1; letter-spacing: -2px; color: var(--text-dark); }
+    .reading-slash { font-size: 36px; font-weight: 300; color: var(--text-light); padding: 0 4px; }
+    .reading-unit { font-size: 13px; color: var(--text-light); align-self: flex-end; padding-bottom: 8px; }
+
+    /* Category chips */
+    .cat-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+    .cat-badge { font-size: 13px; font-weight: 700; padding: 6px 14px; border-radius: 20px; }
+    .cat-pulse { font-size: 12px; color: var(--text-light); }
+
+    /* Category scale */
+    .cat-scale { display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px; }
+    .scale-row { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: var(--r-sm); border: 1.5px solid transparent; transition: all .2s; }
+    .scale-row.active { border-color: currentColor; }
+    .scale-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .scale-name { font-size: 13px; font-weight: 600; flex: 1; }
+    .scale-range { font-size: 12px; color: var(--text-light); }
+
+    /* Colours per category */
+    .c-low    { color: #4F46E5; }
+    .c-normal { color: #16A34A; }
+    .c-elevated { color: #D97706; }
+    .c-stage1 { color: #EA580C; }
+    .c-stage2 { color: #DC2626; }
+    .c-crisis { color: #7F1D1D; }
+
+    .bg-low    { background: #EEF2FF; border-color: #818CF8 !important; }
+    .bg-normal { background: #F0FDF4; border-color: #4ADE80 !important; }
+    .bg-elevated { background: #FFFBEB; border-color: #FCD34D !important; }
+    .bg-stage1 { background: #FFF7ED; border-color: #FB923C !important; }
+    .bg-stage2 { background: #FEF2F2; border-color: #F87171 !important; }
+    .bg-crisis { background: #450A0A; border-color: #991B1B !important; }
+
+    .badge-low    { background: #EEF2FF; color: #4338CA; }
+    .badge-normal { background: #DCFCE7; color: #166534; }
+    .badge-elevated { background: #FEF3C7; color: #92400E; }
+    .badge-stage1 { background: #FFEDD5; color: #9A3412; }
+    .badge-stage2 { background: #FEE2E2; color: #991B1B; }
+    .badge-crisis { background: #7F1D1D; color: #FEE2E2; }
+
+    .band-low    { background: linear-gradient(90deg, #818CF8, #4F46E5); }
+    .band-normal { background: linear-gradient(90deg, #4ADE80, #16A34A); }
+    .band-elevated { background: linear-gradient(90deg, #FCD34D, #D97706); }
+    .band-stage1 { background: linear-gradient(90deg, #FB923C, #EA580C); }
+    .band-stage2 { background: linear-gradient(90deg, #F87171, #DC2626); }
+    .band-crisis { background: linear-gradient(90deg, #DC2626, #7F1D1D); }
+
+    /* Message */
+    .msg-block { border-radius: var(--r); padding: 18px; margin-bottom: 16px; border-left: 4px solid; }
+    .msg-block h3 { font-size: 14px; font-weight: 700; margin-bottom: 6px; color: var(--text-dark); }
+    .msg-block p  { font-size: 13px; color: var(--text-mid); line-height: 1.7; }
+
+    .tips-title { font-size: 13px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; }
+    .tips-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .tips-list li { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+    .tips-list li::before { content: '✤'; color: var(--sage); font-size: 10px; margin-top: 3px; flex-shrink: 0; }
+
+    /* INFO CARDS */
+    .info-card { background: white; border-radius: var(--r-xl); box-shadow: var(--shadow-sm); padding: 22px 24px; }
+    .info-card h3 { font-size: 14px; font-weight: 700; margin-bottom: 8px; color: var(--text-dark); }
+    .info-card p  { font-size: 13px; color: var(--text-mid); line-height: 1.75; }
+    .info-card p + p { margin-top: 10px; }
+
+    /* Numbers explainer */
+    .numbers-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
+    .number-card { background: var(--sage-pale); border-radius: var(--r); padding: 14px; }
+    .number-card-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--text-light); margin-bottom: 4px; }
+    .number-card-name { font-size: 14px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
+    .number-card-desc { font-size: 12px; color: var(--text-mid); line-height: 1.6; }
+
+    /* RELATED */
+    .related-section { }
+    .related-title { font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; }
+    .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .related-card { background: white; border: 1.5px solid var(--border); border-radius: var(--r); padding: 14px 16px; display: flex; align-items: center; gap: 12px; transition: all .18s; }
+    .related-card:hover { border-color: var(--sage); box-shadow: var(--shadow-sm); transform: translateY(-1px); }
+    .related-icon { width: 36px; height: 36px; background: var(--sage-light); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+    .related-info strong { display: block; font-size: 13px; font-weight: 600; }
+    .related-info span  { font-size: 11px; color: var(--text-light); }
+
+    /* DISCLAIMER */
+    .note-block { background: var(--cream); border-radius: var(--r); padding: 13px 16px; font-size: 12px; color: var(--text-light); line-height: 1.7; display: flex; gap: 8px; align-items: flex-start; }
+    .note-block svg { flex-shrink: 0; margin-top: 1px; }
+
+    /* FOOTER */
+    .site-footer { background: var(--text-dark); color: #94A99A; padding: 48px 0 0; margin-top: 48px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 40px; }
+    .footer-logo { display: flex; align-items: center; gap: 8px; color: white; font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+    .footer-brand p { font-size: 14px; line-height: 1.7; max-width: 260px; color: #7A958E; }
+    .footer-col h5 { color: white; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; margin-bottom: 14px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { font-size: 14px; color: #7A958E; transition: color .2s; }
+    .footer-col a:hover { color: white; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding: 22px 0; display: flex; flex-direction: column; gap: 6px; }
+    .footer-disclaimer { font-size: 12px; color: #5A7568; line-height: 1.7; }
+    .footer-copy { font-size: 12px; color: #5A7568; }
+
+    /* ERROR */
+    .error-msg { color: #DC2626; font-size: 12px; margin-top: 6px; display: none; }
+
+    @media (max-width: 900px) {
+      .calc-wrapper-inner { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 660px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-btn { display: none; }
+      .related-grid { grid-template-columns: 1fr; }
+      .bp-inputs { grid-template-columns: 1fr 1fr; }
+      .numbers-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 520px) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  
+    /* ── MOBILE HAMBURGER ────────────────────────────── */
+    .nav-hamburger {
+      display: none; flex-direction: column; justify-content: center; gap: 5px;
+      background: none; border: none; padding: 8px; margin-left: 8px;
+      border-radius: 8px; cursor: pointer; transition: background .15s; flex-shrink: 0;
+    }
+    .nav-hamburger:hover { background: var(--sage-light, #EBF2EC); }
+    .nav-hamburger span {
+      display: block; width: 22px; height: 2.5px;
+      background: var(--text-dark, #1A2E1E); border-radius: 2px; transition: all .2s;
+    }
+    /* ── MOBILE DRAWER ───────────────────────────────── */
+    .mobile-menu { display: none; position: fixed; inset: 0; z-index: 999; }
+    .mobile-menu.open { display: block; }
+    .mobile-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.45); backdrop-filter: blur(2px); }
+    .mobile-drawer {
+      position: absolute; top: 0; right: 0;
+      width: min(300px, 84vw); height: 100%;
+      background: #fff; display: flex; flex-direction: column;
+      box-shadow: -4px 0 40px rgba(0,0,0,.18);
+      animation: drawerIn .22s cubic-bezier(.22,.61,.36,1);
+    }
+    @keyframes drawerIn { from{transform:translateX(100%)} to{transform:translateX(0)} }
+    .mobile-drawer-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 20px 14px; border-bottom: 1px solid var(--border, #E2EBE4);
+    }
+    .mobile-drawer-logo { font-size: 15px; font-weight: 700; color: var(--text-dark, #1A2E1E); }
+    .mobile-close {
+      background: none; border: none; font-size: 20px; padding: 4px 8px;
+      cursor: pointer; color: var(--text-light, #718096); border-radius: 6px; line-height: 1;
+      transition: background .15s, color .15s;
+    }
+    .mobile-close:hover { background: var(--sage-light, #EBF2EC); color: var(--text-dark, #1A2E1E); }
+    .mobile-nav-links { padding: 14px 12px; flex: 1; display: flex; flex-direction: column; gap: 4px; }
+    .mobile-nav-link {
+      display: flex; align-items: center; gap: 14px;
+      padding: 13px 16px; border-radius: 12px;
+      font-size: 16px; font-weight: 600; color: var(--text-dark, #1A2E1E);
+      text-decoration: none; transition: background .15s, color .15s;
+    }
+    .mobile-nav-link:hover { background: var(--sage-light, #EBF2EC); color: var(--sage, #3B6A3A); }
+    .mobile-link-icon {
+      width: 40px; height: 40px; background: var(--sage-light, #EBF2EC);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .mobile-browse-btn {
+      display: block; margin: 0 12px 20px; padding: 14px;
+      background: var(--sage, #3B6A3A); color: #fff; border-radius: 12px;
+      font-size: 15px; font-weight: 700; text-align: center;
+      text-decoration: none; transition: background .15s;
+    }
+    .mobile-browse-btn:hover { background: var(--sage-dark, #0A3D2A); }
+
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <img src="assets/logo.png" alt="SageMyHealth" style="height:54px;width:auto;object-fit:contain;" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html#categories">Calculators</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../blog.html">Health Guides</a></li>
+    </ul>
+    <a href="../index.html#categories" class="nav-btn">Browse All</a>
+    <button class="nav-hamburger" id="nav-hamburger"
+            onclick="openMobileMenu()" aria-label="Open navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site navigation">
+  <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-drawer">
+    <div class="mobile-drawer-head">
+      <span class="mobile-drawer-logo">SageMyHealth</span>
+      <button class="mobile-close" onclick="closeMobileMenu()" aria-label="Close menu">&#x2715;</button>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="../index.html#categories" class="mobile-nav-link" onclick="closeMobileMenu()">
+        <span class="mobile-link-icon">&#x1F9EE;</span>Calculators
+      </a>
+      <a href="../about.html" class="mobile-nav-link" onclick="closeMobileMenu()">
+        <span class="mobile-link-icon">&#x1F49A;</span>About
+      </a>
+      <a href="../blog.html" class="mobile-nav-link" onclick="closeMobileMenu()">
+        <span class="mobile-link-icon">&#x1F4D6;</span>Health Guides
+      </a>
+    </nav>
+    <a href="../index.html#categories" class="mobile-browse-btn" onclick="closeMobileMenu()">Browse All Calculators &#x2192;</a>
+  </div>
+</div>
+
+<!-- PAGE -->
+<main class="calc-page">
+  <div class="calc-wrapper">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="bc-sep">›</span>
+      <a href="../index.html#categories">Cardiovascular</a>
+      <span class="bc-sep">›</span>
+      <span>Blood Pressure Interpreter</span>
+    </nav>
+
+    <header class="page-header">
+      <div class="calc-tag">❤️ Cardiovascular</div>
+      <h1>Blood Pressure Interpreter</h1>
+      <p>Enter your blood pressure reading and find out exactly what it means — which category you fall into, what the science says, and what to do next. Based on the 2017 American Heart Association guidelines.</p>
+    </header>
+
+    <div class="calc-wrapper-inner">
+
+      <!-- FORM CARD -->
+      <div class="form-card">
+        <div class="form-card-header">
+          <div class="form-card-title">Enter your blood pressure reading</div>
+          <div class="form-card-sub">Read your numbers from a blood pressure cuff or monitor. Sit quietly for 5 minutes before measuring for the most accurate result.</div>
+        </div>
+        <div class="form-body">
+
+          <div class="bp-inputs">
+            <div class="input-group">
+              <label class="input-label" for="systolic">Top number</label>
+              <div class="input-sub">Systolic pressure</div>
+              <input class="bp-input" type="number" id="systolic" placeholder="120" min="50" max="300" inputmode="numeric" />
+              <div class="input-unit">mmHg</div>
+              <div class="error-msg" id="sys-err">Enter a value between 50–300</div>
+            </div>
+            <div class="input-group">
+              <label class="input-label" for="diastolic">Bottom number</label>
+              <div class="input-sub">Diastolic pressure</div>
+              <input class="bp-input" type="number" id="diastolic" placeholder="80" min="30" max="200" inputmode="numeric" />
+              <div class="input-unit">mmHg</div>
+              <div class="error-msg" id="dia-err">Enter a value between 30–200</div>
+            </div>
+          </div>
+
+          <!-- Quick reference -->
+          <div class="reading-guide">
+            <div class="reading-guide-title">AHA 2017 Categories</div>
+            <div class="rg-row">
+              <div class="rg-dot" style="background:#4F46E5"></div>
+              <div class="rg-label">Low (Hypotension)</div>
+              <div class="rg-range">Below 90/60</div>
+            </div>
+            <div class="rg-row">
+              <div class="rg-dot" style="background:#16A34A"></div>
+              <div class="rg-label">Normal</div>
+              <div class="rg-range">Below 120/80</div>
+            </div>
+            <div class="rg-row">
+              <div class="rg-dot" style="background:#D97706"></div>
+              <div class="rg-label">Elevated</div>
+              <div class="rg-range">120–129 / &lt;80</div>
+            </div>
+            <div class="rg-row">
+              <div class="rg-dot" style="background:#EA580C"></div>
+              <div class="rg-label">High — Stage 1</div>
+              <div class="rg-range">130–139 / 80–89</div>
+            </div>
+            <div class="rg-row">
+              <div class="rg-dot" style="background:#DC2626"></div>
+              <div class="rg-label">High — Stage 2</div>
+              <div class="rg-range">140+ / 90+</div>
+            </div>
+            <div class="rg-row">
+              <div class="rg-dot" style="background:#7F1D1D"></div>
+              <div class="rg-label">Hypertensive Crisis</div>
+              <div class="rg-range">180+ / 120+</div>
+            </div>
+          </div>
+
+          <button class="calc-btn" onclick="calculate()">Interpret my reading</button>
+        </div>
+      </div>
+
+      <!-- RESULTS COL -->
+      <div class="results-col">
+
+        <!-- RESULT CARD -->
+        <div class="result-card" id="result-card">
+          <div class="result-band" id="result-band"></div>
+          <div class="result-body">
+
+            <div class="reading-display">
+              <div class="reading-number" id="r-systolic">—</div>
+              <div class="reading-slash">/</div>
+              <div class="reading-number" id="r-diastolic">—</div>
+              <div class="reading-unit">mmHg</div>
+            </div>
+
+            <div class="cat-row">
+              <span class="cat-badge" id="cat-badge">—</span>
+              <span class="cat-pulse">AHA 2017 Classification</span>
+            </div>
+
+            <!-- Scale -->
+            <div class="cat-scale">
+              <div class="scale-row" id="s-low">
+                <div class="scale-dot" style="background:#4F46E5"></div>
+                <div class="scale-name c-low">Low (Hypotension)</div>
+                <div class="scale-range">Below 90/60</div>
+              </div>
+              <div class="scale-row" id="s-normal">
+                <div class="scale-dot" style="background:#16A34A"></div>
+                <div class="scale-name c-normal">Normal</div>
+                <div class="scale-range">Below 120/80</div>
+              </div>
+              <div class="scale-row" id="s-elevated">
+                <div class="scale-dot" style="background:#D97706"></div>
+                <div class="scale-name c-elevated">Elevated</div>
+                <div class="scale-range">120–129 / &lt;80</div>
+              </div>
+              <div class="scale-row" id="s-stage1">
+                <div class="scale-dot" style="background:#EA580C"></div>
+                <div class="scale-name c-stage1">High — Stage 1</div>
+                <div class="scale-range">130–139 / 80–89</div>
+              </div>
+              <div class="scale-row" id="s-stage2">
+                <div class="scale-dot" style="background:#DC2626"></div>
+                <div class="scale-name c-stage2">High — Stage 2</div>
+                <div class="scale-range">140+ / 90+</div>
+              </div>
+              <div class="scale-row" id="s-crisis">
+                <div class="scale-dot" style="background:#7F1D1D"></div>
+                <div class="scale-name c-crisis">Hypertensive Crisis</div>
+                <div class="scale-range">180+ / 120+</div>
+              </div>
+            </div>
+
+            <!-- Message -->
+            <div class="msg-block" id="msg-block">
+              <h3 id="msg-heading">—</h3>
+              <p id="msg-body">—</p>
+            </div>
+
+            <p class="tips-title">What to do next:</p>
+            <ul class="tips-list" id="tips-list"></ul>
+
+          </div>
+        </div>
+
+        <!-- What the numbers mean -->
+        <div class="info-card">
+          <h3>What do the two numbers mean?</h3>
+          <p>Blood pressure is written as two numbers — systolic over diastolic — measured in millimetres of mercury (mmHg).</p>
+          <div class="numbers-row">
+            <div class="number-card">
+              <div class="number-card-label">Top number</div>
+              <div class="number-card-name">Systolic</div>
+              <div class="number-card-desc">The pressure in your arteries when your heart beats and pumps blood out.</div>
+            </div>
+            <div class="number-card">
+              <div class="number-card-label">Bottom number</div>
+              <div class="number-card-name">Diastolic</div>
+              <div class="number-card-desc">The pressure in your arteries when your heart rests between beats.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- About the guideline -->
+        <div class="info-card">
+          <h3>About these guidelines</h3>
+          <p>This calculator uses the 2017 ACC/AHA Hypertension Guidelines, which lowered the threshold for Stage 1 hypertension from 140/90 to 130/80 mmHg — based on evidence that cardiovascular risk increases at these levels.</p>
+          <p>A single reading is rarely enough to diagnose anything. Blood pressure naturally varies throughout the day, with stress, caffeine, exercise, and white-coat effect. If your reading falls in a concerning range, measure again on a different day before drawing conclusions — and always follow up with your doctor.</p>
+          <p style="font-size:12px;color:var(--text-light);margin-top:8px;">Source: Whelton PK et al. 2017 ACC/AHA High Blood Pressure Guideline. Journal of the American College of Cardiology, 71(19), e127–e248.</p>
+        </div>
+
+        <!-- Related calculators -->
+        <div class="related-section">
+          <p class="related-title">You might also like</p>
+          <div class="related-grid">
+            <a href="heart-rate.html" class="related-card">
+              <div class="related-icon">💓</div>
+              <div class="related-info"><strong>Heart Rate Calculator</strong><span>Target zones by age</span></div>
+            </a>
+            <a href="blood-glucose.html" class="related-card">
+              <div class="related-icon">🩸</div>
+              <div class="related-info"><strong>Blood Glucose</strong><span>Interpret your sugar levels</span></div>
+            </a>
+            <a href="bmi.html" class="related-card">
+              <div class="related-icon">⚖️</div>
+              <div class="related-info"><strong>BMI Calculator</strong><span>Weight affects blood pressure</span></div>
+            </a>
+            <a href="burnout-risk.html" class="related-card">
+              <div class="related-icon">🔋</div>
+              <div class="related-info"><strong>Burnout Risk Score</strong><span>Chronic stress raises BP</span></div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="note-block">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#9CA3AF" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span><strong>NOTE:</strong> This tool is for educational purposes only and does not replace a clinical blood pressure assessment. If you are experiencing symptoms such as severe headache, chest pain, shortness of breath, or vision changes, seek emergency medical care immediately.</span>
+        </div>
+
+      </div><!-- /.results-col -->
+    </div><!-- /.calc-wrapper-inner -->
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="assets/logo-white.png" alt="SageMyHealth" style="height:45px;width:auto;object-fit:contain;" />
+        </div>
+        <p>Free, trusted health calculators with warm guidance — helping you understand your numbers.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Calculators</h5>
+        <ul>
+          <li><a href="bmi.html">BMI</a></li>
+          <li><a href="tdee.html">Daily Calories</a></li>
+          <li><a href="heart-rate.html">Heart Rate</a></li>
+          <li><a href="blood-glucose.html">Blood Glucose</a></li>
+          <li><a href="anxiety-score.html">Anxiety Score</a></li>
+          <li><a href="blood-pressure.html">Blood Pressure</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Categories</h5>
+        <ul>
+          <li><a href="../index.html#categories">Cardiovascular</a></li>
+          <li><a href="../index.html#categories">Mental Health</a></li>
+          <li><a href="../index.html#categories">Women's Health</a></li>
+          <li><a href="../index.html#categories">Nutrition</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Info</h5>
+        <ul>
+          <li><a href="../about.html">About Us</a></li>
+          <li><a href="../privacy.html">Privacy Policy</a></li>
+          <li><a href="../terms.html">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-disclaimer"><strong style="color:#7A958E">Medical Disclaimer:</strong> This calculator is for educational purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider about your blood pressure and cardiovascular health.</p>
+      <p class="footer-copy">© 2025 SageMyHealth.com — All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var CATS = {
+    low:      { label: 'Low Blood Pressure', key: 'low',      badgeClass: 'badge-low',      bandClass: 'band-low',      scaleId: 's-low',      bgClass: 'bg-low' },
+    normal:   { label: 'Normal',             key: 'normal',   badgeClass: 'badge-normal',   bandClass: 'band-normal',   scaleId: 's-normal',   bgClass: 'bg-normal' },
+    elevated: { label: 'Elevated',           key: 'elevated', badgeClass: 'badge-elevated', bandClass: 'band-elevated', scaleId: 's-elevated', bgClass: 'bg-elevated' },
+    stage1:   { label: 'High — Stage 1',     key: 'stage1',   badgeClass: 'badge-stage1',   bandClass: 'band-stage1',   scaleId: 's-stage1',   bgClass: 'bg-stage1' },
+    stage2:   { label: 'High — Stage 2',     key: 'stage2',   badgeClass: 'badge-stage2',   bandClass: 'band-stage2',   scaleId: 's-stage2',   bgClass: 'bg-stage2' },
+    crisis:   { label: 'Hypertensive Crisis',key: 'crisis',   badgeClass: 'badge-crisis',   bandClass: 'band-crisis',   scaleId: 's-crisis',   bgClass: 'bg-crisis' }
+  };
+
+  var MSGS = {
+    low: {
+      h: 'Your blood pressure appears low.',
+      b: 'Blood pressure below 90/60 mmHg is classified as hypotension. For many people, low blood pressure causes no symptoms and isn\'t a concern. However, if you\'re experiencing dizziness, fainting, nausea, or blurred vision, it\'s worth speaking with a doctor.',
+      tips: [
+        'Stay well hydrated — dehydration is a common cause of low blood pressure.',
+        'Stand up slowly to reduce dizziness when moving from sitting or lying positions.',
+        'If you feel faint or lightheaded frequently, talk to your doctor about possible causes.',
+        'Some medications can lower blood pressure as a side effect — ask your pharmacist if relevant.'
+      ]
+    },
+    normal: {
+      h: 'Your blood pressure is in the normal range.',
+      b: 'A reading below 120/80 mmHg is considered normal. This means your heart is working efficiently and your arteries aren\'t under excess pressure. Keep doing what you\'re doing.',
+      tips: [
+        'Maintain your current healthy habits — regular exercise, balanced diet, and good sleep all support healthy blood pressure.',
+        'Continue checking your blood pressure periodically, especially as you get older.',
+        'Limit sodium, alcohol, and processed foods to help keep it in range long-term.',
+        'Stress management — exercise, mindfulness, rest — is one of the best tools for cardiovascular health.'
+      ]
+    },
+    elevated: {
+      h: 'Your blood pressure is elevated.',
+      b: 'A systolic reading of 120–129 with a diastolic below 80 is classified as elevated blood pressure. This isn\'t yet hypertension, but it\'s a signal to pay attention. Without lifestyle changes, elevated BP commonly progresses to Stage 1 hypertension.',
+      tips: [
+        'Reduce sodium intake — aim for less than 2,300 mg per day, ideally closer to 1,500 mg.',
+        'Increase physical activity — 30 minutes of moderate exercise most days can lower systolic BP by 5–8 mmHg.',
+        'Limit alcohol and caffeine, both of which can temporarily raise blood pressure.',
+        'Talk to your doctor at your next routine visit about your reading.'
+      ]
+    },
+    stage1: {
+      h: 'Your blood pressure is in the Stage 1 hypertension range.',
+      b: 'Stage 1 hypertension (130–139 systolic or 80–89 diastolic) means your heart and arteries are under higher-than-ideal pressure. The 2017 AHA guidelines moved the threshold here because research shows cardiovascular risk increases at these levels. Lifestyle changes can make a significant difference.',
+      tips: [
+        'Book an appointment with your doctor to discuss your blood pressure readings and history.',
+        'The DASH diet (Dietary Approaches to Stop Hypertension) has strong evidence — it can lower systolic BP by up to 11 mmHg.',
+        'Aim for at least 150 minutes of moderate exercise per week.',
+        'Reduce stress — chronic stress is a significant driver of sustained hypertension.',
+        'If your doctor recommends medication, take it as prescribed — medication is often appropriate at this stage.'
+      ]
+    },
+    stage2: {
+      h: 'Your blood pressure is in the Stage 2 hypertension range.',
+      b: 'Stage 2 hypertension (systolic ≥140 or diastolic ≥90) is high blood pressure that typically requires both lifestyle changes and medication. Sustained readings at this level increase the risk of heart disease, stroke, and kidney damage. Please see a doctor.',
+      tips: [
+        'See a healthcare provider soon — Stage 2 hypertension usually requires medical management.',
+        'Medication is commonly recommended at this stage alongside lifestyle changes.',
+        'Measure your blood pressure at home regularly and bring a log to your doctor appointment.',
+        'Strictly reduce sodium, alcohol, and processed food intake.',
+        'Quit smoking if you smoke — nicotine raises blood pressure and damages blood vessels.'
+      ]
+    },
+    crisis: {
+      h: 'This reading may indicate a hypertensive crisis.',
+      b: 'A blood pressure of 180/120 mmHg or higher is a hypertensive crisis — a medical emergency. Even without symptoms, readings this high require immediate medical attention. If you\'re also experiencing chest pain, shortness of breath, back pain, numbness, vision changes, or difficulty speaking, call emergency services immediately.',
+      tips: [
+        'If you have symptoms (chest pain, vision changes, headache, difficulty breathing): call emergency services immediately.',
+        'If you have no symptoms: re-measure in 5 minutes. If it remains at 180/120+, go to an emergency room or urgent care.',
+        'Do not wait and monitor — hypertensive crisis can rapidly cause organ damage.',
+        'Do not take extra doses of blood pressure medication without medical guidance.'
+      ]
+    }
+  };
+
+  function classify(sys, dia) {
+    if (sys > 180 || dia > 120) return CATS.crisis;
+    if (sys >= 140 || dia >= 90)  return CATS.stage2;
+    if (sys >= 130 || dia >= 80)  return CATS.stage1;
+    if (sys >= 120 && dia < 80)   return CATS.elevated;
+    if (sys < 90  || dia < 60)    return CATS.low;
+    return CATS.normal;
+  }
+
+  function calculate() {
+    var sysEl = document.getElementById('systolic');
+    var diaEl = document.getElementById('diastolic');
+    var sysErr = document.getElementById('sys-err');
+    var diaErr = document.getElementById('dia-err');
+    var sys = parseInt(sysEl.value);
+    var dia = parseInt(diaEl.value);
+    var valid = true;
+
+    sysErr.style.display = 'none';
+    diaErr.style.display = 'none';
+    sysEl.style.borderColor = '';
+    diaEl.style.borderColor = '';
+
+    if (!sysEl.value || sys < 50 || sys > 300) {
+      sysErr.style.display = 'block';
+      sysEl.style.borderColor = '#DC2626';
+      valid = false;
+    }
+    if (!diaEl.value || dia < 30 || dia > 200) {
+      diaErr.style.display = 'block';
+      diaEl.style.borderColor = '#DC2626';
+      valid = false;
+    }
+    if (!valid) return;
+
+    var cat = classify(sys, dia);
+    var msg = MSGS[cat.key];
+
+    // Show result card
+    var card = document.getElementById('result-card');
+    card.classList.add('visible');
+
+    // Reading display
+    document.getElementById('r-systolic').textContent = sys;
+    document.getElementById('r-diastolic').textContent = dia;
+
+    // Band
+    var band = document.getElementById('result-band');
+    band.className = 'result-band ' + cat.bandClass;
+
+    // Badge
+    var badge = document.getElementById('cat-badge');
+    badge.textContent = cat.label;
+    badge.className = 'cat-badge ' + cat.badgeClass;
+
+    // Scale highlight
+    ['s-low','s-normal','s-elevated','s-stage1','s-stage2','s-crisis'].forEach(function(id) {
+      var el = document.getElementById(id);
+      el.style.background = '';
+      el.style.borderColor = 'transparent';
+    });
+    var activeScale = document.getElementById(cat.scaleId);
+    activeScale.classList.add(cat.bgClass);
+
+    // Message
+    var mb = document.getElementById('msg-block');
+    mb.style.background = '';
+    mb.style.borderLeftColor = '';
+
+    var colors = { low:'#4F46E5', normal:'#16A34A', elevated:'#D97706', stage1:'#EA580C', stage2:'#DC2626', crisis:'#7F1D1D' };
+    var bgs    = { low:'#EEF2FF', normal:'#F0FDF4', elevated:'#FFFBEB', stage1:'#FFF7ED', stage2:'#FEF2F2', crisis:'#450A0A' };
+    mb.style.background = bgs[cat.key];
+    mb.style.borderLeftColor = colors[cat.key];
+
+    document.getElementById('msg-heading').textContent = msg.h;
+    document.getElementById('msg-body').textContent = msg.b;
+
+    // Tips
+    var tl = document.getElementById('tips-list');
+    tl.innerHTML = '';
+    msg.tips.forEach(function(t) {
+      var li = document.createElement('li');
+      li.textContent = t;
+      tl.appendChild(li);
+    });
+
+    card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') calculate();
+  });
+</script>
+
+<script>
+  /* Mobile menu */
+  function openMobileMenu() {
+    document.getElementById('mobile-menu').classList.add('open');
+    document.getElementById('nav-hamburger').setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.getElementById('nav-hamburger').setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMobileMenu(); });
+</script>
+</body>
+</html>

@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X6K2H9YW2V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X6K2H9YW2V');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biological Age Calculator — SageMyHealth</title>
+  <meta name="description" content="Estimate your biological age based on lifestyle factors like exercise, diet, sleep, and stress — and discover how much younger or older your body may be functioning." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       SageMyHealth — Brand Colour Tokens
+    ============================================================ */
+    :root {
+      --sage:        #3B6A3A;
+      --sage-dark:   #0A3D2A;
+      --sage-mid:    #5C8A5C;
+      --sage-light:  #EBF2EC;
+      --sage-pale:   #F2F7F3;
+      --cream:       #E3FFB3;
+      --white:       #FFFFFF;
+      --text-dark:   #1A2E1E;
+      --text-mid:    #4A5568;
+      --text-light:  #718096;
+      --placeholder: #AAB0B8;
+      --border:      #E2EBE4;
+      --border-mid:  #C8D9CC;
+      --shadow-xs:   0 1px 2px rgba(59,106,58,0.06);
+      --shadow-sm:   0 1px 6px rgba(59,106,58,0.08);
+      --shadow-md:   0 4px 16px rgba(59,106,58,0.12);
+      --shadow-lg:   0 8px 32px rgba(59,106,58,0.16);
+      --r-sm: 8px; --r: 12px; --r-lg: 20px; --r-xl: 28px;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text-dark); background: var(--sage-pale); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; }
+
+    /* ── NAV ── */
+    .site-nav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.96); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; flex: 1; justify-content: center; }
+    .nav-links a { color: var(--text-mid); font-size: 15px; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--sage); }
+    .nav-btn { background: var(--sage); color: white; border: none; padding: 9px 20px; border-radius: var(--r-sm); font-size: 14px; font-weight: 600; transition: background .2s; }
+    .nav-btn:hover { background: var(--sage-dark); }
+
+    /* ── PAGE WRAPPER ── */
+    .calc-page { padding: 36px 0 72px; }
+    .calc-wrapper { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-light); margin-bottom: 24px; flex-wrap: wrap; }
+    .breadcrumb a { color: var(--sage); }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .bc-sep { color: var(--border-mid); }
+
+    /* ── PAGE HEADER ── */
+    .page-header { margin-bottom: 28px; }
+    .calc-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--sage); background: var(--white); padding: 5px 12px; border-radius: 20px; margin-bottom: 12px; letter-spacing: .3px; border: 1px solid var(--border); }
+    .page-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 42px); font-weight: 700; color: var(--text-dark); letter-spacing: -.5px; margin-bottom: 10px; line-height: 1.15; }
+    .page-header p { font-size: 15px; color: var(--text-mid); line-height: 1.7; max-width: 700px; }
+
+    /* ── TWO-COLUMN LAYOUT ── */
+    .calc-columns { display: grid; grid-template-columns: 480px 1fr; gap: 24px; align-items: start; }
+
+    /* ── FORM CARD ── */
+    .form-card { background: white; border-radius: var(--r-xl); box-shadow: var(--shadow-lg); overflow: hidden; margin-bottom: 0; }
+    .form-card-header { padding: 20px 28px 0; }
+    .form-card-title { font-size: 14px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
+    .form-body { padding: 20px 28px 28px; }
+
+    .form-section { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+    .section-title { font-size: 13px; font-weight: 700; color: var(--text-dark); text-transform: uppercase; letter-spacing: .6px; margin-bottom: 10px; }
+    .field-label { display: block; font-size: 13px; font-weight: 600; color: var(--text-dark); margin-bottom: 6px; }
+    .field-hint { font-size: 11px; color: var(--text-light); margin-top: 4px; line-height: 1.5; }
+    .field-input { width: 100%; padding: 11px 14px; border: 1.5px solid var(--border); border-radius: var(--r-sm); font-size: 15px; font-family: inherit; color: var(--text-dark); background: white; transition: border-color .18s, box-shadow .18s; appearance: none; -webkit-appearance: none; }
+    .field-input:focus { outline: none; border-color: var(--sage); box-shadow: 0 0 0 3px rgba(74,124,89,.1); }
+    .field-input::placeholder { color: #AAB0B8; }
+
+    .pill-group { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pill { padding: 7px 14px; border: 1.5px solid var(--border); border-radius: 20px; font-size: 13px; font-weight: 500; color: var(--text-mid); background: white; transition: all .18s; }
+    .pill:hover { border-color: var(--sage-mid); color: var(--sage); }
+    .pill.active { background: var(--sage); color: white; border-color: var(--sage); font-weight: 600; }
+
+    .condition-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+    .condition-card { display: flex; align-items: flex-start; gap: 8px; padding: 10px 12px; border: 1.5px solid var(--border); border-radius: var(--r); cursor: pointer; transition: all .18s; }
+    .condition-card input[type="checkbox"] { margin-top: 2px; accent-color: var(--sage); cursor: pointer; flex-shrink: 0; }
+    .condition-card label { font-size: 12px; color: var(--text-mid); line-height: 1.4; cursor: pointer; }
+    .condition-card:has(input:checked) { border-color: var(--sage); background: var(--sage-light); }
+
+    .calc-btn { width: 100%; background: var(--sage); color: white; border: none; padding: 14px; border-radius: var(--r); font-size: 16px; font-weight: 700; transition: all .18s; margin-top: 6px; }
+    .calc-btn:hover { background: var(--sage-dark); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+    .calc-btn:active { transform: translateY(0); }
+    .disclaimer { font-size: 11px; color: var(--text-light); margin-top: 10px; line-height: 1.6; text-align: center; }
+
+    /* ── RESULTS COLUMN ── */
+    .results-col { display: flex; flex-direction: column; gap: 20px; }
+
+    /* Result card */
+    .result-card { background: white; border-radius: var(--r-xl); box-shadow: var(--shadow-lg); overflow: hidden; animation: slideUp .35s ease; margin-bottom: 0; }
+    @keyframes slideUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+    .result-band { height: 5px; width: 100%; }
+    .result-band.younger { background: linear-gradient(90deg, var(--sage-mid), var(--sage)); }
+    .result-band.at-age  { background: linear-gradient(90deg, #60A5FA, #3B82F6); }
+    .result-band.older   { background: linear-gradient(90deg, #FBBF24, #F59E0B); }
+    .result-band.much-older { background: linear-gradient(90deg, #F97316, #EF4444); }
+    .result-body { padding: 24px; }
+
+    /* Age display */
+    .age-hero { text-align: center; margin-bottom: 22px; }
+    .bio-age-display { display: flex; align-items: center; justify-content: center; gap: 32px; margin-bottom: 14px; }
+    .age-block { text-align: center; }
+    .age-num { font-size: 52px; font-weight: 800; line-height: 1; letter-spacing: -2px; }
+    .age-num.bio-col.younger    { color: var(--sage); }
+    .age-num.bio-col.at-age     { color: #3B82F6; }
+    .age-num.bio-col.older      { color: #D97706; }
+    .age-num.bio-col.much-older { color: #DC2626; }
+    .age-num.chrono-col { color: var(--text-mid); }
+    .age-block-label { font-size: 11px; font-weight: 600; color: var(--text-light); text-transform: uppercase; letter-spacing: .6px; margin-top: 4px; }
+    .age-vs { font-size: 18px; color: var(--border-mid); font-weight: 300; align-self: center; }
+
+    .delta-badge { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 7px 18px; border-radius: 20px; font-size: 14px; font-weight: 700; }
+    .delta-badge.younger    { background: var(--sage-light); color: var(--sage); }
+    .delta-badge.at-age     { background: #EFF6FF; color: #2563EB; }
+    .delta-badge.older      { background: #FFFBEB; color: #D97706; }
+    .delta-badge.much-older { background: #FEE2E2; color: #DC2626; }
+
+    .age-status-headline { font-size: 17px; font-weight: 700; color: var(--text-dark); margin-top: 10px; }
+
+    /* Factor breakdown */
+    .factors-title { font-size: 13px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; }
+    .factors-list { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+    .factor-row { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: var(--r-sm); background: var(--sage-pale); }
+    .factor-emoji { font-size: 16px; flex-shrink: 0; }
+    .factor-name { font-size: 12.5px; font-weight: 600; color: var(--text-dark); flex: 1; min-width: 0; }
+    .factor-impact { font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 10px; flex-shrink: 0; }
+    .factor-impact.positive { background: #DCFCE7; color: var(--sage); }
+    .factor-impact.neutral  { background: var(--sage-light); color: var(--text-mid); }
+    .factor-impact.negative { background: #FEF3C7; color: #D97706; }
+    .factor-impact.high-neg { background: #FEE2E2; color: #DC2626; }
+
+    /* Message */
+    .message-block { border-radius: var(--r); padding: 16px; border-left: 4px solid; margin-bottom: 18px; }
+    .message-block.younger    { background: var(--sage-pale); border-color: var(--sage); }
+    .message-block.at-age     { background: #EFF6FF; border-color: #3B82F6; }
+    .message-block.older      { background: #FFFBEB; border-color: #F59E0B; }
+    .message-block.much-older { background: #FFF7ED; border-color: #F97316; }
+    .message-block p { font-size: 13px; color: var(--text-mid); line-height: 1.7; }
+
+    /* Tips */
+    .tips-title { font-size: 13px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; margin-top: 4px; }
+    .tips-grid { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
+    .tip-item { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; background: var(--sage-pale); border-radius: var(--r-sm); }
+    .tip-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+    .tip-text { font-size: 12.5px; color: var(--text-mid); line-height: 1.6; }
+    .tip-text strong { display: block; font-weight: 600; color: var(--text-dark); margin-bottom: 2px; font-size: 13px; }
+
+    /* Note block */
+    .note-block { background: var(--cream); border-radius: var(--r); padding: 13px 16px; font-size: 12px; color: var(--text-light); line-height: 1.7; display: flex; gap: 8px; align-items: flex-start; }
+    .note-block svg { flex-shrink: 0; margin-top: 1px; }
+
+    /* ── INFO CARD ── */
+    .info-card { background: white; border-radius: var(--r-xl); box-shadow: var(--shadow-sm); padding: 22px 24px; }
+    .info-card h3 { font-size: 14px; font-weight: 700; margin-bottom: 8px; color: var(--text-dark); }
+    .info-card p  { font-size: 13px; color: var(--text-mid); line-height: 1.75; }
+
+    /* ── RELATED SECTION ── */
+    .related-section { }
+    .related-title { font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; text-transform: none; letter-spacing: normal; }
+    .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .related-card { background: white; border: 1.5px solid var(--border); border-radius: var(--r); padding: 14px 16px; display: flex; align-items: center; gap: 12px; transition: all .18s; text-decoration: none; color: inherit; }
+    .related-card:hover { border-color: var(--sage); box-shadow: var(--shadow-sm); transform: translateY(-1px); }
+    .related-icon { width: 36px; height: 36px; background: var(--sage-light); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+    .related-info strong { display: block; font-size: 13px; font-weight: 600; color: var(--text-dark); }
+    .related-info span { font-size: 11px; color: var(--text-light); }
+
+    /* ── FOOTER ── */
+    .site-footer { background: var(--text-dark); color: #94A99A; padding: 48px 0 0; margin-top: 48px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 40px; }
+    .footer-logo { display: flex; align-items: center; gap: 8px; color: white; font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+    .footer-brand p { font-size: 14px; line-height: 1.7; max-width: 260px; color: #7A958E; }
+    .footer-col h5 { color: white; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; margin-bottom: 14px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { font-size: 14px; color: #7A958E; transition: color .2s; }
+    .footer-col a:hover { color: white; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding: 22px 0; display: flex; flex-direction: column; gap: 6px; }
+    .footer-disclaimer { font-size: 12px; color: #5A7568; line-height: 1.7; }
+    .footer-copy { font-size: 12px; color: #5A7568; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1000px) { .calc-columns { grid-template-columns: 1fr; } }
+    @media (max-width: 900px)  { .footer-grid { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: 1 / -1; } }
+    @media (max-width: 660px)  { .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-btn { display: none; } .condition-grid { grid-template-columns: 1fr; } .related-grid { grid-template-columns: 1fr; } .bio-age-display { gap: 18px; } .age-num { font-size: 40px; } }
+    @media (max-width: 520px)  { .footer-grid { grid-template-columns: 1fr; } }
+  
+    /* ── MOBILE HAMBURGER ────────────────────────────── */
+    .nav-hamburger {
+      display: none; flex-direction: column; justify-content: center; gap: 5px;
+      background: none; border: none; padding: 8px; margin-left: 8px;
+      border-radius: 8px; cursor: pointer; transition: background .15s; flex-shrink: 0;
+    }
+    .nav-hamburger:hover { background: var(--sage-light, #EBF2EC); }
+    .nav-hamburger span {
+      display: block; width: 22px; height: 2.5px;
+      background: var(--text-dark, #1A2E1E); border-radius: 2px; transition: all .2s;
+    }
+    /* ── MOBILE DRAWER ───────────────────────────────── */
+    .mobile-menu { display: none; position: fixed; inset: 0; z-index: 999; }
+    .mobile-menu.open { display: block; }
+    .mobile-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.45); backdrop-filter: blur(2px); }
+    .mobile-drawer {
+      position: absolute; top: 0; right: 0;
+      width: min(300px, 84vw); height: 100%;
+      background: #fff; display: flex; flex-direction: column;
+      box-shadow: -4px 0 40px rgba(0,0,0,.18);
+      animation: drawerIn .22s cubic-bezier(.22,.61,.36,1);
+    }
+    @keyframes drawerIn { from{transform:translateX(100%)} to{transform:translateX(0)} }
+    .mobile-drawer-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 20px 14px; border-bottom: 1px solid var(--border, #E2EBE4);
+    }
+    .mobile-drawer-logo { font-size: 15px; font-weight: 700; color: var(--text-dark, #1A2E1E); }
+    .mobile-close {
+      background: none; border: none; font-size: 20px; padding: 4px 8px;
+      cursor: pointer; color: var(--text-light, #718096); border-radius: 6px; line-height: 1;
+      transition: background .15s, color .15s;
+    }
+    .mobile-close:hover { background: var(--sage-light, #EBF2EC); color: var(--text-dark, #1A2E1E); }
+    .mobile-nav-links { padding: 14px 12px; flex: 1; display: flex; flex-direction: column; gap: 4px; }
+    .mobile-nav-link {
+      display: flex; align-items: center; gap: 14px;
+      padding: 13px 16px; border-radius: 12px;
+      font-size: 16px; font-weight: 600; color: var(--text-dark, #1A2E1E);
+      text-decoration: none; transition: background .15s, color .15s;
+    }
+    .mobile-nav-link:hover { background: var(--sage-light, #EBF2EC); color: var(--sage, #3B6A3A); }
+    .mobile-link-icon {
+      width: 40px; height: 40px; background: var(--sage-light, #EBF2EC);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .mobile-browse-btn {
+      display: block; margin: 0 12px 20px; padding: 14px;
+      background: var(--sage, #3B6A3A); color: #fff; border-radius: 12px;
+      font-size: 15px; font-weight: 700; text-align: center;
+      text-decoration: none; transition: background .15s;
+    }
+    .mobile-browse-btn:hover { background: var(--sage-dark, #0A3D2A); }
+
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <img src="assets/logo.png" alt="SageMyHealth" style="height: 54px; width: auto; object-fit: contain;"/>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html#categories">Calculators</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../blog.html">Health Guides</a></li>
+    </ul>
+    <a href="../index.html#categories" class="nav-btn">Browse All</a>
+    <button class="nav-hamburger" id="nav-hamburger"
+            onclick="openMobileMenu()" aria-label="Open navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site navigation">
+  <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-drawer">
+    <div class="mobile-drawer-head">
+      <span class="mobile-drawer-logo">SageMyHealth</span>
+      <button class="mobile-close" onclick="closeMobileMenu()" aria-label="Close menu">&#x2715;</button>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="../index.html#categories" class="mobile-nav-link" onclick="closeMobileMenu()">
+        <span class="mobile-link-icon">&#x1F9EE;</span>Calculators
+      </a>
+      <a href="../about.html" class="mobile-nav-link" onclick="closeMobileMenu()">
+        <span class="mobile-link-icon">&#x1F49A;</span>About
+      </a>
+      <a href="../blog.html" class="mobile-nav-link" onclick="closeMobileMenu()">
+        <span class="mobile-link-icon">&#x1F4D6;</span>Health Guides
+      </a>
+    </nav>
+    <a href="../index.html#categories" class="mobile-browse-btn" onclick="closeMobileMenu()">Browse All Calculators &#x2192;</a>
+  </div>
+</div>
+
+<!-- PAGE -->
+<main class="calc-page">
+  <div class="calc-wrapper">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="bc-sep">›</span>
+      <a href="../index.html#categories">Health</a>
+      <span class="bc-sep">›</span>
+      <span>Biological Age Calculator</span>
+    </nav>
+
+    <header class="page-header">
+      <div class="calc-tag">🧬 Health</div>
+      <h1>Biological Age Calculator</h1>
+      <p>Estimate how old your body is actually functioning — your biological age can be years younger or older than your birth year, and lifestyle choices are the biggest driver.</p>
+    </header>
+
+    <div class="calc-columns">
+
+      <!-- LEFT: Form -->
+      <div class="form-card">
+        <div class="form-card-header">
+          <span class="form-card-title">Your lifestyle profile</span>
+        </div>
+        <div class="form-body">
+
+          <!-- Basics -->
+          <div class="form-section">
+            <div class="section-title">Basics</div>
+            <label class="field-label" for="chrono-age">Chronological age</label>
+            <input class="field-input" type="number" id="chrono-age" placeholder="35" min="18" max="90" step="1" />
+            <p class="field-hint" style="margin-bottom:14px">Enter your age in years. This calculator is designed for adults aged 18 and over.</p>
+            <div class="section-title" style="margin-bottom:10px">Sex at birth</div>
+            <div class="pill-group" id="sex-pills">
+              <button class="pill active" data-val="female" onclick="setPill('sex-pills',this)">Female</button>
+              <button class="pill" data-val="male" onclick="setPill('sex-pills',this)">Male</button>
+            </div>
+          </div>
+
+          <!-- Exercise -->
+          <div class="form-section">
+            <div class="section-title">Exercise habits</div>
+            <div class="pill-group" id="exercise-pills">
+              <button class="pill" data-val="none"     onclick="setPill('exercise-pills',this)">None / rarely</button>
+              <button class="pill" data-val="light"    onclick="setPill('exercise-pills',this)">1–2× per week</button>
+              <button class="pill active" data-val="moderate" onclick="setPill('exercise-pills',this)">3–4× per week</button>
+              <button class="pill" data-val="active"   onclick="setPill('exercise-pills',this)">5+ times/week</button>
+            </div>
+            <p class="field-hint" style="margin-top:8px">Regular aerobic and resistance exercise is the single most powerful lifestyle lever for biological age.</p>
+          </div>
+
+          <!-- Diet -->
+          <div class="form-section">
+            <div class="section-title">Diet quality</div>
+            <div class="pill-group" id="diet-pills">
+              <button class="pill" data-val="poor"     onclick="setPill('diet-pills',this)">Poor (mostly processed food)</button>
+              <button class="pill active" data-val="average"  onclick="setPill('diet-pills',this)">Average</button>
+              <button class="pill" data-val="good"     onclick="setPill('diet-pills',this)">Good (mostly whole food)</button>
+              <button class="pill" data-val="excellent" onclick="setPill('diet-pills',this)">Excellent (Mediterranean-style)</button>
+            </div>
+          </div>
+
+          <!-- Sleep -->
+          <div class="form-section">
+            <div class="section-title">Average nightly sleep</div>
+            <div class="pill-group" id="sleep-pills">
+              <button class="pill" data-val="very-short" onclick="setPill('sleep-pills',this)">Under 5 hrs</button>
+              <button class="pill" data-val="short"      onclick="setPill('sleep-pills',this)">5–6 hrs</button>
+              <button class="pill active" data-val="optimal"    onclick="setPill('sleep-pills',this)">7–8 hrs</button>
+              <button class="pill" data-val="long"       onclick="setPill('sleep-pills',this)">9+ hrs</button>
+            </div>
+          </div>
+
+          <!-- Weight status -->
+          <div class="form-section">
+            <div class="section-title">Weight status (approximate)</div>
+            <div class="pill-group" id="weight-pills">
+              <button class="pill" data-val="underweight" onclick="setPill('weight-pills',this)">Underweight</button>
+              <button class="pill active" data-val="normal"      onclick="setPill('weight-pills',this)">Healthy weight</button>
+              <button class="pill" data-val="overweight"  onclick="setPill('weight-pills',this)">Overweight</button>
+              <button class="pill" data-val="obese"       onclick="setPill('weight-pills',this)">Obese</button>
+            </div>
+            <p class="field-hint" style="margin-top:8px">Not sure? Try our <a href="bmi.html" style="color:var(--sage);text-decoration:underline">BMI calculator</a> first.</p>
+          </div>
+
+          <!-- Smoking -->
+          <div class="form-section">
+            <div class="section-title">Smoking</div>
+            <div class="pill-group" id="smoke-pills">
+              <button class="pill active" data-val="never"       onclick="setPill('smoke-pills',this)">Never smoked</button>
+              <button class="pill" data-val="ex"           onclick="setPill('smoke-pills',this)">Former smoker</button>
+              <button class="pill" data-val="occasional"   onclick="setPill('smoke-pills',this)">Occasional</button>
+              <button class="pill" data-val="regular"      onclick="setPill('smoke-pills',this)">Regular smoker</button>
+            </div>
+          </div>
+
+          <!-- Alcohol -->
+          <div class="form-section">
+            <div class="section-title">Alcohol consumption</div>
+            <div class="pill-group" id="alcohol-pills">
+              <button class="pill active" data-val="none"     onclick="setPill('alcohol-pills',this)">None / rarely</button>
+              <button class="pill" data-val="moderate"  onclick="setPill('alcohol-pills',this)">1–7 drinks/week</button>
+              <button class="pill" data-val="heavy"     onclick="setPill('alcohol-pills',this)">8–14 drinks/week</button>
+              <button class="pill" data-val="very-heavy" onclick="setPill('alcohol-pills',this)">15+ drinks/week</button>
+            </div>
+          </div>
+
+          <!-- Stress -->
+          <div class="form-section">
+            <div class="section-title">Chronic stress level</div>
+            <div class="pill-group" id="stress-pills">
+              <button class="pill active" data-val="low"      onclick="setPill('stress-pills',this)">Low</button>
+              <button class="pill" data-val="moderate"  onclick="setPill('stress-pills',this)">Moderate</button>
+              <button class="pill" data-val="high"      onclick="setPill('stress-pills',this)">High</button>
+              <button class="pill" data-val="chronic"   onclick="setPill('stress-pills',this)">Chronic / severe</button>
+            </div>
+            <p class="field-hint" style="margin-top:8px">Sustained high stress elevates cortisol and accelerates cellular ageing through telomere shortening.</p>
+          </div>
+
+          <!-- Medical conditions -->
+          <div class="form-section" style="border-bottom:none;padding-bottom:0;margin-bottom:0">
+            <div class="section-title">Health conditions</div>
+            <p class="field-hint" style="margin-bottom:10px">Check all that apply. Conditions directly influence biological age independently of lifestyle.</p>
+            <div class="condition-grid">
+              <div class="condition-card"><input type="checkbox" id="c1"><label for="c1">Type 2 diabetes or pre-diabetes</label></div>
+              <div class="condition-card"><input type="checkbox" id="c2"><label for="c2">Hypertension (high blood pressure)</label></div>
+              <div class="condition-card"><input type="checkbox" id="c3"><label for="c3">Heart disease or stroke history</label></div>
+              <div class="condition-card"><input type="checkbox" id="c4"><label for="c4">Autoimmune condition</label></div>
+              <div class="condition-card"><input type="checkbox" id="c5"><label for="c5">Chronic pain or inflammation</label></div>
+              <div class="condition-card"><input type="checkbox" id="c6"><label for="c6">Clinical depression or anxiety</label></div>
+              <div class="condition-card"><input type="checkbox" id="c7"><label for="c7">Sleep disorder (e.g. sleep apnoea)</label></div>
+              <div class="condition-card"><input type="checkbox" id="c8"><label for="c8">None of the above</label></div>
+            </div>
+          </div>
+
+          <button class="calc-btn" onclick="calculate()" style="margin-top:20px">Calculate my biological age</button>
+          <p class="disclaimer">This is an educational estimate based on research-backed lifestyle factors, not a medical test. Actual biological age requires lab markers such as epigenetic clocks or telomere length testing.</p>
+        </div>
+      </div>
+
+      <!-- RIGHT: Results column -->
+      <div class="results-col">
+
+        <!-- Result panel: hidden until calculate() -->
+        <div id="result-panel" style="display:none">
+          <div class="result-card">
+            <div class="result-band younger" id="res-band"></div>
+            <div class="result-body">
+
+              <div class="age-hero">
+                <div class="bio-age-display">
+                  <div class="age-block">
+                    <div class="age-num bio-col younger" id="res-bio-age">—</div>
+                    <div class="age-block-label">Biological age</div>
+                  </div>
+                  <div class="age-vs">vs</div>
+                  <div class="age-block">
+                    <div class="age-num chrono-col" id="res-chrono-age">—</div>
+                    <div class="age-block-label">Chronological age</div>
+                  </div>
+                </div>
+                <div class="delta-badge younger" id="res-delta">—</div>
+                <div class="age-status-headline" id="res-headline">—</div>
+              </div>
+
+              <div class="message-block younger" id="res-message">
+                <p id="res-message-text">—</p>
+              </div>
+
+              <div class="factors-title" id="factors-title">What's influencing your biological age</div>
+              <div class="factors-list" id="factors-list"></div>
+
+              <div class="tips-title" id="tips-title">Your top opportunities</div>
+              <div class="tips-grid" id="tips-grid"></div>
+
+              <div class="note-block">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#5C8A5C" stroke-width="2"/><path d="M12 8v4M12 16h.01" stroke="#5C8A5C" stroke-width="2" stroke-linecap="round"/></svg>
+                <p><strong>Note:</strong> Biological age is a composite estimate, not a clinical measurement. It shows direction and magnitude of lifestyle impact. For precise biomarkers, speak to your doctor about tests such as CRP, HbA1c, resting heart rate, and epigenetic testing.</p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- About (always visible) -->
+        <div class="info-card">
+          <h3>About biological age</h3>
+          <p>Your <strong>chronological age</strong> is simply how many years you've been alive. Your <strong>biological age</strong> reflects how well your cells, tissues, and organs are actually functioning — and it can diverge significantly from your birth year. Researchers use markers like <strong>epigenetic clocks</strong> (DNA methylation patterns), telomere length, and physiological markers (VO₂ max, grip strength, resting heart rate) to estimate biological age. Studies consistently show that exercise, diet quality, sleep, and avoiding smoking are the most powerful modifiable determinants — each capable of shifting biological age by 5–10 years in either direction.</p>
+        </div>
+
+        <!-- You might also like (always visible) -->
+        <div class="related-section">
+          <p class="related-title">You might also like</p>
+          <div class="related-grid">
+            <a href="bmi.html" class="related-card">
+              <div class="related-icon">⚖️</div>
+              <div class="related-info"><strong>BMI Calculator</strong><span>Body mass index</span></div>
+            </a>
+            <a href="brain-fatigue.html" class="related-card">
+              <div class="related-icon">🧠</div>
+              <div class="related-info"><strong>Brain Fatigue</strong><span>Mental exhaustion check</span></div>
+            </a>
+            <a href="calories-burned.html" class="related-card">
+              <div class="related-icon">🔥</div>
+              <div class="related-info"><strong>Calories Burned</strong><span>Activity energy output</span></div>
+            </a>
+            <a href="lung-capacity.html" class="related-card">
+              <div class="related-icon">🫁</div>
+              <div class="related-info"><strong>Lung Capacity</strong><span>Respiratory fitness</span></div>
+            </a>
+          </div>
+        </div>
+
+      </div><!-- /.results-col -->
+
+    </div><!-- /.calc-columns -->
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="assets/logo-white.png" alt="SageMyHealth" style="height: 45px; width: auto; object-fit: contain;"/>
+        </div>
+        <p>Free, trusted health calculators with warm guidance — helping you understand your numbers.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Calculators</h5>
+        <ul>
+          <li><a href="bmi.html">BMI</a></li>
+          <li><a href="tdee.html">Daily Calories</a></li>
+          <li><a href="heart-rate.html">Heart Rate Zones</a></li>
+          <li><a href="blood-glucose.html">Blood Glucose</a></li>
+          <li><a href="anxiety-score.html">Anxiety Score</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>More Tools</h5>
+        <ul>
+          <li><a href="brain-fatigue.html">Brain Fatigue</a></li>
+          <li><a href="iron-deficiency.html">Iron Deficiency</a></li>
+          <li><a href="lung-capacity.html">Lung Capacity</a></li>
+          <li><a href="sleep-need.html">Sleep Need</a></li>
+          <li><a href="hair-loss-risk.html">Hair Loss Risk</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Info</h5>
+        <ul>
+          <li><a href="../about.html">About Us</a></li>
+          <li><a href="../privacy.html">Privacy Policy</a></li>
+          <li><a href="../terms.html">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-disclaimer"><strong style="color:#7A958E">Medical Disclaimer:</strong> This calculator is for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Consult your doctor for personalised health assessments.</p>
+      <p class="footer-copy">© 2025 SageMyHealth.com — All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function setPill(groupId, btn) {
+    document.querySelectorAll('#' + groupId + ' .pill').forEach(function(p) { p.classList.remove('active'); });
+    btn.classList.add('active');
+  }
+
+  function getActivePill(groupId) {
+    var active = document.querySelector('#' + groupId + ' .pill.active');
+    return active ? active.getAttribute('data-val') : null;
+  }
+
+  // Factor deltas (years added or subtracted from chrono age)
+  var exerciseDeltas = { none: +5, light: +1.5, moderate: 0, active: -3 };
+  var dietDeltas     = { poor: +3, average: 0, good: -1.5, excellent: -3 };
+  var sleepDeltas    = { 'very-short': +5, short: +2.5, optimal: 0, long: +0.5 };
+  var weightDeltas   = { underweight: +1, normal: 0, overweight: +2, obese: +5 };
+  var smokeDeltas    = { never: 0, ex: +1.5, occasional: +3, regular: +7 };
+  var alcoholDeltas  = { none: 0, moderate: +0.5, heavy: +2.5, 'very-heavy': +5 };
+  var stressDeltas   = { low: 0, moderate: +1, high: +3, chronic: +5 };
+
+  // Medical condition penalties
+  var conditionDeltas = { c1: 3, c2: 2, c3: 4, c4: 1.5, c5: 1.5, c6: 2, c7: 1.5, c8: 0 };
+
+  function calculate() {
+    var chronoAge = parseInt(document.getElementById('chrono-age').value);
+    if (!chronoAge || chronoAge < 18 || chronoAge > 110) {
+      alert('Please enter a valid age between 18 and 110.');
+      return;
+    }
+
+    var exercise = getActivePill('exercise-pills') || 'moderate';
+    var diet     = getActivePill('diet-pills') || 'average';
+    var sleep    = getActivePill('sleep-pills') || 'optimal';
+    var weight   = getActivePill('weight-pills') || 'normal';
+    var smoke    = getActivePill('smoke-pills') || 'never';
+    var alcohol  = getActivePill('alcohol-pills') || 'none';
+    var stress   = getActivePill('stress-pills') || 'low';
+
+    // Sum lifestyle deltas
+    var delta = 0;
+    delta += exerciseDeltas[exercise] || 0;
+    delta += dietDeltas[diet] || 0;
+    delta += sleepDeltas[sleep] || 0;
+    delta += weightDeltas[weight] || 0;
+    delta += smokeDeltas[smoke] || 0;
+    delta += alcoholDeltas[alcohol] || 0;
+    delta += stressDeltas[stress] || 0;
+
+    // Medical conditions
+    var conditionCount = 0;
+    for (var i = 1; i <= 7; i++) {
+      if (document.getElementById('c' + i).checked) {
+        delta += conditionDeltas['c' + i] || 0;
+        conditionCount++;
+      }
+    }
+
+    var bioAge = Math.round(chronoAge + delta);
+    bioAge = Math.max(bioAge, 18); // floor
+    var diff = bioAge - chronoAge; // positive = older, negative = younger
+
+    // Level
+    var level;
+    if (diff <= -3)      level = 'younger';
+    else if (diff <= 2)  level = 'at-age';
+    else if (diff <= 6)  level = 'older';
+    else                 level = 'much-older';
+
+    // Labels
+    var headlines = {
+      younger:    'Your body is functioning younger than your years',
+      'at-age':   'Your biological age is close to your chronological age',
+      older:      'Your body is showing some signs of accelerated ageing',
+      'much-older': 'Your body may be ageing significantly faster than it should'
+    };
+    var messages = {
+      younger:    'Excellent — your lifestyle choices are keeping your biology younger than your birth year suggests. The factors driving this are worth maintaining long-term, as consistent healthy habits compound over decades.',
+      'at-age':   'Your biological and chronological ages are well aligned. Your overall health habits are paying off. There may be a few specific areas where modest changes could tip the balance further in your favour.',
+      older:      'Several lifestyle factors are adding years to your biological age. The good news is that lifestyle-driven ageing is largely reversible — especially in your 30s, 40s, and 50s. Prioritising the top areas below could meaningfully reduce your biological age within 6–12 months.',
+      'much-older': 'Your profile suggests your biology is ageing significantly faster than your chronological age. This is a signal worth taking seriously. The factors involved are well-understood and addressable — starting with the highest-impact changes below can produce real results within months.'
+    };
+
+    // Delta badge text
+    var absDiff = Math.abs(diff);
+    var deltaTxt;
+    if (diff === 0)     deltaTxt = 'Right at your age';
+    else if (diff < 0)  deltaTxt = absDiff + ' years younger';
+    else                deltaTxt = absDiff + ' years older';
+
+    // Factor rows
+    var factorRows = [
+      { emoji: '🏃', name: 'Exercise', delta: exerciseDeltas[exercise], val: exercise },
+      { emoji: '🥗', name: 'Diet quality', delta: dietDeltas[diet], val: diet },
+      { emoji: '😴', name: 'Sleep', delta: sleepDeltas[sleep], val: sleep },
+      { emoji: '⚖️', name: 'Weight status', delta: weightDeltas[weight], val: weight },
+      { emoji: '🚬', name: 'Smoking', delta: smokeDeltas[smoke], val: smoke },
+      { emoji: '🍷', name: 'Alcohol', delta: alcoholDeltas[alcohol], val: alcohol },
+      { emoji: '😰', name: 'Chronic stress', delta: stressDeltas[stress], val: stress }
+    ];
+    if (conditionCount > 0) {
+      var condDelta = 0;
+      for (var j = 1; j <= 7; j++) {
+        if (document.getElementById('c' + j).checked) condDelta += conditionDeltas['c' + j] || 0;
+      }
+      factorRows.push({ emoji: '🩺', name: 'Health conditions', delta: condDelta, val: 'conditions' });
+    }
+
+    // Tips by biggest positive delta (i.e. worst factors)
+    var sortedFactors = factorRows.slice().filter(function(f) { return f.delta > 0; }).sort(function(a,b) { return b.delta - a.delta; });
+    var tipsMap = {
+      none:        { icon: '🏃', title: 'Start moving — even 10 minutes matters', body: 'Any amount of regular movement is protective. A daily 30-minute brisk walk reduces all-cause mortality and is linked to a ~3–4 year reduction in biological age in sedentary people who adopt it.' },
+      light:       { icon: '🏃', title: 'Add one more workout per week', body: 'Going from 1–2 to 3–4 sessions per week triggers meaningful improvements in VO₂ max, insulin sensitivity, and inflammatory markers — all of which lower biological age.' },
+      moderate:    null,
+      poor:        { icon: '🥗', title: 'Replace ultra-processed food with whole food', body: 'Ultra-processed diets are now linked to accelerated epigenetic ageing. Start by replacing one processed meal per day with vegetables, legumes, or wholegrains — the effect compounds over months.' },
+      average:     { icon: '🥗', title: 'Add more vegetables and omega-3s', body: 'Moving from average to a Mediterranean-style diet — rich in olive oil, fish, legumes, and vegetables — is associated with up to 3–4 fewer biological years in long-term studies.' },
+      good:        null,
+      'very-short': { icon: '😴', title: 'Prioritise getting to 7 hours', body: 'Chronic sleep below 6 hours is one of the fastest routes to accelerated biological ageing. Even adding 45–60 minutes per night, within 2 weeks, produces measurable improvements in metabolic and immune markers.' },
+      short:       { icon: '😴', title: 'Aim for 7–8 hours consistently', body: 'Consistent 7–8 hour sleep is strongly associated with healthy ageing. Try moving your bedtime 30 minutes earlier first — it\'s more sustainable than trying to change wake time.' },
+      overweight:  { icon: '⚖️', title: 'Even a 5% weight reduction changes biomarkers', body: 'Losing just 5% of body weight improves insulin sensitivity, blood pressure, and inflammatory markers. The biological age impact of reaching a healthy weight is larger than many people expect.' },
+      obese:       { icon: '⚖️', title: 'Weight is the highest-leverage factor for you', body: 'Obesity is linked to 5+ years of additional biological ageing via inflammation, insulin resistance, and metabolic stress. Diet quality and exercise together — even before significant weight loss — produce rapid biomarker improvements.' },
+      regular:     { icon: '🚬', title: 'Quitting smoking is the single biggest step you can take', body: 'Smoking adds 5–10 biological years and affects nearly every organ system. Within 1 year of quitting, most cardiovascular risk normalises. It\'s the highest-impact single change on this list.' },
+      occasional:  { icon: '🚬', title: 'Reducing smoking frequency has real biological effects', body: 'Even occasional smoking accelerates DNA damage and epigenetic ageing. There\'s no safe level, but cutting down rapidly reduces cancer risk and inflammatory load.' },
+      ex:          null,
+      heavy:       { icon: '🍷', title: 'Reducing alcohol meaningfully lowers biological age', body: 'Heavy alcohol use accelerates liver ageing, inflammatory pathways, and DNA methylation changes. Cutting to under 7 drinks per week shows measurable biomarker improvements within 3 months.' },
+      'very-heavy': { icon: '🍷', title: 'Alcohol is significantly accelerating your ageing', body: 'At 15+ drinks/week, alcohol becomes one of the largest contributors to accelerated biological ageing. It affects liver, brain, heart, and epigenetic clocks simultaneously. Reducing is the most urgent step.' },
+      high:        { icon: '😰', title: 'Manage stress before it becomes chronic', body: 'High chronic stress elevates cortisol, accelerates telomere shortening, and promotes systemic inflammation. Interventions like 10-minute daily breathwork, exercise, and sleep protection all measurably reduce cortisol within weeks.' },
+      chronic:     { icon: '😰', title: 'Chronic stress may be your largest age driver', body: 'Severe sustained stress is linked to 5+ biological years of extra ageing. It interacts with every other factor. Professional support (therapy, CBT) alongside lifestyle changes is the most effective path.' }
+    };
+
+    // Update DOM
+    document.getElementById('res-bio-age').textContent    = bioAge;
+    document.getElementById('res-chrono-age').textContent = chronoAge;
+    document.getElementById('res-bio-age').className      = 'age-num bio-col ' + level;
+
+    var deltaBadge = document.getElementById('res-delta');
+    deltaBadge.textContent = deltaTxt;
+    deltaBadge.className   = 'delta-badge ' + level;
+
+    document.getElementById('res-headline').textContent = headlines[level];
+
+    var band = document.getElementById('res-band');
+    band.className = 'result-band ' + level;
+
+    var msgBlock = document.getElementById('res-message');
+    msgBlock.className = 'message-block ' + level;
+    document.getElementById('res-message-text').textContent = messages[level];
+
+    // Factor rows
+    var factorsList = document.getElementById('factors-list');
+    factorsList.innerHTML = '';
+    // Sort: worst first
+    var displayRows = factorRows.slice().sort(function(a, b) { return b.delta - a.delta; });
+    displayRows.forEach(function(f) {
+      var impactClass = f.delta <= -1 ? 'positive' : (f.delta <= 0.5 ? 'neutral' : (f.delta <= 2 ? 'negative' : 'high-neg'));
+      var impactLabel = f.delta <= -1 ? (Math.abs(f.delta) % 1 === 0 ? Math.abs(f.delta).toFixed(0) : Math.abs(f.delta).toFixed(1)) + ' yrs younger' :
+                        f.delta <= 0.5 ? 'No impact' :
+                        '+' + (f.delta % 1 === 0 ? f.delta.toFixed(0) : f.delta.toFixed(1)) + ' yrs';
+      var el = document.createElement('div');
+      el.className = 'factor-row';
+      el.innerHTML = '<div class="factor-emoji">' + f.emoji + '</div><div class="factor-name">' + f.name + '</div><div class="factor-impact ' + impactClass + '">' + impactLabel + '</div>';
+      factorsList.appendChild(el);
+    });
+
+    // Tips: top 3 from worst factors
+    var tipsGrid = document.getElementById('tips-grid');
+    tipsGrid.innerHTML = '';
+    document.getElementById('tips-title').textContent = level === 'younger' ? 'What\'s keeping you young' : 'Your biggest opportunities';
+    var tipsShown = 0;
+    if (level === 'younger') {
+      // Show positive factors as affirmations
+      var positives = factorRows.filter(function(f) { return f.delta <= -1; }).sort(function(a,b){ return a.delta - b.delta; });
+      positives.slice(0, 3).forEach(function(f) {
+        var tip = tipsMap[f.val];
+        if (!tip) {
+          var names = { active: 'Exercise', excellent: 'Diet', optimal: 'Sleep', never: 'Smoking', none: 'Alcohol', low: 'Stress', normal: 'Weight' };
+          tip = { icon: f.emoji, title: names[f.val] + ' — keep it up', body: 'This habit is actively keeping your biological age lower. Consistency over time is what compounds the effect.' };
+        }
+        var el = document.createElement('div');
+        el.className = 'tip-item';
+        el.innerHTML = '<div class="tip-icon">' + tip.icon + '</div><div class="tip-text"><strong>' + tip.title + '</strong>' + tip.body + '</div>';
+        tipsGrid.appendChild(el);
+      });
+      if (tipsGrid.innerHTML === '') {
+        tipsGrid.innerHTML = '<div class="tip-item"><div class="tip-icon">🌟</div><div class="tip-text"><strong>Your lifestyle is genuinely exceptional</strong>You\'re consistently making choices that protect your longevity. The main goal now is sustaining these habits long-term — and making sure sleep and stress management stay in balance.</div></div>';
+      }
+    } else {
+      sortedFactors.slice(0, 3).forEach(function(f) {
+        var tip = tipsMap[f.val];
+        if (tip && tipsShown < 3) {
+          var el = document.createElement('div');
+          el.className = 'tip-item';
+          el.innerHTML = '<div class="tip-icon">' + tip.icon + '</div><div class="tip-text"><strong>' + tip.title + '</strong>' + tip.body + '</div>';
+          tipsGrid.appendChild(el);
+          tipsShown++;
+        }
+      });
+      if (tipsShown === 0) {
+        tipsGrid.innerHTML = '<div class="tip-item"><div class="tip-icon">✅</div><div class="tip-text"><strong>Maintain what\'s working</strong>Your lifestyle profile is solid. Minor improvements to any of the factors above will continue to shift your biological age in the right direction over time.</div></div>';
+      }
+    }
+
+    document.getElementById('result-panel').style.display = '';
+    setTimeout(function() { document.getElementById('result-panel').scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 80);
+  }
+</script>
+
+
+<script>
+  /* Mobile menu */
+  function openMobileMenu() {
+    document.getElementById('mobile-menu').classList.add('open');
+    document.getElementById('nav-hamburger').setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.getElementById('nav-hamburger').setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMobileMenu(); });
+</script>
+</body>
+</html>

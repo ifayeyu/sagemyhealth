@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X6K2H9YW2V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X6K2H9YW2V');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lung Capacity Calculator — SageMyHealth</title>
+  <meta name="description" content="Estimate your predicted lung capacity and assess your lung health. Enter your age, height, and lifestyle factors to understand your respiratory health." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sage:        #3B6A3A;
+      --sage-dark:   #0A3D2A;
+      --sage-mid:    #5C8A5C;
+      --sage-light:  #EBF2EC;
+      --sage-pale:   #F2F7F3;
+      --cream:       #E3FFB3;
+      --text-dark:   #1A2E1E;
+      --text-mid:    #4A5568;
+      --text-light:  #718096;
+      --white:       #FFFFFF;
+      --border:      #E2EBE4;
+      --border-mid:  #C8D9CC;
+      --red-soft:    #EDAE71;   --red-text:   #991B1B;
+      --amber-soft:  #EECA8F;   --amber-text: #92400E;
+      --green-soft:  #D1FAE5;   --green-text: #3D473D;
+      --shadow-xs:   0 1px 2px rgba(59,106,58,0.06);
+      --shadow-sm:   0 1px 6px rgba(59,106,58,0.08);
+      --shadow-md:   0 4px 16px rgba(59,106,58,0.12);
+      --shadow-lg:   0 8px 32px rgba(59,106,58,0.16);
+      --r-sm: 8px; --r: 12px; --r-lg: 20px; --r-xl: 28px;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text-dark); background: var(--sage-pale); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; }
+
+    /* ── NAV ── */
+    .site-nav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.96); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav-logo-text { font-size: 19px; font-weight: 700; letter-spacing: -0.3px; }
+    .nav-logo-text .accent { color: var(--sage); }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; flex: 1; justify-content: center; }
+    .nav-links a { color: var(--text-mid); font-size: 15px; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--sage); }
+    .nav-btn { background: var(--sage); color: white; border: none; padding: 9px 20px; border-radius: var(--r-sm); font-size: 14px; font-weight: 600; transition: background .2s; }
+    .nav-btn:hover { background: var(--sage-dark); }
+
+    /* ── PAGE WRAPPER ── */
+    .calc-page { padding: 36px 0 72px; }
+    .calc-wrapper { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-light); margin-bottom: 24px; flex-wrap: wrap; }
+    .breadcrumb a { color: var(--sage); }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .bc-sep { color: var(--border-mid); }
+
+    /* ── PAGE HEADER ── */
+    .page-header { margin-bottom: 28px; }
+    .calc-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--sage); background: var(--white); padding: 5px 12px; border-radius: 20px; margin-bottom: 12px; letter-spacing: .3px; border: 1px solid var(--border); }
+    .page-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 42px); font-weight: 700; color: var(--text-dark); letter-spacing: -.5px; margin-bottom: 10px; line-height: 1.15; }
+    .page-header p { font-size: 15px; color: var(--text-mid); line-height: 1.7; max-width: 700px; }
+
+    /* ── LAYOUT ── */
+    .calc-columns { display: grid; grid-template-columns: 480px 1fr; gap: 24px; align-items: start; }
+
+    /* ── FORM CARD ── */
+    .calc-card { background: white; border-radius: var(--r-lg); border: 1px solid var(--border); padding: 32px; box-shadow: var(--shadow-sm); }
+    .calc-card > h2 { font-size: 18px; font-weight: 700; color: var(--text-dark); margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+    .form-section { margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+    .form-section:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .section-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .7px; color: var(--sage); margin-bottom: 14px; }
+    .field-group { margin-bottom: 16px; }
+    .field-group:last-child { margin-bottom: 0; }
+    .field-label { display: block; font-size: 14px; font-weight: 600; color: var(--text-dark); margin-bottom: 6px; }
+    .field-hint { font-size: 12px; color: var(--text-light); margin-bottom: 7px; margin-top: -2px; }
+    .field-input { width: 100%; padding: 11px 14px; border: 1.5px solid var(--border); border-radius: var(--r-sm); font-size: 15px; font-family: inherit; color: var(--text-dark); background: white; transition: border-color .2s; outline: none; }
+    .field-input:focus { border-color: var(--sage-mid); }
+    .field-input::placeholder { color: #AAB0B8; opacity: 1; }
+
+    /* Height row */
+    .height-row { display: grid; gap: 8px; }
+    .height-row.imperial { grid-template-columns: 1fr 1fr; }
+    .height-row.metric { grid-template-columns: 1fr; }
+
+    /* Unit toggle */
+    .unit-toggle { display: flex; gap: 0; border: 1.5px solid var(--border); border-radius: var(--r-sm); overflow: hidden; width: fit-content; margin-bottom: 10px; }
+    .unit-btn { padding: 6px 16px; font-size: 13px; font-weight: 600; border: none; background: white; color: var(--text-light); transition: all .15s; }
+    .unit-btn.active { background: var(--sage); color: white; }
+
+    /* Pills */
+    .pill-group { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pill { padding: 7px 16px; border-radius: 20px; font-size: 14px; font-weight: 500; border: 1.5px solid var(--border); background: white; color: var(--text-mid); transition: all .15s; }
+    .pill:hover { border-color: var(--sage-mid); color: var(--sage); }
+    .pill.active { background: var(--sage); border-color: var(--sage); color: white; font-weight: 600; }
+
+    /* Checkbox */
+    .check-item { display: flex; align-items: flex-start; gap: 10px; }
+    .check-item input[type="checkbox"] { width: 17px; height: 17px; accent-color: var(--sage); flex-shrink: 0; margin-top: 2px; cursor: pointer; }
+    .check-item label { font-size: 14px; color: var(--text-dark); cursor: pointer; line-height: 1.5; }
+
+    /* CTA */
+    .calc-btn { width: 100%; padding: 15px; background: var(--sage); color: white; border: none; border-radius: var(--r); font-size: 16px; font-weight: 700; margin-top: 24px; transition: background .2s; }
+    .calc-btn:hover { background: var(--sage-dark); }
+    .disclaimer { font-size: 12px; color: var(--text-light); margin-top: 12px; line-height: 1.6; text-align: center; }
+
+    /* ── RESULT CARD ── */
+    .result-card { background: white; border-radius: var(--r-lg); border: 1px solid var(--border); padding: 32px; box-shadow: var(--shadow-sm); }
+
+    /* Status header */
+    .status-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+    .status-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 26px; flex-shrink: 0; }
+    .status-icon.healthy  { background: var(--green-soft); }
+    .status-icon.moderate { background: var(--amber-soft); }
+    .status-icon.reduced  { background: var(--red-soft); }
+    .status-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .7px; margin-bottom: 3px; }
+    .status-label.healthy  { color: var(--green-text); }
+    .status-label.moderate { color: var(--amber-text); }
+    .status-label.reduced  { color: var(--red-text); }
+    .status-title { font-size: 21px; font-weight: 800; color: var(--text-dark); line-height: 1.2; }
+
+    /* Metrics row */
+    .metrics-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+    .metric-card { background: var(--sage-pale); border-radius: var(--r-sm); padding: 14px 16px; }
+    .metric-val { font-size: 28px; font-weight: 800; color: var(--text-dark); line-height: 1; }
+    .metric-val span { font-size: 14px; font-weight: 500; color: var(--text-light); margin-left: 3px; }
+    .metric-label { font-size: 12px; color: var(--text-light); margin-top: 4px; }
+
+    /* Capacity bar */
+    .bar-section { margin-bottom: 20px; }
+    .bar-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+    .bar-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; color: var(--text-light); }
+    .bar-pct { font-size: 20px; font-weight: 800; color: var(--text-dark); }
+    .bar-pct span { font-size: 13px; font-weight: 500; color: var(--text-light); }
+    .bar-wrap { position: relative; margin-bottom: 6px; }
+    .bar-track { width: 100%; height: 16px; border-radius: 8px; background: linear-gradient(to right, #EF4444 0%, #F97316 18%, #FBBF24 32%, #6EE7B7 55%, #34D399 75%, #10B981 100%); }
+    .bar-marker { position: absolute; top: 50%; transform: translate(-50%, -50%); width: 22px; height: 22px; background: var(--text-dark); border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,.22); transition: left .85s cubic-bezier(.34,1.56,.64,1); left: 2%; }
+    .bar-zones { display: flex; justify-content: space-between; margin-top: 5px; margin-bottom: 20px; }
+    .bar-zone { font-size: 11px; font-weight: 600; }
+    .bar-zone.reduced  { color: #DC2626; }
+    .bar-zone.moderate { color: #D97706; }
+    .bar-zone.healthy  { color: #059669; }
+
+    /* Message */
+    .message-block { padding: 16px 18px; border-radius: var(--r); margin-bottom: 20px; border: 1.5px solid; }
+    .message-block.healthy  { background: var(--green-soft); border-color: #A7F3D0; }
+    .message-block.moderate { background: var(--amber-soft); border-color: #FCD34D; }
+    .message-block.reduced  { background: var(--red-soft);   border-color: #FCA572; }
+    .message-block p { font-size: 14px; line-height: 1.7; color: var(--text-dark); }
+
+    /* Factors */
+    .factors-title { font-size: 13px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; }
+    .factor-item { display: flex; align-items: flex-start; gap: 9px; margin-bottom: 7px; font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+    .factor-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+    .factor-dot.positive { background: #34D399; }
+    .factor-dot.negative { background: #F97316; }
+    .factor-dot.neutral  { background: #94A3B8; }
+
+    /* Tips */
+    .tips-title { font-size: 14px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; margin-top: 20px; }
+    .tips-grid { display: flex; flex-direction: column; gap: 10px; }
+    .tip-item { display: flex; gap: 12px; padding: 12px 14px; background: var(--sage-pale); border-radius: var(--r-sm); }
+    .tip-icon { font-size: 18px; flex-shrink: 0; line-height: 1.4; }
+    .tip-text { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+    .tip-text strong { font-weight: 600; color: var(--text-dark); display: block; margin-bottom: 2px; }
+
+    /* Note */
+    .note-block { display: flex; gap: 12px; padding: 14px 16px; background: var(--sage-light); border-radius: var(--r-sm); border: 1px solid var(--border-mid); margin-top: 20px; }
+    .note-block svg { flex-shrink: 0; margin-top: 1px; }
+    .note-block p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+    .note-block p strong { color: var(--text-dark); }
+
+    /* Related */
+    .related-section { }
+    .related-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .7px; color: var(--text-light); margin-bottom: 10px; }
+    .related-links { display: flex; flex-wrap: wrap; gap: 8px; }
+    .related-link { font-size: 13px; color: var(--sage); font-weight: 500; padding: 5px 12px; border: 1px solid var(--border-mid); border-radius: 20px; transition: all .15s; }
+    .related-link:hover { background: var(--sage-light); border-color: var(--sage-mid); }
+
+    /* ── RESULTS COLUMN ── */
+    .results-col { display: flex; flex-direction: column; gap: 20px; }
+    .info-card { background: white; border-radius: var(--r-lg); border: 1px solid var(--border); box-shadow: var(--shadow-sm); padding: 22px 24px; }
+    .info-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 10px; color: var(--text-dark); }
+    .info-card p  { font-size: 14px; color: var(--text-mid); line-height: 1.75; }
+    .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .related-card { background: white; border: 1.5px solid var(--border); border-radius: var(--r); padding: 14px 16px; display: flex; align-items: center; gap: 12px; transition: all .18s; text-decoration: none; color: inherit; }
+    .related-card:hover { border-color: var(--sage); box-shadow: var(--shadow-sm); transform: translateY(-1px); }
+    .related-icon { width: 36px; height: 36px; background: var(--sage-light); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .related-info strong { display: block; font-size: 13px; font-weight: 600; color: var(--text-dark); }
+    .related-info span { font-size: 11px; color: var(--text-light); }
+    .related-title { font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; text-transform: none; letter-spacing: normal; }
+
+    /* ── FOOTER ── */
+    .site-footer { background: var(--text-dark); color: #94A99A; padding: 48px 0 0; margin-top: 48px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 40px; }
+    .footer-logo { display: flex; align-items: center; gap: 8px; color: white; font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+    .footer-brand p { font-size: 14px; line-height: 1.7; max-width: 260px; color: #7A958E; }
+    .footer-col h5 { color: white; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; margin-bottom: 14px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col a { font-size: 14px; color: #7A958E; transition: color .2s; }
+    .footer-col a:hover { color: white; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding: 20px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom p { font-size: 13px; }
+    .footer-bottom-links { display: flex; gap: 20px; }
+    .footer-bottom-links a { font-size: 13px; color: #7A958E; transition: color .2s; }
+    .footer-bottom-links a:hover { color: white; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .calc-columns { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 660px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-btn { display: none; }
+      .metrics-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  
+    /* ── MOBILE HAMBURGER ────────────────────────────── */
+    .nav-hamburger {
+      display: none; flex-direction: column; justify-content: center; gap: 5px;
+      background: none; border: none; padding: 8px; margin-left: 8px;
+      border-radius: 8px; cursor: pointer; transition: background .15s; flex-shrink: 0;
+    }
+    .nav-hamburger:hover { background: var(--sage-light, #EBF2EC); }
+    .nav-hamburger span {
+      display: block; width: 22px; height: 2.5px;
+      background: var(--text-dark, #1A2E1E); border-radius: 2px; transition: all .2s;
+    }
+    /* ── MOBILE DRAWER ───────────────────────────────── */
+    .mobile-menu { display: none; position: fixed; inset: 0; z-index: 999; }
+    .mobile-menu.open { display: block; }
+    .mobile-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.45); backdrop-filter: blur(2px); }
+    .mobile-drawer {
+      position: absolute; top: 0; right: 0;
+      width: min(300px, 84vw); height: 100%;
+      background: #fff; display: flex; flex-direction: column;
+      box-shadow: -4px 0 40px rgba(0,0,0,.18);
+      animation: drawerIn .22s cubic-bezier(.22,.61,.36,1);
+    }
+    @keyframes drawerIn { from{transform:translateX(100%)} to{transform:translateX(0)} }
+    .mobile-drawer-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 20px 14px; border-bottom: 1px solid var(--border, #E2EBE4);
+    }
+    .mobile-drawer-logo { font-size: 15px; font-weight: 700; color: var(--text-dark, #1A2E1E); }
+    .mobile-close {
+      background: none; border: none; font-size: 20px; padding: 4px 8px;
+      cursor: pointer; color: var(--text-light, #718096); border-radius: 6px; line-height: 1;
+      transition: background .15s, color .15s;
+    }
+    .mobile-close:hover { background: var(--sage-light, #EBF2EC); color: var(--text-dark, #1A2E1E); }
+    .mobile-nav-links { padding: 14px 12px; flex: 1; display: flex; flex-direction: column; gap: 4px; }
+    .mobile-nav-link {
+      display: flex; align-items: center; gap: 14px;
+      padding: 13px 16px; border-radius: 12px;
+      font-size: 16px; font-weight: 600; color: var(--text-dark, #1A2E1E);
+      text-decoration: none; transition: background .15s, color .15s;
+    }
+    .mobile-nav-link:hover { background: var(--sage-light, #EBF2EC); color: var(--sage, #3B6A3A); }
+    .mobile-link-icon {
+      width: 40px; height: 40px; background: var(--sage-light, #EBF2EC);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .mobile-browse-btn {
+      display: block; margin: 0 12px 20px; padding: 14px;
+      background: var(--sage, #3B6A3A); color: #fff; border-radius: 12px;
+      font-size: 15px; font-weight: 700; text-align: center;
+      text-decoration: none; transition: background .15s;
+    }
+    .mobile-browse-btn:hover { background: var(--sage-dark, #0A3D2A); }
+
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <img src="assets/logo.png" alt="SageMyHealth" style="height: 54px; width: auto; object-fit: contain;"/>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html#categories">Calculators</a></li>
+      <li><a href="../index.html">How it works</a></li>
+      <li><a href="../index.html">About</a></li>
+    </ul>
+    <button class="nav-btn" onclick="location.href='../index.html#categories'">All Calculators</button>
+    <button class="nav-hamburger" id="nav-hamburger"
+            onclick="openMobileMenu()" aria-label="Open navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site navigation">
+  <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-drawer">
+    <div class="mobile-drawer-head">
+      <span class="mobile-drawer-logo">SageMyHealth</span>
+      <button class="mobile-close" onclick="closeMobileMenu()" aria-label="Close menu">&#x2715;</button>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="../index.html#categories" class="mobile-nav-link" onclick="closeMobileMenu()">
+        <span class="mobile-link-icon">&#x1F9EE;</span>Calculators
+      </a>
+      <a href="../about.html" class="mobile-nav-link" onclick="closeMobileMenu()">
+        <span class="mobile-link-icon">&#x1F49A;</span>About
+      </a>
+      <a href="../blog.html" class="mobile-nav-link" onclick="closeMobileMenu()">
+        <span class="mobile-link-icon">&#x1F4D6;</span>Health Guides
+      </a>
+    </nav>
+    <a href="../index.html#categories" class="mobile-browse-btn" onclick="closeMobileMenu()">Browse All Calculators &#x2192;</a>
+  </div>
+</div>
+
+<!-- PAGE -->
+<main class="calc-page">
+  <div class="calc-wrapper">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="bc-sep">›</span>
+      <a href="../index.html#categories">Calculators</a>
+      <span class="bc-sep">›</span>
+      <span>Lung Capacity</span>
+    </nav>
+
+    <header class="page-header">
+      <div class="calc-tag">🫁 Lung &amp; Respiratory</div>
+      <h1>Lung Capacity Calculator</h1>
+      <p>Find out your predicted lung capacity and assess how your lifestyle habits are affecting your respiratory health — no spirometer needed.</p>
+    </header>
+
+    <div class="calc-columns">
+
+      <!-- FORM -->
+      <div class="calc-card">
+        <h2>Calculate your lung capacity</h2>
+
+        <!-- About You -->
+        <div class="form-section">
+          <div class="section-title">About You</div>
+          <div class="field-group">
+            <label class="field-label">Biological sex</label>
+            <div class="pill-group" id="sex-pills">
+              <button class="pill active" data-val="male"   onclick="setPill('sex-pills',this)">Male</button>
+              <button class="pill"        data-val="female" onclick="setPill('sex-pills',this)">Female</button>
+            </div>
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="age">Age</label>
+            <input type="number" id="age" class="field-input" placeholder="35" min="18" max="80" />
+          </div>
+          <div class="field-group">
+            <label class="field-label">Height</label>
+            <div class="unit-toggle" id="height-unit-toggle">
+              <button class="unit-btn active" data-unit="imperial" onclick="setUnit(this)">ft / in</button>
+              <button class="unit-btn"        data-unit="metric"   onclick="setUnit(this)">cm</button>
+            </div>
+            <div class="height-row imperial" id="height-imperial">
+              <input type="number" id="height-ft" class="field-input" placeholder="5" min="3" max="7" />
+              <input type="number" id="height-in" class="field-input" placeholder="9" min="0" max="11" />
+            </div>
+            <div class="height-row metric" id="height-metric" style="display:none">
+              <input type="number" id="height-cm" class="field-input" placeholder="175" min="100" max="220" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Smoking History -->
+        <div class="form-section">
+          <div class="section-title">Smoking History</div>
+          <p class="field-hint" style="margin-bottom:10px">Smoking is the single biggest preventable cause of reduced lung capacity</p>
+          <div class="pill-group" id="smoking-pills">
+            <button class="pill active" data-val="never"        onclick="setPill('smoking-pills',this)">Never smoked</button>
+            <button class="pill"        data-val="former"       onclick="setPill('smoking-pills',this)">Former smoker</button>
+            <button class="pill"        data-val="light"        onclick="setPill('smoking-pills',this)">Current — light</button>
+            <button class="pill"        data-val="heavy"        onclick="setPill('smoking-pills',this)">Current — heavy</button>
+          </div>
+        </div>
+
+        <!-- Physical Activity -->
+        <div class="form-section">
+          <div class="section-title">Physical Activity</div>
+          <p class="field-hint" style="margin-bottom:10px">Regular aerobic exercise strengthens the respiratory muscles and improves lung efficiency</p>
+          <div class="pill-group" id="exercise-pills">
+            <button class="pill active" data-val="sedentary" onclick="setPill('exercise-pills',this)">Sedentary</button>
+            <button class="pill"        data-val="moderate"  onclick="setPill('exercise-pills',this)">Moderately active</button>
+            <button class="pill"        data-val="active"    onclick="setPill('exercise-pills',this)">Very active</button>
+          </div>
+        </div>
+
+        <!-- Health History -->
+        <div class="form-section" style="border-bottom:none; padding-bottom:0; margin-bottom:0">
+          <div class="section-title">Health History</div>
+          <div class="check-item">
+            <input type="checkbox" id="lung-condition" />
+            <label for="lung-condition">I have a diagnosed breathing condition (asthma, COPD, bronchitis, or similar)</label>
+          </div>
+        </div>
+
+        <button class="calc-btn" onclick="calculate()">Calculate my lung capacity</button>
+        <p class="disclaimer">Estimates are based on population reference equations. This is not a clinical measurement — see a doctor for a spirometry test.</p>
+      </div>
+
+      <!-- RESULTS -->
+      <div class="results-col">
+      <div id="result-panel" style="display:none">
+        <div class="result-card">
+
+          <div class="status-header">
+            <div class="status-icon healthy" id="res-icon">🫁</div>
+            <div>
+              <div class="status-label healthy" id="res-label">HEALTHY</div>
+              <div class="status-title" id="res-title">Your lungs are in great shape</div>
+            </div>
+          </div>
+
+          <div class="metrics-row">
+            <div class="metric-card">
+              <div class="metric-val" id="res-fvc">—<span>L</span></div>
+              <div class="metric-label">Estimated FVC (lung volume)</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-val" id="res-fev1">—<span>L</span></div>
+              <div class="metric-label">Estimated FEV1 (1-sec output)</div>
+            </div>
+          </div>
+
+          <div class="bar-section">
+            <div class="bar-header">
+              <div class="bar-title">% of Age-Predicted Optimal</div>
+              <div class="bar-pct" id="res-pct">—<span>%</span></div>
+            </div>
+            <div class="bar-wrap">
+              <div class="bar-track"></div>
+              <div class="bar-marker" id="res-marker"></div>
+            </div>
+            <div class="bar-zones">
+              <span class="bar-zone reduced">Reduced &lt;75%</span>
+              <span class="bar-zone moderate">Fair 75–90%</span>
+              <span class="bar-zone healthy">Healthy 90%+</span>
+            </div>
+          </div>
+
+          <div class="message-block healthy" id="res-message"></div>
+
+          <div class="factors-title" id="factors-title">Factors affecting your result</div>
+          <div id="factor-list"></div>
+
+          <div class="tips-title" id="tips-title">How to protect your lung health</div>
+          <div class="tips-grid" id="tips-grid"></div>
+
+          <div class="note-block">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#5C8A5C" stroke-width="2"/><path d="M12 8v4M12 16h.01" stroke="#5C8A5C" stroke-width="2" stroke-linecap="round"/></svg>
+            <p><strong>Note:</strong> This calculator uses the Knudson reference equations to estimate predicted lung capacity. Only a spirometry test performed by a clinician can measure your actual lung function.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="info-card">
+        <h3>About lung capacity</h3>
+        <p>Lung capacity is the maximum amount of air your lungs can hold. The two key clinical measurements are <strong>FVC</strong> (Forced Vital Capacity — total air exhaled after a full breath) and <strong>FEV1</strong> (Forced Expiratory Volume in 1 second — air exhaled in the first second). Together they reveal both the volume and efficiency of your airways. This calculator uses the <strong>Knudson reference equations</strong> — the same population-based equations used in clinical spirometry to estimate expected values for your age, height, and sex.</p>
+      </div>
+
+      <div class="related-section">
+        <p class="related-title">You might also like</p>
+        <div class="related-grid">
+          <a href="heart-rate.html" class="related-card">
+            <div class="related-icon">❤️</div>
+            <div class="related-info"><strong>Heart Rate Zones</strong><span>Train smarter</span></div>
+          </a>
+          <a href="calories-burned.html" class="related-card">
+            <div class="related-icon">🔥</div>
+            <div class="related-info"><strong>Calories Burned</strong><span>Any activity, any duration</span></div>
+          </a>
+          <a href="bmi.html" class="related-card">
+            <div class="related-icon">⚖️</div>
+            <div class="related-info"><strong>BMI Calculator</strong><span>Body mass index</span></div>
+          </a>
+          <a href="tdee.html" class="related-card">
+            <div class="related-icon">🥗</div>
+            <div class="related-info"><strong>TDEE & Daily Calories</strong><span>Your calorie needs</span></div>
+          </a>
+        </div>
+      </div>
+
+      </div><!-- /.results-col -->
+
+    </div><!-- /.calc-columns -->
+  </div><!-- /.calc-wrapper -->
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="assets/logo-white.png" alt="SageMyHealth" style="height: 45px; width: auto; object-fit: contain;"/>
+        </div>
+        <p>Free, trusted health calculators with warm guidance — helping you understand your numbers.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Calculators</h5>
+        <ul>
+          <li><a href="bmi.html">BMI</a></li>
+          <li><a href="tdee.html">TDEE &amp; Calories</a></li>
+          <li><a href="heart-rate.html">Heart Rate Zones</a></li>
+          <li><a href="blood-glucose.html">Blood Glucose</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>More Tools</h5>
+        <ul>
+          <li><a href="lung-capacity.html">Lung Capacity</a></li>
+          <li><a href="calories-burned.html">Calories Burned</a></li>
+          <li><a href="iron-deficiency.html">Iron Deficiency Risk</a></li>
+          <li><a href="anxiety-score.html">Anxiety Score</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>About</h5>
+        <ul>
+          <li><a href="../index.html">Our Mission</a></li>
+          <li><a href="../index.html">How It Works</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 SageMyHealth. For informational purposes only — not medical advice.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── Pill helper ──
+  function setPill(groupId, btn) {
+    document.querySelectorAll('#' + groupId + ' .pill').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+  }
+  function getVal(groupId) {
+    const a = document.querySelector('#' + groupId + ' .pill.active');
+    return a ? a.dataset.val : null;
+  }
+
+  // ── Unit toggle ──
+  function setUnit(btn) {
+    document.querySelectorAll('#height-unit-toggle .unit-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const isImperial = btn.dataset.unit === 'imperial';
+    document.getElementById('height-imperial').style.display = isImperial ? '' : 'none';
+    document.getElementById('height-metric').style.display   = isImperial ? 'none' : '';
+    document.getElementById('height-imperial').className = 'height-row ' + (isImperial ? 'imperial' : 'metric');
+  }
+
+  function getHeightCm() {
+    const unit = document.querySelector('#height-unit-toggle .unit-btn.active').dataset.unit;
+    if (unit === 'metric') return parseFloat(document.getElementById('height-cm').value) || 0;
+    const ft = parseFloat(document.getElementById('height-ft').value) || 0;
+    const inches = parseFloat(document.getElementById('height-in').value) || 0;
+    return (ft * 12 + inches) * 2.54;
+  }
+
+  // ── Main calculation ──
+  function calculate() {
+    const sex      = getVal('sex-pills');
+    const age      = parseInt(document.getElementById('age').value) || 0;
+    const heightCm = getHeightCm();
+    const smoking  = getVal('smoking-pills');
+    const exercise = getVal('exercise-pills');
+    const hasCondition = document.getElementById('lung-condition').checked;
+
+    if (!age || !heightCm) {
+      alert('Please enter your age and height.');
+      return;
+    }
+    if (age < 18 || age > 80) { alert('Please enter an age between 18 and 80.'); return; }
+
+    // ── Knudson reference equations (predicted = ideal for demographics) ──
+    let predFVC, predFEV1;
+    if (sex === 'male') {
+      predFVC  = (0.0576 * heightCm) - (0.0269 * age) - 4.34;
+      predFEV1 = (0.0490 * heightCm) - (0.0328 * age) - 3.90;
+    } else {
+      predFVC  = (0.0443 * heightCm) - (0.0264 * age) - 2.89;
+      predFEV1 = (0.0376 * heightCm) - (0.0258 * age) - 1.93;
+    }
+    predFVC  = Math.max(0.8, predFVC);
+    predFEV1 = Math.max(0.6, predFEV1);
+
+    // ── Risk multipliers ──
+    const smokingMult = { never: 1.0, former: 0.95, light: 0.87, heavy: 0.78 }[smoking] || 1.0;
+    const exMult      = { sedentary: 0.96, moderate: 1.0, active: 1.05 }[exercise] || 1.0;
+    const condMult    = hasCondition ? 0.84 : 1.0;
+
+    const totalMult   = smokingMult * exMult * condMult;
+    const estFVC      = predFVC  * totalMult;
+    const estFEV1     = predFEV1 * totalMult;
+    const pct         = (totalMult * 100);
+
+    let level;
+    if      (pct >= 90) level = 'healthy';
+    else if (pct >= 75) level = 'moderate';
+    else                level = 'reduced';
+
+    renderResult(predFVC, estFVC, estFEV1, pct, level, smoking, exercise, hasCondition);
+  }
+
+  function renderResult(predFVC, estFVC, estFEV1, pct, level, smoking, exercise, hasCondition) {
+    document.getElementById('result-panel').style.display = '';
+    setTimeout(() => document.getElementById('result-panel').scrollIntoView({ behavior:'smooth', block:'nearest' }), 80);
+
+    // Header
+    const icons  = { healthy:'🫁', moderate:'⚠️', reduced:'🩺' };
+    const labels = { healthy:'HEALTHY', moderate:'FAIR', reduced:'REDUCED' };
+    const titles = {
+      healthy:  'Your lungs are in great shape',
+      moderate: 'Some factors worth addressing',
+      reduced:  'Several factors affecting lung health'
+    };
+    const iconEl = document.getElementById('res-icon');
+    iconEl.textContent = icons[level];
+    iconEl.className = 'status-icon ' + level;
+    const labelEl = document.getElementById('res-label');
+    labelEl.textContent = labels[level];
+    labelEl.className = 'status-label ' + level;
+    document.getElementById('res-title').textContent = titles[level];
+
+    // Metrics
+    document.getElementById('res-fvc').innerHTML  = estFVC.toFixed(1)  + '<span>L</span>';
+    document.getElementById('res-fev1').innerHTML = estFEV1.toFixed(1) + '<span>L</span>';
+    document.getElementById('res-pct').innerHTML  = Math.round(pct)    + '<span>%</span>';
+
+    // Bar: 50% → 2%, 75% → 30%, 90% → 60%, 110% → 90%, 120%+ → 98%
+    let barPct;
+    if      (pct <= 50)  barPct = 2;
+    else if (pct <= 75)  barPct = 2  + ((pct - 50) / 25) * 28;
+    else if (pct <= 90)  barPct = 30 + ((pct - 75) / 15) * 30;
+    else if (pct <= 110) barPct = 60 + ((pct - 90) / 20) * 30;
+    else                 barPct = 90 + Math.min((pct - 110) / 10, 1) * 8;
+    barPct = Math.max(2, Math.min(98, barPct));
+    setTimeout(() => { document.getElementById('res-marker').style.left = barPct + '%'; }, 120);
+
+    // Message
+    const messages = {
+      healthy:  `<p>Great news — your lifestyle choices are supporting healthy lung function. <strong>Your estimated lung capacity is ${estFVC.toFixed(1)} litres</strong>, which is at or near what's expected for someone your age and height. Keep it up!</p>`,
+      moderate: `<p>Your estimated lung capacity is <strong>${estFVC.toFixed(1)} litres</strong>, which is slightly below the ideal for your demographics. Some of your lifestyle factors may be reducing lung efficiency — but the good news is that many of these are reversible with the right changes.</p>`,
+      reduced:  `<p>Several factors are combining to reduce your estimated lung capacity to <strong>${estFVC.toFixed(1)} litres</strong> — meaningfully below what's expected for your age and height. We'd recommend speaking with your doctor about a spirometry test to get an accurate measurement and discuss your options.</p>`
+    };
+    const msgEl = document.getElementById('res-message');
+    msgEl.className = 'message-block ' + level;
+    msgEl.innerHTML = messages[level];
+
+    // Factor list
+    const factorList = document.getElementById('factor-list');
+    factorList.innerHTML = '';
+    const factors = [];
+
+    // Demographic baseline
+    factors.push({ type:'neutral', text:`Predicted baseline for your age & height: ${predFVC.toFixed(1)}L FVC` });
+
+    if (smoking === 'never') {
+      factors.push({ type:'positive', text:'Never smoked — no smoking-related reduction in capacity' });
+    } else if (smoking === 'former') {
+      factors.push({ type:'negative', text:'Former smoker — estimated 5% reduction in functional capacity' });
+    } else if (smoking === 'light') {
+      factors.push({ type:'negative', text:'Current light smoker — estimated 13% reduction in functional capacity' });
+    } else if (smoking === 'heavy') {
+      factors.push({ type:'negative', text:'Current heavy smoker — estimated 22% reduction in functional capacity' });
+    }
+
+    if (exercise === 'active') {
+      factors.push({ type:'positive', text:'Very active lifestyle — estimated 5% boost in lung efficiency' });
+    } else if (exercise === 'moderate') {
+      factors.push({ type:'positive', text:'Moderately active — maintaining good respiratory muscle strength' });
+    } else {
+      factors.push({ type:'negative', text:'Sedentary lifestyle — estimated 4% reduction from reduced respiratory fitness' });
+    }
+
+    if (hasCondition) {
+      factors.push({ type:'negative', text:'Diagnosed breathing condition — estimated 16% additional reduction applied' });
+    }
+
+    factors.forEach(f => {
+      const d = document.createElement('div');
+      d.className = 'factor-item';
+      d.innerHTML = `<div class="factor-dot ${f.type}"></div><span>${f.text}</span>`;
+      factorList.appendChild(d);
+    });
+    document.getElementById('factors-title').textContent = 'Factors affecting your result';
+
+    // Tips
+    const tipsGrid = document.getElementById('tips-grid');
+    tipsGrid.innerHTML = '';
+    const tipSets = {
+      healthy: [
+        { icon:'🏃', title:'Keep moving', body:'Regular aerobic exercise — even brisk walking — keeps your respiratory muscles strong and maintains lung capacity as you age.' },
+        { icon:'🚭', title:'Stay smoke-free', body:'Not smoking (or quitting) is the single most impactful thing you can do for your lung health. Your lungs begin recovering within days of quitting.' },
+        { icon:'🌿', title:'Mind your air quality', body:'On high-pollution days, limit outdoor exercise. Use air purifiers indoors if you live in a city or near traffic.' },
+      ],
+      moderate: [
+        { icon:'🏊', title:'Try swimming or cycling', body:'Swimming especially is excellent for lung capacity — the warm humid air and breathing demand build respiratory strength efficiently.' },
+        { icon:'🚭', title:'Reduce or quit smoking', body:'Even cutting back significantly improves lung function within weeks. Your doctor can help with cessation support.' },
+        { icon:'🫁', title:'Practice diaphragmatic breathing', body:'5–10 minutes of deep belly breathing daily strengthens the diaphragm and improves oxygen exchange efficiency.' },
+      ],
+      reduced: [
+        { icon:'🩺', title:'Book a spirometry test', body:'A simple 10-minute test at your doctor\'s office measures your actual FVC and FEV1, giving a definitive picture of your lung function.' },
+        { icon:'🚭', title:'Quitting smoking is step one', body:'Smoking cessation is the only intervention proven to slow lung function decline. Lung capacity can improve measurably within 1–9 months of stopping.' },
+        { icon:'💨', title:'Pulmonary rehab may help', body:'If you have a diagnosed condition, ask your doctor about pulmonary rehabilitation — a structured exercise and education programme that significantly improves quality of life.' },
+      ]
+    };
+    tipSets[level].forEach(t => {
+      const el = document.createElement('div');
+      el.className = 'tip-item';
+      el.innerHTML = `<div class="tip-icon">${t.icon}</div><div class="tip-text"><strong>${t.title}</strong>${t.body}</div>`;
+      tipsGrid.appendChild(el);
+    });
+    document.getElementById('tips-title').textContent = level === 'reduced' ? 'Recommended next steps' : 'How to protect your lung health';
+  }
+</script>
+
+
+<script>
+  /* Mobile menu */
+  function openMobileMenu() {
+    document.getElementById('mobile-menu').classList.add('open');
+    document.getElementById('nav-hamburger').setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.getElementById('nav-hamburger').setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMobileMenu(); });
+</script>
+</body>
+</html>
