@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X6K2H9YW2V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X6K2H9YW2V');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anemia Symptom Screener — Do I Have Anemia? | SageMyHealth</title>
+  <meta name="description" content="Wondering if your fatigue, dizziness, or shortness of breath could be anemia? Take our 12-question anemia symptom screener — trusted by women checking for low iron, B12, and more. Free, fast, and clinically informed." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sage:        #3B6A3A;
+      --sage-dark:   #0A3D2A;
+      --sage-mid:    #5C8A5C;
+      --sage-light:  #EBF2EC;
+      --sage-pale:   #F2F7F3;
+      --cream:       #E3FFB3;
+      --white:       #FFFFFF;
+      --text-dark:   #1A2E1E;
+      --text-mid:    #4A5568;
+      --text-light:  #718096;
+      --placeholder: #AAB0B8;
+      --border:      #E2EBE4;
+      --border-mid:  #C8D9CC;
+      --shadow-xs:   0 1px 2px rgba(59,106,58,0.06);
+      --shadow-sm:   0 1px 6px rgba(59,106,58,0.08);
+      --shadow-md:   0 4px 16px rgba(59,106,58,0.12);
+      --shadow-lg:   0 8px 32px rgba(59,106,58,0.16);
+      --r-sm: 8px; --r: 12px; --r-lg: 20px; --r-xl: 28px;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-dark); background: var(--sage-pale);
+      line-height: 1.6; -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; }
+
+    /* ---- NAV ---- */
+    .site-nav {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 24px;
+      height: 68px; display: flex; align-items: center;
+      justify-content: space-between; gap: 32px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav-links {
+      display: flex; align-items: center; gap: 28px;
+      list-style: none; flex: 1; justify-content: center;
+    }
+    .nav-links a { color: var(--text-mid); font-size: 15px; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--sage); }
+    .nav-btn {
+      background: var(--sage); color: white; border: none;
+      padding: 9px 20px; border-radius: var(--r-sm);
+      font-size: 14px; font-weight: 600; transition: background .2s;
+    }
+    .nav-btn:hover { background: var(--sage-dark); }
+
+    /* ---- PAGE ---- */
+    .calc-page { padding: 36px 0 72px; }
+    .calc-wrapper { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* ---- BREADCRUMB ---- */
+    .breadcrumb {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; color: var(--text-light); margin-bottom: 24px; flex-wrap: wrap;
+    }
+    .breadcrumb a { color: var(--sage); }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .bc-sep { color: var(--border-mid); }
+
+    /* ---- PAGE HEADER ---- */
+    .page-header { margin-bottom: 28px; }
+    .calc-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 600; color: var(--sage);
+      background: var(--white); padding: 5px 12px;
+      border-radius: 20px; margin-bottom: 12px; letter-spacing: .3px; border: 1px solid var(--border);
+    }
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 42px); font-weight: 700;
+      color: var(--text-dark); letter-spacing: -.5px;
+      margin-bottom: 10px; line-height: 1.15;
+    }
+    .page-header p { font-size: 15px; color: var(--text-mid); line-height: 1.7; max-width: 700px; }
+
+    /* ---- STAT STRIP ---- */
+    .stat-strip {
+      display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap;
+    }
+    .stat-pill {
+      background: white; border: 1px solid var(--border);
+      border-radius: 50px; padding: 7px 16px;
+      font-size: 13px; color: var(--text-mid); display: flex; align-items: center; gap: 7px;
+    }
+    .stat-pill strong { color: var(--sage-dark); }
+
+    /* ---- TWO-COLUMN LAYOUT ---- */
+    .calc-columns { display: grid; grid-template-columns: 480px 1fr; gap: 24px; align-items: start; }
+
+    /* ---- FORM CARD ---- */
+    .form-card { background: white; border-radius: var(--r-xl); box-shadow: var(--shadow-lg); overflow: hidden; }
+    .form-card-header { padding: 22px 28px 16px; border-bottom: 1px solid var(--border); }
+    .form-card-title { font-size: 14px; font-weight: 700; color: var(--text-dark); }
+    .form-card-sub { font-size: 12px; color: var(--text-light); margin-top: 3px; }
+    .form-body { padding: 20px 28px 28px; }
+
+    /* Domain headers */
+    .domain-header { display: flex; align-items: center; gap: 10px; margin: 20px 0 14px; }
+    .domain-header:first-child { margin-top: 0; }
+    .domain-icon { width: 30px; height: 30px; border-radius: 8px; background: var(--sage-light); display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+    .domain-name { font-size: 13px; font-weight: 700; color: var(--text-dark); }
+    .domain-divider { flex: 1; height: 1px; background: var(--border); }
+
+    /* Questions */
+    .question { margin-bottom: 18px; }
+    .q-text { font-size: 13px; font-weight: 500; color: var(--text-dark); line-height: 1.6; margin-bottom: 8px; display: flex; align-items: flex-start; gap: 7px; }
+    .q-num { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; background: var(--sage-light); border-radius: 50%; font-size: 10px; font-weight: 700; color: var(--sage); flex-shrink: 0; margin-top: 2px; }
+
+    /* 4-option radio row */
+    .options { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+    .option-item { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+    .option-item input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
+    .option-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; padding: 9px 4px 7px; border-radius: var(--r-sm); border: 1.5px solid var(--border); cursor: pointer; transition: all .15s; background: white; text-align: center; gap: 3px; }
+    .option-btn .opt-val { font-size: 14px; font-weight: 700; color: var(--text-mid); line-height: 1; }
+    .option-btn .opt-lab { font-size: 9px; font-weight: 500; color: var(--text-light); letter-spacing: .2px; line-height: 1.2; }
+    .option-item input[type="radio"]:checked + .option-btn { border-color: var(--sage); background: var(--sage-light); }
+    .option-item input[type="radio"]:checked + .option-btn .opt-val { color: var(--sage); }
+    .option-item input[type="radio"]:checked + .option-btn .opt-lab { color: var(--sage-mid); }
+    .option-btn:hover { border-color: var(--sage-mid); background: var(--sage-pale); }
+
+    /* Risk factors */
+    .risk-section { background: var(--sage-pale); border-radius: var(--r); padding: 14px 16px; margin: 22px 0 18px; }
+    .risk-section-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--text-light); margin-bottom: 12px; }
+    .risk-factor-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 12px; }
+    .risk-factor-row:last-child { margin-bottom: 0; }
+    .rf-label { font-size: 13px; color: var(--text-mid); flex: 1; line-height: 1.4; }
+    .rf-pills { display: flex; gap: 6px; flex-shrink: 0; }
+    .rf-pill { padding: 5px 12px; border: 1.5px solid var(--border); border-radius: 50px; font-size: 12px; font-weight: 500; background: white; color: var(--text-mid); transition: all .15s; }
+    .rf-pill:hover { border-color: var(--sage-mid); color: var(--sage); }
+    .rf-pill.selected { background: var(--sage); border-color: var(--sage); color: white; font-weight: 600; }
+
+    /* Progress */
+    .progress-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+    .progress-label { font-size: 12px; color: var(--text-light); }
+    .progress-bar { height: 4px; background: var(--sage-light); border-radius: 4px; margin-bottom: 18px; }
+    .progress-fill { height: 100%; background: var(--sage); border-radius: 4px; transition: width .3s; }
+
+    .calc-btn { width: 100%; background: var(--sage); color: white; border: none; padding: 14px; border-radius: var(--r); font-size: 16px; font-weight: 700; transition: all .18s; margin-top: 4px; }
+    .calc-btn:hover { background: var(--sage-dark); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+    .calc-btn:active { transform: translateY(0); }
+    .err-banner { display: none; background: #FEF2F2; border: 1px solid #FECACA; border-radius: var(--r-sm); padding: 10px 14px; font-size: 13px; color: #DC2626; margin-bottom: 12px; font-weight: 500; }
+
+    /* ---- RESULTS ---- */
+    .results-col { display: flex; flex-direction: column; gap: 20px; }
+
+    .result-card { background: white; border-radius: var(--r-xl); box-shadow: var(--shadow-lg); overflow: hidden; display: none; }
+    .result-card.visible { display: block; animation: slideUp .35s ease; }
+    @keyframes slideUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+    .result-band { height: 6px; width: 100%; }
+    .result-body { padding: 24px; }
+
+    .score-display { display: flex; align-items: flex-end; justify-content: center; gap: 4px; margin-bottom: 6px; }
+    .score-num { font-size: 72px; font-weight: 800; line-height: 1; letter-spacing: -3px; }
+    .score-denom { font-size: 24px; font-weight: 400; color: var(--text-light); padding-bottom: 10px; }
+    .score-label { text-align: center; font-size: 13px; color: var(--text-light); margin-bottom: 18px; }
+
+    .sev-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+    .sev-box { border-radius: var(--r-sm); padding: 10px 6px; text-align: center; border: 1.5px solid transparent; }
+    .sev-box .sev-name { font-size: 11px; font-weight: 700; margin-bottom: 2px; }
+    .sev-box .sev-range { font-size: 10px; }
+    .sev-low      { background: #F0FDF4; color: #16A34A; }
+    .sev-low.active { border-color: #16A34A; }
+    .sev-mild     { background: #FEFCE8; color: #CA8A04; }
+    .sev-mild.active { border-color: #CA8A04; }
+    .sev-moderate { background: #FFF7ED; color: #EA580C; }
+    .sev-moderate.active { border-color: #EA580C; }
+    .sev-high     { background: #FEF2F2; color: #DC2626; }
+    .sev-high.active { border-color: #DC2626; }
+
+    .domain-breakdown { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+    .domain-card { background: var(--sage-pale); border-radius: var(--r); padding: 14px; }
+    .domain-card-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--text-light); margin-bottom: 3px; }
+    .domain-card-name  { font-size: 13px; font-weight: 600; color: var(--text-dark); margin-bottom: 8px; }
+    .domain-score-row  { display: flex; align-items: center; justify-content: space-between; margin-bottom: 5px; }
+    .domain-score-num  { font-size: 22px; font-weight: 800; }
+    .domain-score-max  { font-size: 12px; color: var(--text-light); }
+    .domain-bar        { height: 5px; background: var(--border); border-radius: 5px; overflow: hidden; }
+    .domain-bar-fill   { height: 100%; border-radius: 5px; transition: width .6s .1s; }
+
+    /* Top symptoms */
+    .top-symptoms { margin-bottom: 18px; }
+    .top-sym-title { font-size: 13px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; }
+    .sym-chips { display: flex; flex-wrap: wrap; gap: 7px; }
+    .sym-chip { padding: 5px 12px; border-radius: 50px; font-size: 12px; font-weight: 600; }
+    .chip-severe { background: #FEE2E2; color: #B91C1C; }
+    .chip-freq   { background: #FEF3C7; color: #92400E; }
+    .chip-low    { background: var(--sage-light); color: var(--sage-dark); }
+
+    /* Type hint */
+    .type-hint { background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: var(--r); padding: 12px 14px; margin-bottom: 16px; font-size: 13px; color: #1E40AF; line-height: 1.6; }
+    .type-hint strong { display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .4px; margin-bottom: 4px; color: #1D4ED8; }
+
+    /* Risk factor chips */
+    .rf-result-row { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 16px; }
+    .rf-chip { padding: 5px 12px; border-radius: 50px; font-size: 12px; font-weight: 600; background: #FFF7ED; color: #92400E; }
+
+    /* Message block */
+    .msg-block { border-radius: var(--r); padding: 18px; margin-bottom: 16px; border-left: 4px solid; }
+    .msg-block h3 { font-size: 14px; font-weight: 700; margin-bottom: 6px; color: var(--text-dark); }
+    .msg-block p  { font-size: 13px; color: var(--text-mid); line-height: 1.7; }
+    .msg-low      { background: #F0FDF4; border-left-color: #16A34A !important; }
+    .msg-mild     { background: #FEFCE8; border-left-color: #CA8A04 !important; }
+    .msg-moderate { background: #FFF7ED; border-left-color: #EA580C !important; }
+    .msg-high     { background: #FEF2F2; border-left-color: #DC2626 !important; }
+
+    .tips-title { font-size: 13px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; margin-top: 16px; }
+    .tips-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .tips-list li { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+    .tips-list li::before { content: '✤'; color: var(--sage); font-size: 10px; margin-top: 3px; flex-shrink: 0; }
+
+    /* Test box */
+    .test-box { background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: var(--r); padding: 14px 16px; margin-top: 14px; }
+    .test-box-title { font-size: 12px; font-weight: 700; color: #1D4ED8; margin-bottom: 8px; }
+    .test-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .test-chip { padding: 4px 11px; background: white; border: 1px solid #BFDBFE; border-radius: 50px; font-size: 11px; font-weight: 600; color: #1E40AF; }
+
+    /* Iron deficiency call-out (featured crosslink) */
+    .iron-callout {
+      background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+      border: 1.5px solid #F59E0B; border-radius: var(--r-lg);
+      padding: 18px 20px; display: flex; align-items: center; gap: 14px;
+    }
+    .iron-callout-icon { font-size: 32px; flex-shrink: 0; }
+    .iron-callout-text strong { display: block; font-size: 14px; font-weight: 700; color: #78350F; margin-bottom: 4px; }
+    .iron-callout-text p { font-size: 13px; color: #92400E; line-height: 1.6; margin-bottom: 10px; }
+    .iron-callout-btn { display: inline-block; background: #F59E0B; color: white; font-size: 13px; font-weight: 700; padding: 8px 16px; border-radius: var(--r-sm); transition: background .15s; }
+    .iron-callout-btn:hover { background: #D97706; }
+
+    /* Band colors */
+    .band-low      { background: linear-gradient(90deg, #4ADE80, #16A34A); }
+    .band-mild     { background: linear-gradient(90deg, #FDE68A, #D97706); }
+    .band-moderate { background: linear-gradient(90deg, #FB923C, #EA580C); }
+    .band-high     { background: linear-gradient(90deg, #F87171, #DC2626); }
+
+    .score-low      { color: #16A34A; }
+    .score-mild     { color: #D97706; }
+    .score-moderate { color: #EA580C; }
+    .score-high     { color: #DC2626; }
+
+    /* INFO CARDS */
+    .info-card { background: white; border-radius: var(--r-xl); box-shadow: var(--shadow-sm); padding: 22px 24px; }
+    .info-card h3 { font-size: 14px; font-weight: 700; margin-bottom: 8px; color: var(--text-dark); }
+    .info-card p  { font-size: 13px; color: var(--text-mid); line-height: 1.75; }
+    .info-card p + p { margin-top: 10px; }
+
+    /* Anemia types grid */
+    .type-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .type-box { background: var(--sage-pale); border-radius: var(--r-sm); padding: 12px 12px 10px; }
+    .type-box-name { font-size: 12px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
+    .type-box-stat { font-size: 11px; font-weight: 700; color: var(--sage); margin-bottom: 4px; }
+    .type-box-desc { font-size: 11px; color: var(--text-light); line-height: 1.5; }
+
+    /* Risk women table */
+    .women-box { background: #FDF2F8; border: 1px solid #FBCFE8; border-radius: var(--r); padding: 14px 16px; margin-top: 12px; }
+    .women-box-title { font-size: 12px; font-weight: 700; color: #9D174D; margin-bottom: 8px; }
+    .women-stat-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .women-stat { text-align: center; background: white; border-radius: 8px; padding: 8px 12px; min-width: 90px; }
+    .women-stat .ws-num { font-size: 18px; font-weight: 800; color: #BE185D; display: block; line-height: 1; }
+    .women-stat .ws-lab { font-size: 10px; color: #9D174D; }
+
+    /* Related */
+    .related-title { font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; }
+    .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .related-card { background: white; border: 1.5px solid var(--border); border-radius: var(--r); padding: 14px 16px; display: flex; align-items: center; gap: 12px; transition: all .18s; }
+    .related-card:hover { border-color: var(--sage); box-shadow: var(--shadow-sm); transform: translateY(-1px); }
+    .related-icon { width: 36px; height: 36px; background: var(--sage-light); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+    .related-info strong { display: block; font-size: 13px; font-weight: 600; }
+    .related-info span  { font-size: 11px; color: var(--text-light); }
+
+    /* Disclaimer */
+    .note-block { background: var(--cream); border-radius: var(--r); padding: 13px 16px; font-size: 12px; color: var(--text-light); line-height: 1.7; display: flex; gap: 8px; align-items: flex-start; }
+    .note-block svg { flex-shrink: 0; margin-top: 1px; }
+
+    /* FOOTER */
+    .site-footer { background: var(--text-dark); color: #94A99A; padding: 48px 0 0; margin-top: 48px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 40px; }
+    .footer-logo { display: flex; align-items: center; gap: 8px; color: white; font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+    .footer-brand p { font-size: 14px; line-height: 1.7; max-width: 260px; color: #7A958E; }
+    .footer-col h5 { color: white; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; margin-bottom: 14px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { font-size: 14px; color: #7A958E; transition: color .2s; }
+    .footer-col a:hover { color: white; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding: 22px 0; display: flex; flex-direction: column; gap: 6px; }
+    .footer-disclaimer { font-size: 12px; color: #5A7568; line-height: 1.7; }
+    .footer-copy { font-size: 12px; color: #5A7568; }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 1000px) { .calc-columns { grid-template-columns: 1fr; } }
+    @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: 1 / -1; } }
+    @media (max-width: 660px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex !important; }
+      .nav-btn { display: none; }
+      .domain-breakdown { grid-template-columns: 1fr; }
+      .sev-row { grid-template-columns: repeat(2, 1fr); }
+      .related-grid { grid-template-columns: 1fr; }
+      .type-grid { grid-template-columns: 1fr; }
+      .risk-factor-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .stat-strip { gap: 8px; }
+    }
+    @media (max-width: 420px) {
+      .options { grid-template-columns: repeat(2, 1fr); }
+      .option-btn .opt-lab { display: none; }
+    }
+    @media (max-width: 520px) { .footer-grid { grid-template-columns: 1fr; } }
+
+    /* ── MOBILE HAMBURGER ── */
+    .nav-hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; background: none; border: none; padding: 8px; margin-left: 8px; border-radius: 8px; cursor: pointer; transition: background .15s; flex-shrink: 0; }
+    .nav-hamburger:hover { background: var(--sage-light); }
+    .nav-hamburger span { display: block; width: 22px; height: 2.5px; background: var(--text-dark); border-radius: 2px; transition: all .2s; }
+    .mobile-menu { display: none; position: fixed; inset: 0; z-index: 999; }
+    .mobile-menu.open { display: block; }
+    .mobile-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.45); backdrop-filter: blur(2px); }
+    .mobile-drawer { position: absolute; top: 0; right: 0; width: min(300px, 84vw); height: 100%; background: #fff; display: flex; flex-direction: column; box-shadow: -4px 0 40px rgba(0,0,0,.18); animation: drawerIn .22s cubic-bezier(.22,.61,.36,1); }
+    @keyframes drawerIn { from{transform:translateX(100%)} to{transform:translateX(0)} }
+    .mobile-drawer-head { display: flex; align-items: center; justify-content: space-between; padding: 18px 20px 14px; border-bottom: 1px solid var(--border); }
+    .mobile-drawer-logo { font-size: 15px; font-weight: 700; color: var(--text-dark); }
+    .mobile-close { background: none; border: none; font-size: 20px; padding: 4px 8px; cursor: pointer; color: var(--text-light); border-radius: 6px; line-height: 1; transition: background .15s, color .15s; }
+    .mobile-close:hover { background: var(--sage-light); color: var(--text-dark); }
+    .mobile-nav-links { padding: 14px 12px; flex: 1; display: flex; flex-direction: column; gap: 4px; }
+    .mobile-nav-link { display: flex; align-items: center; gap: 14px; padding: 13px 16px; border-radius: 12px; font-size: 16px; font-weight: 600; color: var(--text-dark); text-decoration: none; transition: background .15s, color .15s; }
+    .mobile-nav-link:hover { background: var(--sage-light); color: var(--sage); }
+    .mobile-link-icon { width: 40px; height: 40px; background: var(--sage-light); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .mobile-browse-btn { display: block; margin: 0 12px 20px; padding: 14px; background: var(--sage); color: #fff; border-radius: 12px; font-size: 15px; font-weight: 700; text-align: center; text-decoration: none; transition: background .15s; }
+    .mobile-browse-btn:hover { background: var(--sage-dark); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <img src="assets/logo.png" alt="SageMyHealth" style="height:54px;width:auto;object-fit:contain;"/>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html#categories">Calculators</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../blog.html">Health Guides</a></li>
+    </ul>
+    <a href="../index.html#categories" class="nav-btn">Browse All</a>
+    <button class="nav-hamburger" id="nav-hamburger"
+            onclick="openMobileMenu()" aria-label="Open navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site navigation">
+  <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-drawer">
+    <div class="mobile-drawer-head">
+      <span class="mobile-drawer-logo">SageMyHealth</span>
+      <button class="mobile-close" onclick="closeMobileMenu()" aria-label="Close menu">&#x2715;</button>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="../index.html#categories" class="mobile-nav-link" onclick="closeMobileMenu()">
+        <span class="mobile-link-icon">&#x1F9EE;</span>Calculators
+      </a>
+      <a href="../about.html" class="mobile-nav-link" onclick="closeMobileMenu()">
+        <span class="mobile-link-icon">&#x1F49A;</span>About
+      </a>
+      <a href="../blog.html" class="mobile-nav-link" onclick="closeMobileMenu()">
+        <span class="mobile-link-icon">&#x1F4D6;</span>Health Guides
+      </a>
+    </nav>
+    <a href="../index.html#categories" class="mobile-browse-btn" onclick="closeMobileMenu()">Browse All Calculators &#x2192;</a>
+  </div>
+</div>
+
+<!-- PAGE -->
+<main class="calc-page">
+  <div class="calc-wrapper">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="bc-sep">›</span>
+      <a href="../index.html#categories">Blood &amp; Iron Health</a>
+      <span class="bc-sep">›</span>
+      <span>Anemia Screener</span>
+    </nav>
+
+    <!-- Header -->
+    <header class="page-header">
+      <div class="calc-tag">🩸 Blood &amp; Iron Health</div>
+      <h1>Anemia Symptom Screener</h1>
+      <p>Tired all the time? Short of breath on stairs that never used to bother you? Craving ice? These 12 questions cover the most common warning signs of anemia — the world's most widespread nutritional disorder — to help you decide whether it's worth a blood test.</p>
+    </header>
+
+    <!-- Stat strip -->
+    <div class="stat-strip">
+      <div class="stat-pill"><strong>1 in 4</strong> people globally have anemia</div>
+      <div class="stat-pill"><strong>1 in 5</strong> women of reproductive age are affected</div>
+      <div class="stat-pill"><strong>50%</strong> of cases are iron-deficiency</div>
+    </div>
+
+    <div class="calc-columns">
+
+      <!-- LEFT: Form -->
+      <div class="form-card">
+        <div class="form-card-header">
+          <div class="form-card-title">How have you been feeling over the past month?</div>
+          <div class="form-card-sub">Answer as honestly as you can — even mild symptoms matter.</div>
+        </div>
+        <div class="form-body">
+
+          <!-- Progress -->
+          <div class="progress-row">
+            <span class="progress-label" id="prog-label">0 of 12 answered</span>
+            <span class="progress-label" id="prog-pct">0%</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
+
+          <!-- Domain A -->
+          <div class="domain-header">
+            <div class="domain-icon">⚡</div>
+            <span class="domain-name">Energy &amp; Circulation</span>
+            <div class="domain-divider"></div>
+          </div>
+
+          <div class="question" id="q-wrap-1">
+            <div class="q-text"><span class="q-num">1</span>Do you feel unusually tired or weak — more than your activity level or sleep quality would explain?</div>
+            <div class="options">
+              <div class="option-item"><input type="radio" name="q1" id="q1-0" value="0" onchange="onAnswer()"><label class="option-btn" for="q1-0"><span class="opt-val">0</span><span class="opt-lab">Not at all</span></label></div>
+              <div class="option-item"><input type="radio" name="q1" id="q1-1" value="1" onchange="onAnswer()"><label class="option-btn" for="q1-1"><span class="opt-val">1</span><span class="opt-lab">Occasionally</span></label></div>
+              <div class="option-item"><input type="radio" name="q1" id="q1-2" value="2" onchange="onAnswer()"><label class="option-btn" for="q1-2"><span class="opt-val">2</span><span class="opt-lab">Frequently</span></label></div>
+              <div class="option-item"><input type="radio" name="q1" id="q1-3" value="3" onchange="onAnswer()"><label class="option-btn" for="q1-3"><span class="opt-val">3</span><span class="opt-lab">Nearly always</span></label></div>
+            </div>
+          </div>
+
+          <div class="question" id="q-wrap-2">
+            <div class="q-text"><span class="q-num">2</span>Do you feel short of breath during activities that didn't used to wind you — like climbing stairs or a brisk walk?</div>
+            <div class="options">
+              <div class="option-item"><input type="radio" name="q2" id="q2-0" value="0" onchange="onAnswer()"><label class="option-btn" for="q2-0"><span class="opt-val">0</span><span class="opt-lab">Not at all</span></label></div>
+              <div class="option-item"><input type="radio" name="q2" id="q2-1" value="1" onchange="onAnswer()"><label class="option-btn" for="q2-1"><span class="opt-val">1</span><span class="opt-lab">Occasionally</span></label></div>
+              <div class="option-item"><input type="radio" name="q2" id="q2-2" value="2" onchange="onAnswer()"><label class="option-btn" for="q2-2"><span class="opt-val">2</span><span class="opt-lab">Frequently</span></label></div>
+              <div class="option-item"><input type="radio" name="q2" id="q2-3" value="3" onchange="onAnswer()"><label class="option-btn" for="q2-3"><span class="opt-val">3</span><span class="opt-lab">Nearly always</span></label></div>
+            </div>
+          </div>
+
+          <div class="question" id="q-wrap-3">
+            <div class="q-text"><span class="q-num">3</span>Do you experience dizziness or lightheadedness — especially when you stand up quickly?</div>
+            <div class="options">
+              <div class="option-item"><input type="radio" name="q3" id="q3-0" value="0" onchange="onAnswer()"><label class="option-btn" for="q3-0"><span class="opt-val">0</span><span class="opt-lab">Not at all</span></label></div>
+              <div class="option-item"><input type="radio" name="q3" id="q3-1" value="1" onchange="onAnswer()"><label class="option-btn" for="q3-1"><span class="opt-val">1</span><span class="opt-lab">Occasionally</span></label></div>
+              <div class="option-item"><input type="radio" name="q3" id="q3-2" value="2" onchange="onAnswer()"><label class="option-btn" for="q3-2"><span class="opt-val">2</span><span class="opt-lab">Frequently</span></label></div>
+              <div class="option-item"><input type="radio" name="q3" id="q3-3" value="3" onchange="onAnswer()"><label class="option-btn" for="q3-3"><span class="opt-val">3</span><span class="opt-lab">Nearly always</span></label></div>
+            </div>
+          </div>
+
+          <div class="question" id="q-wrap-4">
+            <div class="q-text"><span class="q-num">4</span>Do you have pale or yellowish skin, or have others commented that you look unusually pale?</div>
+            <div class="options">
+              <div class="option-item"><input type="radio" name="q4" id="q4-0" value="0" onchange="onAnswer()"><label class="option-btn" for="q4-0"><span class="opt-val">0</span><span class="opt-lab">Not at all</span></label></div>
+              <div class="option-item"><input type="radio" name="q4" id="q4-1" value="1" onchange="onAnswer()"><label class="option-btn" for="q4-1"><span class="opt-val">1</span><span class="opt-lab">Occasionally</span></label></div>
+              <div class="option-item"><input type="radio" name="q4" id="q4-2" value="2" onchange="onAnswer()"><label class="option-btn" for="q4-2"><span class="opt-val">2</span><span class="opt-lab">Frequently</span></label></div>
+              <div class="option-item"><input type="radio" name="q4" id="q4-3" value="3" onchange="onAnswer()"><label class="option-btn" for="q4-3"><span class="opt-val">3</span><span class="opt-lab">Nearly always</span></label></div>
+            </div>
+          </div>
+
+          <div class="question" id="q-wrap-5">
+            <div class="q-text"><span class="q-num">5</span>Do you get frequent headaches that seem to come on without a clear trigger?</div>
+            <div class="options">
+              <div class="option-item"><input type="radio" name="q5" id="q5-0" value="0" onchange="onAnswer()"><label class="option-btn" for="q5-0"><span class="opt-val">0</span><span class="opt-lab">Not at all</span></label></div>
+              <div class="option-item"><input type="radio" name="q5" id="q5-1" value="1" onchange="onAnswer()"><label class="option-btn" for="q5-1"><span class="opt-val">1</span><span class="opt-lab">Occasionally</span></label></div>
+              <div class="option-item"><input type="radio" name="q5" id="q5-2" value="2" onchange="onAnswer()"><label class="option-btn" for="q5-2"><span class="opt-val">2</span><span class="opt-lab">Frequently</span></label></div>
+              <div class="option-item"><input type="radio" name="q5" id="q5-3" value="3" onchange="onAnswer()"><label class="option-btn" for="q5-3"><span class="opt-val">3</span><span class="opt-lab">Nearly always</span></label></div>
+            </div>
+          </div>
+
+          <div class="question" id="q-wrap-6">
+            <div class="q-text"><span class="q-num">6</span>Does your heart race, pound, or feel irregular — even when you're resting or doing something light?</div>
+            <div class="options">
+              <div class="option-item"><input type="radio" name="q6" id="q6-0" value="0" onchange="onAnswer()"><label class="option-btn" for="q6-0"><span class="opt-val">0</span><span class="opt-lab">Not at all</span></label></div>
+              <div class="option-item"><input type="radio" name="q6" id="q6-1" value="1" onchange="onAnswer()"><label class="option-btn" for="q6-1"><span class="opt-val">1</span><span class="opt-lab">Occasionally</span></label></div>
+              <div class="option-item"><input type="radio" name="q6" id="q6-2" value="2" onchange="onAnswer()"><label class="option-btn" for="q6-2"><span class="opt-val">2</span><span class="opt-lab">Frequently</span></label></div>
+              <div class="option-item"><input type="radio" name="q6" id="q6-3" value="3" onchange="onAnswer()"><label class="option-btn" for="q6-3"><span class="opt-val">3</span><span class="opt-lab">Nearly always</span></label></div>
+            </div>
+          </div>
+
+          <!-- Domain B -->
+          <div class="domain-header">
+            <div class="domain-icon">🧬</div>
+            <span class="domain-name">Physical &amp; Sensory Signs</span>
+            <div class="domain-divider"></div>
+          </div>
+
+          <div class="question" id="q-wrap-7">
+            <div class="q-text"><span class="q-num">7</span>Do you have persistently cold hands and feet — even when others around you are comfortable?</div>
+            <div class="options">
+              <div class="option-item"><input type="radio" name="q7" id="q7-0" value="0" onchange="onAnswer()"><label class="option-btn" for="q7-0"><span class="opt-val">0</span><span class="opt-lab">Not at all</span></label></div>
+              <div class="option-item"><input type="radio" name="q7" id="q7-1" value="1" onchange="onAnswer()"><label class="option-btn" for="q7-1"><span class="opt-val">1</span><span class="opt-lab">Occasionally</span></label></div>
+              <div class="option-item"><input type="radio" name="q7" id="q7-2" value="2" onchange="onAnswer()"><label class="option-btn" for="q7-2"><span class="opt-val">2</span><span class="opt-lab">Frequently</span></label></div>
+              <div class="option-item"><input type="radio" name="q7" id="q7-3" value="3" onchange="onAnswer()"><label class="option-btn" for="q7-3"><span class="opt-val">3</span><span class="opt-lab">Nearly always</span></label></div>
+            </div>
+          </div>
+
+          <div class="question" id="q-wrap-8">
+            <div class="q-text"><span class="q-num">8</span>Do your fingernails break easily, look pale or dull, or feel brittle? (A spoon-shaped curve is especially significant.)</div>
+            <div class="options">
+              <div class="option-item"><input type="radio" name="q8" id="q8-0" value="0" onchange="onAnswer()"><label class="option-btn" for="q8-0"><span class="opt-val">0</span><span class="opt-lab">Not at all</span></label></div>
+              <div class="option-item"><input type="radio" name="q8" id="q8-1" value="1" onchange="onAnswer()"><label class="option-btn" for="q8-1"><span class="opt-val">1</span><span class="opt-lab">Occasionally</span></label></div>
+              <div class="option-item"><input type="radio" name="q8" id="q8-2" value="2" onchange="onAnswer()"><label class="option-btn" for="q8-2"><span class="opt-val">2</span><span class="opt-lab">Frequently</span></label></div>
+              <div class="option-item"><input type="radio" name="q8" id="q8-3" value="3" onchange="onAnswer()"><label class="option-btn" for="q8-3"><span class="opt-val">3</span><span class="opt-lab">Nearly always</span></label></div>
+            </div>
+          </div>
+
+          <div class="question" id="q-wrap-9">
+            <div class="q-text"><span class="q-num">9</span>Do you crave or compulsively chew ice, or have unusual cravings for non-food items like clay, dirt, chalk, or starch? <em style="font-size:11px;color:var(--text-light)">(known as pica)</em></div>
+            <div class="options">
+              <div class="option-item"><input type="radio" name="q9" id="q9-0" value="0" onchange="onAnswer()"><label class="option-btn" for="q9-0"><span class="opt-val">0</span><span class="opt-lab">Not at all</span></label></div>
+              <div class="option-item"><input type="radio" name="q9" id="q9-1" value="1" onchange="onAnswer()"><label class="option-btn" for="q9-1"><span class="opt-val">1</span><span class="opt-lab">Occasionally</span></label></div>
+              <div class="option-item"><input type="radio" name="q9" id="q9-2" value="2" onchange="onAnswer()"><label class="option-btn" for="q9-2"><span class="opt-val">2</span><span class="opt-lab">Frequently</span></label></div>
+              <div class="option-item"><input type="radio" name="q9" id="q9-3" value="3" onchange="onAnswer()"><label class="option-btn" for="q9-3"><span class="opt-val">3</span><span class="opt-lab">Nearly always</span></label></div>
+            </div>
+          </div>
+
+          <div class="question" id="q-wrap-10">
+            <div class="q-text"><span class="q-num">10</span>Do you have difficulty concentrating, feel mentally foggy, or find it hard to focus on tasks?</div>
+            <div class="options">
+              <div class="option-item"><input type="radio" name="q10" id="q10-0" value="0" onchange="onAnswer()"><label class="option-btn" for="q10-0"><span class="opt-val">0</span><span class="opt-lab">Not at all</span></label></div>
+              <div class="option-item"><input type="radio" name="q10" id="q10-1" value="1" onchange="onAnswer()"><label class="option-btn" for="q10-1"><span class="opt-val">1</span><span class="opt-lab">Occasionally</span></label></div>
+              <div class="option-item"><input type="radio" name="q10" id="q10-2" value="2" onchange="onAnswer()"><label class="option-btn" for="q10-2"><span class="opt-val">2</span><span class="opt-lab">Frequently</span></label></div>
+              <div class="option-item"><input type="radio" name="q10" id="q10-3" value="3" onchange="onAnswer()"><label class="option-btn" for="q10-3"><span class="opt-val">3</span><span class="opt-lab">Nearly always</span></label></div>
+            </div>
+          </div>
+
+          <div class="question" id="q-wrap-11">
+            <div class="q-text"><span class="q-num">11</span>Do you experience restless legs — an uncomfortable urge to move your legs, especially at night or when sitting still?</div>
+            <div class="options">
+              <div class="option-item"><input type="radio" name="q11" id="q11-0" value="0" onchange="onAnswer()"><label class="option-btn" for="q11-0"><span class="opt-val">0</span><span class="opt-lab">Not at all</span></label></div>
+              <div class="option-item"><input type="radio" name="q11" id="q11-1" value="1" onchange="onAnswer()"><label class="option-btn" for="q11-1"><span class="opt-val">1</span><span class="opt-lab">Occasionally</span></label></div>
+              <div class="option-item"><input type="radio" name="q11" id="q11-2" value="2" onchange="onAnswer()"><label class="option-btn" for="q11-2"><span class="opt-val">2</span><span class="opt-lab">Frequently</span></label></div>
+              <div class="option-item"><input type="radio" name="q11" id="q11-3" value="3" onchange="onAnswer()"><label class="option-btn" for="q11-3"><span class="opt-val">3</span><span class="opt-lab">Nearly always</span></label></div>
+            </div>
+          </div>
+
+          <div class="question" id="q-wrap-12">
+            <div class="q-text"><span class="q-num">12</span>Do you notice soreness, burning, or a swollen sensation in your tongue, or do you have recurring mouth sores?</div>
+            <div class="options">
+              <div class="option-item"><input type="radio" name="q12" id="q12-0" value="0" onchange="onAnswer()"><label class="option-btn" for="q12-0"><span class="opt-val">0</span><span class="opt-lab">Not at all</span></label></div>
+              <div class="option-item"><input type="radio" name="q12" id="q12-1" value="1" onchange="onAnswer()"><label class="option-btn" for="q12-1"><span class="opt-val">1</span><span class="opt-lab">Occasionally</span></label></div>
+              <div class="option-item"><input type="radio" name="q12" id="q12-2" value="2" onchange="onAnswer()"><label class="option-btn" for="q12-2"><span class="opt-val">2</span><span class="opt-lab">Frequently</span></label></div>
+              <div class="option-item"><input type="radio" name="q12" id="q12-3" value="3" onchange="onAnswer()"><label class="option-btn" for="q12-3"><span class="opt-val">3</span><span class="opt-lab">Nearly always</span></label></div>
+            </div>
+          </div>
+
+          <!-- Risk factors -->
+          <div class="risk-section">
+            <div class="risk-section-title">Additional risk context (optional)</div>
+            <div class="risk-factor-row">
+              <span class="rf-label">Do you have heavy or prolonged menstrual periods?</span>
+              <div class="rf-pills">
+                <button class="rf-pill" data-rf="periods" data-val="yes" onclick="selectRF(this)">Yes</button>
+                <button class="rf-pill" data-rf="periods" data-val="no"  onclick="selectRF(this)">No / N/A</button>
+              </div>
+            </div>
+            <div class="risk-factor-row">
+              <span class="rf-label">Do you follow a vegetarian, vegan, or very low meat diet?</span>
+              <div class="rf-pills">
+                <button class="rf-pill" data-rf="diet" data-val="yes" onclick="selectRF(this)">Yes</button>
+                <button class="rf-pill" data-rf="diet" data-val="no"  onclick="selectRF(this)">No</button>
+              </div>
+            </div>
+            <div class="risk-factor-row">
+              <span class="rf-label">Are you currently pregnant, or did you give birth in the past year?</span>
+              <div class="rf-pills">
+                <button class="rf-pill" data-rf="pregnancy" data-val="yes" onclick="selectRF(this)">Yes</button>
+                <button class="rf-pill" data-rf="pregnancy" data-val="no"  onclick="selectRF(this)">No</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="err-banner" id="err-banner"></div>
+          <button class="calc-btn" onclick="calculate()">See My Anemia Risk Score &#x2192;</button>
+
+        </div>
+      </div>
+
+      <!-- RIGHT: Results -->
+      <div class="results-col">
+
+        <!-- Iron deficiency featured callout (always visible) -->
+        <a href="iron-deficiency.html" class="iron-callout">
+          <div class="iron-callout-icon">🩸</div>
+          <div class="iron-callout-text">
+            <strong>Iron deficiency is the #1 cause of anemia worldwide</strong>
+            <p>Low ferritin can cause anemia even before your haemoglobin drops — and a GP may not test for it unless you ask. Our dedicated iron deficiency screener checks for the full picture.</p>
+            <span class="iron-callout-btn">Check Iron Deficiency Risk &#x2192;</span>
+          </div>
+        </a>
+
+        <!-- Main result card -->
+        <div class="result-card" id="result-card">
+          <div class="result-band" id="result-band"></div>
+          <div class="result-body">
+
+            <div class="score-display">
+              <span class="score-num" id="score-num">0</span>
+              <span class="score-denom">/36</span>
+            </div>
+            <p class="score-label">anemia symptom score across 12 indicators</p>
+
+            <div class="sev-row">
+              <div class="sev-box sev-low" id="sev-low"><div class="sev-name">Low</div><div class="sev-range">0 – 7</div></div>
+              <div class="sev-box sev-mild" id="sev-mild"><div class="sev-name">Mild</div><div class="sev-range">8 – 16</div></div>
+              <div class="sev-box sev-moderate" id="sev-moderate"><div class="sev-name">Moderate</div><div class="sev-range">17 – 26</div></div>
+              <div class="sev-box sev-high" id="sev-high"><div class="sev-name">High</div><div class="sev-range">27 – 36</div></div>
+            </div>
+
+            <!-- Domain breakdown -->
+            <div class="domain-breakdown">
+              <div class="domain-card">
+                <div class="domain-card-label">Domain A</div>
+                <div class="domain-card-name">Energy &amp; Circulation</div>
+                <div class="domain-score-row"><span class="domain-score-num" id="score-a">—</span><span class="domain-score-max">/ 18</span></div>
+                <div class="domain-bar"><div class="domain-bar-fill" id="bar-a"></div></div>
+              </div>
+              <div class="domain-card">
+                <div class="domain-card-label">Domain B</div>
+                <div class="domain-card-name">Physical &amp; Sensory Signs</div>
+                <div class="domain-score-row"><span class="domain-score-num" id="score-b">—</span><span class="domain-score-max">/ 18</span></div>
+                <div class="domain-bar"><div class="domain-bar-fill" id="bar-b"></div></div>
+              </div>
+            </div>
+
+            <!-- Top symptoms -->
+            <div class="top-symptoms">
+              <p class="top-sym-title" id="sym-title">Your most frequently reported symptoms:</p>
+              <div class="sym-chips" id="sym-chips"></div>
+            </div>
+
+            <!-- Type hint (shows if specific patterns detected) -->
+            <div class="type-hint" id="type-hint" style="display:none">
+              <strong>Pattern note</strong>
+              <span id="type-hint-text"></span>
+            </div>
+
+            <!-- Risk factor chips -->
+            <div id="rf-result-wrap" style="display:none">
+              <div class="rf-result-row" id="rf-chips"></div>
+            </div>
+
+            <!-- Message -->
+            <div class="msg-block" id="msg-block">
+              <h3 id="msg-heading"></h3>
+              <p id="msg-body"></p>
+            </div>
+
+            <p class="tips-title">What you can do right now:</p>
+            <ul class="tips-list" id="tips-list"></ul>
+
+            <!-- Test box -->
+            <div class="test-box" id="test-box" style="display:none">
+              <div class="test-box-title">🔬 Tests to ask your doctor for:</div>
+              <div class="test-chips" id="test-chips"></div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- What is anemia -->
+        <div class="info-card">
+          <h3>What is anemia?</h3>
+          <p>Anemia occurs when your blood doesn't have enough healthy red blood cells — or when those cells don't contain enough haemoglobin — to carry adequate oxygen to your tissues. Every cell in your body needs oxygen to function, so when delivery falls short, fatigue sets in fast.</p>
+          <p>There are over 400 types of anemia, but most fall into three buckets: blood loss (heavy periods, GI bleeding), reduced production (iron, B12, or folate deficiency), or increased destruction (haemolytic conditions). Iron deficiency is the most common cause by far — and one of the most fixable.</p>
+          <div class="type-grid">
+            <div class="type-box">
+              <div class="type-box-name">Iron-deficiency</div>
+              <div class="type-box-stat">~50% of cases</div>
+              <div class="type-box-desc">Fatigue, pica, pale skin, spoon nails, restless legs. Ask: ferritin, serum iron, TIBC.</div>
+            </div>
+            <div class="type-box">
+              <div class="type-box-name">B12 / Folate deficiency</div>
+              <div class="type-box-stat">~5–10%</div>
+              <div class="type-box-desc">Tongue soreness, nerve tingling, mood changes. Ask: serum B12, RBC folate.</div>
+            </div>
+            <div class="type-box">
+              <div class="type-box-name">Other causes</div>
+              <div class="type-box-stat">~40–45%</div>
+              <div class="type-box-desc">Chronic disease, kidney disease, haemolysis, bone marrow issues. Full CBC required.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Women & anemia -->
+        <div class="info-card">
+          <h3>Why anemia disproportionately affects women</h3>
+          <p>Women of reproductive age lose iron-rich blood every month through menstruation. Heavy periods can deplete iron faster than diet replenishes it. Pregnancy dramatically increases iron demand — and many women enter pregnancy already iron-depleted without knowing it.</p>
+          <div class="women-box">
+            <div class="women-box-title">Global statistics on women &amp; anemia</div>
+            <div class="women-stat-row">
+              <div class="women-stat"><span class="ws-num">37%</span><span class="ws-lab">pregnant women affected worldwide</span></div>
+              <div class="women-stat"><span class="ws-num">30%</span><span class="ws-lab">non-pregnant women of reproductive age</span></div>
+              <div class="women-stat"><span class="ws-num">42%</span><span class="ws-lab">children under 5 globally</span></div>
+            </div>
+          </div>
+          <p style="margin-top:10px">Many GPs order only a CBC (complete blood count) and may miss iron deficiency if haemoglobin is still normal. <strong>Always ask specifically for ferritin</strong> — it measures your iron stores and can be low even when haemoglobin looks fine.</p>
+        </div>
+
+        <!-- Related -->
+        <div>
+          <p class="related-title">Related calculators</p>
+          <div class="related-grid">
+            <a href="iron-deficiency.html" class="related-card">
+              <div class="related-icon">🔩</div>
+              <div class="related-info"><strong>Iron Deficiency Risk</strong><span>Deep-dive on iron stores</span></div>
+            </a>
+            <a href="thyroid-fatigue.html" class="related-card">
+              <div class="related-icon">🦋</div>
+              <div class="related-info"><strong>Thyroid Fatigue</strong><span>Another common fatigue cause</span></div>
+            </a>
+            <a href="hair-loss-risk.html" class="related-card">
+              <div class="related-icon">💇</div>
+              <div class="related-info"><strong>Hair Loss Risk</strong><span>Iron is a top hair-loss driver</span></div>
+            </a>
+            <a href="burnout-risk.html" class="related-card">
+              <div class="related-icon">🔥</div>
+              <div class="related-info"><strong>Burnout Risk</strong><span>Physical vs. emotional exhaustion</span></div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="note-block">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#9CA3AF" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          <span><strong>NOTE:</strong> Anemia can only be confirmed with a blood test (CBC, ferritin). This screener assesses symptom burden only and cannot diagnose any condition. The pica question is especially significant if answered ≥2 — please raise it with your doctor, as it is a strong independent indicator of iron deficiency. Always consult a healthcare professional before starting iron supplements.</span>
+        </div>
+
+      </div><!-- end results-col -->
+    </div>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="assets/logo-white.png" alt="SageMyHealth" style="height:45px;width:auto;object-fit:contain;"/>
+        </div>
+        <p>Free, trusted health calculators with warm guidance — helping you understand your numbers.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Calculators</h5>
+        <ul>
+          <li><a href="bmi.html">BMI</a></li>
+          <li><a href="blood-pressure.html">Blood Pressure</a></li>
+          <li><a href="iron-deficiency.html">Iron Deficiency</a></li>
+          <li><a href="thyroid-fatigue.html">Thyroid Fatigue</a></li>
+          <li><a href="burnout-risk.html">Burnout Risk</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>More Tools</h5>
+        <ul>
+          <li><a href="ascvd-risk.html">Heart Risk (ASCVD)</a></li>
+          <li><a href="prediabetes-risk.html">Prediabetes Risk</a></li>
+          <li><a href="anxiety-score.html">Anxiety Score</a></li>
+          <li><a href="hair-loss-risk.html">Hair Loss Risk</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Info</h5>
+        <ul>
+          <li><a href="../about.html">About Us</a></li>
+          <li><a href="../blog.html">Health Guides</a></li>
+          <li><a href="../privacy.html">Privacy Policy</a></li>
+          <li><a href="../terms.html">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-disclaimer"><strong style="color:#7A958E">Medical Disclaimer:</strong> SageMyHealth calculators are for informational purposes only and are not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider regarding your health.</p>
+      <p class="footer-copy">© 2025 SageMyHealth.com — All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+var Q_LABELS = [
+  'Unexplained fatigue / weakness',
+  'Shortness of breath on exertion',
+  'Dizziness / lightheadedness',
+  'Pale or yellowish skin',
+  'Frequent headaches',
+  'Racing or pounding heartbeat',
+  'Cold hands and feet',
+  'Brittle / pale nails',
+  'Ice or non-food cravings (pica)',
+  'Brain fog / poor concentration',
+  'Restless legs',
+  'Tongue soreness / mouth sores'
+];
+
+var rfState = { periods: null, diet: null, pregnancy: null };
+
+function selectRF(btn) {
+  var rf  = btn.getAttribute('data-rf');
+  var val = btn.getAttribute('data-val');
+  rfState[rf] = val;
+  var siblings = btn.parentElement.querySelectorAll('[data-rf="'+rf+'"]');
+  siblings.forEach(function(b){ b.classList.remove('selected'); });
+  btn.classList.add('selected');
+}
+
+function onAnswer() {
+  var answered = 0;
+  for (var i = 1; i <= 12; i++) {
+    if (document.querySelector('input[name="q'+i+'"]:checked')) answered++;
+  }
+  document.getElementById('prog-label').textContent = answered + ' of 12 answered';
+  document.getElementById('prog-pct').textContent   = Math.round(answered / 12 * 100) + '%';
+  document.getElementById('prog-fill').style.width  = (answered / 12 * 100) + '%';
+}
+
+function getVal(name) {
+  var el = document.querySelector('input[name="'+name+'"]:checked');
+  return el ? parseInt(el.value) : null;
+}
+
+function calculate() {
+  var err = document.getElementById('err-banner');
+  err.style.display = 'none';
+
+  var scores = [];
+  for (var i = 1; i <= 12; i++) {
+    var v = getVal('q'+i);
+    if (v === null) {
+      err.textContent = 'Please answer all 12 questions before seeing your result.';
+      err.style.display = 'block';
+      document.getElementById('q-wrap-'+i).scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    scores.push(v);
+  }
+
+  var total  = scores.reduce(function(a,b){ return a+b; }, 0);
+  var scoreA = scores.slice(0, 6).reduce(function(a,b){ return a+b; }, 0);
+  var scoreB = scores.slice(6, 12).reduce(function(a,b){ return a+b; }, 0);
+
+  var tier;
+  if (total <= 7)       tier = 'low';
+  else if (total <= 16) tier = 'mild';
+  else if (total <= 26) tier = 'moderate';
+  else                  tier = 'high';
+
+  renderResults(total, scoreA, scoreB, tier, scores);
+}
+
+function renderResults(total, scoreA, scoreB, tier, scores) {
+  var card = document.getElementById('result-card');
+  card.classList.add('visible');
+  card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  /* Band */
+  var bandMap = { low:'band-low', mild:'band-mild', moderate:'band-moderate', high:'band-high' };
+  document.getElementById('result-band').className = 'result-band ' + bandMap[tier];
+
+  /* Score */
+  var colorMap = { low:'score-low', mild:'score-mild', moderate:'score-moderate', high:'score-high' };
+  var scoreEl = document.getElementById('score-num');
+  scoreEl.textContent = total;
+  scoreEl.className = 'score-num ' + colorMap[tier];
+
+  /* Severity boxes */
+  ['low','mild','moderate','high'].forEach(function(t){
+    document.getElementById('sev-'+t).classList.toggle('active', t === tier);
+  });
+
+  /* Domains */
+  var barColors = { low:'#16A34A', mild:'#D97706', moderate:'#EA580C', high:'#DC2626' };
+  document.getElementById('score-a').textContent = scoreA;
+  document.getElementById('score-b').textContent = scoreB;
+  document.getElementById('bar-a').style.cssText = 'width:' + (scoreA / 18 * 100) + '%;background:' + barColors[tier];
+  document.getElementById('bar-b').style.cssText = 'width:' + (scoreB / 18 * 100) + '%;background:' + barColors[tier];
+
+  /* Top symptoms */
+  var symChips = document.getElementById('sym-chips');
+  symChips.innerHTML = '';
+  var symTitle = document.getElementById('sym-title');
+
+  var notable = scores.map(function(v,i){ return {val:v, label:Q_LABELS[i]}; })
+                      .filter(function(s){ return s.val >= 1; })
+                      .sort(function(a,b){ return b.val - a.val; })
+                      .slice(0, 6);
+
+  if (notable.length === 0) {
+    symTitle.textContent = 'No significant symptoms reported';
+    var chip = document.createElement('span');
+    chip.className = 'sym-chip chip-low';
+    chip.textContent = '✓ Symptom burden is very low';
+    symChips.appendChild(chip);
+  } else {
+    symTitle.textContent = 'Your most frequent symptoms:';
+    notable.forEach(function(s) {
+      var chip = document.createElement('span');
+      chip.className = 'sym-chip ' + (s.val === 3 ? 'chip-severe' : s.val === 2 ? 'chip-freq' : 'chip-low');
+      chip.textContent = s.label;
+      symChips.appendChild(chip);
+    });
+  }
+
+  /* Type hint */
+  var hintEl  = document.getElementById('type-hint');
+  var hintTxt = document.getElementById('type-hint-text');
+  var picaScore   = scores[8];  // Q9: pica
+  var tongueScore = scores[11]; // Q12: tongue soreness
+  var hints = [];
+
+  if (picaScore >= 2) {
+    hints.push('Craving ice or non-food items (pica) is highly specific to iron-deficiency anemia — please mention this explicitly to your doctor and ask for a ferritin test.');
+  }
+  if (tongueScore >= 2) {
+    hints.push('A sore or swollen tongue (glossitis) is a classic sign of B12 or folate deficiency. Ask your doctor to include serum B12 and folate in your blood panel.');
+  }
+  if (hints.length > 0) {
+    hintTxt.textContent = hints.join(' ');
+    hintEl.style.display = 'block';
+  } else {
+    hintEl.style.display = 'none';
+  }
+
+  /* Risk factors */
+  var rfWrap = document.getElementById('rf-result-wrap');
+  var rfChipsEl = document.getElementById('rf-chips');
+  rfChipsEl.innerHTML = '';
+  var rfItems = [];
+  if (rfState.periods === 'yes')   rfItems.push('Heavy menstrual periods (major iron loss)');
+  if (rfState.diet === 'yes')      rfItems.push('Vegetarian / vegan diet (lower heme iron)');
+  if (rfState.pregnancy === 'yes') rfItems.push('Pregnant or recently gave birth');
+
+  if (rfItems.length > 0) {
+    rfWrap.style.display = 'block';
+    rfItems.forEach(function(item) {
+      var chip = document.createElement('span');
+      chip.className = 'rf-chip';
+      chip.textContent = '⚠ ' + item;
+      rfChipsEl.appendChild(chip);
+    });
+  } else {
+    rfWrap.style.display = 'none';
+  }
+
+  /* Messages */
+  var msgs = {
+    low: {
+      h: 'Low anemia symptom burden.',
+      b: 'Your symptom pattern doesn\'t strongly suggest anemia right now. However, anemia can sometimes build up gradually with few obvious symptoms — especially iron deficiency, which can deplete your stores long before you feel it strongly. If you have heavy periods or a plant-based diet, a routine ferritin check once a year is still worthwhile.'
+    },
+    mild: {
+      h: 'Mild symptom burden — worth monitoring.',
+      b: 'You\'re experiencing some symptoms that can be associated with anemia. These symptoms are common and could have other causes, but if they\'ve persisted for more than a few weeks, a blood test is a simple and sensible next step. Ask your doctor to check a CBC with a ferritin level — these together catch most cases of iron-deficiency anemia.'
+    },
+    moderate: {
+      h: 'Moderate concern — a blood test is recommended.',
+      b: 'Your symptom profile shows meaningful overlap with anemia, particularly the combination of fatigue, circulation symptoms, and physical signs. This doesn\'t confirm anemia, but these symptoms together are enough to warrant a proper blood panel soon. Don\'t just request a CBC — specifically ask for ferritin, as many doctors don\'t order it by default.'
+    },
+    high: {
+      h: 'High symptom burden — please see your doctor.',
+      b: 'You\'re experiencing a high number of symptoms that are strongly associated with anemia. While only blood tests can confirm this, your symptom load is significant enough to warrant a prompt medical evaluation. Severe iron deficiency in particular can affect heart function and cognitive performance — it is very treatable once identified, but it rarely improves on its own without intervention.'
+    }
+  };
+
+  var msgEl = document.getElementById('msg-block');
+  msgEl.className = 'msg-block msg-' + tier;
+  document.getElementById('msg-heading').textContent = msgs[tier].h;
+  document.getElementById('msg-body').textContent    = msgs[tier].b;
+
+  /* Tips */
+  var tipsList = document.getElementById('tips-list');
+  tipsList.innerHTML = '';
+  var allTips = {
+    low: [
+      'Include iron-rich foods regularly: red meat, shellfish, legumes, tofu, dark leafy greens.',
+      'Pair plant-based iron (non-heme) with vitamin C — e.g., lemon juice on lentils — to boost absorption up to 3×.',
+      'Limit tea or coffee with meals if you have any risk factors — tannins block iron absorption.',
+      'If you have heavy periods or eat a plant-based diet, request a ferritin check at your next routine visit.'
+    ],
+    mild: [
+      'Request a CBC (complete blood count) and ferritin from your doctor at your next visit.',
+      'Don\'t self-supplement iron without a blood test first — too much iron is harmful.',
+      'Increase dietary iron: red meat, chicken liver, tinned sardines, edamame, fortified cereals.',
+      'Check if you\'re getting enough B12 (dairy, eggs, meat, fortified foods) and folate (leafy greens, legumes).',
+      'Avoid tea, coffee, and calcium-rich foods within an hour of iron-rich meals.'
+    ],
+    moderate: [
+      'Book a doctor\'s appointment specifically to check for anemia — mention this screener result.',
+      'Ask for: CBC, ferritin, serum iron + TIBC, vitamin B12, and folate.',
+      'If you have heavy periods, discuss this with your doctor — it\'s a primary driver and treatment of the periods matters as much as supplementation.',
+      'Do not start high-dose iron supplements without confirmation from a blood test.',
+      'While awaiting results: eat iron-rich foods at every meal and pair with vitamin C; avoid iron-blockers near meals (tea, coffee, antacids).',
+      'Also check: our <a href="iron-deficiency.html" style="color:var(--sage)">Iron Deficiency Risk screener</a> for a deeper assessment.'
+    ],
+    high: [
+      'Please see your doctor as soon as possible — aim for this week.',
+      'Request a comprehensive panel: CBC with differential, ferritin, serum iron, TIBC, B12, folate, and a reticulocyte count.',
+      'Be clear about all your symptoms, including pica and restless legs if present — they are clinically important.',
+      'If you\'re pregnant or have just given birth, mention this specifically — your iron needs are dramatically higher.',
+      'Do not ignore severe breathlessness or racing heart — if these are significant, consider urgent care.',
+      'Anemia is among the most treatable conditions — iron infusions, B12 injections, or dietary changes can produce dramatic improvement within weeks of diagnosis.'
+    ]
+  };
+
+  allTips[tier].forEach(function(tip) {
+    var li = document.createElement('li');
+    li.innerHTML = tip;
+    tipsList.appendChild(li);
+  });
+
+  /* Test box */
+  var testBox = document.getElementById('test-box');
+  var testChipsEl = document.getElementById('test-chips');
+  if (tier === 'moderate' || tier === 'high') {
+    testBox.style.display = 'block';
+    testChipsEl.innerHTML = '';
+    var tests = ['CBC with differential', 'Ferritin', 'Serum iron', 'TIBC / transferrin saturation', 'Vitamin B12', 'Folate', 'Reticulocyte count'];
+    tests.forEach(function(t) {
+      var chip = document.createElement('span');
+      chip.className = 'test-chip';
+      chip.textContent = t;
+      testChipsEl.appendChild(chip);
+    });
+  } else {
+    testBox.style.display = 'none';
+  }
+
+  /* GA4 event */
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'calculator_result', {
+      calculator: 'anemia_screener',
+      tier: tier,
+      total_score: total
+    });
+  }
+}
+
+/* Mobile menu */
+function openMobileMenu() {
+  document.getElementById('mobile-menu').classList.add('open');
+  document.getElementById('nav-hamburger').setAttribute('aria-expanded', 'true');
+  document.body.style.overflow = 'hidden';
+}
+function closeMobileMenu() {
+  document.getElementById('mobile-menu').classList.remove('open');
+  document.getElementById('nav-hamburger').setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeMobileMenu(); });
+</script>
+
+</body>
+</html>

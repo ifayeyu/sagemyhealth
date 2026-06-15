@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X6K2H9YW2V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X6K2H9YW2V');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daily Water Intake Calculator — How Much Water Should I Drink? | SageMyHealth</title>
+  <meta name="description" content="Find out exactly how much water you should drink each day based on your body weight, age, activity level, and climate. Get a personalized hydration target in ml, oz, and glasses — plus a daily drinking schedule." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sage:        #3B6A3A;
+      --sage-dark:   #0A3D2A;
+      --sage-mid:    #5C8A5C;
+      --sage-light:  #EBF2EC;
+      --sage-pale:   #F2F7F3;
+      --cream:       #E3FFB3;
+      --white:       #FFFFFF;
+      --text-dark:   #1A2E1E;
+      --text-mid:    #4A5568;
+      --text-light:  #718096;
+      --border:      #E2EBE4;
+      --border-mid:  #C8D9CC;
+      --shadow-sm:   0 1px 6px rgba(59,106,58,0.08);
+      --shadow-md:   0 4px 16px rgba(59,106,58,0.12);
+      --shadow-lg:   0 8px 32px rgba(59,106,58,0.16);
+      --water:       #3B82F6;
+      --water-light: #93C5FD;
+      --water-pale:  #EFF6FF;
+      --water-mid:   #60A5FA;
+      --r-sm: 8px; --r: 12px; --r-lg: 20px; --r-xl: 28px;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-dark); background: var(--sage-pale);
+      line-height: 1.6; -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; }
+
+    /* ---- NAV ---- */
+    .site-nav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.96); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; flex: 1; justify-content: center; }
+    .nav-links a { color: var(--text-mid); font-size: 15px; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--sage); }
+    .nav-btn { background: var(--sage); color: white; border: none; padding: 9px 20px; border-radius: var(--r-sm); font-size: 14px; font-weight: 600; transition: background .2s; }
+    .nav-btn:hover { background: var(--sage-dark); }
+
+    /* ---- PAGE ---- */
+    .calc-page { padding: 36px 0 72px; }
+    .calc-wrapper { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-light); margin-bottom: 24px; flex-wrap: wrap; }
+    .breadcrumb a { color: var(--sage); }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .bc-sep { color: var(--border-mid); }
+
+    .page-header { margin-bottom: 28px; }
+    .calc-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--sage); background: var(--white); padding: 5px 12px; border-radius: 20px; margin-bottom: 12px; letter-spacing: .3px; border: 1px solid var(--border); }
+    .page-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 42px); font-weight: 700; color: var(--text-dark); letter-spacing: -.5px; margin-bottom: 10px; line-height: 1.15; }
+    .page-header p { font-size: 15px; color: var(--text-mid); line-height: 1.7; max-width: 700px; }
+
+    /* ---- TWO-COLUMN ---- */
+    .calc-columns { display: grid; grid-template-columns: 480px 1fr; gap: 24px; align-items: start; }
+
+    /* ---- FORM CARD ---- */
+    .form-card { background: white; border-radius: var(--r-xl); box-shadow: var(--shadow-lg); overflow: hidden; }
+    .form-card-header { padding: 22px 28px 16px; border-bottom: 1px solid var(--border); }
+    .form-card-title { font-size: 14px; font-weight: 700; color: var(--text-dark); }
+    .form-card-sub { font-size: 12px; color: var(--text-light); margin-top: 3px; }
+    .form-body { padding: 24px 28px 28px; }
+
+    /* Section dividers */
+    .form-section { margin-bottom: 22px; }
+    .form-section:last-of-type { margin-bottom: 0; }
+    .section-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; color: var(--text-light); margin-bottom: 12px; }
+
+    /* Number inputs */
+    .input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .field-wrap { display: flex; flex-direction: column; gap: 6px; }
+    .field-label { font-size: 13px; font-weight: 500; color: var(--text-dark); }
+    .field-input-wrap { position: relative; display: flex; align-items: center; }
+    .field-input {
+      width: 100%; height: 46px; padding: 0 52px 0 14px;
+      border: 1.5px solid var(--border); border-radius: var(--r-sm);
+      font-size: 16px; font-weight: 600; color: var(--text-dark);
+      background: white; outline: none; transition: border-color .15s;
+      -webkit-appearance: none; -moz-appearance: textfield;
+    }
+    .field-input::-webkit-inner-spin-button,
+    .field-input::-webkit-outer-spin-button { -webkit-appearance: none; }
+    .field-input:focus { border-color: var(--sage); }
+    .field-input.err { border-color: #EF4444; }
+    .field-unit { position: absolute; right: 12px; font-size: 12px; font-weight: 600; color: var(--text-light); pointer-events: none; }
+
+    /* Unit toggle for weight */
+    .weight-wrap { display: flex; flex-direction: column; gap: 6px; }
+    .weight-row { display: flex; gap: 8px; align-items: center; }
+    .weight-input-wrap { position: relative; flex: 1; }
+    .unit-toggle { display: flex; background: var(--sage-pale); border-radius: var(--r-sm); padding: 3px; border: 1px solid var(--border); flex-shrink: 0; }
+    .unit-btn { padding: 5px 10px; border-radius: 6px; border: none; background: transparent; font-size: 12px; font-weight: 600; color: var(--text-light); transition: all .15s; }
+    .unit-btn.active { background: var(--sage); color: white; }
+
+    /* Pill buttons (sex, activity, climate) */
+    .pill-group { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pill-btn { padding: 8px 14px; border: 1.5px solid var(--border); border-radius: 50px; font-size: 13px; font-weight: 500; color: var(--text-mid); background: white; transition: all .15s; display: flex; align-items: center; gap: 6px; }
+    .pill-btn:hover { border-color: var(--sage-mid); color: var(--sage); }
+    .pill-btn.active { background: var(--sage); border-color: var(--sage); color: white; font-weight: 600; }
+    .pill-icon { font-size: 14px; }
+
+    /* Special conditions */
+    .special-row { display: none; }
+    .special-row.visible { display: block; }
+
+    .calc-btn { width: 100%; background: var(--sage); color: white; border: none; padding: 14px; border-radius: var(--r); font-size: 16px; font-weight: 700; transition: all .18s; margin-top: 20px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .calc-btn:hover { background: var(--sage-dark); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+    .calc-btn:active { transform: translateY(0); }
+    .err-banner { display: none; background: #FEF2F2; border: 1px solid #FECACA; border-radius: var(--r-sm); padding: 10px 14px; font-size: 13px; color: #DC2626; margin-top: 12px; font-weight: 500; }
+
+    /* ---- RESULTS ---- */
+    .results-col { display: flex; flex-direction: column; gap: 20px; }
+
+    .result-card { background: white; border-radius: var(--r-xl); box-shadow: var(--shadow-lg); overflow: hidden; display: none; }
+    .result-card.visible { display: block; animation: slideUp .35s ease; }
+    @keyframes slideUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+
+    /* Water visual header */
+    .water-header { background: linear-gradient(135deg, #1D4ED8 0%, #3B82F6 50%, #60A5FA 100%); padding: 28px 28px 24px; display: flex; align-items: center; gap: 24px; }
+    .glass-container { flex-shrink: 0; position: relative; }
+    .glass-outer { width: 60px; height: 100px; border: 3px solid rgba(255,255,255,0.6); border-top: none; border-radius: 0 0 14px 14px; position: relative; overflow: hidden; background: rgba(255,255,255,0.1); }
+    .glass-fill { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.85) 100%); transition: height 1.2s cubic-bezier(0.34,1.1,0.64,1); }
+    .glass-wave { position: absolute; top: -4px; left: -8px; right: -8px; height: 8px; background: rgba(255,255,255,0.5); border-radius: 50%; animation: waveAnim 2.5s ease-in-out infinite; }
+    @keyframes waveAnim { 0%,100%{transform:translateX(0) scaleX(1)} 50%{transform:translateX(4px) scaleX(1.05)} }
+    .glass-label { position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); font-size: 9px; font-weight: 700; color: rgba(255,255,255,0.7); white-space: nowrap; }
+
+    .water-total { flex: 1; }
+    .water-total-num { font-size: 58px; font-weight: 800; color: white; line-height: 1; letter-spacing: -2px; }
+    .water-total-unit { font-size: 20px; font-weight: 400; color: rgba(255,255,255,0.7); }
+    .water-equivalents { display: flex; gap: 14px; margin-top: 8px; flex-wrap: wrap; }
+    .water-eq { background: rgba(255,255,255,0.15); border-radius: 20px; padding: 4px 12px; font-size: 13px; color: rgba(255,255,255,0.9); font-weight: 500; }
+
+    /* Unit toggle in results */
+    .unit-toggle-result { display: flex; background: rgba(255,255,255,0.15); border-radius: 8px; padding: 3px; }
+    .unit-toggle-result .unit-btn { color: rgba(255,255,255,0.6); }
+    .unit-toggle-result .unit-btn.active { background: rgba(255,255,255,0.9); color: var(--water); }
+
+    /* Result body */
+    .result-body { padding: 22px 24px 24px; }
+
+    /* Factor chips */
+    .factors-row { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 20px; }
+    .factor-chip { padding: 5px 12px; border-radius: 50px; font-size: 12px; font-weight: 600; }
+    .chip-base  { background: var(--water-pale); color: #1D4ED8; }
+    .chip-plus  { background: #FEF3C7; color: #92400E; }
+    .chip-boost { background: #FEE2E2; color: #B91C1C; }
+
+    /* Drinking schedule */
+    .schedule-title { font-size: 13px; font-weight: 700; color: var(--text-dark); margin-bottom: 14px; }
+    .schedule { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+    .sched-row { display: flex; align-items: center; gap: 12px; }
+    .sched-time { width: 72px; font-size: 12px; font-weight: 700; color: var(--text-light); flex-shrink: 0; }
+    .sched-bar-wrap { flex: 1; height: 10px; background: #EFF6FF; border-radius: 10px; overflow: hidden; }
+    .sched-bar { height: 100%; border-radius: 10px; transition: width .8s ease; }
+    .sched-amount { width: 54px; font-size: 12px; font-weight: 700; color: var(--water); text-align: right; flex-shrink: 0; }
+    .sched-hint { font-size: 11px; color: var(--text-light); }
+
+    /* Hourly tip */
+    .hourly-box { background: var(--water-pale); border: 1px solid #BFDBFE; border-radius: var(--r); padding: 14px 16px; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+    .hourly-icon { font-size: 22px; flex-shrink: 0; }
+    .hourly-text strong { display: block; font-size: 14px; font-weight: 700; color: #1E40AF; margin-bottom: 2px; }
+    .hourly-text p { font-size: 12px; color: #3B82F6; }
+
+    /* Personalized tips */
+    .tips-title { font-size: 13px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; }
+    .tips-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .tips-list li { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+    .tips-list li::before { content: '💧'; font-size: 11px; margin-top: 2px; flex-shrink: 0; }
+
+    /* INFO CARDS */
+    .info-card { background: white; border-radius: var(--r-xl); box-shadow: var(--shadow-sm); padding: 22px 24px; }
+    .info-card h3 { font-size: 14px; font-weight: 700; margin-bottom: 8px; color: var(--text-dark); }
+    .info-card p { font-size: 13px; color: var(--text-mid); line-height: 1.75; }
+    .info-card p + p { margin-top: 10px; }
+
+    /* Dehydration signs */
+    .dehy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .dehy-item { background: var(--sage-pale); border-radius: var(--r-sm); padding: 10px 12px; font-size: 12px; color: var(--text-mid); display: flex; align-items: flex-start; gap: 8px; line-height: 1.4; }
+    .dehy-item::before { content: '⚠️'; font-size: 11px; flex-shrink: 0; }
+    .dehy-item.early { background: #FEFCE8; }
+    .dehy-item.moderate { background: #FFF7ED; }
+    .dehy-item.severe { background: #FEF2F2; }
+
+    /* Food water table */
+    .food-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin-top: 12px; }
+    .food-chip { background: var(--sage-pale); border-radius: var(--r-sm); padding: 8px 10px; text-align: center; }
+    .food-chip .food-pct { font-size: 16px; font-weight: 800; color: var(--water); display: block; line-height: 1; }
+    .food-chip .food-name { font-size: 10px; color: var(--text-light); margin-top: 2px; }
+
+    /* Related */
+    .related-title { font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; }
+    .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .related-card { background: white; border: 1.5px solid var(--border); border-radius: var(--r); padding: 14px 16px; display: flex; align-items: center; gap: 12px; transition: all .18s; }
+    .related-card:hover { border-color: var(--sage); box-shadow: var(--shadow-sm); transform: translateY(-1px); }
+    .related-icon { width: 36px; height: 36px; background: var(--sage-light); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+    .related-info strong { display: block; font-size: 13px; font-weight: 600; }
+    .related-info span { font-size: 11px; color: var(--text-light); }
+
+    /* Placeholder state */
+    .result-placeholder { background: white; border-radius: var(--r-xl); box-shadow: var(--shadow-sm); padding: 40px 24px; text-align: center; }
+    .placeholder-icon { font-size: 48px; margin-bottom: 16px; }
+    .placeholder-title { font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; }
+    .placeholder-sub { font-size: 13px; color: var(--text-light); line-height: 1.7; max-width: 280px; margin: 0 auto; }
+
+    /* Disclaimer */
+    .note-block { background: var(--cream); border-radius: var(--r); padding: 13px 16px; font-size: 12px; color: var(--text-light); line-height: 1.7; display: flex; gap: 8px; align-items: flex-start; }
+    .note-block svg { flex-shrink: 0; margin-top: 1px; }
+
+    /* FOOTER */
+    .site-footer { background: var(--text-dark); color: #94A99A; padding: 48px 0 0; margin-top: 48px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 40px; }
+    .footer-logo { display: flex; align-items: center; gap: 8px; color: white; font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+    .footer-brand p { font-size: 14px; line-height: 1.7; max-width: 260px; color: #7A958E; }
+    .footer-col h5 { color: white; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; margin-bottom: 14px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { font-size: 14px; color: #7A958E; transition: color .2s; }
+    .footer-col a:hover { color: white; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding: 22px 0; display: flex; flex-direction: column; gap: 6px; }
+    .footer-disclaimer { font-size: 12px; color: #5A7568; line-height: 1.7; }
+    .footer-copy { font-size: 12px; color: #5A7568; }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 1000px) { .calc-columns { grid-template-columns: 1fr; } }
+    @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: 1/-1; } }
+    @media (max-width: 660px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex !important; }
+      .nav-btn { display: none; }
+      .input-row { grid-template-columns: 1fr; }
+      .dehy-grid { grid-template-columns: 1fr; }
+      .food-grid { grid-template-columns: repeat(3, 1fr); }
+      .related-grid { grid-template-columns: 1fr; }
+      .water-total-num { font-size: 44px; }
+    }
+    @media (max-width: 520px) { .footer-grid { grid-template-columns: 1fr; } }
+
+    /* HAMBURGER */
+    .nav-hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; background: none; border: none; padding: 8px; margin-left: 8px; border-radius: 8px; cursor: pointer; transition: background .15s; flex-shrink: 0; }
+    .nav-hamburger:hover { background: var(--sage-light); }
+    .nav-hamburger span { display: block; width: 22px; height: 2.5px; background: var(--text-dark); border-radius: 2px; }
+    .mobile-menu { display: none; position: fixed; inset: 0; z-index: 999; }
+    .mobile-menu.open { display: block; }
+    .mobile-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.45); backdrop-filter: blur(2px); }
+    .mobile-drawer { position: absolute; top: 0; right: 0; width: min(300px, 84vw); height: 100%; background: #fff; display: flex; flex-direction: column; box-shadow: -4px 0 40px rgba(0,0,0,.18); animation: drawerIn .22s cubic-bezier(.22,.61,.36,1); }
+    @keyframes drawerIn { from{transform:translateX(100%)} to{transform:translateX(0)} }
+    .mobile-drawer-head { display: flex; align-items: center; justify-content: space-between; padding: 18px 20px 14px; border-bottom: 1px solid var(--border); }
+    .mobile-drawer-logo { font-size: 15px; font-weight: 700; }
+    .mobile-close { background: none; border: none; font-size: 20px; padding: 4px 8px; cursor: pointer; color: var(--text-light); border-radius: 6px; line-height: 1; }
+    .mobile-nav-links { padding: 14px 12px; flex: 1; display: flex; flex-direction: column; gap: 4px; }
+    .mobile-nav-link { display: flex; align-items: center; gap: 14px; padding: 13px 16px; border-radius: 12px; font-size: 16px; font-weight: 600; color: var(--text-dark); transition: background .15s; }
+    .mobile-nav-link:hover { background: var(--sage-light); color: var(--sage); }
+    .mobile-link-icon { width: 40px; height: 40px; background: var(--sage-light); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .mobile-browse-btn { display: block; margin: 0 12px 20px; padding: 14px; background: var(--sage); color: #fff; border-radius: 12px; font-size: 15px; font-weight: 700; text-align: center; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <img src="assets/logo.png" alt="SageMyHealth" style="height:54px;width:auto;object-fit:contain;"/>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html#categories">Calculators</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../blog.html">Health Guides</a></li>
+    </ul>
+    <a href="../index.html#categories" class="nav-btn">Browse All</a>
+    <button class="nav-hamburger" id="nav-hamburger" onclick="openMobileMenu()" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true">
+  <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-drawer">
+    <div class="mobile-drawer-head">
+      <span class="mobile-drawer-logo">SageMyHealth</span>
+      <button class="mobile-close" onclick="closeMobileMenu()">&#x2715;</button>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="../index.html#categories" class="mobile-nav-link" onclick="closeMobileMenu()"><span class="mobile-link-icon">&#x1F9EE;</span>Calculators</a>
+      <a href="../about.html" class="mobile-nav-link" onclick="closeMobileMenu()"><span class="mobile-link-icon">&#x1F49A;</span>About</a>
+      <a href="../blog.html" class="mobile-nav-link" onclick="closeMobileMenu()"><span class="mobile-link-icon">&#x1F4D6;</span>Health Guides</a>
+    </nav>
+    <a href="../index.html#categories" class="mobile-browse-btn" onclick="closeMobileMenu()">Browse All Calculators &#x2192;</a>
+  </div>
+</div>
+
+<!-- PAGE -->
+<main class="calc-page">
+  <div class="calc-wrapper">
+
+    <nav class="breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="bc-sep">›</span>
+      <a href="../index.html#categories">Nutrition &amp; Body</a>
+      <span class="bc-sep">›</span>
+      <span>Daily Water Intake</span>
+    </nav>
+
+    <header class="page-header">
+      <div class="calc-tag">💧 Nutrition &amp; Body</div>
+      <h1>Daily Water Intake Calculator</h1>
+      <p>Enter your weight, age, and lifestyle to get a personalized daily hydration target — down to the exact millilitre. You'll also get a drinking schedule so you can spread your intake throughout the day rather than trying to catch up in the evening.</p>
+    </header>
+
+    <div class="calc-columns">
+
+      <!-- LEFT: Form -->
+      <div class="form-card">
+        <div class="form-card-header">
+          <div class="form-card-title">Your details</div>
+          <div class="form-card-sub">All fields improve accuracy — only weight is strictly required.</div>
+        </div>
+        <div class="form-body">
+
+          <!-- Body measurements -->
+          <div class="form-section">
+            <div class="section-label">Body &amp; Age</div>
+            <div class="input-row" style="margin-bottom:12px">
+              <div class="weight-wrap">
+                <div class="field-label">Body Weight</div>
+                <div class="weight-row">
+                  <div class="weight-input-wrap field-input-wrap">
+                    <input class="field-input" type="number" id="weight" placeholder="70" min="20" max="300" />
+                    <span class="field-unit" id="weight-unit-label">kg</span>
+                  </div>
+                  <div class="unit-toggle">
+                    <button class="unit-btn active" id="btn-kg" onclick="setWeightUnit('kg')">kg</button>
+                    <button class="unit-btn"        id="btn-lb" onclick="setWeightUnit('lb')">lb</button>
+                  </div>
+                </div>
+              </div>
+              <div class="field-wrap">
+                <div class="field-label">Age</div>
+                <div class="field-input-wrap">
+                  <input class="field-input" type="number" id="age" placeholder="35" min="15" max="100" />
+                  <span class="field-unit">yrs</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sex -->
+          <div class="form-section">
+            <div class="section-label">Biological Sex</div>
+            <div class="pill-group">
+              <button class="pill-btn" id="sex-male"   onclick="setSex('male')">  <span class="pill-icon">♂</span> Male</button>
+              <button class="pill-btn" id="sex-female" onclick="setSex('female')"><span class="pill-icon">♀</span> Female</button>
+            </div>
+          </div>
+
+          <!-- Activity -->
+          <div class="form-section">
+            <div class="section-label">Activity Level</div>
+            <div class="pill-group">
+              <button class="pill-btn" id="act-sedentary" onclick="setActivity('sedentary')">🪑 Sedentary</button>
+              <button class="pill-btn" id="act-light"     onclick="setActivity('light')">🚶 Light</button>
+              <button class="pill-btn active" id="act-moderate" onclick="setActivity('moderate')">🏃 Moderate</button>
+              <button class="pill-btn" id="act-active"    onclick="setActivity('active')">⚡ Very Active</button>
+              <button class="pill-btn" id="act-athlete"   onclick="setActivity('athlete')">🏋️ Athlete</button>
+            </div>
+            <div style="margin-top:8px;font-size:11px;color:var(--text-light)" id="act-hint">Moderate: 3–5 days/week of exercise or a physically demanding job.</div>
+          </div>
+
+          <!-- Climate -->
+          <div class="form-section">
+            <div class="section-label">Climate / Environment</div>
+            <div class="pill-group">
+              <button class="pill-btn active" id="cli-cool" onclick="setClimate('cool')">❄️ Cool / Temperate</button>
+              <button class="pill-btn" id="cli-warm" onclick="setClimate('warm')">🌤 Warm / Humid</button>
+              <button class="pill-btn" id="cli-hot"  onclick="setClimate('hot')">☀️ Hot / Very Hot</button>
+            </div>
+          </div>
+
+          <!-- Special conditions (shown if female) -->
+          <div class="form-section special-row" id="special-row">
+            <div class="section-label">Special Conditions</div>
+            <div class="pill-group">
+              <button class="pill-btn active" id="sp-none"        onclick="setSpecial('none')">None</button>
+              <button class="pill-btn"        id="sp-pregnant"    onclick="setSpecial('pregnant')">🤰 Pregnant</button>
+              <button class="pill-btn"        id="sp-breastfeed"  onclick="setSpecial('breastfeed')">🤱 Breastfeeding</button>
+            </div>
+          </div>
+
+          <div class="err-banner" id="err-banner"></div>
+          <button class="calc-btn" onclick="calculate()">
+            <span>💧</span> Calculate My Hydration Target
+          </button>
+
+        </div>
+      </div>
+
+      <!-- RIGHT: Results -->
+      <div class="results-col">
+
+        <!-- Placeholder before calculation -->
+        <div class="result-placeholder" id="result-placeholder">
+          <div class="placeholder-icon">💧</div>
+          <div class="placeholder-title">Your personalized hydration target</div>
+          <p class="placeholder-sub">Fill in your details on the left and we'll calculate exactly how much water you need today — and every day.</p>
+        </div>
+
+        <!-- Result card (hidden until calculated) -->
+        <div class="result-card" id="result-card">
+
+          <!-- Blue water header -->
+          <div class="water-header">
+            <div class="glass-container">
+              <div class="glass-outer">
+                <div class="glass-fill" id="glass-fill">
+                  <div class="glass-wave"></div>
+                </div>
+              </div>
+              <div class="glass-label" id="glass-label">of max</div>
+            </div>
+            <div class="water-total">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+                <div class="unit-toggle unit-toggle-result">
+                  <button class="unit-btn active" id="res-ml"  onclick="switchResultUnit('ml')">ml</button>
+                  <button class="unit-btn"        id="res-oz"  onclick="switchResultUnit('oz')">oz</button>
+                  <button class="unit-btn"        id="res-L"   onclick="switchResultUnit('L')">L</button>
+                </div>
+              </div>
+              <div class="water-total-num" id="result-num">—</div>
+              <div class="water-equivalents" id="result-equivalents"></div>
+            </div>
+          </div>
+
+          <div class="result-body">
+
+            <!-- What's driving your target -->
+            <p class="schedule-title" style="margin-bottom:10px">What's factored in:</p>
+            <div class="factors-row" id="factors-row"></div>
+
+            <!-- Hourly rate box -->
+            <div class="hourly-box">
+              <div class="hourly-icon">⏰</div>
+              <div class="hourly-text">
+                <strong id="hourly-rate">~200 ml per hour</strong>
+                <p id="hourly-sub">while awake (based on 16 waking hours)</p>
+              </div>
+            </div>
+
+            <!-- Drinking schedule -->
+            <p class="schedule-title">Suggested daily drinking schedule</p>
+            <div class="schedule" id="schedule"></div>
+
+            <!-- Tips -->
+            <p class="tips-title">Tips to hit your target</p>
+            <ul class="tips-list" id="tips-list"></ul>
+
+          </div>
+        </div>
+
+        <!-- Why hydration matters -->
+        <div class="info-card">
+          <h3>Why your exact number matters</h3>
+          <p>Generic advice says "8 glasses a day" — but that ignores body size entirely. A 50 kg woman and a 100 kg man have very different fluid needs. The weight-based formula (≈33 ml per kg) is what most clinical guidelines use as a starting point, adjusted for age, sex, activity, and environment.</p>
+          <p>About <strong>20% of daily fluid intake comes from food</strong> (fruits, vegetables, soups). This calculator gives you a pure <em>drinking</em> target — the water you should consume as liquid, separately from meals.</p>
+          <div class="food-grid" style="margin-top:12px">
+            <div class="food-chip"><span class="food-pct">96%</span><span class="food-name">Cucumber</span></div>
+            <div class="food-chip"><span class="food-pct">92%</span><span class="food-name">Strawberries</span></div>
+            <div class="food-chip"><span class="food-pct">91%</span><span class="food-name">Spinach</span></div>
+            <div class="food-chip"><span class="food-pct">90%</span><span class="food-name">Watermelon</span></div>
+            <div class="food-chip"><span class="food-pct">87%</span><span class="food-name">Broccoli</span></div>
+            <div class="food-chip"><span class="food-pct">81%</span><span class="food-name">Oranges</span></div>
+          </div>
+        </div>
+
+        <!-- Signs of dehydration -->
+        <div class="info-card">
+          <h3>Recognise dehydration before it hits hard</h3>
+          <p>Thirst is a late signal — by the time you feel thirsty, you're often already 1–2% dehydrated, enough to impair concentration and physical performance. Watch for earlier cues:</p>
+          <div class="dehy-grid" style="margin-top:12px">
+            <div class="dehy-item early">Dark yellow urine</div>
+            <div class="dehy-item early">Dry mouth or lips</div>
+            <div class="dehy-item early">Difficulty concentrating</div>
+            <div class="dehy-item early">Low energy / fatigue</div>
+            <div class="dehy-item moderate">Headache</div>
+            <div class="dehy-item moderate">Decreased urination</div>
+            <div class="dehy-item moderate">Dizziness</div>
+            <div class="dehy-item moderate">Muscle cramps</div>
+            <div class="dehy-item severe">Rapid heartbeat</div>
+            <div class="dehy-item severe">Confusion</div>
+            <div class="dehy-item severe">Sunken eyes</div>
+            <div class="dehy-item severe">No urination (8+ hrs)</div>
+          </div>
+        </div>
+
+        <!-- Related -->
+        <div>
+          <p class="related-title">Related calculators</p>
+          <div class="related-grid">
+            <a href="tdee.html" class="related-card">
+              <div class="related-icon">🔥</div>
+              <div class="related-info"><strong>TDEE Calculator</strong><span>Daily calorie needs</span></div>
+            </a>
+            <a href="bmi.html" class="related-card">
+              <div class="related-icon">⚖️</div>
+              <div class="related-info"><strong>BMI Calculator</strong><span>Body mass index</span></div>
+            </a>
+            <a href="blood-glucose.html" class="related-card">
+              <div class="related-icon">🩸</div>
+              <div class="related-info"><strong>Blood Glucose</strong><span>Hydration affects blood sugar</span></div>
+            </a>
+            <a href="kidney-stone-risk.html" class="related-card">
+              <div class="related-icon">🫘</div>
+              <div class="related-info"><strong>Kidney Stone Risk</strong><span>Hydration is the #1 prevention</span></div>
+            </a>
+          </div>
+        </div>
+
+        <div class="note-block">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#9CA3AF" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          <span><strong>NOTE:</strong> This calculator provides a general guideline. People with kidney disease, heart failure, or other conditions requiring fluid restriction should follow their doctor's specific guidance. Excessive water intake (overhydration) is also harmful — if you have medical conditions, always consult your healthcare provider.</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo"><img src="assets/logo-white.png" alt="SageMyHealth" style="height:45px;width:auto;object-fit:contain;"/></div>
+        <p>Free, trusted health calculators with warm guidance — helping you understand your numbers.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Calculators</h5>
+        <ul>
+          <li><a href="bmi.html">BMI</a></li>
+          <li><a href="tdee.html">TDEE</a></li>
+          <li><a href="blood-pressure.html">Blood Pressure</a></li>
+          <li><a href="iron-deficiency.html">Iron Deficiency</a></li>
+          <li><a href="burnout-risk.html">Burnout Risk</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>More Tools</h5>
+        <ul>
+          <li><a href="ascvd-risk.html">Heart Risk (ASCVD)</a></li>
+          <li><a href="thyroid-fatigue.html">Thyroid Fatigue</a></li>
+          <li><a href="anemia-screener.html">Anemia Screener</a></li>
+          <li><a href="anxiety-score.html">Anxiety Score</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Info</h5>
+        <ul>
+          <li><a href="../about.html">About Us</a></li>
+          <li><a href="../blog.html">Health Guides</a></li>
+          <li><a href="../privacy.html">Privacy Policy</a></li>
+          <li><a href="../terms.html">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-disclaimer"><strong style="color:#7A958E">Medical Disclaimer:</strong> SageMyHealth calculators are for informational purposes only and are not a substitute for professional medical advice, diagnosis, or treatment.</p>
+      <p class="footer-copy">© 2025 SageMyHealth.com — All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   State
+============================================================ */
+var state = {
+  weightUnit: 'kg',
+  sex:        null,
+  activity:   'moderate',
+  climate:    'cool',
+  special:    'none',
+  resultML:   0,
+  displayUnit:'ml'
+};
+
+/* ---- Activity hints ---- */
+var ACT_HINTS = {
+  sedentary: 'Desk job, little or no intentional exercise.',
+  light:     'Light exercise or walking 1–3 days/week.',
+  moderate:  'Moderate exercise 3–5 days/week or an active job.',
+  active:    'Intense exercise 6–7 days/week or very physical work.',
+  athlete:   'Twice-daily training, endurance sports, or professional athletics.'
+};
+
+/* ============================================================
+   Input handlers
+============================================================ */
+function setWeightUnit(u) {
+  state.weightUnit = u;
+  document.getElementById('weight-unit-label').textContent = u;
+  document.getElementById('btn-kg').classList.toggle('active', u === 'kg');
+  document.getElementById('btn-lb').classList.toggle('active', u === 'lb');
+}
+
+function setSex(s) {
+  state.sex = s;
+  document.getElementById('sex-male').classList.toggle('active', s === 'male');
+  document.getElementById('sex-female').classList.toggle('active', s === 'female');
+  document.getElementById('special-row').classList.toggle('visible', s === 'female');
+  if (s !== 'female') setSpecial('none');
+}
+
+function setActivity(a) {
+  state.activity = a;
+  ['sedentary','light','moderate','active','athlete'].forEach(function(id) {
+    document.getElementById('act-'+id).classList.toggle('active', id === a);
+  });
+  document.getElementById('act-hint').textContent = ACT_HINTS[a];
+}
+
+function setClimate(c) {
+  state.climate = c;
+  ['cool','warm','hot'].forEach(function(id) {
+    document.getElementById('cli-'+id).classList.toggle('active', id === c);
+  });
+}
+
+function setSpecial(s) {
+  state.special = s;
+  ['none','pregnant','breastfeed'].forEach(function(id) {
+    document.getElementById('sp-'+id).classList.toggle('active', id === s);
+  });
+}
+
+/* ============================================================
+   Calculation
+============================================================ */
+function calculate() {
+  var err = document.getElementById('err-banner');
+  err.style.display = 'none';
+
+  var weightRaw = parseFloat(document.getElementById('weight').value);
+  var age       = parseFloat(document.getElementById('age').value);
+
+  if (!weightRaw || isNaN(weightRaw) || weightRaw < 20) {
+    err.textContent = 'Please enter a valid body weight (minimum 20 kg / 44 lb).';
+    err.style.display = 'block';
+    return;
+  }
+
+  /* Convert weight to kg */
+  var weightKg = state.weightUnit === 'lb' ? weightRaw * 0.4536 : weightRaw;
+
+  /* Clamp weight to sensible range */
+  weightKg = Math.max(20, Math.min(250, weightKg));
+
+  /* Base: 33 ml per kg */
+  var base = weightKg * 33;
+
+  /* Age factor */
+  var ageFactor = 1.0;
+  if (!isNaN(age)) {
+    if (age >= 70)      ageFactor = 1.10;
+    else if (age >= 56) ageFactor = 1.05;
+    else if (age < 20)  ageFactor = 1.02; /* teens need slightly more */
+  }
+
+  /* Sex factor */
+  var sexAdj = 0;
+  if (state.sex === 'male')   sexAdj = weightKg * 3; /* men ~10% more */
+  if (state.sex === 'female') sexAdj = 0;
+
+  /* Activity add-on */
+  var actAdj = { sedentary:0, light:350, moderate:600, active:900, athlete:1300 };
+  var actML  = actAdj[state.activity] || 0;
+
+  /* Climate add-on */
+  var cliAdj = { cool:0, warm:400, hot:750 };
+  var cliML  = cliAdj[state.climate] || 0;
+
+  /* Special */
+  var spAdj = { none:0, pregnant:300, breastfeed:700 };
+  var spML  = spAdj[state.special] || 0;
+
+  /* Total */
+  var total = (base * ageFactor) + sexAdj + actML + cliML + spML;
+
+  /* Clamp 1.2L – 5.5L */
+  total = Math.max(1200, Math.min(5500, total));
+
+  /* Round to nearest 50 */
+  total = Math.round(total / 50) * 50;
+
+  state.resultML = total;
+  renderResults(total, weightKg, age, base, ageFactor, sexAdj, actML, cliML, spML);
+}
+
+/* ============================================================
+   Render
+============================================================ */
+function renderResults(total, weightKg, age, base, ageFactor, sexAdj, actML, cliML, spML) {
+  document.getElementById('result-placeholder').style.display = 'none';
+  var card = document.getElementById('result-card');
+  card.classList.add('visible');
+  card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  /* Glass fill */
+  var pct = Math.min(total / 4000, 1.0); /* 4 L = full glass for visual */
+  document.getElementById('glass-fill').style.height = Math.round(pct * 94) + '%';
+  document.getElementById('glass-label').textContent = Math.round(pct * 100) + '% of 4 L';
+
+  /* Display number */
+  state.displayUnit = 'ml';
+  updateDisplay(total);
+
+  /* Factors */
+  var factorsEl = document.getElementById('factors-row');
+  factorsEl.innerHTML = '';
+  var factors = [
+    { label: 'Weight (' + Math.round(weightKg) + ' kg)', cls: 'chip-base' }
+  ];
+  if (!isNaN(age) && (ageFactor !== 1.0)) {
+    var ageLabel = age >= 70 ? 'Age 70+ (+10%)' : age >= 56 ? 'Age 56–70 (+5%)' : 'Age under 20 (+2%)';
+    factors.push({ label: ageLabel, cls: 'chip-plus' });
+  }
+  if (state.sex === 'male' && sexAdj > 0) factors.push({ label: 'Male (+' + Math.round(sexAdj) + ' ml)', cls: 'chip-plus' });
+  var actLabels = { sedentary:'Sedentary', light:'Light activity', moderate:'Moderate activity', active:'Very active', athlete:'Athlete' };
+  if (actML > 0) factors.push({ label: actLabels[state.activity] + ' (+' + actML + ' ml)', cls: 'chip-plus' });
+  var cliLabels = { cool:'Cool climate', warm:'Warm/humid (+400 ml)', hot:'Hot climate (+750 ml)' };
+  if (cliML > 0) factors.push({ label: cliLabels[state.climate], cls: 'chip-boost' });
+  if (state.special === 'pregnant')    factors.push({ label: 'Pregnant (+300 ml)', cls: 'chip-boost' });
+  if (state.special === 'breastfeed')  factors.push({ label: 'Breastfeeding (+700 ml)', cls: 'chip-boost' });
+
+  factors.forEach(function(f) {
+    var chip = document.createElement('span');
+    chip.className = 'factor-chip ' + f.cls;
+    chip.textContent = f.label;
+    factorsEl.appendChild(chip);
+  });
+
+  /* Hourly rate (16 waking hours) */
+  var hourly = Math.round(total / 16 / 50) * 50;
+  document.getElementById('hourly-rate').textContent = '~' + hourly + ' ml per waking hour';
+  document.getElementById('hourly-sub').textContent  = 'to spread ' + total + ' ml across 16 waking hours without overloading in the evening.';
+
+  /* Schedule */
+  var scheduleEl = document.getElementById('schedule');
+  scheduleEl.innerHTML = '';
+  var maxBarML = 4000;
+
+  /* Distribution: 30% morning, 30% midday, 25% afternoon, 15% evening */
+  var slots = [
+    { time: '7 – 9 am',  label: 'Morning start', pct: 0.20, hint: 'One large glass right after waking, before coffee.' },
+    { time: '9 – 12 pm', label: 'Late morning',   pct: 0.25, hint: 'Sip steadily — a reminder app helps.' },
+    { time: '12 – 3 pm', label: 'Midday',          pct: 0.25, hint: 'A glass with lunch, plus one after.' },
+    { time: '3 – 6 pm',  label: 'Afternoon',       pct: 0.20, hint: 'Easiest time to fall behind — set a reminder.' },
+    { time: '6 – 9 pm',  label: 'Evening',         pct: 0.10, hint: 'Wind down intake before bed to avoid night waking.' }
+  ];
+
+  var barColors = ['#60A5FA','#3B82F6','#2563EB','#60A5FA','#93C5FD'];
+
+  slots.forEach(function(slot, i) {
+    var ml = Math.round(total * slot.pct / 50) * 50;
+    var barW = Math.min(ml / maxBarML * 100, 100);
+
+    var row = document.createElement('div');
+    row.style.cssText = 'margin-bottom:12px';
+    row.innerHTML = [
+      '<div class="sched-row">',
+      '  <span class="sched-time">' + slot.time + '</span>',
+      '  <div class="sched-bar-wrap">',
+      '    <div class="sched-bar" style="width:' + barW + '%;background:' + barColors[i] + '"></div>',
+      '  </div>',
+      '  <span class="sched-amount">' + ml + ' ml</span>',
+      '</div>',
+      '<div class="sched-hint" style="margin-left:84px;margin-top:2px;font-size:11px;color:var(--text-light)">' + slot.hint + '</div>'
+    ].join('');
+    scheduleEl.appendChild(row);
+  });
+
+  /* Tips */
+  var tipsList = document.getElementById('tips-list');
+  tipsList.innerHTML = '';
+  var tips = [
+    'Start every morning with a full glass of water before your first coffee — it rehydrates after 7–8 hours without fluid.',
+    'Keep a ' + (total >= 2000 ? '1 litre' : '750 ml') + ' water bottle at your desk and aim to refill it ' + (total >= 2000 ? Math.round(total / 1000) : Math.round(total / 750)) + ' times before you sleep.',
+    'Use urine colour as your real-time guide: pale straw yellow means you\'re well hydrated; darker means drink more now.',
+    state.activity === 'athlete' || state.activity === 'active'
+      ? 'For intense exercise: drink 500 ml in the 2 hours before, 200–300 ml every 20 minutes during, and replace post-workout losses.'
+      : 'Drink a glass of water before each meal — it aids digestion and helps you track intake against your meal routine.',
+    state.climate !== 'cool'
+      ? 'In warm or hot conditions, don\'t wait for thirst. Sweat losses can exceed 1 litre per hour — check in with yourself every 30 minutes.'
+      : 'Tea, herbal infusions, and sparkling water all count toward your total. Caffeinated drinks count at about 50–60% of their volume.',
+    state.special === 'pregnant'
+      ? 'During pregnancy, staying hydrated supports amniotic fluid, reduces UTI risk, and can ease morning nausea. Your midwife may recommend even more in the third trimester.'
+      : state.special === 'breastfeed'
+        ? 'Breastfeeding adds roughly 700 ml of extra daily fluid needs. Drink a glass of water every time you feed to make it a reliable habit.'
+        : 'Eating water-rich foods (cucumber, melon, berries) can contribute 300–500 ml daily without drinking a drop more.'
+  ];
+
+  tips.forEach(function(tip) {
+    var li = document.createElement('li');
+    li.textContent = tip;
+    tipsList.appendChild(li);
+  });
+
+  /* GA4 */
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'calculator_result', {
+      calculator: 'water_intake',
+      total_ml: total,
+      activity: state.activity,
+      climate: state.climate
+    });
+  }
+}
+
+/* ============================================================
+   Unit switching
+============================================================ */
+function switchResultUnit(u) {
+  state.displayUnit = u;
+  ['ml','oz','L'].forEach(function(id) {
+    document.getElementById('res-'+id).classList.toggle('active', id === u);
+  });
+  updateDisplay(state.resultML);
+}
+
+function updateDisplay(ml) {
+  var numEl = document.getElementById('result-num');
+  var eqEl  = document.getElementById('result-equivalents');
+  var glasses250 = Math.round(ml / 250);
+  var bottles500 = (ml / 500).toFixed(1);
+  var oz = Math.round(ml / 29.5735);
+  var L  = (ml / 1000).toFixed(1);
+
+  if (state.displayUnit === 'ml') {
+    numEl.textContent = ml.toLocaleString() + ' ml';
+    eqEl.innerHTML = '<span class="water-eq">≈ ' + glasses250 + ' glasses (250 ml)</span><span class="water-eq">' + bottles500 + ' × 500 ml bottles</span><span class="water-eq">' + L + ' litres</span>';
+  } else if (state.displayUnit === 'oz') {
+    numEl.textContent = oz + ' oz';
+    eqEl.innerHTML = '<span class="water-eq">' + ml.toLocaleString() + ' ml</span><span class="water-eq">≈ ' + glasses250 + ' glasses</span><span class="water-eq">' + L + ' litres</span>';
+  } else {
+    numEl.textContent = L + ' L';
+    eqEl.innerHTML = '<span class="water-eq">' + ml.toLocaleString() + ' ml</span><span class="water-eq">≈ ' + glasses250 + ' glasses</span><span class="water-eq">' + oz + ' fl oz</span>';
+  }
+}
+
+/* ============================================================
+   Mobile menu
+============================================================ */
+function openMobileMenu() {
+  document.getElementById('mobile-menu').classList.add('open');
+  document.getElementById('nav-hamburger').setAttribute('aria-expanded','true');
+  document.body.style.overflow = 'hidden';
+}
+function closeMobileMenu() {
+  document.getElementById('mobile-menu').classList.remove('open');
+  document.getElementById('nav-hamburger').setAttribute('aria-expanded','false');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeMobileMenu(); });
+</script>
+
+</body>
+</html>

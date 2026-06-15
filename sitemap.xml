@@ -35,6 +35,30 @@
 
   <!-- Calculators — Phase 2 -->
   <url>
+    <loc>https://www.sagemyhealth.com/calculators/water-intake.html</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.sagemyhealth.com/calculators/anemia-screener.html</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.sagemyhealth.com/calculators/thyroid-fatigue.html</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.sagemyhealth.com/calculators/ascvd-risk.html</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://www.sagemyhealth.com/calculators/prediabetes-risk.html</loc>
     <lastmod>2026-06-14</lastmod>
     <changefreq>monthly</changefreq>
