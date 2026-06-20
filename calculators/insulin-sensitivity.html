@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X6K2H9YW2V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X6K2H9YW2V');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HOMA-IR — Insulin Sensitivity Calculator | SageMyHealth</title>
+  <meta name="description" content="Calculate your HOMA-IR insulin sensitivity score from fasting glucose and fasting insulin lab values. Clinically validated formula with full interpretation, HOMA-β, and personalised guidance." />
+  <meta name="keywords" content="HOMA-IR calculator, insulin sensitivity, fasting insulin, insulin resistance score" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://sagemyhealth.com/calculators/insulin-sensitivity.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SageMyHealth" />
+  <meta property="og:title" content="HOMA-IR — Insulin Sensitivity Calculator" />
+  <meta property="og:description" content="Calculate your HOMA-IR insulin sensitivity score from fasting glucose and fasting insulin lab values. Clinically validated formula with full interpretation, HOMA-β, and personalised guidance." />
+  <meta property="og:url" content="https://sagemyhealth.com/calculators/insulin-sensitivity.html" />
+  <meta property="og:image" content="https://sagemyhealth.com/calculators/assets/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="HOMA-IR — Insulin Sensitivity Calculator" />
+  <meta name="twitter:description" content="Calculate your HOMA-IR insulin sensitivity score from fasting glucose and fasting insulin lab values. Clinically validated formula with full interpretation, HOMA-β, and personalised guidance." />
+  <meta name="twitter:image" content="https://sagemyhealth.com/calculators/assets/logo.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "name": "HOMA-IR — Insulin Sensitivity Calculator",
+    "description": "Calculate your HOMA-IR insulin sensitivity score from fasting glucose and fasting insulin lab values. Clinically validated formula with full interpretation, HOMA-β, and personalised guidance.",
+    "url": "https://sagemyhealth.com/calculators/insulin-sensitivity.html",
+    "publisher": { "@type": "Organization", "name": "SageMyHealth", "url": "https://sagemyhealth.com/" },
+    "isAccessibleForFree": true,
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sagemyhealth.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Diabetes & Blood Sugar", "item": "https://sagemyhealth.com/#categories" },
+        { "@type": "ListItem", "position": 3, "name": "HOMA-IR — Insulin Sensitivity Calculator", "item": "https://sagemyhealth.com/calculators/insulin-sensitivity.html" }
+      ]
+    }
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sage:        #3B6A3A;
+      --sage-dark:   #0A3D2A;
+      --sage-mid:    #5C8A5C;
+      --sage-light:  #EBF2EC;
+      --sage-pale:   #F2F7F3;
+      --cream:       #E3FFB3;
+      --white:       #FFFFFF;
+      --text-dark:   #1A2E1E;
+      --text-mid:    #4A5568;
+      --text-light:  #718096;
+      --placeholder: #AAB0B8;
+      --border:      #E2EBE4;
+      --border-mid:  #C8D9CC;
+      --shadow-xs:   0 1px 2px rgba(59,106,58,0.06);
+      --shadow-sm:   0 1px 6px rgba(59,106,58,0.08);
+      --shadow-md:   0 4px 16px rgba(59,106,58,0.12);
+      --shadow-lg:   0 8px 32px rgba(59,106,58,0.16);
+      --r-sm: 8px; --r: 12px; --r-lg: 20px; --r-xl: 28px;
+      /* HOMA-IR accent — sky blue / clinical */
+      --homa:        #0284C7;
+      --homa-dark:   #0369A1;
+      --homa-light:  #F0F9FF;
+      --homa-mid:    #38BDF8;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-dark); background: var(--sage-pale);
+      line-height: 1.6; -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; }
+
+    /* ---- NAV ---- */
+    .site-nav {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 24px;
+      height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 32px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; flex: 1; justify-content: center; }
+    .nav-links a { color: var(--text-mid); font-size: 15px; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--sage); }
+    .nav-btn { background: var(--sage); color: white; border: none; padding: 9px 20px; border-radius: var(--r-sm); font-size: 14px; font-weight: 600; transition: background .2s; }
+    .nav-btn:hover { background: var(--sage-dark); }
+
+    /* ---- PAGE ---- */
+    .calc-page { padding: 36px 0 72px; }
+    .calc-wrapper { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-light); margin-bottom: 24px; flex-wrap: wrap; }
+    .breadcrumb a { color: var(--sage); }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .bc-sep { color: var(--border-mid); }
+
+    .page-header { margin-bottom: 28px; }
+    .calc-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 600; color: var(--sage);
+      background: var(--white); padding: 5px 12px;
+      border-radius: 20px; margin-bottom: 12px; letter-spacing: .3px;
+      border: 1px solid var(--border);
+    }
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 42px); font-weight: 700;
+      color: var(--text-dark); letter-spacing: -.5px;
+      margin-bottom: 10px; line-height: 1.15;
+    }
+    .page-header p { font-size: 15px; color: var(--text-mid); line-height: 1.7; max-width: 700px; }
+
+    /* ---- LAYOUT ---- */
+    .calc-columns { display: grid; grid-template-columns: 480px 1fr; gap: 24px; align-items: start; }
+
+    /* ---- FORM CARD ---- */
+    .form-card { background: white; border-radius: var(--r-xl); box-shadow: var(--shadow-lg); overflow: hidden; }
+    .form-card-header { padding: 20px 28px 0; }
+    .form-card-title { font-size: 14px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
+    .form-card-sub   { font-size: 12px; color: var(--text-light); margin-bottom: 6px; }
+    .form-body { padding: 4px 28px 28px; }
+
+    .field-group  { margin-bottom: 22px; }
+    .field-label  { display: block; font-size: 13px; font-weight: 600; color: var(--text-dark); margin-bottom: 6px; }
+    .field-hint   { font-size: 11px; color: var(--text-light); margin-top: 5px; line-height: 1.5; }
+
+    /* Unit toggle row */
+    .input-unit-row { display: flex; gap: 8px; align-items: stretch; }
+    .input-unit-row .field-input { flex: 1; }
+
+    .unit-toggle-vert { display: flex; flex-direction: column; background: var(--sage-pale); border-radius: 8px; padding: 3px; gap: 2px; flex-shrink: 0; }
+    .unit-btn { padding: 7px 12px; border: none; border-radius: 6px; font-size: 11px; font-weight: 700; color: var(--text-light); background: none; transition: all .18s; white-space: nowrap; }
+    .unit-btn.active { background: white; color: var(--homa); box-shadow: var(--shadow-xs); }
+
+    .field-input {
+      width: 100%; padding: 13px 16px;
+      border: 1.5px solid var(--border); border-radius: var(--r-sm);
+      font-size: 18px; font-family: inherit; color: var(--text-dark); font-weight: 600;
+      transition: border-color .18s;
+    }
+    .field-input:focus { outline: none; border-color: var(--homa); }
+    .field-input::placeholder { color: var(--placeholder); font-size: 15px; font-weight: 400; }
+
+    .field-select {
+      width: 100%; padding: 11px 14px;
+      border: 1.5px solid var(--border); border-radius: var(--r-sm);
+      font-size: 15px; font-family: inherit; color: var(--text-dark);
+      background: white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%230284C7' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 12px center;
+      appearance: none; -webkit-appearance: none; cursor: pointer; transition: border-color .18s;
+    }
+    .field-select:focus { outline: none; border-color: var(--homa); }
+
+    /* Fasting reminder */
+    .fasting-banner {
+      background: var(--homa-light); border: 1.5px solid #BAE6FD;
+      border-radius: var(--r); padding: 13px 16px; margin-bottom: 22px;
+      font-size: 13px; color: var(--homa-dark); line-height: 1.6;
+      display: flex; gap: 10px; align-items: flex-start;
+    }
+    .fasting-icon { font-size: 18px; flex-shrink: 0; }
+
+    .section-divider {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .6px; color: var(--homa); margin: 22px 0 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .section-divider::after { content: ''; flex: 1; height: 1px; background: var(--homa-light); }
+
+    .conversion-note { font-size: 11px; color: var(--text-light); margin-top: 5px; }
+    .conversion-note span { font-weight: 600; color: var(--homa); }
+
+    .calc-btn {
+      width: 100%; background: var(--sage); color: white;
+      border: none; padding: 14px; border-radius: var(--r);
+      font-size: 16px; font-weight: 700; transition: all .18s; margin-top: 8px;
+    }
+    .calc-btn:hover { background: var(--sage-dark); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+    .calc-btn:active { transform: translateY(0); }
+
+    /* ---- RESULTS ---- */
+    .results-col { display: flex; flex-direction: column; gap: 20px; }
+
+    @keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+    .result-card { background: white; border-radius: var(--r-xl); box-shadow: var(--shadow-lg); overflow: hidden; animation: fadeUp .35s ease; }
+
+    .result-band { height: 5px; }
+    .result-band.optimal    { background: linear-gradient(90deg, #4CAF50, #16A34A); }
+    .result-band.normal     { background: linear-gradient(90deg, #38BDF8, #0284C7); }
+    .result-band.mild       { background: linear-gradient(90deg, #F59E0B, #D97706); }
+    .result-band.significant { background: linear-gradient(90deg, #F97316, #EA580C); }
+    .result-band.severe     { background: linear-gradient(90deg, #F87171, #DC2626); }
+
+    .result-body { padding: 24px; }
+
+    /* HOMA hero */
+    .homa-hero { text-align: center; padding: 8px 0 20px; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
+    .homa-hero-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; color: var(--text-light); margin-bottom: 8px; }
+    .homa-value { font-size: 80px; font-weight: 800; letter-spacing: -4px; line-height: 1; }
+    .homa-tier-badge { display: inline-block; margin-top: 10px; padding: 5px 18px; border-radius: 50px; font-size: 13px; font-weight: 700; }
+    .tier-optimal     { background: #DCFCE7; color: #166534; }
+    .tier-normal      { background: #E0F2FE; color: #075985; }
+    .tier-mild        { background: #FFFBEB; color: #92400E; }
+    .tier-significant { background: #FFF7ED; color: #9A3412; }
+    .tier-severe      { background: #FEE2E2; color: #991B1B; }
+
+    /* HOMA gauge */
+    .gauge-section { margin-bottom: 20px; }
+    .gauge-title { font-size: 13px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; }
+    .gauge-wrap { position: relative; margin: 0 8px; }
+    .homa-gauge {
+      height: 18px; border-radius: 9px;
+      background: linear-gradient(90deg,
+        #16A34A 0%,   #16A34A 16.67%,
+        #0D9488 16.67%, #0D9488 33.33%,
+        #D97706 33.33%, #D97706 50%,
+        #EA580C 50%,  #EA580C 83.33%,
+        #DC2626 83.33%, #DC2626 100%);
+      position: relative; overflow: visible;
+    }
+    .homa-needle {
+      position: absolute; top: -6px;
+      width: 4px; height: 30px;
+      background: var(--text-dark); border-radius: 2px;
+      transform: translateX(-50%);
+      transition: left 0.75s cubic-bezier(.34,1.1,.64,1);
+      box-shadow: 0 0 0 3px white, 0 2px 6px rgba(0,0,0,.25);
+      left: 0;
+    }
+    .gauge-labels {
+      display: flex; margin-top: 8px;
+      font-size: 10px; color: var(--text-light); font-weight: 600;
+      position: relative;
+    }
+    .gauge-label {
+      position: absolute; transform: translateX(-50%);
+      text-align: center; white-space: nowrap;
+    }
+    .gauge-zones {
+      display: flex; margin-top: 28px; gap: 4px;
+    }
+    .zone-chip {
+      flex: 1; text-align: center; padding: 6px 4px; border-radius: 6px;
+      font-size: 10px; font-weight: 600; line-height: 1.3;
+    }
+    .zone-0 { background: #DCFCE7; color: #166534; }
+    .zone-1 { background: #E0F2FE; color: #075985; }
+    .zone-2 { background: #FFFBEB; color: #92400E; }
+    .zone-3 { background: #FFF7ED; color: #9A3412; }
+    .zone-4 { background: #FEE2E2; color: #991B1B; }
+
+    /* HOMA-β card */
+    .beta-card {
+      background: var(--sage-pale); border: 1.5px solid var(--border);
+      border-radius: var(--r); padding: 16px; margin-bottom: 20px;
+      display: flex; align-items: flex-start; gap: 16px;
+    }
+    .beta-value-wrap { text-align: center; flex-shrink: 0; }
+    .beta-value { font-size: 36px; font-weight: 800; color: var(--homa); line-height: 1; }
+    .beta-unit  { font-size: 12px; font-weight: 600; color: var(--text-light); }
+    .beta-label { font-size: 12px; font-weight: 700; color: var(--text-dark); margin-top: 3px; }
+    .beta-body  { font-size: 12px; color: var(--text-mid); line-height: 1.65; flex: 1; }
+    .beta-body strong { color: var(--text-dark); }
+
+    /* Message */
+    .msg-block { border-radius: var(--r); padding: 18px; margin: 20px 0 0; border-left: 4px solid; }
+    .msg-block.optimal     { background: #F0FDF4; border-color: #16A34A; }
+    .msg-block.normal      { background: var(--homa-light); border-color: var(--homa); }
+    .msg-block.mild        { background: #FFFBEB; border-color: #D97706; }
+    .msg-block.significant { background: #FFF7ED; border-color: #EA580C; }
+    .msg-block.severe      { background: #FEF2F2; border-color: #DC2626; }
+    .msg-block h3 { font-size: 14px; font-weight: 700; margin-bottom: 6px; color: var(--text-dark); }
+    .msg-block p  { font-size: 13px; color: var(--text-mid); line-height: 1.7; }
+
+    .tips-divider { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+    .tips-title   { font-size: 13px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; }
+    .tips-list    { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .tips-list li { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+    .tips-list li::before { content: '✦'; color: var(--homa); font-size: 10px; margin-top: 3px; flex-shrink: 0; }
+
+    /* Formula box */
+    .formula-box {
+      background: var(--homa-light); border: 1.5px solid #BAE6FD;
+      border-radius: var(--r); padding: 14px 16px; margin-top: 16px; font-size: 12px;
+      color: var(--homa-dark); line-height: 1.7;
+    }
+    .formula-box strong { display: block; font-size: 13px; margin-bottom: 6px; color: var(--text-dark); }
+    .formula-code { font-family: monospace; font-size: 12px; background: white; padding: 6px 10px; border-radius: 6px; display: block; margin-top: 4px; color: var(--text-dark); border: 1px solid #BAE6FD; }
+
+    /* Pair card */
+    .pair-card {
+      background: #FFFBEB; border: 1.5px solid #F59E0B;
+      border-radius: var(--r-xl); padding: 18px 22px;
+      display: flex; align-items: center; gap: 16px;
+    }
+    .pair-icon  { font-size: 32px; flex-shrink: 0; }
+    .pair-title { font-size: 14px; font-weight: 700; color: #92400E; margin-bottom: 4px; }
+    .pair-body  { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+    .pair-link  { display: inline-block; margin-top: 8px; font-size: 13px; font-weight: 700; color: #D97706; }
+    .pair-link:hover { text-decoration: underline; }
+
+    /* Info / related / note */
+    .info-card { background: white; border-radius: var(--r-xl); box-shadow: var(--shadow-sm); padding: 22px 24px; }
+    .info-card h3 { font-size: 14px; font-weight: 700; margin-bottom: 8px; color: var(--text-dark); }
+    .info-card p  { font-size: 13px; color: var(--text-mid); line-height: 1.75; }
+    .info-card p + p { margin-top: 10px; }
+
+    .related-title { font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; text-transform: none; letter-spacing: normal; }
+    .related-grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .related-card  { background: white; border: 1.5px solid var(--border); border-radius: var(--r); padding: 14px 16px; display: flex; align-items: center; gap: 12px; transition: all .18s; }
+    .related-card:hover { border-color: var(--sage); box-shadow: var(--shadow-sm); transform: translateY(-1px); }
+    .related-icon  { width: 36px; height: 36px; background: var(--sage-light); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+    .related-info strong { display: block; font-size: 13px; font-weight: 600; }
+    .related-info span   { font-size: 11px; color: var(--text-light); }
+
+    .note-block { background: var(--cream); border-radius: var(--r); padding: 13px 16px; font-size: 12px; color: var(--text-light); line-height: 1.7; display: flex; gap: 8px; align-items: flex-start; }
+    .note-block svg { flex-shrink: 0; margin-top: 1px; }
+
+    /* ---- FOOTER ---- */
+    .site-footer { background: var(--text-dark); color: #94A99A; padding: 48px 0 0; margin-top: 48px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 40px; }
+    .footer-logo { display: flex; align-items: center; gap: 8px; color: white; font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+    .footer-brand p { font-size: 14px; line-height: 1.7; max-width: 260px; color: #7A958E; }
+    .footer-col h5 { color: white; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; margin-bottom: 14px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { font-size: 14px; color: #7A958E; transition: color .2s; }
+    .footer-col a:hover { color: white; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding: 22px 0; display: flex; flex-direction: column; gap: 6px; }
+    .footer-disclaimer { font-size: 12px; color: #5A7568; line-height: 1.7; }
+    .footer-copy { font-size: 12px; color: #5A7568; }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 1000px) { .calc-columns { grid-template-columns: 1fr; } }
+    @media (max-width: 900px)  { .footer-grid { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: 1/-1; } }
+    @media (max-width: 660px)  { .nav-links { display: none; } .nav-hamburger { display: flex !important; } .nav-btn { display: none; } .related-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 520px)  { .footer-grid { grid-template-columns: 1fr; } }
+
+    /* ---- HAMBURGER ---- */
+    .nav-hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; background: none; border: none; padding: 8px; margin-left: 8px; border-radius: 8px; cursor: pointer; flex-shrink: 0; }
+    .nav-hamburger span { display: block; width: 22px; height: 2.5px; background: var(--text-dark); border-radius: 2px; }
+    .mobile-menu { display: none; position: fixed; inset: 0; z-index: 999; }
+    .mobile-menu.open { display: block; }
+    .mobile-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.45); backdrop-filter: blur(2px); }
+    .mobile-drawer { position: absolute; top: 0; right: 0; width: min(300px,84vw); height: 100%; background: #fff; display: flex; flex-direction: column; box-shadow: -4px 0 40px rgba(0,0,0,.18); animation: drawerIn .22s cubic-bezier(.22,.61,.36,1); }
+    @keyframes drawerIn { from{transform:translateX(100%)} to{transform:translateX(0)} }
+    .mobile-drawer-head { display: flex; align-items: center; justify-content: space-between; padding: 18px 20px 14px; border-bottom: 1px solid var(--border); }
+    .mobile-drawer-logo { font-size: 15px; font-weight: 700; }
+    .mobile-close { background: none; border: none; font-size: 20px; padding: 4px 8px; cursor: pointer; color: var(--text-light); border-radius: 6px; line-height: 1; }
+    .mobile-nav-links { padding: 14px 12px; flex: 1; display: flex; flex-direction: column; gap: 4px; }
+    .mobile-nav-link { display: flex; align-items: center; gap: 14px; padding: 13px 16px; border-radius: 12px; font-size: 16px; font-weight: 600; color: var(--text-dark); transition: background .15s; }
+    .mobile-nav-link:hover { background: var(--sage-light); color: var(--sage); }
+    .mobile-link-icon { width: 40px; height: 40px; background: var(--sage-light); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .mobile-browse-btn { display: block; margin: 0 12px 20px; padding: 14px; background: var(--sage); color: #fff; border-radius: 12px; font-size: 15px; font-weight: 700; text-align: center; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <img src="assets/logo.png" alt="SageMyHealth" style="height:54px;width:auto;object-fit:contain;" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html#categories">Calculators</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../blog.html">Health Guides</a></li>
+    </ul>
+    <a href="../index.html#categories" class="nav-btn">Browse All</a>
+    <button class="nav-hamburger" id="nav-hamburger" onclick="openMobileMenu()" aria-label="Open navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true">
+  <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-drawer">
+    <div class="mobile-drawer-head">
+      <span class="mobile-drawer-logo">SageMyHealth</span>
+      <button class="mobile-close" onclick="closeMobileMenu()">&#x2715;</button>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="../index.html#categories" class="mobile-nav-link" onclick="closeMobileMenu()"><span class="mobile-link-icon">&#x1F9EE;</span>Calculators</a>
+      <a href="../about.html" class="mobile-nav-link" onclick="closeMobileMenu()"><span class="mobile-link-icon">&#x1F49A;</span>About</a>
+      <a href="../blog.html" class="mobile-nav-link" onclick="closeMobileMenu()"><span class="mobile-link-icon">&#x1F4D6;</span>Health Guides</a>
+    </nav>
+    <a href="../index.html#categories" class="mobile-browse-btn" onclick="closeMobileMenu()">Browse All Calculators &#x2192;</a>
+  </div>
+</div>
+
+<!-- PAGE -->
+<main class="calc-page">
+  <div class="calc-wrapper">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="bc-sep">›</span>
+      <a href="../index.html#categories">Diabetes &amp; Blood Sugar</a>
+      <span class="bc-sep">›</span>
+      <span>Insulin Sensitivity (HOMA-IR)</span>
+    </nav>
+
+    <header class="page-header">
+      <div class="calc-tag">💉 Diabetes &amp; Blood Sugar</div>
+      <h1>Insulin Sensitivity Index (HOMA-IR)</h1>
+      <p>HOMA-IR (Homeostatic Model Assessment of Insulin Resistance) is the gold standard calculable measure of insulin sensitivity. Using your fasting glucose and fasting insulin lab values, it quantifies how effectively your cells respond to insulin — and how hard your pancreas is working to compensate.</p>
+    </header>
+
+    <div class="calc-columns">
+
+      <!-- LEFT: Form -->
+      <div class="form-card">
+        <div class="form-card-header">
+          <p class="form-card-title">Enter your fasting lab values</p>
+          <p class="form-card-sub">Both glucose and insulin must be from a fasted blood draw.</p>
+        </div>
+        <div class="form-body">
+
+          <div class="fasting-banner">
+            <span class="fasting-icon">⏱️</span>
+            <span>HOMA-IR requires <strong>fasting values</strong> — no food or caloric drink for at least <strong>8–12 hours</strong> before the blood draw. Non-fasting values will produce inaccurate results.</span>
+          </div>
+
+          <!-- Glucose -->
+          <div class="section-divider">Fasting Blood Glucose</div>
+          <div class="field-group">
+            <label class="field-label" for="glucose">Fasting glucose</label>
+            <div class="input-unit-row">
+              <input class="field-input" type="number" id="glucose" placeholder="e.g. 92" min="40" max="600" step="0.1" oninput="updateConversion()" />
+              <div class="unit-toggle-vert">
+                <button class="unit-btn active" id="glu-mgdl" onclick="setGlucoseUnit('mgdl',this)">mg/dL</button>
+                <button class="unit-btn"        id="glu-mmol" onclick="setGlucoseUnit('mmol',this)">mmol/L</button>
+              </div>
+            </div>
+            <p class="conversion-note" id="glu-convert"></p>
+            <p class="field-hint">Found on your metabolic panel or glucose tolerance test as "Glucose (fasting)" or "FPG".</p>
+          </div>
+
+          <!-- Insulin -->
+          <div class="section-divider">Fasting Insulin</div>
+          <div class="field-group">
+            <label class="field-label" for="insulin">Fasting insulin</label>
+            <div class="input-unit-row">
+              <input class="field-input" type="number" id="insulin" placeholder="e.g. 8.5" min="0.5" max="500" step="0.1" oninput="updateConversion()" />
+              <div class="unit-toggle-vert">
+                <button class="unit-btn active" id="ins-uiu" onclick="setInsulinUnit('uiu',this)">μIU/mL</button>
+                <button class="unit-btn"        id="ins-pmol" onclick="setInsulinUnit('pmol',this)">pmol/L</button>
+              </div>
+            </div>
+            <p class="conversion-note" id="ins-convert"></p>
+            <p class="field-hint">Insulin is not typically in a standard blood panel — you usually need to request it separately. Listed as "Fasting Insulin" or "Insulin, Fasting Serum".</p>
+          </div>
+
+          <!-- Optional context -->
+          <div class="section-divider">Context <span style="font-size:10px;font-weight:500;color:var(--text-light);background:var(--sage-pale);padding:2px 8px;border-radius:10px">optional</span></div>
+          <div class="field-group">
+            <label class="field-label" for="fasting-hrs">Hours fasted before blood draw</label>
+            <select class="field-select" id="fasting-hrs">
+              <option value="">Choose one…</option>
+              <option value="ok">8–10 hours — standard fasting</option>
+              <option value="ok">10–12 hours — extended fasting</option>
+              <option value="warn">Less than 8 hours — results may be less accurate</option>
+              <option value="warn">Not sure</option>
+            </select>
+          </div>
+
+          <button class="calc-btn" onclick="calculate()">Calculate HOMA-IR →</button>
+
+          <div class="formula-box">
+            <strong>The HOMA-IR formula</strong>
+            <code class="formula-code">HOMA-IR = (Insulin [μIU/mL] × Glucose [mmol/L]) ÷ 22.5</code>
+            Developed at Oxford University (Matthews et al., 1985). Validated across thousands of clinical studies worldwide.
+          </div>
+
+        </div>
+      </div>
+
+      <!-- RIGHT: Results -->
+      <div class="results-col">
+
+        <div id="result-panel" style="display:none">
+          <div class="result-card">
+            <div class="result-band" id="result-band"></div>
+            <div class="result-body">
+
+              <!-- HOMA-IR hero -->
+              <div class="homa-hero">
+                <div class="homa-hero-label">Your HOMA-IR Score</div>
+                <div class="homa-value" id="homa-value" style="color:var(--homa)">—</div>
+                <div><span class="homa-tier-badge" id="tier-badge">—</span></div>
+              </div>
+
+              <!-- Gauge -->
+              <div class="gauge-section">
+                <p class="gauge-title">Where you fall on the insulin resistance scale</p>
+                <div class="gauge-wrap">
+                  <div class="homa-gauge">
+                    <div class="homa-needle" id="gauge-needle"></div>
+                  </div>
+                  <div class="gauge-zones">
+                    <div class="zone-chip zone-0">Optimal<br/>&lt; 1.0</div>
+                    <div class="zone-chip zone-1">Normal<br/>1.0–1.9</div>
+                    <div class="zone-chip zone-2">Mild<br/>2.0–2.9</div>
+                    <div class="zone-chip zone-3">Significant<br/>3.0–4.9</div>
+                    <div class="zone-chip zone-4">Severe<br/>≥ 5.0</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- HOMA-β -->
+              <div class="beta-card" id="beta-card">
+                <div class="beta-value-wrap">
+                  <div class="beta-value" id="beta-value">—</div>
+                  <div class="beta-unit">%</div>
+                  <div class="beta-label">HOMA-β</div>
+                </div>
+                <div class="beta-body" id="beta-body">—</div>
+              </div>
+
+              <!-- Message -->
+              <div class="msg-block" id="msg-block">
+                <h3 id="msg-heading">—</h3>
+                <p id="msg-body">—</p>
+              </div>
+
+              <hr class="tips-divider" />
+              <p class="tips-title">How to improve your HOMA-IR:</p>
+              <ul class="tips-list" id="tips-list"></ul>
+
+              <div class="note-block" style="margin-top:16px">
+                <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#9CA3AF" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <span>Reference ranges for HOMA-IR vary slightly by laboratory and population. This tool uses the widely cited Matthews et al. (1985) thresholds. Discuss your result with your physician for clinical interpretation.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pair card -->
+        <div class="pair-card">
+          <div class="pair-icon">📝</div>
+          <div>
+            <div class="pair-title">No fasting insulin? Try the risk questionnaire</div>
+            <div class="pair-body">If you haven't had a fasting insulin test, the Insulin Resistance Likelihood calculator assesses your risk using body metrics, symptoms, and lifestyle — no lab values needed.</div>
+            <a href="insulin-resistance.html" class="pair-link">Go to the risk assessment →</a>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <h3>What HOMA-IR measures</h3>
+          <p>HOMA-IR (Homeostatic Model Assessment of Insulin Resistance) was developed at Oxford in 1985 and remains the most widely used non-euglycaemic clamp estimate of insulin resistance. It models the feedback loop between the pancreatic β-cells and insulin sensitivity in the liver. Higher scores mean your body needs more insulin to achieve the same glucose-lowering effect.</p>
+          <p>Fasting insulin is the key value most people don't have — and the most informative. Fasting glucose alone can appear normal for years while insulin levels are already elevated. Tracking HOMA-IR over time (every 6–12 months) is a powerful way to measure the impact of lifestyle changes on metabolic health.</p>
+        </div>
+
+        <div class="related-section">
+          <p class="related-title">You might also like</p>
+          <div class="related-grid">
+            <a href="prediabetes-risk.html" class="related-card">
+              <div class="related-icon">🩺</div>
+              <div class="related-info"><strong>Prediabetes Risk</strong><span>ADA risk assessment</span></div>
+            </a>
+            <a href="blood-glucose.html" class="related-card">
+              <div class="related-icon">💉</div>
+              <div class="related-info"><strong>Blood Glucose</strong><span>Interpret your readings</span></div>
+            </a>
+            <a href="bmi.html" class="related-card">
+              <div class="related-icon">⚖️</div>
+              <div class="related-info"><strong>BMI Calculator</strong><span>Body mass index</span></div>
+            </a>
+            <a href="waist-to-height.html" class="related-card">
+              <div class="related-icon">📏</div>
+              <div class="related-info"><strong>Waist-to-Height</strong><span>Visceral fat risk</span></div>
+            </a>
+          </div>
+        </div>
+
+      </div><!-- /results-col -->
+    </div><!-- /calc-columns -->
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="assets/logo-white.png" alt="SageMyHealth" style="height:45px;width:auto;object-fit:contain;" />
+        </div>
+        <p>Free, trusted health calculators with warm guidance — helping you understand your numbers.</p>
+      </div>
+      <div class="footer-col"><h5>Calculators</h5><ul>
+        <li><a href="insulin-resistance.html">Insulin Resistance</a></li>
+        <li><a href="prediabetes-risk.html">Prediabetes Risk</a></li>
+        <li><a href="blood-glucose.html">Blood Glucose</a></li>
+        <li><a href="bmi.html">BMI</a></li>
+      </ul></div>
+      <div class="footer-col"><h5>Categories</h5><ul>
+        <li><a href="../index.html#categories">Glucose &amp; Diabetes</a></li>
+        <li><a href="../index.html#categories">Weight &amp; Body</a></li>
+        <li><a href="../index.html#categories">Brain Health</a></li>
+        <li><a href="../index.html#categories">Longevity</a></li>
+      </ul></div>
+      <div class="footer-col"><h5>Info</h5><ul>
+        <li><a href="../about.html">About Us</a></li>
+        <li><a href="../blog.html">Health Guides</a></li>
+        <li><a href="../privacy.html">Privacy Policy</a></li>
+        <li><a href="../terms.html">Terms of Use</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-disclaimer"><strong style="color:#7A958E">Medical Disclaimer:</strong> This calculator is for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider.</p>
+      <p class="footer-copy">© 2025 SageMyHealth.com — All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   HOMA-IR CALCULATOR
+   Formula: HOMA-IR = (Insulin μIU/mL × Glucose mmol/L) / 22.5
+   HOMA-β  = (20 × Insulin μIU/mL) / (Glucose mmol/L − 3.5)
+
+   Tiers:
+   < 1.0  : Optimal
+   1.0-1.9: Normal
+   2.0-2.9: Mild resistance
+   3.0-4.9: Significant resistance
+   ≥ 5.0  : Severe resistance
+
+   Gauge: 0-6 scale, position = min(homaIR, 6)/6 × 100%
+============================================================ */
+
+var glucoseUnit = 'mgdl'; // 'mgdl' or 'mmol'
+var insulinUnit = 'uiu';  // 'uiu' (μIU/mL) or 'pmol' (pmol/L)
+
+function setGlucoseUnit(unit, btn) {
+  glucoseUnit = unit;
+  document.querySelectorAll('#glu-mgdl, #glu-mmol').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  var inp = document.getElementById('glucose');
+  inp.placeholder = unit === 'mgdl' ? 'e.g. 92' : 'e.g. 5.1';
+  inp.step        = unit === 'mgdl' ? '1' : '0.1';
+  updateConversion();
+}
+
+function setInsulinUnit(unit, btn) {
+  insulinUnit = unit;
+  document.querySelectorAll('#ins-uiu, #ins-pmol').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  var inp = document.getElementById('insulin');
+  inp.placeholder = unit === 'uiu' ? 'e.g. 8.5' : 'e.g. 59';
+  updateConversion();
+}
+
+function updateConversion() {
+  var gluVal = parseFloat(document.getElementById('glucose').value);
+  var insVal = parseFloat(document.getElementById('insulin').value);
+  var gluNote = document.getElementById('glu-convert');
+  var insNote = document.getElementById('ins-convert');
+
+  if (gluVal && !isNaN(gluVal)) {
+    if (glucoseUnit === 'mgdl') {
+      var mmol = (gluVal / 18.0182).toFixed(1);
+      gluNote.innerHTML = 'Equivalent: <span>' + mmol + ' mmol/L</span>';
+    } else {
+      var mgdl = Math.round(gluVal * 18.0182);
+      gluNote.innerHTML = 'Equivalent: <span>' + mgdl + ' mg/dL</span>';
+    }
+  } else { gluNote.innerHTML = ''; }
+
+  if (insVal && !isNaN(insVal)) {
+    if (insulinUnit === 'uiu') {
+      var pmol = Math.round(insVal * 6.945);
+      insNote.innerHTML = 'Equivalent: <span>' + pmol + ' pmol/L</span>';
+    } else {
+      var uiu = (insVal / 6.945).toFixed(1);
+      insNote.innerHTML = 'Equivalent: <span>' + uiu + ' μIU/mL</span>';
+    }
+  } else { insNote.innerHTML = ''; }
+}
+
+// Convert to standard units for calculation
+function getStandardValues() {
+  var gluRaw = parseFloat(document.getElementById('glucose').value);
+  var insRaw = parseFloat(document.getElementById('insulin').value);
+  // Glucose → mmol/L
+  var gluMmol = glucoseUnit === 'mmol' ? gluRaw : gluRaw / 18.0182;
+  // Insulin → μIU/mL
+  var insMiu  = insulinUnit === 'uiu'  ? insRaw : insRaw / 6.945;
+  return { glu: gluMmol, ins: insMiu };
+}
+
+var TIERS = {
+  optimal:     { band: 'optimal',     badge: 'tier-optimal',     color: '#16A34A', label: 'Optimal insulin sensitivity' },
+  normal:      { band: 'normal',      badge: 'tier-normal',      color: '#0284C7', label: 'Normal — good sensitivity' },
+  mild:        { band: 'mild',        badge: 'tier-mild',        color: '#D97706', label: 'Mild insulin resistance' },
+  significant: { band: 'significant', badge: 'tier-significant', color: '#EA580C', label: 'Significant insulin resistance' },
+  severe:      { band: 'severe',      badge: 'tier-severe',      color: '#DC2626', label: 'Severe insulin resistance' }
+};
+
+var MSGS = {
+  optimal: {
+    h: 'Excellent insulin sensitivity — your metabolic health is strong.',
+    b: 'Your HOMA-IR is below 1.0, indicating that your cells are responding normally and efficiently to insulin. Your pancreas doesn\'t need to overproduce to maintain blood glucose control. This is the most protective range for long-term cardiometabolic health.',
+    tips: [
+      'Maintain this through regular physical activity — both aerobic exercise and resistance training preserve insulin sensitivity over time.',
+      'Protect your sleep quality: even a few nights of poor sleep acutely reduces insulin sensitivity in healthy individuals.',
+      'A diet rich in fibre, vegetables, and whole grains supports stable blood glucose and reduces insulin demand.',
+      'Retest your HOMA-IR annually if you have a family history of diabetes or metabolic syndrome.'
+    ]
+  },
+  normal: {
+    h: 'Good insulin sensitivity — within normal range.',
+    b: 'Your HOMA-IR is in the normal range. Your cells are responding adequately to insulin, though there may be early or subclinical resistance beginning to develop. This is still a very good result, and the window for prevention is wide open.',
+    tips: [
+      'Add more resistance training: muscle is the largest consumer of blood glucose, and building muscle is the most durable way to improve insulin sensitivity.',
+      'Reduce refined carbohydrates — sugar-sweetened beverages and white refined starches cause the steepest insulin spikes.',
+      'Prioritise 7–9 hours of quality sleep; sleep deprivation measurably impairs insulin signalling.',
+      'Consider retesting in 6–12 months if any risk factors are present (overweight, family history, sedentary lifestyle).'
+    ]
+  },
+  mild: {
+    h: 'Mild insulin resistance — your body is compensating.',
+    b: 'Your HOMA-IR suggests mild insulin resistance. Your pancreas is likely producing more insulin than necessary to keep blood glucose normal — a condition known as compensatory hyperinsulinemia. Fasting glucose may still look normal at this stage. The good news: mild resistance responds well to targeted lifestyle interventions.',
+    tips: [
+      'A Mediterranean-style or low-glycaemic diet has the strongest evidence for reducing HOMA-IR — prioritise vegetables, legumes, olive oil, fish, and whole grains.',
+      'Aim for 150–300 minutes of moderate exercise per week, with at least 2 resistance training sessions.',
+      'Lose 5–10% of body weight if you\'re carrying excess — this has an outsized effect on insulin sensitivity.',
+      'Walk after each meal for 10–15 minutes: post-meal movement is one of the most effective glucose-lowering strategies.',
+      'Consider requesting an HbA1c and full lipid panel from your doctor to get the complete metabolic picture.'
+    ]
+  },
+  significant: {
+    h: 'Significant insulin resistance — this warrants medical attention.',
+    b: 'Your HOMA-IR indicates significant insulin resistance. At this level, your pancreas is working hard to maintain blood glucose, and this level of compensatory hyperinsulinemia carries substantial cardiovascular, metabolic, and inflammatory risk. Even if your fasting glucose is still in the normal range, this level of insulin resistance is clinically meaningful.',
+    tips: [
+      'Speak to your doctor. Request HbA1c, fasting glucose, lipid panel, ALT (fatty liver screen), and uric acid to build a complete picture.',
+      'A structured dietary intervention — whether low-carbohydrate, time-restricted eating, or Mediterranean — has strong evidence for reducing HOMA-IR significantly within weeks.',
+      'Discuss whether medication (such as metformin) is appropriate for your risk profile.',
+      'Prioritise daily movement: a 30-minute walk reduces insulin demand for 24–72 hours in people with insulin resistance.',
+      'Address sleep apnoea if present — it is an underrecognised cause of insulin resistance.',
+      'Retest HOMA-IR in 3–6 months after making changes to measure progress.'
+    ]
+  },
+  severe: {
+    h: 'Severe insulin resistance — please see your doctor.',
+    b: 'Your HOMA-IR is in a range associated with severe insulin resistance and significant metabolic dysfunction. This level is commonly seen in individuals with established type 2 diabetes, PCOS, non-alcoholic fatty liver disease, or metabolic syndrome. The risks associated with this level of insulin resistance — cardiovascular disease, beta cell exhaustion, and progression to diabetes — are substantial. Clinical assessment and a structured treatment plan are essential.',
+    tips: [
+      'See your doctor as soon as possible. This level warrants a full metabolic workup and likely a referral to an endocrinologist.',
+      'Consider a structured dietary intervention under medical supervision: very-low-carbohydrate or very-low-calorie approaches have reversed this level of insulin resistance in clinical trials.',
+      'Ask about medications: metformin, GLP-1 receptor agonists (semaglutide), and SGLT-2 inhibitors are all evidence-based options at this level.',
+      'Exercise is therapeutic, not optional — even low-intensity daily walking significantly reduces insulin levels over time.',
+      'Screen for complications: NAFLD, cardiovascular risk, and kidney function should all be assessed.',
+      'Retest in 3 months after initiating treatment to track improvement.'
+    ]
+  }
+};
+
+function getBetaInterpretation(beta, tier) {
+  if (beta === null) return null;
+  if (beta > 200) return 'Well above normal — strong compensatory insulin secretion. Your pancreas is secreting significantly more insulin than normal to manage glucose, a hallmark of early-to-moderate insulin resistance.';
+  if (beta > 120) return 'Above normal — your beta cells are secreting extra insulin to compensate for reduced sensitivity. This is typical of early insulin resistance, where the pancreas is still responding robustly.';
+  if (beta >= 80)  return 'Normal beta cell function — your pancreas is producing an appropriate amount of insulin for your glucose level.';
+  if (beta >= 50)  return 'Below normal — your beta cells are producing less insulin than expected for your glucose level. This may indicate early beta cell dysfunction alongside insulin resistance.';
+  return 'Significantly below normal — beta cell function appears impaired. This can be seen with long-standing insulin resistance, certain forms of diabetes, or pancreatic dysfunction. Clinical assessment is important.';
+}
+
+function calculate() {
+  var gluRaw = parseFloat(document.getElementById('glucose').value);
+  var insRaw = parseFloat(document.getElementById('insulin').value);
+
+  // Validation
+  if (!gluRaw || isNaN(gluRaw)) { alert('Please enter your fasting blood glucose value.'); return; }
+  if (!insRaw || isNaN(insRaw)) { alert('Please enter your fasting insulin value.'); return; }
+
+  var vals = getStandardValues();
+  var glu  = vals.glu;  // mmol/L
+  var ins  = vals.ins;  // μIU/mL
+
+  // Range checks
+  if (glu < 2.2 || glu > 33.3) { alert('Glucose value appears outside a plausible fasting range. Please check your units and value.'); return; }
+  if (ins < 0.5 || ins > 300)  { alert('Insulin value appears outside a plausible range. Please check your units and value.'); return; }
+
+  // HOMA-IR
+  var homaIR = (ins * glu) / 22.5;
+
+  // HOMA-β (only valid if glucose > 3.5 mmol/L)
+  var homaBeta = null;
+  if (glu > 3.5) {
+    homaBeta = (20 * ins) / (glu - 3.5);
+    homaBeta = Math.round(homaBeta);
+  }
+
+  // Tier
+  var tier;
+  if (homaIR < 1.0)      tier = 'optimal';
+  else if (homaIR < 2.0) tier = 'normal';
+  else if (homaIR < 3.0) tier = 'mild';
+  else if (homaIR < 5.0) tier = 'significant';
+  else                   tier = 'severe';
+
+  var t = TIERS[tier];
+
+  // HOMA-IR display
+  document.getElementById('homa-value').textContent = homaIR.toFixed(2);
+  document.getElementById('homa-value').style.color = t.color;
+  document.getElementById('result-band').className  = 'result-band ' + t.band;
+
+  var badge = document.getElementById('tier-badge');
+  badge.textContent = t.label;
+  badge.className   = 'homa-tier-badge ' + t.badge;
+
+  // Gauge needle position: scale 0-6, cap at 6
+  var needlePct = Math.min(homaIR, 6) / 6 * 100;
+  document.getElementById('gauge-needle').style.left = needlePct + '%';
+
+  // HOMA-β
+  var betaCard = document.getElementById('beta-card');
+  var betaVal  = document.getElementById('beta-value');
+  var betaBody = document.getElementById('beta-body');
+  if (homaBeta !== null) {
+    betaVal.textContent = homaBeta;
+    betaVal.style.color = homaBeta > 120 ? '#D97706' : homaBeta >= 80 ? '#0284C7' : '#DC2626';
+    betaBody.innerHTML  = '<strong>Beta cell function</strong><br/>' + getBetaInterpretation(homaBeta, tier);
+    betaCard.style.display = 'flex';
+  } else {
+    betaCard.style.display = 'none';
+  }
+
+  // Message
+  var m  = MSGS[tier];
+  var mb = document.getElementById('msg-block');
+  mb.className = 'msg-block ' + tier;
+  document.getElementById('msg-heading').textContent = m.h;
+  document.getElementById('msg-body').textContent    = m.b;
+
+  var tl = document.getElementById('tips-list');
+  tl.innerHTML = '';
+  m.tips.forEach(function(tip) { var li = document.createElement('li'); li.textContent = tip; tl.appendChild(li); });
+
+  // Fasting warning if <8h
+  var fastHrs = document.getElementById('fasting-hrs').value;
+  if (fastHrs === 'warn') {
+    var warn = document.createElement('p');
+    warn.style.cssText = 'margin-top:12px;padding:10px 14px;background:#FEF3C7;border-radius:8px;font-size:12px;color:#92400E;';
+    warn.textContent = '⚠️ You indicated you fasted for less than 8 hours or are unsure. HOMA-IR accuracy depends on a proper fast — your result may be higher than your true score.';
+    tl.appendChild(warn);
+  }
+
+  // Reveal
+  document.getElementById('result-panel').style.display = '';
+  document.getElementById('result-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'calculator_result', { calculator: 'homa_ir', homa_ir: homaIR.toFixed(2), tier: tier });
+  }
+}
+
+function openMobileMenu()  { document.getElementById('mobile-menu').classList.add('open'); document.getElementById('nav-hamburger').setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+function closeMobileMenu() { document.getElementById('mobile-menu').classList.remove('open'); document.getElementById('nav-hamburger').setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMobileMenu(); });
+</script>
+</body>
+</html>

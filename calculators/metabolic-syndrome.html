@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X6K2H9YW2V"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-X6K2H9YW2V');</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Metabolic Syndrome Risk Calculator | SageMyHealth</title>
+  <meta name="description" content="Check your metabolic syndrome risk using the IDF/AHA 5-criteria clinical definition. Enter waist circumference, blood pressure, blood glucose, triglycerides, and HDL to see how many criteria you meet — with personalised next steps." />
+  <meta name="keywords" content="metabolic syndrome calculator, metabolic syndrome criteria, insulin resistance syndrome" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://sagemyhealth.com/calculators/metabolic-syndrome.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SageMyHealth" />
+  <meta property="og:title" content="Metabolic Syndrome Risk Calculator" />
+  <meta property="og:description" content="Check your metabolic syndrome risk using the IDF/AHA 5-criteria clinical definition. Enter waist circumference, blood pressure, blood glucose, triglycerides, and HDL to see how many criteria you meet — with personalised next steps." />
+  <meta property="og:url" content="https://sagemyhealth.com/calculators/metabolic-syndrome.html" />
+  <meta property="og:image" content="https://sagemyhealth.com/calculators/assets/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Metabolic Syndrome Risk Calculator" />
+  <meta name="twitter:description" content="Check your metabolic syndrome risk using the IDF/AHA 5-criteria clinical definition. Enter waist circumference, blood pressure, blood glucose, triglycerides, and HDL to see how many criteria you meet — with personalised next steps." />
+  <meta name="twitter:image" content="https://sagemyhealth.com/calculators/assets/logo.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "name": "Metabolic Syndrome Risk Calculator",
+    "description": "Check your metabolic syndrome risk using the IDF/AHA 5-criteria clinical definition. Enter waist circumference, blood pressure, blood glucose, triglycerides, and HDL to see how many criteria you meet — with personalised next steps.",
+    "url": "https://sagemyhealth.com/calculators/metabolic-syndrome.html",
+    "publisher": { "@type": "Organization", "name": "SageMyHealth", "url": "https://sagemyhealth.com/" },
+    "isAccessibleForFree": true,
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sagemyhealth.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Diabetes & Blood Sugar", "item": "https://sagemyhealth.com/#categories" },
+        { "@type": "ListItem", "position": 3, "name": "Metabolic Syndrome Risk Calculator", "item": "https://sagemyhealth.com/calculators/metabolic-syndrome.html" }
+      ]
+    }
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sage:#3B6A3A;--sage-dark:#0A3D2A;--sage-mid:#5C8A5C;--sage-light:#EBF2EC;--sage-pale:#F2F7F3;
+      --cream:#E3FFB3;--white:#FFFFFF;--text-dark:#1A2E1E;--text-mid:#4A5568;--text-light:#718096;
+      --placeholder:#AAB0B8;--border:#E2EBE4;--border-mid:#C8D9CC;
+      --shadow-xs:0 1px 2px rgba(59,106,58,0.06);--shadow-sm:0 1px 6px rgba(59,106,58,0.08);
+      --shadow-md:0 4px 16px rgba(59,106,58,0.12);--shadow-lg:0 8px 32px rgba(59,106,58,0.16);
+      --r-sm:8px;--r:12px;--r-lg:20px;--r-xl:28px;
+      --mets:#0D9488;--mets-dark:#0F766E;--mets-light:#F0FDFA;--mets-mid:#2DD4BF;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--text-dark);background:var(--sage-pale);line-height:1.6;-webkit-font-smoothing:antialiased;}
+    a{color:inherit;text-decoration:none;}button{cursor:pointer;font-family:inherit;}
+    .site-nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,0.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+    .nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:32px;}
+    .nav-logo{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+    .nav-links{display:flex;align-items:center;gap:28px;list-style:none;flex:1;justify-content:center;}
+    .nav-links a{color:var(--text-mid);font-size:15px;font-weight:500;transition:color .2s;}
+    .nav-links a:hover{color:var(--sage);}
+    .nav-btn{background:var(--sage);color:white;border:none;padding:9px 20px;border-radius:var(--r-sm);font-size:14px;font-weight:600;transition:background .2s;}
+    .nav-btn:hover{background:var(--sage-dark);}
+    .calc-page{padding:36px 0 72px;}
+    .calc-wrapper{max-width:1200px;margin:0 auto;padding:0 24px;}
+    .breadcrumb{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-light);margin-bottom:24px;flex-wrap:wrap;}
+    .breadcrumb a{color:var(--sage);}.breadcrumb a:hover{text-decoration:underline;}.bc-sep{color:var(--border-mid);}
+    .page-header{margin-bottom:28px;}
+    .calc-tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--sage);background:var(--white);padding:5px 12px;border-radius:20px;margin-bottom:12px;letter-spacing:.3px;border:1px solid var(--border);}
+    .page-header h1{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,42px);font-weight:700;color:var(--text-dark);letter-spacing:-.5px;margin-bottom:10px;line-height:1.15;}
+    .page-header p{font-size:15px;color:var(--text-mid);line-height:1.7;max-width:700px;}
+    .calc-columns{display:grid;grid-template-columns:480px 1fr;gap:24px;align-items:start;}
+    .form-card{background:white;border-radius:var(--r-xl);box-shadow:var(--shadow-lg);overflow:hidden;}
+    .form-card-header{padding:20px 28px 0;}
+    .form-card-title{font-size:14px;font-weight:700;color:var(--text-dark);margin-bottom:4px;}
+    .form-card-sub{font-size:12px;color:var(--text-light);margin-bottom:6px;}
+    .form-body{padding:4px 28px 28px;}
+    .field-group{margin-bottom:16px;}
+    .field-label{display:block;font-size:13px;font-weight:600;color:var(--text-dark);margin-bottom:6px;}
+    .field-hint{font-size:11px;color:var(--text-light);margin-top:4px;line-height:1.5;}
+    .field-select{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--r-sm);font-size:15px;font-family:inherit;color:var(--text-dark);background:white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%230D9488' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 12px center;appearance:none;-webkit-appearance:none;cursor:pointer;transition:border-color .18s;}
+    .field-select:focus{outline:none;border-color:var(--mets);}
+    .input-row{display:flex;gap:8px;align-items:flex-start;}
+    .input-row .field-input{flex:1;}
+    .field-input{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--r-sm);font-size:15px;font-family:inherit;color:var(--text-dark);background:white;transition:border-color .18s;}
+    .field-input:focus{outline:none;border-color:var(--mets);}
+    .field-input::placeholder{color:var(--placeholder);}
+    .unit-toggle{display:flex;border:1.5px solid var(--border);border-radius:var(--r-sm);overflow:hidden;flex-shrink:0;}
+    .unit-btn{padding:11px 12px;background:white;border:none;font-size:12px;font-weight:700;color:var(--text-light);transition:all .15s;min-width:44px;text-align:center;}
+    .unit-btn.active{background:var(--mets);color:white;}
+    .section-divider{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--mets);margin:22px 0 14px;display:flex;align-items:center;gap:8px;}
+    .section-divider::after{content:'';flex:1;height:1px;background:var(--mets-light);}
+    .q-row{margin-bottom:16px;}
+    .q-label{display:block;font-size:13px;font-weight:600;color:var(--text-dark);margin-bottom:8px;}
+    .pill-group{display:flex;gap:5px;flex-wrap:wrap;}
+    .pill-btn{flex:1;min-width:0;padding:9px 8px;border:1.5px solid var(--border);border-radius:var(--r-sm);background:white;font-size:12px;font-weight:600;color:var(--text-mid);text-align:center;line-height:1.3;transition:all .15s;}
+    .pill-btn:hover{border-color:var(--mets);color:var(--mets);}
+    .pill-btn.active{background:var(--mets);border-color:var(--mets);color:white;}
+    .bp-row{display:grid;grid-template-columns:1fr 20px 1fr;gap:4px;align-items:center;}
+    .bp-sep{text-align:center;font-size:20px;font-weight:300;color:var(--text-light);line-height:1;}
+    .calc-btn{width:100%;background:var(--sage);color:white;border:none;padding:14px;border-radius:var(--r);font-size:16px;font-weight:700;transition:all .18s;margin-top:6px;}
+    .calc-btn:hover{background:var(--sage-dark);transform:translateY(-1px);box-shadow:var(--shadow-md);}
+    .calc-btn:active{transform:translateY(0);}
+    .results-col{display:flex;flex-direction:column;gap:20px;}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+    .result-card{background:white;border-radius:var(--r-xl);box-shadow:var(--shadow-lg);overflow:hidden;animation:fadeUp .35s ease;}
+    .result-band{height:5px;}
+    .result-band.clear  {background:linear-gradient(90deg,#16A34A,#4ADE80);}
+    .result-band.border {background:linear-gradient(90deg,var(--mets-mid),var(--mets));}
+    .result-band.metsy  {background:linear-gradient(90deg,#F97316,#DC2626);}
+    .result-body{padding:24px;}
+    /* Score hero */
+    .score-hero{text-align:center;padding:8px 0 20px;border-bottom:1px solid var(--border);margin-bottom:20px;}
+    .score-hero-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text-light);margin-bottom:8px;}
+    .criteria-count{font-size:64px;font-weight:800;letter-spacing:-2px;line-height:1;}
+    .criteria-denom{font-size:24px;font-weight:600;color:var(--text-light);}
+    .tier-badge{display:inline-block;margin-top:10px;padding:5px 18px;border-radius:50px;font-size:13px;font-weight:700;}
+    .tier-clear   {background:#DCFCE7;color:#166534;}
+    .tier-border  {background:var(--mets-light);color:var(--mets-dark);}
+    .tier-metsy   {background:#FEF2F2;color:#991B1B;}
+    /* Criteria list */
+    .criteria-title{font-size:13px;font-weight:700;color:var(--text-dark);margin-bottom:12px;}
+    .criterion-row{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:var(--r);margin-bottom:8px;border:1.5px solid;}
+    .criterion-row.met    {background:#FEF2F2;border-color:#FECACA;}
+    .criterion-row.notmet {background:#F0FDF4;border-color:#BBF7D0;}
+    .criterion-row.unknown{background:var(--sage-pale);border-color:var(--border);}
+    .crit-icon{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+    .crit-icon.met    {background:#DC2626;color:white;}
+    .crit-icon.notmet {background:#16A34A;color:white;}
+    .crit-icon.unknown{background:var(--border-mid);color:var(--text-light);}
+    .crit-info{flex:1;}
+    .crit-name{font-size:13px;font-weight:700;color:var(--text-dark);}
+    .crit-value{font-size:12px;color:var(--text-mid);margin-top:2px;}
+    .crit-threshold{font-size:11px;color:var(--text-light);}
+    /* Message block */
+    .msg-block{border-radius:var(--r);padding:18px;margin:16px 0;border-left:4px solid;}
+    .msg-block.clear {background:#F0FDF4;border-color:#16A34A;}
+    .msg-block.border{background:var(--mets-light);border-color:var(--mets);}
+    .msg-block.metsy {background:#FEF2F2;border-color:#DC2626;}
+    .msg-block h3{font-size:14px;font-weight:700;margin-bottom:6px;color:var(--text-dark);}
+    .msg-block p{font-size:13px;color:var(--text-mid);line-height:1.7;}
+    /* Tips */
+    .tips-title{font-size:13px;font-weight:700;color:var(--text-dark);margin:16px 0 10px;}
+    .tips-list{list-style:none;display:flex;flex-direction:column;gap:8px;}
+    .tips-list li{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:var(--text-mid);line-height:1.6;}
+    .tips-list li::before{content:'✦';color:var(--mets);font-size:10px;margin-top:3px;flex-shrink:0;}
+    .unknown-note{background:var(--sage-pale);border-radius:var(--r-sm);padding:10px 14px;font-size:12px;color:var(--text-light);margin-top:12px;border:1px solid var(--border);}
+    .note-block{background:var(--cream);border-radius:var(--r);padding:13px 16px;font-size:12px;color:var(--text-light);line-height:1.7;display:flex;gap:8px;align-items:flex-start;margin-top:14px;}
+    .note-block svg{flex-shrink:0;margin-top:1px;}
+    .info-card{background:white;border-radius:var(--r-xl);box-shadow:var(--shadow-sm);padding:22px 24px;}
+    .info-card h3{font-size:14px;font-weight:700;margin-bottom:8px;color:var(--text-dark);}
+    .info-card p{font-size:13px;color:var(--text-mid);line-height:1.75;}
+    .info-card p+p{margin-top:10px;}
+    /* Definition box */
+    .def-box{background:var(--mets-light);border:1px solid rgba(13,148,136,.2);border-radius:var(--r);padding:14px 16px;margin-top:12px;}
+    .def-box p{font-size:12px;color:var(--mets-dark);line-height:1.7;}
+    .def-box strong{color:var(--mets-dark);}
+    .related-title{font-size:16px;font-weight:700;color:var(--text-dark);margin-bottom:12px;text-transform:none;letter-spacing:normal;}
+    .related-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+    .related-card{background:white;border:1.5px solid var(--border);border-radius:var(--r);padding:14px 16px;display:flex;align-items:center;gap:12px;transition:all .18s;}
+    .related-card:hover{border-color:var(--sage);box-shadow:var(--shadow-sm);transform:translateY(-1px);}
+    .related-icon{width:36px;height:36px;background:var(--sage-light);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+    .related-info strong{display:block;font-size:13px;font-weight:600;}
+    .related-info span{font-size:11px;color:var(--text-light);}
+    .site-footer{background:var(--text-dark);color:#94A99A;padding:48px 0 0;margin-top:48px;}
+    .footer-inner{max-width:1200px;margin:0 auto;padding:0 24px;}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;padding-bottom:40px;}
+    .footer-logo{display:flex;align-items:center;gap:8px;color:white;font-size:18px;font-weight:700;margin-bottom:12px;}
+    .footer-brand p{font-size:14px;line-height:1.7;max-width:260px;color:#7A958E;}
+    .footer-col h5{color:white;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin-bottom:14px;}
+    .footer-col ul{list-style:none;}.footer-col li{margin-bottom:8px;}
+    .footer-col a{font-size:14px;color:#7A958E;transition:color .2s;}.footer-col a:hover{color:white;}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding:22px 0;display:flex;flex-direction:column;gap:6px;}
+    .footer-disclaimer{font-size:12px;color:#5A7568;line-height:1.7;}.footer-copy{font-size:12px;color:#5A7568;}
+    @media(max-width:1000px){.calc-columns{grid-template-columns:1fr;}}
+    @media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;}.footer-brand{grid-column:1/-1;}}
+    @media(max-width:660px){.nav-links{display:none;}.nav-hamburger{display:flex!important;}.nav-btn{display:none;}.related-grid{grid-template-columns:1fr;}.pill-btn{min-width:calc(50% - 3px);}}
+    @media(max-width:520px){.footer-grid{grid-template-columns:1fr;}}
+    .nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;padding:8px;margin-left:8px;border-radius:8px;cursor:pointer;flex-shrink:0;}
+    .nav-hamburger span{display:block;width:22px;height:2.5px;background:var(--text-dark);border-radius:2px;}
+    .mobile-menu{display:none;position:fixed;inset:0;z-index:999;}
+    .mobile-menu.open{display:block;}
+    .mobile-overlay{position:absolute;inset:0;background:rgba(0,0,0,.45);backdrop-filter:blur(2px);}
+    .mobile-drawer{position:absolute;top:0;right:0;width:min(300px,84vw);height:100%;background:#fff;display:flex;flex-direction:column;box-shadow:-4px 0 40px rgba(0,0,0,.18);animation:drawerIn .22s cubic-bezier(.22,.61,.36,1);}
+    @keyframes drawerIn{from{transform:translateX(100%)}to{transform:translateX(0)}}
+    .mobile-drawer-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px 14px;border-bottom:1px solid var(--border);}
+    .mobile-drawer-logo{font-size:15px;font-weight:700;}
+    .mobile-close{background:none;border:none;font-size:20px;padding:4px 8px;cursor:pointer;color:var(--text-light);border-radius:6px;line-height:1;}
+    .mobile-nav-links{padding:14px 12px;flex:1;display:flex;flex-direction:column;gap:4px;}
+    .mobile-nav-link{display:flex;align-items:center;gap:14px;padding:13px 16px;border-radius:12px;font-size:16px;font-weight:600;color:var(--text-dark);transition:background .15s;}
+    .mobile-nav-link:hover{background:var(--sage-light);color:var(--sage);}
+    .mobile-link-icon{width:40px;height:40px;background:var(--sage-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+    .mobile-browse-btn{display:block;margin:0 12px 20px;padding:14px;background:var(--sage);color:#fff;border-radius:12px;font-size:15px;font-weight:700;text-align:center;}
+  </style>
+</head>
+<body>
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><img src="assets/logo.png" alt="SageMyHealth" style="height:54px;width:auto;object-fit:contain;" /></a>
+    <ul class="nav-links"><li><a href="../index.html#categories">Calculators</a></li><li><a href="../about.html">About</a></li><li><a href="../blog.html">Health Guides</a></li></ul>
+    <a href="../index.html#categories" class="nav-btn">Browse All</a>
+    <button class="nav-hamburger" id="nav-hamburger" onclick="openMobileMenu()" aria-label="Open navigation menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true">
+  <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-drawer">
+    <div class="mobile-drawer-head"><span class="mobile-drawer-logo">SageMyHealth</span><button class="mobile-close" onclick="closeMobileMenu()">&#x2715;</button></div>
+    <nav class="mobile-nav-links">
+      <a href="../index.html#categories" class="mobile-nav-link" onclick="closeMobileMenu()"><span class="mobile-link-icon">&#x1F9EE;</span>Calculators</a>
+      <a href="../about.html" class="mobile-nav-link" onclick="closeMobileMenu()"><span class="mobile-link-icon">&#x1F49A;</span>About</a>
+      <a href="../blog.html" class="mobile-nav-link" onclick="closeMobileMenu()"><span class="mobile-link-icon">&#x1F4D6;</span>Health Guides</a>
+    </nav>
+    <a href="../index.html#categories" class="mobile-browse-btn" onclick="closeMobileMenu()">Browse All Calculators &#x2192;</a>
+  </div>
+</div>
+
+<main class="calc-page">
+  <div class="calc-wrapper">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a><span class="bc-sep">›</span>
+      <a href="../index.html#categories">Diabetes &amp; Blood Sugar</a><span class="bc-sep">›</span>
+      <span>Metabolic Syndrome Risk</span>
+    </nav>
+    <header class="page-header">
+      <div class="calc-tag">💉 Diabetes &amp; Blood Sugar</div>
+      <h1>Metabolic Syndrome Risk Calculator</h1>
+      <p>Metabolic syndrome is a cluster of five interconnected risk factors that together significantly raise your risk of heart disease, stroke, and type 2 diabetes. This calculator uses the IDF/AHA/NHLBI clinical definition to score you against each criterion — and tells you exactly where you stand.</p>
+    </header>
+    <div class="calc-columns">
+      <!-- FORM -->
+      <div class="form-card">
+        <div class="form-card-header">
+          <p class="form-card-title">Enter your measurements — use recent lab results where possible</p>
+          <p class="form-card-sub">You can skip lab values you don't have — we'll flag those as unknown in your result.</p>
+        </div>
+        <div class="form-body">
+
+          <div class="section-divider">About you</div>
+
+          <div class="field-group">
+            <label class="field-label" for="sex">Biological sex</label>
+            <select class="field-select" id="sex" onchange="updateHints()">
+              <option value="">Choose one…</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+            <p class="field-hint">Used to apply sex-specific thresholds for waist circumference and HDL cholesterol.</p>
+          </div>
+
+          <div class="section-divider">Criterion 1 — Waist circumference</div>
+
+          <div class="field-group">
+            <label class="field-label" for="waist">Waist circumference</label>
+            <div class="input-row">
+              <input class="field-input" type="number" id="waist" placeholder="e.g. 38" min="20" max="100" step="0.1" />
+              <div class="unit-toggle">
+                <button class="unit-btn active" id="btn-in" onclick="setWaistUnit('in',this)">in</button>
+                <button class="unit-btn" id="btn-cm" onclick="setWaistUnit('cm',this)">cm</button>
+              </div>
+            </div>
+            <p class="field-hint" id="waist-hint">Measure at the narrowest point of your torso (just above the belly button). Threshold: ≥40 in / 102 cm (male) · ≥35 in / 88 cm (female).</p>
+          </div>
+
+          <div class="section-divider">Criterion 2 — Triglycerides</div>
+
+          <div class="field-group">
+            <label class="field-label" for="tg">Fasting triglycerides</label>
+            <select class="field-select" id="tg">
+              <option value="">Choose one…</option>
+              <option value="na">I don't have this result</option>
+              <option value="normal">Normal — below 150 mg/dL (1.7 mmol/L)</option>
+              <option value="borderline">Borderline — 150–199 mg/dL (1.7–2.2 mmol/L)</option>
+              <option value="high">High — 200–499 mg/dL (2.3–5.6 mmol/L)</option>
+              <option value="very_high">Very high — 500+ mg/dL (5.6+ mmol/L)</option>
+            </select>
+          </div>
+
+          <div class="q-row">
+            <span class="q-label">Are you on medication to lower triglycerides or cholesterol?</span>
+            <div class="pill-group" id="tg-med-group">
+              <button class="pill-btn" onclick="setQ('tg_med','no',this)">No</button>
+              <button class="pill-btn" onclick="setQ('tg_med','yes',this)">Yes (fibrates, niacin, or statins)</button>
+            </div>
+            <p class="field-hint" style="margin-top:5px">Being on these medications automatically meets criterion 2 per clinical guidelines, even if your result appears normal.</p>
+          </div>
+
+          <div class="section-divider">Criterion 3 — HDL cholesterol</div>
+
+          <div class="field-group">
+            <label class="field-label" for="hdl">HDL ("good") cholesterol</label>
+            <select class="field-select" id="hdl">
+              <option value="">Choose one…</option>
+              <option value="na">I don't have this result</option>
+              <option value="low_m">Low — below 40 mg/dL (1.0 mmol/L)</option>
+              <option value="low_f">Low — below 50 mg/dL (1.3 mmol/L)</option>
+              <option value="normal">Normal / above threshold</option>
+            </select>
+            <p class="field-hint" id="hdl-hint">Threshold: below 40 mg/dL (male) · below 50 mg/dL (female). Select the option that matches your result and sex.</p>
+          </div>
+
+          <div class="section-divider">Criterion 4 — Blood pressure</div>
+
+          <div class="field-group">
+            <label class="field-label">Blood pressure (most recent reading)</label>
+            <div class="bp-row">
+              <input class="field-input" type="number" id="sbp" placeholder="Systolic" min="70" max="250" />
+              <div class="bp-sep">/</div>
+              <input class="field-input" type="number" id="dbp" placeholder="Diastolic" min="40" max="160" />
+            </div>
+            <p class="field-hint">Leave blank if you don't know. Threshold: systolic ≥130 or diastolic ≥85 mmHg.</p>
+          </div>
+
+          <div class="q-row">
+            <span class="q-label">Are you on blood pressure (antihypertensive) medication?</span>
+            <div class="pill-group" id="bp-med-group">
+              <button class="pill-btn" onclick="setQ('bp_med','no',this)">No</button>
+              <button class="pill-btn" onclick="setQ('bp_med','yes',this)">Yes</button>
+            </div>
+            <p class="field-hint" style="margin-top:5px">Being treated for high blood pressure counts as meeting criterion 4, even if your current reading is controlled.</p>
+          </div>
+
+          <div class="section-divider">Criterion 5 — Fasting blood glucose</div>
+
+          <div class="field-group">
+            <label class="field-label" for="gluc">Fasting blood glucose</label>
+            <select class="field-select" id="gluc">
+              <option value="">Choose one…</option>
+              <option value="na">I don't have this result</option>
+              <option value="normal">Normal — below 100 mg/dL (5.6 mmol/L)</option>
+              <option value="ifg">Impaired — 100–125 mg/dL (5.6–6.9 mmol/L)</option>
+              <option value="diabetic">Diabetic range — 126+ mg/dL (7.0+ mmol/L)</option>
+            </select>
+            <p class="field-hint">Must be a fasting result (no food for ≥8 hours). Threshold: ≥100 mg/dL (5.6 mmol/L).</p>
+          </div>
+
+          <div class="q-row">
+            <span class="q-label">Diagnosed with type 2 diabetes or on glucose-lowering medication?</span>
+            <div class="pill-group" id="gluc-med-group">
+              <button class="pill-btn" onclick="setQ('gluc_med','no',this)">No</button>
+              <button class="pill-btn" onclick="setQ('gluc_med','yes',this)">Yes</button>
+            </div>
+          </div>
+
+          <button class="calc-btn" onclick="calculate()">Check my metabolic syndrome risk →</button>
+        </div>
+      </div>
+
+      <!-- RESULTS -->
+      <div class="results-col">
+        <div id="result-panel" style="display:none">
+          <div class="result-card">
+            <div class="result-band" id="result-band"></div>
+            <div class="result-body">
+
+              <div class="score-hero">
+                <div class="score-hero-label">Criteria met</div>
+                <div class="criteria-count" id="criteria-count">—<span class="criteria-denom">/5</span></div>
+                <div><span class="tier-badge" id="tier-badge">—</span></div>
+              </div>
+
+              <p class="criteria-title">Your 5 criteria breakdown</p>
+              <div id="criteria-rows"></div>
+
+              <div class="msg-block" id="msg-block">
+                <h3 id="msg-h">—</h3>
+                <p id="msg-p">—</p>
+              </div>
+
+              <p class="tips-title">Priority actions:</p>
+              <ul class="tips-list" id="tips-list"></ul>
+
+              <div id="unknown-note" style="display:none" class="unknown-note">
+                <strong>⚠ Incomplete result:</strong> One or more criteria were entered as unknown. Your actual criteria count may be higher. Complete blood work (lipid panel + fasting glucose) will give you a definitive score.
+              </div>
+
+              <div class="note-block">
+                <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#9CA3AF" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <span>Based on the IDF/AHA/NHLBI 2009 harmonised definition. Metabolic syndrome is defined as meeting 3 or more of the 5 criteria. This tool is for educational purposes only and does not replace clinical assessment by a physician.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <h3>Why metabolic syndrome matters</h3>
+          <p>Metabolic syndrome affects roughly 1 in 3 adults and is one of the strongest predictors of cardiovascular disease and type 2 diabetes — yet most people have never heard of it. The five criteria cluster together because they share a common root: insulin resistance. When cells become resistant to insulin, the body compensates in ways that simultaneously raise blood pressure, blood sugar, triglycerides, and abdominal fat while lowering protective HDL cholesterol.</p>
+          <p>Meeting 3 or more criteria roughly <strong>doubles cardiovascular risk</strong> and increases type 2 diabetes risk fivefold. The good news is that metabolic syndrome is almost entirely reversible through targeted lifestyle changes — and the earlier it's identified, the better the outcome.</p>
+          <div class="def-box">
+            <p><strong>The 5 criteria (IDF/AHA/NHLBI 2009):</strong> central obesity (waist) · high triglycerides · low HDL · elevated blood pressure · elevated fasting glucose. Meeting <strong>3 or more</strong> = metabolic syndrome.</p>
+          </div>
+        </div>
+
+        <div class="related-section">
+          <p class="related-title">You might also like</p>
+          <div class="related-grid">
+            <a href="bmi.html" class="related-card"><div class="related-icon">⚖️</div><div class="related-info"><strong>BMI Calculator</strong><span>Body mass index</span></div></a>
+            <a href="waist-to-height.html" class="related-card"><div class="related-icon">📏</div><div class="related-info"><strong>Waist-to-Height</strong><span>Central obesity index</span></div></a>
+            <a href="blood-glucose.html" class="related-card"><div class="related-icon">🩸</div><div class="related-info"><strong>Blood Glucose</strong><span>Interpret your glucose levels</span></div></a>
+            <a href="insulin-resistance.html" class="related-card"><div class="related-icon">🔬</div><div class="related-info"><strong>Insulin Resistance</strong><span>Likelihood screener</span></div></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo"><img src="assets/logo-white.png" alt="SageMyHealth" style="height:45px;width:auto;object-fit:contain;" /></div>
+        <p>Free, trusted health calculators with warm guidance — helping you understand your numbers.</p>
+      </div>
+      <div class="footer-col"><h5>Calculators</h5><ul>
+        <li><a href="bmi.html">BMI</a></li>
+        <li><a href="blood-glucose.html">Blood Glucose</a></li>
+        <li><a href="waist-to-height.html">Waist-to-Height</a></li>
+        <li><a href="prediabetes-risk.html">Prediabetes Risk</a></li>
+      </ul></div>
+      <div class="footer-col"><h5>Categories</h5><ul>
+        <li><a href="../index.html#categories">Metabolic Health</a></li>
+        <li><a href="../index.html#categories">Weight &amp; Body</a></li>
+        <li><a href="../index.html#categories">Heart Health</a></li>
+        <li><a href="../index.html#categories">Longevity</a></li>
+      </ul></div>
+      <div class="footer-col"><h5>Info</h5><ul>
+        <li><a href="../about.html">About Us</a></li>
+        <li><a href="../blog.html">Health Guides</a></li>
+        <li><a href="../privacy.html">Privacy Policy</a></li>
+        <li><a href="../terms.html">Terms of Use</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-disclaimer"><strong style="color:#7A958E">Medical Disclaimer:</strong> This calculator is for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment.</p>
+      <p class="footer-copy">© 2025 SageMyHealth.com — All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+var waistUnit  = 'in';
+var qAnswers   = {};
+
+function setWaistUnit(unit, btn) {
+  waistUnit = unit;
+  document.getElementById('btn-in').classList.toggle('active', unit === 'in');
+  document.getElementById('btn-cm').classList.toggle('active', unit === 'cm');
+  document.getElementById('waist').placeholder = unit === 'in' ? 'e.g. 38' : 'e.g. 97';
+  updateHints();
+}
+
+function setQ(id, val, btn) {
+  qAnswers[id] = val;
+  var g = document.getElementById(id.replace('_','-') + '-group');
+  if (g) Array.from(g.children).forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+}
+
+function updateHints() {
+  var sex = document.getElementById('sex').value;
+  if (sex === 'male') {
+    document.getElementById('waist-hint').textContent = 'Measure at the narrowest point of your torso. Male threshold: ≥40 in / 102 cm.';
+    document.getElementById('hdl-hint').textContent   = 'Male threshold: below 40 mg/dL (1.0 mmol/L). Select "Low — below 40 mg/dL" if your result is below this.';
+  } else if (sex === 'female') {
+    document.getElementById('waist-hint').textContent = 'Measure at the narrowest point of your torso. Female threshold: ≥35 in / 88 cm.';
+    document.getElementById('hdl-hint').textContent   = 'Female threshold: below 50 mg/dL (1.3 mmol/L). Select "Low — below 50 mg/dL" if your result is below this.';
+  } else {
+    document.getElementById('waist-hint').textContent = 'Measure at the narrowest point of your torso (just above the belly button). Threshold: ≥40 in / 102 cm (male) · ≥35 in / 88 cm (female).';
+  }
+}
+
+function getWaistMet(sex, waistVal, unit) {
+  var cm = unit === 'cm' ? waistVal : waistVal * 2.54;
+  if (sex === 'male')   return cm >= 102;
+  if (sex === 'female') return cm >= 88;
+  return null;
+}
+
+function calculate() {
+  var sex  = document.getElementById('sex').value;
+  var waistRaw = parseFloat(document.getElementById('waist').value);
+  var tg   = document.getElementById('tg').value;
+  var hdl  = document.getElementById('hdl').value;
+  var sbpRaw = document.getElementById('sbp').value;
+  var dbpRaw = document.getElementById('dbp').value;
+  var gluc = document.getElementById('gluc').value;
+
+  if (!sex)      { alert('Please select your biological sex.'); return; }
+  if (isNaN(waistRaw) || waistRaw <= 0) { alert('Please enter your waist circumference.'); return; }
+  if (!tg)       { alert('Please select a triglycerides option.'); return; }
+  if (!hdl)      { alert('Please select an HDL cholesterol option.'); return; }
+  if (!gluc)     { alert('Please select a fasting glucose option.'); return; }
+  if (qAnswers['tg_med']   === undefined) { alert('Please answer whether you\'re on triglyceride-lowering medication.'); return; }
+  if (qAnswers['bp_med']   === undefined) { alert('Please answer whether you\'re on blood pressure medication.'); return; }
+  if (qAnswers['gluc_med'] === undefined) { alert('Please answer the diabetes/glucose medication question.'); return; }
+
+  /* Evaluate each criterion */
+  var criteria = [];
+  var hasUnknown = false;
+
+  /* C1: Waist */
+  var waistMet = getWaistMet(sex, waistRaw, waistUnit);
+  var waistDisplay = waistUnit === 'in'
+    ? waistRaw.toFixed(1) + ' in (' + (waistRaw * 2.54).toFixed(0) + ' cm)'
+    : waistRaw.toFixed(0) + ' cm (' + (waistRaw / 2.54).toFixed(1) + ' in)';
+  var waistThreshold = sex === 'male' ? '≥40 in / 102 cm' : '≥35 in / 88 cm';
+  criteria.push({
+    name: 'Waist circumference',
+    value: waistDisplay,
+    threshold: 'Threshold: ' + waistThreshold,
+    met: waistMet,
+    unknown: false,
+    tip: 'Reduce abdominal fat through sustained caloric deficit and regular aerobic exercise — even modest reductions (2–3 cm) meaningfully reduce metabolic risk.'
+  });
+
+  /* C2: Triglycerides */
+  var tgMet, tgVal, tgThresh;
+  if (qAnswers['tg_med'] === 'yes') {
+    tgMet = true; tgVal = 'On triglyceride-lowering medication'; tgThresh = 'Medication = criterion met';
+  } else if (tg === 'na') {
+    tgMet = null; tgVal = 'Result not available'; tgThresh = 'Threshold: ≥150 mg/dL (1.7 mmol/L)'; hasUnknown = true;
+  } else {
+    tgMet = (tg !== 'normal');
+    var tgLabels = { normal:'Below 150 mg/dL — normal', borderline:'150–199 mg/dL — borderline high', high:'200–499 mg/dL — high', very_high:'500+ mg/dL — very high' };
+    tgVal = tgLabels[tg]; tgThresh = 'Threshold: ≥150 mg/dL (1.7 mmol/L)';
+  }
+  criteria.push({
+    name: 'Triglycerides',
+    value: tgVal, threshold: tgThresh, met: tgMet, unknown: tgMet === null,
+    tip: 'Lower triglycerides by reducing refined carbohydrates, sugar, and alcohol. Increase omega-3 intake (oily fish, flaxseed). Even moderate aerobic exercise has significant triglyceride-lowering effects.'
+  });
+
+  /* C3: HDL */
+  var hdlMet, hdlVal, hdlThresh;
+  if (hdl === 'na') {
+    hdlMet = null; hdlVal = 'Result not available'; hdlThresh = sex === 'male' ? 'Threshold: <40 mg/dL' : (sex === 'female' ? 'Threshold: <50 mg/dL' : 'Threshold: <40 (M) / <50 (F) mg/dL'); hasUnknown = true;
+  } else if (hdl === 'normal') {
+    hdlMet = false; hdlVal = 'Above sex-specific threshold'; hdlThresh = sex === 'female' ? 'Threshold: <50 mg/dL — your level is adequate' : 'Threshold: <40 mg/dL — your level is adequate';
+  } else {
+    /* low_m or low_f — met if matches sex OR entered regardless */
+    hdlMet = true;
+    hdlVal = hdl === 'low_m' ? 'Below 40 mg/dL — low' : 'Below 50 mg/dL — low for female';
+    hdlThresh = sex === 'female' ? 'Threshold: <50 mg/dL' : 'Threshold: <40 mg/dL';
+  }
+  criteria.push({
+    name: 'HDL cholesterol',
+    value: hdlVal, threshold: hdlThresh, met: hdlMet, unknown: hdlMet === null,
+    tip: 'Raise HDL through regular aerobic exercise (the most potent HDL elevator), reducing trans fats, moderate alcohol (if applicable), quitting smoking, and replacing refined carbs with healthy fats.'
+  });
+
+  /* C4: Blood pressure */
+  var sbp = parseFloat(sbpRaw), dbp = parseFloat(dbpRaw);
+  var bpMet, bpVal, bpThresh = 'Threshold: ≥130 systolic or ≥85 diastolic mmHg';
+  if (qAnswers['bp_med'] === 'yes') {
+    bpMet = true; bpVal = 'On antihypertensive medication';
+  } else if (isNaN(sbp) || isNaN(dbp)) {
+    bpMet = null; bpVal = 'Reading not provided'; hasUnknown = true;
+  } else {
+    bpMet = sbp >= 130 || dbp >= 85;
+    bpVal = sbp.toFixed(0) + '/' + dbp.toFixed(0) + ' mmHg';
+  }
+  criteria.push({
+    name: 'Blood pressure',
+    value: bpVal, threshold: bpThresh, met: bpMet, unknown: bpMet === null,
+    tip: 'Lower blood pressure through a DASH-style diet (high vegetables, potassium, low sodium), aerobic exercise, reducing alcohol, and stress management. A 5–10 mmHg reduction significantly reduces cardiovascular risk.'
+  });
+
+  /* C5: Glucose */
+  var glucMet, glucVal, glucThresh = 'Threshold: ≥100 mg/dL (5.6 mmol/L) fasting';
+  if (qAnswers['gluc_med'] === 'yes') {
+    glucMet = true; glucVal = 'On glucose-lowering medication / diagnosed T2D';
+  } else if (gluc === 'na') {
+    glucMet = null; glucVal = 'Result not available'; hasUnknown = true;
+  } else {
+    glucMet = gluc !== 'normal';
+    var glucLabels = { normal:'Below 100 mg/dL — normal', ifg:'100–125 mg/dL — impaired fasting glucose', diabetic:'126+ mg/dL — diabetic range' };
+    glucVal = glucLabels[gluc];
+  }
+  criteria.push({
+    name: 'Fasting blood glucose',
+    value: glucVal, threshold: glucThresh, met: glucMet, unknown: glucMet === null,
+    tip: 'Improve fasting glucose by reducing refined carbohydrates and added sugars, increasing fibre intake, adding resistance training, and aiming for 150+ min of moderate aerobic activity per week. Even a 5–7% body weight reduction significantly improves insulin sensitivity.'
+  });
+
+  /* Count met */
+  var metCount = criteria.filter(function(c){ return c.met === true; }).length;
+  var unknownCount = criteria.filter(function(c){ return c.unknown; }).length;
+
+  var tier = metCount >= 3 ? 'metsy' : metCount === 2 ? 'border' : 'clear';
+  var tierLabels = { clear:'No metabolic syndrome', border:'Borderline — act now', metsy:'Metabolic syndrome' };
+  var tierBadges = { clear:'tier-clear', border:'tier-border', metsy:'tier-metsy' };
+
+  /* Render */
+  document.getElementById('criteria-count').innerHTML = metCount + '<span class="criteria-denom">/5</span>';
+  document.getElementById('criteria-count').style.color = tier === 'metsy' ? '#DC2626' : tier === 'border' ? 'var(--mets-dark)' : '#166534';
+  var badge = document.getElementById('tier-badge');
+  badge.textContent = tierLabels[tier]; badge.className = 'tier-badge ' + tierBadges[tier];
+  document.getElementById('result-band').className = 'result-band ' + tier;
+
+  /* Criteria rows */
+  var cr = document.getElementById('criteria-rows');
+  cr.innerHTML = '';
+  criteria.forEach(function(c) {
+    var status = c.unknown ? 'unknown' : (c.met ? 'met' : 'notmet');
+    var icon   = c.unknown ? '?' : (c.met ? '✕' : '✓');
+    var div = document.createElement('div');
+    div.className = 'criterion-row ' + status;
+    div.innerHTML =
+      '<div class="crit-icon ' + status + '">' + icon + '</div>' +
+      '<div class="crit-info">' +
+        '<div class="crit-name">' + c.name + ' <span style="font-size:11px;font-weight:400;color:' + (c.met?'#DC2626':c.unknown?'#718096':'#16A34A') + '">' + (c.unknown ? '— unknown' : (c.met ? '— criterion MET' : '— criterion not met')) + '</span></div>' +
+        '<div class="crit-value">' + c.value + '</div>' +
+        '<div class="crit-threshold">' + c.threshold + '</div>' +
+      '</div>';
+    cr.appendChild(div);
+  });
+
+  /* Message */
+  var MSGS = {
+    clear:  { h: metCount === 0 ? 'No criteria met — healthy metabolic profile' : 'One criterion met — low current risk',
+              p: metCount === 0
+                ? 'Your measurements don\'t currently meet any of the five metabolic syndrome criteria. This is a strong result. Continue with regular health check-ups, and monitor any criteria that are approaching thresholds over time.'
+                : 'One criterion is elevated. This alone is not metabolic syndrome, but it\'s a signal to monitor. Address this single elevated factor now — it\'s much easier to reverse one criterion than three.' },
+    border: { h: 'Two criteria met — high-risk "pre-metabolic syndrome"',
+              p: 'Meeting two criteria means you are likely in the early stage of metabolic syndrome. Research shows people at this stage frequently progress to full metabolic syndrome without intervention. The good news: two-criteria cases are highly responsive to lifestyle changes — targeted diet, exercise, and addressing the elevated factors can reverse all criteria within 6–12 months in many people.' },
+    metsy:  { h: 'Metabolic syndrome — ' + metCount + ' of 5 criteria met',
+              p: 'By the IDF/AHA clinical definition, you meet the threshold for metabolic syndrome. This raises your risk of cardiovascular disease approximately twofold and type 2 diabetes risk fivefold compared to people with no criteria. However, metabolic syndrome is largely reversible through sustained lifestyle changes — and responding to it now has significant long-term benefit. Discuss these results with your doctor.' }
+  };
+  var msg = MSGS[tier];
+  var mb = document.getElementById('msg-block');
+  mb.className = 'msg-block ' + tier;
+  document.getElementById('msg-h').textContent = msg.h;
+  document.getElementById('msg-p').textContent = msg.p;
+
+  /* Tips from met criteria */
+  var tl = document.getElementById('tips-list');
+  tl.innerHTML = '';
+  criteria.filter(function(c){ return c.met; }).forEach(function(c){
+    var li = document.createElement('li'); li.textContent = c.tip; tl.appendChild(li);
+  });
+  /* Universal tips */
+  var universals = ['Speak with your doctor about these results — they can order a complete metabolic panel and discuss medication options if lifestyle changes alone are insufficient.'];
+  if (tier === 'metsy' || tier === 'border') {
+    universals.push('A Mediterranean or DASH-style dietary pattern addresses multiple metabolic syndrome criteria simultaneously and has the strongest evidence base for reversal.');
+    universals.push('150+ minutes of moderate aerobic exercise per week (brisk walking counts) improves all five criteria independently — it\'s the most powerful single intervention.');
+  }
+  universals.forEach(function(t){ var li = document.createElement('li'); li.textContent = t; tl.appendChild(li); });
+
+  document.getElementById('unknown-note').style.display = hasUnknown ? '' : 'none';
+  document.getElementById('result-panel').style.display = '';
+  document.getElementById('result-panel').scrollIntoView({ behavior:'smooth', block:'start' });
+  if (typeof gtag !== 'undefined') gtag('event','calculator_result',{calculator:'metabolic_syndrome',met_count:metCount,tier:tier});
+}
+
+function openMobileMenu()  { document.getElementById('mobile-menu').classList.add('open'); document.getElementById('nav-hamburger').setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+function closeMobileMenu() { document.getElementById('mobile-menu').classList.remove('open'); document.getElementById('nav-hamburger').setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeMobileMenu(); });
+</script>
+</body>
+</html>

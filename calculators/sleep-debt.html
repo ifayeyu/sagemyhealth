@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X6K2H9YW2V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X6K2H9YW2V');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sleep Debt Calculator — How Much Sleep Are You Missing? | SageMyHealth</title>
+  <meta name="description" content="Log your actual sleep over the last 7 nights and instantly see your sleep debt in hours, your nightly deficit, and how long it will take to recover. Includes a visual week chart and personalised recovery plan." />
+  <meta name="keywords" content="sleep debt calculator, sleep deprivation, sleep deficit, sleep recovery time" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://sagemyhealth.com/calculators/sleep-debt.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SageMyHealth" />
+  <meta property="og:title" content="Sleep Debt Calculator — How Much Sleep Are You Missing?" />
+  <meta property="og:description" content="Log your actual sleep over the last 7 nights and instantly see your sleep debt in hours, your nightly deficit, and how long it will take to recover. Includes a visual week chart and personalised recovery plan." />
+  <meta property="og:url" content="https://sagemyhealth.com/calculators/sleep-debt.html" />
+  <meta property="og:image" content="https://sagemyhealth.com/calculators/assets/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sleep Debt Calculator — How Much Sleep Are You Missing?" />
+  <meta name="twitter:description" content="Log your actual sleep over the last 7 nights and instantly see your sleep debt in hours, your nightly deficit, and how long it will take to recover. Includes a visual week chart and personalised recovery plan." />
+  <meta name="twitter:image" content="https://sagemyhealth.com/calculators/assets/logo.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "name": "Sleep Debt Calculator — How Much Sleep Are You Missing?",
+    "description": "Log your actual sleep over the last 7 nights and instantly see your sleep debt in hours, your nightly deficit, and how long it will take to recover. Includes a visual week chart and personalised recovery plan.",
+    "url": "https://sagemyhealth.com/calculators/sleep-debt.html",
+    "publisher": { "@type": "Organization", "name": "SageMyHealth", "url": "https://sagemyhealth.com/" },
+    "isAccessibleForFree": true,
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sagemyhealth.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Sleep & Recovery", "item": "https://sagemyhealth.com/#categories" },
+        { "@type": "ListItem", "position": 3, "name": "Sleep Debt Calculator — How Much Sleep Are You Missing?", "item": "https://sagemyhealth.com/calculators/sleep-debt.html" }
+      ]
+    }
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sage:       #3B6A3A; --sage-dark: #0A3D2A; --sage-mid: #5C8A5C;
+      --sage-light: #EBF2EC; --sage-pale: #F2F7F3; --cream: #E3FFB3;
+      --white: #FFFFFF; --text-dark: #1A2E1E; --text-mid: #4A5568;
+      --text-light: #718096; --border: #E2EBE4; --border-mid: #C8D9CC;
+      --shadow-sm: 0 1px 6px rgba(59,106,58,.08); --shadow-md: 0 4px 16px rgba(59,106,58,.12);
+      --shadow-lg: 0 8px 32px rgba(59,106,58,.16);
+      --sleep: #6366F1; --sleep-light: #EEF2FF; --sleep-mid: #818CF8;
+      --deficit: #EF4444; --surplus: #22C55E;
+      --r-sm: 8px; --r: 12px; --r-lg: 20px; --r-xl: 28px;
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif; color:var(--text-dark); background:var(--sage-pale); line-height:1.6; -webkit-font-smoothing:antialiased; }
+    a { color:inherit; text-decoration:none; }
+    button { cursor:pointer; font-family:inherit; }
+
+    /* NAV */
+    .site-nav { position:sticky; top:0; z-index:200; background:rgba(255,255,255,.96); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); }
+    .nav-inner { max-width:1200px; margin:0 auto; padding:0 24px; height:68px; display:flex; align-items:center; justify-content:space-between; gap:32px; }
+    .nav-logo { display:flex; align-items:center; gap:10px; flex-shrink:0; }
+    .nav-links { display:flex; align-items:center; gap:28px; list-style:none; flex:1; justify-content:center; }
+    .nav-links a { color:var(--text-mid); font-size:15px; font-weight:500; transition:color .2s; }
+    .nav-links a:hover { color:var(--sage); }
+    .nav-btn { background:var(--sage); color:white; border:none; padding:9px 20px; border-radius:var(--r-sm); font-size:14px; font-weight:600; transition:background .2s; }
+    .nav-btn:hover { background:var(--sage-dark); }
+
+    /* PAGE */
+    .calc-page { padding:36px 0 72px; }
+    .calc-wrapper { max-width:1200px; margin:0 auto; padding:0 24px; }
+    .breadcrumb { display:flex; align-items:center; gap:8px; font-size:13px; color:var(--text-light); margin-bottom:24px; flex-wrap:wrap; }
+    .breadcrumb a { color:var(--sage); }
+    .breadcrumb a:hover { text-decoration:underline; }
+    .bc-sep { color:var(--border-mid); }
+    .page-header { margin-bottom:28px; }
+    .calc-tag { display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:600; color:var(--sage); background:var(--white); padding:5px 12px; border-radius:20px; margin-bottom:12px; letter-spacing:.3px; border:1px solid var(--border); }
+    .page-header h1 { font-family:'Playfair Display',serif; font-size:clamp(28px,4vw,42px); font-weight:700; color:var(--text-dark); letter-spacing:-.5px; margin-bottom:10px; line-height:1.15; }
+    .page-header p { font-size:15px; color:var(--text-mid); line-height:1.7; max-width:700px; }
+
+    /* LAYOUT */
+    .calc-columns { display:grid; grid-template-columns:480px 1fr; gap:24px; align-items:start; }
+
+    /* FORM CARD */
+    .form-card { background:white; border-radius:var(--r-xl); box-shadow:var(--shadow-lg); overflow:hidden; }
+    .form-card-header { padding:22px 28px 16px; border-bottom:1px solid var(--border); }
+    .form-card-title { font-size:14px; font-weight:700; color:var(--text-dark); }
+    .form-card-sub { font-size:12px; color:var(--text-light); margin-top:3px; }
+    .form-body { padding:22px 28px 28px; }
+    .section-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.6px; color:var(--text-light); margin-bottom:10px; }
+
+    /* Sleep need input */
+    .sleep-need-row { display:flex; align-items:center; gap:10px; margin-bottom:6px; }
+    .need-input-wrap { position:relative; flex:1; }
+    .need-input { width:100%; height:46px; padding:0 48px 0 14px; border:1.5px solid var(--border); border-radius:var(--r-sm); font-size:20px; font-weight:700; color:var(--text-dark); background:white; outline:none; transition:border-color .15s; -webkit-appearance:none; -moz-appearance:textfield; }
+    .need-input::-webkit-inner-spin-button, .need-input::-webkit-outer-spin-button { -webkit-appearance:none; }
+    .need-input:focus { border-color:var(--sleep); }
+    .need-unit { position:absolute; right:12px; top:50%; transform:translateY(-50%); font-size:13px; font-weight:600; color:var(--text-light); pointer-events:none; }
+    .need-hint { font-size:12px; color:var(--text-light); line-height:1.5; margin-bottom:18px; }
+    .need-hint a { color:var(--sage); text-decoration:underline; }
+
+    /* Age presets */
+    .age-presets { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:20px; }
+    .age-preset { padding:5px 11px; border:1.5px solid var(--border); border-radius:50px; font-size:11px; font-weight:600; background:white; color:var(--text-mid); transition:all .15s; }
+    .age-preset:hover { border-color:var(--sleep-mid); color:var(--sleep); }
+    .age-preset.active { background:var(--sleep); border-color:var(--sleep); color:white; }
+
+    /* 7-day log */
+    .day-log { display:flex; flex-direction:column; gap:8px; margin-bottom:18px; }
+    .day-row { display:grid; grid-template-columns: 94px 1fr auto; align-items:center; gap:10px; }
+    .day-label { font-size:13px; font-weight:600; color:var(--text-dark); }
+    .day-label .day-sub { font-size:10px; font-weight:400; color:var(--text-light); display:block; }
+    .day-input-wrap { position:relative; }
+    .day-input { width:100%; height:40px; padding:0 42px 0 12px; border:1.5px solid var(--border); border-radius:var(--r-sm); font-size:15px; font-weight:600; color:var(--text-dark); background:white; outline:none; transition:border-color .15s; -webkit-appearance:none; -moz-appearance:textfield; }
+    .day-input::-webkit-inner-spin-button, .day-input::-webkit-outer-spin-button { -webkit-appearance:none; }
+    .day-input:focus { border-color:var(--sleep); }
+    .day-input.over { border-color:var(--surplus); background:#F0FDF4; }
+    .day-input.under { border-color:var(--deficit); background:#FEF2F2; }
+    .day-input-unit { position:absolute; right:10px; top:50%; transform:translateY(-50%); font-size:11px; font-weight:600; color:var(--text-light); pointer-events:none; }
+    .day-badge { width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; flex-shrink:0; transition:all .2s; }
+    .badge-over  { background:#DCFCE7; color:#16A34A; }
+    .badge-under { background:#FEE2E2; color:#DC2626; }
+    .badge-neutral { background:var(--sage-light); color:var(--sage); }
+
+    /* Quick fill */
+    .quick-fill { background:var(--sage-pale); border-radius:var(--r); padding:12px 14px; margin-bottom:18px; }
+    .quick-fill-title { font-size:12px; font-weight:700; color:var(--text-mid); margin-bottom:8px; }
+    .quick-fill-row { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+    .quick-fill-label { font-size:12px; color:var(--text-light); }
+    .qf-input { width:60px; height:32px; border:1.5px solid var(--border); border-radius:6px; text-align:center; font-size:13px; font-weight:600; color:var(--text-dark); background:white; outline:none; -webkit-appearance:none; -moz-appearance:textfield; }
+    .qf-input::-webkit-inner-spin-button, .qf-input::-webkit-outer-spin-button { -webkit-appearance:none; }
+    .qf-btn { padding:6px 12px; background:var(--sage); color:white; border:none; border-radius:6px; font-size:12px; font-weight:600; transition:background .15s; }
+    .qf-btn:hover { background:var(--sage-dark); }
+
+    .calc-btn { width:100%; background:var(--sleep); color:white; border:none; padding:14px; border-radius:var(--r); font-size:16px; font-weight:700; transition:all .18s; display:flex; align-items:center; justify-content:center; gap:8px; }
+    .calc-btn:hover { background:#4F46E5; transform:translateY(-1px); box-shadow:var(--shadow-md); }
+    .calc-btn:active { transform:translateY(0); }
+    .err-banner { display:none; background:#FEF2F2; border:1px solid #FECACA; border-radius:var(--r-sm); padding:10px 14px; font-size:13px; color:#DC2626; margin-top:10px; font-weight:500; }
+
+    /* RESULTS */
+    .results-col { display:flex; flex-direction:column; gap:20px; }
+
+    .result-placeholder { background:white; border-radius:var(--r-xl); box-shadow:var(--shadow-sm); padding:40px 24px; text-align:center; }
+    .placeholder-icon { font-size:48px; margin-bottom:16px; }
+    .placeholder-title { font-size:16px; font-weight:700; color:var(--text-dark); margin-bottom:8px; }
+    .placeholder-sub { font-size:13px; color:var(--text-light); line-height:1.7; max-width:260px; margin:0 auto; }
+
+    .result-card { background:white; border-radius:var(--r-xl); box-shadow:var(--shadow-lg); overflow:hidden; display:none; }
+    .result-card.visible { display:block; animation:slideUp .35s ease; }
+    @keyframes slideUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+    .result-band { height:6px; width:100%; }
+    .result-body { padding:24px; }
+
+    /* Debt display */
+    .debt-display { display:flex; align-items:flex-start; gap:20px; margin-bottom:20px; padding-bottom:20px; border-bottom:1px solid var(--border); flex-wrap:wrap; }
+    .debt-main { flex:1; min-width:140px; }
+    .debt-num { font-size:60px; font-weight:800; line-height:1; letter-spacing:-2px; }
+    .debt-label { font-size:13px; color:var(--text-light); margin-top:4px; }
+    .debt-stats { display:flex; flex-direction:column; gap:10px; flex:1; min-width:140px; }
+    .debt-stat { background:var(--sage-pale); border-radius:var(--r-sm); padding:10px 14px; }
+    .debt-stat-val { font-size:18px; font-weight:800; color:var(--text-dark); line-height:1; }
+    .debt-stat-lbl { font-size:11px; color:var(--text-light); margin-top:2px; }
+
+    /* Severity */
+    .sev-row { display:grid; grid-template-columns:repeat(5,1fr); gap:5px; margin-bottom:20px; }
+    .sev-box { border-radius:var(--r-sm); padding:8px 4px; text-align:center; border:1.5px solid transparent; }
+    .sev-box .sev-name  { font-size:10px; font-weight:700; margin-bottom:2px; }
+    .sev-box .sev-range { font-size:9px; }
+    .sev-none     { background:#F0FDF4; color:#16A34A; } .sev-none.active     { border-color:#16A34A; }
+    .sev-mild     { background:#FEFCE8; color:#CA8A04; } .sev-mild.active     { border-color:#CA8A04; }
+    .sev-moderate { background:#FFF7ED; color:#EA580C; } .sev-moderate.active { border-color:#EA580C; }
+    .sev-high     { background:#FEF2F2; color:#DC2626; } .sev-high.active     { border-color:#DC2626; }
+    .sev-severe   { background:#4C0519; color:#FDA4AF; } .sev-severe.active   { border-color:#FDA4AF; }
+
+    /* Week chart */
+    .chart-title { font-size:13px; font-weight:700; color:var(--text-dark); margin-bottom:12px; }
+    .week-chart { display:grid; grid-template-columns:repeat(7,1fr); gap:6px; margin-bottom:20px; align-items:end; height:130px; }
+    .chart-col { display:flex; flex-direction:column; align-items:center; gap:4px; height:100%; }
+    .chart-bar-wrap { flex:1; width:100%; position:relative; display:flex; flex-direction:column; justify-content:flex-end; }
+    .chart-bar-need { position:absolute; bottom:0; left:0; right:0; border:2px dashed rgba(100,116,139,.3); border-radius:4px; background:rgba(100,116,139,.05); }
+    .chart-bar-actual { width:100%; border-radius:4px; transition:height .8s cubic-bezier(.34,1.1,.64,1); position:relative; z-index:1; }
+    .chart-day-lbl { font-size:10px; font-weight:600; color:var(--text-light); text-align:center; }
+    .chart-hrs-lbl { font-size:10px; font-weight:700; text-align:center; }
+
+    /* Recovery box */
+    .recovery-box { background:var(--sleep-light); border:1px solid #C7D2FE; border-radius:var(--r); padding:16px; margin-bottom:16px; }
+    .recovery-title { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.5px; color:#6366F1; margin-bottom:6px; }
+    .recovery-val { font-size:22px; font-weight:800; color:#4338CA; margin-bottom:4px; }
+    .recovery-desc { font-size:13px; color:#6366F1; line-height:1.6; }
+
+    /* Message */
+    .msg-block { border-radius:var(--r); padding:16px; margin-bottom:16px; border-left:4px solid; }
+    .msg-block h3 { font-size:14px; font-weight:700; margin-bottom:6px; color:var(--text-dark); }
+    .msg-block p  { font-size:13px; color:var(--text-mid); line-height:1.7; }
+    .msg-none     { background:#F0FDF4; border-left-color:#16A34A !important; }
+    .msg-mild     { background:#FEFCE8; border-left-color:#CA8A04 !important; }
+    .msg-moderate { background:#FFF7ED; border-left-color:#EA580C !important; }
+    .msg-high     { background:#FEF2F2; border-left-color:#DC2626 !important; }
+    .msg-severe   { background:#FFF1F2; border-left-color:#9F1239 !important; }
+
+    .tips-title { font-size:13px; font-weight:700; color:var(--text-dark); margin-bottom:10px; margin-top:4px; }
+    .tips-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
+    .tips-list li { display:flex; align-items:flex-start; gap:8px; font-size:13px; color:var(--text-mid); line-height:1.6; }
+    .tips-list li::before { content:'😴'; font-size:11px; margin-top:2px; flex-shrink:0; }
+
+    /* INFO CARDS */
+    .info-card { background:white; border-radius:var(--r-xl); box-shadow:var(--shadow-sm); padding:22px 24px; }
+    .info-card h3 { font-size:14px; font-weight:700; margin-bottom:8px; color:var(--text-dark); }
+    .info-card p { font-size:13px; color:var(--text-mid); line-height:1.75; }
+    .info-card p + p { margin-top:10px; }
+
+    .science-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:12px; }
+    .science-box { background:var(--sage-pale); border-radius:var(--r-sm); padding:12px; }
+    .science-box .sci-stat { font-size:20px; font-weight:800; color:var(--sleep); display:block; line-height:1; margin-bottom:3px; }
+    .science-box .sci-lbl { font-size:11px; color:var(--text-light); line-height:1.4; }
+
+    /* Related */
+    .related-title { font-size:16px; font-weight:700; color:var(--text-dark); margin-bottom:12px; }
+    .related-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .related-card { background:white; border:1.5px solid var(--border); border-radius:var(--r); padding:14px 16px; display:flex; align-items:center; gap:12px; transition:all .18s; }
+    .related-card:hover { border-color:var(--sage); box-shadow:var(--shadow-sm); transform:translateY(-1px); }
+    .related-icon { width:36px; height:36px; background:var(--sage-light); border-radius:9px; display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0; }
+    .related-info strong { display:block; font-size:13px; font-weight:600; }
+    .related-info span { font-size:11px; color:var(--text-light); }
+
+    .note-block { background:var(--cream); border-radius:var(--r); padding:13px 16px; font-size:12px; color:var(--text-light); line-height:1.7; display:flex; gap:8px; align-items:flex-start; }
+    .note-block svg { flex-shrink:0; margin-top:1px; }
+
+    /* FOOTER */
+    .site-footer { background:var(--text-dark); color:#94A99A; padding:48px 0 0; margin-top:48px; }
+    .footer-inner { max-width:1200px; margin:0 auto; padding:0 24px; }
+    .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:48px; padding-bottom:40px; }
+    .footer-logo { display:flex; align-items:center; gap:8px; color:white; font-size:18px; font-weight:700; margin-bottom:12px; }
+    .footer-brand p { font-size:14px; line-height:1.7; max-width:260px; color:#7A958E; }
+    .footer-col h5 { color:white; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.8px; margin-bottom:14px; }
+    .footer-col ul { list-style:none; }
+    .footer-col li { margin-bottom:8px; }
+    .footer-col a { font-size:14px; color:#7A958E; transition:color .2s; }
+    .footer-col a:hover { color:white; }
+    .footer-bottom { border-top:1px solid rgba(255,255,255,.08); padding:22px 0; display:flex; flex-direction:column; gap:6px; }
+    .footer-disclaimer { font-size:12px; color:#5A7568; line-height:1.7; }
+    .footer-copy { font-size:12px; color:#5A7568; }
+
+    /* RESPONSIVE */
+    @media (max-width:1000px) { .calc-columns { grid-template-columns:1fr; } }
+    @media (max-width:900px)  { .footer-grid { grid-template-columns:1fr 1fr; } .footer-brand { grid-column:1/-1; } }
+    @media (max-width:660px)  {
+      .nav-links { display:none; } .nav-hamburger { display:flex !important; } .nav-btn { display:none; }
+      .debt-display { flex-direction:column; gap:12px; }
+      .sev-row { grid-template-columns:repeat(3,1fr); }
+      .science-grid { grid-template-columns:1fr; }
+      .related-grid { grid-template-columns:1fr; }
+      .week-chart { gap:3px; }
+    }
+    @media (max-width:520px) { .footer-grid { grid-template-columns:1fr; } }
+
+    /* HAMBURGER */
+    .nav-hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; background:none; border:none; padding:8px; margin-left:8px; border-radius:8px; cursor:pointer; flex-shrink:0; }
+    .nav-hamburger span { display:block; width:22px; height:2.5px; background:var(--text-dark); border-radius:2px; }
+    .mobile-menu { display:none; position:fixed; inset:0; z-index:999; }
+    .mobile-menu.open { display:block; }
+    .mobile-overlay { position:absolute; inset:0; background:rgba(0,0,0,.45); backdrop-filter:blur(2px); }
+    .mobile-drawer { position:absolute; top:0; right:0; width:min(300px,84vw); height:100%; background:#fff; display:flex; flex-direction:column; box-shadow:-4px 0 40px rgba(0,0,0,.18); animation:drawerIn .22s cubic-bezier(.22,.61,.36,1); }
+    @keyframes drawerIn { from{transform:translateX(100%)} to{transform:translateX(0)} }
+    .mobile-drawer-head { display:flex; align-items:center; justify-content:space-between; padding:18px 20px 14px; border-bottom:1px solid var(--border); }
+    .mobile-drawer-logo { font-size:15px; font-weight:700; }
+    .mobile-close { background:none; border:none; font-size:20px; padding:4px 8px; cursor:pointer; color:var(--text-light); border-radius:6px; line-height:1; }
+    .mobile-nav-links { padding:14px 12px; flex:1; display:flex; flex-direction:column; gap:4px; }
+    .mobile-nav-link { display:flex; align-items:center; gap:14px; padding:13px 16px; border-radius:12px; font-size:16px; font-weight:600; color:var(--text-dark); transition:background .15s; }
+    .mobile-nav-link:hover { background:var(--sage-light); color:var(--sage); }
+    .mobile-link-icon { width:40px; height:40px; background:var(--sage-light); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
+    .mobile-browse-btn { display:block; margin:0 12px 20px; padding:14px; background:var(--sage); color:#fff; border-radius:12px; font-size:15px; font-weight:700; text-align:center; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <img src="assets/logo.png" alt="SageMyHealth" style="height:54px;width:auto;object-fit:contain;"/>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html#categories">Calculators</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../blog.html">Health Guides</a></li>
+    </ul>
+    <a href="../index.html#categories" class="nav-btn">Browse All</a>
+    <button class="nav-hamburger" id="nav-hamburger" onclick="openMobileMenu()" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true">
+  <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-drawer">
+    <div class="mobile-drawer-head">
+      <span class="mobile-drawer-logo">SageMyHealth</span>
+      <button class="mobile-close" onclick="closeMobileMenu()">&#x2715;</button>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="../index.html#categories" class="mobile-nav-link" onclick="closeMobileMenu()"><span class="mobile-link-icon">&#x1F9EE;</span>Calculators</a>
+      <a href="../about.html" class="mobile-nav-link" onclick="closeMobileMenu()"><span class="mobile-link-icon">&#x1F49A;</span>About</a>
+      <a href="../blog.html" class="mobile-nav-link" onclick="closeMobileMenu()"><span class="mobile-link-icon">&#x1F4D6;</span>Health Guides</a>
+    </nav>
+    <a href="../index.html#categories" class="mobile-browse-btn" onclick="closeMobileMenu()">Browse All Calculators &#x2192;</a>
+  </div>
+</div>
+
+<!-- PAGE -->
+<main class="calc-page">
+  <div class="calc-wrapper">
+
+    <nav class="breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="bc-sep">›</span>
+      <a href="../index.html#categories">Sleep &amp; Recovery</a>
+      <span class="bc-sep">›</span>
+      <span>Sleep Debt Calculator</span>
+    </nav>
+
+    <header class="page-header">
+      <div class="calc-tag">😴 Sleep &amp; Recovery</div>
+      <h1>Sleep Debt Calculator</h1>
+      <p>Log your actual sleep for the last 7 nights and see exactly how much sleep you owe your body — in hours, nightly averages, and a day-by-day chart. Includes a science-backed recovery plan so you know how long it takes to get back to baseline.</p>
+    </header>
+
+    <div class="calc-columns">
+
+      <!-- LEFT: Form -->
+      <div class="form-card">
+        <div class="form-card-header">
+          <div class="form-card-title">Your sleep log</div>
+          <div class="form-card-sub">Enter how much you slept each of the last 7 nights. Use decimals — e.g. 6.5 = 6 hours 30 min.</div>
+        </div>
+        <div class="form-body">
+
+          <!-- Sleep need -->
+          <div style="margin-bottom:6px"><div class="section-label">Your sleep need (hours per night)</div></div>
+          <div class="sleep-need-row">
+            <div class="need-input-wrap">
+              <input class="need-input" type="number" id="sleep-need" value="8" min="5" max="12" step="0.5" />
+              <span class="need-unit">hrs</span>
+            </div>
+          </div>
+          <p class="need-hint">Don't know your ideal sleep need? <a href="sleep-need.html">Use our Sleep Need Calculator ↗</a> — then come back.</p>
+
+          <!-- Age presets -->
+          <div style="margin-bottom:6px"><div class="section-label">Or pick by age group</div></div>
+          <div class="age-presets">
+            <button class="age-preset" onclick="setNeed(9,   this)">Teens (8–10h)</button>
+            <button class="age-preset" onclick="setNeed(8,   this)">18–25 (7–9h)</button>
+            <button class="age-preset active" onclick="setNeed(8, this)">26–64 (7–9h)</button>
+            <button class="age-preset" onclick="setNeed(7.5, this)">65+ (7–8h)</button>
+          </div>
+
+          <!-- Quick fill -->
+          <div class="quick-fill">
+            <div class="quick-fill-title">Quick fill</div>
+            <div class="quick-fill-row">
+              <span class="quick-fill-label">Weekdays</span>
+              <input class="qf-input" type="number" id="qf-weekday" placeholder="6.5" min="0" max="14" step="0.5" />
+              <span class="quick-fill-label">Weekends</span>
+              <input class="qf-input" type="number" id="qf-weekend" placeholder="8" min="0" max="14" step="0.5" />
+              <button class="qf-btn" onclick="quickFill()">Fill all</button>
+            </div>
+          </div>
+
+          <!-- 7-day log -->
+          <div class="section-label" style="margin-bottom:10px">Actual sleep per night</div>
+          <div class="day-log" id="day-log">
+            <!-- populated by JS -->
+          </div>
+
+          <div class="err-banner" id="err-banner"></div>
+          <button class="calc-btn" onclick="calculate()">
+            <span>🌙</span> Calculate My Sleep Debt
+          </button>
+
+        </div>
+      </div>
+
+      <!-- RIGHT: Results -->
+      <div class="results-col">
+
+        <div class="result-placeholder" id="result-placeholder">
+          <div class="placeholder-icon">🌙</div>
+          <div class="placeholder-title">Your sleep debt picture</div>
+          <p class="placeholder-sub">Fill in your last 7 nights on the left — you'll see a day-by-day chart, your total debt, and a recovery timeline.</p>
+        </div>
+
+        <div class="result-card" id="result-card">
+          <div class="result-band" id="result-band"></div>
+          <div class="result-body">
+
+            <!-- Main debt numbers -->
+            <div class="debt-display">
+              <div class="debt-main">
+                <div class="debt-num" id="debt-num">0h</div>
+                <div class="debt-label" id="debt-label">total sleep debt this week</div>
+              </div>
+              <div class="debt-stats">
+                <div class="debt-stat">
+                  <div class="debt-stat-val" id="avg-deficit">—</div>
+                  <div class="debt-stat-lbl">average nightly deficit</div>
+                </div>
+                <div class="debt-stat">
+                  <div class="debt-stat-val" id="avg-sleep">—</div>
+                  <div class="debt-stat-lbl">average sleep per night</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Severity -->
+            <div class="sev-row">
+              <div class="sev-box sev-none"     id="sev-none">    <div class="sev-name">No Debt</div><div class="sev-range">0h</div></div>
+              <div class="sev-box sev-mild"     id="sev-mild">    <div class="sev-name">Mild</div>   <div class="sev-range">1–3h</div></div>
+              <div class="sev-box sev-moderate" id="sev-moderate"><div class="sev-name">Moderate</div><div class="sev-range">4–7h</div></div>
+              <div class="sev-box sev-high"     id="sev-high">    <div class="sev-name">High</div>   <div class="sev-range">8–13h</div></div>
+              <div class="sev-box sev-severe"   id="sev-severe">  <div class="sev-name">Severe</div> <div class="sev-range">14h+</div></div>
+            </div>
+
+            <!-- Week chart -->
+            <p class="chart-title">Your week at a glance</p>
+            <div class="week-chart" id="week-chart"></div>
+            <div style="display:flex;gap:14px;margin-bottom:20px;font-size:11px;color:var(--text-light)">
+              <span style="display:flex;align-items:center;gap:5px"><span style="width:12px;height:12px;background:#22C55E;border-radius:3px;display:inline-block"></span>Met target</span>
+              <span style="display:flex;align-items:center;gap:5px"><span style="width:12px;height:12px;background:#EF4444;border-radius:3px;display:inline-block"></span>Deficit</span>
+              <span style="display:flex;align-items:center;gap:5px"><span style="width:22px;height:2px;background:rgba(100,116,139,.4);border-top:2px dashed rgba(100,116,139,.4);display:inline-block"></span>Target</span>
+            </div>
+
+            <!-- Recovery -->
+            <div class="recovery-box" id="recovery-box">
+              <div class="recovery-title">Recovery estimate</div>
+              <div class="recovery-val" id="recovery-val">—</div>
+              <div class="recovery-desc" id="recovery-desc">—</div>
+            </div>
+
+            <!-- Message -->
+            <div class="msg-block" id="msg-block">
+              <h3 id="msg-heading"></h3>
+              <p id="msg-body"></p>
+            </div>
+
+            <p class="tips-title">How to pay back your sleep debt:</p>
+            <ul class="tips-list" id="tips-list"></ul>
+
+          </div>
+        </div>
+
+        <!-- Science card -->
+        <div class="info-card">
+          <h3>What sleep debt actually does to you</h3>
+          <p>Sleep debt is cumulative and its effects compound. Missing just one hour a night for a week produces the same cognitive impairment as a full night without sleep — but unlike obvious all-nighters, the gradual decline feels normal, so most people don't notice how impaired they've become.</p>
+          <div class="science-grid">
+            <div class="science-box"><span class="sci-stat">24%</span><span class="sci-lbl">Drop in immune function after 6 hrs/night for one week</span></div>
+            <div class="science-box"><span class="sci-stat">3×</span><span class="sci-lbl">Higher accident risk with fewer than 6 hrs of sleep</span></div>
+            <div class="science-box"><span class="sci-stat">40%</span><span class="sci-lbl">Reduction in ability to make new memories when sleep-deprived</span></div>
+            <div class="science-box"><span class="sci-stat">11 days</span><span class="sci-lbl">Time needed to fully recover from one week of 6-hour nights (Penn study)</span></div>
+          </div>
+          <p style="margin-top:12px">The myth that you can "sleep in" on weekends to cancel weekday debt is partly true for short-term deficits — but chronic sleep deprivation causes lasting neurological changes that don't fully reverse in a single long sleep.</p>
+        </div>
+
+        <!-- Related -->
+        <div>
+          <p class="related-title">Related calculators</p>
+          <div class="related-grid">
+            <a href="sleep-need.html" class="related-card">
+              <div class="related-icon">🛏️</div>
+              <div class="related-info"><strong>Sleep Need</strong><span>Find your personal target</span></div>
+            </a>
+            <a href="brain-fatigue.html" class="related-card">
+              <div class="related-icon">🧠</div>
+              <div class="related-info"><strong>Brain Fatigue</strong><span>Cognitive load &amp; mental fog</span></div>
+            </a>
+            <a href="burnout-risk.html" class="related-card">
+              <div class="related-icon">🔥</div>
+              <div class="related-info"><strong>Burnout Risk</strong><span>Sleep debt fuels burnout</span></div>
+            </a>
+            <a href="biological-age.html" class="related-card">
+              <div class="related-icon">🧬</div>
+              <div class="related-info"><strong>Biological Age</strong><span>Sleep is top longevity factor</span></div>
+            </a>
+          </div>
+        </div>
+
+        <div class="note-block">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#9CA3AF" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          <span><strong>NOTE:</strong> This calculator estimates sleep debt based on self-reported hours and a general sleep need target. It does not account for sleep quality, sleep disorders (e.g. sleep apnoea), or circadian disruption. If you consistently struggle to fall or stay asleep, speak to a healthcare provider. Persistent fatigue despite adequate sleep time may signal an underlying condition.</span>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo"><img src="assets/logo-white.png" alt="SageMyHealth" style="height:45px;width:auto;object-fit:contain;"/></div>
+        <p>Free, trusted health calculators with warm guidance — helping you understand your numbers.</p>
+      </div>
+      <div class="footer-col"><h5>Calculators</h5><ul>
+        <li><a href="bmi.html">BMI</a></li>
+        <li><a href="blood-pressure.html">Blood Pressure</a></li>
+        <li><a href="sleep-need.html">Sleep Need</a></li>
+        <li><a href="burnout-risk.html">Burnout Risk</a></li>
+        <li><a href="iron-deficiency.html">Iron Deficiency</a></li>
+      </ul></div>
+      <div class="footer-col"><h5>More Tools</h5><ul>
+        <li><a href="ascvd-risk.html">Heart Risk (ASCVD)</a></li>
+        <li><a href="thyroid-fatigue.html">Thyroid Fatigue</a></li>
+        <li><a href="anemia-screener.html">Anemia Screener</a></li>
+        <li><a href="water-intake.html">Water Intake</a></li>
+      </ul></div>
+      <div class="footer-col"><h5>Info</h5><ul>
+        <li><a href="../about.html">About Us</a></li>
+        <li><a href="../blog.html">Health Guides</a></li>
+        <li><a href="../privacy.html">Privacy Policy</a></li>
+        <li><a href="../terms.html">Terms of Use</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-disclaimer"><strong style="color:#7A958E">Medical Disclaimer:</strong> SageMyHealth calculators are for informational purposes only and are not a substitute for professional medical advice, diagnosis, or treatment.</p>
+      <p class="footer-copy">© 2025 SageMyHealth.com — All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   Build day labels dynamically (today backwards 7 days)
+============================================================ */
+var DAY_NAMES = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+var SHORT_NAMES = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+function buildDayLog() {
+  var log = document.getElementById('day-log');
+  log.innerHTML = '';
+  var today = new Date();
+
+  for (var i = 6; i >= 0; i--) {
+    var d = new Date(today);
+    d.setDate(today.getDate() - i);
+    var dayIdx   = d.getDay();
+    var fullName = i === 0 ? 'Tonight' : i === 1 ? 'Last night' : DAY_NAMES[dayIdx];
+    var subLabel = i === 0 ? 'Today' : i === 1 ? 'Yesterday' : d.toLocaleDateString('en-US', {month:'short', day:'numeric'});
+    var isWeekend = (dayIdx === 0 || dayIdx === 6);
+
+    var row = document.createElement('div');
+    row.className = 'day-row';
+    row.innerHTML = [
+      '<div class="day-label">',
+      fullName,
+      '<span class="day-sub">' + subLabel + '</span>',
+      '</div>',
+      '<div class="day-input-wrap">',
+      '<input class="day-input" type="number" id="day-' + (6-i) + '"',
+      ' data-day="' + dayIdx + '"',
+      ' data-weekend="' + (isWeekend ? '1' : '0') + '"',
+      ' placeholder="' + (isWeekend ? '8' : '7') + '"',
+      ' min="0" max="14" step="0.5" oninput="onDayInput(this)" />',
+      '<span class="day-input-unit">hrs</span>',
+      '</div>',
+      '<div class="day-badge badge-neutral" id="badge-' + (6-i) + '">—</div>'
+    ].join('');
+    log.appendChild(row);
+  }
+}
+
+function onDayInput(el) {
+  var need = parseFloat(document.getElementById('sleep-need').value) || 8;
+  var val  = parseFloat(el.value);
+  var idx  = el.id.replace('day-', '');
+  var badge = document.getElementById('badge-' + idx);
+
+  if (isNaN(val) || el.value === '') {
+    el.className = 'day-input';
+    badge.textContent = '—';
+    badge.className = 'day-badge badge-neutral';
+    return;
+  }
+
+  var diff = val - need;
+  if (diff >= 0) {
+    el.className = 'day-input over';
+    badge.textContent = '+' + diff.toFixed(1);
+    badge.className = 'day-badge badge-over';
+  } else {
+    el.className = 'day-input under';
+    badge.textContent = diff.toFixed(1);
+    badge.className = 'day-badge badge-under';
+  }
+}
+
+/* ============================================================
+   Sleep need presets
+============================================================ */
+function setNeed(hrs, btn) {
+  document.getElementById('sleep-need').value = hrs;
+  document.querySelectorAll('.age-preset').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  // Refresh badges
+  for (var i = 0; i < 7; i++) {
+    var inp = document.getElementById('day-' + i);
+    if (inp && inp.value) onDayInput(inp);
+  }
+}
+
+/* ============================================================
+   Quick fill
+============================================================ */
+function quickFill() {
+  var wd = parseFloat(document.getElementById('qf-weekday').value);
+  var we = parseFloat(document.getElementById('qf-weekend').value);
+  for (var i = 0; i < 7; i++) {
+    var inp = document.getElementById('day-' + i);
+    if (!inp) continue;
+    var isWE = inp.getAttribute('data-weekend') === '1';
+    var val  = isWE ? (isNaN(we) ? '' : we) : (isNaN(wd) ? '' : wd);
+    if (val !== '') { inp.value = val; onDayInput(inp); }
+  }
+}
+
+/* ============================================================
+   Format helpers
+============================================================ */
+function fmtHours(h) {
+  var hrs  = Math.floor(Math.abs(h));
+  var mins = Math.round((Math.abs(h) - hrs) * 60);
+  if (mins === 60) { hrs++; mins = 0; }
+  if (hrs === 0 && mins === 0) return '0h';
+  if (mins === 0) return hrs + 'h';
+  return hrs + 'h ' + mins + 'm';
+}
+
+/* ============================================================
+   Calculate
+============================================================ */
+function calculate() {
+  var err  = document.getElementById('err-banner');
+  err.style.display = 'none';
+
+  var need = parseFloat(document.getElementById('sleep-need').value);
+  if (isNaN(need) || need < 4 || need > 14) {
+    err.textContent = 'Please enter a valid sleep need between 4 and 14 hours.';
+    err.style.display = 'block';
+    return;
+  }
+
+  var actuals = [];
+  var missing  = [];
+  for (var i = 0; i < 7; i++) {
+    var v = parseFloat(document.getElementById('day-' + i).value);
+    if (isNaN(v)) missing.push(i);
+    else actuals.push(v);
+  }
+  if (missing.length === 7) {
+    err.textContent = 'Please enter at least one night of sleep data.';
+    err.style.display = 'block';
+    return;
+  }
+  // Fill missing nights with need (neutral) for visual, but only calc from entered
+  var allSeven = [];
+  for (var i = 0; i < 7; i++) {
+    var raw = parseFloat(document.getElementById('day-' + i).value);
+    allSeven.push(isNaN(raw) ? null : raw);
+  }
+
+  // Stats (only from entered nights)
+  var entered   = allSeven.filter(function(v){ return v !== null; });
+  var avgSleep  = entered.reduce(function(a,b){ return a+b; }, 0) / entered.length;
+  var deficits  = entered.map(function(v){ return Math.max(0, need - v); });
+  var surpluses = entered.map(function(v){ return Math.max(0, v - need); });
+  var totalDeficit  = deficits.reduce(function(a,b){ return a+b; }, 0);
+  var totalSurplus  = surpluses.reduce(function(a,b){ return a+b; }, 0);
+  var netDebt = Math.max(0, totalDeficit - totalSurplus);
+  var avgDeficit = (need - avgSleep);
+
+  /* Tier */
+  var tier;
+  if (netDebt < 1)       tier = 'none';
+  else if (netDebt < 4)  tier = 'mild';
+  else if (netDebt < 8)  tier = 'moderate';
+  else if (netDebt < 14) tier = 'high';
+  else                   tier = 'severe';
+
+  renderResults(allSeven, need, netDebt, avgSleep, avgDeficit, tier);
+}
+
+/* ============================================================
+   Render
+============================================================ */
+function renderResults(days, need, debt, avgSleep, avgDeficit, tier) {
+  document.getElementById('result-placeholder').style.display = 'none';
+  var card = document.getElementById('result-card');
+  card.classList.add('visible');
+  card.scrollIntoView({ behavior:'smooth', block:'start' });
+
+  /* Band */
+  var bandColors = { none:'linear-gradient(90deg,#4ADE80,#16A34A)', mild:'linear-gradient(90deg,#FDE68A,#D97706)', moderate:'linear-gradient(90deg,#FB923C,#EA580C)', high:'linear-gradient(90deg,#F87171,#DC2626)', severe:'linear-gradient(90deg,#E11D48,#9F1239)' };
+  document.getElementById('result-band').style.background = bandColors[tier];
+
+  /* Debt number */
+  var numEl = document.getElementById('debt-num');
+  var numColors = { none:'#16A34A', mild:'#D97706', moderate:'#EA580C', high:'#DC2626', severe:'#9F1239' };
+  numEl.style.color = numColors[tier];
+  numEl.textContent = tier === 'none' ? '✓ 0h' : fmtHours(debt);
+
+  document.getElementById('debt-label').textContent = tier === 'none' ? 'No sleep debt — you\'re on track!' : 'total sleep debt this week';
+
+  var avgDefAbs = Math.abs(avgDeficit);
+  document.getElementById('avg-deficit').textContent = avgDeficit > 0 ? '−' + fmtHours(avgDefAbs) + '/night' : (avgDeficit < -0.05 ? '+' + fmtHours(avgDefAbs) + '/night' : 'On target');
+  document.getElementById('avg-sleep').textContent   = fmtHours(avgSleep) + '/night';
+
+  /* Severity boxes */
+  ['none','mild','moderate','high','severe'].forEach(function(t){
+    document.getElementById('sev-'+t).classList.toggle('active', t === tier);
+  });
+
+  /* Week chart */
+  buildChart(days, need, tier);
+
+  /* Recovery */
+  var recBox  = document.getElementById('recovery-box');
+  var recVal  = document.getElementById('recovery-val');
+  var recDesc = document.getElementById('recovery-desc');
+  if (tier === 'none') {
+    recBox.style.background = '#F0FDF4'; recBox.style.borderColor = '#BBF7D0';
+    document.getElementById('recovery-box').querySelector('.recovery-title').style.color = '#16A34A';
+    recVal.style.color = '#15803D';
+    recVal.textContent = 'No recovery needed';
+    recDesc.style.color = '#16A34A';
+    recDesc.textContent = 'Your sleep is meeting your body\'s needs this week. Keep it up — consistency is what matters most.';
+  } else {
+    recBox.style.background = ''; recBox.style.borderColor = '';
+    document.getElementById('recovery-box').querySelector('.recovery-title').style.color = '';
+    recVal.style.color = '';
+    var recovDays = Math.ceil(debt / 1.5);
+    recVal.textContent = 'About ' + recovDays + ' night' + (recovDays !== 1 ? 's' : '') + ' to recover';
+    recDesc.style.color = '';
+    recDesc.textContent = 'Sleeping ' + fmtHours(Math.min(need + 1.5, need + debt)) + ' per night (roughly ' + fmtHours(Math.min(1.5, debt)) + ' extra above your need) until your debt is cleared. Don\'t try to recover it all in one go — it disrupts your sleep cycle.';
+  }
+
+  /* Message */
+  var msgs = {
+    none:     { h: 'Your sleep bank is balanced.', b: 'You\'re getting close to your sleep need this week. That puts you in the minority — only about 35% of adults consistently meet their sleep target. Keep your current sleep schedule consistent, even on weekends, to lock in this rhythm.' },
+    mild:     { h: 'Mild sleep debt — you\'ll feel it subtly.', b: 'A 1–3 hour deficit may not feel dramatic, but research shows even this level impairs reaction time, memory consolidation, and emotional regulation. The good news: a few nights of proper sleep can clear mild debt quickly.' },
+    moderate: { h: 'Moderate sleep debt — performance is measurably impaired.', b: 'At this level, your brain is likely compensating in ways you can\'t fully perceive. Decision-making slows, learning capacity drops, and you\'re more likely to reach for caffeine or food for energy. Plan a deliberate recovery week.' },
+    high:     { h: 'High sleep debt — this needs addressing soon.', b: 'Eight or more hours of accumulated debt produces cognitive impairment equivalent to significant sleep deprivation. Your immune system, metabolism, cardiovascular function, and mood are all affected. Recovery takes more than a weekend — plan for a structured wind-down week.' },
+    severe:   { h: 'Severe chronic sleep deprivation — please prioritise this.', b: 'At 14+ hours of accumulated deficit, you are operating with serious impairment. Chronic sleep deprivation at this level is associated with long-term cardiovascular damage, accelerated biological ageing, and significantly increased risk of metabolic disease. Please speak to a doctor if this is a persistent pattern — it may indicate a sleep disorder.' }
+  };
+
+  var msgEl = document.getElementById('msg-block');
+  msgEl.className = 'msg-block msg-' + tier;
+  document.getElementById('msg-heading').textContent = msgs[tier].h;
+  document.getElementById('msg-body').textContent    = msgs[tier].b;
+
+  /* Tips */
+  var tipsList = document.getElementById('tips-list');
+  tipsList.innerHTML = '';
+  var allTips = {
+    none: [
+      'Keep your wake time consistent 7 days a week — this is the single most effective thing for sleep quality.',
+      'Light exposure first thing in the morning anchors your circadian clock. Step outside for 10 minutes within 30 min of waking.',
+      'If you\'re waking before your alarm feeling rested, you may not need the full hours — your actual need might be slightly less.'
+    ],
+    mild: [
+      'Add 30–45 extra minutes of sleep for the next 3–5 nights to clear the deficit gradually.',
+      'Don\'t oversleep more than 1.5 hours on weekends — it shifts your body clock and causes "social jet lag" on Monday.',
+      'Bring your bedtime forward by 30 minutes rather than sleeping later in the morning, to protect your wake-time anchor.',
+      'Cut caffeine after 12pm — it has a 6-hour half-life and is likely stealing from your sleep quality even if you fall asleep fine.'
+    ],
+    moderate: [
+      'Plan a deliberate recovery week: aim for 1–1.5 extra hours per night for 5–7 nights.',
+      'Protect your "sleep opportunity window" — be in bed at least 30 minutes before you need to be asleep.',
+      'Dim all screens and lights 60–90 minutes before bed. Blue light suppresses melatonin for up to 2 hours.',
+      'A 20-minute nap before 3pm can help clear acute fatigue without disrupting night sleep.',
+      'Audit what\'s cutting into your sleep: late social media, inconsistent schedules, or stress-driven wakefulness.'
+    ],
+    high: [
+      'This week: prioritise sleep above almost everything else — your cognitive and physical health depends on it.',
+      'Extend sleep gradually: +1.5 hours/night for 7–10 days. Don\'t try to sleep 12 hours in one night.',
+      'Create a non-negotiable "wind-down" hour before bed: no screens, low light, no work, no stressful conversations.',
+      'Consider a sleep audit: are there structural reasons you can\'t get more sleep? Work schedule, caregiving, anxiety, or a bed partner?',
+      'Alcohol may feel like it helps sleep but it destroys sleep architecture — especially REM — and worsens debt.'
+    ],
+    severe: [
+      'See a doctor if chronic deprivation is ongoing — you may have an undiagnosed sleep disorder (sleep apnoea affects 1 in 4 adults).',
+      'Recovery at this level takes weeks, not days. Commit to 8–9 hours nightly for at least 2 weeks before measuring your recovery.',
+      'Remove all sleep "performance anxiety" — don\'t watch the clock, use a sleep tracker obsessively, or catastrophise bad nights.',
+      'Cognitive Behavioural Therapy for Insomnia (CBT-I) is the gold-standard treatment for chronic sleep issues — more effective than medication long-term.',
+      'Make your sleep environment non-negotiable: dark (blackout curtains), cool (16–19°C), and quiet or with consistent white noise.'
+    ]
+  };
+  allTips[tier].forEach(function(tip) {
+    var li = document.createElement('li');
+    li.textContent = tip;
+    tipsList.appendChild(li);
+  });
+
+  /* GA4 */
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'calculator_result', { calculator:'sleep_debt', tier:tier, debt_hours:Math.round(debt*10)/10 });
+  }
+}
+
+/* ============================================================
+   Week chart builder
+============================================================ */
+function buildChart(days, need, tier) {
+  var chart = document.getElementById('week-chart');
+  chart.innerHTML = '';
+
+  var today = new Date();
+  /* Max bar height reference = need + 2 or max actual + 0.5 */
+  var maxH = Math.max(need + 2, Math.max.apply(null, days.filter(function(v){ return v !== null; }).concat([0])) + 1);
+  var containerH = 110; /* px height of the chart area */
+
+  for (var i = 0; i < 7; i++) {
+    var d = new Date(today);
+    d.setDate(today.getDate() - (6 - i));
+    var shortName = i === 6 ? 'Today' : SHORT_NAMES[d.getDay()];
+    var actual    = days[i];
+    var hasData   = actual !== null;
+
+    var needPct   = (need   / maxH) * containerH;
+    var actualPct = hasData ? (Math.min(actual, maxH) / maxH) * containerH : 0;
+    var isOver    = hasData && actual >= need;
+    var barColor  = !hasData ? '#E2E8F0' : isOver ? '#22C55E' : '#EF4444';
+    var hrsLabel  = hasData ? (actual % 1 === 0 ? actual + 'h' : actual + 'h') : '—';
+    var hrsColor  = !hasData ? 'var(--text-light)' : isOver ? '#16A34A' : '#DC2626';
+
+    var col = document.createElement('div');
+    col.className = 'chart-col';
+    col.innerHTML = [
+      '<div class="chart-bar-wrap" style="height:' + containerH + 'px">',
+      '  <div class="chart-bar-need" style="height:' + needPct + 'px"></div>',
+      '  <div class="chart-bar-actual" style="height:' + actualPct + 'px;background:' + barColor + ';opacity:' + (hasData ? '0.85' : '1') + '"></div>',
+      '</div>',
+      '<div class="chart-hrs-lbl" style="color:' + hrsColor + '">' + hrsLabel + '</div>',
+      '<div class="chart-day-lbl">' + shortName + '</div>'
+    ].join('');
+    chart.appendChild(col);
+  }
+}
+
+/* ============================================================
+   Mobile menu
+============================================================ */
+function openMobileMenu() { document.getElementById('mobile-menu').classList.add('open'); document.getElementById('nav-hamburger').setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+function closeMobileMenu() { document.getElementById('mobile-menu').classList.remove('open'); document.getElementById('nav-hamburger').setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMobileMenu(); });
+
+/* ============================================================
+   Init
+============================================================ */
+buildDayLog();
+</script>
+
+</body>
+</html>

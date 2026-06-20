@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X6K2H9YW2V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X6K2H9YW2V');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Insulin Resistance Likelihood — Risk Assessment | SageMyHealth</title>
+  <meta name="description" content="Assess your insulin resistance risk using body metrics, blood work, and lifestyle factors. No lab results required. Evidence-based questionnaire with actionable guidance." />
+  <meta name="keywords" content="insulin resistance test, insulin resistance risk, prediabetes signs, metabolic risk" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://sagemyhealth.com/calculators/insulin-resistance.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SageMyHealth" />
+  <meta property="og:title" content="Insulin Resistance Likelihood — Risk Assessment" />
+  <meta property="og:description" content="Assess your insulin resistance risk using body metrics, blood work, and lifestyle factors. No lab results required. Evidence-based questionnaire with actionable guidance." />
+  <meta property="og:url" content="https://sagemyhealth.com/calculators/insulin-resistance.html" />
+  <meta property="og:image" content="https://sagemyhealth.com/calculators/assets/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Insulin Resistance Likelihood — Risk Assessment" />
+  <meta name="twitter:description" content="Assess your insulin resistance risk using body metrics, blood work, and lifestyle factors. No lab results required. Evidence-based questionnaire with actionable guidance." />
+  <meta name="twitter:image" content="https://sagemyhealth.com/calculators/assets/logo.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "name": "Insulin Resistance Likelihood — Risk Assessment",
+    "description": "Assess your insulin resistance risk using body metrics, blood work, and lifestyle factors. No lab results required. Evidence-based questionnaire with actionable guidance.",
+    "url": "https://sagemyhealth.com/calculators/insulin-resistance.html",
+    "publisher": { "@type": "Organization", "name": "SageMyHealth", "url": "https://sagemyhealth.com/" },
+    "isAccessibleForFree": true,
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sagemyhealth.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Diabetes & Blood Sugar", "item": "https://sagemyhealth.com/#categories" },
+        { "@type": "ListItem", "position": 3, "name": "Insulin Resistance Likelihood — Risk Assessment", "item": "https://sagemyhealth.com/calculators/insulin-resistance.html" }
+      ]
+    }
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sage:        #3B6A3A;
+      --sage-dark:   #0A3D2A;
+      --sage-mid:    #5C8A5C;
+      --sage-light:  #EBF2EC;
+      --sage-pale:   #F2F7F3;
+      --cream:       #E3FFB3;
+      --white:       #FFFFFF;
+      --text-dark:   #1A2E1E;
+      --text-mid:    #4A5568;
+      --text-light:  #718096;
+      --placeholder: #AAB0B8;
+      --border:      #E2EBE4;
+      --border-mid:  #C8D9CC;
+      --shadow-xs:   0 1px 2px rgba(59,106,58,0.06);
+      --shadow-sm:   0 1px 6px rgba(59,106,58,0.08);
+      --shadow-md:   0 4px 16px rgba(59,106,58,0.12);
+      --shadow-lg:   0 8px 32px rgba(59,106,58,0.16);
+      --r-sm: 8px; --r: 12px; --r-lg: 20px; --r-xl: 28px;
+      /* Insulin Resistance accent — amber */
+      --ir:          #D97706;
+      --ir-dark:     #B45309;
+      --ir-light:    #FFFBEB;
+      --ir-mid:      #F59E0B;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-dark); background: var(--sage-pale);
+      line-height: 1.6; -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; }
+
+    /* ---- NAV ---- */
+    .site-nav {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 24px;
+      height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 32px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; flex: 1; justify-content: center; }
+    .nav-links a { color: var(--text-mid); font-size: 15px; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--sage); }
+    .nav-btn { background: var(--sage); color: white; border: none; padding: 9px 20px; border-radius: var(--r-sm); font-size: 14px; font-weight: 600; transition: background .2s; }
+    .nav-btn:hover { background: var(--sage-dark); }
+
+    /* ---- PAGE ---- */
+    .calc-page { padding: 36px 0 72px; }
+    .calc-wrapper { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-light); margin-bottom: 24px; flex-wrap: wrap; }
+    .breadcrumb a { color: var(--sage); }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .bc-sep { color: var(--border-mid); }
+
+    .page-header { margin-bottom: 28px; }
+    .calc-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 600; color: var(--sage);
+      background: var(--white); padding: 5px 12px;
+      border-radius: 20px; margin-bottom: 12px; letter-spacing: .3px;
+      border: 1px solid var(--border);
+    }
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 42px); font-weight: 700;
+      color: var(--text-dark); letter-spacing: -.5px;
+      margin-bottom: 10px; line-height: 1.15;
+    }
+    .page-header p { font-size: 15px; color: var(--text-mid); line-height: 1.7; max-width: 700px; }
+
+    /* ---- LAYOUT ---- */
+    .calc-columns { display: grid; grid-template-columns: 480px 1fr; gap: 24px; align-items: start; }
+
+    /* ---- FORM CARD ---- */
+    .form-card { background: white; border-radius: var(--r-xl); box-shadow: var(--shadow-lg); overflow: hidden; }
+    .form-card-header { padding: 20px 28px 0; }
+    .form-card-title { font-size: 14px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
+    .form-card-sub   { font-size: 12px; color: var(--text-light); margin-bottom: 6px; }
+    .form-body { padding: 4px 28px 28px; }
+
+    .field-group { margin-bottom: 16px; }
+    .field-label { display: block; font-size: 13px; font-weight: 600; color: var(--text-dark); margin-bottom: 6px; }
+    .field-hint  { font-size: 11px; color: var(--text-light); margin-top: 4px; line-height: 1.5; }
+
+    .field-select {
+      width: 100%; padding: 11px 14px;
+      border: 1.5px solid var(--border); border-radius: var(--r-sm);
+      font-size: 15px; font-family: inherit; color: var(--text-dark);
+      background: white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23D97706' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 12px center;
+      appearance: none; -webkit-appearance: none; cursor: pointer; transition: border-color .18s;
+    }
+    .field-select:focus { outline: none; border-color: var(--ir); }
+
+    .field-input {
+      width: 100%; padding: 11px 14px;
+      border: 1.5px solid var(--border); border-radius: var(--r-sm);
+      font-size: 15px; font-family: inherit; color: var(--text-dark);
+      transition: border-color .18s;
+    }
+    .field-input:focus { outline: none; border-color: var(--ir); }
+    .field-input::placeholder { color: var(--placeholder); }
+
+    /* Unit toggle */
+    .unit-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .unit-toggle { display: flex; background: var(--sage-pale); border-radius: 8px; padding: 3px; gap: 2px; }
+    .unit-btn { padding: 4px 12px; border: none; border-radius: 6px; font-size: 12px; font-weight: 600; color: var(--text-light); background: none; transition: all .18s; }
+    .unit-btn.active { background: white; color: var(--ir); box-shadow: var(--shadow-xs); }
+
+    /* Section dividers */
+    .section-divider {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .6px; color: var(--ir); margin: 22px 0 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .section-divider::after { content: ''; flex: 1; height: 1px; background: var(--ir-light); }
+
+    /* Optional label */
+    .optional-label { font-size: 10px; font-weight: 500; color: var(--text-light); background: var(--sage-pale); padding: 2px 8px; border-radius: 10px; }
+
+    /* Sign / pill buttons */
+    .pill-group { display: flex; gap: 5px; }
+    .pill-btn {
+      flex: 1; padding: 9px 6px; border: 1.5px solid var(--border); border-radius: var(--r-sm);
+      background: white; font-size: 12px; font-weight: 600; color: var(--text-mid);
+      text-align: center; transition: all .15s;
+    }
+    .pill-btn:hover { border-color: var(--ir); color: var(--ir); }
+    .pill-btn.active { background: var(--ir); border-color: var(--ir); color: white; }
+
+    .freq-group { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; }
+    .freq-btn {
+      padding: 8px 4px; border: 1.5px solid var(--border); border-radius: var(--r-sm);
+      background: white; font-size: 11px; font-weight: 600; color: var(--text-mid);
+      text-align: center; line-height: 1.3; transition: all .15s;
+    }
+    .freq-btn:hover { border-color: var(--ir); color: var(--ir); }
+    .freq-btn.active { background: var(--ir); border-color: var(--ir); color: white; }
+
+    .q-row   { margin-bottom: 16px; }
+    .q-label { display: block; font-size: 13px; font-weight: 600; color: var(--text-dark); margin-bottom: 8px; }
+
+    .calc-btn {
+      width: 100%; background: var(--sage); color: white;
+      border: none; padding: 14px; border-radius: var(--r);
+      font-size: 16px; font-weight: 700; transition: all .18s; margin-top: 6px;
+    }
+    .calc-btn:hover { background: var(--sage-dark); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+    .calc-btn:active { transform: translateY(0); }
+
+    /* ---- RESULTS ---- */
+    .results-col { display: flex; flex-direction: column; gap: 20px; }
+
+    @keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+    .result-card { background: white; border-radius: var(--r-xl); box-shadow: var(--shadow-lg); overflow: hidden; animation: fadeUp .35s ease; }
+
+    .result-band { height: 5px; width: 100%; }
+    .result-band.low       { background: linear-gradient(90deg, #4CAF50, #16A34A); }
+    .result-band.moderate  { background: linear-gradient(90deg, var(--ir-mid), var(--ir)); }
+    .result-band.high      { background: linear-gradient(90deg, #F97316, #EA580C); }
+    .result-band.very-high { background: linear-gradient(90deg, #F87171, #DC2626); }
+
+    .result-body { padding: 24px; }
+
+    .score-hero { text-align: center; padding: 8px 0 20px; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
+    .score-hero-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; color: var(--text-light); margin-bottom: 8px; }
+    .score-number { font-size: 80px; font-weight: 800; letter-spacing: -4px; line-height: 1; }
+    .score-denom  { font-size: 24px; font-weight: 600; color: var(--text-light); }
+    .score-tier-badge { display: inline-block; margin-top: 10px; padding: 5px 18px; border-radius: 50px; font-size: 13px; font-weight: 700; }
+    .tier-low       { background: #DCFCE7; color: #166534; }
+    .tier-moderate  { background: #FFFBEB; color: #92400E; }
+    .tier-high      { background: #FFF7ED; color: #9A3412; }
+    .tier-very-high { background: #FEE2E2; color: #991B1B; }
+
+    .score-bar-wrap { margin: 14px 0 4px; height: 10px; background: var(--border); border-radius: 6px; overflow: hidden; }
+    .score-bar-fill { height: 100%; border-radius: 6px; transition: width .8s cubic-bezier(.34,1.1,.64,1); }
+
+    /* Domain bars */
+    .domains-title { font-size: 13px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; }
+    .domain-row { margin-bottom: 12px; }
+    .domain-row-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px; }
+    .domain-name  { font-size: 12px; font-weight: 700; color: var(--text-dark); }
+    .domain-score { font-size: 12px; font-weight: 700; }
+    .bar-track { height: 8px; background: var(--border); border-radius: 5px; overflow: hidden; }
+    .bar-fill  { height: 100%; border-radius: 5px; transition: width .7s ease; }
+
+    /* Message */
+    .msg-block { border-radius: var(--r); padding: 18px; margin: 20px 0 0; border-left: 4px solid; }
+    .msg-block.low       { background: #F0FDF4; border-color: #16A34A; }
+    .msg-block.moderate  { background: var(--ir-light); border-color: var(--ir); }
+    .msg-block.high      { background: #FFF7ED; border-color: #EA580C; }
+    .msg-block.very-high { background: #FEF2F2; border-color: #DC2626; }
+    .msg-block h3 { font-size: 14px; font-weight: 700; margin-bottom: 6px; color: var(--text-dark); }
+    .msg-block p  { font-size: 13px; color: var(--text-mid); line-height: 1.7; }
+
+    .tips-divider { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+    .tips-title { font-size: 13px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; }
+    .tips-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .tips-list li { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+    .tips-list li::before { content: '✦'; color: var(--ir); font-size: 10px; margin-top: 3px; flex-shrink: 0; }
+
+    /* Acanthosis alert */
+    .acanthosis-alert { background: #FEF3C7; border: 1.5px solid #FBBF24; border-radius: var(--r); padding: 14px 16px; margin-top: 14px; font-size: 13px; color: #92400E; line-height: 1.7; display: none; }
+    .acanthosis-alert strong { display: block; margin-bottom: 4px; color: #78350F; }
+
+    /* Pair card */
+    .pair-card {
+      background: var(--ir-light); border: 1.5px solid var(--ir-mid);
+      border-radius: var(--r-xl); padding: 18px 22px;
+      display: flex; align-items: center; gap: 16px;
+    }
+    .pair-icon { font-size: 32px; flex-shrink: 0; }
+    .pair-title { font-size: 14px; font-weight: 700; color: var(--ir-dark); margin-bottom: 4px; }
+    .pair-body  { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+    .pair-link  { display: inline-block; margin-top: 8px; font-size: 13px; font-weight: 700; color: var(--ir); }
+    .pair-link:hover { text-decoration: underline; }
+
+    /* Info / related / note */
+    .info-card { background: white; border-radius: var(--r-xl); box-shadow: var(--shadow-sm); padding: 22px 24px; }
+    .info-card h3 { font-size: 14px; font-weight: 700; margin-bottom: 8px; color: var(--text-dark); }
+    .info-card p  { font-size: 13px; color: var(--text-mid); line-height: 1.75; }
+    .info-card p + p { margin-top: 10px; }
+
+    .related-title { font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; text-transform: none; letter-spacing: normal; }
+    .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .related-card { background: white; border: 1.5px solid var(--border); border-radius: var(--r); padding: 14px 16px; display: flex; align-items: center; gap: 12px; transition: all .18s; }
+    .related-card:hover { border-color: var(--sage); box-shadow: var(--shadow-sm); transform: translateY(-1px); }
+    .related-icon { width: 36px; height: 36px; background: var(--sage-light); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+    .related-info strong { display: block; font-size: 13px; font-weight: 600; }
+    .related-info span  { font-size: 11px; color: var(--text-light); }
+
+    .note-block { background: var(--cream); border-radius: var(--r); padding: 13px 16px; font-size: 12px; color: var(--text-light); line-height: 1.7; display: flex; gap: 8px; align-items: flex-start; }
+    .note-block svg { flex-shrink: 0; margin-top: 1px; }
+
+    /* ---- FOOTER ---- */
+    .site-footer { background: var(--text-dark); color: #94A99A; padding: 48px 0 0; margin-top: 48px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 40px; }
+    .footer-logo { display: flex; align-items: center; gap: 8px; color: white; font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+    .footer-brand p { font-size: 14px; line-height: 1.7; max-width: 260px; color: #7A958E; }
+    .footer-col h5 { color: white; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; margin-bottom: 14px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { font-size: 14px; color: #7A958E; transition: color .2s; }
+    .footer-col a:hover { color: white; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding: 22px 0; display: flex; flex-direction: column; gap: 6px; }
+    .footer-disclaimer { font-size: 12px; color: #5A7568; line-height: 1.7; }
+    .footer-copy { font-size: 12px; color: #5A7568; }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 1000px) { .calc-columns { grid-template-columns: 1fr; } }
+    @media (max-width: 900px)  { .footer-grid { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: 1/-1; } }
+    @media (max-width: 660px)  { .nav-links { display: none; } .nav-hamburger { display: flex !important; } .nav-btn { display: none; } .related-grid { grid-template-columns: 1fr; } .freq-group { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 520px)  { .footer-grid { grid-template-columns: 1fr; } }
+
+    /* ---- HAMBURGER ---- */
+    .nav-hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; background: none; border: none; padding: 8px; margin-left: 8px; border-radius: 8px; cursor: pointer; flex-shrink: 0; }
+    .nav-hamburger span { display: block; width: 22px; height: 2.5px; background: var(--text-dark); border-radius: 2px; }
+    .mobile-menu { display: none; position: fixed; inset: 0; z-index: 999; }
+    .mobile-menu.open { display: block; }
+    .mobile-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.45); backdrop-filter: blur(2px); }
+    .mobile-drawer { position: absolute; top: 0; right: 0; width: min(300px,84vw); height: 100%; background: #fff; display: flex; flex-direction: column; box-shadow: -4px 0 40px rgba(0,0,0,.18); animation: drawerIn .22s cubic-bezier(.22,.61,.36,1); }
+    @keyframes drawerIn { from{transform:translateX(100%)} to{transform:translateX(0)} }
+    .mobile-drawer-head { display: flex; align-items: center; justify-content: space-between; padding: 18px 20px 14px; border-bottom: 1px solid var(--border); }
+    .mobile-drawer-logo { font-size: 15px; font-weight: 700; }
+    .mobile-close { background: none; border: none; font-size: 20px; padding: 4px 8px; cursor: pointer; color: var(--text-light); border-radius: 6px; line-height: 1; }
+    .mobile-nav-links { padding: 14px 12px; flex: 1; display: flex; flex-direction: column; gap: 4px; }
+    .mobile-nav-link { display: flex; align-items: center; gap: 14px; padding: 13px 16px; border-radius: 12px; font-size: 16px; font-weight: 600; color: var(--text-dark); transition: background .15s; }
+    .mobile-nav-link:hover { background: var(--sage-light); color: var(--sage); }
+    .mobile-link-icon { width: 40px; height: 40px; background: var(--sage-light); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .mobile-browse-btn { display: block; margin: 0 12px 20px; padding: 14px; background: var(--sage); color: #fff; border-radius: 12px; font-size: 15px; font-weight: 700; text-align: center; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <img src="assets/logo.png" alt="SageMyHealth" style="height:54px;width:auto;object-fit:contain;" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html#categories">Calculators</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../blog.html">Health Guides</a></li>
+    </ul>
+    <a href="../index.html#categories" class="nav-btn">Browse All</a>
+    <button class="nav-hamburger" id="nav-hamburger" onclick="openMobileMenu()" aria-label="Open navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true">
+  <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-drawer">
+    <div class="mobile-drawer-head">
+      <span class="mobile-drawer-logo">SageMyHealth</span>
+      <button class="mobile-close" onclick="closeMobileMenu()">&#x2715;</button>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="../index.html#categories" class="mobile-nav-link" onclick="closeMobileMenu()"><span class="mobile-link-icon">&#x1F9EE;</span>Calculators</a>
+      <a href="../about.html" class="mobile-nav-link" onclick="closeMobileMenu()"><span class="mobile-link-icon">&#x1F49A;</span>About</a>
+      <a href="../blog.html" class="mobile-nav-link" onclick="closeMobileMenu()"><span class="mobile-link-icon">&#x1F4D6;</span>Health Guides</a>
+    </nav>
+    <a href="../index.html#categories" class="mobile-browse-btn" onclick="closeMobileMenu()">Browse All Calculators &#x2192;</a>
+  </div>
+</div>
+
+<!-- PAGE -->
+<main class="calc-page">
+  <div class="calc-wrapper">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="bc-sep">›</span>
+      <a href="../index.html#categories">Diabetes &amp; Blood Sugar</a>
+      <span class="bc-sep">›</span>
+      <span>Insulin Resistance Likelihood</span>
+    </nav>
+
+    <header class="page-header">
+      <div class="calc-tag">💉 Diabetes &amp; Blood Sugar</div>
+      <h1>Insulin Resistance Likelihood</h1>
+      <p>Insulin resistance is the hidden driver behind prediabetes, type 2 diabetes, PCOS, and metabolic syndrome — and it affects roughly one in three adults. This evidence-based assessment uses body metrics, lifestyle factors, and optional blood work to estimate your likelihood. No lab results required.</p>
+    </header>
+
+    <div class="calc-columns">
+
+      <!-- LEFT: Form -->
+      <div class="form-card">
+        <div class="form-card-header">
+          <p class="form-card-title">Answer all questions for your risk score</p>
+          <p class="form-card-sub">Blood work questions can be skipped if you don't have results.</p>
+        </div>
+        <div class="form-body">
+
+          <!-- Section 1: Body Metrics -->
+          <div class="section-divider">Body Metrics</div>
+
+          <div class="field-group">
+            <label class="field-label" for="sex">Biological sex</label>
+            <select class="field-select" id="sex" onchange="updateWaistHint()">
+              <option value="">Choose one…</option>
+              <option value="M">Male</option>
+              <option value="F">Female</option>
+            </select>
+            <p class="field-hint">Used to apply sex-specific waist circumference thresholds.</p>
+          </div>
+
+          <div class="field-group">
+            <div class="unit-row">
+              <label class="field-label" style="margin:0" for="waist">Waist circumference</label>
+              <div class="unit-toggle">
+                <button class="unit-btn active" onclick="setWaistUnit('in',this)">in</button>
+                <button class="unit-btn" onclick="setWaistUnit('cm',this)">cm</button>
+              </div>
+            </div>
+            <input class="field-input" type="number" id="waist" placeholder="e.g. 36" min="18" max="80" step="0.5" />
+            <p class="field-hint" id="waist-hint">Measure at the level of your navel (not the narrowest point). Select your biological sex above to see personalized thresholds.</p>
+          </div>
+
+          <!-- Section 2: Blood Work -->
+          <div class="section-divider">Blood Work <span class="optional-label">optional</span></div>
+
+          <div class="field-group">
+            <label class="field-label" for="glucose">Fasting blood glucose</label>
+            <select class="field-select" id="glucose">
+              <option value="0">I don't have this result</option>
+              <option value="0">Under 100 mg/dL — normal range</option>
+              <option value="2">100–125 mg/dL — prediabetes range</option>
+              <option value="3">126 mg/dL or above — diabetes range</option>
+            </select>
+            <p class="field-hint">From a fasting blood panel (no food for at least 8 hours).</p>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="triglycerides">Fasting triglycerides</label>
+            <select class="field-select" id="triglycerides">
+              <option value="0">I don't have this result</option>
+              <option value="0">Under 150 mg/dL — normal</option>
+              <option value="1">150–199 mg/dL — borderline high</option>
+              <option value="2">200–499 mg/dL — high</option>
+              <option value="3">500 mg/dL or above — very high</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="bp">Resting blood pressure</label>
+            <select class="field-select" id="bp">
+              <option value="">Choose one…</option>
+              <option value="0">Normal — below 120/80 mmHg</option>
+              <option value="1">Elevated — 120–129/less than 80 mmHg</option>
+              <option value="2">Stage 1 high — 130–139/80–89 mmHg</option>
+              <option value="3">Stage 2 high — 140/90 mmHg or above</option>
+            </select>
+          </div>
+
+          <!-- Section 3: Physical Signs -->
+          <div class="section-divider">Physical Signs</div>
+
+          <div class="q-row">
+            <span class="q-label">Dark, velvety skin patches on your neck, armpits, or groin <em style="font-weight:400;color:var(--text-light)">(acanthosis nigricans)</em></span>
+            <div class="pill-group" id="acanthosis-group">
+              <button class="pill-btn" onclick="setQ('acanthosis',0,this)">No</button>
+              <button class="pill-btn" onclick="setQ('acanthosis',1,this)">Unsure</button>
+              <button class="pill-btn" onclick="setQ('acanthosis',3,this)">Yes</button>
+            </div>
+            <p class="field-hint" style="margin-top:6px">These patches are darker than your surrounding skin and may feel velvety. A key clinical sign of high insulin levels.</p>
+          </div>
+
+          <div class="q-row">
+            <span class="q-label">Small soft skin tags on neck, armpits, or under breasts</span>
+            <div class="pill-group" id="skintags-group">
+              <button class="pill-btn" onclick="setQ('skintags',0,this)">No</button>
+              <button class="pill-btn" onclick="setQ('skintags',1,this)">Unsure</button>
+              <button class="pill-btn" onclick="setQ('skintags',2,this)">Yes</button>
+            </div>
+          </div>
+
+          <div class="q-row">
+            <span class="q-label">Energy crash, brain fog, or sleepiness within 1–2 hours after eating</span>
+            <div class="freq-group" id="postmeal-group">
+              <button class="freq-btn" onclick="setQ('postmeal',0,this)">Never</button>
+              <button class="freq-btn" onclick="setQ('postmeal',1,this)">Sometimes</button>
+              <button class="freq-btn" onclick="setQ('postmeal',2,this)">Often</button>
+              <button class="freq-btn" onclick="setQ('postmeal',3,this)">Most meals</button>
+            </div>
+          </div>
+
+          <!-- Section 4: Lifestyle -->
+          <div class="section-divider">Lifestyle &amp; History</div>
+
+          <div class="field-group">
+            <label class="field-label" for="activity">Physical activity per week</label>
+            <select class="field-select" id="activity">
+              <option value="">Choose one…</option>
+              <option value="0">Very active — 300+ min/week of moderate or intense exercise</option>
+              <option value="0">Active — 150–300 min/week of moderate exercise</option>
+              <option value="1">Somewhat active — 60–149 min/week</option>
+              <option value="2">Lightly active — under 60 min/week</option>
+              <option value="3">Sedentary — mostly sitting, little intentional movement</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="diet">Typical diet pattern</label>
+            <select class="field-select" id="diet">
+              <option value="">Choose one…</option>
+              <option value="0">Mostly whole foods — vegetables, lean protein, limited sugar</option>
+              <option value="1">Balanced — mix of whole and processed, occasional sweets</option>
+              <option value="2">Regular processed foods and sugary drinks most days</option>
+              <option value="3">High sugar and refined carbs daily — white bread, pastries, sodas</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="family">Family history of type 2 diabetes or gestational diabetes</label>
+            <select class="field-select" id="family">
+              <option value="">Choose one…</option>
+              <option value="0">No known family history</option>
+              <option value="1">Distant relatives only (grandparent, aunt, uncle)</option>
+              <option value="2">One parent or sibling with type 2 diabetes</option>
+              <option value="3">Multiple first-degree relatives (both parents or multiple siblings)</option>
+            </select>
+          </div>
+
+          <button class="calc-btn" onclick="calculate()">Assess My Risk →</button>
+        </div>
+      </div>
+
+      <!-- RIGHT: Results -->
+      <div class="results-col">
+
+        <div id="result-panel" style="display:none">
+          <div class="result-card">
+            <div class="result-band" id="result-band"></div>
+            <div class="result-body">
+
+              <div class="score-hero">
+                <div class="score-hero-label">Insulin Resistance Risk Score</div>
+                <div class="score-number" id="score-number">—<span class="score-denom">/100</span></div>
+                <div><span class="score-tier-badge" id="tier-badge">—</span></div>
+                <div class="score-bar-wrap">
+                  <div class="score-bar-fill" id="score-bar" style="width:0%"></div>
+                </div>
+              </div>
+
+              <p class="domains-title">Score by risk domain</p>
+              <div id="domain-bars"></div>
+
+              <div id="acanthosis-alert" class="acanthosis-alert">
+                <strong>⚠️ Note on skin patches (acanthosis nigricans)</strong>
+                You indicated the presence of dark, velvety skin patches. This is a direct clinical sign of elevated insulin levels and is strongly associated with insulin resistance. We recommend discussing this with your doctor regardless of your overall score — it's one of the most specific physical signs in this assessment.
+              </div>
+
+              <div class="msg-block" id="msg-block">
+                <h3 id="msg-heading">—</h3>
+                <p id="msg-body">—</p>
+              </div>
+
+              <hr class="tips-divider" />
+              <p class="tips-title">Steps to reduce insulin resistance:</p>
+              <ul class="tips-list" id="tips-list"></ul>
+
+              <div class="note-block" style="margin-top:16px">
+                <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#9CA3AF" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <span>This assessment is for informational purposes and does not replace clinical testing. For a precise measurement, ask your doctor about a fasting insulin level and HOMA-IR calculation.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pair card -->
+        <div class="pair-card">
+          <div class="pair-icon">🧮</div>
+          <div>
+            <div class="pair-title">Pair with the HOMA-IR Calculator</div>
+            <div class="pair-body">If you have fasting glucose and fasting insulin lab values, the HOMA-IR calculator gives you a precise, clinically validated insulin sensitivity score — the gold standard for identifying insulin resistance.</div>
+            <a href="insulin-sensitivity.html" class="pair-link">Calculate your HOMA-IR →</a>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <h3>What is insulin resistance?</h3>
+          <p>Insulin resistance means your body's cells don't respond normally to insulin — the hormone that moves glucose from your blood into cells for energy. The pancreas compensates by producing more insulin, which can work for years before blood sugar begins to rise. By the time prediabetes is diagnosed, insulin resistance has often been present for a decade.</p>
+          <p>It's estimated that up to 40% of US adults have insulin resistance, many without knowing it. The GLP-1 era has brought new awareness to the underlying metabolic dysfunction that drives obesity and type 2 diabetes — and insulin resistance is the central mechanism.</p>
+        </div>
+
+        <div class="related-section">
+          <p class="related-title">You might also like</p>
+          <div class="related-grid">
+            <a href="prediabetes-risk.html" class="related-card">
+              <div class="related-icon">🩺</div>
+              <div class="related-info"><strong>Prediabetes Risk</strong><span>ADA risk assessment</span></div>
+            </a>
+            <a href="blood-glucose.html" class="related-card">
+              <div class="related-icon">💉</div>
+              <div class="related-info"><strong>Blood Glucose</strong><span>Interpret your readings</span></div>
+            </a>
+            <a href="bmi.html" class="related-card">
+              <div class="related-icon">⚖️</div>
+              <div class="related-info"><strong>BMI Calculator</strong><span>Body mass index</span></div>
+            </a>
+            <a href="waist-to-height.html" class="related-card">
+              <div class="related-icon">📏</div>
+              <div class="related-info"><strong>Waist-to-Height</strong><span>Visceral fat risk</span></div>
+            </a>
+          </div>
+        </div>
+
+      </div><!-- /results-col -->
+    </div><!-- /calc-columns -->
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="assets/logo-white.png" alt="SageMyHealth" style="height:45px;width:auto;object-fit:contain;" />
+        </div>
+        <p>Free, trusted health calculators with warm guidance — helping you understand your numbers.</p>
+      </div>
+      <div class="footer-col"><h5>Calculators</h5><ul>
+        <li><a href="prediabetes-risk.html">Prediabetes Risk</a></li>
+        <li><a href="blood-glucose.html">Blood Glucose</a></li>
+        <li><a href="bmi.html">BMI</a></li>
+        <li><a href="waist-to-height.html">Waist-to-Height</a></li>
+      </ul></div>
+      <div class="footer-col"><h5>Categories</h5><ul>
+        <li><a href="../index.html#categories">Glucose &amp; Diabetes</a></li>
+        <li><a href="../index.html#categories">Weight &amp; Body</a></li>
+        <li><a href="../index.html#categories">Brain Health</a></li>
+        <li><a href="../index.html#categories">Sleep &amp; Recovery</a></li>
+      </ul></div>
+      <div class="footer-col"><h5>Info</h5><ul>
+        <li><a href="../about.html">About Us</a></li>
+        <li><a href="../blog.html">Health Guides</a></li>
+        <li><a href="../privacy.html">Privacy Policy</a></li>
+        <li><a href="../terms.html">Terms of Use</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-disclaimer"><strong style="color:#7A958E">Medical Disclaimer:</strong> This calculator is for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider.</p>
+      <p class="footer-copy">© 2025 SageMyHealth.com — All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   INSULIN RESISTANCE LIKELIHOOD
+   10 scored items — mix of body metrics, lab values, signs, lifestyle
+   Domain scoring:
+     Body Metrics:  waist 0-3                            (max 3)
+     Metabolic:     glucose(0-3) + TG(0-3) + BP(0-3)   (max 9)
+     Signs:         acanthosis(0-3) + skintags(0-2) + postmeal(0-3) (max 8)
+     Lifestyle:     activity(0-3) + diet(0-3) + family(0-3)   (max 9)
+   Total max = 3+9+8+9 = 29
+   Score = round(raw/29 * 100)
+============================================================ */
+
+var irAnswers  = {};
+var waistUnit  = 'in';
+
+function setQ(id, val, btn) {
+  irAnswers[id] = val;
+  var group = document.getElementById(id + '-group');
+  Array.from(group.children).forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+}
+
+function setWaistUnit(unit, btn) {
+  waistUnit = unit;
+  document.querySelectorAll('.unit-toggle .unit-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  var inp = document.getElementById('waist');
+  inp.placeholder = unit === 'in' ? 'e.g. 36' : 'e.g. 92';
+  updateWaistHint();
+}
+
+function updateWaistHint() {
+  var sex  = document.getElementById('sex').value;
+  var hint = document.getElementById('waist-hint');
+  var u    = waistUnit === 'in' ? 'inches' : 'cm';
+  if (sex === 'M') {
+    hint.textContent = waistUnit === 'in'
+      ? 'Men — low risk: under 35". Elevated risk: 35–40". High risk: over 40".'
+      : 'Men — low risk: under 89 cm. Elevated risk: 89–102 cm. High risk: over 102 cm.';
+  } else if (sex === 'F') {
+    hint.textContent = waistUnit === 'in'
+      ? 'Women — low risk: under 31.5". Elevated risk: 31.5–34.6". High risk: over 34.6".'
+      : 'Women — low risk: under 80 cm. Elevated risk: 80–88 cm. High risk: over 88 cm.';
+  } else {
+    hint.textContent = 'Measure at the level of your navel. Select biological sex above to see personalized thresholds.';
+  }
+}
+
+function getWaistScore(sex, waist) {
+  var cm = waistUnit === 'cm' ? waist : waist * 2.54;
+  if (sex === 'M') {
+    if (cm < 89)  return 0;
+    if (cm < 102) return 1;
+    if (cm < 112) return 2;
+    return 3;
+  } else {
+    if (cm < 80)  return 0;
+    if (cm < 88)  return 1;
+    if (cm < 110) return 2;
+    return 3;
+  }
+}
+
+function domainBarColor(score) {
+  if (score <= 25) return '#16A34A';
+  if (score <= 50) return '#D97706';
+  if (score <= 75) return '#EA580C';
+  return '#DC2626';
+}
+
+var MSGS = {
+  low: {
+    h: 'Low likelihood of insulin resistance. 🟢',
+    b: 'Your risk factors are minimal. Your body metrics, lifestyle, and (if known) blood work suggest your cells are responding to insulin normally. Continue protecting this with regular movement, a whole-food diet, and adequate sleep — these are the most powerful tools for maintaining insulin sensitivity over your lifetime.',
+    tips: [
+      'Maintain regular aerobic and resistance exercise — muscle tissue is the largest consumer of blood glucose and directly improves insulin sensitivity.',
+      'Prioritise sleep quality: even one week of poor sleep measurably reduces insulin sensitivity in healthy adults.',
+      'A diet with fibre from vegetables, legumes, and whole grains slows glucose entry into the bloodstream and reduces insulin demand.',
+      'Consider a fasting blood panel every 1–2 years to monitor glucose, triglycerides, and HDL as you age.'
+    ]
+  },
+  moderate: {
+    h: 'Moderate likelihood — some risk factors present.',
+    b: 'You have several risk factors associated with insulin resistance. This doesn\'t mean you have it, but it warrants attention. Insulin resistance is largely reversible through lifestyle change, and the earlier it is addressed, the more effective interventions are. A fasting insulin level or HOMA-IR calculation from your doctor would give you a definitive answer.',
+    tips: [
+      'Reduce refined carbohydrates (white bread, rice, pastries, sweet drinks) — these spike blood glucose the most rapidly and drive compensatory insulin release.',
+      'Add resistance training: 2–3 sessions per week of weight or bodyweight exercise improves insulin sensitivity within weeks.',
+      'Losing 5–10% of body weight (if overweight) has the single largest impact on reversing early insulin resistance.',
+      'Walk for 10–15 minutes after meals — post-meal movement is one of the most effective ways to clear blood glucose without insulin.',
+      'Ask your doctor about a fasting insulin level and HOMA-IR test to confirm the picture.'
+    ]
+  },
+  high: {
+    h: 'High likelihood — multiple risk factors identified.',
+    b: 'Several significant risk factors are present in your profile. At this level, insulin resistance is likely affecting your metabolism, energy, and cardiovascular risk even if fasting glucose is still in the normal range (since glucose is often the last thing to rise). We strongly recommend speaking with your doctor and requesting a fasting insulin level.',
+    tips: [
+      'Request fasting glucose, fasting insulin, HbA1c, triglycerides, and HDL from your doctor — together these paint a complete metabolic picture.',
+      'A low-glycaemic or Mediterranean-style diet has the strongest evidence base for reducing insulin resistance.',
+      'Prioritise daily movement — even a 20-minute walk after each meal can reduce post-meal glucose spikes significantly.',
+      'Address sleep: poor sleep acutely worsens insulin resistance and is an underrecognised driver.',
+      'If acanthosis nigricans or skin tags are present, discuss these with your doctor — they are physical markers of hyperinsulinemia.'
+    ]
+  },
+  'very-high': {
+    h: 'Very high likelihood — please discuss with your doctor.',
+    b: 'Multiple strong risk factors are present, including physical signs, elevated lab values, and lifestyle factors that together paint a high-risk metabolic picture. Insulin resistance at this level is associated with prediabetes, cardiovascular disease, PCOS, fatty liver, and inflammation. Please speak to your doctor. This is treatable — but it requires clinical assessment and a structured plan.',
+    tips: [
+      'See your doctor soon. Request a full metabolic panel: fasting glucose, fasting insulin, HOMA-IR, HbA1c, lipid panel, and liver function tests.',
+      'If not already diagnosed, you may be in the prediabetes range — catching this early dramatically reduces progression to type 2 diabetes.',
+      'Medications like metformin are sometimes prescribed alongside lifestyle changes for high-risk individuals — discuss this with your provider.',
+      'Structured dietary intervention — low-carbohydrate, Mediterranean, or time-restricted eating — has strong evidence for reversing insulin resistance.',
+      'Prioritise weight loss if applicable: even 5% body weight reduction significantly improves insulin sensitivity.',
+      'Use the HOMA-IR calculator with your fasting lab values to get a quantitative baseline to track over time.'
+    ]
+  }
+};
+
+function calculate() {
+  // Required fields
+  var sex  = document.getElementById('sex').value;
+  var waistVal = parseFloat(document.getElementById('waist').value);
+  var bp   = document.getElementById('bp').value;
+  var act  = document.getElementById('activity').value;
+  var diet = document.getElementById('diet').value;
+  var fam  = document.getElementById('family').value;
+
+  if (!sex)   { alert('Please select your biological sex.'); return; }
+  if (!waistVal || isNaN(waistVal)) { alert('Please enter your waist circumference.'); return; }
+  if (bp === '')  { alert('Please answer the blood pressure question.'); return; }
+  if (act === '') { alert('Please answer the physical activity question.'); return; }
+  if (diet === '') { alert('Please answer the diet question.'); return; }
+  if (fam === '')  { alert('Please answer the family history question.'); return; }
+  if (irAnswers['acanthosis'] === undefined) { alert('Please answer the skin patches question.'); return; }
+  if (irAnswers['skintags']   === undefined) { alert('Please answer the skin tags question.'); return; }
+  if (irAnswers['postmeal']   === undefined) { alert('Please answer the post-meal energy question.'); return; }
+
+  // Scores
+  var waistScore = getWaistScore(sex, waistVal);
+  var glucose    = parseInt(document.getElementById('glucose').value) || 0;
+  var tg         = parseInt(document.getElementById('triglycerides').value) || 0;
+  var bpScore    = parseInt(bp);
+  var acanthosis = irAnswers['acanthosis'];
+  var skintags   = irAnswers['skintags'];
+  var postmeal   = irAnswers['postmeal'];
+  var activity   = parseInt(act);
+  var dietScore  = parseInt(diet);
+  var family     = parseInt(fam);
+
+  // Totals
+  var bodyRaw       = waistScore;
+  var metabolicRaw  = glucose + tg + bpScore;
+  var signsRaw      = acanthosis + skintags + postmeal;
+  var lifestyleRaw  = activity + dietScore + family;
+  var raw           = bodyRaw + metabolicRaw + signsRaw + lifestyleRaw;
+  var MAX           = 29; // 3 + 9 + 8 + 9
+
+  var score = Math.round((raw / MAX) * 100);
+  var tier  = score < 25 ? 'low' : score < 50 ? 'moderate' : score < 75 ? 'high' : 'very-high';
+
+  var tierColors  = { 'low': '#16A34A', 'moderate': '#D97706', 'high': '#EA580C', 'very-high': '#DC2626' };
+  var tierLabels  = { 'low': 'Low likelihood', 'moderate': 'Moderate likelihood', 'high': 'High likelihood', 'very-high': 'Very high likelihood' };
+  var tierBadges  = { 'low': 'tier-low', 'moderate': 'tier-moderate', 'high': 'tier-high', 'very-high': 'tier-very-high' };
+  var color       = tierColors[tier];
+
+  // Hero
+  document.getElementById('score-number').innerHTML = score + '<span class="score-denom">/100</span>';
+  document.getElementById('score-number').style.color = color;
+  document.getElementById('score-bar').style.width      = score + '%';
+  document.getElementById('score-bar').style.background = color;
+
+  var badge = document.getElementById('tier-badge');
+  badge.textContent = tierLabels[tier];
+  badge.className   = 'score-tier-badge ' + tierBadges[tier];
+
+  document.getElementById('result-band').className = 'result-band ' + tier;
+
+  // Domain bars (4 domains)
+  var domains = [
+    { name: '📐 Body Metrics',    raw: bodyRaw,      max: 3 },
+    { name: '🔬 Metabolic Markers', raw: metabolicRaw, max: 9 },
+    { name: '🔎 Physical Signs',  raw: signsRaw,     max: 8 },
+    { name: '🏃 Lifestyle',       raw: lifestyleRaw, max: 9 }
+  ];
+  var barsEl = document.getElementById('domain-bars');
+  barsEl.innerHTML = '';
+  domains.forEach(function(d) {
+    var pct   = Math.round((d.raw / d.max) * 100);
+    var dcolor = domainBarColor(pct);
+    barsEl.innerHTML +=
+      '<div class="domain-row">' +
+        '<div class="domain-row-top">' +
+          '<span class="domain-name">' + d.name + '</span>' +
+          '<span class="domain-score" style="color:' + dcolor + '">' + pct + '</span>' +
+        '</div>' +
+        '<div class="bar-track"><div class="bar-fill" style="width:' + pct + '%;background:' + dcolor + '"></div></div>' +
+      '</div>';
+  });
+
+  // Acanthosis alert
+  var alertEl = document.getElementById('acanthosis-alert');
+  alertEl.style.display = acanthosis === 3 ? 'block' : 'none';
+
+  // Message
+  var m  = MSGS[tier];
+  var mb = document.getElementById('msg-block');
+  mb.className = 'msg-block ' + tier;
+  document.getElementById('msg-heading').textContent = m.h;
+  document.getElementById('msg-body').textContent    = m.b;
+
+  var tl = document.getElementById('tips-list');
+  tl.innerHTML = '';
+  m.tips.forEach(function(t) { var li = document.createElement('li'); li.textContent = t; tl.appendChild(li); });
+
+  // Reveal
+  document.getElementById('result-panel').style.display = '';
+  document.getElementById('result-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'calculator_result', { calculator: 'insulin_resistance', score: score, tier: tier });
+  }
+}
+
+function openMobileMenu()  { document.getElementById('mobile-menu').classList.add('open'); document.getElementById('nav-hamburger').setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+function closeMobileMenu() { document.getElementById('mobile-menu').classList.remove('open'); document.getElementById('nav-hamburger').setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMobileMenu(); });
+</script>
+</body>
+</html>

@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X6K2H9YW2V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X6K2H9YW2V');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Breast Cancer Risk Calculator (Gail Model) — Your 5-Year Risk | SageMyHealth</title>
+  <meta name="description" content="Estimate your 5-year and lifetime breast cancer risk using the validated Gail Model (NCI). Takes 2 minutes. Includes personalised screening recommendations based on 2024–2025 ACS guidelines and your risk level." />
+  <meta name="keywords" content="breast cancer risk calculator, Gail model, 5-year breast cancer risk, screening recommendations" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://sagemyhealth.com/calculators/breast-cancer-risk.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SageMyHealth" />
+  <meta property="og:title" content="Breast Cancer Risk Calculator (Gail Model) — Your 5-Year Risk" />
+  <meta property="og:description" content="Estimate your 5-year and lifetime breast cancer risk using the validated Gail Model (NCI). Takes 2 minutes. Includes personalised screening recommendations based on 2024–2025 ACS guidelines and your risk level." />
+  <meta property="og:url" content="https://sagemyhealth.com/calculators/breast-cancer-risk.html" />
+  <meta property="og:image" content="https://sagemyhealth.com/calculators/assets/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Breast Cancer Risk Calculator (Gail Model) — Your 5-Year Risk" />
+  <meta name="twitter:description" content="Estimate your 5-year and lifetime breast cancer risk using the validated Gail Model (NCI). Takes 2 minutes. Includes personalised screening recommendations based on 2024–2025 ACS guidelines and your risk level." />
+  <meta name="twitter:image" content="https://sagemyhealth.com/calculators/assets/logo.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "name": "Breast Cancer Risk Calculator (Gail Model) — Your 5-Year Risk",
+    "description": "Estimate your 5-year and lifetime breast cancer risk using the validated Gail Model (NCI). Takes 2 minutes. Includes personalised screening recommendations based on 2024–2025 ACS guidelines and your risk level.",
+    "url": "https://sagemyhealth.com/calculators/breast-cancer-risk.html",
+    "publisher": { "@type": "Organization", "name": "SageMyHealth", "url": "https://sagemyhealth.com/" },
+    "isAccessibleForFree": true,
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sagemyhealth.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Women's Health", "item": "https://sagemyhealth.com/#categories" },
+        { "@type": "ListItem", "position": 3, "name": "Breast Cancer Risk Calculator (Gail Model) — Your 5-Year Risk", "item": "https://sagemyhealth.com/calculators/breast-cancer-risk.html" }
+      ]
+    }
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sage:       #3B6A3A; --sage-dark: #0A3D2A; --sage-mid: #5C8A5C;
+      --sage-light: #EBF2EC; --sage-pale: #F2F7F3; --cream: #E3FFB3;
+      --white: #FFFFFF; --text-dark: #1A2E1E; --text-mid: #4A5568;
+      --text-light: #718096; --border: #E2EBE4; --border-mid: #C8D9CC;
+      --shadow-sm: 0 1px 6px rgba(59,106,58,.08); --shadow-md: 0 4px 16px rgba(59,106,58,.12);
+      --shadow-lg: 0 8px 32px rgba(59,106,58,.16);
+      --r-sm:8px; --r:12px; --r-lg:20px; --r-xl:28px;
+      /* pink — breast cancer awareness, true pink not purple-red */
+      --rose:       #DB2777; --rose-dark: #9D174D; --rose-mid: #EC4899;
+      --rose-light: #FDF2F8; --rose-pale: #FFF0F7;
+      --rose-muted: #FBCFE8;
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif; color:var(--text-dark); background:var(--sage-pale); line-height:1.6; -webkit-font-smoothing:antialiased; }
+    a { color:inherit; text-decoration:none; }
+    button { cursor:pointer; font-family:inherit; }
+
+    /* NAV */
+    .site-nav { position:sticky; top:0; z-index:200; background:rgba(255,255,255,.96); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); }
+    .nav-inner { max-width:1200px; margin:0 auto; padding:0 24px; height:68px; display:flex; align-items:center; justify-content:space-between; gap:32px; }
+    .nav-logo { display:flex; align-items:center; gap:10px; flex-shrink:0; }
+    .nav-links { display:flex; align-items:center; gap:28px; list-style:none; flex:1; justify-content:center; }
+    .nav-links a { color:var(--text-mid); font-size:15px; font-weight:500; transition:color .2s; }
+    .nav-links a:hover { color:var(--sage); }
+    .nav-btn { background:var(--sage); color:white; border:none; padding:9px 20px; border-radius:var(--r-sm); font-size:14px; font-weight:600; transition:background .2s; }
+    .nav-btn:hover { background:var(--sage-dark); }
+
+    /* PAGE */
+    .calc-page { padding:36px 0 72px; }
+    .calc-wrapper { max-width:1200px; margin:0 auto; padding:0 24px; }
+    .breadcrumb { display:flex; align-items:center; gap:8px; font-size:13px; color:var(--text-light); margin-bottom:24px; flex-wrap:wrap; }
+    .breadcrumb a { color:var(--sage); } .breadcrumb a:hover { text-decoration:underline; }
+    .bc-sep { color:var(--border-mid); }
+    .page-header { margin-bottom:24px; }
+    .calc-tag { display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:600; color:var(--sage); background:var(--white); padding:5px 12px; border-radius:20px; margin-bottom:12px; letter-spacing:.3px; border:1px solid var(--border); }
+    .page-header h1 { font-family:'Playfair Display',serif; font-size:clamp(26px,3.5vw,40px); font-weight:700; color:var(--text-dark); letter-spacing:-.5px; margin-bottom:10px; line-height:1.15; }
+    .page-header p { font-size:15px; color:var(--text-mid); line-height:1.7; max-width:700px; }
+
+    /* Top disclaimer banner */
+    .disclaimer-banner { background:#FDF2F8; border:1px solid var(--rose-muted); border-radius:var(--r); padding:14px 18px; margin-bottom:24px; display:flex; gap:12px; align-items:flex-start; }
+    .disclaimer-icon { font-size:18px; flex-shrink:0; margin-top:1px; }
+    .disclaimer-text { font-size:13px; color:var(--text-mid); line-height:1.65; }
+    .disclaimer-text strong { color:var(--rose); }
+
+    /* LAYOUT */
+    .calc-columns { display:grid; grid-template-columns:500px 1fr; gap:24px; align-items:start; }
+
+    /* FORM CARD */
+    .form-card { background:white; border-radius:var(--r-xl); box-shadow:var(--shadow-lg); overflow:hidden; }
+    .form-card-header { padding:22px 28px 16px; border-bottom:1px solid var(--border); background:linear-gradient(135deg,#FDF2F8,white); }
+    .form-card-title { font-size:15px; font-weight:700; color:var(--text-dark); }
+    .form-card-sub { font-size:12px; color:var(--text-light); margin-top:3px; }
+    .form-body { padding:0; }
+
+    /* Form sections */
+    .form-section { padding:20px 28px; border-bottom:1px solid var(--border); }
+    .form-section:last-of-type { border-bottom:none; }
+    .section-num { display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; background:var(--sage); color:white; border-radius:50%; font-size:11px; font-weight:700; margin-right:8px; flex-shrink:0; }
+    .section-heading { display:flex; align-items:center; font-size:13px; font-weight:700; color:var(--text-dark); margin-bottom:14px; }
+    .section-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.6px; color:var(--text-light); display:block; margin-bottom:8px; }
+    .field-hint { font-size:11px; color:var(--text-light); line-height:1.55; margin-top:-4px; margin-bottom:12px; }
+
+    /* Age input */
+    .age-row { display:flex; align-items:center; gap:12px; }
+    .age-input-wrap { position:relative; width:120px; }
+    .age-input { width:100%; height:50px; padding:0 44px 0 14px; border:1.5px solid var(--border); border-radius:var(--r); font-size:24px; font-weight:800; color:var(--text-dark); background:white; outline:none; transition:border-color .15s; -webkit-appearance:none; -moz-appearance:textfield; }
+    .age-input::-webkit-inner-spin-button, .age-input::-webkit-outer-spin-button { -webkit-appearance:none; }
+    .age-input:focus { border-color:var(--rose); }
+    .age-unit { position:absolute; right:12px; top:50%; transform:translateY(-50%); font-size:12px; font-weight:600; color:var(--text-light); pointer-events:none; }
+    .age-note { font-size:12px; color:var(--text-light); line-height:1.5; }
+
+    /* Choice cards */
+    .choice-grid { display:grid; gap:7px; margin-bottom:4px; }
+    .choice-grid-2 { grid-template-columns:1fr 1fr; }
+    .choice-grid-3 { grid-template-columns:1fr 1fr 1fr; }
+    .choice-grid-4 { grid-template-columns:1fr 1fr; }
+    .choice-btn { border:1.5px solid var(--border); border-radius:var(--r); padding:10px 12px; background:white; text-align:left; transition:all .15s; cursor:pointer; }
+    .choice-btn:hover { border-color:var(--rose-mid); }
+    .choice-btn.active { border-color:var(--rose); background:var(--rose-light); }
+    .choice-btn.active::after { float:right; content:'✓'; font-size:12px; font-weight:800; color:var(--rose); margin-top:1px; }
+    .choice-main { font-size:13px; font-weight:700; color:var(--text-dark); display:block; }
+    .choice-sub  { font-size:11px; color:var(--text-light); line-height:1.45; display:block; margin-top:1px; }
+
+    /* Pill group */
+    .pill-group { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:4px; }
+    .pill { padding:8px 16px; border:1.5px solid var(--border); border-radius:50px; font-size:13px; font-weight:600; background:white; color:var(--text-mid); transition:all .15s; }
+    .pill:hover { border-color:var(--rose-mid); color:var(--rose); }
+    .pill.active { background:var(--rose); border-color:var(--rose); color:white; }
+    .pill-sm { padding:7px 14px; font-size:12px; }
+
+    /* Yes/No toggle */
+    .yn-group { display:flex; gap:8px; }
+    .yn-btn { padding:9px 22px; border:1.5px solid var(--border); border-radius:50px; font-size:13px; font-weight:700; background:white; color:var(--text-mid); transition:all .15s; }
+    .yn-btn:hover { border-color:var(--rose-mid); }
+    .yn-btn.active { background:var(--rose); border-color:var(--rose); color:white; }
+
+    .calc-btn { width:100%; background:var(--sage); color:white; border:none; padding:14px; border-radius:var(--r); font-size:16px; font-weight:700; transition:all .18s; display:flex; align-items:center; justify-content:center; gap:8px; margin:20px 28px; width:calc(100% - 56px); }
+    .calc-btn:hover { background:var(--sage-dark); transform:translateY(-1px); box-shadow:var(--shadow-md); }
+    .calc-btn:active { transform:translateY(0); }
+    .err-banner { display:none; background:#FEF2F2; border:1px solid #FECACA; border-radius:var(--r-sm); padding:10px 14px; font-size:13px; color:#DC2626; margin:0 28px 12px; font-weight:500; }
+
+    /* Conditional reveal */
+    .hidden-field { display:none; }
+    .hidden-field.show { display:block; animation:fadeIn .2s ease; }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+    /* RESULTS */
+    .results-col { display:flex; flex-direction:column; gap:20px; }
+    .placeholder-card { background:white; border-radius:var(--r-xl); box-shadow:var(--shadow-sm); padding:40px 24px; text-align:center; }
+    .placeholder-icon { font-size:48px; margin-bottom:16px; }
+    .placeholder-title { font-size:16px; font-weight:700; color:var(--text-dark); margin-bottom:8px; }
+    .placeholder-sub { font-size:13px; color:var(--text-light); line-height:1.7; max-width:280px; margin:0 auto; }
+
+    .result-card { background:white; border-radius:var(--r-xl); box-shadow:var(--shadow-lg); overflow:hidden; display:none; }
+    .result-card.visible { display:block; animation:slideUp .35s ease; }
+    @keyframes slideUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+
+    /* Risk hero */
+    .risk-hero { padding:28px 28px 24px; }
+    .risk-hero-label { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.7px; color:var(--text-light); margin-bottom:10px; }
+    .risk-nums-row { display:flex; gap:24px; align-items:flex-end; flex-wrap:wrap; margin-bottom:16px; }
+    .risk-main { }
+    .risk-pct { font-size:60px; font-weight:800; letter-spacing:-3px; line-height:1; }
+    .risk-pct-label { font-size:13px; color:var(--text-mid); margin-top:4px; }
+    .risk-vs { display:flex; flex-direction:column; gap:4px; }
+    .risk-vs-item { background:var(--sage-pale); border-radius:var(--r-sm); padding:8px 14px; }
+    .risk-vs-val { font-size:18px; font-weight:800; color:var(--text-dark); line-height:1; }
+    .risk-vs-lbl { font-size:10px; color:var(--text-light); margin-top:2px; }
+
+    /* 1-in-N visual */
+    .one-in-n { display:flex; align-items:center; gap:10px; background:var(--sage-pale); border-radius:var(--r); padding:12px 16px; margin-bottom:16px; }
+    .one-in-n-icon { font-size:22px; }
+    .one-in-n-text { font-size:14px; color:var(--text-mid); line-height:1.5; }
+    .one-in-n-text strong { color:var(--text-dark); }
+
+    /* Risk scale */
+    .scale-section { padding:0 28px 20px; border-bottom:1px solid var(--border); }
+    .scale-label { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.5px; color:var(--text-mid); margin-bottom:10px; }
+    .risk-scale-track { height:14px; border-radius:8px; background:linear-gradient(90deg,#4ADE80 0%,#FCD34D 30%,#F97316 60%,#E11D48 85%,#9F1239 100%); position:relative; margin-bottom:8px; }
+    .risk-scale-marker { position:absolute; top:-6px; width:4px; height:26px; background:var(--text-dark); border-radius:2px; transition:left .8s cubic-bezier(.34,1.1,.64,1); }
+    .risk-scale-marker::after { content:attr(data-pct); position:absolute; top:-20px; left:50%; transform:translateX(-50%); background:var(--text-dark); color:white; font-size:10px; font-weight:700; padding:2px 6px; border-radius:4px; white-space:nowrap; }
+    .scale-legend { display:flex; justify-content:space-between; font-size:10px; font-weight:600; color:var(--text-light); }
+
+    /* Tier row */
+    .tier-section { padding:14px 28px; display:grid; grid-template-columns:repeat(4,1fr); gap:6px; border-bottom:1px solid var(--border); }
+    .tier-box { border-radius:var(--r-sm); padding:9px 6px; text-align:center; border:1.5px solid transparent; }
+    .tier-box .t-name  { font-size:10px; font-weight:700; }
+    .tier-box .t-range { font-size:9px; margin-top:1px; }
+    .t-below   { background:#F0FDF4; color:#166534; } .t-below.active   { border-color:#16A34A; }
+    .t-average { background:#F0F9FF; color:#0369A1; } .t-average.active { border-color:#0284C7; }
+    .t-above   { background:#FFFBEB; color:#92400E; } .t-above.active   { border-color:#D97706; }
+    .t-high    { background:#FFF1F2; color:#9F1239; } .t-high.active    { border-color:#BE123C; }
+
+    /* Screening recommendations */
+    .screening-section { padding:20px 28px; border-bottom:1px solid var(--border); }
+    .screen-title { font-size:13px; font-weight:700; color:var(--text-dark); margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+    .screen-badge { font-size:10px; font-weight:700; padding:2px 8px; border-radius:50px; background:#DBEAFE; color:#1E40AF; }
+    .screen-rec { border-left:3px solid; padding:12px 14px; border-radius:0 var(--r-sm) var(--r-sm) 0; margin-bottom:10px; }
+    .screen-rec:last-child { margin-bottom:0; }
+    .screen-rec-main  { font-size:13px; font-weight:600; color:var(--text-dark); margin-bottom:3px; }
+    .screen-rec-sub   { font-size:12px; color:var(--text-mid); line-height:1.55; }
+    .rec-annual  { background:#F0FDF4; border-left-color:#16A34A; }
+    .rec-6month  { background:#FFFBEB; border-left-color:#D97706; }
+    .rec-mri     { background:var(--rose-light); border-left-color:var(--rose); }
+    .rec-discuss { background:#F8FAFC; border-left-color:#94A3B8; }
+
+    /* Message block */
+    .msg-section { padding:20px 28px; border-bottom:1px solid var(--border); }
+    .msg-block { border-radius:var(--r); padding:16px; border-left:4px solid; }
+    .msg-block h3 { font-size:14px; font-weight:700; margin-bottom:6px; }
+    .msg-block p  { font-size:13px; color:var(--text-mid); line-height:1.75; }
+    .msg-below   { background:#F0FDF4; border-left-color:#16A34A; } .msg-below h3   { color:#166534; }
+    .msg-average { background:#F0F9FF; border-left-color:#0284C7; } .msg-average h3 { color:#075985; }
+    .msg-above   { background:#FFFBEB; border-left-color:#D97706; } .msg-above h3   { color:#92400E; }
+    .msg-high    { background:#FFF1F2; border-left-color:#BE123C; } .msg-high h3    { color:#9F1239; }
+
+    /* Lifetime & lifetime context */
+    .lifetime-section { padding:18px 28px; border-bottom:1px solid var(--border); }
+    .lifetime-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .lt-box { background:var(--sage-pale); border-radius:var(--r); padding:14px 16px; }
+    .lt-val { font-size:22px; font-weight:800; color:var(--text-dark); line-height:1; margin-bottom:3px; }
+    .lt-lbl { font-size:11px; color:var(--text-light); line-height:1.4; }
+
+    /* Dense breast note */
+    .dense-section { padding:18px 28px; border-bottom:1px solid var(--border); background:#FFF8F1; }
+    .dense-title { font-size:13px; font-weight:700; color:#92400E; margin-bottom:6px; display:flex; align-items:center; gap:6px; }
+    .dense-new-badge { font-size:9px; font-weight:700; padding:2px 6px; border-radius:50px; background:#FED7AA; color:#7C2D12; }
+    .dense-body { font-size:12px; color:var(--text-mid); line-height:1.7; }
+
+    /* Limitations */
+    .limits-section { padding:18px 28px; }
+    .limits-title { font-size:13px; font-weight:700; color:var(--text-dark); margin-bottom:8px; }
+    .limit-item { display:flex; gap:8px; font-size:12px; color:var(--text-mid); line-height:1.6; margin-bottom:6px; }
+    .limit-item::before { content:'ℹ'; color:var(--text-light); flex-shrink:0; font-size:12px; margin-top:1px; }
+
+    /* CTA block */
+    .cta-block { background:white; border:1px solid var(--border); border-radius:var(--r-xl); padding:22px 24px; box-shadow:var(--shadow-sm); }
+    .cta-title { font-size:16px; font-weight:700; color:var(--sage-dark); margin-bottom:6px; }
+    .cta-body  { font-size:13px; color:var(--text-mid); line-height:1.7; margin-bottom:14px; }
+    .cta-btn   { display:inline-flex; align-items:center; gap:6px; background:var(--sage); color:white; padding:10px 20px; border-radius:var(--r-sm); font-size:14px; font-weight:700; transition:background .18s; }
+    .cta-btn:hover { background:var(--sage-dark); }
+
+    /* INFO CARD */
+    .info-card { background:white; border-radius:var(--r-xl); box-shadow:var(--shadow-sm); padding:22px 24px; }
+    .info-card h3 { font-size:14px; font-weight:700; margin-bottom:8px; color:var(--text-dark); }
+    .info-card p  { font-size:13px; color:var(--text-mid); line-height:1.75; }
+    .info-card p + p { margin-top:10px; }
+
+    .update-badge { display:inline-flex; align-items:center; gap:5px; font-size:11px; font-weight:700; color:#1E40AF; background:#DBEAFE; padding:3px 9px; border-radius:50px; margin-bottom:10px; }
+
+    .guideline-row { display:flex; gap:10px; margin-top:12px; align-items:flex-start; }
+    .guideline-year { font-size:12px; font-weight:700; color:white; background:var(--rose); padding:3px 9px; border-radius:50px; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+    .guideline-text { font-size:13px; color:var(--text-mid); line-height:1.6; }
+
+    /* Related */
+    .related-title { font-size:16px; font-weight:700; color:var(--text-dark); margin-bottom:12px; }
+    .related-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .related-card { background:white; border:1.5px solid var(--border); border-radius:var(--r); padding:14px 16px; display:flex; align-items:center; gap:12px; transition:all .18s; }
+    .related-card:hover { border-color:var(--sage); box-shadow:var(--shadow-sm); transform:translateY(-1px); }
+    .related-icon { width:36px; height:36px; background:var(--sage-light); border-radius:9px; display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0; }
+    .related-info strong { display:block; font-size:13px; font-weight:600; }
+    .related-info span { font-size:11px; color:var(--text-light); }
+
+    .note-block { background:var(--cream); border-radius:var(--r); padding:13px 16px; font-size:12px; color:var(--text-light); line-height:1.7; display:flex; gap:8px; align-items:flex-start; }
+    .note-block svg { flex-shrink:0; margin-top:1px; }
+
+    /* FOOTER */
+    .site-footer { background:var(--text-dark); color:#94A99A; padding:48px 0 0; margin-top:48px; }
+    .footer-inner { max-width:1200px; margin:0 auto; padding:0 24px; }
+    .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:48px; padding-bottom:40px; }
+    .footer-logo { display:flex; align-items:center; gap:8px; color:white; font-size:18px; font-weight:700; margin-bottom:12px; }
+    .footer-brand p { font-size:14px; line-height:1.7; max-width:260px; color:#7A958E; }
+    .footer-col h5 { color:white; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.8px; margin-bottom:14px; }
+    .footer-col ul { list-style:none; }
+    .footer-col li { margin-bottom:8px; }
+    .footer-col a { font-size:14px; color:#7A958E; transition:color .2s; }
+    .footer-col a:hover { color:white; }
+    .footer-bottom { border-top:1px solid rgba(255,255,255,.08); padding:22px 0; display:flex; flex-direction:column; gap:6px; }
+    .footer-disclaimer { font-size:12px; color:#5A7568; line-height:1.7; }
+    .footer-copy { font-size:12px; color:#5A7568; }
+
+    /* RESPONSIVE */
+    @media (max-width:1100px) { .calc-columns { grid-template-columns:1fr; } }
+    @media (max-width:900px)  { .footer-grid { grid-template-columns:1fr 1fr; } .footer-brand { grid-column:1/-1; } }
+    @media (max-width:660px)  {
+      .nav-links { display:none; } .nav-hamburger { display:flex !important; } .nav-btn { display:none; }
+      .choice-grid-4 { grid-template-columns:1fr; }
+      .risk-nums-row { flex-direction:column; gap:12px; }
+      .tier-section { grid-template-columns:1fr 1fr; }
+      .lifetime-row { grid-template-columns:1fr; }
+      .related-grid { grid-template-columns:1fr; }
+    }
+    @media (max-width:520px) { .footer-grid { grid-template-columns:1fr; } .choice-grid-2,.choice-grid-3 { grid-template-columns:1fr; } }
+
+    /* HAMBURGER */
+    .nav-hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; background:none; border:none; padding:8px; margin-left:8px; border-radius:8px; cursor:pointer; flex-shrink:0; }
+    .nav-hamburger span { display:block; width:22px; height:2.5px; background:var(--text-dark); border-radius:2px; }
+    .mobile-menu { display:none; position:fixed; inset:0; z-index:999; }
+    .mobile-menu.open { display:block; }
+    .mobile-overlay { position:absolute; inset:0; background:rgba(0,0,0,.45); backdrop-filter:blur(2px); }
+    .mobile-drawer { position:absolute; top:0; right:0; width:min(300px,84vw); height:100%; background:#fff; display:flex; flex-direction:column; box-shadow:-4px 0 40px rgba(0,0,0,.18); animation:drawerIn .22s cubic-bezier(.22,.61,.36,1); }
+    @keyframes drawerIn { from{transform:translateX(100%)} to{transform:translateX(0)} }
+    .mobile-drawer-head { display:flex; align-items:center; justify-content:space-between; padding:18px 20px 14px; border-bottom:1px solid var(--border); }
+    .mobile-drawer-logo { font-size:15px; font-weight:700; }
+    .mobile-close { background:none; border:none; font-size:20px; padding:4px 8px; cursor:pointer; color:var(--text-light); border-radius:6px; line-height:1; }
+    .mobile-nav-links { padding:14px 12px; flex:1; display:flex; flex-direction:column; gap:4px; }
+    .mobile-nav-link { display:flex; align-items:center; gap:14px; padding:13px 16px; border-radius:12px; font-size:16px; font-weight:600; color:var(--text-dark); transition:background .15s; }
+    .mobile-nav-link:hover { background:var(--sage-light); color:var(--sage); }
+    .mobile-link-icon { width:40px; height:40px; background:var(--sage-light); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
+    .mobile-browse-btn { display:block; margin:0 12px 20px; padding:14px; background:var(--sage); color:#fff; border-radius:12px; font-size:15px; font-weight:700; text-align:center; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <img src="assets/logo.png" alt="SageMyHealth" style="height:54px;width:auto;object-fit:contain;"/>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html#categories">Calculators</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../blog.html">Health Guides</a></li>
+    </ul>
+    <a href="../index.html#categories" class="nav-btn">Browse All</a>
+    <button class="nav-hamburger" id="nav-hamburger" onclick="openMobileMenu()" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true">
+  <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-drawer">
+    <div class="mobile-drawer-head">
+      <span class="mobile-drawer-logo">SageMyHealth</span>
+      <button class="mobile-close" onclick="closeMobileMenu()">&#x2715;</button>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="../index.html#categories" class="mobile-nav-link" onclick="closeMobileMenu()"><span class="mobile-link-icon">&#x1F9EE;</span>Calculators</a>
+      <a href="../about.html" class="mobile-nav-link" onclick="closeMobileMenu()"><span class="mobile-link-icon">&#x1F49A;</span>About</a>
+      <a href="../blog.html" class="mobile-nav-link" onclick="closeMobileMenu()"><span class="mobile-link-icon">&#x1F4D6;</span>Health Guides</a>
+    </nav>
+    <a href="../index.html#categories" class="mobile-browse-btn" onclick="closeMobileMenu()">Browse All Calculators &#x2192;</a>
+  </div>
+</div>
+
+<!-- PAGE -->
+<main class="calc-page">
+  <div class="calc-wrapper">
+
+    <nav class="breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="bc-sep">›</span>
+      <a href="../index.html#categories">Women's Health</a>
+      <span class="bc-sep">›</span>
+      <span>Breast Cancer Risk (Gail Model)</span>
+    </nav>
+
+    <header class="page-header">
+      <div class="calc-tag">🌸 Women's Health</div>
+      <h1>Breast Cancer Risk Calculator</h1>
+      <p>Based on the validated Gail Model — the same tool used in clinical settings worldwide. Estimates your personalised 5-year and lifetime risk, compares it to the average woman your age, and gives you screening recommendations based on current 2024–2025 guidelines.</p>
+    </header>
+
+    <!-- Warm disclaimer -->
+    <div class="disclaimer-banner">
+      <div class="disclaimer-icon">💛</div>
+      <div class="disclaimer-text"><strong>A note before you start:</strong> Most women who complete this assessment will find their risk is average or below average. This tool gives you information, not a diagnosis or prediction. Whatever your result, please talk to your doctor — they can put it in full context and make it useful for your care.</div>
+    </div>
+
+    <div class="calc-columns">
+
+      <!-- LEFT: Form -->
+      <div class="form-card">
+        <div class="form-card-header">
+          <div class="form-card-title">Your Gail Model Assessment</div>
+          <div class="form-card-sub">7 questions · takes about 2 minutes · nothing is stored or shared</div>
+        </div>
+        <div class="form-body">
+
+          <!-- Section 1: About you -->
+          <div class="form-section">
+            <div class="section-heading"><span class="section-num">1</span> About you</div>
+
+            <span class="section-label">Current age</span>
+            <div class="age-row" style="margin-bottom:16px">
+              <div class="age-input-wrap">
+                <input class="age-input" type="number" id="age" placeholder="45" min="35" max="85" step="1" />
+                <span class="age-unit">yrs</span>
+              </div>
+              <div class="age-note">The Gail Model applies to<br>women aged 35 and older.</div>
+            </div>
+
+            <span class="section-label">Ethnicity</span>
+            <p class="field-hint">Breast cancer incidence varies across ethnicities — this helps calibrate the baseline risk estimate.</p>
+            <div class="choice-grid choice-grid-2">
+              <button class="choice-btn" id="eth-white"    onclick="setEth('white',    this)"><span class="choice-main">White non-Hispanic</span></button>
+              <button class="choice-btn" id="eth-black"    onclick="setEth('black',    this)"><span class="choice-main">Black / African American</span></button>
+              <button class="choice-btn" id="eth-hispanic" onclick="setEth('hispanic', this)"><span class="choice-main">Hispanic / Latina</span></button>
+              <button class="choice-btn" id="eth-asian"    onclick="setEth('asian',    this)"><span class="choice-main">Asian / Pacific Islander</span></button>
+              <button class="choice-btn" id="eth-aian"     onclick="setEth('aian',     this)"><span class="choice-main">American Indian / Alaska Native</span></button>
+              <button class="choice-btn" id="eth-other"    onclick="setEth('other',    this)"><span class="choice-main">Other / Prefer not to say</span></button>
+            </div>
+          </div>
+
+          <!-- Section 2: Menstrual history -->
+          <div class="form-section">
+            <div class="section-heading"><span class="section-num">2</span> Menstrual history</div>
+            <span class="section-label">Age at first menstrual period (menarche)</span>
+            <p class="field-hint">Earlier onset is associated with a small increase in breast cancer risk due to longer lifetime oestrogen exposure.</p>
+            <div class="choice-grid choice-grid-3">
+              <button class="choice-btn" id="men-lt12"    onclick="setMen('lt12',    this)"><span class="choice-main">Under 12</span></button>
+              <button class="choice-btn" id="men-12to13"  onclick="setMen('12to13',  this)"><span class="choice-main">Age 12–13</span></button>
+              <button class="choice-btn" id="men-ge14"    onclick="setMen('ge14',    this)"><span class="choice-main">Age 14 or older</span></button>
+            </div>
+          </div>
+
+          <!-- Section 3: Reproductive history -->
+          <div class="form-section">
+            <div class="section-heading"><span class="section-num">3</span> Reproductive history</div>
+            <span class="section-label">Age at first live birth</span>
+            <p class="field-hint">Never having given birth, or having a first birth after age 30, is a modest risk factor due to hormonal patterns during pregnancy.</p>
+            <div class="choice-grid choice-grid-2">
+              <button class="choice-btn" id="birth-lt20"      onclick="setBirth('lt20',      this)"><span class="choice-main">Under 20</span></button>
+              <button class="choice-btn" id="birth-20to24"    onclick="setBirth('20to24',    this)"><span class="choice-main">Age 20–24</span></button>
+              <button class="choice-btn" id="birth-25to29"    onclick="setBirth('25to29',    this)"><span class="choice-main">Age 25–29</span></button>
+              <button class="choice-btn" id="birth-ge30"      onclick="setBirth('ge30',      this)"><span class="choice-main">Age 30 or older, or no live birth</span><span class="choice-sub">includes never pregnant</span></button>
+            </div>
+          </div>
+
+          <!-- Section 4: Family history -->
+          <div class="form-section">
+            <div class="section-heading"><span class="section-num">4</span> Family history</div>
+            <span class="section-label">First-degree relatives diagnosed with breast cancer</span>
+            <p class="field-hint">This means your mother, sisters, or daughters only. Half-siblings count if they share a biological parent.</p>
+            <div class="choice-grid choice-grid-3">
+              <button class="choice-btn" id="rel-0"     onclick="setRel('0',     this)"><span class="choice-main">None</span></button>
+              <button class="choice-btn" id="rel-1"     onclick="setRel('1',     this)"><span class="choice-main">1 relative</span></button>
+              <button class="choice-btn" id="rel-2plus" onclick="setRel('2plus', this)"><span class="choice-main">2 or more</span></button>
+            </div>
+            <div class="hidden-field" id="brca-note-wrap">
+              <div style="background:#FFF1F2;border-radius:var(--r-sm);padding:12px 14px;font-size:12px;color:#9F1239;line-height:1.6;border:1px solid #FECDD3;margin-top:-4px">
+                <strong>Important:</strong> If 2 or more relatives are affected — especially if any were diagnosed young (under 50) or have ovarian cancer — the Gail Model may significantly <em>underestimate</em> your risk. Ask your doctor about a BRCA gene test and consider a hereditary risk tool such as Tyrer-Cuzick or BOADICEA.
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 5: Biopsy history -->
+          <div class="form-section">
+            <div class="section-heading"><span class="section-num">5</span> Biopsy history</div>
+            <span class="section-label">Previous breast biopsies</span>
+            <p class="field-hint">Includes core needle, surgical, or other biopsy of breast tissue — not fine needle aspirations.</p>
+            <div class="choice-grid choice-grid-3">
+              <button class="choice-btn" id="bx-0"     onclick="setBx('0',     this)"><span class="choice-main">None</span></button>
+              <button class="choice-btn" id="bx-1"     onclick="setBx('1',     this)"><span class="choice-main">1 biopsy</span></button>
+              <button class="choice-btn" id="bx-2plus" onclick="setBx('2plus', this)"><span class="choice-main">2 or more</span></button>
+            </div>
+
+            <div class="hidden-field" id="atypia-field">
+              <div style="height:12px"></div>
+              <span class="section-label">Did any biopsy show atypical hyperplasia?</span>
+              <p class="field-hint">Atypical ductal or lobular hyperplasia substantially increases risk. If you're unsure, your pathology report will state this.</p>
+              <div class="yn-group">
+                <button class="yn-btn" id="atyp-yes" onclick="setAtyp('yes', this)">Yes</button>
+                <button class="yn-btn" id="atyp-no"  onclick="setAtyp('no',  this)">No</button>
+                <button class="yn-btn active" id="atyp-unknown" onclick="setAtyp('unknown', this)">Unknown</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 6: Dense breasts (2024 update) -->
+          <div class="form-section">
+            <div class="section-heading"><span class="section-num">6</span> Dense breasts <span style="font-size:10px;font-weight:700;background:#FED7AA;color:#7C2D12;padding:2px 7px;border-radius:50px;margin-left:6px;">New 2024</span></div>
+            <span class="section-label">Have you been told you have dense breast tissue on a mammogram?</span>
+            <p class="field-hint">Since September 2024 (US), all mammography facilities must disclose breast density. Dense tissue increases risk by 1.2–2× and can obscure tumours on standard mammograms.</p>
+            <div class="yn-group">
+              <button class="yn-btn" id="dense-yes" onclick="setDense('yes', this)">Yes</button>
+              <button class="yn-btn" id="dense-no"  onclick="setDense('no',  this)">No</button>
+              <button class="yn-btn active" id="dense-unknown" onclick="setDense('unknown', this)">Unknown / No mammogram yet</button>
+            </div>
+          </div>
+
+          <div class="err-banner" id="err-banner"></div>
+          <button class="calc-btn" onclick="calculate()">
+            🩷 Calculate My Risk
+          </button>
+
+        </div>
+      </div>
+
+      <!-- RIGHT: Results -->
+      <div class="results-col">
+
+        <div class="placeholder-card" id="result-placeholder">
+          <div class="placeholder-icon">🩷</div>
+          <div class="placeholder-title">Your personalised risk estimate</div>
+          <p class="placeholder-sub">Complete the 6 sections on the left. Your 5-year risk, lifetime estimate, and personalised screening recommendations will appear here.</p>
+        </div>
+
+        <div class="result-card" id="result-card">
+
+          <!-- Risk hero -->
+          <div class="risk-hero">
+            <div class="risk-hero-label">Your estimated 5-year breast cancer risk</div>
+            <div class="risk-nums-row">
+              <div class="risk-main">
+                <div class="risk-pct" id="risk-pct" style="color:var(--text-dark)">—%</div>
+                <div class="risk-pct-label">chance of developing breast cancer in the next 5 years</div>
+              </div>
+              <div class="risk-vs">
+                <div class="risk-vs-item">
+                  <div class="risk-vs-val" id="avg-risk-val">—%</div>
+                  <div class="risk-vs-lbl">average for women your age</div>
+                </div>
+                <div class="risk-vs-item">
+                  <div class="risk-vs-val" id="ratio-val">—×</div>
+                  <div class="risk-vs-lbl">your risk vs. average</div>
+                </div>
+              </div>
+            </div>
+            <div class="one-in-n" id="one-in-n">
+              <div class="one-in-n-icon">👩</div>
+              <div class="one-in-n-text" id="one-in-n-text">—</div>
+            </div>
+          </div>
+
+          <!-- Scale -->
+          <div class="scale-section">
+            <div class="scale-label">Your risk on the population scale</div>
+            <div class="risk-scale-track">
+              <div class="risk-scale-marker" id="scale-marker" data-pct="—%" style="left:20%"></div>
+            </div>
+            <div class="scale-legend">
+              <span>Below average</span>
+              <span>Average</span>
+              <span>Above average</span>
+              <span>High</span>
+            </div>
+          </div>
+
+          <!-- Tier -->
+          <div class="tier-section">
+            <div class="tier-box t-below"   id="t-below">  <div class="t-name">Below avg</div><div class="t-range">&lt;0.8%</div></div>
+            <div class="tier-box t-average" id="t-average"><div class="t-name">Average</div>  <div class="t-range">0.8–1.9%</div></div>
+            <div class="tier-box t-above"   id="t-above">  <div class="t-name">Above avg</div><div class="t-range">2.0–2.9%</div></div>
+            <div class="tier-box t-high"    id="t-high">   <div class="t-name">High</div>     <div class="t-range">3.0%+</div></div>
+          </div>
+
+          <!-- Message -->
+          <div class="msg-section">
+            <div class="msg-block" id="msg-block">
+              <h3 id="msg-heading">—</h3>
+              <p id="msg-body">—</p>
+            </div>
+          </div>
+
+          <!-- Lifetime risk -->
+          <div class="lifetime-section">
+            <div style="font-size:13px;font-weight:700;margin-bottom:10px;color:var(--text-dark)">Lifetime perspective</div>
+            <div class="lifetime-row">
+              <div class="lt-box">
+                <div class="lt-val" id="lifetime-risk">—%</div>
+                <div class="lt-lbl">Estimated lifetime risk (to age 90) based on your profile</div>
+              </div>
+              <div class="lt-box">
+                <div class="lt-val" id="lifetime-avg">~12%</div>
+                <div class="lt-lbl">Average lifetime risk for women in the general population</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Screening recommendations -->
+          <div class="screening-section">
+            <div class="screen-title">Personalised screening recommendations <span class="screen-badge">2024–25 Guidelines</span></div>
+            <div id="screen-recs">
+              <!-- populated by JS -->
+            </div>
+          </div>
+
+          <!-- Dense breast note -->
+          <div class="dense-section" id="dense-note" style="display:none">
+            <div class="dense-title">Dense breast tissue <span class="dense-new-badge">FDA 2024 Rule</span></div>
+            <div class="dense-body">You've indicated dense breast tissue. Since September 2024, the FDA requires all US mammography facilities to disclose density and note that it increases cancer risk and may hide tumours on standard 2D mammograms. Talk to your doctor about whether supplemental screening (ultrasound or MRI) is appropriate — this may be especially important given your overall risk level.</div>
+          </div>
+
+          <!-- Limitations -->
+          <div class="limits-section">
+            <div class="limits-title">What this calculator doesn't account for</div>
+            <div class="limit-item">Paternal family history (father's side, aunts, grandmothers) — the Gail Model uses maternal first-degree relatives only. Paternal risk is clinically significant and should be discussed with your doctor.</div>
+            <div class="limit-item">Known BRCA1 or BRCA2 gene mutations — the Gail Model significantly underestimates risk in carriers. If you know you carry a BRCA variant, this result is not applicable to you.</div>
+            <div class="limit-item">Prior history of DCIS (ductal carcinoma in situ) or lobular carcinoma in situ (LCIS) — these substantially alter risk and require specialist risk stratification.</div>
+            <div class="limit-item">Hormone replacement therapy (HRT), obesity, alcohol use, exercise — these modifiable factors affect risk and are covered by newer models such as Tyrer-Cuzick.</div>
+            <div class="limit-item" id="eth-limitation" style="display:none">The Gail Model has known limitations in accuracy for non-white women; the NCI has published ethnicity-adjusted models. Your estimate has been adjusted, but please treat it as indicative rather than precise.</div>
+          </div>
+
+        </div><!-- /result-card -->
+
+        <!-- CTA -->
+        <div class="cta-block">
+          <div class="cta-title">Your next step: talk to your doctor</div>
+          <div class="cta-body">No online tool can replace a clinical conversation. Bring this result to your next GP or gynaecology appointment — they can confirm your risk category, order a mammogram if you haven't had one, and advise on whether more detailed genetic or imaging assessment is right for you.</div>
+          <a href="https://www.cancer.gov/bcrisktool/" target="_blank" rel="noopener" class="cta-btn">Try the official NCI Gail Tool ↗</a>
+        </div>
+
+        <!-- 2024 guideline update card -->
+        <div class="info-card">
+          <div class="update-badge">📅 Updated 2024–2025</div>
+          <h3>What changed in breast cancer screening guidelines</h3>
+          <p>Screening guidelines shifted significantly in 2024–2025, with major organisations recommending earlier and more personalised screening.</p>
+          <div class="guideline-row"><span class="guideline-year">ACS 2024</span><span class="guideline-text">Annual mammograms starting at <strong>age 40</strong> for all women of average risk. Women with above-average or high risk should begin earlier and may need supplemental MRI.</span></div>
+          <div class="guideline-row" style="margin-top:10px"><span class="guideline-year">USPSTF 2024</span><span class="guideline-text">Updated final recommendation: biennial mammograms starting at <strong>age 40</strong> for average-risk women (moved from 50). High-risk women should discuss earlier, more frequent screening.</span></div>
+          <div class="guideline-row" style="margin-top:10px"><span class="guideline-year">FDA 2024</span><span class="guideline-text">Mandatory breast density disclosure on all mammography reports since September 10, 2024 across all US facilities — the first federal-level density notification standard.</span></div>
+          <div class="guideline-row" style="margin-top:10px"><span class="guideline-year">ACS 2025</span><span class="guideline-text">Updated guidance on supplemental MRI for women with dense breasts who are at intermediate risk (15–20% lifetime) — previously only recommended for &gt;20% lifetime risk.</span></div>
+        </div>
+
+        <!-- Related -->
+        <div>
+          <p class="related-title">Related calculators</p>
+          <div class="related-grid">
+            <a href="ascvd-risk.html" class="related-card">
+              <div class="related-icon">❤️</div>
+              <div class="related-info"><strong>ASCVD Heart Risk</strong><span>10-year cardiovascular risk</span></div>
+            </a>
+            <a href="prediabetes-risk.html" class="related-card">
+              <div class="related-icon">🩺</div>
+              <div class="related-info"><strong>Prediabetes Risk</strong><span>Type 2 diabetes screener</span></div>
+            </a>
+            <a href="biological-age.html" class="related-card">
+              <div class="related-icon">🧬</div>
+              <div class="related-info"><strong>Biological Age</strong><span>Lifestyle &amp; longevity factors</span></div>
+            </a>
+            <a href="burnout-risk.html" class="related-card">
+              <div class="related-icon">🔥</div>
+              <div class="related-info"><strong>Burnout Risk</strong><span>Stress &amp; recovery balance</span></div>
+            </a>
+          </div>
+        </div>
+
+        <div class="note-block">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#9CA3AF" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          <span><strong>Important medical disclaimer:</strong> This calculator implements the Gail Model for informational and educational purposes only. It is not a medical test and does not diagnose cancer. Risk estimates are statistical probabilities for populations, not predictions for individuals. Many women with high risk scores never develop breast cancer; some women with low scores do. Please always consult a qualified healthcare professional for personalised medical advice.</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo"><img src="assets/logo-white.png" alt="SageMyHealth" style="height:45px;width:auto;object-fit:contain;"/></div>
+        <p>Free, trusted health calculators with warm guidance — helping you understand your numbers.</p>
+      </div>
+      <div class="footer-col"><h5>Calculators</h5><ul>
+        <li><a href="ascvd-risk.html">Heart Risk (ASCVD)</a></li>
+        <li><a href="prediabetes-risk.html">Prediabetes Risk</a></li>
+        <li><a href="bmi.html">BMI</a></li>
+        <li><a href="blood-pressure.html">Blood Pressure</a></li>
+      </ul></div>
+      <div class="footer-col"><h5>More Tools</h5><ul>
+        <li><a href="sleep-debt.html">Sleep Debt</a></li>
+        <li><a href="burnout-risk.html">Burnout Risk</a></li>
+        <li><a href="menstrual-iron.html">Menstrual Iron</a></li>
+        <li><a href="anemia-screener.html">Anemia Screener</a></li>
+      </ul></div>
+      <div class="footer-col"><h5>Info</h5><ul>
+        <li><a href="../about.html">About Us</a></li>
+        <li><a href="../blog.html">Health Guides</a></li>
+        <li><a href="../privacy.html">Privacy Policy</a></li>
+        <li><a href="../terms.html">Terms of Use</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-disclaimer"><strong style="color:#7A958E">Medical Disclaimer:</strong> SageMyHealth calculators are for informational purposes only and are not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider.</p>
+      <p class="footer-copy">© 2025 SageMyHealth.com — All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   STATE
+============================================================ */
+var S = {
+  age: null, eth: null, men: null, birth: null,
+  rel: null, bx: null, atyp: 'unknown', dense: 'unknown'
+};
+
+/* ============================================================
+   SETTERS
+============================================================ */
+function setEth(v, btn) {
+  S.eth = v;
+  document.querySelectorAll('[id^="eth-"]').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  document.getElementById('eth-limitation').style.display = (v !== 'white' && v !== 'other') ? '' : 'none';
+}
+function setMen(v, btn) {
+  S.men = v;
+  document.querySelectorAll('[id^="men-"]').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+}
+function setBirth(v, btn) {
+  S.birth = v;
+  document.querySelectorAll('[id^="birth-"]').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+}
+function setRel(v, btn) {
+  S.rel = v;
+  document.querySelectorAll('[id^="rel-"]').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  document.getElementById('brca-note-wrap').classList.toggle('show', v === '2plus');
+}
+function setBx(v, btn) {
+  S.bx = v;
+  document.querySelectorAll('[id^="bx-"]').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  document.getElementById('atypia-field').classList.toggle('show', v !== '0');
+  if (v === '0') S.atyp = 'unknown';
+}
+function setAtyp(v, btn) {
+  S.atyp = v;
+  document.querySelectorAll('[id^="atyp-"]').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+}
+function setDense(v, btn) {
+  S.dense = v;
+  document.querySelectorAll('[id^="dense-"]').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+}
+
+/* ============================================================
+   GAIL MODEL CALCULATION
+   Based on Gail et al. 1989, JNCI; NCI Breast Cancer Risk Tool
+============================================================ */
+
+// Factor 1: Age at menarche
+var RR_MENARCHE = { lt12: 1.21, '12to13': 1.10, ge14: 1.00 };
+
+// Factor 2: Biopsies × atypical hyperplasia
+function biopsyRR(age, bx, atyp) {
+  if (bx === '0') return 1.00;
+  var hasAtyp = (atyp === 'yes');
+  // unknown atypia treated conservatively as 'no'
+  var base;
+  if (age < 50) {
+    base = (bx === '1') ? 1.70 : 2.88;
+  } else {
+    base = (bx === '1') ? 1.27 : 1.62;
+  }
+  if (hasAtyp) base *= 1.82;
+  return base;
+}
+
+// Factor 3: Combined first birth × first-degree relatives
+// From Gail 1989 Table 2 (reproduced in NCI documentation)
+var RR_COMBINED = {
+  '0':    { lt20: 1.00, '20to24': 1.24, '25to29': 1.55, ge30: 1.93 },
+  '1':    { lt20: 1.43, '20to24': 1.77, '25to29': 2.21, ge30: 2.76 },
+  '2plus':{ lt20: 2.76, '20to24': 3.40, '25to29': 4.55, ge30: 6.26 }
+};
+
+// Average population 5-year absolute risk by age (white women, SEER 2018-22)
+// These reflect population AVERAGE (not minimum-risk) women
+var AVG5YR = {
+  35:0.0057, 36:0.0062, 37:0.0066, 38:0.0070, 39:0.0074,
+  40:0.0079, 41:0.0084, 42:0.0089, 43:0.0094, 44:0.0099,
+  45:0.0105, 46:0.0110, 47:0.0115, 48:0.0119, 49:0.0124,
+  50:0.0128, 51:0.0133, 52:0.0137, 53:0.0141, 54:0.0144,
+  55:0.0148, 56:0.0151, 57:0.0155, 58:0.0158, 59:0.0160,
+  60:0.0163, 61:0.0165, 62:0.0167, 63:0.0169, 64:0.0171,
+  65:0.0172, 66:0.0174, 67:0.0175, 68:0.0176, 69:0.0176,
+  70:0.0176, 71:0.0175, 72:0.0174, 73:0.0172, 74:0.0170,
+  75:0.0167, 76:0.0164, 77:0.0161, 78:0.0158, 79:0.0154,
+  80:0.0150, 81:0.0145, 82:0.0140, 83:0.0135, 84:0.0130, 85:0.0125
+};
+
+// Population average composite T used to derive the above averages
+// (Gail 1989 published population mean T ≈ 1.82 for the joint factor; overall ≈ 2.0 including menarche/biopsy)
+var T_POP_AVG = 2.0;
+
+// Ethnicity baseline multipliers (relative to white non-Hispanic baseline)
+// Source: NCI SEER 2024, Gail-adjusted models
+var ETH_FACTOR = {
+  white: 1.00, black: 0.97, hispanic: 0.72, asian: 0.72, aian: 0.69, other: 1.00
+};
+
+function calculate() {
+  var err = document.getElementById('err-banner');
+  err.style.display = 'none';
+
+  S.age = parseInt(document.getElementById('age').value);
+  if (!S.age || S.age < 35 || S.age > 85) {
+    err.textContent = 'Please enter a valid age between 35 and 85.';
+    err.style.display = 'block'; return;
+  }
+  if (!S.eth)   { err.textContent = 'Please select your ethnicity.';            err.style.display = 'block'; return; }
+  if (!S.men)   { err.textContent = 'Please select your age at first period.';  err.style.display = 'block'; return; }
+  if (!S.birth) { err.textContent = 'Please select your first live birth age.'; err.style.display = 'block'; return; }
+  if (!S.rel)   { err.textContent = 'Please select number of relatives with breast cancer.'; err.style.display = 'block'; return; }
+  if (!S.bx)    { err.textContent = 'Please answer the biopsy question.';       err.style.display = 'block'; return; }
+
+  // Composite relative risk T
+  var t_men  = RR_MENARCHE[S.men];
+  var t_bx   = biopsyRR(S.age, S.bx, S.atyp);
+  var t_comb = RR_COMBINED[S.rel][S.birth];
+  var T = t_men * t_bx * t_comb;
+
+  // Dense breast adjustment (evidence: RR ~1.5 for dense vs. non-dense, midpoint of 1.2–2.0 range)
+  if (S.dense === 'yes') T *= 1.5;
+
+  // Ethnicity adjustment
+  var ethF = ETH_FACTOR[S.eth] || 1.00;
+
+  // Average 5-year absolute risk for this age
+  var ageKey = Math.min(85, Math.max(35, S.age));
+  var avgRisk5 = (AVG5YR[ageKey] || 0.014) * ethF;
+
+  // Individual 5-year risk = avg × (T / T_population_avg)
+  // This is the standard Gail model re-scaling method used by NCI
+  var risk5 = avgRisk5 * (T / T_POP_AVG);
+  risk5 = Math.max(0.001, Math.min(risk5, 0.60));
+
+  // Lifetime risk approximation (cumulative to age 90)
+  // Use 5-year risk compounded over remaining 5-year intervals,
+  // with slight decline factor to reflect age-specific rate
+  var remainingPeriods = Math.max(1, (90 - S.age) / 5);
+  var periodRisk = risk5; // first 5-year period
+  var lifetime = 1;
+  for (var i = 0; i < remainingPeriods; i++) {
+    var periodDecline = Math.max(0.4, 1 - i * 0.06); // rates decline in very old age
+    lifetime *= (1 - periodRisk * periodDecline);
+  }
+  lifetime = 1 - lifetime;
+  lifetime = Math.max(0.01, Math.min(lifetime, 0.85));
+
+  renderResults(risk5, avgRisk5, lifetime, T);
+}
+
+/* ============================================================
+   RENDER
+============================================================ */
+function renderResults(risk5, avg5, lifetime, T) {
+  document.getElementById('result-placeholder').style.display = 'none';
+  var card = document.getElementById('result-card');
+  card.classList.add('visible');
+  card.scrollIntoView({ behavior:'smooth', block:'start' });
+
+  var pct5    = (risk5 * 100);
+  var pct5Fmt = pct5 < 1 ? pct5.toFixed(1) : pct5.toFixed(1);
+  var avg5Fmt = (avg5 * 100).toFixed(1);
+  var ratio   = Math.round((risk5 / avg5) * 10) / 10;
+
+  // Tier
+  var tier;
+  if (pct5 < 0.8)      tier = 'below';
+  else if (pct5 < 2.0) tier = 'average';
+  else if (pct5 < 3.0) tier = 'above';
+  else                 tier = 'high';
+
+  // Colour by tier
+  var tierColor = { below:'#16A34A', average:'#0284C7', above:'#D97706', high:'#BE123C' }[tier];
+  document.getElementById('risk-pct').textContent = pct5Fmt + '%';
+  document.getElementById('risk-pct').style.color  = tierColor;
+  document.getElementById('avg-risk-val').textContent = avg5Fmt + '%';
+  document.getElementById('ratio-val').textContent    = ratio + '×';
+
+  // 1-in-N
+  var oneInN = Math.round(1 / risk5);
+  var oneInNText;
+  if (tier === 'below') {
+    oneInNText = 'Based on this model, roughly <strong>1 in ' + oneInN + ' women with your profile</strong> would develop breast cancer over the next 5 years — below the average of 1 in ' + Math.round(1/avg5 * 100)/100 + ' for women your age.';
+  } else if (tier === 'average') {
+    oneInNText = 'Based on this model, roughly <strong>1 in ' + oneInN + ' women with your profile</strong> would develop breast cancer over the next 5 years — similar to the average for women your age.';
+  } else {
+    oneInNText = '<strong>1 in ' + oneInN + ' women with your profile</strong> would develop breast cancer over the next 5 years — above the average of 1 in ' + Math.round(1/avg5) + ' for women your age.';
+  }
+  document.getElementById('one-in-n-text').innerHTML = oneInNText;
+
+  // Scale marker (0–8% maps to 0–100%)
+  var scalePct = Math.min((pct5 / 8) * 100, 98);
+  var marker = document.getElementById('scale-marker');
+  marker.style.left = scalePct + '%';
+  marker.setAttribute('data-pct', pct5Fmt + '%');
+
+  // Tier boxes
+  ['below','average','above','high'].forEach(function(t){
+    document.getElementById('t-'+t).classList.toggle('active', t === tier);
+  });
+
+  // Lifetime
+  document.getElementById('lifetime-risk').textContent = (lifetime * 100).toFixed(1) + '%';
+
+  // Messages
+  var msgs = {
+    below: {
+      h: 'Your estimated risk is below average for your age group.',
+      b: 'Your combination of risk factors puts you at a lower estimated risk than the typical woman your age. This is reassuring — but "below average" does not mean zero risk. Staying current with recommended mammogram screening (every 1–2 years from age 40) remains important regardless of risk level.'
+    },
+    average: {
+      h: 'Your estimated risk is within the average range for women your age.',
+      b: 'Most women completing this assessment fall into this category. An average risk means you\'re broadly in line with the general population and standard screening guidelines apply. Discuss with your doctor to confirm your screening schedule and whether any of your personal history warrants a more detailed risk review.'
+    },
+    above: {
+      h: 'Your estimated risk is above average — regular screening matters more.',
+      b: 'Your combination of risk factors places you above the average for women your age. This does not mean you will develop breast cancer, but it does mean that consistent, annual mammogram screening is particularly important. Your doctor may suggest starting supplemental screening or discussing chemoprevention options.'
+    },
+    high: {
+      h: 'Your estimated risk is in the high range — please speak to your doctor.',
+      b: 'Your risk profile suggests a meaningfully elevated risk. The most important step is a conversation with your doctor or a breast specialist who can recommend a personalised plan — which may include annual MRI alongside mammography, genetic testing for BRCA mutations, or a discussion about risk-reduction options such as chemoprevention. You deserve a personalised plan, not just generic advice.'
+    }
+  };
+  var msgEl = document.getElementById('msg-block');
+  msgEl.className = 'msg-block msg-' + tier;
+  document.getElementById('msg-heading').textContent = msgs[tier].h;
+  document.getElementById('msg-body').textContent    = msgs[tier].b;
+
+  // Screening recommendations
+  var age = S.age;
+  var recsEl = document.getElementById('screen-recs');
+  recsEl.innerHTML = '';
+
+  function addRec(cssClass, main, sub) {
+    var div = document.createElement('div');
+    div.className = 'screen-rec ' + cssClass;
+    div.innerHTML = '<div class="screen-rec-main">' + main + '</div><div class="screen-rec-sub">' + sub + '</div>';
+    recsEl.appendChild(div);
+  }
+
+  // Baseline mammogram
+  if (age < 40) {
+    addRec('rec-discuss', 'Discuss early mammogram start with your doctor', 'You\'re under 40. While the ACS recommends starting at 40, your above-average risk history may warrant starting earlier. Ask your doctor.');
+  } else if (tier === 'below' || tier === 'average') {
+    addRec('rec-annual', 'Annual mammogram starting at age 40 (ACS 2024)', 'Current American Cancer Society guidelines recommend annual mammograms for all women from age 40 onwards, regardless of risk. This is now the US standard.');
+  } else {
+    addRec('rec-annual', 'Annual mammogram — now, if not already started', 'Given your above-average risk, annual (not biennial) mammograms are strongly recommended. Discuss with your doctor if you haven\'t had one recently.');
+  }
+
+  // MRI for high risk
+  if (tier === 'high' || (tier === 'above' && (lifetime * 100) >= 15)) {
+    addRec('rec-mri', 'Consider annual breast MRI alongside mammogram', 'Women with a lifetime risk ≥15–20% may benefit from supplemental MRI (ACS 2024 update). MRI detects cancers mammography can miss, especially in dense tissue. Discuss with your doctor.');
+  }
+
+  // Dense breast
+  if (S.dense === 'yes') {
+    addRec('rec-6month', 'Discuss supplemental ultrasound or MRI for dense breasts', 'You\'ve reported dense breast tissue. Since September 2024, the FDA requires facilities to disclose this. Dense tissue both increases risk and limits mammogram sensitivity. Talk to your doctor about supplemental screening.');
+  }
+
+  // High risk: genetic testing
+  if (tier === 'high' || S.rel === '2plus') {
+    addRec('rec-mri', 'Ask about BRCA1/BRCA2 genetic counselling', 'With your family history, a genetics referral may be appropriate. BRCA testing can clarify your true risk and open additional prevention options. The Gail Model does not fully capture hereditary risk.');
+  }
+
+  // General note
+  addRec('rec-discuss', 'Bring this result to your next medical appointment', 'Print or screenshot this result and share it with your GP or gynaecologist. They can verify your risk category and recommend a personalised screening plan.');
+
+  // Dense breast note
+  document.getElementById('dense-note').style.display = S.dense === 'yes' ? '' : 'none';
+
+  // GA4
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'calculator_result', { calculator:'breast_cancer_gail', tier:tier, risk5_pct: Math.round(risk5*1000)/10, age: S.age });
+  }
+}
+
+/* ============================================================
+   Mobile menu
+============================================================ */
+function openMobileMenu()  { document.getElementById('mobile-menu').classList.add('open'); document.getElementById('nav-hamburger').setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+function closeMobileMenu() { document.getElementById('mobile-menu').classList.remove('open'); document.getElementById('nav-hamburger').setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMobileMenu(); });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X6K2H9YW2V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X6K2H9YW2V');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sleep Quality Score — PSQI-Inspired Sleep Assessment | SageMyHealth</title>
+  <meta name="description" content="Rate your sleep quality across five domains: sleep onset, duration, continuity, subjective quality, and daytime function. PSQI-inspired. Takes 2 minutes. Pairs with the Sleep Debt calculator." />
+  <meta name="keywords" content="sleep quality score, PSQI test, sleep quality assessment, restful sleep test" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://sagemyhealth.com/calculators/sleep-quality.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SageMyHealth" />
+  <meta property="og:title" content="Sleep Quality Score — PSQI-Inspired Sleep Assessment" />
+  <meta property="og:description" content="Rate your sleep quality across five domains: sleep onset, duration, continuity, subjective quality, and daytime function. PSQI-inspired. Takes 2 minutes. Pairs with the Sleep Debt calculator." />
+  <meta property="og:url" content="https://sagemyhealth.com/calculators/sleep-quality.html" />
+  <meta property="og:image" content="https://sagemyhealth.com/calculators/assets/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sleep Quality Score — PSQI-Inspired Sleep Assessment" />
+  <meta name="twitter:description" content="Rate your sleep quality across five domains: sleep onset, duration, continuity, subjective quality, and daytime function. PSQI-inspired. Takes 2 minutes. Pairs with the Sleep Debt calculator." />
+  <meta name="twitter:image" content="https://sagemyhealth.com/calculators/assets/logo.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "name": "Sleep Quality Score — PSQI-Inspired Sleep Assessment",
+    "description": "Rate your sleep quality across five domains: sleep onset, duration, continuity, subjective quality, and daytime function. PSQI-inspired. Takes 2 minutes. Pairs with the Sleep Debt calculator.",
+    "url": "https://sagemyhealth.com/calculators/sleep-quality.html",
+    "publisher": { "@type": "Organization", "name": "SageMyHealth", "url": "https://sagemyhealth.com/" },
+    "isAccessibleForFree": true,
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sagemyhealth.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Sleep & Recovery", "item": "https://sagemyhealth.com/#categories" },
+        { "@type": "ListItem", "position": 3, "name": "Sleep Quality Score — PSQI-Inspired Sleep Assessment", "item": "https://sagemyhealth.com/calculators/sleep-quality.html" }
+      ]
+    }
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sage:        #3B6A3A;
+      --sage-dark:   #0A3D2A;
+      --sage-mid:    #5C8A5C;
+      --sage-light:  #EBF2EC;
+      --sage-pale:   #F2F7F3;
+      --cream:       #E3FFB3;
+      --white:       #FFFFFF;
+      --text-dark:   #1A2E1E;
+      --text-mid:    #4A5568;
+      --text-light:  #718096;
+      --placeholder: #AAB0B8;
+      --border:      #E2EBE4;
+      --border-mid:  #C8D9CC;
+      --red-soft:    #EDAE71;   --red-text:   #991B1B;
+      --amber-soft:  #EECA8F;   --amber-text: #92400E;
+      --green-soft:  #D1FAE5;   --green-text: #3D473D;
+      --shadow-xs:   0 1px 2px rgba(59,106,58,0.06);
+      --shadow-sm:   0 1px 6px rgba(59,106,58,0.08);
+      --shadow-md:   0 4px 16px rgba(59,106,58,0.12);
+      --shadow-lg:   0 8px 32px rgba(59,106,58,0.16);
+      --r-sm: 8px; --r: 12px; --r-lg: 20px; --r-xl: 28px;
+      /* Sleep Quality accent — violet */
+      --sleep:       #7C3AED;
+      --sleep-dark:  #6D28D9;
+      --sleep-light: #F5F3FF;
+      --sleep-mid:   #A78BFA;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-dark); background: var(--sage-pale);
+      line-height: 1.6; -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; }
+
+    /* ---- NAV ---- */
+    .site-nav {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 24px;
+      height: 68px; display: flex; align-items: center;
+      justify-content: space-between; gap: 32px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; flex: 1; justify-content: center; }
+    .nav-links a { color: var(--text-mid); font-size: 15px; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--sage); }
+    .nav-btn { background: var(--sage); color: white; border: none; padding: 9px 20px; border-radius: var(--r-sm); font-size: 14px; font-weight: 600; transition: background .2s; }
+    .nav-btn:hover { background: var(--sage-dark); }
+
+    /* ---- PAGE ---- */
+    .calc-page { padding: 36px 0 72px; }
+    .calc-wrapper { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-light); margin-bottom: 24px; flex-wrap: wrap; }
+    .breadcrumb a { color: var(--sage); }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .bc-sep { color: var(--border-mid); }
+
+    .page-header { margin-bottom: 28px; }
+    .calc-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 600; color: var(--sage);
+      background: var(--white); padding: 5px 12px;
+      border-radius: 20px; margin-bottom: 12px; letter-spacing: .3px;
+      border: 1px solid var(--border);
+    }
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 42px); font-weight: 700;
+      color: var(--text-dark); letter-spacing: -.5px;
+      margin-bottom: 10px; line-height: 1.15;
+    }
+    .page-header p { font-size: 15px; color: var(--text-mid); line-height: 1.7; max-width: 700px; }
+
+    /* ---- LAYOUT ---- */
+    .calc-columns { display: grid; grid-template-columns: 480px 1fr; gap: 24px; align-items: start; }
+
+    /* ---- FORM CARD ---- */
+    .form-card { background: white; border-radius: var(--r-xl); box-shadow: var(--shadow-lg); overflow: hidden; }
+    .form-card-header { padding: 20px 28px 0; }
+    .form-card-title { font-size: 14px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
+    .form-card-sub { font-size: 12px; color: var(--text-light); margin-bottom: 6px; }
+
+    .form-body { padding: 4px 28px 28px; }
+
+    .field-group { margin-bottom: 16px; }
+    .field-label { display: block; font-size: 13px; font-weight: 600; color: var(--text-dark); margin-bottom: 6px; }
+    .field-hint  { font-size: 11px; color: var(--text-light); margin-top: 4px; line-height: 1.5; }
+
+    .field-select {
+      width: 100%; padding: 11px 14px;
+      border: 1.5px solid var(--border); border-radius: var(--r-sm);
+      font-size: 15px; font-family: inherit; color: var(--text-dark);
+      background: white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237C3AED' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 12px center;
+      appearance: none; -webkit-appearance: none; cursor: pointer; transition: border-color .18s;
+    }
+    .field-select:focus { outline: none; border-color: var(--sleep); }
+
+    /* Section heading inside form */
+    .section-divider {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .6px; color: var(--sleep); margin: 22px 0 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .section-divider::after { content: ''; flex: 1; height: 1px; background: var(--sleep-light); }
+
+    /* Frequency pills — 4 across */
+    .q-row   { margin-bottom: 16px; }
+    .q-label { display: block; font-size: 13px; font-weight: 600; color: var(--text-dark); margin-bottom: 8px; }
+
+    .freq-group { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; }
+    .freq-btn {
+      padding: 8px 4px; border: 1.5px solid var(--border); border-radius: var(--r-sm);
+      background: white; font-size: 11px; font-weight: 600; color: var(--text-mid);
+      text-align: center; line-height: 1.3; transition: all .15s;
+    }
+    .freq-btn:hover { border-color: var(--sleep); color: var(--sleep); }
+    .freq-btn.active { background: var(--sleep); border-color: var(--sleep); color: white; }
+
+    .calc-btn {
+      width: 100%; background: var(--sage); color: white;
+      border: none; padding: 14px; border-radius: var(--r);
+      font-size: 16px; font-weight: 700; transition: all .18s; margin-top: 6px;
+    }
+    .calc-btn:hover { background: var(--sage-dark); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+    .calc-btn:active { transform: translateY(0); }
+
+    /* ---- RESULTS ---- */
+    .results-col { display: flex; flex-direction: column; gap: 20px; }
+
+    .result-card { background: white; border-radius: var(--r-xl); box-shadow: var(--shadow-lg); overflow: hidden; display: none; }
+    .result-card.visible { display: block; animation: slideUp .35s ease; }
+    @keyframes slideUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+
+    .result-band { height: 5px; width: 100%; }
+    .result-band.excellent { background: linear-gradient(90deg, var(--sage-mid), var(--sage)); }
+    .result-band.good      { background: linear-gradient(90deg, var(--sleep-mid), var(--sleep)); }
+    .result-band.fair      { background: linear-gradient(90deg, #FCA5A5, #F97316); }
+    .result-band.poor      { background: linear-gradient(90deg, #F87171, #DC2626); }
+
+    .result-body { padding: 24px; }
+
+    /* Score hero */
+    .score-hero {
+      text-align: center; padding: 8px 0 20px;
+      border-bottom: 1px solid var(--border); margin-bottom: 20px;
+    }
+    .score-hero-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; color: var(--text-light); margin-bottom: 8px; }
+    .score-number { font-size: 80px; font-weight: 800; letter-spacing: -4px; line-height: 1; }
+    .score-denom  { font-size: 24px; font-weight: 600; color: var(--text-light); }
+    .score-tier-badge { display: inline-block; margin-top: 10px; padding: 5px 18px; border-radius: 50px; font-size: 13px; font-weight: 700; }
+    .tier-excellent { background: var(--green-soft); color: #166534; }
+    .tier-good      { background: var(--sleep-light); color: var(--sleep-dark); }
+    .tier-fair      { background: #FEF3C7; color: #92400E; }
+    .tier-poor      { background: #FEE2E2; color: #991B1B; }
+
+    .score-bar-wrap { margin: 14px 0 4px; height: 10px; background: var(--border); border-radius: 6px; overflow: hidden; }
+    .score-bar-fill { height: 100%; border-radius: 6px; transition: width .8s cubic-bezier(.34,1.1,.64,1); }
+
+    /* PSQI note */
+    .psqi-note { font-size: 11px; color: var(--text-light); text-align: center; margin-top: 8px; }
+
+    /* Domain bars */
+    .domains-title { font-size: 13px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; }
+    .domain-row { margin-bottom: 12px; }
+    .domain-row-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px; }
+    .domain-name  { font-size: 12px; font-weight: 700; color: var(--text-dark); }
+    .domain-score { font-size: 12px; font-weight: 700; }
+    .bar-track { height: 8px; background: var(--border); border-radius: 5px; overflow: hidden; }
+    .bar-fill  { height: 100%; border-radius: 5px; transition: width .7s ease; }
+
+    /* Message */
+    .msg-block { border-radius: var(--r); padding: 18px; margin: 20px 0 0; border-left: 4px solid; }
+    .msg-block.excellent { background: var(--sage-pale); border-color: var(--sage); }
+    .msg-block.good      { background: var(--sleep-light); border-color: var(--sleep); }
+    .msg-block.fair      { background: #FFFBEB; border-color: #FBBF24; }
+    .msg-block.poor      { background: #FEF2F2; border-color: #F87171; }
+    .msg-block h3 { font-size: 14px; font-weight: 700; margin-bottom: 6px; color: var(--text-dark); }
+    .msg-block p  { font-size: 13px; color: var(--text-mid); line-height: 1.7; }
+
+    .tips-divider { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+    .tips-title { font-size: 13px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; }
+    .tips-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .tips-list li { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+    .tips-list li::before { content: '✤'; color: var(--sleep); font-size: 10px; margin-top: 3px; flex-shrink: 0; }
+
+    /* Sleep debt pairing card */
+    .pair-card {
+      background: var(--sleep-light); border: 1.5px solid var(--sleep-mid);
+      border-radius: var(--r-xl); padding: 18px 22px;
+      display: flex; align-items: center; gap: 16px; margin-top: 4px;
+    }
+    .pair-icon { font-size: 32px; flex-shrink: 0; }
+    .pair-title { font-size: 14px; font-weight: 700; color: var(--sleep-dark); margin-bottom: 4px; }
+    .pair-body  { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+    .pair-link  { display: inline-block; margin-top: 8px; font-size: 13px; font-weight: 700; color: var(--sleep); }
+    .pair-link:hover { text-decoration: underline; }
+
+    /* Info / related / note */
+    .info-card { background: white; border-radius: var(--r-xl); box-shadow: var(--shadow-sm); padding: 22px 24px; }
+    .info-card h3 { font-size: 14px; font-weight: 700; margin-bottom: 8px; color: var(--text-dark); }
+    .info-card p  { font-size: 13px; color: var(--text-mid); line-height: 1.75; }
+    .info-card p + p { margin-top: 10px; }
+
+    .related-section { }
+    .related-title { font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; }
+    .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .related-card { background: white; border: 1.5px solid var(--border); border-radius: var(--r); padding: 14px 16px; display: flex; align-items: center; gap: 12px; transition: all .18s; }
+    .related-card:hover { border-color: var(--sage); box-shadow: var(--shadow-sm); transform: translateY(-1px); }
+    .related-icon { width: 36px; height: 36px; background: var(--sage-light); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+    .related-info strong { display: block; font-size: 13px; font-weight: 600; }
+    .related-info span  { font-size: 11px; color: var(--text-light); }
+
+    .note-block { background: var(--cream); border-radius: var(--r); padding: 13px 16px; font-size: 12px; color: var(--text-light); line-height: 1.7; display: flex; gap: 8px; align-items: flex-start; }
+    .note-block svg { flex-shrink: 0; margin-top: 1px; }
+
+    /* ---- FOOTER ---- */
+    .site-footer { background: var(--text-dark); color: #94A99A; padding: 48px 0 0; margin-top: 48px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 40px; }
+    .footer-logo { display: flex; align-items: center; gap: 8px; color: white; font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+    .footer-brand p { font-size: 14px; line-height: 1.7; max-width: 260px; color: #7A958E; }
+    .footer-col h5 { color: white; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; margin-bottom: 14px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { font-size: 14px; color: #7A958E; transition: color .2s; }
+    .footer-col a:hover { color: white; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding: 22px 0; display: flex; flex-direction: column; gap: 6px; }
+    .footer-disclaimer { font-size: 12px; color: #5A7568; line-height: 1.7; }
+    .footer-copy { font-size: 12px; color: #5A7568; }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 1000px) { .calc-columns { grid-template-columns: 1fr; } }
+    @media (max-width: 900px)  { .footer-grid { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: 1/-1; } }
+    @media (max-width: 660px)  {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex !important; }
+      .nav-btn { display: none; }
+      .related-grid { grid-template-columns: 1fr; }
+      .freq-group { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 520px)  { .footer-grid { grid-template-columns: 1fr; } }
+
+    /* ---- HAMBURGER ---- */
+    .nav-hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; background: none; border: none; padding: 8px; margin-left: 8px; border-radius: 8px; cursor: pointer; flex-shrink: 0; }
+    .nav-hamburger span { display: block; width: 22px; height: 2.5px; background: var(--text-dark); border-radius: 2px; }
+    .mobile-menu { display: none; position: fixed; inset: 0; z-index: 999; }
+    .mobile-menu.open { display: block; }
+    .mobile-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.45); backdrop-filter: blur(2px); }
+    .mobile-drawer { position: absolute; top: 0; right: 0; width: min(300px,84vw); height: 100%; background: #fff; display: flex; flex-direction: column; box-shadow: -4px 0 40px rgba(0,0,0,.18); animation: drawerIn .22s cubic-bezier(.22,.61,.36,1); }
+    @keyframes drawerIn { from{transform:translateX(100%)} to{transform:translateX(0)} }
+    .mobile-drawer-head { display: flex; align-items: center; justify-content: space-between; padding: 18px 20px 14px; border-bottom: 1px solid var(--border); }
+    .mobile-drawer-logo { font-size: 15px; font-weight: 700; }
+    .mobile-close { background: none; border: none; font-size: 20px; padding: 4px 8px; cursor: pointer; color: var(--text-light); border-radius: 6px; line-height: 1; }
+    .mobile-nav-links { padding: 14px 12px; flex: 1; display: flex; flex-direction: column; gap: 4px; }
+    .mobile-nav-link { display: flex; align-items: center; gap: 14px; padding: 13px 16px; border-radius: 12px; font-size: 16px; font-weight: 600; color: var(--text-dark); transition: background .15s; }
+    .mobile-nav-link:hover { background: var(--sage-light); color: var(--sage); }
+    .mobile-link-icon { width: 40px; height: 40px; background: var(--sage-light); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .mobile-browse-btn { display: block; margin: 0 12px 20px; padding: 14px; background: var(--sage); color: #fff; border-radius: 12px; font-size: 15px; font-weight: 700; text-align: center; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <img src="assets/logo.png" alt="SageMyHealth" style="height:54px;width:auto;object-fit:contain;" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html#categories">Calculators</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../blog.html">Health Guides</a></li>
+    </ul>
+    <a href="../index.html#categories" class="nav-btn">Browse All</a>
+    <button class="nav-hamburger" id="nav-hamburger" onclick="openMobileMenu()" aria-label="Open navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true">
+  <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-drawer">
+    <div class="mobile-drawer-head">
+      <span class="mobile-drawer-logo">SageMyHealth</span>
+      <button class="mobile-close" onclick="closeMobileMenu()">&#x2715;</button>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="../index.html#categories" class="mobile-nav-link" onclick="closeMobileMenu()"><span class="mobile-link-icon">&#x1F9EE;</span>Calculators</a>
+      <a href="../about.html" class="mobile-nav-link" onclick="closeMobileMenu()"><span class="mobile-link-icon">&#x1F49A;</span>About</a>
+      <a href="../blog.html" class="mobile-nav-link" onclick="closeMobileMenu()"><span class="mobile-link-icon">&#x1F4D6;</span>Health Guides</a>
+    </nav>
+    <a href="../index.html#categories" class="mobile-browse-btn" onclick="closeMobileMenu()">Browse All Calculators &#x2192;</a>
+  </div>
+</div>
+
+<!-- PAGE -->
+<main class="calc-page">
+  <div class="calc-wrapper">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="bc-sep">›</span>
+      <a href="../index.html#categories">Sleep &amp; Recovery</a>
+      <span class="bc-sep">›</span>
+      <span>Sleep Quality Score</span>
+    </nav>
+
+    <header class="page-header">
+      <div class="calc-tag">😴 Sleep &amp; Recovery</div>
+      <h1>Sleep Quality Score</h1>
+      <p>How well are you really sleeping? This PSQI-inspired assessment measures five dimensions of sleep health — from how quickly you fall asleep to how rested you feel during the day — and gives you a scored, actionable picture.</p>
+    </header>
+
+    <div class="calc-columns">
+
+      <!-- LEFT: Form -->
+      <div class="form-card">
+        <div class="form-card-header">
+          <p class="form-card-title">Rate your typical sleep over the past month</p>
+          <p class="form-card-sub">Think about your usual pattern, not just last night.</p>
+        </div>
+        <div class="form-body">
+
+          <!-- Section 1: Sleep Onset & Duration -->
+          <div class="section-divider">Sleep Onset &amp; Duration</div>
+
+          <div class="field-group">
+            <label class="field-label" for="latency">How long does it take you to fall asleep?</label>
+            <select class="field-select" id="latency">
+              <option value="">Choose one…</option>
+              <option value="0">Under 15 minutes — I fall asleep quickly</option>
+              <option value="1">15–30 minutes</option>
+              <option value="2">30–60 minutes — takes a while</option>
+              <option value="3">Over 60 minutes — it's a real struggle</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="duration">How many hours of actual sleep do you get?</label>
+            <select class="field-select" id="duration">
+              <option value="">Choose one…</option>
+              <option value="0">7 hours or more</option>
+              <option value="1">6–7 hours</option>
+              <option value="2">5–6 hours</option>
+              <option value="3">Less than 5 hours</option>
+            </select>
+            <p class="field-hint">Time asleep — not time in bed.</p>
+          </div>
+
+          <!-- Section 2: Sleep Continuity -->
+          <div class="section-divider">Sleep Continuity</div>
+
+          <div class="q-row">
+            <span class="q-label">Wake up during the night or too early and can't get back to sleep</span>
+            <div class="freq-group" id="waking-group">
+              <button class="freq-btn" onclick="setQ('waking',0,this)">Never</button>
+              <button class="freq-btn" onclick="setQ('waking',1,this)">Sometimes</button>
+              <button class="freq-btn" onclick="setQ('waking',2,this)">Often</button>
+              <button class="freq-btn" onclick="setQ('waking',3,this)">Most nights</button>
+            </div>
+          </div>
+
+          <div class="q-row">
+            <span class="q-label">Feel too hot, cold, or physically restless and uncomfortable in bed</span>
+            <div class="freq-group" id="comfort-group">
+              <button class="freq-btn" onclick="setQ('comfort',0,this)">Never</button>
+              <button class="freq-btn" onclick="setQ('comfort',1,this)">Sometimes</button>
+              <button class="freq-btn" onclick="setQ('comfort',2,this)">Often</button>
+              <button class="freq-btn" onclick="setQ('comfort',3,this)">Most nights</button>
+            </div>
+          </div>
+
+          <div class="q-row">
+            <span class="q-label">Experience vivid or disturbing dreams, or a racing mind at bedtime</span>
+            <div class="freq-group" id="dreams-group">
+              <button class="freq-btn" onclick="setQ('dreams',0,this)">Never</button>
+              <button class="freq-btn" onclick="setQ('dreams',1,this)">Sometimes</button>
+              <button class="freq-btn" onclick="setQ('dreams',2,this)">Often</button>
+              <button class="freq-btn" onclick="setQ('dreams',3,this)">Most nights</button>
+            </div>
+          </div>
+
+          <div class="q-row">
+            <span class="q-label">Need to use the bathroom during the night</span>
+            <div class="freq-group" id="bathroom-group">
+              <button class="freq-btn" onclick="setQ('bathroom',0,this)">Never</button>
+              <button class="freq-btn" onclick="setQ('bathroom',1,this)">Sometimes</button>
+              <button class="freq-btn" onclick="setQ('bathroom',2,this)">Often</button>
+              <button class="freq-btn" onclick="setQ('bathroom',3,this)">Most nights</button>
+            </div>
+          </div>
+
+          <!-- Section 3: Subjective Quality & Aids -->
+          <div class="section-divider">Quality &amp; Sleep Aids</div>
+
+          <div class="field-group">
+            <label class="field-label" for="quality">How would you rate your overall sleep quality?</label>
+            <select class="field-select" id="quality">
+              <option value="">Choose one…</option>
+              <option value="0">Very good — I feel well-rested most mornings</option>
+              <option value="1">Fairly good — mostly okay, occasional poor nights</option>
+              <option value="2">Fairly bad — often unrefreshed, sleep feels shallow</option>
+              <option value="3">Very bad — rarely feel rested, sleep is consistently poor</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="medication">Use of sleep aids or medication to help you sleep</label>
+            <select class="field-select" id="medication">
+              <option value="">Choose one…</option>
+              <option value="0">Never — I don't use any sleep aids</option>
+              <option value="1">Less than once a week</option>
+              <option value="2">Once or twice a week</option>
+              <option value="3">Three or more times a week</option>
+            </select>
+            <p class="field-hint">Includes supplements (melatonin, magnesium), prescription medication, alcohol, or cannabis used specifically to sleep.</p>
+          </div>
+
+          <!-- Section 4: Daytime Function -->
+          <div class="section-divider">Daytime Function</div>
+
+          <div class="q-row">
+            <span class="q-label">Feel tired, sluggish, or low-energy during the day</span>
+            <div class="freq-group" id="tired-group">
+              <button class="freq-btn" onclick="setQ('tired',0,this)">Never</button>
+              <button class="freq-btn" onclick="setQ('tired',1,this)">Sometimes</button>
+              <button class="freq-btn" onclick="setQ('tired',2,this)">Often</button>
+              <button class="freq-btn" onclick="setQ('tired',3,this)">Most days</button>
+            </div>
+          </div>
+
+          <div class="q-row">
+            <span class="q-label">Difficulty staying awake during activities requiring attention (driving, meetings, reading)</span>
+            <div class="freq-group" id="alertness-group">
+              <button class="freq-btn" onclick="setQ('alertness',0,this)">Never</button>
+              <button class="freq-btn" onclick="setQ('alertness',1,this)">Sometimes</button>
+              <button class="freq-btn" onclick="setQ('alertness',2,this)">Often</button>
+              <button class="freq-btn" onclick="setQ('alertness',3,this)">Most days</button>
+            </div>
+          </div>
+
+          <div class="q-row">
+            <span class="q-label">Lack of motivation or enthusiasm that you attribute to poor sleep</span>
+            <div class="freq-group" id="motivation-group">
+              <button class="freq-btn" onclick="setQ('motivation',0,this)">Never</button>
+              <button class="freq-btn" onclick="setQ('motivation',1,this)">Sometimes</button>
+              <button class="freq-btn" onclick="setQ('motivation',2,this)">Often</button>
+              <button class="freq-btn" onclick="setQ('motivation',3,this)">Most days</button>
+            </div>
+          </div>
+
+          <button class="calc-btn" onclick="calculate()">Calculate My Sleep Score →</button>
+        </div>
+      </div>
+
+      <!-- RIGHT: Results -->
+      <div class="results-col">
+
+        <div class="result-card" id="result-card">
+          <div class="result-band" id="result-band"></div>
+          <div class="result-body">
+
+            <!-- Score hero -->
+            <div class="score-hero">
+              <div class="score-hero-label">Your Sleep Quality Score</div>
+              <div class="score-number" id="score-number" style="color:var(--sleep)">—<span class="score-denom">/100</span></div>
+              <div><span class="score-tier-badge" id="tier-badge">—</span></div>
+              <div class="score-bar-wrap">
+                <div class="score-bar-fill" id="score-bar" style="width:0%;background:var(--sleep)"></div>
+              </div>
+              <p class="psqi-note" id="psqi-note"></p>
+            </div>
+
+            <!-- Domain breakdown -->
+            <p class="domains-title">Score by sleep domain</p>
+            <div id="domain-bars"></div>
+
+            <!-- Message -->
+            <div class="msg-block" id="msg-block">
+              <h3 id="msg-heading">—</h3>
+              <p id="msg-body">—</p>
+            </div>
+
+            <hr class="tips-divider" />
+            <p class="tips-title">How to improve your sleep quality:</p>
+            <ul class="tips-list" id="tips-list"></ul>
+
+          </div>
+        </div>
+
+        <!-- Pair with Sleep Debt -->
+        <div class="pair-card">
+          <div class="pair-icon">📊</div>
+          <div>
+            <div class="pair-title">Pair with the Sleep Debt Calculator</div>
+            <div class="pair-body">Sleep quality and sleep quantity are different problems. You may be sleeping enough hours but waking unrefreshed — or be in sleep debt despite good-quality nights. Use both together for the full picture.</div>
+            <a href="sleep-debt.html" class="pair-link">Check your sleep debt →</a>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <h3>About the Pittsburgh Sleep Quality Index (PSQI)</h3>
+          <p>The PSQI is a validated clinical questionnaire developed at the University of Pittsburgh and used in sleep research worldwide. It measures seven components of sleep health: subjective quality, latency, duration, efficiency, disturbances, medication use, and daytime dysfunction. A total PSQI score above 5 indicates clinically poor sleep.</p>
+          <p>This calculator is inspired by the PSQI and covers the same clinical domains, adapted for a self-assessment format. Your score provides a meaningful health signal — not a clinical diagnosis.</p>
+        </div>
+
+        <div class="related-section">
+          <p class="related-title">You might also like</p>
+          <div class="related-grid">
+            <a href="sleep-debt.html" class="related-card">
+              <div class="related-icon">💤</div>
+              <div class="related-info"><strong>Sleep Debt</strong><span>7-day sleep deficit tracker</span></div>
+            </a>
+            <a href="sleep-need.html" class="related-card">
+              <div class="related-icon">🌙</div>
+              <div class="related-info"><strong>Sleep Need</strong><span>How many hours you actually need</span></div>
+            </a>
+            <a href="brain-fatigue.html" class="related-card">
+              <div class="related-icon">⚡</div>
+              <div class="related-info"><strong>Brain Fatigue</strong><span>Mental exhaustion assessment</span></div>
+            </a>
+            <a href="burnout-risk.html" class="related-card">
+              <div class="related-icon">🔥</div>
+              <div class="related-info"><strong>Burnout Risk</strong><span>Stress &amp; recovery balance</span></div>
+            </a>
+          </div>
+        </div>
+
+        <div class="note-block">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#9CA3AF" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          <span><strong>NOTE:</strong> This assessment is for informational purposes and is not a substitute for a clinical sleep study or physician evaluation. If you have concerns about sleep apnoea, insomnia disorder, or a sleep condition, please see a qualified healthcare provider.</span>
+        </div>
+
+      </div><!-- /results-col -->
+    </div><!-- /calc-columns -->
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="assets/logo-white.png" alt="SageMyHealth" style="height:45px;width:auto;object-fit:contain;" />
+        </div>
+        <p>Free, trusted health calculators with warm guidance — helping you understand your numbers.</p>
+      </div>
+      <div class="footer-col"><h5>Calculators</h5><ul>
+        <li><a href="sleep-debt.html">Sleep Debt</a></li>
+        <li><a href="sleep-need.html">Sleep Need</a></li>
+        <li><a href="brain-fatigue.html">Brain Fatigue</a></li>
+        <li><a href="burnout-risk.html">Burnout Risk</a></li>
+      </ul></div>
+      <div class="footer-col"><h5>Categories</h5><ul>
+        <li><a href="../index.html#categories">Sleep &amp; Recovery</a></li>
+        <li><a href="../index.html#categories">Brain Health</a></li>
+        <li><a href="../index.html#categories">Mental Health</a></li>
+        <li><a href="../index.html#categories">Longevity</a></li>
+      </ul></div>
+      <div class="footer-col"><h5>Info</h5><ul>
+        <li><a href="../about.html">About Us</a></li>
+        <li><a href="../blog.html">Health Guides</a></li>
+        <li><a href="../privacy.html">Privacy Policy</a></li>
+        <li><a href="../terms.html">Terms of Use</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-disclaimer"><strong style="color:#7A958E">Medical Disclaimer:</strong> This calculator is for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider.</p>
+      <p class="footer-copy">© 2025 SageMyHealth.com — All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   SLEEP QUALITY SCORE
+   Inspired by PSQI (Pittsburgh Sleep Quality Index)
+   11 items, each scored 0–3.
+   Raw total 0–33 → Score = 100 – round(raw/33 × 100)
+
+   Domains:
+   - Sleep Onset:      latency (1 item, max 3)
+   - Sleep Duration:   duration (1 item, max 3)
+   - Sleep Continuity: waking + comfort + dreams + bathroom (4 items, max 12)
+   - Sleep Quality:    quality + medication (2 items, max 6)
+   - Daytime Function: tired + alertness + motivation (3 items, max 9)
+============================================================ */
+
+var answers = {};
+
+function setQ(id, val, btn) {
+  answers[id] = val;
+  var group = document.getElementById(id + '-group');
+  Array.from(group.children).forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+}
+
+var DOMAIN_DEFS = [
+  { name: 'Sleep Onset',      keys: ['latency'],                         max: 3,  icon: '🕐' },
+  { name: 'Sleep Duration',   keys: ['duration'],                        max: 3,  icon: '⏱️' },
+  { name: 'Sleep Continuity', keys: ['waking','comfort','dreams','bathroom'], max: 12, icon: '🌙' },
+  { name: 'Sleep Quality',    keys: ['quality','medication'],             max: 6,  icon: '⭐' },
+  { name: 'Daytime Function', keys: ['tired','alertness','motivation'],   max: 9,  icon: '☀️' }
+];
+
+var MSGS = {
+  excellent: {
+    h: "Excellent sleep quality — your nights are restorative. 🌟",
+    b: "Your sleep is working well across all the key dimensions. You're falling asleep without trouble, staying asleep, and waking refreshed. Your daytime function reflects this. Protect these habits — consistent sleep timing and a wind-down routine are the most powerful way to maintain what you have.",
+    tips: [
+      "Keep a consistent wake time — even on weekends. It anchors your circadian rhythm more than bedtime does.",
+      "Protect your sleep schedule as a priority rather than what gets sacrificed when life gets busy.",
+      "If you ever have a run of poor nights, don't try to compensate with very early nights — it fragments sleep further.",
+      "Try our Sleep Debt calculator to check your cumulative rest over the past 7 days."
+    ]
+  },
+  good: {
+    h: "Good sleep with some room to improve.",
+    b: "Your sleep is broadly working, but there are one or two areas where it could be more restorative. This is very common — most people have at least one domain where small improvements would pay off quickly. Your daytime function is likely adequate but not optimal.",
+    tips: [
+      "Review your lowest-scoring domain — that's where the biggest gains are hiding.",
+      "If continuity is the issue: keep your bedroom cool (16–19°C), dark, and quiet. These three alone improve sleep architecture measurably.",
+      "If onset is slow: a consistent wind-down routine (no screens, low light, same sequence of activities) trains your nervous system to expect sleep.",
+      "Avoid alcohol within 3 hours of bed — it fragments sleep in the second half of the night even when it feels sedating."
+    ]
+  },
+  fair: {
+    h: "Your sleep quality is affecting your health and daily life.",
+    b: "Several sleep domains are showing strain. This level of sleep disruption is associated with reduced cognitive performance, mood changes, lowered immune function, and increased appetite. The good news is that sleep quality responds quickly to targeted behaviour changes — often within a week.",
+    tips: [
+      "Start with one change: consistent wake time is the single highest-leverage intervention for poor sleep.",
+      "Limit caffeine after midday — caffeine has a half-life of 5–7 hours and disrupts deep sleep even when you fall asleep fine.",
+      "If you wake during the night and can't return to sleep after 20 minutes, get up and do something calm in low light until sleepy.",
+      "Consider whether stress, anxiety, or rumination is driving poor sleep — cognitive-behavioural therapy for insomnia (CBT-I) has the strongest evidence base of any insomnia treatment.",
+      "If sleep medication use is frequent, discuss alternatives with your doctor — CBT-I is more effective long-term than any medication."
+    ]
+  },
+  poor: {
+    h: "Significantly poor sleep quality — this needs attention.",
+    b: "Your sleep is consistently falling short across multiple dimensions, and the daytime impact is likely significant. Chronic poor sleep of this severity affects physical health, mental health, immune function, and longevity. Please take this seriously — and speak to your doctor.",
+    tips: [
+      "Please discuss your sleep with your GP — rule out sleep apnoea, restless leg syndrome, or an underlying condition contributing to poor sleep.",
+      "Ask about CBT-I (cognitive-behavioural therapy for insomnia) — it's the gold standard treatment and more effective than sleeping pills.",
+      "Avoid napping during the day, even when exhausted — it reduces sleep pressure and makes night-time sleep harder.",
+      "Set a fixed wake time and stick to it for two weeks regardless of how you slept — this rebuilds the sleep drive.",
+      "If medication or alcohol is involved as a sleep aid, this is worth discussing with your doctor as a priority.",
+      "Check our Sleep Debt calculator — quantifying your deficit can help you and your doctor plan a recovery strategy."
+    ]
+  }
+};
+
+function domainBarColor(score) {
+  if (score >= 80) return '#16A34A';
+  if (score >= 65) return '#7C3AED';
+  if (score >= 45) return '#D97706';
+  return '#DC2626';
+}
+
+function calculate() {
+  // Validate selects
+  var selects = ['latency','duration','quality','medication'];
+  for (var i = 0; i < selects.length; i++) {
+    if (document.getElementById(selects[i]).value === '') {
+      alert('Please answer all questions.'); return;
+    }
+  }
+  // Validate pills
+  var pills = ['waking','comfort','dreams','bathroom','tired','alertness','motivation'];
+  for (var j = 0; j < pills.length; j++) {
+    if (answers[pills[j]] === undefined) {
+      alert('Please answer all questions.'); return;
+    }
+  }
+
+  // Collect all values
+  var vals = {};
+  selects.forEach(function(k) { vals[k] = parseInt(document.getElementById(k).value); });
+  pills.forEach(function(k)   { vals[k] = answers[k]; });
+
+  // Total raw (max 33)
+  var raw = Object.values(vals).reduce(function(s, v) { return s + v; }, 0);
+  var score = Math.round(100 - (raw / 33) * 100);
+
+  // Equivalent PSQI approximate (0–21 scale, >5 = poor)
+  var psqi = Math.round((raw / 33) * 21);
+
+  // Tier
+  var tier;
+  if (score >= 80)      tier = 'excellent';
+  else if (score >= 65) tier = 'good';
+  else if (score >= 45) tier = 'fair';
+  else                  tier = 'poor';
+
+  var tierColors  = { excellent: '#16A34A', good: '#7C3AED', fair: '#D97706', poor: '#DC2626' };
+  var tierLabels  = { excellent: 'Excellent sleep quality', good: 'Good — some room to improve', fair: 'Fair — sleep is affecting your days', poor: 'Poor — significant sleep concern' };
+  var tierBadges  = { excellent: 'tier-excellent', good: 'tier-good', fair: 'tier-fair', poor: 'tier-poor' };
+
+  // Hero
+  document.getElementById('score-number').innerHTML = score + '<span class="score-denom">/100</span>';
+  document.getElementById('score-number').style.color = tierColors[tier];
+  document.getElementById('score-bar').style.width    = score + '%';
+  document.getElementById('score-bar').style.background = tierColors[tier];
+
+  var badge = document.getElementById('tier-badge');
+  badge.textContent = tierLabels[tier];
+  badge.className = 'score-tier-badge ' + tierBadges[tier];
+
+  // PSQI note
+  var psqiNote = psqi <= 5
+    ? 'Equivalent PSQI: ' + psqi + '/21 — within the good sleep range (≤ 5).'
+    : 'Equivalent PSQI: ' + psqi + '/21 — above the clinical threshold of 5, indicating poor sleep.';
+  document.getElementById('psqi-note').textContent = psqiNote;
+
+  // Domain bars
+  var barsEl = document.getElementById('domain-bars');
+  barsEl.innerHTML = '';
+  DOMAIN_DEFS.forEach(function(d) {
+    var rawD = d.keys.reduce(function(s, k) { return s + (vals[k] || 0); }, 0);
+    var ds   = Math.round(100 - (rawD / d.max) * 100);
+    var color = domainBarColor(ds);
+    barsEl.innerHTML +=
+      '<div class="domain-row">' +
+        '<div class="domain-row-top">' +
+          '<span class="domain-name">' + d.icon + ' ' + d.name + '</span>' +
+          '<span class="domain-score" style="color:' + color + '">' + ds + '</span>' +
+        '</div>' +
+        '<div class="bar-track"><div class="bar-fill" style="width:' + ds + '%;background:' + color + '"></div></div>' +
+      '</div>';
+  });
+
+  // Result band + message
+  document.getElementById('result-band').className = 'result-band ' + tier;
+  var m  = MSGS[tier];
+  var mb = document.getElementById('msg-block');
+  mb.className = 'msg-block ' + tier;
+  document.getElementById('msg-heading').textContent = m.h;
+  document.getElementById('msg-body').textContent    = m.b;
+
+  var tl = document.getElementById('tips-list');
+  tl.innerHTML = '';
+  m.tips.forEach(function(t) {
+    var li = document.createElement('li'); li.textContent = t; tl.appendChild(li);
+  });
+
+  var card = document.getElementById('result-card');
+  card.classList.add('visible');
+  card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'calculator_result', { calculator: 'sleep_quality', score: score, psqi: psqi, tier: tier });
+  }
+}
+
+function openMobileMenu()  { document.getElementById('mobile-menu').classList.add('open'); document.getElementById('nav-hamburger').setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+function closeMobileMenu() { document.getElementById('mobile-menu').classList.remove('open'); document.getElementById('nav-hamburger').setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMobileMenu(); });
+</script>
+</body>
+</html>
