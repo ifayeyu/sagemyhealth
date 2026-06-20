@@ -13,29 +13,66 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SageMyHealth — Health Calculators for Real Life</title>
   <meta name="description" content="Free, trusted health calculators across weight, heart health, nutrition, women's health, mental wellbeing, and more. No data stored, no clutter — just clear answers." />
+  <meta name="keywords" content="health calculators, free health calculator, BMI calculator, TDEE calculator, blood pressure, blood glucose, sleep calculator, period tracker, online health tools" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://sagemyhealth.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SageMyHealth" />
+  <meta property="og:title" content="SageMyHealth — Free Health Calculators for Real Life" />
+  <meta property="og:description" content="37 free, evidence-based health calculators with warm, clear guidance. No data stored — just clear answers about your body." />
+  <meta property="og:url" content="https://sagemyhealth.com/" />
+  <meta property="og:image" content="https://sagemyhealth.com/calculators/assets/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SageMyHealth — Free Health Calculators" />
+  <meta name="twitter:description" content="37 free, evidence-based health calculators with warm, clear guidance. No data stored." />
+  <meta name="twitter:image" content="https://sagemyhealth.com/calculators/assets/logo.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "SageMyHealth",
+    "url": "https://sagemyhealth.com/",
+    "description": "Free, evidence-based health calculators with warm, clear guidance.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://sagemyhealth.com/#categories?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "SageMyHealth",
+    "url": "https://sagemyhealth.com/",
+    "logo": "https://sagemyhealth.com/calculators/assets/logo.png"
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --sage:       #4A7C59;
-      --sage-dark:  #3A6147;
-      --sage-mid:   #5E9470;
+      --sage:       #3B6A3A;
+      --sage-dark:  #0A3D2A;
+      --sage-mid:   #5C8A5C;
       --sage-light: #EBF2EC;
       --sage-pale:  #F2F7F3;
-      --cream:      #F7F3EE;
+      --cream:      #E3FFB3;
       --text-dark:  #1A2E1E;
       --text-mid:   #4A5568;
       --text-light: #718096;
       --white:      #FFFFFF;
       --border:     #E2EBE4;
-      --amber-soft: #FEF3C7;
+      --border-mid: #C8D9CC;
+      --amber-soft: #EECA8F;
       --amber-text: #92400E;
-      --shadow-xs:  0 1px 2px rgba(74,124,89,0.06);
-      --shadow-sm:  0 1px 6px rgba(74,124,89,0.08);
-      --shadow-md:  0 4px 16px rgba(74,124,89,0.12);
-      --shadow-lg:  0 8px 32px rgba(74,124,89,0.16);
-      --shadow-xl:  0 16px 48px rgba(74,124,89,0.18);
+      --shadow-xs:  0 1px 2px rgba(59,106,58,0.06);
+      --shadow-sm:  0 1px 6px rgba(59,106,58,0.08);
+      --shadow-md:  0 4px 16px rgba(59,106,58,0.12);
+      --shadow-lg:  0 8px 32px rgba(59,106,58,0.16);
+      --shadow-xl:  0 16px 48px rgba(59,106,58,0.18);
       --r-sm: 8px; --r: 12px; --r-lg: 20px; --r-xl: 28px;
     }
 
@@ -99,7 +136,7 @@
     .hero::before {
       content: ''; position: absolute; top: -120px; right: -80px;
       width: 480px; height: 480px;
-      background: radial-gradient(circle, rgba(74,124,89,0.07) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(59,106,58,0.07) 0%, transparent 70%);
       pointer-events: none;
     }
     .hero-badge {
@@ -133,7 +170,7 @@
       border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-md);
       transition: border-color 0.2s, box-shadow 0.2s;
     }
-    .hero-search:focus-within { border-color: var(--sage); box-shadow: 0 4px 24px rgba(74,124,89,0.18); }
+    .hero-search:focus-within { border-color: var(--sage); box-shadow: 0 4px 24px rgba(59,106,58,0.18); }
     .hero-search input {
       flex: 1; border: none; outline: none; padding: 16px 20px;
       font-size: 16px; font-family: 'Inter', sans-serif;
@@ -279,7 +316,7 @@
       border-radius: 50%; display: flex; align-items: center; justify-content: center;
       font-size: 20px; font-weight: 800; margin: 0 auto 20px;
       position: relative; z-index: 1;
-      box-shadow: 0 4px 14px rgba(74,124,89,0.3);
+      box-shadow: 0 4px 14px rgba(59,106,58,0.3);
     }
     .step h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--text-dark); }
     .step p { font-size: 14px; color: var(--text-mid); line-height: 1.7; }
@@ -488,7 +525,7 @@
 <!-- STATS BAR -->
 <div class="stats-bar">
   <div class="stats-inner">
-    <div class="stat"><div class="stat-num">13</div><div class="stat-label">Free calculators</div></div>
+    <div class="stat"><div class="stat-num">37</div><div class="stat-label">Free calculators</div></div>
     <div class="stat"><div class="stat-num">14</div><div class="stat-label">Health categories</div></div>
     <div class="stat"><div class="stat-num">0</div><div class="stat-label">Data stored</div></div>
     <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Health-focused</div></div>
@@ -504,20 +541,20 @@
       <p class="section-sub">From body composition to brain health — trusted formulas, warm explanations.</p>
     </div>
     <div class="category-grid">
-      <a href="calculators/bmi.html" class="cat-card"><div class="cat-icon-wrap">🧍</div><div><div class="cat-info-name">Weight &amp; Body</div></div><div class="cat-arrow">→</div></a>
-      <a href="calculators/heart-rate.html" class="cat-card"><div class="cat-icon-wrap">❤️</div><div><div class="cat-info-name">Heart &amp; Cardiovascular</div></div><div class="cat-arrow">→</div></a>
-      <a href="calculators/tdee.html" class="cat-card"><div class="cat-icon-wrap">🥗</div><div><div class="cat-info-name">Nutrition &amp; Diet</div></div><div class="cat-arrow">→</div></a>
-      <a href="calculators/period-tracker.html" class="cat-card"><div class="cat-icon-wrap">🌸</div><div><div class="cat-info-name">Women's Health</div></div><div class="cat-arrow">→</div></a>
-      <a href="calculators/anxiety-score.html" class="cat-card"><div class="cat-icon-wrap">🧠</div><div><div class="cat-info-name">Mental Health</div></div><div class="cat-arrow">→</div></a>
-      <a href="calculators/iron-deficiency.html" class="cat-card"><div class="cat-icon-wrap">🩸</div><div><div class="cat-info-name">Blood &amp; Iron Health</div></div><div class="cat-arrow">→</div></a>
-      <a href="calculators/blood-glucose.html" class="cat-card"><div class="cat-icon-wrap">💉</div><div><div class="cat-info-name">Diabetes &amp; Blood Sugar</div></div><div class="cat-arrow">→</div></a>
-      <a href="calculators/lung-capacity.html" class="cat-card"><div class="cat-icon-wrap">🫁</div><div><div class="cat-info-name">Respiratory Health</div></div><div class="cat-arrow">→</div></a>
-      <a href="calculators/calories-burned.html" class="cat-card"><div class="cat-icon-wrap">🏃</div><div><div class="cat-info-name">Fitness &amp; Exercise</div></div><div class="cat-arrow">→</div></a>
-      <a href="calculators/period-tracker.html" class="cat-card"><div class="cat-icon-wrap">🤰</div><div><div class="cat-info-name">Pregnancy &amp; Fertility</div></div><div class="cat-arrow">→</div></a>
-      <a href="calculators/brain-fatigue.html" class="cat-card"><div class="cat-icon-wrap">🧬</div><div><div class="cat-info-name">Brain &amp; Cognitive Health</div></div><div class="cat-arrow">→</div></a>
-      <a href="calculators/hair-loss-risk.html" class="cat-card"><div class="cat-icon-wrap">💆</div><div><div class="cat-info-name">Hair &amp; Skin Health</div></div><div class="cat-arrow">→</div></a>
-      <a href="calculators/sleep-need.html" class="cat-card"><div class="cat-icon-wrap">😴</div><div><div class="cat-info-name">Sleep &amp; Recovery</div></div><div class="cat-arrow">→</div></a>
-      <a href="calculators/biological-age.html" class="cat-card"><div class="cat-icon-wrap">⏳</div><div><div class="cat-info-name">Age &amp; Longevity</div></div><div class="cat-arrow">→</div></a>
+      <a href="calculators/bmi.html" class="cat-card"><div class="cat-icon-wrap">⚖️</div><div><div class="cat-info-name">Weight &amp; Body</div><div class="cat-info-count">3 calculators</div></div><div class="cat-arrow">→</div></a>
+      <a href="calculators/heart-rate.html" class="cat-card"><div class="cat-icon-wrap">❤️</div><div><div class="cat-info-name">Heart &amp; Cardiovascular</div><div class="cat-info-count">3 calculators</div></div><div class="cat-arrow">→</div></a>
+      <a href="calculators/tdee.html" class="cat-card"><div class="cat-icon-wrap">🥗</div><div><div class="cat-info-name">Nutrition &amp; Diet</div><div class="cat-info-count">2 calculators</div></div><div class="cat-arrow">→</div></a>
+      <a href="calculators/period-tracker.html" class="cat-card"><div class="cat-icon-wrap">🌸</div><div><div class="cat-info-name">Women's Health</div><div class="cat-info-count">2 calculators</div></div><div class="cat-arrow">→</div></a>
+      <a href="calculators/anxiety-score.html" class="cat-card"><div class="cat-icon-wrap">💭</div><div><div class="cat-info-name">Mental Health</div><div class="cat-info-count">3 calculators</div></div><div class="cat-arrow">→</div></a>
+      <a href="calculators/iron-deficiency.html" class="cat-card"><div class="cat-icon-wrap">🩸</div><div><div class="cat-info-name">Blood &amp; Iron Health</div><div class="cat-info-count">4 calculators</div></div><div class="cat-arrow">→</div></a>
+      <a href="calculators/blood-glucose.html" class="cat-card"><div class="cat-icon-wrap">💉</div><div><div class="cat-info-name">Diabetes &amp; Blood Sugar</div><div class="cat-info-count">5 calculators</div></div><div class="cat-arrow">→</div></a>
+      <a href="calculators/lung-capacity.html" class="cat-card"><div class="cat-icon-wrap">🫁</div><div><div class="cat-info-name">Respiratory Health</div><div class="cat-info-count">1 calculator</div></div><div class="cat-arrow">→</div></a>
+      <a href="calculators/calories-burned.html" class="cat-card"><div class="cat-icon-wrap">🏃</div><div><div class="cat-info-name">Fitness &amp; Exercise</div><div class="cat-info-count">1 calculator</div></div><div class="cat-arrow">→</div></a>
+      <a href="calculators/due-date.html" class="cat-card"><div class="cat-icon-wrap">🤰</div><div><div class="cat-info-name">Pregnancy &amp; Fertility</div><div class="cat-info-count">2 calculators</div></div><div class="cat-arrow">→</div></a>
+      <a href="calculators/brain-fatigue.html" class="cat-card"><div class="cat-icon-wrap">🧠</div><div><div class="cat-info-name">Brain &amp; Cognitive Health</div><div class="cat-info-count">3 calculators</div></div><div class="cat-arrow">→</div></a>
+      <a href="calculators/hair-loss-risk.html" class="cat-card"><div class="cat-icon-wrap">💆</div><div><div class="cat-info-name">Hair &amp; Skin Health</div><div class="cat-info-count">4 calculators</div></div><div class="cat-arrow">→</div></a>
+      <a href="calculators/sleep-need.html" class="cat-card"><div class="cat-icon-wrap">😴</div><div><div class="cat-info-name">Sleep &amp; Recovery</div><div class="cat-info-count">3 calculators</div></div><div class="cat-arrow">→</div></a>
+      <a href="calculators/biological-age.html" class="cat-card"><div class="cat-icon-wrap">⏳</div><div><div class="cat-info-name">Age &amp; Longevity</div><div class="cat-info-count">1 calculator</div></div><div class="cat-arrow">→</div></a>
     </div>
   </div>
 </section>

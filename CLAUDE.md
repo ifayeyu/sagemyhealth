@@ -1,5 +1,14 @@
 # SageMyHealth — Calculator Template Spec
 
+## Canonical domain (LOCKED — never use www)
+- The single canonical host is **`https://sagemyhealth.com`** (apex, NO `www.`).
+- This matches the `CNAME` file (`sagemyhealth.com`) and the live GitHub Pages domain.
+- EVERY absolute URL — `<link rel="canonical">`, `og:url`, `twitter`, JSON-LD `url`/`item`, `sitemap.xml` `<loc>`, and the `Sitemap:` line in `robots.txt` — must use `https://sagemyhealth.com` with no `www.`.
+- Never write `www.sagemyhealth.com` anywhere. If you ever see it, it is a bug to fix.
+- DNS: apex A/ALIAS records point to GitHub Pages (185.199.108–111.153). `www` should 301-redirect to the apex, not be used as a canonical.
+
+---
+
 ## Tech constraints
 - Pure static HTML/CSS/JS — **no frameworks, no imports, no build step**
 - Each file is 100% self-contained (all CSS in `<style>`, all JS at bottom of `<body>`)
