@@ -960,6 +960,11 @@
     });
 
     document.getElementById('tips-title').style.display = 'block';
+
+    // Scroll result into view (needed on mobile and when user has scrolled down)
+    setTimeout(function() {
+      document.getElementById('result-header').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
   }
 
   // Allow Enter key to submit
