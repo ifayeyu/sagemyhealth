@@ -376,6 +376,9 @@
     .footer-copy { font-size: 12px; color: #5A7568; }
 
     /* ---- RESPONSIVE ---- */
+    @media (max-width: 1000px) {
+      .calc-wrapper-inner { grid-template-columns: 1fr; }
+    }
     @media (max-width: 900px) {
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .footer-brand { grid-column: 1 / -1; }
@@ -863,19 +866,19 @@
   var msgs = {
     minimal: {
       h: 'Your anxiety level is minimal.',
-      b: 'Your score suggests you're experiencing little to no anxiety symptoms over the past two weeks. This is great—keep doing what you're doing. It's still normal to feel occasional worry or stress; that's part of being human.'
+      b: "Your score suggests you're experiencing little to no anxiety symptoms over the past two weeks. This is great—keep doing what you're doing. It's still normal to feel occasional worry or stress; that's part of being human."
     },
     mild: {
       h: 'Your anxiety level is mild.',
-      b: 'You're experiencing some anxiety symptoms, but they're not causing major disruption to your daily life. This doesn't necessarily mean you need treatment, but it's worth paying attention to patterns. If anxiety is getting in your way, talking to someone can help.'
+      b: "You're experiencing some anxiety symptoms, but they're not causing major disruption to your daily life. This doesn't necessarily mean you need treatment, but it's worth paying attention to patterns. If anxiety is getting in your way, talking to someone can help."
     },
     moderate: {
       h: 'Your anxiety level is moderate.',
-      b: 'Your score suggests you're experiencing regular anxiety that may be affecting your quality of life. This is a good time to reach out to a healthcare provider or therapist to discuss what you're experiencing and explore what might help—whether that's therapy, lifestyle changes, or other options.'
+      b: "Your score suggests you're experiencing regular anxiety that may be affecting your quality of life. This is a good time to reach out to a healthcare provider or therapist to discuss what you're experiencing and explore what might help—whether that's therapy, lifestyle changes, or other options."
     },
     severe: {
       h: 'Your anxiety level is severe.',
-      b: 'Your score indicates significant anxiety symptoms that are likely affecting your daily functioning. Please reach out to a healthcare provider or mental health professional. They can help you understand what's happening and create a plan to feel better. You don't have to manage this alone.'
+      b: "Your score indicates significant anxiety symptoms that are likely affecting your daily functioning. Please reach out to a healthcare provider or mental health professional. They can help you understand what's happening and create a plan to feel better. You don't have to manage this alone."
     }
   };
 
@@ -928,7 +931,7 @@
     var tips = {
       minimal: [
         'Keep practicing healthy habits—sleep, movement, and connection with others matter.',
-        'Anxiety is normal. If occasional worry pops up, that's just being human.',
+        "Anxiety is normal. If occasional worry pops up, that's just being human.",
         'Consider what helps you relax: hobbies, nature, time with loved ones.'
       ],
       mild: [
@@ -939,11 +942,11 @@
       moderate: [
         'A therapist or counselor can help you develop strategies to manage anxiety.',
         'Cognitive-behavioral therapy (CBT) and other approaches have strong evidence for anxiety.',
-        'Talk to your doctor about what's been happening and what support options exist.'
+        "Talk to your doctor about what's been happening and what support options exist."
       ],
       severe: [
         'Please reach out to a healthcare provider, therapist, or counselor as soon as possible.',
-        'If you're in crisis, contact a crisis hotline or go to an emergency room.',
+        "If you're in crisis, contact a crisis hotline or go to an emergency room.",
         'Anxiety is treatable—with the right support, you can feel better.'
       ]
     };
