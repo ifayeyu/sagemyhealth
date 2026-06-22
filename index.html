@@ -341,6 +341,58 @@
     .trust-item h4 { font-size: 15px; font-weight: 700; color: var(--text-dark); margin-bottom: 6px; }
     .trust-item p { font-size: 13px; color: var(--text-mid); line-height: 1.65; }
 
+    /* AMAZON PICKS SECTION */
+    .amz-section { padding: 40px 0; background: var(--sage-pale); }
+    .amz-card {
+      background: white; border-radius: var(--r-xl);
+      box-shadow: var(--shadow-lg); overflow: hidden;
+      display: grid; grid-template-columns: 1fr 1fr;
+    }
+    .amz-left {
+      padding: 32px 40px; border-right: 1px solid var(--border);
+      display: flex; flex-direction: column; justify-content: center; gap: 8px;
+    }
+    .amz-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--sage-light); color: var(--sage-dark);
+      font-size: 12px; font-weight: 700; padding: 5px 12px;
+      border-radius: 20px; letter-spacing: .3px; align-self: flex-start;
+    }
+    .amz-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(20px, 2.4vw, 28px); font-weight: 700;
+      color: var(--text-dark); line-height: 1.25;
+    }
+    .amz-body { font-size: 14px; color: var(--text-mid); line-height: 1.65; }
+    .amz-right {
+      padding: 28px 32px;
+      display: flex; flex-direction: column; gap: 10px; justify-content: center;
+    }
+    .amz-cats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .amz-cat {
+      display: flex; align-items: center; justify-content: space-between; gap: 4px;
+      font-size: 12px; font-weight: 600; color: var(--text-dark);
+      background: var(--sage-pale); border: 1px solid var(--border);
+      padding: 10px 12px; border-radius: var(--r-sm);
+      text-decoration: none; transition: all .18s; line-height: 1.3;
+    }
+    .amz-cat:hover { border-color: var(--sage); background: var(--sage-light); color: var(--sage); }
+    .amz-cat-inner { display: flex; align-items: center; gap: 5px; }
+    .amz-cat-arrow { opacity: .4; font-size: 11px; flex-shrink: 0; }
+    .amz-btn {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--sage); color: white; font-size: 14px; font-weight: 700;
+      padding: 13px 20px; border-radius: var(--r-sm);
+      text-decoration: none; transition: background .2s; text-align: center;
+    }
+    .amz-btn:hover { background: var(--sage-dark); }
+    .amz-disclosure { font-size: 10px; color: var(--text-light); line-height: 1.5; text-align: center; }
+    @media (max-width: 780px) {
+      .amz-card { grid-template-columns: 1fr; }
+      .amz-left { border-right: none; border-bottom: 1px solid var(--border); padding: 28px 24px; }
+      .amz-right { padding: 24px; }
+    }
+
     /* FOOTER */
     .site-footer { background: var(--text-dark); color: #94A99A; padding: 56px 0 0; }
     .footer-grid {
@@ -601,6 +653,39 @@
       <div class="trust-item"><div class="trust-icon-wrap">🔒</div><h4>Your Data Stays Yours</h4><p>We never store, sell, or share your health data. Calculations happen entirely in your browser.</p></div>
       <div class="trust-item"><div class="trust-icon-wrap">🌿</div><h4>Health-Only Focus</h4><p>No finance, no engineering, no random calculators. Everything here is about your wellbeing — nothing else.</p></div>
       <div class="trust-item"><div class="trust-icon-wrap">💬</div><h4>Human, Not Clinical</h4><p>Results are explained in plain language — warm, encouraging, and easy to understand.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- AMAZON PICKS -->
+<section class="amz-section">
+  <div class="container">
+    <div class="amz-card">
+      <div class="amz-left">
+        <span class="amz-badge">🌿 SageMyHealth Picks</span>
+        <h2 class="amz-title">Health essentials, handpicked for you</h2>
+        <p class="amz-body">Top-rated products curated by category — because acting on your health numbers should be just as easy as calculating them.</p>
+      </div>
+      <div class="amz-right">
+        <div class="amz-cats">
+          <a href="https://amzn.to/3SlXjN7" target="_blank" rel="sponsored noopener" class="amz-cat">
+            <span class="amz-cat-inner">🌸 K Beauty Skincare</span><span class="amz-cat-arrow">→</span>
+          </a>
+          <a href="https://amzn.to/4vjG51q" target="_blank" rel="sponsored noopener" class="amz-cat">
+            <span class="amz-cat-inner">☀️ K Beauty Sunscreen</span><span class="amz-cat-arrow">→</span>
+          </a>
+          <a href="https://amzn.to/4xGmkTt" target="_blank" rel="sponsored noopener" class="amz-cat">
+            <span class="amz-cat-inner">🦷 Fluoride-Free Toothpaste</span><span class="amz-cat-arrow">→</span>
+          </a>
+          <a href="https://amzn.to/4vq1FBm" target="_blank" rel="sponsored noopener" class="amz-cat">
+            <span class="amz-cat-inner">🦠 Probiotics &amp; Prebiotics</span><span class="amz-cat-arrow">→</span>
+          </a>
+        </div>
+        <a href="https://amzn.to/4ewCbes" target="_blank" rel="sponsored noopener" class="amz-btn">
+          Browse all health essentials on Amazon &nbsp;→
+        </a>
+        <p class="amz-disclosure">As an Amazon Associate, SageMyHealth may earn a small commission from qualifying purchases — at no extra cost to you.</p>
+      </div>
     </div>
   </div>
 </section>
