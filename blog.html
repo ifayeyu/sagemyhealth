@@ -81,10 +81,10 @@
     .featured-post-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .featured-post-img .img-fallback { width: 100%; height: 100%; min-height: 340px; background: linear-gradient(135deg, #d8e8d9 0%, #a8c4a0 100%); display: flex; align-items: center; justify-content: center; }
     .feat-cat { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; padding: 4px 10px; border-radius: 20px; margin-bottom: 14px; }
-    .cat-nourish { background: #E3FFD3; color: #2D5A1B; }
-    .cat-mind    { background: #E8E3FF; color: #3D1B8C; }
-    .cat-love    { background: #FFE3E3; color: #8C1B1B; }
-    .cat-wellness { background: #E3F4FF; color: #1B4A8C; }
+    .cat-nourish   { background: #E3FFD3; color: #2D5A1B; }
+    .cat-mind      { background: #E8E3FF; color: #3D1B8C; }
+    .cat-love      { background: #FFE3E3; color: #8C1B1B; }
+    .cat-companion { background: #FDF2E9; color: #7A3B0E; }
     .featured-post-body { padding: 36px 40px; display: flex; flex-direction: column; justify-content: center; background: white; }
     .featured-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: var(--sage); margin-bottom: 16px; display: block; }
     .featured-post-body h2 { font-family: 'Playfair Display', serif; font-size: clamp(22px, 2.5vw, 30px); font-weight: 700; line-height: 1.25; margin-bottom: 14px; color: var(--text-dark); }
@@ -117,8 +117,8 @@
     .fg-love    { background: linear-gradient(135deg, #f0d0d0 0%, #e0a8a8 100%); }
     .fg-wellness { background: linear-gradient(135deg, #c8e4f4 0%, #96c4e0 100%); }
 
-    /* ── SECOND ROW / SECTION ── */
-    .section-divider { margin-top: 56px; }
+    /* ── TAB SECTIONS ── */
+    .tab-section { margin-top: 52px; }
 
     /* ── BOTTOM CALLOUT ── */
     .guides-callout { margin-top: 64px; background: var(--sage-pale); border-radius: var(--r-xl); padding: 40px 48px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
@@ -276,112 +276,47 @@
     <button class="filter-tab" data-filter="nourish">Nourish</button>
     <button class="filter-tab" data-filter="mind">Mind</button>
     <button class="filter-tab" data-filter="love">Love</button>
-    <button class="filter-tab" data-filter="wellness">Wellness</button>
   </div>
 </div>
 
 <div class="guides-page">
 
-  <!-- FEATURED -->
-  <a class="featured-post" data-cat="nourish" href="https://www.darlingwhatif.com/post-90-30-50.html" target="_blank" rel="noopener">
-    <div class="featured-post-img">
-      <img src="images/90-30-50-hero.jpg"
-           alt="The 90-30-50 Method"
-           onerror="imgFallback(this,'nourish')" />
-    </div>
-    <div class="featured-post-body">
-      <span class="featured-label">✦ Featured Guide</span>
-      <span class="feat-cat cat-nourish">Nourish</span>
-      <h2>The 90-30-50 Method: The Protein Formula Everyone's Talking About</h2>
-      <p>The viral protein method that's changing how people think about eating — 90g protein, 30g fiber, 50g healthy fat. No calorie counting, no obsessing over numbers. Just three targets that work together.</p>
-      <div class="post-meta">
-        <span>May 24, 2026</span>
-        <span class="post-meta-dot"></span>
-        <span>8 min read</span>
+  <!-- FEATURED — visible on All Guides only -->
+  <div id="section-featured">
+    <a class="featured-post" href="https://www.darlingwhatif.com/post-90-30-50.html" target="_blank" rel="noopener">
+      <div class="featured-post-img">
+        <img src="images/90-30-50-hero.jpg" alt="The 90-30-50 Method" onerror="imgFallback(this,'nourish')" />
       </div>
-      <span class="read-btn">Read the guide
-        <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="#3B6A3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </span>
-    </div>
-  </a>
-
-  <!-- GRID ROW 1 -->
-  <div class="section-header">
-    <h2>Mind & Mental Health</h2>
-  </div>
-  <div class="post-grid" id="grid-mind">
-
-    <a class="post-card" data-cat="mind" href="https://www.darlingwhatif.com/post-burnout.html" target="_blank" rel="noopener">
-      <div class="post-card-img">
-        <img src="images/burnout-hero.jpg"
-             alt="Burned Out"
-             onerror="imgFallback(this,'mind')" />
-      </div>
-      <div class="post-card-body">
-        <span class="feat-cat cat-mind">Mind</span>
-        <h3>What If You're Not Lazy — You're Burned Out?</h3>
-        <p>Before you call yourself lazy one more time, consider this: your body might be sending a very different signal.</p>
+      <div class="featured-post-body">
+        <span class="featured-label">✦ Featured Guide</span>
+        <span class="feat-cat cat-nourish">Nourish</span>
+        <h2>The 90-30-50 Method: The Protein Formula Everyone's Talking About</h2>
+        <p>The viral protein method that's changing how people think about eating — 90g protein, 30g fiber, 50g healthy fat. No calorie counting, no obsessing over numbers. Just three targets that work together.</p>
         <div class="post-meta">
-          <span>May 7, 2026</span><span class="post-meta-dot"></span><span>7 min read</span>
+          <span>May 24, 2026</span><span class="post-meta-dot"></span><span>8 min read</span>
         </div>
+        <span class="read-btn">Read the guide
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="#3B6A3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
       </div>
     </a>
-
-    <a class="post-card" data-cat="mind" href="https://www.darlingwhatif.com/post-quiet-anxiety.html" target="_blank" rel="noopener">
-      <div class="post-card-img">
-        <img src="images/Quiet_anxiety_hero.jpg"
-             alt="Quiet Anxiety"
-             onerror="imgFallback(this,'mind')" />
-      </div>
-      <div class="post-card-body">
-        <span class="feat-cat cat-mind">Mind</span>
-        <h3>You Are Not the Worry: Understanding Quiet Anxiety</h3>
-        <p>Not all anxiety is loud. Here's how to recognize the quiet kind that runs in the background — and what it's actually trying to tell you.</p>
-        <div class="post-meta">
-          <span>May 22, 2026</span><span class="post-meta-dot"></span><span>10 min read</span>
-        </div>
-      </div>
-    </a>
-
-    <a class="post-card" data-cat="mind" href="https://www.darlingwhatif.com/post-morning-pages.html" target="_blank" rel="noopener">
-      <div class="post-card-img">
-        <img src="images/morning-pages-hero.jpg" alt="Morning Pages" onerror="imgFallback(this,'mind')" />
-      </div>
-      <div class="post-card-body">
-        <span class="feat-cat cat-mind">Mind</span>
-        <h3>Morning Pages: The 20-Minute Practice That Clears Your Head</h3>
-        <p>Three pages, longhand, every morning. Sounds simple — the effect on clarity and anxiety is anything but.</p>
-        <div class="post-meta">
-          <span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>6 min read</span>
-        </div>
-      </div>
-    </a>
-
   </div>
 
-  <!-- GRID ROW 2 -->
-  <div class="section-divider">
-    <div class="section-header">
-      <h2>Nourish Your Body</h2>
-    </div>
-    <div class="post-grid" id="grid-nourish">
-
+  <!-- NOURISH SECTION -->
+  <div id="section-nourish" class="tab-section">
+    <div class="section-header"><h2>Nourish Your Body</h2></div>
+    <div class="post-grid">
       <a class="post-card" data-cat="nourish" href="https://www.darlingwhatif.com/post-breakfast.html" target="_blank" rel="noopener">
         <div class="post-card-img">
-          <img src="images/breakfast-hero.jpg"
-               alt="Before the Coffee"
-               onerror="imgFallback(this,'nourish')" />
+          <img src="images/breakfast-hero.jpg" alt="Before the Coffee" onerror="imgFallback(this,'nourish')" />
         </div>
         <div class="post-card-body">
           <span class="feat-cat cat-nourish">Nourish</span>
           <h3>Before the Coffee: Why Breakfast Matters More Than You Think</h3>
           <p>What you eat in the first hour after waking sets the tone for your blood sugar, energy, and cravings for the rest of the day.</p>
-          <div class="post-meta">
-            <span>May 12, 2026</span><span class="post-meta-dot"></span><span>5 min read</span>
-          </div>
+          <div class="post-meta"><span>May 12, 2026</span><span class="post-meta-dot"></span><span>5 min read</span></div>
         </div>
       </a>
-
       <a class="post-card" data-cat="nourish" href="https://www.darlingwhatif.com/post-sugar-cravings.html" target="_blank" rel="noopener">
         <div class="post-card-img">
           <img src="images/Sugar_craving_hero.jpg" alt="Sugar Cravings" onerror="imgFallback(this,'nourish')" />
@@ -390,12 +325,9 @@
           <span class="feat-cat cat-nourish">Nourish</span>
           <h3>Sugar Cravings Are Not a Character Flaw</h3>
           <p>The science behind why your body craves sugar — and what it's actually asking for when 3pm hits and the vending machine calls.</p>
-          <div class="post-meta">
-            <span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>7 min read</span>
-          </div>
+          <div class="post-meta"><span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>7 min read</span></div>
         </div>
       </a>
-
       <a class="post-card" data-cat="nourish" href="https://www.darlingwhatif.com/post-gut-health.html" target="_blank" rel="noopener">
         <div class="post-card-img">
           <img src="images/gut-health-hero.jpg" alt="Gut Health" onerror="imgFallback(this,'nourish')" />
@@ -404,38 +336,133 @@
           <span class="feat-cat cat-nourish">Nourish</span>
           <h3>Your Gut Is Talking — Are You Listening?</h3>
           <p>Bloating, low energy, unpredictable moods. Your gut microbiome might be sending signals you've been ignoring.</p>
-          <div class="post-meta">
-            <span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>8 min read</span>
-          </div>
+          <div class="post-meta"><span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>8 min read</span></div>
         </div>
       </a>
-
+      <a class="post-card" data-cat="nourish" href="https://darlingwhatif.com/post-acv-honey" target="_blank" rel="noopener">
+        <div class="post-card-img">
+          <img src="images/acv-honey-hero.jpg" alt="ACV and Honey" onerror="imgFallback(this,'nourish')" />
+        </div>
+        <div class="post-card-body">
+          <span class="feat-cat cat-nourish">Nourish</span>
+          <h3>ACV &amp; Honey in Warm Water for Gut Health &amp; Constipation</h3>
+          <p>The simple morning recipe, the gut-health benefits, and what the research actually says about apple cider vinegar and honey.</p>
+          <div class="post-meta"><span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>6 min read</span></div>
+        </div>
+      </a>
+      <a class="post-card" data-cat="nourish" href="https://darlingwhatif.com/post-water" target="_blank" rel="noopener">
+        <div class="post-card-img">
+          <img src="images/water-hero.jpg" alt="Water Timing" onerror="imgFallback(this,'nourish')" />
+        </div>
+        <div class="post-card-body">
+          <span class="feat-cat cat-nourish">Nourish</span>
+          <h3>When to Drink Water: The Timing That Changes Everything</h3>
+          <p>Drinking water at the right times boosts metabolism, reduces hunger, and improves skin and digestion.</p>
+          <div class="post-meta"><span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>5 min read</span></div>
+        </div>
+      </a>
+      <a class="post-card" data-cat="nourish" href="https://darlingwhatif.com/post-tea-timing" target="_blank" rel="noopener">
+        <div class="post-card-img">
+          <img src="images/tea-timing-hero.jpg" alt="Tea Timing" onerror="imgFallback(this,'nourish')" />
+        </div>
+        <div class="post-card-body">
+          <span class="feat-cat cat-nourish">Nourish</span>
+          <h3>The Best Tea to Drink at Every Time of Day</h3>
+          <p>The best tea to drink in the morning, afternoon, and evening — and why timing matters as much as the blend.</p>
+          <div class="post-meta"><span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>5 min read</span></div>
+        </div>
+      </a>
+      <a class="post-card" data-cat="nourish" href="https://darlingwhatif.com/post-gut-axis" target="_blank" rel="noopener">
+        <div class="post-card-img">
+          <img src="images/Gut_axis_hero.jpg" alt="Gut-Brain Axis" onerror="imgFallback(this,'nourish')" />
+        </div>
+        <div class="post-card-body">
+          <span class="feat-cat cat-nourish">Nourish</span>
+          <h3>What If Your Gut Is Running the Show — For Your Skin, Your Hair, and Your Mind?</h3>
+          <p>Your gut communicates with your brain, skin, and hormones. Here's how what's happening inside might be affecting everything else.</p>
+          <div class="post-meta"><span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>8 min read</span></div>
+        </div>
+      </a>
+      <a class="post-card" data-cat="nourish" href="https://darlingwhatif.com/post-period-eat-better" target="_blank" rel="noopener">
+        <div class="post-card-img">
+          <img src="images/Period-eat-better-hero.jpg" alt="Eating Around Your Period" onerror="imgFallback(this,'nourish')" />
+        </div>
+        <div class="post-card-body">
+          <span class="feat-cat cat-nourish">Nourish</span>
+          <h3>Period Cramps? These Foods Help (and These Hurt)</h3>
+          <p>What to eat on your period to reduce cramps, bloating, and fatigue — and what to avoid. A complete, non-restrictive guide.</p>
+          <div class="post-meta"><span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>7 min read</span></div>
+        </div>
+      </a>
     </div>
   </div>
 
-  <!-- GRID ROW 3 — Love & Connection -->
-  <div class="section-divider">
-    <div class="section-header">
-      <h2>Love & Connection</h2>
+  <!-- MIND SECTION -->
+  <div id="section-mind" class="tab-section">
+    <div class="section-header"><h2>Mind &amp; Mental Health</h2></div>
+    <div class="post-grid">
+      <a class="post-card" data-cat="mind" href="https://www.darlingwhatif.com/post-burnout.html" target="_blank" rel="noopener">
+        <div class="post-card-img">
+          <img src="images/burnout-hero.jpg" alt="Burned Out" onerror="imgFallback(this,'mind')" />
+        </div>
+        <div class="post-card-body">
+          <span class="feat-cat cat-mind">Mind</span>
+          <h3>What If You're Not Lazy — You're Burned Out?</h3>
+          <p>Before you call yourself lazy one more time, consider this: your body might be sending a very different signal.</p>
+          <div class="post-meta"><span>May 7, 2026</span><span class="post-meta-dot"></span><span>7 min read</span></div>
+        </div>
+      </a>
+      <a class="post-card" data-cat="mind" href="https://www.darlingwhatif.com/post-quiet-anxiety.html" target="_blank" rel="noopener">
+        <div class="post-card-img">
+          <img src="images/Quiet_anxiety_hero.jpg" alt="Quiet Anxiety" onerror="imgFallback(this,'mind')" />
+        </div>
+        <div class="post-card-body">
+          <span class="feat-cat cat-mind">Mind</span>
+          <h3>You Are Not the Worry: Understanding Quiet Anxiety</h3>
+          <p>Not all anxiety is loud. Here's how to recognize the quiet kind that runs in the background — and what it's actually trying to tell you.</p>
+          <div class="post-meta"><span>May 22, 2026</span><span class="post-meta-dot"></span><span>10 min read</span></div>
+        </div>
+      </a>
+      <a class="post-card" data-cat="mind" href="https://www.darlingwhatif.com/post-morning-pages.html" target="_blank" rel="noopener">
+        <div class="post-card-img">
+          <img src="images/morning-pages-hero.jpg" alt="Morning Pages" onerror="imgFallback(this,'mind')" />
+        </div>
+        <div class="post-card-body">
+          <span class="feat-cat cat-mind">Mind</span>
+          <h3>Morning Pages: The 20-Minute Practice That Clears Your Head</h3>
+          <p>Three pages, longhand, every morning. Sounds simple — the effect on clarity and anxiety is anything but.</p>
+          <div class="post-meta"><span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>6 min read</span></div>
+        </div>
+      </a>
+      <a class="post-card" data-cat="mind" href="https://darlingwhatif.com/post-anxiety" target="_blank" rel="noopener">
+        <div class="post-card-img">
+          <img src="images/anxiety-hero.jpg" alt="High-Functioning Anxiety" onerror="imgFallback(this,'mind')" />
+        </div>
+        <div class="post-card-body">
+          <span class="feat-cat cat-mind">Mind</span>
+          <h3>High-Functioning Anxiety: Signs You Might Miss</h3>
+          <p>The version of anxiety that looks like success on the outside — and exhaustion on the inside. Here's how to recognize it in yourself.</p>
+          <div class="post-meta"><span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>8 min read</span></div>
+        </div>
+      </a>
     </div>
-    <div class="post-grid" id="grid-love">
+  </div>
 
+  <!-- LOVE & CONNECTION SECTION (includes dogs) -->
+  <div id="section-love" class="tab-section">
+    <div class="section-header"><h2>Love &amp; Connection</h2></div>
+    <div class="post-grid">
       <a class="post-card" data-cat="love" href="https://www.darlingwhatif.com/post-emotional-safety.html" target="_blank" rel="noopener">
         <div class="post-card-img">
-          <img src="images/emotional_safety_hero.jpg"
-               alt="Feeling Emotionally Safe"
-               onerror="imgFallback(this,'love')" />
+          <img src="images/emotional_safety_hero.jpg" alt="Feeling Emotionally Safe" onerror="imgFallback(this,'love')" />
         </div>
         <div class="post-card-body">
           <span class="feat-cat cat-love">Love</span>
           <h3>Feeling Emotionally Safe: What It Means and How to Know If You Have It</h3>
           <p>Emotional safety is the foundation of any close relationship — but most of us were never taught what it actually looks like.</p>
-          <div class="post-meta">
-            <span>May 30, 2026</span><span class="post-meta-dot"></span><span>6 min read</span>
-          </div>
+          <div class="post-meta"><span>May 30, 2026</span><span class="post-meta-dot"></span><span>6 min read</span></div>
         </div>
       </a>
-
       <a class="post-card" data-cat="love" href="https://www.darlingwhatif.com/post-softness.html" target="_blank" rel="noopener">
         <div class="post-card-img">
           <img src="images/Being-loved-feeling-loved-Hero.jpg" alt="Softness as Strength" onerror="imgFallback(this,'love')" />
@@ -444,26 +471,86 @@
           <span class="feat-cat cat-love">Love</span>
           <h3>Softness as Strength: On Letting Yourself Be Cared For</h3>
           <p>We've spent years learning to be strong. Here's a case for the radical act of allowing someone else to show up for you.</p>
-          <div class="post-meta">
-            <span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>5 min read</span>
-          </div>
+          <div class="post-meta"><span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>5 min read</span></div>
         </div>
       </a>
-
-      <a class="post-card" data-cat="wellness" href="https://www.darlingwhatif.com/post-companion-dogs.html" target="_blank" rel="noopener">
+      <a class="post-card" data-cat="love" href="https://www.darlingwhatif.com/post-companion-dogs.html" target="_blank" rel="noopener">
         <div class="post-card-img">
-          <img src="images/companion-dogs-hero.jpg" alt="Dogs and The Science of Connection" onerror="imgFallback(this,'wellness')" />
+          <img src="images/companion-dogs-hero.jpg" alt="Dogs and The Science of Connection" onerror="imgFallback(this,'love')" />
         </div>
         <div class="post-card-body">
-          <span class="feat-cat cat-wellness">Wellness</span>
-          <h3>Dogs & The Science of Connection: Why Your Pet Makes You Healthier</h3>
+          <span class="feat-cat cat-companion">Companion</span>
+          <h3>Dogs &amp; The Science of Connection: Why Your Pet Makes You Healthier</h3>
           <p>The bond between humans and dogs isn't just emotional — it measurably lowers cortisol, raises oxytocin, and supports heart health.</p>
-          <div class="post-meta">
-            <span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>6 min read</span>
-          </div>
+          <div class="post-meta"><span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>6 min read</span></div>
         </div>
       </a>
-
+      <a class="post-card" data-cat="love" href="https://darlingwhatif.com/post-love-left" target="_blank" rel="noopener">
+        <div class="post-card-img">
+          <img src="images/Love_left_hero.jpg" alt="Love You Still Have Left" onerror="imgFallback(this,'love')" />
+        </div>
+        <div class="post-card-body">
+          <span class="feat-cat cat-love">Love</span>
+          <h3>What to Do With All the Love You Still Have Left</h3>
+          <p>When a relationship ends, you're left with love that has nowhere to go. Here's how to hold it, and what to do with that feeling.</p>
+          <div class="post-meta"><span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>7 min read</span></div>
+        </div>
+      </a>
+      <a class="post-card" data-cat="love" href="https://darlingwhatif.com/post-quiet-love" target="_blank" rel="noopener">
+        <div class="post-card-img">
+          <img src="images/Quiet_love_hero.jpg" alt="Quiet Love" onerror="imgFallback(this,'love')" />
+        </div>
+        <div class="post-card-body">
+          <span class="feat-cat cat-love">Love</span>
+          <h3>The Quiet Ways People Show You They Love You</h3>
+          <p>Real love rarely announces itself. The people who love you most show it in the smallest details — the coffee order they remember, the exhaustion they notice before you do.</p>
+          <div class="post-meta"><span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>6 min read</span></div>
+        </div>
+      </a>
+      <a class="post-card" data-cat="love" href="https://darlingwhatif.com/post-talk-to-dog" target="_blank" rel="noopener">
+        <div class="post-card-img">
+          <img src="images/companion-dogs-hero.jpg" alt="Talking to Your Dog" onerror="imgFallback(this,'love')" />
+        </div>
+        <div class="post-card-body">
+          <span class="feat-cat cat-companion">Companion</span>
+          <h3>Why Talking to Your Dog Makes You More Emotionally Intelligent</h3>
+          <p>Science says people who talk to their dogs score higher on empathy and emotional intelligence — here's what your dog conversations say about you.</p>
+          <div class="post-meta"><span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>6 min read</span></div>
+        </div>
+      </a>
+      <a class="post-card" data-cat="love" href="https://darlingwhatif.com/post-dog-sad" target="_blank" rel="noopener">
+        <div class="post-card-img">
+          <img src="images/Sad_dog_hero.jpg" alt="Dog Senses Sadness" onerror="imgFallback(this,'love')" />
+        </div>
+        <div class="post-card-body">
+          <span class="feat-cat cat-companion">Companion</span>
+          <h3>Why My Dog Knows When I'm Sad Before I Do</h3>
+          <p>Dogs can sense your sadness before you even know it yourself — and there's a beautiful, science-backed reason why.</p>
+          <div class="post-meta"><span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>5 min read</span></div>
+        </div>
+      </a>
+      <a class="post-card" data-cat="love" href="https://darlingwhatif.com/post-dog-love" target="_blank" rel="noopener">
+        <div class="post-card-img">
+          <img src="images/dog-love.jpg" alt="Dog Love" onerror="imgFallback(this,'love')" />
+        </div>
+        <div class="post-card-body">
+          <span class="feat-cat cat-companion">Companion</span>
+          <h3>The Kind of Love Only a Dog Gives You</h3>
+          <p>Unconditional, immediate, and quietly transformative. Science is starting to explain what dog owners have always known.</p>
+          <div class="post-meta"><span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>6 min read</span></div>
+        </div>
+      </a>
+      <a class="post-card" data-cat="love" href="https://darlingwhatif.com/post-dog-routine" target="_blank" rel="noopener">
+        <div class="post-card-img">
+          <img src="images/dog-routine-hero.jpg" alt="Dog Routine" onerror="imgFallback(this,'love')" />
+        </div>
+        <div class="post-card-body">
+          <span class="feat-cat cat-companion">Companion</span>
+          <h3>How My Labrador Became My Best Health Habit</h3>
+          <p>A dog's routine is their mental health — and it turns out, honouring their daily rhythms makes you both healthier.</p>
+          <div class="post-meta"><span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>7 min read</span></div>
+        </div>
+      </a>
     </div>
   </div>
 
@@ -548,30 +635,38 @@
 </script>
 
 <script>
-  // Category filter
-  var tabs = document.querySelectorAll('.filter-tab');
-  var cards = document.querySelectorAll('[data-cat]');
+  // Tab filter — controls full sections, not individual cards
+  var tabs        = document.querySelectorAll('.filter-tab');
+  var secFeatured = document.getElementById('section-featured');
+  var secNourish  = document.getElementById('section-nourish');
+  var secMind     = document.getElementById('section-mind');
+  var secLove     = document.getElementById('section-love');
+  var allSections = [secNourish, secMind, secLove];
+
+  function applyFilter(filter) {
+    // Featured hero: All Guides only
+    secFeatured.style.display = filter === 'all' ? '' : 'none';
+
+    // Content sections
+    secNourish.style.display = (filter === 'all' || filter === 'nourish') ? '' : 'none';
+    secMind.style.display    = (filter === 'all' || filter === 'mind')    ? '' : 'none';
+    secLove.style.display    = (filter === 'all' || filter === 'love')    ? '' : 'none';
+
+    // First visible section: no top margin (no featured above it in tab view)
+    var first = true;
+    allSections.forEach(function(s) {
+      if (s.style.display !== 'none') {
+        s.style.marginTop = first ? '0' : '';
+        first = false;
+      }
+    });
+  }
 
   tabs.forEach(function(tab) {
     tab.addEventListener('click', function() {
       tabs.forEach(function(t) { t.classList.remove('active'); });
       tab.classList.add('active');
-
-      var filter = tab.getAttribute('data-filter');
-
-      cards.forEach(function(card) {
-        if (filter === 'all' || card.getAttribute('data-cat') === filter) {
-          card.style.display = '';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-
-      // Show/hide section headers based on visible cards
-      var sections = [
-        { header: document.querySelector('#grid-mind')?.previousElementSibling, grid: document.getElementById('grid-mind') },
-        { header: null, grid: null } // featured handled separately
-      ];
+      applyFilter(tab.getAttribute('data-filter'));
     });
   });
 </script>
