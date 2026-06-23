@@ -79,7 +79,7 @@
     .featured-post:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(59,106,58,0.18); }
     .featured-post-img { position: relative; overflow: hidden; min-height: 340px; }
     .featured-post-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .featured-post-img .img-fallback { width: 100%; height: 100%; min-height: 340px; background: linear-gradient(135deg, #d8e8d9 0%, #a8c4a0 100%); display: flex; align-items: center; justify-content: center; font-size: 48px; }
+    .featured-post-img .img-fallback { width: 100%; height: 100%; min-height: 340px; background: linear-gradient(135deg, #d8e8d9 0%, #a8c4a0 100%); display: flex; align-items: center; justify-content: center; }
     .feat-cat { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; padding: 4px 10px; border-radius: 20px; margin-bottom: 14px; }
     .cat-nourish { background: #E3FFD3; color: #2D5A1B; }
     .cat-mind    { background: #E8E3FF; color: #3D1B8C; }
@@ -104,7 +104,7 @@
     .post-card-img { position: relative; height: 200px; overflow: hidden; }
     .post-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s; }
     .post-card:hover .post-card-img img { transform: scale(1.04); }
-    .post-card-img .img-fallback { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 36px; }
+    .post-card-img .img-fallback { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
     .post-card-body { padding: 20px 22px 22px; }
     .post-card-body .feat-cat { margin-bottom: 10px; }
     .post-card-body h3 { font-size: 16px; font-weight: 700; line-height: 1.4; margin-bottom: 8px; color: var(--text-dark); }
@@ -285,9 +285,9 @@
   <!-- FEATURED -->
   <a class="featured-post" data-cat="nourish" href="https://www.darlingwhatif.com/post-90-30-50.html" target="_blank" rel="noopener">
     <div class="featured-post-img">
-      <img src="https://www.darlingwhatif.com/images/903050post_hero.jpg"
+      <img src="images/90-30-50-hero.jpg"
            alt="The 90-30-50 Method"
-           onerror="this.parentNode.innerHTML='<div class=\'img-fallback fg-nourish\'>🥗</div>'" />
+           onerror="imgFallback(this,'nourish')" />
     </div>
     <div class="featured-post-body">
       <span class="featured-label">✦ Featured Guide</span>
@@ -313,9 +313,9 @@
 
     <a class="post-card" data-cat="mind" href="https://www.darlingwhatif.com/post-burnout.html" target="_blank" rel="noopener">
       <div class="post-card-img">
-        <img src="https://www.darlingwhatif.com/images/pexels-cordero-17343820.jpg"
+        <img src="images/burnout-hero.jpg"
              alt="Burned Out"
-             onerror="this.parentNode.innerHTML='<div class=\'img-fallback fg-mind\'>🧠</div>'" />
+             onerror="imgFallback(this,'mind')" />
       </div>
       <div class="post-card-body">
         <span class="feat-cat cat-mind">Mind</span>
@@ -329,9 +329,9 @@
 
     <a class="post-card" data-cat="mind" href="https://www.darlingwhatif.com/post-quiet-anxiety.html" target="_blank" rel="noopener">
       <div class="post-card-img">
-        <img src="https://darlingwhatif.com/images/Quiet_anxiety_hero.jpg"
+        <img src="images/Quiet_anxiety_hero.jpg"
              alt="Quiet Anxiety"
-             onerror="this.parentNode.innerHTML='<div class=\'img-fallback fg-mind\'>🌫️</div>'" />
+             onerror="imgFallback(this,'mind')" />
       </div>
       <div class="post-card-body">
         <span class="feat-cat cat-mind">Mind</span>
@@ -345,7 +345,7 @@
 
     <a class="post-card" data-cat="mind" href="https://www.darlingwhatif.com/post-morning-pages.html" target="_blank" rel="noopener">
       <div class="post-card-img">
-        <div class="img-fallback fg-mind" style="height:200px;display:flex;align-items:center;justify-content:center;font-size:36px;">📓</div>
+        <img src="images/morning-pages-hero.jpg" alt="Morning Pages" onerror="imgFallback(this,'mind')" />
       </div>
       <div class="post-card-body">
         <span class="feat-cat cat-mind">Mind</span>
@@ -368,9 +368,9 @@
 
       <a class="post-card" data-cat="nourish" href="https://www.darlingwhatif.com/post-breakfast.html" target="_blank" rel="noopener">
         <div class="post-card-img">
-          <img src="https://www.darlingwhatif.com/images/breakfast-hero.jpg"
+          <img src="images/breakfast-hero.jpg"
                alt="Before the Coffee"
-               onerror="this.parentNode.innerHTML='<div class=\'img-fallback fg-nourish\'>☕</div>'" />
+               onerror="imgFallback(this,'nourish')" />
         </div>
         <div class="post-card-body">
           <span class="feat-cat cat-nourish">Nourish</span>
@@ -384,7 +384,7 @@
 
       <a class="post-card" data-cat="nourish" href="https://www.darlingwhatif.com/post-sugar-cravings.html" target="_blank" rel="noopener">
         <div class="post-card-img">
-          <div class="img-fallback fg-nourish" style="height:200px;display:flex;align-items:center;justify-content:center;font-size:36px;">🍫</div>
+          <img src="images/Sugar_craving_hero.jpg" alt="Sugar Cravings" onerror="imgFallback(this,'nourish')" />
         </div>
         <div class="post-card-body">
           <span class="feat-cat cat-nourish">Nourish</span>
@@ -398,7 +398,7 @@
 
       <a class="post-card" data-cat="nourish" href="https://www.darlingwhatif.com/post-gut-health.html" target="_blank" rel="noopener">
         <div class="post-card-img">
-          <div class="img-fallback fg-nourish" style="height:200px;display:flex;align-items:center;justify-content:center;font-size:36px;">🌿</div>
+          <img src="images/gut-health-hero.jpg" alt="Gut Health" onerror="imgFallback(this,'nourish')" />
         </div>
         <div class="post-card-body">
           <span class="feat-cat cat-nourish">Nourish</span>
@@ -422,9 +422,9 @@
 
       <a class="post-card" data-cat="love" href="https://www.darlingwhatif.com/post-emotional-safety.html" target="_blank" rel="noopener">
         <div class="post-card-img">
-          <img src="https://darlingwhatif.com/images/Emotional_safety_hero.jpg"
+          <img src="images/emotional_safety_hero.jpg"
                alt="Feeling Emotionally Safe"
-               onerror="this.parentNode.innerHTML='<div class=\'img-fallback fg-love\'>🫂</div>'" />
+               onerror="imgFallback(this,'love')" />
         </div>
         <div class="post-card-body">
           <span class="feat-cat cat-love">Love</span>
@@ -438,7 +438,7 @@
 
       <a class="post-card" data-cat="love" href="https://www.darlingwhatif.com/post-softness.html" target="_blank" rel="noopener">
         <div class="post-card-img">
-          <div class="img-fallback fg-love" style="height:200px;display:flex;align-items:center;justify-content:center;font-size:36px;">🌸</div>
+          <img src="images/Being-loved-feeling-loved-Hero.jpg" alt="Softness as Strength" onerror="imgFallback(this,'love')" />
         </div>
         <div class="post-card-body">
           <span class="feat-cat cat-love">Love</span>
@@ -452,7 +452,7 @@
 
       <a class="post-card" data-cat="wellness" href="https://www.darlingwhatif.com/post-companion-dogs.html" target="_blank" rel="noopener">
         <div class="post-card-img">
-          <div class="img-fallback fg-wellness" style="height:200px;display:flex;align-items:center;justify-content:center;font-size:36px;">🐶</div>
+          <img src="images/companion-dogs-hero.jpg" alt="Dogs and The Science of Connection" onerror="imgFallback(this,'wellness')" />
         </div>
         <div class="post-card-body">
           <span class="feat-cat cat-wellness">Wellness</span>
@@ -523,6 +523,29 @@
     </div>
   </div>
 </footer>
+
+<script>
+  // Image fallback — called by onerror on all post card <img> tags.
+  // Replaces the broken image with a clean category-coloured gradient tile
+  // and a subtle sage leaf SVG. No emoji.
+  var LEAF_SVG =
+    '<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:.18">' +
+      '<path d="M24 44C24 44 8 34 8 20C8 12.27 15.16 6 24 6C32.84 6 40 12.27 40 20C40 34 24 44 24 44Z" fill="#3B6A3A"/>' +
+      '<line x1="24" y1="6" x2="24" y2="44" stroke="#3B6A3A" stroke-width="1.5" stroke-opacity=".5"/>' +
+    '</svg>';
+
+  function imgFallback(img, cat) {
+    img.parentNode.innerHTML =
+      '<div class="img-fallback fg-' + cat + '">' + LEAF_SVG + '</div>';
+  }
+
+  // Populate hardcoded (no-image) fallback divs with the same leaf on page load
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.img-fallback:empty').forEach(function(el) {
+      el.innerHTML = LEAF_SVG;
+    });
+  });
+</script>
 
 <script>
   // Category filter
