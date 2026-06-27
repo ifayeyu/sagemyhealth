@@ -662,11 +662,25 @@
     });
   }
 
+  var filterBar = document.querySelector('.filter-bar');
+  var siteNav   = document.querySelector('.site-nav');
+
+  // Scroll so the filter bar lands just below the sticky nav,
+  // regardless of where the visitor is on the page.
+  function scrollToFilterBar() {
+    var navH = siteNav ? siteNav.offsetHeight : 0;
+    // Walk offsetParent chain — gives true document position even when sticky
+    var top = 0, el = filterBar;
+    while (el) { top += el.offsetTop; el = el.offsetParent; }
+    window.scrollTo({ top: top - navH, behavior: 'smooth' });
+  }
+
   tabs.forEach(function(tab) {
     tab.addEventListener('click', function() {
       tabs.forEach(function(t) { t.classList.remove('active'); });
       tab.classList.add('active');
       applyFilter(tab.getAttribute('data-filter'));
+      scrollToFilterBar();
     });
   });
 </script>
