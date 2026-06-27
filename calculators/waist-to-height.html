@@ -544,6 +544,109 @@
       </div><!-- /.results-col -->
     </div><!-- /.calc-wrapper-inner -->
   </div>
+
+<style>
+.calc-editorial{padding:36px 0 12px;border-top:2px solid #E2EAE4;margin-top:40px}
+.calc-editorial-inner{max-width:800px;margin:0 auto;padding:0 24px}
+.editorial-h2{font-size:21px;font-weight:700;color:#1a2e1a;margin:0 0 16px;line-height:1.3}
+.editorial-intro{font-size:15px;color:#374151;line-height:1.8;margin-bottom:20px}
+.editorial-h3{font-size:13px;font-weight:700;color:#3B6A3A;text-transform:uppercase;letter-spacing:.08em;margin:26px 0 10px}
+.score-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-bottom:4px}
+.score-cell{border-radius:8px;padding:12px 14px;border:1px solid #C8D9CC}
+.score-cell-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px}
+.score-cell-range{font-size:12px;color:#718096;margin-bottom:5px}
+.score-cell-desc{font-size:13px;color:#374151;line-height:1.55}
+.score-cell.green{background:#F0FDF4;border-color:#86EFAC}.score-cell.green .score-cell-label{color:#166534}
+.score-cell.yellow{background:#FFFBEB;border-color:#FCD34D}.score-cell.yellow .score-cell-label{color:#92400E}
+.score-cell.orange{background:#FFF7ED;border-color:#FDBA74}.score-cell.orange .score-cell-label{color:#9A3412}
+.score-cell.red{background:#FEF2F2;border-color:#FCA5A5}.score-cell.red .score-cell-label{color:#991B1B}
+.score-cell.blue{background:#EFF6FF;border-color:#93C5FD}.score-cell.blue .score-cell-label{color:#1E40AF}
+.score-cell.purple{background:#F5F3FF;border-color:#C4B5FD}.score-cell.purple .score-cell-label{color:#5B21B6}
+.editorial-steps{list-style:none;padding:0;margin:0 0 4px;counter-reset:steps}
+.editorial-steps li{counter-increment:steps;display:flex;gap:12px;margin-bottom:12px;font-size:14px;color:#374151;line-height:1.7}
+.editorial-steps li::before{content:counter(steps);display:flex;align-items:center;justify-content:center;min-width:24px;height:24px;background:#3B6A3A;color:#fff;border-radius:50%;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px}
+.faq-block{margin:0 0 4px}
+.faq-item{border:1px solid #C8D9CC;border-radius:8px;margin-bottom:8px;overflow:hidden}
+.faq-item summary{padding:13px 16px;font-size:14px;font-weight:600;color:#1a2e1a;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;background:#F9FCF9;gap:12px}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"\002B";font-size:16px;color:#3B6A3A;flex-shrink:0}
+.faq-item[open] summary::after{content:"\2212"}
+.faq-item[open] summary{background:#EBF2EC}
+.faq-answer{padding:4px 16px 14px;font-size:14px;color:#4A5568;line-height:1.75;border-top:1px solid #E2EAE4;background:#fff}
+</style>
+
+<!-- ── EDITORIAL CONTENT ── -->
+<section class="calc-editorial">
+<div class="calc-editorial-inner">
+<h2 class="editorial-h2">Understanding Your Waist-to-Height Ratio</h2>
+<p class="editorial-intro">The waist-to-height ratio (WHtR) has emerged over the past two decades as one of the most powerful simple measures of cardiometabolic risk &#8212; more predictive of cardiovascular disease, type 2 diabetes, hypertension, and metabolic syndrome than BMI alone. Unlike BMI, which reflects total body mass relative to height, WHtR specifically captures abdominal adiposity &#8212; the accumulation of visceral fat around the abdominal organs that is metabolically distinct from subcutaneous fat. Visceral fat is not inert tissue; it is endocrinologically active, secreting inflammatory cytokines (IL-6, TNF-&#945;) and disrupting insulin signalling in ways that directly drive cardiometabolic disease. The simple rule: keep your waist circumference to less than half your height.</p>
+<p class="editorial-h3">What Your Score Means</p>
+<div class="score-grid"><div class="score-cell green"><div class="score-cell-label">Healthy</div><div class="score-cell-range">WHtR &lt; 0.50</div><div class="score-cell-desc">Waist circumference is proportionate to height. Cardiometabolic risk from abdominal adiposity is within the healthy range. Maintaining this ratio is one of the most direct protective measures for cardiovascular health.</div></div><div class="score-cell yellow"><div class="score-cell-label">Increased Risk</div><div class="score-cell-range">WHtR 0.50&#8211;0.59</div><div class="score-cell-desc">Visceral adiposity is above the optimal range. Cardiometabolic risk is measurably elevated. Interventions targeting central fat &#8212; aerobic exercise and dietary quality &#8212; directly address this measure.</div></div><div class="score-cell orange"><div class="score-cell-label">High Risk</div><div class="score-cell-range">WHtR 0.60&#8211;0.69</div><div class="score-cell-desc">Substantial excess central adiposity. A large meta-analysis by Ashwell et al. found WHtR in this range associated with approximately 2&#8211;3 times the risk of cardiovascular events compared to the healthy range.</div></div><div class="score-cell red"><div class="score-cell-label">Very High Risk</div><div class="score-cell-range">WHtR &#8805; 0.70</div><div class="score-cell-desc">Severe central adiposity. This level is associated with very high risk of type 2 diabetes, metabolic syndrome, cardiovascular disease, and non-alcoholic fatty liver disease. Medical evaluation is strongly recommended.</div></div></div>
+<p class="editorial-h3">What to Do Next</p>
+<ol class="editorial-steps">
+<li><strong>Measure your waist correctly for an accurate WHtR.</strong> Measure at the midpoint between the bottom of the lowest rib and the top of the hip bone (iliac crest), which is approximately at the level of the navel for most people. Take the measurement at the end of a normal exhale, with the tape parallel to the floor and snug but not compressing the skin.</li>
+<li><strong>Prioritise aerobic exercise as the most effective intervention for visceral fat.</strong> Visceral fat responds more readily to aerobic exercise than subcutaneous fat. Research consistently shows that regular cardiorespiratory training reduces visceral fat independent of total weight loss &#8212; even when body weight stays roughly the same.</li>
+<li><strong>Address dietary quality rather than just caloric quantity.</strong> Ultra-processed foods, high-fructose sweeteners (particularly from beverages), trans fats, and excessive alcohol are especially strongly associated with visceral fat accumulation. The Mediterranean and DASH dietary patterns are associated with lower WHtR in population studies.</li>
+<li><strong>Track WHtR rather than BMI as your primary health metric going forward.</strong> Because WHtR is more sensitive to changes in visceral fat and less confounded by muscle mass, it is a more clinically informative indicator of metabolic improvement than BMI. A decrease in WHtR even without significant scale weight change is a meaningful sign of improving metabolic health.</li>
+</ol>
+<p class="editorial-h3">Frequently Asked Questions</p>
+<div class="faq-block">
+<details class="faq-item"><summary>Is WHtR better than BMI?</summary><div class="faq-answer"><p>For predicting cardiometabolic risk specifically, most comparative studies conclude yes. A 2012 meta-analysis of 31 studies by Ashwell et al. found WHtR superior to BMI and waist circumference alone for predicting diabetes, hypertension, cardiovascular events, and metabolic syndrome. WHtR also applies equally across ethnic groups and sexes without separate thresholds.</p></div></details>
+<details class="faq-item"><summary>Why is visceral fat more dangerous than fat elsewhere?</summary><div class="faq-answer"><p>Visceral fat (fat surrounding abdominal organs, also called intra-abdominal fat) drains directly into the portal circulation, exposing the liver to high concentrations of fatty acids and inflammatory cytokines. It is also more metabolically active than subcutaneous fat &#8212; releasing more inflammatory molecules, interfering with insulin signalling, and contributing to non-alcoholic fatty liver disease.</p></div></details>
+<details class="faq-item"><summary>Does WHtR change with age?</summary><div class="faq-answer"><p>Waist circumference naturally tends to increase with age even when total weight is stable, partly due to hormonal changes (particularly oestrogen decline in women after menopause and testosterone decline in men) that shift fat distribution toward the abdomen. Maintaining the same WHtR with age therefore requires active intervention.</p></div></details>
+<details class="faq-item"><summary>Can WHtR improve without losing weight?</summary><div class="faq-answer"><p>Yes &#8212; and this is one of its most clinically important properties. Aerobic exercise redistributes fat from visceral to subcutaneous compartments even when total body weight remains stable. Body recomposition (gaining muscle while losing fat) also reduces WHtR without necessarily moving the scale.</p></div></details>
+<details class="faq-item"><summary>What is the ideal WHtR for men vs women?</summary><div class="faq-answer"><p>The primary threshold (0.50) applies to both sexes, which is one of WHtR's advantages over sex-specific waist circumference cutoffs. Some research suggests a slightly higher threshold of 0.53 for men and 0.49 for women better captures risk in each group, but the round 0.50 boundary is used most commonly in clinical guidelines.</p></div></details>
+</div>
+</div>
+</section>
+<script>
+(function(){
+  document.querySelectorAll('.faq-block').forEach(function(block){
+    block.querySelectorAll('details.faq-item').forEach(function(el){
+      el.addEventListener('toggle',function(){
+        if(this.open){
+          block.querySelectorAll('details.faq-item').forEach(function(other){
+            if(other!==el) other.removeAttribute('open');
+          });
+        }
+      });
+    });
+  });
+})();
+</script>
+
+<style>
+.eeat-section{background:#F2F7F3;border-top:1px solid #C8D9CC;margin-top:24px;padding:12px 0 6px}
+.eeat-inner{max-width:800px;margin:0 auto;padding:0 24px}
+.eeat-refs-heading{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#3B6A3A;margin-bottom:10px}
+.eeat-refs-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.eeat-refs-list li{font-size:13px;color:#4A5568;line-height:1.6;padding-left:16px;position:relative}
+.eeat-refs-list li::before{content:"›";position:absolute;left:0;color:#3B6A3A;font-weight:700}
+.eeat-refs-list a{color:#3B6A3A;text-decoration:underline;word-break:break-word}
+.eeat-refs-list a:hover{color:#0A3D2A}
+.eeat-author{margin-top:6px;padding-top:5px;border-top:1px solid #C8D9CC;font-size:12px;color:#718096;line-height:1.6}
+.eeat-disclaimer{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid #C8D9CC;border-left:4px solid #3B6A3A;border-radius:0;padding:14px 18px;margin-bottom:24px}
+.eeat-disclaimer-icon{font-size:20px;flex-shrink:0;margin-top:1px}
+.eeat-disclaimer p{font-size:13px;color:#4A5568;line-height:1.6;margin:0}
+</style>
+<!-- ── E-E-A-T: ABOUT THIS CALCULATOR ── -->
+<section class="eeat-section" aria-label="About this calculator">
+  <div class="eeat-inner">
+    <div class="eeat-disclaimer">
+      <span class="eeat-disclaimer-icon">⚕</span>
+      <p><strong>Medical disclaimer:</strong> This tool is for informational and educational purposes only. It does not constitute medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional regarding any health questions or concerns.</p>
+    </div>
+    <h3 class="eeat-refs-heading">Clinical References</h3>
+    <ul class="eeat-refs-list">
+          <li>Ashwell M, Gunn P, Gibson S. Waist-to-height ratio is a better screening tool than waist circumference and BMI for adult cardiometabolic risk factors: systematic review and meta-analysis. <em>Obes Rev.</em> 2012;13(3):275–286. <a href="https://pubmed.ncbi.nlm.nih.gov/22106927/" target="_blank" rel="noopener noreferrer">View source ↗</a></li>
+          <li>Browning LM, Hsieh SD, Ashwell M. A systematic review of waist-to-height ratio as a screening tool for the prediction of cardiovascular disease and diabetes: 0.5 could be a suitable global boundary value. <em>Nutr Res Rev.</em> 2010;23(2):247–269. <a href="https://pubmed.ncbi.nlm.nih.gov/20819243/" target="_blank" rel="noopener noreferrer">View source ↗</a></li>
+          <li>Hadaegh F, Khalili D, Ghasemi A, Tohidi M, Sheikholeslami F, Azizi F. Waist/height ratio is a better predictor of type 2 diabetes and hypertension than is body mass index in Iranian adults. <em>Int J Prev Med.</em> 2015;6:73. <a href="https://pubmed.ncbi.nlm.nih.gov/26425320/" target="_blank" rel="noopener noreferrer">View source ↗</a></li>
+    </ul>
+    <p class="eeat-author">Content prepared by the <strong>SageMyHealth editorial team</strong>, drawing on peer-reviewed clinical literature and established medical guidelines. Last reviewed: <strong>June 2026</strong>.</p>
+  </div>
+</section>
+
+
 </main>
 
 <!-- FOOTER -->
@@ -585,10 +688,10 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-disclaimer"><strong style="color:#7A958E">Medical Disclaimer:</strong> This calculator is for educational purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider regarding your body composition, weight, and metabolic health.</p>
       <p class="footer-copy">© 2025 SageMyHealth.com — All rights reserved.</p>
     </div>
   </div>
+
 </footer>
 
 <script>
@@ -840,5 +943,6 @@
   }
   document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMobileMenu(); });
 </script>
+
 </body>
 </html>

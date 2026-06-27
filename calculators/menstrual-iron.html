@@ -617,6 +617,109 @@
       </div>
     </div>
   </div>
+
+<style>
+.calc-editorial{padding:36px 0 12px;border-top:2px solid #E2EAE4;margin-top:40px}
+.calc-editorial-inner{max-width:800px;margin:0 auto;padding:0 24px}
+.editorial-h2{font-size:21px;font-weight:700;color:#1a2e1a;margin:0 0 16px;line-height:1.3}
+.editorial-intro{font-size:15px;color:#374151;line-height:1.8;margin-bottom:20px}
+.editorial-h3{font-size:13px;font-weight:700;color:#3B6A3A;text-transform:uppercase;letter-spacing:.08em;margin:26px 0 10px}
+.score-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-bottom:4px}
+.score-cell{border-radius:8px;padding:12px 14px;border:1px solid #C8D9CC}
+.score-cell-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px}
+.score-cell-range{font-size:12px;color:#718096;margin-bottom:5px}
+.score-cell-desc{font-size:13px;color:#374151;line-height:1.55}
+.score-cell.green{background:#F0FDF4;border-color:#86EFAC}.score-cell.green .score-cell-label{color:#166534}
+.score-cell.yellow{background:#FFFBEB;border-color:#FCD34D}.score-cell.yellow .score-cell-label{color:#92400E}
+.score-cell.orange{background:#FFF7ED;border-color:#FDBA74}.score-cell.orange .score-cell-label{color:#9A3412}
+.score-cell.red{background:#FEF2F2;border-color:#FCA5A5}.score-cell.red .score-cell-label{color:#991B1B}
+.score-cell.blue{background:#EFF6FF;border-color:#93C5FD}.score-cell.blue .score-cell-label{color:#1E40AF}
+.score-cell.purple{background:#F5F3FF;border-color:#C4B5FD}.score-cell.purple .score-cell-label{color:#5B21B6}
+.editorial-steps{list-style:none;padding:0;margin:0 0 4px;counter-reset:steps}
+.editorial-steps li{counter-increment:steps;display:flex;gap:12px;margin-bottom:12px;font-size:14px;color:#374151;line-height:1.7}
+.editorial-steps li::before{content:counter(steps);display:flex;align-items:center;justify-content:center;min-width:24px;height:24px;background:#3B6A3A;color:#fff;border-radius:50%;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px}
+.faq-block{margin:0 0 4px}
+.faq-item{border:1px solid #C8D9CC;border-radius:8px;margin-bottom:8px;overflow:hidden}
+.faq-item summary{padding:13px 16px;font-size:14px;font-weight:600;color:#1a2e1a;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;background:#F9FCF9;gap:12px}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"\002B";font-size:16px;color:#3B6A3A;flex-shrink:0}
+.faq-item[open] summary::after{content:"\2212"}
+.faq-item[open] summary{background:#EBF2EC}
+.faq-answer{padding:4px 16px 14px;font-size:14px;color:#4A5568;line-height:1.75;border-top:1px solid #E2EAE4;background:#fff}
+</style>
+
+<!-- ── EDITORIAL CONTENT ── -->
+<section class="calc-editorial">
+<div class="calc-editorial-inner">
+<h2 class="editorial-h2">Estimating Your Monthly Iron Loss from Menstruation</h2>
+<p class="editorial-intro">Menstrual blood loss is the most common cause of iron deficiency in women of reproductive age worldwide. The average menstrual cycle results in a blood loss of approximately 30&#8211;80 mL, corresponding to 15&#8211;40 mg of iron per cycle. At moderate dietary iron absorption rates of 10&#8211;15%, this can be difficult to replace through diet alone without deliberate effort &#8212; and impossible to replace if periods are heavy. Heavy menstrual bleeding (HMB), defined as blood loss exceeding 80 mL per cycle, affects approximately 20&#8211;30% of women and is the single most preventable cause of iron deficiency anaemia in reproductive-age women globally. This calculator estimates your monthly iron depletion to help you understand whether dietary iron alone is likely sufficient &#8212; or whether further evaluation and supplementation may be indicated.</p>
+<p class="editorial-h3">What Your Score Means</p>
+<div class="score-grid"><div class="score-cell green"><div class="score-cell-label">Normal Loss</div><div class="score-cell-range">&lt;30&#8211;50 mL / &lt;15&#8211;25 mg iron/cycle</div><div class="score-cell-desc">Blood and iron loss within average range. Manageable with a diet adequate in iron-rich foods, especially for those following an omnivorous diet.</div></div><div class="score-cell yellow"><div class="score-cell-label">Moderate Loss</div><div class="score-cell-range">50&#8211;80 mL / 25&#8211;40 mg iron/cycle</div><div class="score-cell-desc">On the higher end of normal. Dietary intake should be regularly assessed and ferritin monitored annually. Vegetarians and vegans in this range are at higher risk for deficiency.</div></div><div class="score-cell red"><div class="score-cell-label">Heavy Loss</div><div class="score-cell-range">&gt;80 mL / &gt;40 mg iron/cycle</div><div class="score-cell-desc">Meeting the clinical definition of heavy menstrual bleeding. Iron depletion is likely if present for months or years. Both the source (gynaecology evaluation) and consequence (ferritin monitoring and likely supplementation) require attention.</div></div></div>
+<p class="editorial-h3">What to Do Next</p>
+<ol class="editorial-steps">
+<li><strong>Quantify your blood loss more precisely with the PBAC.</strong> The Pictorial Blood Assessment Chart (PBAC) assigns scores to pad/tampon saturation and clot size. A PBAC score above 100 per cycle correlates with heavy menstrual bleeding (over 80 mL). This gives you an objective measure to bring to a gynaecology appointment.</li>
+<li><strong>See a gynaecologist if your periods are heavy.</strong> Heavy menstrual bleeding has identifiable and treatable causes in most women, including fibroids, endometrial polyps, adenomyosis, coagulation disorders, and hormonal imbalance. Treating the cause is more effective than indefinitely supplementing for its consequences.</li>
+<li><strong>Monitor ferritin annually, not just haemoglobin.</strong> Ferritin falls before haemoglobin &#8212; and many women are symptomatic (fatigue, hair loss, brain fog) with low ferritin but normal haemoglobin. If you have heavy periods, request ferritin specifically as part of your annual bloodwork.</li>
+<li><strong>Consider iron-rich meal planning as a consistent monthly practice.</strong> Increasing dietary iron in the week before and during menstruation &#8212; rather than randomly &#8212; can meaningfully improve monthly iron balance. Combining red meat, legumes, and vitamin C sources with avoiding tea and coffee with meals optimises net absorption.</li>
+</ol>
+<p class="editorial-h3">Frequently Asked Questions</p>
+<div class="faq-block">
+<details class="faq-item"><summary>How do I know if my periods are heavy?</summary><div class="faq-answer"><p>The clinical definition is blood loss exceeding 80 mL per cycle or periods lasting more than 7 days. Practical indicators: soaking through a pad or tampon in under an hour, passing clots larger than a 50p coin (UK) or a quarter (US), or finding that heavy flow significantly interferes with daily activities.</p></div></details>
+<details class="faq-item"><summary>Can a hormonal IUD reduce my iron loss?</summary><div class="faq-answer"><p>Yes, significantly. The levonorgestrel-releasing IUD (Mirena) reduces menstrual blood loss by 70&#8211;90% within 3&#8211;6 months of insertion and is one of the most effective medical treatments for heavy menstrual bleeding. It is frequently used specifically to reduce iron loss in women with recurrent iron deficiency.</p></div></details>
+<details class="faq-item"><summary>Does age affect how much iron I lose during periods?</summary><div class="faq-answer"><p>Cycle length, flow volume, and iron loss naturally vary across reproductive life. Iron loss tends to be highest during the perimenopause as cycles can become heavier and longer before eventually stopping. After menopause, iron requirements in women drop to the same level as men (8 mg/day) as menstrual loss ceases.</p></div></details>
+<details class="faq-item"><summary>Is it normal to feel exhausted just before or during my period?</summary><div class="faq-answer"><p>Common, but not necessarily a sign of something minor. Premenstrual fatigue is a real phenomenon, partly driven by hormonal shifts and partly by cumulative iron loss in women with heavy periods. If you notice consistent energy crashes correlated with your cycle, especially with heavy flow, checking ferritin is worthwhile.</p></div></details>
+<details class="faq-item"><summary>What is the best form of iron supplement for menstrual iron loss?</summary><div class="faq-answer"><p>Ferrous bisglycinate and ferrous sulfate are the most commonly recommended oral forms. Ferrous bisglycinate causes fewer GI side effects and has comparable or slightly better absorption. Taking iron on alternate days &#8212; every other day rather than daily &#8212; is supported by recent research as producing better absorption due to hepcidin dynamics.</p></div></details>
+</div>
+</div>
+</section>
+<script>
+(function(){
+  document.querySelectorAll('.faq-block').forEach(function(block){
+    block.querySelectorAll('details.faq-item').forEach(function(el){
+      el.addEventListener('toggle',function(){
+        if(this.open){
+          block.querySelectorAll('details.faq-item').forEach(function(other){
+            if(other!==el) other.removeAttribute('open');
+          });
+        }
+      });
+    });
+  });
+})();
+</script>
+
+<style>
+.eeat-section{background:#F2F7F3;border-top:1px solid #C8D9CC;margin-top:24px;padding:12px 0 6px}
+.eeat-inner{max-width:800px;margin:0 auto;padding:0 24px}
+.eeat-refs-heading{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#3B6A3A;margin-bottom:10px}
+.eeat-refs-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.eeat-refs-list li{font-size:13px;color:#4A5568;line-height:1.6;padding-left:16px;position:relative}
+.eeat-refs-list li::before{content:"›";position:absolute;left:0;color:#3B6A3A;font-weight:700}
+.eeat-refs-list a{color:#3B6A3A;text-decoration:underline;word-break:break-word}
+.eeat-refs-list a:hover{color:#0A3D2A}
+.eeat-author{margin-top:6px;padding-top:5px;border-top:1px solid #C8D9CC;font-size:12px;color:#718096;line-height:1.6}
+.eeat-disclaimer{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid #C8D9CC;border-left:4px solid #3B6A3A;border-radius:0;padding:14px 18px;margin-bottom:24px}
+.eeat-disclaimer-icon{font-size:20px;flex-shrink:0;margin-top:1px}
+.eeat-disclaimer p{font-size:13px;color:#4A5568;line-height:1.6;margin:0}
+</style>
+<!-- ── E-E-A-T: ABOUT THIS CALCULATOR ── -->
+<section class="eeat-section" aria-label="About this calculator">
+  <div class="eeat-inner">
+    <div class="eeat-disclaimer">
+      <span class="eeat-disclaimer-icon">⚕</span>
+      <p><strong>Medical disclaimer:</strong> This tool is for informational and educational purposes only. It does not constitute medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional regarding any health questions or concerns.</p>
+    </div>
+    <h3 class="eeat-refs-heading">Clinical References</h3>
+    <ul class="eeat-refs-list">
+          <li>Hallberg L, Högdahl A, Nilsson L, Rybo G. Menstrual blood loss — a population study. <em>Acta Obstet Gynecol Scand.</em> 1966;45(3):320–351. <a href="https://pubmed.ncbi.nlm.nih.gov/5922481/" target="_blank" rel="noopener noreferrer">View source ↗</a></li>
+          <li>Fraser IS, Critchley HO, Munro MG, Broder M. Can we achieve international agreement on terminologies and definitions used to describe abnormalities of menstrual bleeding? <em>Hum Reprod.</em> 2007;22(3):635–643. <a href="https://pubmed.ncbi.nlm.nih.gov/17204526/" target="_blank" rel="noopener noreferrer">View source ↗</a></li>
+          <li>World Health Organization. Iron Deficiency Anaemia: Assessment, Prevention, and Control. <em>WHO/NHD/01.3.</em> 2001. <a href="https://www.who.int/publications/i/item/9241489731" target="_blank" rel="noopener noreferrer">View source ↗</a></li>
+    </ul>
+    <p class="eeat-author">Content prepared by the <strong>SageMyHealth editorial team</strong>, drawing on peer-reviewed clinical literature and established medical guidelines. Last reviewed: <strong>June 2026</strong>.</p>
+  </div>
+</section>
+
+
 </main>
 
 <!-- FOOTER -->
@@ -648,10 +751,10 @@
       </ul></div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-disclaimer"><strong style="color:#7A958E">Medical Disclaimer:</strong> SageMyHealth calculators are for informational purposes only and are not a substitute for professional medical advice, diagnosis, or treatment.</p>
       <p class="footer-copy">© 2025 SageMyHealth.com — All rights reserved.</p>
     </div>
   </div>
+
 </footer>
 
 <script>

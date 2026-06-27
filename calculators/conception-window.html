@@ -396,6 +396,109 @@
       </div>
     </div>
   </div>
+
+<style>
+.calc-editorial{padding:36px 0 12px;border-top:2px solid #E2EAE4;margin-top:40px}
+.calc-editorial-inner{max-width:800px;margin:0 auto;padding:0 24px}
+.editorial-h2{font-size:21px;font-weight:700;color:#1a2e1a;margin:0 0 16px;line-height:1.3}
+.editorial-intro{font-size:15px;color:#374151;line-height:1.8;margin-bottom:20px}
+.editorial-h3{font-size:13px;font-weight:700;color:#3B6A3A;text-transform:uppercase;letter-spacing:.08em;margin:26px 0 10px}
+.score-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-bottom:4px}
+.score-cell{border-radius:8px;padding:12px 14px;border:1px solid #C8D9CC}
+.score-cell-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px}
+.score-cell-range{font-size:12px;color:#718096;margin-bottom:5px}
+.score-cell-desc{font-size:13px;color:#374151;line-height:1.55}
+.score-cell.green{background:#F0FDF4;border-color:#86EFAC}.score-cell.green .score-cell-label{color:#166534}
+.score-cell.yellow{background:#FFFBEB;border-color:#FCD34D}.score-cell.yellow .score-cell-label{color:#92400E}
+.score-cell.orange{background:#FFF7ED;border-color:#FDBA74}.score-cell.orange .score-cell-label{color:#9A3412}
+.score-cell.red{background:#FEF2F2;border-color:#FCA5A5}.score-cell.red .score-cell-label{color:#991B1B}
+.score-cell.blue{background:#EFF6FF;border-color:#93C5FD}.score-cell.blue .score-cell-label{color:#1E40AF}
+.score-cell.purple{background:#F5F3FF;border-color:#C4B5FD}.score-cell.purple .score-cell-label{color:#5B21B6}
+.editorial-steps{list-style:none;padding:0;margin:0 0 4px;counter-reset:steps}
+.editorial-steps li{counter-increment:steps;display:flex;gap:12px;margin-bottom:12px;font-size:14px;color:#374151;line-height:1.7}
+.editorial-steps li::before{content:counter(steps);display:flex;align-items:center;justify-content:center;min-width:24px;height:24px;background:#3B6A3A;color:#fff;border-radius:50%;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px}
+.faq-block{margin:0 0 4px}
+.faq-item{border:1px solid #C8D9CC;border-radius:8px;margin-bottom:8px;overflow:hidden}
+.faq-item summary{padding:13px 16px;font-size:14px;font-weight:600;color:#1a2e1a;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;background:#F9FCF9;gap:12px}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"\002B";font-size:16px;color:#3B6A3A;flex-shrink:0}
+.faq-item[open] summary::after{content:"\2212"}
+.faq-item[open] summary{background:#EBF2EC}
+.faq-answer{padding:4px 16px 14px;font-size:14px;color:#4A5568;line-height:1.75;border-top:1px solid #E2EAE4;background:#fff}
+</style>
+
+<!-- ── EDITORIAL CONTENT ── -->
+<section class="calc-editorial">
+<div class="calc-editorial-inner">
+<h2 class="editorial-h2">Understanding Your Conception Window</h2>
+<p class="editorial-intro">Human fertility is tightly concentrated around the time of ovulation &#8212; a window of roughly 6 days per menstrual cycle during which conception is biologically possible. This is because sperm can survive in the female reproductive tract for up to 5 days under optimal conditions, while a mature egg is viable for only 12&#8211;24 hours after ovulation. The combined result is that timing intercourse to the days immediately before and including ovulation maximises the probability of conception in any given cycle. This calculator uses your last menstrual period (LMP) and typical cycle length to estimate your most likely fertile window, based on the standard clinical model established by Ogino-Knaus.</p>
+<p class="editorial-h3">What Your Score Means</p>
+<div class="score-grid"><div class="score-cell blue"><div class="score-cell-label">Fertile Window</div><div class="score-cell-range">Days 10&#8211;17 (avg 28-day cycle)</div><div class="score-cell-desc">The 6-day window of peak conception probability, ending on and including estimated ovulation day. The 2&#8211;3 days immediately before ovulation carry the highest per-cycle pregnancy probability.</div></div><div class="score-cell green"><div class="score-cell-label">Peak Fertility</div><div class="score-cell-range">1&#8211;2 days before ovulation</div><div class="score-cell-desc">Studies from the National Institute of Environmental Health Sciences found conception probability is highest (approximately 27&#8211;33%) on the two days before ovulation.</div></div><div class="score-cell yellow"><div class="score-cell-label">Ovulation Day</div><div class="score-cell-range">Day 14 ± 2 (individual variation)</div><div class="score-cell-desc">Approximately 10&#8211;16 days before the next expected period. Significant individual variation exists &#8212; LH surge testing or basal body temperature tracking improves accuracy substantially.</div></div></div>
+<p class="editorial-h3">What to Do Next</p>
+<ol class="editorial-steps">
+<li><strong>Track multiple fertility signs for better accuracy.</strong> Calendar calculation alone has significant error. Combining it with LH surge testing (ovulation predictor kits), basal body temperature (BBT) tracking, and cervical mucus changes gives a far more personalised and accurate picture of your actual fertile window.</li>
+<li><strong>Prioritise intercourse in the 2&#8211;3 days leading up to estimated ovulation.</strong> The research by Wilcox et al. in the <em>New England Journal of Medicine</em> (1995) established that the highest pregnancy probability comes from intercourse in the days before ovulation &#8212; not after. The egg's 12&#8211;24 hour viability makes post-ovulation intercourse much less effective.</li>
+<li><strong>If you've been trying for 12 months without success (6 months if over 35), see a specialist.</strong> One in six couples experience difficulty conceiving. Fertility evaluation in both partners is recommended after these timeframes &#8212; and earlier if there are known risk factors such as irregular cycles, prior pelvic infections, or endometriosis.</li>
+<li><strong>Optimise pre-conception health in both partners.</strong> Male factor is involved in approximately 40&#8211;50% of infertility cases. For both partners: avoid smoking and excessive alcohol, maintain a healthy weight, start prenatal folate supplementation, manage chronic health conditions, and review all medications with your provider.</li>
+</ol>
+<p class="editorial-h3">Frequently Asked Questions</p>
+<div class="faq-block">
+<details class="faq-item"><summary>How accurate is calendar-based fertile window prediction?</summary><div class="faq-answer"><p>Calendar methods assume regularity in cycle length and ovulation timing. In women with regular 28-day cycles, accuracy is reasonable. In women with irregular cycles, the calendar method can be significantly off. LH testing (ovulation predictor kits) directly detects the hormonal surge that triggers ovulation and is substantially more accurate.</p></div></details>
+<details class="faq-item"><summary>Can you conceive outside the fertile window?</summary><div class="faq-answer"><p>Theoretically possible but highly improbable. Sperm viability beyond 5 days is minimal, and egg viability beyond 24 hours is essentially zero. Conception outside the biologically defined fertile window accounts for a very small fraction of pregnancies.</p></div></details>
+<details class="faq-item"><summary>Does stress affect fertility?</summary><div class="faq-answer"><p>Chronic high stress is associated with menstrual irregularity and altered LH surge timing through cortisol's effects on the hypothalamic-pituitary-ovarian axis. The evidence that stress directly causes infertility in otherwise reproductively healthy individuals is less clear, but it can make cycle prediction less reliable.</p></div></details>
+<details class="faq-item"><summary>What is the difference between this and the rhythm method?</summary><div class="faq-answer"><p>The rhythm method is a contraception approach that uses cycle history to identify and avoid fertile days. Conception window tracking uses the same biological principles but with the opposite goal: identifying when to time intercourse to maximise conception probability. Both rely on cycle regularity.</p></div></details>
+<details class="faq-item"><summary>Does a longer cycle mean a later ovulation?</summary><div class="faq-answer"><p>Generally, yes. In most women, the luteal phase (from ovulation to menstruation) is relatively fixed at 12&#8211;14 days. Variation in cycle length is primarily driven by variation in the follicular phase (from menstruation to ovulation). A 35-day cycle typically means ovulation occurs around day 21, not day 14.</p></div></details>
+</div>
+</div>
+</section>
+<script>
+(function(){
+  document.querySelectorAll('.faq-block').forEach(function(block){
+    block.querySelectorAll('details.faq-item').forEach(function(el){
+      el.addEventListener('toggle',function(){
+        if(this.open){
+          block.querySelectorAll('details.faq-item').forEach(function(other){
+            if(other!==el) other.removeAttribute('open');
+          });
+        }
+      });
+    });
+  });
+})();
+</script>
+
+<style>
+.eeat-section{background:#F2F7F3;border-top:1px solid #C8D9CC;margin-top:24px;padding:12px 0 6px}
+.eeat-inner{max-width:800px;margin:0 auto;padding:0 24px}
+.eeat-refs-heading{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#3B6A3A;margin-bottom:10px}
+.eeat-refs-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.eeat-refs-list li{font-size:13px;color:#4A5568;line-height:1.6;padding-left:16px;position:relative}
+.eeat-refs-list li::before{content:"›";position:absolute;left:0;color:#3B6A3A;font-weight:700}
+.eeat-refs-list a{color:#3B6A3A;text-decoration:underline;word-break:break-word}
+.eeat-refs-list a:hover{color:#0A3D2A}
+.eeat-author{margin-top:6px;padding-top:5px;border-top:1px solid #C8D9CC;font-size:12px;color:#718096;line-height:1.6}
+.eeat-disclaimer{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid #C8D9CC;border-left:4px solid #3B6A3A;border-radius:0;padding:14px 18px;margin-bottom:24px}
+.eeat-disclaimer-icon{font-size:20px;flex-shrink:0;margin-top:1px}
+.eeat-disclaimer p{font-size:13px;color:#4A5568;line-height:1.6;margin:0}
+</style>
+<!-- ── E-E-A-T: ABOUT THIS CALCULATOR ── -->
+<section class="eeat-section" aria-label="About this calculator">
+  <div class="eeat-inner">
+    <div class="eeat-disclaimer">
+      <span class="eeat-disclaimer-icon">⚕</span>
+      <p><strong>Medical disclaimer:</strong> This tool is for informational and educational purposes only. It does not constitute medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional regarding any health questions or concerns.</p>
+    </div>
+    <h3 class="eeat-refs-heading">Clinical References</h3>
+    <ul class="eeat-refs-list">
+          <li>Wilcox AJ, Weinberg CR, Baird DD. Timing of sexual intercourse in relation to ovulation: effects on the probability of conception, survival of the pregnancy, and sex of the baby. <em>N Engl J Med.</em> 1995;333(23):1517–1521. <a href="https://pubmed.ncbi.nlm.nih.gov/7477165/" target="_blank" rel="noopener noreferrer">View source ↗</a></li>
+          <li>Practice Committee of the American Society for Reproductive Medicine. Optimizing natural fertility: a committee opinion. <em>Fertil Steril.</em> 2017;107(1):52–58. <a href="https://pubmed.ncbi.nlm.nih.gov/27816225/" target="_blank" rel="noopener noreferrer">View source ↗</a></li>
+          <li>Dunson DB, Colombo B, Baird DD. Changes with age in the level and duration of fertility in the menstrual cycle. <em>Hum Reprod.</em> 2002;17(5):1399–1403. <a href="https://pubmed.ncbi.nlm.nih.gov/11980771/" target="_blank" rel="noopener noreferrer">View source ↗</a></li>
+    </ul>
+    <p class="eeat-author">Content prepared by the <strong>SageMyHealth editorial team</strong>, drawing on peer-reviewed clinical literature and established medical guidelines. Last reviewed: <strong>June 2026</strong>.</p>
+  </div>
+</section>
+
+
 </main>
 
 <footer class="site-footer">
@@ -425,10 +528,10 @@
       </ul></div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-disclaimer"><strong style="color:#7A958E">Medical Disclaimer:</strong> This calculator is for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment.</p>
       <p class="footer-copy">© 2025 SageMyHealth.com — All rights reserved.</p>
     </div>
   </div>
+
 </footer>
 
 <script>
@@ -608,5 +711,6 @@ document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeMobil
   document.getElementById('period-date').value = yr + '-' + mo + '-' + dy;
 })();
 </script>
+
 </body>
 </html>

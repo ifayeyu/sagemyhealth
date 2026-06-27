@@ -799,6 +799,109 @@
     </div>
 
   </div>
+
+<style>
+.calc-editorial{padding:36px 0 12px;border-top:2px solid #E2EAE4;margin-top:40px}
+.calc-editorial-inner{max-width:800px;margin:0 auto;padding:0 24px}
+.editorial-h2{font-size:21px;font-weight:700;color:#1a2e1a;margin:0 0 16px;line-height:1.3}
+.editorial-intro{font-size:15px;color:#374151;line-height:1.8;margin-bottom:20px}
+.editorial-h3{font-size:13px;font-weight:700;color:#3B6A3A;text-transform:uppercase;letter-spacing:.08em;margin:26px 0 10px}
+.score-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-bottom:4px}
+.score-cell{border-radius:8px;padding:12px 14px;border:1px solid #C8D9CC}
+.score-cell-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px}
+.score-cell-range{font-size:12px;color:#718096;margin-bottom:5px}
+.score-cell-desc{font-size:13px;color:#374151;line-height:1.55}
+.score-cell.green{background:#F0FDF4;border-color:#86EFAC}.score-cell.green .score-cell-label{color:#166534}
+.score-cell.yellow{background:#FFFBEB;border-color:#FCD34D}.score-cell.yellow .score-cell-label{color:#92400E}
+.score-cell.orange{background:#FFF7ED;border-color:#FDBA74}.score-cell.orange .score-cell-label{color:#9A3412}
+.score-cell.red{background:#FEF2F2;border-color:#FCA5A5}.score-cell.red .score-cell-label{color:#991B1B}
+.score-cell.blue{background:#EFF6FF;border-color:#93C5FD}.score-cell.blue .score-cell-label{color:#1E40AF}
+.score-cell.purple{background:#F5F3FF;border-color:#C4B5FD}.score-cell.purple .score-cell-label{color:#5B21B6}
+.editorial-steps{list-style:none;padding:0;margin:0 0 4px;counter-reset:steps}
+.editorial-steps li{counter-increment:steps;display:flex;gap:12px;margin-bottom:12px;font-size:14px;color:#374151;line-height:1.7}
+.editorial-steps li::before{content:counter(steps);display:flex;align-items:center;justify-content:center;min-width:24px;height:24px;background:#3B6A3A;color:#fff;border-radius:50%;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px}
+.faq-block{margin:0 0 4px}
+.faq-item{border:1px solid #C8D9CC;border-radius:8px;margin-bottom:8px;overflow:hidden}
+.faq-item summary{padding:13px 16px;font-size:14px;font-weight:600;color:#1a2e1a;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;background:#F9FCF9;gap:12px}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"\002B";font-size:16px;color:#3B6A3A;flex-shrink:0}
+.faq-item[open] summary::after{content:"\2212"}
+.faq-item[open] summary{background:#EBF2EC}
+.faq-answer{padding:4px 16px 14px;font-size:14px;color:#4A5568;line-height:1.75;border-top:1px solid #E2EAE4;background:#fff}
+</style>
+
+<!-- ── EDITORIAL CONTENT ── -->
+<section class="calc-editorial">
+<div class="calc-editorial-inner">
+<h2 class="editorial-h2">Understanding Your Anaemia Risk Assessment</h2>
+<p class="editorial-intro">Anaemia &#8212; defined as haemoglobin below 12 g/dL in women and below 13 g/dL in men &#8212; is not a diagnosis in itself but a sign with over 400 possible underlying causes. The most common are iron deficiency (accounting for roughly 50% of all anaemia worldwide), vitamin B12 and folate deficiency, chronic disease, haemolysis, and bone marrow dysfunction. Each type has a distinct mechanism, a distinct treatment, and a distinct prognosis. What they share is the physiological consequence of reduced oxygen-carrying capacity: fatigue, exercise intolerance, cognitive impairment, pallor, and shortness of breath on exertion. This screener assesses your symptom burden and risk profile to estimate how likely anaemia is to be contributing to your experience.</p>
+<p class="editorial-h3">What Your Score Means</p>
+<div class="score-grid"><div class="score-cell green"><div class="score-cell-label">Low Suspicion</div><div class="score-cell-range">Low score range</div><div class="score-cell-desc">Few anaemia risk factors or symptoms are present. If you are experiencing fatigue, other causes &#8212; sleep, stress, thyroid, or mood disorders &#8212; are more likely to be primary.</div></div><div class="score-cell yellow"><div class="score-cell-label">Moderate Suspicion</div><div class="score-cell-range">Mid score range</div><div class="score-cell-desc">Some risk factors or symptoms are present. A complete blood count (CBC) with differential and ferritin is a simple, low-cost way to either confirm or rule out anaemia as a contributor.</div></div><div class="score-cell red"><div class="score-cell-label">High Suspicion</div><div class="score-cell-range">High score range</div><div class="score-cell-desc">Multiple risk factors and symptoms are present. A medical evaluation is recommended. Not all anaemias are iron-related &#8212; CBC with differential, B12, folate, ferritin, reticulocyte count, and potentially peripheral blood smear may all be indicated.</div></div></div>
+<p class="editorial-h3">What to Do Next</p>
+<ol class="editorial-steps">
+<li><strong>Request a CBC (complete blood count) with differential as the first step.</strong> This basic panel reveals haemoglobin, haematocrit, red blood cell size (MCV), and other indices that allow your doctor to narrow the type of anaemia before treatment. Treating iron-deficiency anaemia with B12 &#8212; or vice versa &#8212; is ineffective and can cause harm.</li>
+<li><strong>Know that the type of anaemia determines the treatment.</strong> Iron-deficiency anaemia is treated with iron supplementation. B12-deficiency anaemia (often from poor absorption rather than poor intake) is treated with B12 supplementation or injections. Anaemia of chronic disease requires treating the underlying condition. Never self-treat with supplements before knowing your type.</li>
+<li><strong>Investigate the cause of iron-deficiency anaemia, not just the deficiency itself.</strong> In men and post-menopausal women, iron-deficiency anaemia without a clear dietary explanation requires investigation for gastrointestinal blood loss, including colon cancer screening if age-appropriate.</li>
+<li><strong>Monitor energy, exercise tolerance, and concentration as functional markers of treatment response.</strong> Haemoglobin typically takes 4&#8211;8 weeks to rise meaningfully with iron supplementation; ferritin takes 3&#8211;6 months to fully restore. Functional improvement often precedes laboratory normalisation.</li>
+</ol>
+<p class="editorial-h3">Frequently Asked Questions</p>
+<div class="faq-block">
+<details class="faq-item"><summary>What is the difference between anaemia and iron deficiency?</summary><div class="faq-answer"><p>Iron deficiency is a continuum: it begins with depleted ferritin (iron stores), progresses to reduced serum iron and transferrin saturation, and only in the final stage does haemoglobin fall &#8212; which is when anaemia develops. Iron deficiency without anaemia is common and still causes significant fatigue and hair shedding.</p></div></details>
+<details class="faq-item"><summary>Can anaemia cause anxiety or depression?</summary><div class="faq-answer"><p>Yes. Reduced oxygen delivery to the brain impairs neurotransmitter synthesis and energy metabolism. Chronic anaemia is associated with worsened mood, increased anxiety, and cognitive slowing. These symptoms often improve significantly with effective anaemia treatment.</p></div></details>
+<details class="faq-item"><summary>Is anaemia dangerous during pregnancy?</summary><div class="faq-answer"><p>Significant anaemia during pregnancy is associated with increased risks of preterm birth, low birth weight, and postpartum haemorrhage. Pregnancy dramatically increases iron requirements (to approximately 27 mg/day compared to 18 mg/day for non-pregnant women), and routine supplementation with prenatal vitamins is standard of care. Haemoglobin and ferritin are typically monitored at booking and throughout pregnancy.</p></div></details>
+<details class="faq-item"><summary>How quickly does anaemia improve with treatment?</summary><div class="faq-answer"><p>With appropriate treatment, symptoms often begin improving within 2&#8211;4 weeks. Haemoglobin typically rises meaningfully within 4&#8211;8 weeks. Iron stores (ferritin) take 3&#8211;6 months to fully replenish. B12-deficiency anaemia may show faster haematological response but neurological recovery can take months to years depending on duration of deficiency.</p></div></details>
+<details class="faq-item"><summary>What foods are highest in absorbable iron?</summary><div class="faq-answer"><p>Haem iron (most efficiently absorbed): beef, lamb, liver, oysters, dark chicken meat. Non-haem iron (less efficiently absorbed but bioavailability improved by vitamin C): lentils, tofu, fortified cereals, spinach, pumpkin seeds. Combining a vitamin C source (bell pepper, orange, broccoli) with non-haem iron sources can double or triple absorption.</p></div></details>
+</div>
+</div>
+</section>
+<script>
+(function(){
+  document.querySelectorAll('.faq-block').forEach(function(block){
+    block.querySelectorAll('details.faq-item').forEach(function(el){
+      el.addEventListener('toggle',function(){
+        if(this.open){
+          block.querySelectorAll('details.faq-item').forEach(function(other){
+            if(other!==el) other.removeAttribute('open');
+          });
+        }
+      });
+    });
+  });
+})();
+</script>
+
+<style>
+.eeat-section{background:#F2F7F3;border-top:1px solid #C8D9CC;margin-top:24px;padding:12px 0 6px}
+.eeat-inner{max-width:800px;margin:0 auto;padding:0 24px}
+.eeat-refs-heading{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#3B6A3A;margin-bottom:10px}
+.eeat-refs-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.eeat-refs-list li{font-size:13px;color:#4A5568;line-height:1.6;padding-left:16px;position:relative}
+.eeat-refs-list li::before{content:"›";position:absolute;left:0;color:#3B6A3A;font-weight:700}
+.eeat-refs-list a{color:#3B6A3A;text-decoration:underline;word-break:break-word}
+.eeat-refs-list a:hover{color:#0A3D2A}
+.eeat-author{margin-top:6px;padding-top:5px;border-top:1px solid #C8D9CC;font-size:12px;color:#718096;line-height:1.6}
+.eeat-disclaimer{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid #C8D9CC;border-left:4px solid #3B6A3A;border-radius:0;padding:14px 18px;margin-bottom:24px}
+.eeat-disclaimer-icon{font-size:20px;flex-shrink:0;margin-top:1px}
+.eeat-disclaimer p{font-size:13px;color:#4A5568;line-height:1.6;margin:0}
+</style>
+<!-- ── E-E-A-T: ABOUT THIS CALCULATOR ── -->
+<section class="eeat-section" aria-label="About this calculator">
+  <div class="eeat-inner">
+    <div class="eeat-disclaimer">
+      <span class="eeat-disclaimer-icon">⚕</span>
+      <p><strong>Medical disclaimer:</strong> This tool is for informational and educational purposes only. It does not constitute medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional regarding any health questions or concerns.</p>
+    </div>
+    <h3 class="eeat-refs-heading">Clinical References</h3>
+    <ul class="eeat-refs-list">
+          <li>World Health Organization. Haemoglobin concentrations for the diagnosis of anaemia and assessment of severity. <em>WHO/NMH/NHD/MNM/11.1.</em> 2011. <a href="https://www.who.int/publications/i/item/WHO-NMH-NHD-MNM-11.1" target="_blank" rel="noopener noreferrer">View source ↗</a></li>
+          <li>Kassebaum NJ; GBD 2013 Anemia Collaborators. The global burden of anemia. <em>Hematol Oncol Clin North Am.</em> 2016;30(2):247–308. <a href="https://pubmed.ncbi.nlm.nih.gov/27040955/" target="_blank" rel="noopener noreferrer">View source ↗</a></li>
+          <li>Camaschella C. Iron-deficiency anemia. <em>N Engl J Med.</em> 2015;372(19):1832–1843. <a href="https://pubmed.ncbi.nlm.nih.gov/25946282/" target="_blank" rel="noopener noreferrer">View source ↗</a></li>
+    </ul>
+    <p class="eeat-author">Content prepared by the <strong>SageMyHealth editorial team</strong>, drawing on peer-reviewed clinical literature and established medical guidelines. Last reviewed: <strong>June 2026</strong>.</p>
+  </div>
+</section>
+
+
 </main>
 
 <!-- FOOTER -->
@@ -841,10 +944,10 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-disclaimer"><strong style="color:#7A958E">Medical Disclaimer:</strong> SageMyHealth calculators are for informational purposes only and are not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider regarding your health.</p>
       <p class="footer-copy">© 2025 SageMyHealth.com — All rights reserved.</p>
     </div>
   </div>
+
 </footer>
 
 <script>

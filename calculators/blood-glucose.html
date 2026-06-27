@@ -513,6 +513,109 @@
     </div>
 
   </div>
+
+<style>
+.calc-editorial{padding:36px 0 12px;border-top:2px solid #E2EAE4;margin-top:40px}
+.calc-editorial-inner{max-width:800px;margin:0 auto;padding:0 24px}
+.editorial-h2{font-size:21px;font-weight:700;color:#1a2e1a;margin:0 0 16px;line-height:1.3}
+.editorial-intro{font-size:15px;color:#374151;line-height:1.8;margin-bottom:20px}
+.editorial-h3{font-size:13px;font-weight:700;color:#3B6A3A;text-transform:uppercase;letter-spacing:.08em;margin:26px 0 10px}
+.score-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-bottom:4px}
+.score-cell{border-radius:8px;padding:12px 14px;border:1px solid #C8D9CC}
+.score-cell-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px}
+.score-cell-range{font-size:12px;color:#718096;margin-bottom:5px}
+.score-cell-desc{font-size:13px;color:#374151;line-height:1.55}
+.score-cell.green{background:#F0FDF4;border-color:#86EFAC}.score-cell.green .score-cell-label{color:#166534}
+.score-cell.yellow{background:#FFFBEB;border-color:#FCD34D}.score-cell.yellow .score-cell-label{color:#92400E}
+.score-cell.orange{background:#FFF7ED;border-color:#FDBA74}.score-cell.orange .score-cell-label{color:#9A3412}
+.score-cell.red{background:#FEF2F2;border-color:#FCA5A5}.score-cell.red .score-cell-label{color:#991B1B}
+.score-cell.blue{background:#EFF6FF;border-color:#93C5FD}.score-cell.blue .score-cell-label{color:#1E40AF}
+.score-cell.purple{background:#F5F3FF;border-color:#C4B5FD}.score-cell.purple .score-cell-label{color:#5B21B6}
+.editorial-steps{list-style:none;padding:0;margin:0 0 4px;counter-reset:steps}
+.editorial-steps li{counter-increment:steps;display:flex;gap:12px;margin-bottom:12px;font-size:14px;color:#374151;line-height:1.7}
+.editorial-steps li::before{content:counter(steps);display:flex;align-items:center;justify-content:center;min-width:24px;height:24px;background:#3B6A3A;color:#fff;border-radius:50%;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px}
+.faq-block{margin:0 0 4px}
+.faq-item{border:1px solid #C8D9CC;border-radius:8px;margin-bottom:8px;overflow:hidden}
+.faq-item summary{padding:13px 16px;font-size:14px;font-weight:600;color:#1a2e1a;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;background:#F9FCF9;gap:12px}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"\002B";font-size:16px;color:#3B6A3A;flex-shrink:0}
+.faq-item[open] summary::after{content:"\2212"}
+.faq-item[open] summary{background:#EBF2EC}
+.faq-answer{padding:4px 16px 14px;font-size:14px;color:#4A5568;line-height:1.75;border-top:1px solid #E2EAE4;background:#fff}
+</style>
+
+<!-- ── EDITORIAL CONTENT ── -->
+<section class="calc-editorial">
+<div class="calc-editorial-inner">
+<h2 class="editorial-h2">What Your Fasting Blood Glucose Really Means</h2>
+<p class="editorial-intro">Blood glucose is the amount of sugar circulating in your bloodstream at any given moment. After an overnight fast of at least 8 hours &#8212; the standard condition for this measurement &#8212; your result reflects how efficiently your pancreas and liver are regulating baseline glucose metabolism. The American Diabetes Association's thresholds, which this calculator uses, are derived from large epidemiological studies that identified the glucose levels at which long-term complications &#8212; retinopathy, neuropathy, kidney disease, and cardiovascular damage &#8212; begin to accumulate. The prediabetes range is not a buffer zone: it carries genuine biological risk and a meaningful window for intervention.</p>
+<p class="editorial-h3">What Your Score Means</p>
+<div class="score-grid"><div class="score-cell green"><div class="score-cell-label">Normal</div><div class="score-cell-range">&lt;100 mg/dL (&lt;5.6 mmol/L)</div><div class="score-cell-desc">Healthy glucose metabolism. The pancreas is producing insulin effectively and cells are responding appropriately.</div></div><div class="score-cell yellow"><div class="score-cell-label">Prediabetes</div><div class="score-cell-range">100&#8211;125 mg/dL (5.6&#8211;6.9 mmol/L)</div><div class="score-cell-desc">Impaired fasting glucose. Without intervention, approximately 15&#8211;30% of people in this range develop type 2 diabetes within 5 years &#8212; but research shows this is largely reversible.</div></div><div class="score-cell red"><div class="score-cell-label">Diabetes Range</div><div class="score-cell-range">&#8805;126 mg/dL (&#8805;7.0 mmol/L)</div><div class="score-cell-desc">This result warrants prompt medical follow-up. Two separate fasting readings above 126, or a single result above 200 with symptoms, meets ADA diagnostic criteria for diabetes.</div></div></div>
+<p class="editorial-h3">What to Do Next</p>
+<ol class="editorial-steps">
+<li><strong>Don't rely on a single fasting reading.</strong> The ADA requires two abnormal values on separate days to diagnose diabetes. Glucose can be transiently elevated after illness, significant stress, or steroid use.</li>
+<li><strong>If you're in the prediabetes range, act now &#8212; the window is open.</strong> The landmark Diabetes Prevention Program (DPP) trial showed that lifestyle intervention &#8212; modest weight loss plus 150 minutes of weekly exercise &#8212; reduced progression to diabetes by 58%.</li>
+<li><strong>Request an HbA1c alongside your fasting glucose.</strong> Haemoglobin A1c reflects your average blood glucose over the previous 2&#8211;3 months and is less susceptible to day-to-day variation. Together, both tests give a far more complete picture.</li>
+<li><strong>Examine what elevates glucose beyond food.</strong> Chronic poor sleep, emotional stress, low physical activity, and certain medications (corticosteroids, some antipsychotics, diuretics) all raise fasting glucose independently of diet.</li>
+</ol>
+<p class="editorial-h3">Frequently Asked Questions</p>
+<div class="faq-block">
+<details class="faq-item"><summary>Do I need to fast for exactly 8 hours?</summary><div class="faq-answer"><p>Yes &#8212; the 8-hour minimum is clinically important. Eating or drinking anything caloric within that window raises your glucose and invalidates the fasting result. Plain water is fine; coffee or tea should be avoided.</p></div></details>
+<details class="faq-item"><summary>What is the difference between fasting glucose and HbA1c?</summary><div class="faq-answer"><p>Fasting glucose is a real-time measurement. HbA1c reflects the proportion of red blood cells that have been glycated over the past 60&#8211;90 days, giving a longer-term average. Each can be normal or abnormal independently of the other, which is why both are useful.</p></div></details>
+<details class="faq-item"><summary>Can I have diabetes with a normal fasting glucose?</summary><div class="faq-answer"><p>Yes, in some cases. Post-meal glucose spikes detected with a 2-hour glucose tolerance test or HbA1c can be elevated even when fasting glucose is normal. This is called isolated post-challenge hyperglycaemia and carries cardiovascular risk.</p></div></details>
+<details class="faq-item"><summary>How do stress and poor sleep affect blood glucose?</summary><div class="faq-answer"><p>Both activate the hypothalamic-pituitary-adrenal axis, raising cortisol and adrenaline &#8212; hormones that drive glucose upward through hepatic glucose production and insulin resistance. Consistently sleeping under 6 hours is associated with fasting glucose levels 6&#8211;10% higher than those sleeping 7&#8211;9 hours.</p></div></details>
+<details class="faq-item"><summary>What foods lower fasting blood glucose most effectively?</summary><div class="faq-answer"><p>No single food is a treatment. The most evidence-backed approaches are higher fibre intake, reduced refined carbohydrates, protein at each meal to blunt post-meal spikes, and fermented foods before meals, which have shown modest glucose-lowering effects in small trials.</p></div></details>
+</div>
+</div>
+</section>
+<script>
+(function(){
+  document.querySelectorAll('.faq-block').forEach(function(block){
+    block.querySelectorAll('details.faq-item').forEach(function(el){
+      el.addEventListener('toggle',function(){
+        if(this.open){
+          block.querySelectorAll('details.faq-item').forEach(function(other){
+            if(other!==el) other.removeAttribute('open');
+          });
+        }
+      });
+    });
+  });
+})();
+</script>
+
+<style>
+.eeat-section{background:#F2F7F3;border-top:1px solid #C8D9CC;margin-top:24px;padding:12px 0 6px}
+.eeat-inner{max-width:800px;margin:0 auto;padding:0 24px}
+.eeat-refs-heading{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#3B6A3A;margin-bottom:10px}
+.eeat-refs-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.eeat-refs-list li{font-size:13px;color:#4A5568;line-height:1.6;padding-left:16px;position:relative}
+.eeat-refs-list li::before{content:"›";position:absolute;left:0;color:#3B6A3A;font-weight:700}
+.eeat-refs-list a{color:#3B6A3A;text-decoration:underline;word-break:break-word}
+.eeat-refs-list a:hover{color:#0A3D2A}
+.eeat-author{margin-top:6px;padding-top:5px;border-top:1px solid #C8D9CC;font-size:12px;color:#718096;line-height:1.6}
+.eeat-disclaimer{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid #C8D9CC;border-left:4px solid #3B6A3A;border-radius:0;padding:14px 18px;margin-bottom:24px}
+.eeat-disclaimer-icon{font-size:20px;flex-shrink:0;margin-top:1px}
+.eeat-disclaimer p{font-size:13px;color:#4A5568;line-height:1.6;margin:0}
+</style>
+<!-- ── E-E-A-T: ABOUT THIS CALCULATOR ── -->
+<section class="eeat-section" aria-label="About this calculator">
+  <div class="eeat-inner">
+    <div class="eeat-disclaimer">
+      <span class="eeat-disclaimer-icon">⚕</span>
+      <p><strong>Medical disclaimer:</strong> This tool is for informational and educational purposes only. It does not constitute medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional regarding any health questions or concerns.</p>
+    </div>
+    <h3 class="eeat-refs-heading">Clinical References</h3>
+    <ul class="eeat-refs-list">
+          <li>American Diabetes Association Professional Practice Committee. Classification and diagnosis of diabetes: Standards of Medical Care in Diabetes—2024. <em>Diabetes Care.</em> 2024;47(Suppl 1):S20–S42. <a href="https://pubmed.ncbi.nlm.nih.gov/38078589/" target="_blank" rel="noopener noreferrer">View source ↗</a></li>
+          <li>Sacks DB, Arnold M, Bakris GL, et al. Guidelines and recommendations for laboratory analysis in the diagnosis and management of diabetes mellitus. <em>Diabetes Care.</em> 2023;46(10):e151–e199. <a href="https://pubmed.ncbi.nlm.nih.gov/37616469/" target="_blank" rel="noopener noreferrer">View source ↗</a></li>
+          <li>International Expert Committee. International Expert Committee report on the role of the A1C assay in the diagnosis of diabetes. <em>Diabetes Care.</em> 2009;32(7):1327–1334. <a href="https://pubmed.ncbi.nlm.nih.gov/19502545/" target="_blank" rel="noopener noreferrer">View source ↗</a></li>
+    </ul>
+    <p class="eeat-author">Content prepared by the <strong>SageMyHealth editorial team</strong>, drawing on peer-reviewed clinical literature and established medical guidelines. Last reviewed: <strong>June 2026</strong>.</p>
+  </div>
+</section>
+
+
 </main>
 
 <!-- FOOTER -->
@@ -554,10 +657,10 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-disclaimer"><strong style="color:#7A958E">Medical Disclaimer:</strong> This calculator is for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider.</p>
       <p class="footer-copy">© 2025 SageMyHealth.com — All rights reserved.</p>
     </div>
   </div>
+
 </footer>
 
 <script>
@@ -777,5 +880,6 @@
   }
   document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMobileMenu(); });
 </script>
+
 </body>
 </html>

@@ -725,6 +725,109 @@
     </div><!-- end calc-columns -->
 
   </div>
+
+<style>
+.calc-editorial{padding:36px 0 12px;border-top:2px solid #E2EAE4;margin-top:40px}
+.calc-editorial-inner{max-width:800px;margin:0 auto;padding:0 24px}
+.editorial-h2{font-size:21px;font-weight:700;color:#1a2e1a;margin:0 0 16px;line-height:1.3}
+.editorial-intro{font-size:15px;color:#374151;line-height:1.8;margin-bottom:20px}
+.editorial-h3{font-size:13px;font-weight:700;color:#3B6A3A;text-transform:uppercase;letter-spacing:.08em;margin:26px 0 10px}
+.score-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-bottom:4px}
+.score-cell{border-radius:8px;padding:12px 14px;border:1px solid #C8D9CC}
+.score-cell-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px}
+.score-cell-range{font-size:12px;color:#718096;margin-bottom:5px}
+.score-cell-desc{font-size:13px;color:#374151;line-height:1.55}
+.score-cell.green{background:#F0FDF4;border-color:#86EFAC}.score-cell.green .score-cell-label{color:#166534}
+.score-cell.yellow{background:#FFFBEB;border-color:#FCD34D}.score-cell.yellow .score-cell-label{color:#92400E}
+.score-cell.orange{background:#FFF7ED;border-color:#FDBA74}.score-cell.orange .score-cell-label{color:#9A3412}
+.score-cell.red{background:#FEF2F2;border-color:#FCA5A5}.score-cell.red .score-cell-label{color:#991B1B}
+.score-cell.blue{background:#EFF6FF;border-color:#93C5FD}.score-cell.blue .score-cell-label{color:#1E40AF}
+.score-cell.purple{background:#F5F3FF;border-color:#C4B5FD}.score-cell.purple .score-cell-label{color:#5B21B6}
+.editorial-steps{list-style:none;padding:0;margin:0 0 4px;counter-reset:steps}
+.editorial-steps li{counter-increment:steps;display:flex;gap:12px;margin-bottom:12px;font-size:14px;color:#374151;line-height:1.7}
+.editorial-steps li::before{content:counter(steps);display:flex;align-items:center;justify-content:center;min-width:24px;height:24px;background:#3B6A3A;color:#fff;border-radius:50%;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px}
+.faq-block{margin:0 0 4px}
+.faq-item{border:1px solid #C8D9CC;border-radius:8px;margin-bottom:8px;overflow:hidden}
+.faq-item summary{padding:13px 16px;font-size:14px;font-weight:600;color:#1a2e1a;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;background:#F9FCF9;gap:12px}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"\002B";font-size:16px;color:#3B6A3A;flex-shrink:0}
+.faq-item[open] summary::after{content:"\2212"}
+.faq-item[open] summary{background:#EBF2EC}
+.faq-answer{padding:4px 16px 14px;font-size:14px;color:#4A5568;line-height:1.75;border-top:1px solid #E2EAE4;background:#fff}
+</style>
+
+<!-- ── EDITORIAL CONTENT ── -->
+<section class="calc-editorial">
+<div class="calc-editorial-inner">
+<h2 class="editorial-h2">Understanding Your BMI &#8212; and Its Limits</h2>
+<p class="editorial-intro">Body Mass Index was developed by the Belgian mathematician Adolphe Quetelet in the 1830s as a population-level statistical tool &#8212; never intended for individual clinical assessment. Yet for nearly two centuries it has been the most widely used proxy for body composition in medicine, public health policy, and research. There is genuine value in knowing your BMI: it correlates with population-level risk for diabetes, hypertension, sleep apnoea, and certain cancers. But it misclassifies millions of people. A muscular athlete may score as overweight, while someone with low muscle mass and high visceral fat may score as normal. Use this number as one data point among several, not as a verdict on your health.</p>
+<p class="editorial-h3">What Your Score Means</p>
+<div class="score-grid"><div class="score-cell blue"><div class="score-cell-label">Underweight</div><div class="score-cell-range">BMI &lt; 18.5</div><div class="score-cell-desc">Associated with increased risk of bone loss, immune suppression, and nutrient deficiency. A clinician review of dietary intake and underlying causes is recommended.</div></div><div class="score-cell green"><div class="score-cell-label">Normal Weight</div><div class="score-cell-range">BMI 18.5&#8211;24.9</div><div class="score-cell-desc">Associated with the lowest all-cause mortality in most large population studies. Fitness level and waist circumference remain important additional measures.</div></div><div class="score-cell yellow"><div class="score-cell-label">Overweight</div><div class="score-cell-range">BMI 25.0&#8211;29.9</div><div class="score-cell-desc">Modest but measurable increased risk for type 2 diabetes, hypertension, and joint disease. Many people in this range have excellent metabolic markers.</div></div><div class="score-cell orange"><div class="score-cell-label">Obese Class I</div><div class="score-cell-range">BMI 30.0&#8211;34.9</div><div class="score-cell-desc">Risk for cardiovascular disease and type 2 diabetes increases meaningfully. Even a 5&#8211;10% weight reduction produces measurable improvements in metabolic markers.</div></div><div class="score-cell red"><div class="score-cell-label">Obese Class II&#8211;III</div><div class="score-cell-range">BMI &#8805; 35</div><div class="score-cell-desc">Collaboration with a physician or multidisciplinary weight-management team is strongly recommended. Effective evidence-based treatments are available.</div></div></div>
+<p class="editorial-h3">What to Do Next</p>
+<ol class="editorial-steps">
+<li><strong>Pair your BMI with waist circumference.</strong> A waist above 35 inches (women) or 40 inches (men) is a stronger independent predictor of cardiovascular risk than BMI alone, because it reflects visceral adiposity rather than total body mass.</li>
+<li><strong>Check your metabolic numbers.</strong> Fasting glucose, blood pressure, LDL cholesterol, and triglycerides tell a more complete story than any single weight-based metric. Ask your doctor for a metabolic panel at your next visit.</li>
+<li><strong>Prioritise fitness alongside weight.</strong> A 2021 meta-analysis in <em>British Journal of Sports Medicine</em> found that cardiorespiratory fitness was a stronger predictor of mortality than BMI &#8212; meaning a fit person with a high BMI often has better outcomes than an unfit person with a normal BMI.</li>
+<li><strong>Avoid BMI-only conversations with your healthcare provider.</strong> Ask specifically about metabolic markers, body composition if available, and function-based goals rather than BMI targets alone.</li>
+</ol>
+<p class="editorial-h3">Frequently Asked Questions</p>
+<div class="faq-block">
+<details class="faq-item"><summary>Does BMI apply equally to all ethnicities?</summary><div class="faq-answer"><p>No. Research consistently shows that people of East Asian and South Asian descent carry higher cardiometabolic risk at lower BMI values. Many clinical guidelines now recommend lowering the overweight threshold to BMI &#8805; 23 for these populations.</p></div></details>
+<details class="faq-item"><summary>Is BMI accurate for athletes and very muscular people?</summary><div class="faq-answer"><p>Not reliably. Muscle is denser than fat, so a highly muscular person can have a BMI in the overweight range with very little body fat. In these cases, body fat percentage measurement via DEXA gives a far more accurate picture.</p></div></details>
+<details class="faq-item"><summary>Can children use this calculator?</summary><div class="faq-answer"><p>This calculator is calibrated for adults. For children and adolescents, BMI is interpreted on a percentile chart adjusted for age and sex. A paediatrician should interpret BMI for anyone under 18.</p></div></details>
+<details class="faq-item"><summary>What is a realistic, healthy rate of weight change?</summary><div class="faq-answer"><p>Clinical guidelines generally recommend a weight loss rate of 0.5&#8211;1 kg (1&#8211;2 lbs) per week for sustained fat loss, achieved through a moderate caloric deficit of 500&#8211;750 kcal per day. Faster rates are associated with muscle loss.</p></div></details>
+<details class="faq-item"><summary>My BMI is normal but I don't feel healthy &#8212; what else should I check?</summary><div class="faq-answer"><p>BMI tells you nothing about cardiovascular fitness, muscle mass, blood sugar regulation, sleep quality, or nutritional status. A comprehensive annual wellness exam is the best way to identify what the scale cannot.</p></div></details>
+</div>
+</div>
+</section>
+<script>
+(function(){
+  document.querySelectorAll('.faq-block').forEach(function(block){
+    block.querySelectorAll('details.faq-item').forEach(function(el){
+      el.addEventListener('toggle',function(){
+        if(this.open){
+          block.querySelectorAll('details.faq-item').forEach(function(other){
+            if(other!==el) other.removeAttribute('open');
+          });
+        }
+      });
+    });
+  });
+})();
+</script>
+
+<style>
+.eeat-section{background:#F2F7F3;border-top:1px solid #C8D9CC;margin-top:24px;padding:12px 0 6px}
+.eeat-inner{max-width:800px;margin:0 auto;padding:0 24px}
+.eeat-refs-heading{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#3B6A3A;margin-bottom:10px}
+.eeat-refs-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.eeat-refs-list li{font-size:13px;color:#4A5568;line-height:1.6;padding-left:16px;position:relative}
+.eeat-refs-list li::before{content:"›";position:absolute;left:0;color:#3B6A3A;font-weight:700}
+.eeat-refs-list a{color:#3B6A3A;text-decoration:underline;word-break:break-word}
+.eeat-refs-list a:hover{color:#0A3D2A}
+.eeat-author{margin-top:6px;padding-top:5px;border-top:1px solid #C8D9CC;font-size:12px;color:#718096;line-height:1.6}
+.eeat-disclaimer{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid #C8D9CC;border-left:4px solid #3B6A3A;border-radius:0;padding:14px 18px;margin-bottom:24px}
+.eeat-disclaimer-icon{font-size:20px;flex-shrink:0;margin-top:1px}
+.eeat-disclaimer p{font-size:13px;color:#4A5568;line-height:1.6;margin:0}
+</style>
+<!-- ── E-E-A-T: ABOUT THIS CALCULATOR ── -->
+<section class="eeat-section" aria-label="About this calculator">
+  <div class="eeat-inner">
+    <div class="eeat-disclaimer">
+      <span class="eeat-disclaimer-icon">⚕</span>
+      <p><strong>Medical disclaimer:</strong> This tool is for informational and educational purposes only. It does not constitute medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional regarding any health questions or concerns.</p>
+    </div>
+    <h3 class="eeat-refs-heading">Clinical References</h3>
+    <ul class="eeat-refs-list">
+          <li>World Health Organization. Obesity: preventing and managing the global epidemic. <em>WHO Technical Report Series 894.</em> 2000. <a href="https://www.who.int/publications/i/item/obesity-preventing-and-managing-the-global-epidemic" target="_blank" rel="noopener noreferrer">View source ↗</a></li>
+          <li>WHO Expert Consultation. Appropriate body-mass index for Asian populations and its implications for policy and intervention strategies. <em>Lancet.</em> 2004;363(9403):157–163. <a href="https://pubmed.ncbi.nlm.nih.gov/14726171/" target="_blank" rel="noopener noreferrer">View source ↗</a></li>
+          <li>Nuttall FQ. Body mass index: obesity, BMI, and health — a critical review. <em>Nutr Today.</em> 2015;50(3):117–128. <a href="https://pubmed.ncbi.nlm.nih.gov/27340299/" target="_blank" rel="noopener noreferrer">View source ↗</a></li>
+    </ul>
+    <p class="eeat-author">Content prepared by the <strong>SageMyHealth editorial team</strong>, drawing on peer-reviewed clinical literature and established medical guidelines. Last reviewed: <strong>June 2026</strong>.</p>
+  </div>
+</section>
+
+
 </main>
 
 <!-- FOOTER -->
@@ -766,10 +869,10 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-disclaimer"><strong style="color:#7A958E">Medical Disclaimer:</strong> This calculator is for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider.</p>
       <p class="footer-copy">© 2025 SageMyHealth.com — All rights reserved.</p>
     </div>
   </div>
+
 </footer>
 
 <script>
@@ -935,5 +1038,6 @@
   }
   document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMobileMenu(); });
 </script>
+
 </body>
 </html>

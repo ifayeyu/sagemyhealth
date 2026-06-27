@@ -561,6 +561,109 @@
     </div><!-- /.calc-columns -->
 
   </div>
+
+<style>
+.calc-editorial{padding:36px 0 12px;border-top:2px solid #E2EAE4;margin-top:40px}
+.calc-editorial-inner{max-width:800px;margin:0 auto;padding:0 24px}
+.editorial-h2{font-size:21px;font-weight:700;color:#1a2e1a;margin:0 0 16px;line-height:1.3}
+.editorial-intro{font-size:15px;color:#374151;line-height:1.8;margin-bottom:20px}
+.editorial-h3{font-size:13px;font-weight:700;color:#3B6A3A;text-transform:uppercase;letter-spacing:.08em;margin:26px 0 10px}
+.score-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-bottom:4px}
+.score-cell{border-radius:8px;padding:12px 14px;border:1px solid #C8D9CC}
+.score-cell-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px}
+.score-cell-range{font-size:12px;color:#718096;margin-bottom:5px}
+.score-cell-desc{font-size:13px;color:#374151;line-height:1.55}
+.score-cell.green{background:#F0FDF4;border-color:#86EFAC}.score-cell.green .score-cell-label{color:#166534}
+.score-cell.yellow{background:#FFFBEB;border-color:#FCD34D}.score-cell.yellow .score-cell-label{color:#92400E}
+.score-cell.orange{background:#FFF7ED;border-color:#FDBA74}.score-cell.orange .score-cell-label{color:#9A3412}
+.score-cell.red{background:#FEF2F2;border-color:#FCA5A5}.score-cell.red .score-cell-label{color:#991B1B}
+.score-cell.blue{background:#EFF6FF;border-color:#93C5FD}.score-cell.blue .score-cell-label{color:#1E40AF}
+.score-cell.purple{background:#F5F3FF;border-color:#C4B5FD}.score-cell.purple .score-cell-label{color:#5B21B6}
+.editorial-steps{list-style:none;padding:0;margin:0 0 4px;counter-reset:steps}
+.editorial-steps li{counter-increment:steps;display:flex;gap:12px;margin-bottom:12px;font-size:14px;color:#374151;line-height:1.7}
+.editorial-steps li::before{content:counter(steps);display:flex;align-items:center;justify-content:center;min-width:24px;height:24px;background:#3B6A3A;color:#fff;border-radius:50%;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px}
+.faq-block{margin:0 0 4px}
+.faq-item{border:1px solid #C8D9CC;border-radius:8px;margin-bottom:8px;overflow:hidden}
+.faq-item summary{padding:13px 16px;font-size:14px;font-weight:600;color:#1a2e1a;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;background:#F9FCF9;gap:12px}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"\002B";font-size:16px;color:#3B6A3A;flex-shrink:0}
+.faq-item[open] summary::after{content:"\2212"}
+.faq-item[open] summary{background:#EBF2EC}
+.faq-answer{padding:4px 16px 14px;font-size:14px;color:#4A5568;line-height:1.75;border-top:1px solid #E2EAE4;background:#fff}
+</style>
+
+<!-- ── EDITORIAL CONTENT ── -->
+<section class="calc-editorial">
+<div class="calc-editorial-inner">
+<h2 class="editorial-h2">Biological Age vs. Chronological Age &#8212; What the Difference Means</h2>
+<p class="editorial-intro">Your chronological age is the number of years you have been alive. Your biological age is a composite estimate of how old your body's physiology appears to be relative to population averages &#8212; and the two numbers often diverge significantly. Research from Harvard, Stanford, and Duke consistently shows that modifiable lifestyle factors explain a large proportion of biological aging variance between people of the same chronological age. Fitness level, sleep quality, stress burden, smoking history, dietary pattern, and social connection all leave measurable biological signatures. This calculator uses validated physiological inputs to give you an evidence-based estimate of where your biology currently sits on the aging curve.</p>
+<p class="editorial-h3">What Your Score Means</p>
+<div class="score-grid"><div class="score-cell green"><div class="score-cell-label">Younger Than Chronological Age</div><div class="score-cell-range">Biological age &lt; Calendar age</div><div class="score-cell-desc">Your physiological profile is ahead of your years. The habits driving this are your most important long-term health investments &#8212; identifying and protecting them matters more than any further optimisation.</div></div><div class="score-cell yellow"><div class="score-cell-label">Matched</div><div class="score-cell-range">Biological &#8776; Calendar age</div><div class="score-cell-desc">You are aging at roughly the expected population rate. There is meaningful room to improve biological age with targeted lifestyle interventions.</div></div><div class="score-cell orange"><div class="score-cell-label">Older Than Chronological Age</div><div class="score-cell-range">Biological age &gt; Calendar age</div><div class="score-cell-desc">Your physiology is showing wear beyond your years. This is a signal, not a sentence &#8212; studies show biological age is responsive to intervention, sometimes dramatically and within months.</div></div></div>
+<p class="editorial-h3">What to Do Next</p>
+<ol class="editorial-steps">
+<li><strong>Identify your highest-impact lever.</strong> For most people, cardiorespiratory fitness is the single modifiable factor with the strongest relationship to biological aging. Moving from low-fit to moderate-fit is associated with a 3&#8211;5 year biological age advantage in population studies.</li>
+<li><strong>Take sleep seriously as anti-aging medicine.</strong> During deep sleep, cerebrospinal fluid washes metabolic waste &#8212; including amyloid beta &#8212; from the brain, and cellular repair processes peak. Chronic sleep deprivation accelerates biological aging, including measurable telomere shortening.</li>
+<li><strong>Consider a comprehensive blood panel.</strong> hs-CRP (inflammation), HbA1c, lipid panel, Vitamin D, and homocysteine together give a biochemical portrait of your aging rate that complements physiological estimates. Several of these are actionable with diet and supplementation.</li>
+<li><strong>Retest in 3&#8211;6 months after making changes.</strong> Biological age is not fixed. Intervention studies have shown 1&#8211;4 years of biological age reversal within 6 months of intensive lifestyle modification.</li>
+</ol>
+<p class="editorial-h3">Frequently Asked Questions</p>
+<div class="faq-block">
+<details class="faq-item"><summary>Are biological age calculators scientifically accurate?</summary><div class="faq-answer"><p>Calculators using validated physiological inputs correlate meaningfully with population mortality risk and biomarker-based aging clocks. They are estimates with measurement error &#8212; not precise diagnoses. Epigenetic clocks from DNA methylation analysis are currently the gold standard for biological age measurement.</p></div></details>
+<details class="faq-item"><summary>What lifestyle changes have the strongest effect on biological age?</summary><div class="faq-answer"><p>The evidence base ranks them roughly as: (1) smoking cessation; (2) increasing cardiorespiratory fitness; (3) improving sleep quality and duration; (4) adopting a Mediterranean or plant-forward dietary pattern; (5) managing chronic psychological stress.</p></div></details>
+<details class="faq-item"><summary>Can supplements slow biological aging?</summary><div class="faq-answer"><p>A small number of compounds have emerging evidence &#8212; including NMN/NR (NAD+ precursors) and resveratrol &#8212; but human trial data remain limited and inconsistent. The lifestyle factors above have far stronger and more reproducible evidence than any supplement currently available.</p></div></details>
+<details class="faq-item"><summary>Does genetics determine my biological age?</summary><div class="faq-answer"><p>Genetics plays a meaningful role &#8212; perhaps 20&#8211;30% of biological aging variance in mid-life &#8212; but lifestyle factors account for the majority of variation between people of similar genetic backgrounds. Twin studies have shown dramatic divergence in biological age between identical twins with different lifestyles.</p></div></details>
+<details class="faq-item"><summary>Is it possible to reverse biological aging, not just slow it?</summary><div class="faq-answer"><p>Emerging evidence suggests yes, to a degree. Several clinical trials have demonstrated reversal of epigenetic biological age markers with intensive lifestyle and nutritional protocols. The most cited is the TRIIM trial (2019), which showed 2.5 years of biological age reversal in 9 months.</p></div></details>
+</div>
+</div>
+</section>
+<script>
+(function(){
+  document.querySelectorAll('.faq-block').forEach(function(block){
+    block.querySelectorAll('details.faq-item').forEach(function(el){
+      el.addEventListener('toggle',function(){
+        if(this.open){
+          block.querySelectorAll('details.faq-item').forEach(function(other){
+            if(other!==el) other.removeAttribute('open');
+          });
+        }
+      });
+    });
+  });
+})();
+</script>
+
+<style>
+.eeat-section{background:#F2F7F3;border-top:1px solid #C8D9CC;margin-top:24px;padding:12px 0 6px}
+.eeat-inner{max-width:800px;margin:0 auto;padding:0 24px}
+.eeat-refs-heading{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#3B6A3A;margin-bottom:10px}
+.eeat-refs-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.eeat-refs-list li{font-size:13px;color:#4A5568;line-height:1.6;padding-left:16px;position:relative}
+.eeat-refs-list li::before{content:"›";position:absolute;left:0;color:#3B6A3A;font-weight:700}
+.eeat-refs-list a{color:#3B6A3A;text-decoration:underline;word-break:break-word}
+.eeat-refs-list a:hover{color:#0A3D2A}
+.eeat-author{margin-top:6px;padding-top:5px;border-top:1px solid #C8D9CC;font-size:12px;color:#718096;line-height:1.6}
+.eeat-disclaimer{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid #C8D9CC;border-left:4px solid #3B6A3A;border-radius:0;padding:14px 18px;margin-bottom:24px}
+.eeat-disclaimer-icon{font-size:20px;flex-shrink:0;margin-top:1px}
+.eeat-disclaimer p{font-size:13px;color:#4A5568;line-height:1.6;margin:0}
+</style>
+<!-- ── E-E-A-T: ABOUT THIS CALCULATOR ── -->
+<section class="eeat-section" aria-label="About this calculator">
+  <div class="eeat-inner">
+    <div class="eeat-disclaimer">
+      <span class="eeat-disclaimer-icon">⚕</span>
+      <p><strong>Medical disclaimer:</strong> This tool is for informational and educational purposes only. It does not constitute medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional regarding any health questions or concerns.</p>
+    </div>
+    <h3 class="eeat-refs-heading">Clinical References</h3>
+    <ul class="eeat-refs-list">
+          <li>Horvath S. DNA methylation age of human tissues and cell types. <em>Genome Biology.</em> 2013;14(10):R115. <a href="https://pubmed.ncbi.nlm.nih.gov/24138928/" target="_blank" rel="noopener noreferrer">View source ↗</a></li>
+          <li>Belsky DW, Caspi A, Houts R, et al. Quantification of biological aging in young adults. <em>Proc Natl Acad Sci USA.</em> 2015;112(30):E4104–E4110. <a href="https://pubmed.ncbi.nlm.nih.gov/26150517/" target="_blank" rel="noopener noreferrer">View source ↗</a></li>
+          <li>López-Otín C, Blasco MA, Partridge L, et al. Hallmarks of aging: an expanding universe. <em>Cell.</em> 2023;186(2):243–278. <a href="https://pubmed.ncbi.nlm.nih.gov/36599349/" target="_blank" rel="noopener noreferrer">View source ↗</a></li>
+    </ul>
+    <p class="eeat-author">Content prepared by the <strong>SageMyHealth editorial team</strong>, drawing on peer-reviewed clinical literature and established medical guidelines. Last reviewed: <strong>June 2026</strong>.</p>
+  </div>
+</section>
+
+
 </main>
 
 <!-- FOOTER -->
@@ -603,10 +706,10 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-disclaimer"><strong style="color:#7A958E">Medical Disclaimer:</strong> This calculator is for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Consult your doctor for personalised health assessments.</p>
       <p class="footer-copy">© 2025 SageMyHealth.com — All rights reserved.</p>
     </div>
   </div>
+
 </footer>
 
 <script>
@@ -830,5 +933,6 @@
   }
   document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMobileMenu(); });
 </script>
+
 </body>
 </html>

@@ -613,7 +613,110 @@
       </div><!-- /.results-col -->
 
     </div><!-- /.calc-columns -->
-  </div><!-- /.calc-wrapper -->
+  </div>
+
+<style>
+.calc-editorial{padding:36px 0 12px;border-top:2px solid #E2EAE4;margin-top:40px}
+.calc-editorial-inner{max-width:800px;margin:0 auto;padding:0 24px}
+.editorial-h2{font-size:21px;font-weight:700;color:#1a2e1a;margin:0 0 16px;line-height:1.3}
+.editorial-intro{font-size:15px;color:#374151;line-height:1.8;margin-bottom:20px}
+.editorial-h3{font-size:13px;font-weight:700;color:#3B6A3A;text-transform:uppercase;letter-spacing:.08em;margin:26px 0 10px}
+.score-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-bottom:4px}
+.score-cell{border-radius:8px;padding:12px 14px;border:1px solid #C8D9CC}
+.score-cell-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px}
+.score-cell-range{font-size:12px;color:#718096;margin-bottom:5px}
+.score-cell-desc{font-size:13px;color:#374151;line-height:1.55}
+.score-cell.green{background:#F0FDF4;border-color:#86EFAC}.score-cell.green .score-cell-label{color:#166534}
+.score-cell.yellow{background:#FFFBEB;border-color:#FCD34D}.score-cell.yellow .score-cell-label{color:#92400E}
+.score-cell.orange{background:#FFF7ED;border-color:#FDBA74}.score-cell.orange .score-cell-label{color:#9A3412}
+.score-cell.red{background:#FEF2F2;border-color:#FCA5A5}.score-cell.red .score-cell-label{color:#991B1B}
+.score-cell.blue{background:#EFF6FF;border-color:#93C5FD}.score-cell.blue .score-cell-label{color:#1E40AF}
+.score-cell.purple{background:#F5F3FF;border-color:#C4B5FD}.score-cell.purple .score-cell-label{color:#5B21B6}
+.editorial-steps{list-style:none;padding:0;margin:0 0 4px;counter-reset:steps}
+.editorial-steps li{counter-increment:steps;display:flex;gap:12px;margin-bottom:12px;font-size:14px;color:#374151;line-height:1.7}
+.editorial-steps li::before{content:counter(steps);display:flex;align-items:center;justify-content:center;min-width:24px;height:24px;background:#3B6A3A;color:#fff;border-radius:50%;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px}
+.faq-block{margin:0 0 4px}
+.faq-item{border:1px solid #C8D9CC;border-radius:8px;margin-bottom:8px;overflow:hidden}
+.faq-item summary{padding:13px 16px;font-size:14px;font-weight:600;color:#1a2e1a;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;background:#F9FCF9;gap:12px}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"\002B";font-size:16px;color:#3B6A3A;flex-shrink:0}
+.faq-item[open] summary::after{content:"\2212"}
+.faq-item[open] summary{background:#EBF2EC}
+.faq-answer{padding:4px 16px 14px;font-size:14px;color:#4A5568;line-height:1.75;border-top:1px solid #E2EAE4;background:#fff}
+</style>
+
+<!-- ── EDITORIAL CONTENT ── -->
+<section class="calc-editorial">
+<div class="calc-editorial-inner">
+<h2 class="editorial-h2">Understanding Mental Fatigue &#8212; More Than Just Feeling Tired</h2>
+<p class="editorial-intro">Mental fatigue is a distinct neurobiological state from physical tiredness, and it is increasingly well characterised in cognitive neuroscience. Prolonged periods of sustained cognitive effort &#8212; deep work, high-stakes decision-making, constant task-switching, or emotional labour &#8212; drive a measurable accumulation of glutamate in the lateral prefrontal cortex. Recent neuroimaging research from the Paris Brain Institute (Wiehler et al., 2022) found that this glutamate build-up impairs the prefrontal cortex's regulatory capacity, biasing behaviour toward low-effort choices &#8212; not because you lack willpower, but because your brain's chemistry is protecting itself from further depletion.</p>
+<p class="editorial-h3">What Your Score Means</p>
+<div class="score-grid"><div class="score-cell green"><div class="score-cell-label">Low Fatigue</div><div class="score-cell-range">Low score range</div><div class="score-cell-desc">Cognitive resources appear available. This is a good time for high-priority deep work, creative thinking, or important decisions.</div></div><div class="score-cell yellow"><div class="score-cell-label">Moderate Fatigue</div><div class="score-cell-range">Mid score range</div><div class="score-cell-desc">Some cognitive slowing is present. Complex problem-solving and emotional regulation require more deliberate effort than usual. Structure and breaks help.</div></div><div class="score-cell orange"><div class="score-cell-label">High Fatigue</div><div class="score-cell-range">Upper range</div><div class="score-cell-desc">Meaningful cognitive impairment is likely. Working memory capacity, attention, and decision quality are measurably degraded. Continuing high-demand tasks in this state compounds errors.</div></div><div class="score-cell red"><div class="score-cell-label">Severe Fatigue</div><div class="score-cell-range">Maximum range</div><div class="score-cell-desc">The prefrontal cortex is operating under significant chemical depletion. This level impairs emotional regulation, increases impulsivity, and degrades performance across almost all cognitive domains.</div></div></div>
+<p class="editorial-h3">What to Do Next</p>
+<ol class="editorial-steps">
+<li><strong>Rest is not the same as passive recovery.</strong> Research on mental fatigue shows that activities with low cognitive demand and positive affect &#8212; walking in nature, brief social connection, simple non-screen hobbies &#8212; restore prefrontal glutamate balance more effectively than passive screen consumption.</li>
+<li><strong>Protect your morning cognitive capacity.</strong> Mental fatigue accumulates across the day. High-value cognitive work (writing, analysis, complex problem-solving) is best placed in morning hours for most people, before the day's decisions erode prefrontal capacity.</li>
+<li><strong>Evaluate your task-switching load.</strong> Constant context-switching between email, messages, and different projects is one of the most efficient ways to deplete cognitive resources. Batching similar tasks and protecting 90&#8211;120 minute uninterrupted work blocks reduces cumulative fatigue significantly.</li>
+<li><strong>If mental fatigue is chronic and doesn't resolve with rest, see a clinician.</strong> Persistent mental fatigue can be a symptom of anaemia, thyroid dysfunction, depression, sleep apnoea, long COVID, or other medical conditions requiring investigation.</li>
+</ol>
+<p class="editorial-h3">Frequently Asked Questions</p>
+<div class="faq-block">
+<details class="faq-item"><summary>Does caffeine cure mental fatigue?</summary><div class="faq-answer"><p>Caffeine blocks adenosine receptors &#8212; reducing the perception of fatigue &#8212; but it does not clear the underlying neurochemical depletion. Performance on simple tasks improves with caffeine; complex cognitive tasks show more mixed results. Caffeine also impairs sleep quality, creating a deficit cycle.</p></div></details>
+<details class="faq-item"><summary>How long does it take to recover from mental fatigue?</summary><div class="faq-answer"><p>Acute mental fatigue from a single demanding day typically resolves with one good night of sleep. Chronic mental fatigue built up over weeks of sustained high-demand work takes longer and often requires reduced demands and increased low-demand leisure.</p></div></details>
+<details class="faq-item"><summary>Is mental fatigue the same as burnout?</summary><div class="faq-answer"><p>Mental fatigue is a state &#8212; it can develop and resolve within a day. Burnout is a syndrome &#8212; a chronic pattern of depletion, disengagement, and reduced efficacy that develops over months. Frequent unrecovered mental fatigue can be a precursor to burnout.</p></div></details>
+<details class="faq-item"><summary>Can diet affect mental fatigue?</summary><div class="faq-answer"><p>Yes. Dehydration of even 1&#8211;2% of body weight measurably impairs attention and working memory. Omega-3 fatty acids support neuronal membrane health. Iron deficiency anaemia is one of the most common and reversible causes of chronic mental fatigue, especially in menstruating individuals.</p></div></details>
+<details class="faq-item"><summary>Do breaks during work help or just waste time?</summary><div class="faq-answer"><p>Breaks are productivity science, not indulgence. Performance on cognitively demanding tasks degrades significantly after 45&#8211;90 minutes of uninterrupted work. Brief breaks involving physical movement or exposure to nature restore alertness and reduce error rates in the subsequent work period.</p></div></details>
+</div>
+</div>
+</section>
+<script>
+(function(){
+  document.querySelectorAll('.faq-block').forEach(function(block){
+    block.querySelectorAll('details.faq-item').forEach(function(el){
+      el.addEventListener('toggle',function(){
+        if(this.open){
+          block.querySelectorAll('details.faq-item').forEach(function(other){
+            if(other!==el) other.removeAttribute('open');
+          });
+        }
+      });
+    });
+  });
+})();
+</script>
+
+<style>
+.eeat-section{background:#F2F7F3;border-top:1px solid #C8D9CC;margin-top:24px;padding:12px 0 6px}
+.eeat-inner{max-width:800px;margin:0 auto;padding:0 24px}
+.eeat-refs-heading{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#3B6A3A;margin-bottom:10px}
+.eeat-refs-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.eeat-refs-list li{font-size:13px;color:#4A5568;line-height:1.6;padding-left:16px;position:relative}
+.eeat-refs-list li::before{content:"›";position:absolute;left:0;color:#3B6A3A;font-weight:700}
+.eeat-refs-list a{color:#3B6A3A;text-decoration:underline;word-break:break-word}
+.eeat-refs-list a:hover{color:#0A3D2A}
+.eeat-author{margin-top:6px;padding-top:5px;border-top:1px solid #C8D9CC;font-size:12px;color:#718096;line-height:1.6}
+.eeat-disclaimer{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid #C8D9CC;border-left:4px solid #3B6A3A;border-radius:0;padding:14px 18px;margin-bottom:24px}
+.eeat-disclaimer-icon{font-size:20px;flex-shrink:0;margin-top:1px}
+.eeat-disclaimer p{font-size:13px;color:#4A5568;line-height:1.6;margin:0}
+</style>
+<!-- ── E-E-A-T: ABOUT THIS CALCULATOR ── -->
+<section class="eeat-section" aria-label="About this calculator">
+  <div class="eeat-inner">
+    <div class="eeat-disclaimer">
+      <span class="eeat-disclaimer-icon">⚕</span>
+      <p><strong>Medical disclaimer:</strong> This tool is for informational and educational purposes only. It does not constitute medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional regarding any health questions or concerns.</p>
+    </div>
+    <h3 class="eeat-refs-heading">Clinical References</h3>
+    <ul class="eeat-refs-list">
+          <li>Leavitt VM, DeLuca J. Central fatigue: issues in diagnosis and treatment. <em>J Clin Exp Neuropsychol.</em> 2010;32(7):679–693. <a href="https://pubmed.ncbi.nlm.nih.gov/20069488/" target="_blank" rel="noopener noreferrer">View source ↗</a></li>
+          <li>Smets EM, Garssen B, Bonke B, De Haes JC. The Multidimensional Fatigue Inventory (MFI): psychometric qualities of an instrument to assess fatigue. <em>J Psychosom Res.</em> 1995;39(3):315–325. <a href="https://pubmed.ncbi.nlm.nih.gov/7636775/" target="_blank" rel="noopener noreferrer">View source ↗</a></li>
+          <li>Johansson B, Rönnbäck L. Mental Fatigue Scale — a brief neuropsychological assessment. <em>Neurorehabilitation.</em> 2017;40(1):125–135. <a href="https://pubmed.ncbi.nlm.nih.gov/27767995/" target="_blank" rel="noopener noreferrer">View source ↗</a></li>
+    </ul>
+    <p class="eeat-author">Content prepared by the <strong>SageMyHealth editorial team</strong>, drawing on peer-reviewed clinical literature and established medical guidelines. Last reviewed: <strong>June 2026</strong>.</p>
+  </div>
+</section>
+
+<!-- /.calc-wrapper -->
 </main>
 
 <!-- FOOTER -->
@@ -660,6 +763,7 @@
       </div>
     </div>
   </div>
+
 </footer>
 
 <script>
@@ -827,5 +931,6 @@
   }
   document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMobileMenu(); });
 </script>
+
 </body>
 </html>
