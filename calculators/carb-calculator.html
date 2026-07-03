@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X6K2H9YW2V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X6K2H9YW2V');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carb Calculator — How Many Carbs Should You Eat a Day? | SageMyHealth</title>
+  <meta name="description" content="Calculate how many grams of carbohydrates you should eat per day based on your calorie needs and goal. Choose balanced, lower-carb, higher-carb, or very-low-carb — with a daily fibre target. Based on the IOM/Dietary Guidelines AMDR." />
+  <meta name="keywords" content="carb calculator, how many carbs per day, daily carbohydrate intake, low carb calculator, macro calculator carbs, carbs for weight loss" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://sagemyhealth.com/calculators/carb-calculator.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SageMyHealth" />
+  <meta property="og:title" content="Carb Calculator — How Many Carbs Should You Eat a Day?" />
+  <meta property="og:description" content="Calculate your daily carbohydrate target in grams from your calorie needs and goal, plus a fibre target. Based on the IOM/Dietary Guidelines AMDR." />
+  <meta property="og:url" content="https://sagemyhealth.com/calculators/carb-calculator.html" />
+  <meta property="og:image" content="https://sagemyhealth.com/calculators/assets/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Carb Calculator — How Many Carbs Should You Eat a Day?" />
+  <meta name="twitter:description" content="Your daily carbohydrate target in grams, from your calorie needs and goal — plus a fibre target." />
+  <meta name="twitter:image" content="https://sagemyhealth.com/calculators/assets/logo.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "name": "Carb Calculator",
+    "description": "Calculate your daily carbohydrate target in grams from your calorie needs and goal.",
+    "url": "https://sagemyhealth.com/calculators/carb-calculator.html",
+    "publisher": { "@type": "Organization", "name": "SageMyHealth", "url": "https://sagemyhealth.com/" },
+    "isAccessibleForFree": true,
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sagemyhealth.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Nutrition & Diet", "item": "https://sagemyhealth.com/categories/nutrition-diet.html" },
+        { "@type": "ListItem", "position": 3, "name": "Carb Calculator", "item": "https://sagemyhealth.com/calculators/carb-calculator.html" }
+      ]
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "How many carbs should I eat per day?", "acceptedAnswer": { "@type": "Answer", "text": "The IOM Acceptable Macronutrient Distribution Range recommends 45–65% of daily calories from carbohydrates for most adults. On a 2,000-calorie diet that is roughly 225–325 grams per day. Your ideal amount depends on your total calorie needs, activity level, and goals — active people generally do well at the higher end, while some people prefer a lower-carb approach." } },
+      { "@type": "Question", "name": "How many carbs should I eat to lose weight?", "acceptedAnswer": { "@type": "Answer", "text": "Weight loss is driven by an overall calorie deficit, not by carbs alone. Many people find a moderate reduction in carbs (around 30–40% of calories) helps them control appetite and calories, but a balanced approach also works. Prioritise fibre-rich, minimally processed carbohydrates and keep protein adequate to preserve muscle." } },
+      { "@type": "Question", "name": "What are net carbs?", "acceptedAnswer": { "@type": "Answer", "text": "Net carbs are total carbohydrates minus fibre (and sometimes sugar alcohols), based on the idea that fibre is not digested for energy. It is a concept used mainly in low-carb and keto diets. For general healthy eating you can focus on total carbohydrate and, more importantly, on the quality and fibre content of your carbs." } },
+      { "@type": "Question", "name": "Are all carbs bad?", "acceptedAnswer": { "@type": "Answer", "text": "No. Carbohydrate quality matters far more than quantity for most people. Whole grains, legumes, fruit, and vegetables provide fibre, vitamins, and steady energy, while refined grains and added sugars offer little besides calories. The goal is not to fear carbs but to choose mostly whole-food sources." } }
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sage: #3B6A3A; --sage-dark: #0A3D2A; --sage-mid: #5C8A5C; --sage-light: #EBF2EC; --sage-pale: #F2F7F3;
+      --cream: #E3FFB3; --white: #FFFFFF; --text-dark: #1A2E1E; --text-mid: #4A5568; --text-light: #718096;
+      --placeholder: #AAB0B8; --border: #E2EBE4; --border-mid: #C8D9CC;
+      --shadow-xs: 0 1px 2px rgba(59,106,58,.06); --shadow-sm: 0 1px 6px rgba(59,106,58,.08);
+      --shadow-md: 0 4px 16px rgba(59,106,58,.12); --shadow-lg: 0 8px 32px rgba(59,106,58,.16);
+      --r-sm: 8px; --r: 12px; --r-lg: 20px; --r-xl: 28px;
+      --carb: #D97706; --carb-light: #FEF3C7;
+    }
+    *,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif; color:var(--text-dark); background:var(--sage-pale); line-height:1.6; -webkit-font-smoothing:antialiased; }
+    a { color:inherit; text-decoration:none; }
+    button { cursor:pointer; font-family:inherit; border:none; background:none; }
+
+    .site-nav { position:sticky; top:0; z-index:200; background:rgba(255,255,255,.96); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border-bottom:1px solid var(--border); }
+    .nav-inner { max-width:1200px; margin:0 auto; padding:0 24px; height:68px; display:flex; align-items:center; justify-content:space-between; gap:32px; }
+    .nav-logo { display:flex; align-items:center; flex-shrink:0; }
+    .nav-links { display:flex; align-items:center; gap:28px; list-style:none; flex:1; justify-content:center; }
+    .nav-links a { color:var(--text-mid); font-size:15px; font-weight:500; transition:color .2s; }
+    .nav-links a:hover { color:var(--sage); }
+    .nav-btn { background:var(--sage); color:white; padding:9px 20px; border-radius:var(--r-sm); font-size:14px; font-weight:600; transition:background .2s; }
+    .nav-btn:hover { background:var(--sage-dark); }
+    .nav-hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; padding:8px; margin-left:8px; border-radius:8px; flex-shrink:0; }
+    .nav-hamburger span { display:block; width:22px; height:2.5px; background:var(--text-dark); border-radius:2px; transition:all .2s; }
+    .mobile-menu { display:none; position:fixed; inset:0; z-index:999; }
+    .mobile-menu.open { display:block; }
+    .mobile-overlay { position:absolute; inset:0; background:rgba(0,0,0,.45); backdrop-filter:blur(2px); }
+    .mobile-drawer { position:absolute; top:0; right:0; width:min(300px,84vw); height:100%; background:#fff; display:flex; flex-direction:column; box-shadow:-4px 0 40px rgba(0,0,0,.18); }
+    .mobile-drawer-head { display:flex; align-items:center; justify-content:space-between; padding:18px 20px 14px; border-bottom:1px solid var(--border); }
+    .mobile-drawer-logo { font-size:15px; font-weight:700; }
+    .mobile-close { font-size:20px; padding:4px 8px; color:var(--text-light); border-radius:6px; line-height:1; }
+    .mobile-nav-links { padding:14px 12px; flex:1; display:flex; flex-direction:column; gap:4px; }
+    .mobile-nav-link { display:flex; align-items:center; gap:14px; padding:13px 16px; border-radius:12px; font-size:16px; font-weight:600; color:var(--text-dark); }
+    .mobile-nav-link:hover { background:var(--sage-light); color:var(--sage); }
+    .mobile-link-icon { width:40px; height:40px; background:var(--sage-light); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
+    .mobile-browse-btn { display:block; margin:0 12px 20px; padding:14px; background:var(--sage); color:#fff; border-radius:12px; font-size:15px; font-weight:700; text-align:center; }
+
+    .calc-page { padding:36px 0 72px; }
+    .calc-wrapper { max-width:1200px; margin:0 auto; padding:0 24px; }
+    .breadcrumb { display:flex; align-items:center; gap:8px; font-size:13px; color:var(--text-light); margin-bottom:24px; flex-wrap:wrap; }
+    .breadcrumb a { color:var(--sage); } .breadcrumb a:hover { text-decoration:underline; }
+    .bc-sep { color:var(--border-mid); }
+    .page-header { margin-bottom:28px; }
+    .calc-tag { display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:600; color:var(--sage); background:var(--white); padding:5px 12px; border-radius:20px; margin-bottom:12px; letter-spacing:.3px; border:1px solid var(--border); }
+    .page-header h1 { font-family:'Playfair Display',serif; font-size:clamp(28px,4vw,42px); font-weight:700; color:var(--text-dark); letter-spacing:-.5px; margin-bottom:10px; line-height:1.15; }
+    .page-header p { font-size:15px; color:var(--text-mid); line-height:1.7; max-width:700px; }
+
+    .calc-wrapper-inner { display:grid; grid-template-columns:480px 1fr; gap:24px; align-items:start; }
+    .form-card { background:white; border-radius:var(--r-xl); box-shadow:var(--shadow-lg); overflow:hidden; }
+    .form-card-header { padding:22px 28px 16px; display:flex; align-items:center; justify-content:space-between; gap:12px; border-bottom:1px solid var(--border); }
+    .form-card-title { font-size:15px; font-weight:700; color:var(--text-dark); }
+    .unit-toggle { display:flex; background:var(--sage-pale); border-radius:var(--r-sm); padding:3px; gap:3px; }
+    .unit-btn { padding:6px 12px; border-radius:6px; font-size:12px; font-weight:600; color:var(--text-mid); background:transparent; transition:all .15s; }
+    .unit-btn.active { background:white; color:var(--sage); box-shadow:var(--shadow-xs); }
+    .form-body { padding:22px 28px 28px; }
+    .q-block { margin-bottom:18px; }
+    .q-label { font-size:13px; font-weight:600; color:var(--text-dark); margin-bottom:9px; }
+    .pill-grid { display:grid; gap:6px; }
+    .pill-grid-2 { grid-template-columns:1fr 1fr; }
+    .pill-grid-3 { grid-template-columns:repeat(3,1fr); }
+    .pill-btn { padding:10px 8px; border-radius:var(--r-sm); border:1.5px solid var(--border); background:white; font-size:12px; font-weight:600; color:var(--text-mid); text-align:center; transition:all .15s; line-height:1.3; }
+    .pill-btn:hover { border-color:var(--sage-mid); background:var(--sage-pale); color:var(--sage); }
+    .pill-btn.selected { border-color:var(--sage); background:var(--sage-light); color:var(--sage); }
+    .pill-btn small { display:block; font-size:10px; font-weight:500; color:var(--text-light); margin-top:2px; }
+    .pill-btn.selected small { color:var(--sage-mid); }
+    .measure-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .measure-group { display:flex; flex-direction:column; gap:5px; }
+    .measure-label { font-size:11px; font-weight:700; color:var(--text-light); text-transform:uppercase; letter-spacing:.4px; }
+    .measure-input { width:100%; padding:11px 14px; border:1.5px solid var(--border); border-radius:var(--r); font-size:18px; font-weight:700; color:var(--text-dark); text-align:center; -moz-appearance:textfield; transition:border-color .2s,box-shadow .2s; }
+    .measure-input::-webkit-inner-spin-button,.measure-input::-webkit-outer-spin-button { -webkit-appearance:none; }
+    .measure-input:focus { outline:none; border-color:var(--sage); box-shadow:0 0 0 3px rgba(59,106,58,.1); }
+    .measure-input::placeholder { font-size:15px; font-weight:400; color:var(--placeholder); }
+    .hidden { display:none; }
+    .err-banner { display:none; background:#FEF2F2; border:1px solid #FECACA; border-radius:var(--r-sm); padding:10px 14px; font-size:13px; color:#DC2626; margin-bottom:12px; font-weight:500; }
+    .calc-btn { width:100%; background:var(--sage); color:white; padding:14px; border-radius:var(--r); font-size:16px; font-weight:700; transition:all .18s; margin-top:6px; }
+    .calc-btn:hover { background:var(--sage-dark); transform:translateY(-1px); box-shadow:var(--shadow-md); }
+
+    .results-col { display:flex; flex-direction:column; gap:20px; }
+    .result-card { background:white; border-radius:var(--r-xl); box-shadow:var(--shadow-lg); overflow:hidden; display:none; }
+    .result-card.visible { display:block; animation:slideUp .35s ease; }
+    @keyframes slideUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+    .result-band { height:6px; background:linear-gradient(90deg,#FBBF24,var(--carb)); }
+    .result-body { padding:24px; }
+    .hero-num { display:flex; align-items:flex-end; gap:10px; margin-bottom:2px; }
+    .hero-big { font-size:60px; font-weight:800; letter-spacing:-3px; line-height:1; color:var(--carb); }
+    .hero-unit { font-size:20px; color:var(--text-light); padding-bottom:8px; font-weight:600; }
+    .hero-label { font-size:13px; color:var(--text-light); margin-bottom:18px; }
+    .range-note { font-size:12px; color:var(--text-mid); background:var(--carb-light); border-radius:var(--r-sm); padding:8px 12px; margin-bottom:20px; }
+    .stat-boxes { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:20px; padding-bottom:20px; border-bottom:1px solid var(--border); }
+    .stat-box { background:var(--sage-pale); border-radius:var(--r); padding:14px 16px; }
+    .sb-val { font-size:22px; font-weight:800; color:var(--text-dark); line-height:1; margin-bottom:4px; }
+    .sb-lbl { font-size:11px; color:var(--text-light); line-height:1.4; }
+    .macro-bar { display:flex; height:26px; border-radius:8px; overflow:hidden; margin-bottom:8px; }
+    .macro-seg { display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; color:white; }
+    .macro-legend { display:flex; gap:16px; margin-bottom:20px; padding-bottom:20px; border-bottom:1px solid var(--border); }
+    .macro-leg-item { display:flex; align-items:center; gap:6px; font-size:11px; color:var(--text-mid); }
+    .macro-dot { width:10px; height:10px; border-radius:3px; }
+    .msg-block { border-radius:var(--r); padding:18px; margin-bottom:16px; border-left:4px solid var(--carb); background:var(--carb-light); }
+    .msg-block h3 { font-size:14px; font-weight:700; margin-bottom:6px; color:var(--text-dark); }
+    .msg-block p { font-size:13px; color:var(--text-mid); line-height:1.7; }
+    .tips-title { font-size:13px; font-weight:700; color:var(--text-dark); margin-bottom:10px; }
+    .tips-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
+    .tips-list li { display:flex; align-items:flex-start; gap:8px; font-size:13px; color:var(--text-mid); line-height:1.6; }
+    .tips-list li::before { content:'✤'; color:var(--sage); font-size:10px; margin-top:3px; flex-shrink:0; }
+    .info-card { background:white; border-radius:var(--r-xl); box-shadow:var(--shadow-sm); padding:22px 24px; }
+    .info-card h3 { font-size:14px; font-weight:700; margin-bottom:8px; color:var(--text-dark); }
+    .info-card p { font-size:13px; color:var(--text-mid); line-height:1.75; }
+    .ref-table { width:100%; border-collapse:collapse; margin-top:12px; font-size:12px; }
+    .ref-table th { background:var(--sage-pale); padding:7px 10px; text-align:left; font-size:11px; font-weight:700; color:var(--text-mid); text-transform:uppercase; letter-spacing:.4px; }
+    .ref-table td { padding:8px 10px; border-bottom:1px solid var(--border); color:var(--text-mid); vertical-align:top; }
+    .ref-table tr:last-child td { border-bottom:none; }
+    .related-title { font-size:16px; font-weight:700; color:var(--text-dark); margin-bottom:12px; }
+    .related-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .related-card { background:white; border:1.5px solid var(--border); border-radius:var(--r); padding:14px 16px; display:flex; align-items:center; gap:12px; transition:all .18s; }
+    .related-card:hover { border-color:var(--sage); box-shadow:var(--shadow-sm); transform:translateY(-1px); }
+    .related-icon { width:36px; height:36px; background:var(--sage-light); border-radius:9px; display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0; }
+    .related-info strong { display:block; font-size:13px; font-weight:600; }
+    .related-info span { font-size:11px; color:var(--text-light); }
+    .note-block { background:var(--cream); border-radius:var(--r); padding:13px 16px; font-size:12px; color:var(--text-light); line-height:1.7; display:flex; gap:8px; align-items:flex-start; }
+    .note-block svg { flex-shrink:0; margin-top:1px; }
+
+    .site-footer { background:var(--text-dark); color:#94A99A; padding:48px 0 0; margin-top:48px; }
+    .footer-inner { max-width:1200px; margin:0 auto; padding:0 24px; }
+    .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:48px; padding-bottom:40px; }
+    .footer-logo { display:flex; align-items:center; gap:8px; margin-bottom:12px; }
+    .footer-brand p { font-size:14px; line-height:1.7; max-width:260px; color:#7A958E; }
+    .footer-col h5 { color:white; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.8px; margin-bottom:14px; }
+    .footer-col ul { list-style:none; } .footer-col li { margin-bottom:8px; }
+    .footer-col a { font-size:14px; color:#7A958E; transition:color .2s; } .footer-col a:hover { color:white; }
+    .footer-bottom { border-top:1px solid rgba(255,255,255,.08); padding:22px 0; display:flex; flex-direction:column; gap:6px; }
+    .footer-disclaimer { font-size:12px; color:#5A7568; line-height:1.7; }
+    .footer-copy { font-size:12px; color:#5A7568; }
+
+    .calc-editorial { padding:36px 0 12px; border-top:2px solid #E2EAE4; margin-top:40px; }
+    .calc-editorial-inner { max-width:800px; margin:0 auto; padding:0 24px; }
+    .editorial-h2 { font-size:21px; font-weight:700; color:#1a2e1a; margin:0 0 16px; line-height:1.3; }
+    .editorial-intro { font-size:15px; color:#374151; line-height:1.8; margin-bottom:20px; }
+    .editorial-h3 { font-size:13px; font-weight:700; color:#3B6A3A; text-transform:uppercase; letter-spacing:.08em; margin:26px 0 10px; }
+    .editorial-steps { list-style:none; padding:0; margin:0 0 4px; counter-reset:steps; }
+    .editorial-steps li { counter-increment:steps; display:flex; gap:12px; margin-bottom:12px; font-size:14px; color:#374151; line-height:1.7; }
+    .editorial-steps li::before { content:counter(steps); display:flex; align-items:center; justify-content:center; min-width:24px; height:24px; background:#3B6A3A; color:#fff; border-radius:50%; font-size:12px; font-weight:700; flex-shrink:0; margin-top:2px; }
+    .faq-item { border:1px solid #C8D9CC; border-radius:8px; margin-bottom:8px; overflow:hidden; }
+    .faq-item summary { padding:13px 16px; font-size:14px; font-weight:600; color:#1a2e1a; cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center; background:#F9FCF9; gap:12px; }
+    .faq-item summary::-webkit-details-marker { display:none; }
+    .faq-item summary::after { content:"\002B"; font-size:16px; color:#3B6A3A; flex-shrink:0; }
+    .faq-item[open] summary::after { content:"\2212"; }
+    .faq-item[open] summary { background:#EBF2EC; }
+    .faq-answer { padding:4px 16px 14px; font-size:14px; color:#4A5568; line-height:1.75; border-top:1px solid #E2EAE4; background:#fff; }
+    .refs { font-size:12px; color:var(--text-light); line-height:1.7; margin-top:8px; }
+
+    @media (max-width:900px) {
+      .calc-wrapper-inner { grid-template-columns:1fr; }
+      .footer-grid { grid-template-columns:1fr 1fr; } .footer-brand { grid-column:1/-1; }
+    }
+    @media (max-width:660px) {
+      .nav-links,.nav-btn { display:none; } .nav-hamburger { display:flex; }
+      .related-grid { grid-template-columns:1fr; } .stat-boxes { grid-template-columns:1fr; }
+    }
+    @media (max-width:520px) { .footer-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><img src="assets/logo.png" alt="SageMyHealth" style="height:54px;width:auto;object-fit:contain;" /></a>
+    <ul class="nav-links">
+      <li><a href="../index.html#categories">Calculators</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../blog.html">Health Guides</a></li>
+    </ul>
+    <a href="../index.html#categories" class="nav-btn">Browse All</a>
+    <button class="nav-hamburger" id="nav-hamburger" onclick="openMobileMenu()" aria-label="Open navigation menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site navigation">
+  <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-drawer">
+    <div class="mobile-drawer-head"><span class="mobile-drawer-logo">SageMyHealth</span><button class="mobile-close" onclick="closeMobileMenu()" aria-label="Close menu">&#x2715;</button></div>
+    <nav class="mobile-nav-links">
+      <a href="../index.html#categories" class="mobile-nav-link" onclick="closeMobileMenu()"><span class="mobile-link-icon">&#x1F9EE;</span>Calculators</a>
+      <a href="../about.html" class="mobile-nav-link" onclick="closeMobileMenu()"><span class="mobile-link-icon">&#x1F49A;</span>About</a>
+      <a href="../blog.html" class="mobile-nav-link" onclick="closeMobileMenu()"><span class="mobile-link-icon">&#x1F4D6;</span>Health Guides</a>
+    </nav>
+    <a href="../index.html#categories" class="mobile-browse-btn" onclick="closeMobileMenu()">Browse All Calculators &#x2192;</a>
+  </div>
+</div>
+
+<main class="calc-page">
+  <div class="calc-wrapper">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="bc-sep">›</span>
+      <a href="../categories/nutrition-diet.html">Nutrition &amp; Diet</a>
+      <span class="bc-sep">›</span>
+      <span>Carb Calculator</span>
+    </nav>
+
+    <header class="page-header">
+      <div class="calc-tag">🥗 Nutrition &amp; Diet</div>
+      <h1>Carb Calculator</h1>
+      <p>How many carbohydrates you need depends on your calorie requirement, your activity, and your goal — not on a one-size-fits-all number. Enter your details to get a personalised daily carb target in grams, a fibre goal, and how it fits into your overall plate.</p>
+    </header>
+
+    <div class="calc-wrapper-inner">
+      <!-- FORM -->
+      <div class="form-card">
+        <div class="form-card-header">
+          <div class="form-card-title">Your details</div>
+          <div class="unit-toggle">
+            <button class="unit-btn active" id="u-imp" onclick="setUnit('imp')">Imperial</button>
+            <button class="unit-btn" id="u-met" onclick="setUnit('met')">Metric</button>
+          </div>
+        </div>
+        <div class="form-body">
+
+          <div class="q-block">
+            <div class="q-label">Biological sex</div>
+            <div class="pill-grid pill-grid-2">
+              <button class="pill-btn" data-q="sex" data-val="male" onclick="pick(this,'sex')">Male</button>
+              <button class="pill-btn" data-q="sex" data-val="female" onclick="pick(this,'sex')">Female</button>
+            </div>
+          </div>
+
+          <div class="measure-row" style="margin-bottom:18px;">
+            <div class="measure-group">
+              <div class="measure-label">Age</div>
+              <input class="measure-input" type="number" id="age" placeholder="30" min="14" max="100" />
+              <div class="measure-label" style="text-align:center;color:var(--placeholder);">years</div>
+            </div>
+            <div class="measure-group">
+              <div class="measure-label">Weight</div>
+              <input class="measure-input" type="number" id="weight" placeholder="160" min="1" />
+              <div class="measure-label" id="wt-unit" style="text-align:center;color:var(--placeholder);">lb</div>
+            </div>
+          </div>
+
+          <div class="q-block" id="ht-imp">
+            <div class="q-label">Height</div>
+            <div class="measure-row">
+              <div class="measure-group"><input class="measure-input" type="number" id="ft" placeholder="5" min="3" max="8" /><div class="measure-label" style="text-align:center;color:var(--placeholder);">feet</div></div>
+              <div class="measure-group"><input class="measure-input" type="number" id="in" placeholder="9" min="0" max="11" /><div class="measure-label" style="text-align:center;color:var(--placeholder);">inches</div></div>
+            </div>
+          </div>
+          <div class="q-block hidden" id="ht-met">
+            <div class="q-label">Height</div>
+            <input class="measure-input" type="number" id="cm" placeholder="175" min="100" max="250" />
+            <div class="measure-label" style="text-align:center;color:var(--placeholder);margin-top:5px;">cm</div>
+          </div>
+
+          <div class="q-block">
+            <div class="q-label">Activity level</div>
+            <div class="pill-grid pill-grid-3">
+              <button class="pill-btn" data-q="act" data-val="1.2" onclick="pick(this,'act')">Sedentary<small>desk job</small></button>
+              <button class="pill-btn" data-q="act" data-val="1.375" onclick="pick(this,'act')">Light<small>1–3 days</small></button>
+              <button class="pill-btn selected" data-q="act" data-val="1.55" onclick="pick(this,'act')">Moderate<small>3–5 days</small></button>
+              <button class="pill-btn" data-q="act" data-val="1.725" onclick="pick(this,'act')">Very active<small>6–7 days</small></button>
+              <button class="pill-btn" data-q="act" data-val="1.9" onclick="pick(this,'act')">Athlete<small>2×/day</small></button>
+            </div>
+          </div>
+
+          <div class="q-block">
+            <div class="q-label">Your goal</div>
+            <div class="pill-grid pill-grid-3">
+              <button class="pill-btn" data-q="goal" data-val="-500" onclick="pick(this,'goal')">Lose weight<small>−500 kcal</small></button>
+              <button class="pill-btn selected" data-q="goal" data-val="0" onclick="pick(this,'goal')">Maintain<small>stay put</small></button>
+              <button class="pill-btn" data-q="goal" data-val="300" onclick="pick(this,'goal')">Gain / build<small>+300 kcal</small></button>
+            </div>
+          </div>
+
+          <div class="q-block">
+            <div class="q-label">Carb approach</div>
+            <div class="pill-grid pill-grid-2">
+              <button class="pill-btn selected" data-q="approach" data-val="50" onclick="pick(this,'approach')">Balanced<small>50% of calories</small></button>
+              <button class="pill-btn" data-q="approach" data-val="60" onclick="pick(this,'approach')">Higher-carb<small>60% · endurance</small></button>
+              <button class="pill-btn" data-q="approach" data-val="30" onclick="pick(this,'approach')">Lower-carb<small>30%</small></button>
+              <button class="pill-btn" data-q="approach" data-val="10" onclick="pick(this,'approach')">Very low / keto<small>10%</small></button>
+            </div>
+          </div>
+
+          <div class="err-banner" id="err-banner">Please fill in your sex, age, height, and weight.</div>
+          <button class="calc-btn" onclick="calculate()">Calculate my carb target</button>
+        </div>
+      </div>
+
+      <!-- RESULTS -->
+      <div class="results-col">
+        <div class="result-card" id="result-card">
+          <div class="result-band"></div>
+          <div class="result-body">
+            <div class="hero-num"><div class="hero-big" id="r-carbs">—</div><div class="hero-unit">g / day</div></div>
+            <div class="hero-label">Your daily carbohydrate target</div>
+            <div class="range-note" id="range-note">—</div>
+
+            <div class="stat-boxes">
+              <div class="stat-box"><div class="sb-val" id="r-cals">—</div><div class="sb-lbl">Daily calorie target</div></div>
+              <div class="stat-box"><div class="sb-val" id="r-carbcal">—</div><div class="sb-lbl">Calories from carbs</div></div>
+              <div class="stat-box"><div class="sb-val" id="r-fiber">—</div><div class="sb-lbl">Daily fibre goal</div></div>
+              <div class="stat-box"><div class="sb-val" id="r-pct">—</div><div class="sb-lbl">Share of your calories</div></div>
+            </div>
+
+            <div class="macro-bar" id="macro-bar"></div>
+            <div class="macro-legend">
+              <div class="macro-leg-item"><span class="macro-dot" style="background:var(--carb)"></span>Carbs</div>
+              <div class="macro-leg-item"><span class="macro-dot" style="background:#3B6A3A"></span>Protein</div>
+              <div class="macro-leg-item"><span class="macro-dot" style="background:#5C8A5C"></span>Fat</div>
+            </div>
+
+            <div class="msg-block"><h3 id="msg-heading">—</h3><p id="msg-body">—</p></div>
+            <p class="tips-title">To make your carbs count:</p>
+            <ul class="tips-list" id="tips-list"></ul>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <h3>How many carbs do you actually need?</h3>
+          <p>There's no single right number — it's a range that flexes with your calories, activity, and preference. The IOM's Acceptable Macronutrient Distribution Range (AMDR) is the anchor most guidelines use.</p>
+          <table class="ref-table">
+            <tr><th>Approach</th><th>% of calories</th><th>Best for</th></tr>
+            <tr><td>Higher-carb</td><td>55–65%</td><td>Endurance &amp; high training</td></tr>
+            <tr><td>Balanced</td><td>45–55%</td><td>Most people</td></tr>
+            <tr><td>Lower-carb</td><td>25–40%</td><td>Appetite &amp; blood-sugar control</td></tr>
+            <tr><td>Very low / keto</td><td>5–10%</td><td>Specific medical or personal plans</td></tr>
+          </table>
+        </div>
+
+        <div class="related-section">
+          <p class="related-title">You might also like</p>
+          <div class="related-grid">
+            <a href="tdee.html" class="related-card"><div class="related-icon">🔥</div><div class="related-info"><strong>Daily Calories (TDEE)</strong><span>Your full calorie need</span></div></a>
+            <a href="fat-intake-calculator.html" class="related-card"><div class="related-icon">🥑</div><div class="related-info"><strong>Fat Intake</strong><span>Your daily fat target</span></div></a>
+            <a href="blood-glucose.html" class="related-card"><div class="related-icon">💉</div><div class="related-info"><strong>Blood Glucose</strong><span>Carbs &amp; blood sugar</span></div></a>
+            <a href="healthy-weight.html" class="related-card"><div class="related-icon">🎯</div><div class="related-info"><strong>Healthy Weight</strong><span>Your ideal range</span></div></a>
+          </div>
+        </div>
+
+        <div class="note-block">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#9CA3AF" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span><strong>NOTE:</strong> These are general estimates for healthy adults based on population equations and the AMDR. They aren't medical or dietary advice. If you have diabetes, kidney disease, are pregnant, or follow a therapeutic diet, please work with a registered dietitian or your doctor.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDITORIAL -->
+  <section class="calc-editorial">
+    <div class="calc-editorial-inner">
+      <h2 class="editorial-h2">How to Set Your Carbohydrate Intake</h2>
+      <p class="editorial-intro">Carbohydrate is the body's most convenient fuel — especially for the brain and for higher-intensity exercise. Yet it's also the macronutrient people worry about most, largely because the conversation has fixated on quantity while ignoring quality. As a starting principle: your total carbohydrate should be set by your calorie needs and how you train, but the <em>type</em> of carbohydrate you choose matters more than the exact gram total for almost everyone. This calculator gives you a personalised target using the Mifflin-St Jeor equation to estimate your calories, then applies your chosen share of carbohydrate within the established 45–65% range (or lower, if you prefer).</p>
+      <p class="editorial-h3">Why the Number Is a Range, Not a Rule</p>
+      <p class="editorial-intro">A marathoner and a desk worker of the same weight have very different carbohydrate needs, because carbohydrate is the fuel that's burned fastest during hard effort. That's why the healthy range is wide. Active people generally feel and perform better toward the higher end; people focused on appetite control or steadier blood sugar often prefer the lower end. Both can be perfectly healthy — the deciding factors are your energy needs, your response, and your ability to stick with it.</p>
+      <p class="editorial-h3">Making Your Carbs Work Harder</p>
+      <ol class="editorial-steps">
+        <li><strong>Prioritise fibre.</strong> Aim for the fibre target above (about 14 grams per 1,000 calories). Most of the health benefit of carbohydrate-rich foods travels with their fibre — whole grains, legumes, fruit, and vegetables.</li>
+        <li><strong>Choose whole over refined.</strong> Swap white bread, white rice, and sugary drinks for their whole-food equivalents. Same macro category, very different effect on energy and fullness.</li>
+        <li><strong>Time carbs around activity.</strong> If you train hard, placing more of your carbohydrate near workouts supports performance and recovery.</li>
+        <li><strong>Keep protein steady.</strong> Whatever your carb level, adequate protein protects muscle and helps with fullness — set that first, then flex carbs and fat around it.</li>
+      </ol>
+      <p class="editorial-h3">Frequently Asked Questions</p>
+      <details class="faq-item"><summary>How many carbs should I eat per day?</summary><div class="faq-answer">Most adults do well with 45–65% of calories from carbohydrate — roughly 225–325 g on a 2,000-calorie diet. Your ideal number depends on your calorie needs, activity, and goals. Use the calculator above for a personalised figure.</div></details>
+      <details class="faq-item"><summary>How many carbs to lose weight?</summary><div class="faq-answer">Weight loss comes from an overall calorie deficit, not from cutting carbs specifically. A moderate reduction (around 30–40% of calories) helps some people control appetite, but a balanced approach works too. Focus on fibre-rich carbs and adequate protein.</div></details>
+      <details class="faq-item"><summary>What are net carbs?</summary><div class="faq-answer">Net carbs are total carbohydrate minus fibre (and sugar alcohols), used mainly in low-carb and keto diets. For general healthy eating, total carbohydrate and, above all, carb quality matter more.</div></details>
+      <details class="faq-item"><summary>Are carbs bad for you?</summary><div class="faq-answer">No — quality matters far more than quantity. Whole grains, legumes, fruit and vegetables are strongly linked to better health, while refined grains and added sugars are the ones worth limiting.</div></details>
+      <p class="editorial-h3">Sources &amp; References</p>
+      <p class="refs">
+        Institute of Medicine. Dietary Reference Intakes: Acceptable Macronutrient Distribution Ranges (AMDR), 2005.<br>
+        US Dietary Guidelines for Americans, 2020–2025.<br>
+        Mifflin MD, St Jeor ST, et al. A new predictive equation for resting energy expenditure. <em>Am J Clin Nutr.</em> 1990;51(2):241–247.
+      </p>
+      <p class="refs" style="margin-top:14px;">Content prepared by the <strong>SageMyHealth editorial team</strong>. Last reviewed: <strong>July 2026</strong>.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo"><img src="assets/logo-white.png" alt="SageMyHealth" style="height:45px;width:auto;object-fit:contain;" /></div>
+        <p>Free, trusted health calculators with warm guidance — helping you understand your numbers.</p>
+      </div>
+      <div class="footer-col"><h5>Calculators</h5><ul>
+        <li><a href="tdee.html">Daily Calories</a></li>
+        <li><a href="fat-intake-calculator.html">Fat Intake</a></li>
+        <li><a href="water-intake.html">Water Intake</a></li>
+        <li><a href="bmi.html">BMI</a></li>
+      </ul></div>
+      <div class="footer-col"><h5>Categories</h5><ul>
+        <li><a href="../categories/nutrition-diet.html">Nutrition &amp; Diet</a></li>
+        <li><a href="../categories/weight-body.html">Weight &amp; Body</a></li>
+        <li><a href="../categories/fitness-exercise.html">Fitness &amp; Exercise</a></li>
+        <li><a href="../index.html#categories">All Categories</a></li>
+      </ul></div>
+      <div class="footer-col"><h5>Info</h5><ul>
+        <li><a href="../about.html">About Us</a></li>
+        <li><a href="../privacy.html">Privacy Policy</a></li>
+        <li><a href="../terms.html">Terms of Use</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-disclaimer"><strong style="color:#7A958E">Medical Disclaimer:</strong> SageMyHealth calculators are for informational purposes only and are not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider.</p>
+      <p class="footer-copy">© 2026 SageMyHealth.com — All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function openMobileMenu(){document.getElementById('mobile-menu').classList.add('open');document.body.style.overflow='hidden';}
+  function closeMobileMenu(){document.getElementById('mobile-menu').classList.remove('open');document.body.style.overflow='';}
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMobileMenu();});
+
+  var A = { sex:null, act:'1.55', goal:'0', approach:'50' };
+  var unit = 'imp';
+
+  function setUnit(u){
+    unit=u;
+    document.getElementById('u-imp').classList.toggle('active', u==='imp');
+    document.getElementById('u-met').classList.toggle('active', u==='met');
+    document.getElementById('ht-imp').classList.toggle('hidden', u!=='imp');
+    document.getElementById('ht-met').classList.toggle('hidden', u==='imp');
+    document.getElementById('wt-unit').textContent = u==='imp' ? 'lb' : 'kg';
+  }
+  function pick(btn,q){
+    document.querySelectorAll('.pill-btn[data-q="'+q+'"]').forEach(function(b){b.classList.remove('selected');});
+    btn.classList.add('selected'); A[q]=btn.dataset.val;
+  }
+
+  function calculate(){
+    var err=document.getElementById('err-banner');
+    var age=parseFloat(document.getElementById('age').value);
+    var weight=parseFloat(document.getElementById('weight').value);
+    var kg, cm;
+    if(unit==='imp'){
+      var ft=parseFloat(document.getElementById('ft').value), inch=parseFloat(document.getElementById('in').value)||0;
+      if(!A.sex||!age||!weight||!ft){ err.style.display='block'; err.scrollIntoView({behavior:'smooth',block:'center'}); return; }
+      cm=(ft*12+inch)*2.54; kg=weight/2.20462;
+    } else {
+      cm=parseFloat(document.getElementById('cm').value);
+      if(!A.sex||!age||!weight||!cm){ err.style.display='block'; err.scrollIntoView({behavior:'smooth',block:'center'}); return; }
+      kg=weight;
+    }
+    err.style.display='none';
+
+    // Mifflin-St Jeor BMR
+    var bmr = 10*kg + 6.25*cm - 5*age + (A.sex==='male' ? 5 : -161);
+    var tdee = bmr * parseFloat(A.act);
+    var target = tdee + parseFloat(A.goal);
+    if(target < 1200) target = 1200; // safety floor
+    var pct = parseFloat(A.approach)/100;
+    var carbCal = target*pct;
+    var carbG = Math.round(carbCal/4);
+    var fiber = Math.round(target/1000*14);
+
+    document.getElementById('r-carbs').textContent = carbG;
+    document.getElementById('r-cals').textContent = Math.round(target);
+    document.getElementById('r-carbcal').textContent = Math.round(carbCal)+' kcal';
+    document.getElementById('r-fiber').textContent = fiber+' g';
+    document.getElementById('r-pct').textContent = Math.round(pct*100)+'%';
+
+    // gram range for the chosen approach (±5% of calories, bounded)
+    var loPct = Math.max(0.05, pct-0.05), hiPct = Math.min(0.70, pct+0.05);
+    var loG = Math.round(target*loPct/4), hiG = Math.round(target*hiPct/4);
+    document.getElementById('range-note').textContent = 'A sensible working range for you is about '+loG+'–'+hiG+' g of carbohydrate per day. Adjust with your energy and hunger.';
+
+    // macro bar: carbs (chosen), protein (1.6 g/kg), fat (remainder)
+    var proteinG = Math.round(1.6*kg), proteinCal = proteinG*4;
+    var fatCal = target - carbCal - proteinCal; if(fatCal<target*0.15) fatCal=target*0.15;
+    var tot = carbCal + proteinCal + fatCal;
+    var cP=Math.round(carbCal/tot*100), pP=Math.round(proteinCal/tot*100), fP=100-cP-pP;
+    document.getElementById('macro-bar').innerHTML =
+      '<div class="macro-seg" style="width:'+cP+'%;background:var(--carb)">'+cP+'%</div>'+
+      '<div class="macro-seg" style="width:'+pP+'%;background:#3B6A3A">'+pP+'%</div>'+
+      '<div class="macro-seg" style="width:'+fP+'%;background:#5C8A5C">'+fP+'%</div>';
+
+    var mh=document.getElementById('msg-heading'), mb=document.getElementById('msg-body');
+    var app=parseInt(A.approach,10);
+    if(app>=60){ mh.textContent='A higher-carb plan to fuel training'; mb.textContent='At '+carbG+' g a day, carbohydrate is your main fuel — ideal if you train hard or do endurance work. Concentrate whole-food carbs around your sessions and keep fibre high.'; }
+    else if(app>=45){ mh.textContent='A balanced plan that suits most people'; mb.textContent='At '+carbG+' g a day you\'re in the classic balanced range. This is flexible and sustainable — focus on carb quality and hitting your fibre goal of '+fiber+' g.'; }
+    else if(app>=25){ mh.textContent='A lower-carb plan for appetite & blood sugar'; mb.textContent='At '+carbG+' g a day you\'re reducing carbs moderately, which many people find helps with fullness and steadier energy. Make the carbs you do eat count — vegetables, legumes, and fruit.'; }
+    else { mh.textContent='A very-low-carb / keto-level plan'; mb.textContent='At '+carbG+' g a day this is a ketogenic-level intake. It works for some, but it\'s restrictive and best done with guidance — especially if you have any medical condition. Watch fibre and micronutrients closely.'; }
+
+    var tips=document.getElementById('tips-list'); tips.innerHTML='';
+    var T=[
+      'Aim for your fibre target of about '+fiber+' g a day — it\'s where most of the benefit lives.',
+      'Choose whole-food carbs (oats, beans, fruit, whole grains) over refined and sugary ones.',
+      'Set protein first (around '+proteinG+' g for you), then flex carbs and fat around it.',
+    ];
+    if(app>=55) T.push('Place more of your carbs near workouts to fuel and recover.');
+    if(app<=30) T.push('Load up on non-starchy vegetables to keep volume and fibre high on fewer carbs.');
+    if(parseFloat(A.goal)<0) T.push('For weight loss, the calorie deficit does the work — keep protein high to protect muscle.');
+    T.slice(0,5).forEach(function(t){var li=document.createElement('li');li.textContent=t;tips.appendChild(li);});
+
+    var card=document.getElementById('result-card');
+    card.classList.add('visible');
+    card.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+</script>
+</body>
+</html>

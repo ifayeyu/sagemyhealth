@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X6K2H9YW2V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X6K2H9YW2V');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lung Cancer Risk Calculator — Do You Qualify for Screening? | SageMyHealth</title>
+  <meta name="description" content="Estimate your lung cancer risk and check whether you meet the USPSTF criteria for low-dose CT screening. Enter your age and smoking history for a pack-year total, risk tier, and clear next steps." />
+  <meta name="keywords" content="lung cancer risk calculator, lung cancer screening eligibility, pack years calculator, USPSTF lung screening, low dose CT" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://sagemyhealth.com/calculators/lung-cancer-risk.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SageMyHealth" />
+  <meta property="og:title" content="Lung Cancer Risk Calculator — Do You Qualify for Screening?" />
+  <meta property="og:description" content="Estimate your lung cancer risk and check whether you meet the USPSTF criteria for low-dose CT screening. Pack-year total, risk tier, and clear next steps." />
+  <meta property="og:url" content="https://sagemyhealth.com/calculators/lung-cancer-risk.html" />
+  <meta property="og:image" content="https://sagemyhealth.com/calculators/assets/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Lung Cancer Risk Calculator — Do You Qualify for Screening?" />
+  <meta name="twitter:description" content="Estimate your lung cancer risk and check whether you meet the USPSTF criteria for low-dose CT screening." />
+  <meta name="twitter:image" content="https://sagemyhealth.com/calculators/assets/logo.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "name": "Lung Cancer Risk Calculator",
+    "description": "Estimate your lung cancer risk and check whether you meet the USPSTF criteria for low-dose CT screening.",
+    "url": "https://sagemyhealth.com/calculators/lung-cancer-risk.html",
+    "publisher": { "@type": "Organization", "name": "SageMyHealth", "url": "https://sagemyhealth.com/" },
+    "isAccessibleForFree": true,
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sagemyhealth.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Cancer Risk", "item": "https://sagemyhealth.com/categories/cancer-risk.html" },
+        { "@type": "ListItem", "position": 3, "name": "Lung Cancer Risk Calculator", "item": "https://sagemyhealth.com/calculators/lung-cancer-risk.html" }
+      ]
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "What is a pack-year?", "acceptedAnswer": { "@type": "Answer", "text": "A pack-year is a way of measuring how much someone has smoked over time. One pack-year equals smoking 20 cigarettes (one pack) a day for one year. It is calculated as (cigarettes per day divided by 20) multiplied by the number of years smoked. For example, smoking 10 cigarettes a day for 40 years is 20 pack-years." } },
+      { "@type": "Question", "name": "Who qualifies for lung cancer screening?", "acceptedAnswer": { "@type": "Answer", "text": "The 2021 USPSTF guidance recommends annual low-dose CT screening for adults aged 50 to 80 who have a 20 pack-year or greater smoking history and who currently smoke or have quit within the past 15 years. Screening can stop once a person has not smoked for 15 years or develops a health problem that limits life expectancy." } },
+      { "@type": "Question", "name": "Does quitting smoking lower my lung cancer risk?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, substantially. Risk begins to fall within a few years of quitting and continues to drop the longer you stay smoke-free, though it never returns fully to that of a never-smoker. Quitting at any age and any pack-year history meaningfully lowers your risk." } },
+      { "@type": "Question", "name": "Can never-smokers get lung cancer?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Around 10 to 20 percent of lung cancers occur in people who never smoked. Radon exposure, secondhand smoke, air pollution, occupational carcinogens such as asbestos, and family history all contribute. Never-smokers are not eligible for routine CT screening but should still discuss any persistent respiratory symptoms with a doctor." } }
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sage: #3B6A3A; --sage-dark: #0A3D2A; --sage-mid: #5C8A5C; --sage-light: #EBF2EC; --sage-pale: #F2F7F3;
+      --cream: #E3FFB3; --white: #FFFFFF; --text-dark: #1A2E1E; --text-mid: #4A5568; --text-light: #718096;
+      --placeholder: #AAB0B8; --border: #E2EBE4; --border-mid: #C8D9CC;
+      --shadow-xs: 0 1px 2px rgba(59,106,58,.06); --shadow-sm: 0 1px 6px rgba(59,106,58,.08);
+      --shadow-md: 0 4px 16px rgba(59,106,58,.12); --shadow-lg: 0 8px 32px rgba(59,106,58,.16);
+      --r-sm: 8px; --r: 12px; --r-lg: 20px; --r-xl: 28px;
+    }
+    *,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif; color:var(--text-dark); background:var(--sage-pale); line-height:1.6; -webkit-font-smoothing:antialiased; }
+    a { color:inherit; text-decoration:none; }
+    button { cursor:pointer; font-family:inherit; border:none; background:none; }
+
+    .site-nav { position:sticky; top:0; z-index:200; background:rgba(255,255,255,.96); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border-bottom:1px solid var(--border); }
+    .nav-inner { max-width:1200px; margin:0 auto; padding:0 24px; height:68px; display:flex; align-items:center; justify-content:space-between; gap:32px; }
+    .nav-logo { display:flex; align-items:center; flex-shrink:0; }
+    .nav-links { display:flex; align-items:center; gap:28px; list-style:none; flex:1; justify-content:center; }
+    .nav-links a { color:var(--text-mid); font-size:15px; font-weight:500; transition:color .2s; }
+    .nav-links a:hover { color:var(--sage); }
+    .nav-btn { background:var(--sage); color:white; padding:9px 20px; border-radius:var(--r-sm); font-size:14px; font-weight:600; transition:background .2s; }
+    .nav-btn:hover { background:var(--sage-dark); }
+    .nav-hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; padding:8px; margin-left:8px; border-radius:8px; flex-shrink:0; }
+    .nav-hamburger span { display:block; width:22px; height:2.5px; background:var(--text-dark); border-radius:2px; transition:all .2s; }
+    .mobile-menu { display:none; position:fixed; inset:0; z-index:999; }
+    .mobile-menu.open { display:block; }
+    .mobile-overlay { position:absolute; inset:0; background:rgba(0,0,0,.45); backdrop-filter:blur(2px); }
+    .mobile-drawer { position:absolute; top:0; right:0; width:min(300px,84vw); height:100%; background:#fff; display:flex; flex-direction:column; box-shadow:-4px 0 40px rgba(0,0,0,.18); }
+    .mobile-drawer-head { display:flex; align-items:center; justify-content:space-between; padding:18px 20px 14px; border-bottom:1px solid var(--border); }
+    .mobile-drawer-logo { font-size:15px; font-weight:700; }
+    .mobile-close { font-size:20px; padding:4px 8px; color:var(--text-light); border-radius:6px; line-height:1; }
+    .mobile-nav-links { padding:14px 12px; flex:1; display:flex; flex-direction:column; gap:4px; }
+    .mobile-nav-link { display:flex; align-items:center; gap:14px; padding:13px 16px; border-radius:12px; font-size:16px; font-weight:600; color:var(--text-dark); }
+    .mobile-nav-link:hover { background:var(--sage-light); color:var(--sage); }
+    .mobile-link-icon { width:40px; height:40px; background:var(--sage-light); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
+    .mobile-browse-btn { display:block; margin:0 12px 20px; padding:14px; background:var(--sage); color:#fff; border-radius:12px; font-size:15px; font-weight:700; text-align:center; }
+
+    .calc-page { padding:36px 0 72px; }
+    .calc-wrapper { max-width:1200px; margin:0 auto; padding:0 24px; }
+    .breadcrumb { display:flex; align-items:center; gap:8px; font-size:13px; color:var(--text-light); margin-bottom:24px; flex-wrap:wrap; }
+    .breadcrumb a { color:var(--sage); } .breadcrumb a:hover { text-decoration:underline; }
+    .bc-sep { color:var(--border-mid); }
+    .page-header { margin-bottom:28px; }
+    .calc-tag { display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:600; color:var(--sage); background:var(--white); padding:5px 12px; border-radius:20px; margin-bottom:12px; letter-spacing:.3px; border:1px solid var(--border); }
+    .page-header h1 { font-family:'Playfair Display',serif; font-size:clamp(28px,4vw,42px); font-weight:700; color:var(--text-dark); letter-spacing:-.5px; margin-bottom:10px; line-height:1.15; }
+    .page-header p { font-size:15px; color:var(--text-mid); line-height:1.7; max-width:700px; }
+    .stat-banner { display:flex; align-items:center; gap:12px; background:#FFF7ED; border:1px solid #FED7AA; border-radius:var(--r); padding:12px 18px; margin-bottom:28px; max-width:700px; }
+    .stat-banner-num { font-size:20px; font-weight:800; color:#EA580C; flex-shrink:0; }
+    .stat-banner-text { font-size:13px; color:#9A3412; line-height:1.5; }
+
+    .calc-wrapper-inner { display:grid; grid-template-columns:480px 1fr; gap:24px; align-items:start; }
+    .form-card { background:white; border-radius:var(--r-xl); box-shadow:var(--shadow-lg); overflow:hidden; }
+    .form-card-header { padding:24px 28px 0; }
+    .form-card-title { font-size:15px; font-weight:700; color:var(--text-dark); margin-bottom:4px; }
+    .form-card-sub { font-size:13px; color:var(--text-light); margin-bottom:20px; }
+    .form-body { padding:0 28px 28px; }
+    .q-block { margin-bottom:20px; }
+    .q-label { font-size:13px; font-weight:600; color:var(--text-dark); margin-bottom:10px; display:flex; align-items:baseline; gap:8px; }
+    .q-num { display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; background:var(--sage-light); border-radius:50%; font-size:10px; font-weight:700; color:var(--sage); flex-shrink:0; }
+    .q-hint { font-size:11px; color:var(--text-light); font-weight:400; }
+    .pill-grid { display:grid; gap:6px; }
+    .pill-grid-2 { grid-template-columns:1fr 1fr; }
+    .pill-grid-3 { grid-template-columns:repeat(3,1fr); }
+    .pill-grid-4 { grid-template-columns:repeat(4,1fr); }
+    .pill-btn { padding:10px 8px; border-radius:var(--r-sm); border:1.5px solid var(--border); background:white; font-size:12px; font-weight:600; color:var(--text-mid); text-align:center; transition:all .15s; line-height:1.3; }
+    .pill-btn:hover { border-color:var(--sage-mid); background:var(--sage-pale); color:var(--sage); }
+    .pill-btn.selected { border-color:var(--sage); background:var(--sage-light); color:var(--sage); }
+    .pill-btn .pill-emoji { display:block; font-size:18px; margin-bottom:4px; }
+    .yn-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+    .yn-btn { padding:11px 10px; border-radius:var(--r); border:1.5px solid var(--border); background:white; display:flex; flex-direction:column; align-items:center; gap:3px; font-size:12.5px; font-weight:600; color:var(--text-mid); transition:all .15s; }
+    .yn-btn .yn-icon { font-size:18px; }
+    .yn-btn:hover { border-color:var(--sage-mid); background:var(--sage-pale); color:var(--sage); }
+    .yn-btn.selected-yes { border-color:#DC2626; background:#FEF2F2; color:#DC2626; }
+    .yn-btn.selected-no { border-color:var(--sage); background:var(--sage-light); color:var(--sage); }
+    .measure-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .measure-group { display:flex; flex-direction:column; gap:5px; }
+    .measure-label { font-size:11px; font-weight:700; color:var(--text-light); text-transform:uppercase; letter-spacing:.4px; }
+    .measure-input { width:100%; padding:11px 14px; border:1.5px solid var(--border); border-radius:var(--r); font-size:18px; font-weight:700; color:var(--text-dark); text-align:center; -moz-appearance:textfield; transition:border-color .2s,box-shadow .2s; }
+    .measure-input::-webkit-inner-spin-button,.measure-input::-webkit-outer-spin-button { -webkit-appearance:none; }
+    .measure-input:focus { outline:none; border-color:var(--sage); box-shadow:0 0 0 3px rgba(59,106,58,.1); }
+    .measure-input::placeholder { font-size:15px; font-weight:400; color:var(--placeholder); }
+    .measure-unit { font-size:11px; color:var(--text-light); text-align:center; text-transform:uppercase; font-weight:600; letter-spacing:.3px; }
+    .py-preview { background:var(--sage-pale); border-radius:var(--r); padding:10px 14px; margin-top:10px; display:flex; align-items:center; justify-content:space-between; }
+    .py-preview-label { font-size:12px; color:var(--text-light); font-weight:500; }
+    .py-preview-val { font-size:18px; font-weight:800; color:var(--text-dark); }
+    .hidden { display:none; }
+    .err-banner { display:none; background:#FEF2F2; border:1px solid #FECACA; border-radius:var(--r-sm); padding:10px 14px; font-size:13px; color:#DC2626; margin-bottom:12px; font-weight:500; }
+    .calc-btn { width:100%; background:var(--sage); color:white; padding:14px; border-radius:var(--r); font-size:16px; font-weight:700; transition:all .18s; margin-top:6px; }
+    .calc-btn:hover { background:var(--sage-dark); transform:translateY(-1px); box-shadow:var(--shadow-md); }
+
+    .results-col { display:flex; flex-direction:column; gap:20px; }
+    .result-card { background:white; border-radius:var(--r-xl); box-shadow:var(--shadow-lg); overflow:hidden; display:none; }
+    .result-card.visible { display:block; animation:slideUp .35s ease; }
+    @keyframes slideUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+    .result-band { height:6px; }
+    .result-body { padding:24px; }
+    .elig-box { border-radius:var(--r); padding:16px 18px; margin-bottom:18px; display:flex; gap:12px; align-items:flex-start; }
+    .elig-box .elig-icon { font-size:22px; flex-shrink:0; }
+    .elig-box h3 { font-size:14px; font-weight:800; margin-bottom:3px; }
+    .elig-box p { font-size:12.5px; line-height:1.6; }
+    .elig-yes { background:#F0FDF4; border:1px solid #86EFAC; } .elig-yes h3 { color:#166534; } .elig-yes p { color:#15803D; }
+    .elig-no { background:var(--sage-pale); border:1px solid var(--border-mid); } .elig-no h3 { color:var(--text-dark); } .elig-no p { color:var(--text-mid); }
+    .score-row { display:flex; align-items:flex-end; gap:12px; margin-bottom:6px; }
+    .score-big { font-size:60px; font-weight:800; letter-spacing:-3px; line-height:1; }
+    .score-denom { font-size:20px; color:var(--text-light); padding-bottom:8px; }
+    .score-label { font-size:13px; color:var(--text-light); margin-bottom:16px; }
+    .risk-meter { margin-bottom:20px; padding-bottom:20px; border-bottom:1px solid var(--border); }
+    .risk-meter-track { height:12px; background:linear-gradient(90deg,#16A34A 0%,#D97706 45%,#EA580C 70%,#DC2626 100%); border-radius:12px; position:relative; margin-bottom:8px; }
+    .risk-meter-marker { width:20px; height:20px; background:white; border:3px solid var(--text-dark); border-radius:50%; position:absolute; top:50%; transform:translateY(-50%); transition:left .5s; }
+    .risk-labels { display:flex; justify-content:space-between; }
+    .risk-labels span { font-size:10px; font-weight:600; color:var(--text-light); }
+    .risk-boxes { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; margin-bottom:20px; padding-bottom:20px; border-bottom:1px solid var(--border); }
+    .risk-box { border-radius:var(--r-sm); padding:9px 6px; text-align:center; border:1.5px solid transparent; }
+    .risk-box .rb-name { font-size:10px; font-weight:700; line-height:1.3; margin-bottom:2px; }
+    .risk-box .rb-range { font-size:9px; }
+    .rb-low { background:#F0FDF4; color:#16A34A; } .rb-low.active { border-color:#16A34A; }
+    .rb-moderate { background:#FEFCE8; color:#CA8A04; } .rb-moderate.active { border-color:#CA8A04; }
+    .rb-high { background:#FFF7ED; color:#EA580C; } .rb-high.active { border-color:#EA580C; }
+    .rb-very-high { background:#FEF2F2; color:#DC2626; } .rb-very-high.active { border-color:#DC2626; }
+    .factors-title { font-size:13px; font-weight:700; color:var(--text-dark); margin-bottom:10px; }
+    .factors-list { display:flex; flex-direction:column; gap:6px; margin-bottom:20px; }
+    .factor-chip { display:flex; align-items:center; gap:8px; padding:8px 12px; border-radius:var(--r-sm); font-size:12px; font-weight:500; }
+    .factor-chip.present { background:#FEF2F2; color:#991B1B; }
+    .factor-chip.absent { background:var(--sage-light); color:var(--sage-dark); }
+    .factor-chip .chip-icon { font-size:14px; flex-shrink:0; }
+    .msg-block { border-radius:var(--r); padding:18px; margin-bottom:16px; border-left:4px solid; }
+    .msg-block h3 { font-size:14px; font-weight:700; margin-bottom:6px; color:var(--text-dark); }
+    .msg-block p { font-size:13px; color:var(--text-mid); line-height:1.7; }
+    .tips-title { font-size:13px; font-weight:700; color:var(--text-dark); margin-bottom:10px; }
+    .tips-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
+    .tips-list li { display:flex; align-items:flex-start; gap:8px; font-size:13px; color:var(--text-mid); line-height:1.6; }
+    .tips-list li::before { content:'✤'; color:var(--sage); font-size:10px; margin-top:3px; flex-shrink:0; }
+    .info-card { background:white; border-radius:var(--r-xl); box-shadow:var(--shadow-sm); padding:22px 24px; }
+    .info-card h3 { font-size:14px; font-weight:700; margin-bottom:8px; color:var(--text-dark); }
+    .info-card p { font-size:13px; color:var(--text-mid); line-height:1.75; }
+    .info-card p + p { margin-top:10px; }
+    .ref-table { width:100%; border-collapse:collapse; margin-top:12px; font-size:12px; }
+    .ref-table th { background:var(--sage-pale); padding:7px 10px; text-align:left; font-size:11px; font-weight:700; color:var(--text-mid); text-transform:uppercase; letter-spacing:.4px; }
+    .ref-table td { padding:8px 10px; border-bottom:1px solid var(--border); color:var(--text-mid); vertical-align:top; }
+    .ref-table tr:last-child td { border-bottom:none; }
+    .signs-grid { display:grid; grid-template-columns:1fr 1fr; gap:7px; margin-top:12px; }
+    .sign-chip { background:var(--sage-pale); border-radius:var(--r-sm); padding:9px 12px; font-size:12px; color:var(--text-mid); display:flex; align-items:flex-start; gap:7px; line-height:1.4; }
+    .sign-chip-dot { width:5px; height:5px; background:#EA580C; border-radius:50%; flex-shrink:0; margin-top:5px; }
+    .related-section { }
+    .related-title { font-size:16px; font-weight:700; color:var(--text-dark); margin-bottom:12px; }
+    .related-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .related-card { background:white; border:1.5px solid var(--border); border-radius:var(--r); padding:14px 16px; display:flex; align-items:center; gap:12px; transition:all .18s; }
+    .related-card:hover { border-color:var(--sage); box-shadow:var(--shadow-sm); transform:translateY(-1px); }
+    .related-icon { width:36px; height:36px; background:var(--sage-light); border-radius:9px; display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0; }
+    .related-info strong { display:block; font-size:13px; font-weight:600; }
+    .related-info span { font-size:11px; color:var(--text-light); }
+    .note-block { background:var(--cream); border-radius:var(--r); padding:13px 16px; font-size:12px; color:var(--text-light); line-height:1.7; display:flex; gap:8px; align-items:flex-start; }
+    .note-block svg { flex-shrink:0; margin-top:1px; }
+    .band-low { background:linear-gradient(90deg,#4ADE80,#16A34A); }
+    .band-moderate { background:linear-gradient(90deg,#FDE68A,#D97706); }
+    .band-high { background:linear-gradient(90deg,#FB923C,#EA580C); }
+    .band-very-high { background:linear-gradient(90deg,#F87171,#DC2626); }
+
+    .site-footer { background:var(--text-dark); color:#94A99A; padding:48px 0 0; margin-top:48px; }
+    .footer-inner { max-width:1200px; margin:0 auto; padding:0 24px; }
+    .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:48px; padding-bottom:40px; }
+    .footer-logo { display:flex; align-items:center; gap:8px; margin-bottom:12px; }
+    .footer-brand p { font-size:14px; line-height:1.7; max-width:260px; color:#7A958E; }
+    .footer-col h5 { color:white; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.8px; margin-bottom:14px; }
+    .footer-col ul { list-style:none; } .footer-col li { margin-bottom:8px; }
+    .footer-col a { font-size:14px; color:#7A958E; transition:color .2s; } .footer-col a:hover { color:white; }
+    .footer-bottom { border-top:1px solid rgba(255,255,255,.08); padding:22px 0; display:flex; flex-direction:column; gap:6px; }
+    .footer-disclaimer { font-size:12px; color:#5A7568; line-height:1.7; }
+    .footer-copy { font-size:12px; color:#5A7568; }
+
+    .calc-editorial { padding:36px 0 12px; border-top:2px solid #E2EAE4; margin-top:40px; }
+    .calc-editorial-inner { max-width:800px; margin:0 auto; padding:0 24px; }
+    .editorial-h2 { font-size:21px; font-weight:700; color:#1a2e1a; margin:0 0 16px; line-height:1.3; }
+    .editorial-intro { font-size:15px; color:#374151; line-height:1.8; margin-bottom:20px; }
+    .editorial-h3 { font-size:13px; font-weight:700; color:#3B6A3A; text-transform:uppercase; letter-spacing:.08em; margin:26px 0 10px; }
+    .score-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:10px; margin-bottom:4px; }
+    .score-cell { border-radius:8px; padding:12px 14px; border:1px solid #C8D9CC; }
+    .score-cell-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; margin-bottom:3px; }
+    .score-cell-desc { font-size:13px; color:#374151; line-height:1.55; }
+    .score-cell.green { background:#F0FDF4; border-color:#86EFAC; } .score-cell.green .score-cell-label { color:#166534; }
+    .score-cell.yellow { background:#FFFBEB; border-color:#FCD34D; } .score-cell.yellow .score-cell-label { color:#92400E; }
+    .score-cell.orange { background:#FFF7ED; border-color:#FDBA74; } .score-cell.orange .score-cell-label { color:#9A3412; }
+    .score-cell.red { background:#FEF2F2; border-color:#FCA5A5; } .score-cell.red .score-cell-label { color:#991B1B; }
+    .editorial-steps { list-style:none; padding:0; margin:0 0 4px; counter-reset:steps; }
+    .editorial-steps li { counter-increment:steps; display:flex; gap:12px; margin-bottom:12px; font-size:14px; color:#374151; line-height:1.7; }
+    .editorial-steps li::before { content:counter(steps); display:flex; align-items:center; justify-content:center; min-width:24px; height:24px; background:#3B6A3A; color:#fff; border-radius:50%; font-size:12px; font-weight:700; flex-shrink:0; margin-top:2px; }
+    .faq-item { border:1px solid #C8D9CC; border-radius:8px; margin-bottom:8px; overflow:hidden; }
+    .faq-item summary { padding:13px 16px; font-size:14px; font-weight:600; color:#1a2e1a; cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center; background:#F9FCF9; gap:12px; }
+    .faq-item summary::-webkit-details-marker { display:none; }
+    .faq-item summary::after { content:"\002B"; font-size:16px; color:#3B6A3A; flex-shrink:0; }
+    .faq-item[open] summary::after { content:"\2212"; }
+    .faq-item[open] summary { background:#EBF2EC; }
+    .faq-answer { padding:4px 16px 14px; font-size:14px; color:#4A5568; line-height:1.75; border-top:1px solid #E2EAE4; background:#fff; }
+    .refs { font-size:12px; color:var(--text-light); line-height:1.7; margin-top:8px; }
+    .refs a { color:var(--sage); }
+
+    @media (max-width:900px) {
+      .calc-wrapper-inner { grid-template-columns:1fr; }
+      .footer-grid { grid-template-columns:1fr 1fr; } .footer-brand { grid-column:1/-1; }
+    }
+    @media (max-width:660px) {
+      .nav-links,.nav-btn { display:none; } .nav-hamburger { display:flex; }
+      .related-grid { grid-template-columns:1fr; } .risk-boxes { grid-template-columns:1fr 1fr; }
+      .pill-grid-4 { grid-template-columns:1fr 1fr; } .signs-grid { grid-template-columns:1fr; }
+    }
+    @media (max-width:520px) { .footer-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><img src="assets/logo.png" alt="SageMyHealth" style="height:54px;width:auto;object-fit:contain;" /></a>
+    <ul class="nav-links">
+      <li><a href="../index.html#categories">Calculators</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../blog.html">Health Guides</a></li>
+    </ul>
+    <a href="../index.html#categories" class="nav-btn">Browse All</a>
+    <button class="nav-hamburger" id="nav-hamburger" onclick="openMobileMenu()" aria-label="Open navigation menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site navigation">
+  <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-drawer">
+    <div class="mobile-drawer-head"><span class="mobile-drawer-logo">SageMyHealth</span><button class="mobile-close" onclick="closeMobileMenu()" aria-label="Close menu">&#x2715;</button></div>
+    <nav class="mobile-nav-links">
+      <a href="../index.html#categories" class="mobile-nav-link" onclick="closeMobileMenu()"><span class="mobile-link-icon">&#x1F9EE;</span>Calculators</a>
+      <a href="../about.html" class="mobile-nav-link" onclick="closeMobileMenu()"><span class="mobile-link-icon">&#x1F49A;</span>About</a>
+      <a href="../blog.html" class="mobile-nav-link" onclick="closeMobileMenu()"><span class="mobile-link-icon">&#x1F4D6;</span>Health Guides</a>
+    </nav>
+    <a href="../index.html#categories" class="mobile-browse-btn" onclick="closeMobileMenu()">Browse All Calculators &#x2192;</a>
+  </div>
+</div>
+
+<main class="calc-page">
+  <div class="calc-wrapper">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="bc-sep">›</span>
+      <a href="../categories/cancer-risk.html">Cancer Risk</a>
+      <span class="bc-sep">›</span>
+      <span>Lung Cancer Risk</span>
+    </nav>
+
+    <header class="page-header">
+      <div class="calc-tag">🎗 Cancer Risk</div>
+      <h1>Lung Cancer Risk Calculator</h1>
+      <p>Lung cancer is far more survivable when caught early — and screening saves lives for people at high risk. Answer a few questions about your age and smoking history to see your pack-year total, your risk level, and whether you meet the USPSTF criteria for a low-dose CT scan.</p>
+    </header>
+
+    <div class="stat-banner">
+      <div class="stat-banner-num">≈ 20%</div>
+      <div class="stat-banner-text">Low-dose CT screening can reduce lung cancer deaths by around 20% in high-risk people — yet most who qualify have never been screened. Knowing your eligibility is the first step.</div>
+    </div>
+
+    <div class="calc-wrapper-inner">
+      <!-- FORM -->
+      <div class="form-card">
+        <div class="form-card-header">
+          <div class="form-card-title">Your risk profile</div>
+          <div class="form-card-sub">Based on the 2021 USPSTF lung cancer screening criteria and established risk factors. Nothing is stored or shared.</div>
+        </div>
+        <div class="form-body">
+
+          <div class="q-block">
+            <div class="q-label"><span class="q-num">1</span> What is your age?</div>
+            <div class="pill-grid pill-grid-3">
+              <button class="pill-btn" data-q="age" data-val="under50" onclick="selectPill(this,'age')">Under 50</button>
+              <button class="pill-btn" data-q="age" data-val="50_59" onclick="selectPill(this,'age')">50 – 59</button>
+              <button class="pill-btn" data-q="age" data-val="60_69" onclick="selectPill(this,'age')">60 – 69</button>
+              <button class="pill-btn" data-q="age" data-val="70_80" onclick="selectPill(this,'age')">70 – 80</button>
+              <button class="pill-btn" data-q="age" data-val="over80" onclick="selectPill(this,'age')">Over 80</button>
+            </div>
+          </div>
+
+          <div class="q-block">
+            <div class="q-label"><span class="q-num">2</span> Your smoking history</div>
+            <div class="pill-grid pill-grid-3">
+              <button class="pill-btn" data-q="smoke" data-val="never" onclick="selectPill(this,'smoke'); onSmoke()"><span class="pill-emoji">🚭</span>Never smoked</button>
+              <button class="pill-btn" data-q="smoke" data-val="former" onclick="selectPill(this,'smoke'); onSmoke()"><span class="pill-emoji">🕰️</span>Former smoker</button>
+              <button class="pill-btn" data-q="smoke" data-val="current" onclick="selectPill(this,'smoke'); onSmoke()"><span class="pill-emoji">🚬</span>Current smoker</button>
+            </div>
+          </div>
+
+          <div class="q-block hidden" id="q-packyears">
+            <div class="q-label"><span class="q-num">3</span> How much and how long did you smoke? <span class="q-hint">(to estimate pack-years)</span></div>
+            <div class="measure-row">
+              <div class="measure-group">
+                <div class="measure-label">Cigarettes / day</div>
+                <input class="measure-input" type="number" id="cigs" placeholder="20" min="1" max="120" oninput="calcPackYears()" />
+                <div class="measure-unit">avg per day</div>
+              </div>
+              <div class="measure-group">
+                <div class="measure-label">Years smoked</div>
+                <input class="measure-input" type="number" id="years" placeholder="25" min="1" max="80" oninput="calcPackYears()" />
+                <div class="measure-unit">total years</div>
+              </div>
+            </div>
+            <div class="py-preview" id="py-preview" style="display:none;">
+              <div class="py-preview-label">Your estimated pack-years</div>
+              <div class="py-preview-val" id="py-val">—</div>
+            </div>
+          </div>
+
+          <div class="q-block hidden" id="q-quit">
+            <div class="q-label"><span class="q-num">4</span> How long ago did you quit?</div>
+            <div class="pill-grid pill-grid-3">
+              <button class="pill-btn" data-q="quit" data-val="lt5" onclick="selectPill(this,'quit')">Under 5 yrs</button>
+              <button class="pill-btn" data-q="quit" data-val="5_15" onclick="selectPill(this,'quit')">5 – 15 yrs</button>
+              <button class="pill-btn" data-q="quit" data-val="gt15" onclick="selectPill(this,'quit')">Over 15 yrs</button>
+            </div>
+          </div>
+
+          <div class="q-block">
+            <div class="q-label"><span class="q-num" id="n-fam">5</span> A parent, sibling, or child diagnosed with lung cancer?</div>
+            <div class="yn-grid">
+              <button class="yn-btn" onclick="selectYN(this,'family',1)"><span class="yn-icon">✓</span>Yes</button>
+              <button class="yn-btn" onclick="selectYN(this,'family',0)"><span class="yn-icon">✗</span>No</button>
+            </div>
+          </div>
+
+          <div class="q-block">
+            <div class="q-label"><span class="q-num" id="n-exp">6</span> Known exposure to radon, asbestos, or diesel/occupational fumes?</div>
+            <div class="yn-grid">
+              <button class="yn-btn" onclick="selectYN(this,'exposure',1)"><span class="yn-icon">✓</span>Yes</button>
+              <button class="yn-btn" onclick="selectYN(this,'exposure',0)"><span class="yn-icon">✗</span>No / unsure</button>
+            </div>
+          </div>
+
+          <div class="q-block">
+            <div class="q-label"><span class="q-num" id="n-copd">7</span> Diagnosed with COPD, emphysema, or chronic bronchitis?</div>
+            <div class="yn-grid">
+              <button class="yn-btn" onclick="selectYN(this,'copd',1)"><span class="yn-icon">✓</span>Yes</button>
+              <button class="yn-btn" onclick="selectYN(this,'copd',0)"><span class="yn-icon">✗</span>No</button>
+            </div>
+          </div>
+
+          <div class="err-banner" id="err-banner">Please answer all the questions before calculating your risk.</div>
+          <button class="calc-btn" onclick="calculate()">Check my risk &amp; screening eligibility</button>
+        </div>
+      </div>
+
+      <!-- RESULTS -->
+      <div class="results-col">
+        <div class="result-card" id="result-card">
+          <div class="result-band" id="result-band"></div>
+          <div class="result-body">
+            <div class="elig-box" id="elig-box">
+              <div class="elig-icon" id="elig-icon">🩺</div>
+              <div><h3 id="elig-title">—</h3><p id="elig-text">—</p></div>
+            </div>
+
+            <div class="score-row">
+              <div class="score-big" id="r-score">—</div>
+              <div class="score-denom">/ 12</div>
+            </div>
+            <div class="score-label">Lung cancer risk score</div>
+
+            <div class="risk-meter">
+              <div class="risk-meter-track"><div class="risk-meter-marker" id="risk-marker"></div></div>
+              <div class="risk-labels"><span>Low</span><span>Moderate</span><span>High</span><span>Very High</span></div>
+            </div>
+
+            <div class="risk-boxes">
+              <div class="risk-box rb-low" id="rb-low"><div class="rb-name">Lower Risk</div><div class="rb-range">0 – 2</div></div>
+              <div class="risk-box rb-moderate" id="rb-moderate"><div class="rb-name">Moderate</div><div class="rb-range">3 – 5</div></div>
+              <div class="risk-box rb-high" id="rb-high"><div class="rb-name">High</div><div class="rb-range">6 – 8</div></div>
+              <div class="risk-box rb-very-high" id="rb-very-high"><div class="rb-name">Very High</div><div class="rb-range">9+</div></div>
+            </div>
+
+            <div class="factors-title">Your risk factors</div>
+            <div class="factors-list" id="factors-list"></div>
+
+            <div class="msg-block" id="msg-block">
+              <h3 id="msg-heading">—</h3>
+              <p id="msg-body">—</p>
+            </div>
+
+            <p class="tips-title">Recommended next steps:</p>
+            <ul class="tips-list" id="tips-list"></ul>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <h3>Who qualifies for lung cancer screening?</h3>
+          <p>The U.S. Preventive Services Task Force (2021) recommends yearly screening with a low-dose CT scan (LDCT) for people who meet <strong>all three</strong> of the following:</p>
+          <table class="ref-table">
+            <tr><th>Criterion</th><th>Threshold</th></tr>
+            <tr><td>Age</td><td>50 – 80 years</td></tr>
+            <tr><td>Smoking history</td><td>20 pack-years or more</td></tr>
+            <tr><td>Current status</td><td>Still smoke, or quit within the last 15 years</td></tr>
+          </table>
+          <p style="margin-top:10px;font-size:11px;color:var(--text-light);">Screening can stop once you have not smoked for 15 years, or if a health problem substantially limits life expectancy.</p>
+        </div>
+
+        <div class="info-card">
+          <h3>Symptoms worth checking promptly</h3>
+          <p>Screening is for people <em>without</em> symptoms. If you have any of these — especially if they persist beyond 2–3 weeks — see a doctor regardless of your score:</p>
+          <div class="signs-grid">
+            <div class="sign-chip"><div class="sign-chip-dot"></div>A cough that won't go away or worsens</div>
+            <div class="sign-chip"><div class="sign-chip-dot"></div>Coughing up blood, even a little</div>
+            <div class="sign-chip"><div class="sign-chip-dot"></div>Chest pain, worse with breathing or coughing</div>
+            <div class="sign-chip"><div class="sign-chip-dot"></div>Shortness of breath or wheezing</div>
+            <div class="sign-chip"><div class="sign-chip-dot"></div>Hoarseness that persists</div>
+            <div class="sign-chip"><div class="sign-chip-dot"></div>Unexplained weight loss or fatigue</div>
+          </div>
+        </div>
+
+        <div class="related-section">
+          <p class="related-title">You might also like</p>
+          <div class="related-grid">
+            <a href="colorectal-cancer-risk.html" class="related-card"><div class="related-icon">🎗</div><div class="related-info"><strong>Colorectal Cancer Risk</strong><span>Screening from age 45</span></div></a>
+            <a href="lung-capacity.html" class="related-card"><div class="related-icon">🫁</div><div class="related-info"><strong>Lung Capacity</strong><span>Estimate your lung function</span></div></a>
+            <a href="ascvd-risk.html" class="related-card"><div class="related-icon">❤️</div><div class="related-info"><strong>Heart Risk (ASCVD)</strong><span>Smoking hits the heart too</span></div></a>
+            <a href="biological-age.html" class="related-card"><div class="related-icon">⏳</div><div class="related-info"><strong>Biological Age</strong><span>Lifestyle &amp; longevity</span></div></a>
+          </div>
+        </div>
+
+        <div class="note-block">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#9CA3AF" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span><strong>NOTE:</strong> This tool is for educational screening purposes only. It does not diagnose lung cancer or replace a low-dose CT scan. Eligibility and risk are estimates based on population guidelines. Please discuss screening with your doctor.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDITORIAL -->
+  <section class="calc-editorial">
+    <div class="calc-editorial-inner">
+      <h2 class="editorial-h2">Understanding Your Lung Cancer Risk</h2>
+      <p class="editorial-intro">Lung cancer is the leading cause of cancer death worldwide, but it is one of the few cancers where screening a high-risk group with a simple, low-radiation CT scan has been proven to save lives. The challenge is that lung cancer is usually silent in its early, most treatable stages — which is exactly why identifying who should be screened matters so much. This calculator combines the 2021 USPSTF eligibility criteria with other established risk factors (family history, radon and occupational exposure, and COPD) to help you understand both your eligibility and your broader risk picture.</p>
+      <p class="editorial-h3">What Your Risk Level Means</p>
+      <div class="score-grid">
+        <div class="score-cell green"><div class="score-cell-label">Lower Risk</div><div class="score-cell-desc">Few major risk factors. If you have never smoked, routine CT screening is not recommended — but any persistent respiratory symptom still deserves attention.</div></div>
+        <div class="score-cell yellow"><div class="score-cell-label">Moderate</div><div class="score-cell-desc">Some meaningful risk factors are present. If you have a significant smoking history, discuss whether screening is right for you with your doctor.</div></div>
+        <div class="score-cell orange"><div class="score-cell-label">High</div><div class="score-cell-desc">Multiple risk factors, likely including a substantial smoking history. If you meet the USPSTF criteria, annual low-dose CT screening is recommended.</div></div>
+        <div class="score-cell red"><div class="score-cell-label">Very High</div><div class="score-cell-desc">A heavy smoking history plus additional risk factors. Screening and a conversation about quitting support should be prioritised as soon as possible.</div></div>
+      </div>
+      <p class="editorial-h3">What to Do Next</p>
+      <ol class="editorial-steps">
+        <li><strong>If you're eligible, ask your doctor for a low-dose CT scan.</strong> It takes seconds, uses about a fifth of the radiation of a standard chest CT, and is covered by most US insurers and Medicare for people who meet the criteria.</li>
+        <li><strong>If you still smoke, quitting is the single most powerful thing you can do.</strong> It lowers risk at any age and any pack-year history, and screening programmes include quit support for a reason — the two work best together.</li>
+        <li><strong>Test your home for radon.</strong> Radon is the leading cause of lung cancer in never-smokers. Home test kits are inexpensive, and mitigation is straightforward if levels are high.</li>
+        <li><strong>Don't ignore persistent symptoms.</strong> Screening is for people without symptoms. A cough, breathlessness, or chest pain lasting more than a couple of weeks warrants a prompt visit regardless of your score.</li>
+      </ol>
+      <p class="editorial-h3">Frequently Asked Questions</p>
+      <details class="faq-item"><summary>What is a pack-year?</summary><div class="faq-answer">One pack-year equals smoking 20 cigarettes (one pack) a day for one year. It's calculated as (cigarettes per day ÷ 20) × years smoked. Smoking 10 a day for 40 years, or 40 a day for 10 years, both equal 20 pack-years.</div></details>
+      <details class="faq-item"><summary>Is low-dose CT screening safe?</summary><div class="faq-answer">Yes. LDCT uses far less radiation than a standard CT. The main downside is that it sometimes finds small nodules that turn out to be harmless but require follow-up. For high-risk people, the survival benefit of catching cancer early clearly outweighs these risks — which is why it carries a grade B recommendation.</div></details>
+      <details class="faq-item"><summary>I quit smoking years ago — am I still at risk?</summary><div class="faq-answer">Risk falls steadily after quitting but doesn't disappear. USPSTF screening applies to people who quit within the last 15 years and have a 20+ pack-year history. If you quit more than 15 years ago, routine screening is generally no longer recommended, but discuss your history with your doctor.</div></details>
+      <details class="faq-item"><summary>Can never-smokers get lung cancer?</summary><div class="faq-answer">Yes — about 10–20% of cases occur in never-smokers, driven by radon, secondhand smoke, air pollution, occupational exposures, and genetics. Never-smokers aren't eligible for routine screening but should always have persistent respiratory symptoms evaluated.</div></details>
+      <p class="editorial-h3">Sources &amp; References</p>
+      <p class="refs">
+        US Preventive Services Task Force. Screening for Lung Cancer: Recommendation Statement. <em>JAMA.</em> 2021;325(10):962–970. <a href="https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/lung-cancer-screening" target="_blank" rel="noopener">View ↗</a><br>
+        American Cancer Society. Lung Cancer Screening Guidelines. <em>cancer.org.</em> 2024. <a href="https://www.cancer.org/cancer/types/lung-cancer/detection-diagnosis-staging/detection.html" target="_blank" rel="noopener">View ↗</a>
+      </p>
+      <p class="refs" style="margin-top:14px;">Content prepared by the <strong>SageMyHealth editorial team</strong>, drawing on peer-reviewed literature and current screening guidelines. Last reviewed: <strong>July 2026</strong>.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo"><img src="assets/logo-white.png" alt="SageMyHealth" style="height:45px;width:auto;object-fit:contain;" /></div>
+        <p>Free, trusted health calculators with warm guidance — helping you understand your numbers.</p>
+      </div>
+      <div class="footer-col"><h5>Calculators</h5><ul>
+        <li><a href="breast-cancer-risk.html">Breast Cancer Risk</a></li>
+        <li><a href="colorectal-cancer-risk.html">Colorectal Cancer Risk</a></li>
+        <li><a href="ascvd-risk.html">Heart Risk (ASCVD)</a></li>
+        <li><a href="lung-capacity.html">Lung Capacity</a></li>
+      </ul></div>
+      <div class="footer-col"><h5>Categories</h5><ul>
+        <li><a href="../categories/cancer-risk.html">Cancer Risk</a></li>
+        <li><a href="../categories/heart-cardiovascular.html">Heart &amp; Lungs</a></li>
+        <li><a href="../categories/heart-cardiovascular.html">Heart &amp; Cardiovascular</a></li>
+        <li><a href="../index.html#categories">All Categories</a></li>
+      </ul></div>
+      <div class="footer-col"><h5>Info</h5><ul>
+        <li><a href="../about.html">About Us</a></li>
+        <li><a href="../privacy.html">Privacy Policy</a></li>
+        <li><a href="../terms.html">Terms of Use</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-disclaimer"><strong style="color:#7A958E">Medical Disclaimer:</strong> SageMyHealth calculators are for informational purposes only and are not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider.</p>
+      <p class="footer-copy">© 2026 SageMyHealth.com — All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function openMobileMenu(){document.getElementById('mobile-menu').classList.add('open');document.body.style.overflow='hidden';}
+  function closeMobileMenu(){document.getElementById('mobile-menu').classList.remove('open');document.body.style.overflow='';}
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMobileMenu();});
+
+  var A = { age:null, smoke:null, quit:null, family:null, exposure:null, copd:null };
+
+  function selectPill(btn, q){
+    document.querySelectorAll('.pill-btn[data-q="'+q+'"]').forEach(function(b){b.classList.remove('selected');});
+    btn.classList.add('selected');
+    A[q] = btn.dataset.val;
+  }
+  function selectYN(btn, q, val){
+    var parent = btn.parentNode;
+    parent.querySelectorAll('.yn-btn').forEach(function(b){b.classList.remove('selected-yes','selected-no');});
+    btn.classList.add(val===1?'selected-yes':'selected-no');
+    A[q] = val;
+  }
+  function onSmoke(){
+    var py = document.getElementById('q-packyears');
+    var quit = document.getElementById('q-quit');
+    if(A.smoke==='never'){ py.classList.add('hidden'); quit.classList.add('hidden'); A.quit='na'; }
+    else if(A.smoke==='former'){ py.classList.remove('hidden'); quit.classList.remove('hidden'); A.quit=null; }
+    else { py.classList.remove('hidden'); quit.classList.add('hidden'); A.quit='current'; }
+  }
+  function packYears(){
+    var c = parseFloat(document.getElementById('cigs').value);
+    var y = parseFloat(document.getElementById('years').value);
+    if(!c||!y||c<=0||y<=0) return 0;
+    return (c/20)*y;
+  }
+  function calcPackYears(){
+    var py = packYears();
+    var box = document.getElementById('py-preview');
+    if(py>0){ box.style.display='flex'; document.getElementById('py-val').textContent = py.toFixed(1)+' pack-years'; }
+    else box.style.display='none';
+  }
+
+  function calculate(){
+    var err = document.getElementById('err-banner');
+    if(!A.age || !A.smoke || A.family===null || A.exposure===null || A.copd===null){ err.style.display='block'; err.scrollIntoView({behavior:'smooth',block:'center'}); return; }
+    if(A.smoke!=='never' && packYears()<=0){ err.textContent='Please enter your cigarettes per day and years smoked.'; err.style.display='block'; return; }
+    if(A.smoke==='former' && !A.quit){ err.textContent='Please tell us how long ago you quit.'; err.style.display='block'; return; }
+    err.style.display='none';
+
+    var py = A.smoke==='never' ? 0 : packYears();
+    var score = 0;
+    var factors = [];
+
+    // age
+    if(A.age==='50_59'||A.age==='60_69') score+=2;
+    else if(A.age==='70_80') score+=2;
+    else if(A.age==='over80') score+=1;
+    if(A.age==='60_69'||A.age==='70_80') factors.push(['Age '+(A.age==='70_80'?'70–80':'60–69')+' — risk rises with age', true]);
+
+    // smoking status
+    if(A.smoke==='current'){ score+=3; factors.push(['Current smoker', true]); }
+    else if(A.smoke==='former'){ score+=2; factors.push(['Former smoker', true]); }
+    else { factors.push(['Never smoked — a major protective factor', false]); }
+
+    // pack years
+    if(py>=30) score+=3;
+    else if(py>=20) score+=2;
+    else if(py>=10) score+=1;
+    if(py>=20) factors.push([py.toFixed(0)+' pack-years (20+ meets the screening threshold)', true]);
+    else if(py>0) factors.push([py.toFixed(0)+' pack-years', true]);
+
+    // quit recency (former)
+    if(A.smoke==='former'){
+      if(A.quit==='gt15'){ score-=1; factors.push(['Quit more than 15 years ago — risk has fallen', false]); }
+      else if(A.quit==='5_15'){ factors.push(['Quit 5–15 years ago', true]); }
+      else if(A.quit==='lt5'){ score+=1; factors.push(['Quit less than 5 years ago', true]); }
+    }
+
+    if(A.family===1){ score+=1; factors.push(['Family history of lung cancer', true]); } else factors.push(['No family history of lung cancer', false]);
+    if(A.exposure===1){ score+=1; factors.push(['Radon / asbestos / occupational exposure', true]); }
+    if(A.copd===1){ score+=1; factors.push(['COPD / chronic lung disease', true]); }
+
+    if(score<0) score=0;
+
+    // USPSTF eligibility
+    var ageOk = (A.age==='50_59'||A.age==='60_69'||A.age==='70_80');
+    var statusOk = (A.smoke==='current') || (A.smoke==='former' && (A.quit==='lt5'||A.quit==='5_15'));
+    var eligible = ageOk && py>=20 && statusOk;
+
+    // tier
+    var tier, band, boxId, markerPct;
+    if(score<=2){ tier='Lower Risk'; band='band-low'; boxId='rb-low'; markerPct=12; }
+    else if(score<=5){ tier='Moderate'; band='band-moderate'; boxId='rb-moderate'; markerPct=40; }
+    else if(score<=8){ tier='High'; band='band-high'; boxId='rb-high'; markerPct=68; }
+    else { tier='Very High'; band='band-very-high'; boxId='rb-very-high'; markerPct=92; }
+
+    // eligibility box
+    var eb=document.getElementById('elig-box'), ei=document.getElementById('elig-icon'), et=document.getElementById('elig-title'), ex=document.getElementById('elig-text');
+    if(eligible){
+      eb.className='elig-box elig-yes'; ei.textContent='✅';
+      et.textContent='You meet the USPSTF screening criteria';
+      ex.textContent='Based on your age ('+py.toFixed(0)+' pack-years, current or recent smoker), you qualify for annual low-dose CT screening. This is your single most important next step — ask your doctor to arrange it.';
+    } else {
+      eb.className='elig-box elig-no'; ei.textContent='🩺';
+      var why = [];
+      if(!ageOk) why.push('screening applies to ages 50–80');
+      if(py<20 && A.smoke!=='never') why.push('it requires a 20+ pack-year history');
+      if(A.smoke==='never') why.push('routine CT screening is for people with a significant smoking history');
+      if(A.smoke==='former' && A.quit==='gt15') why.push('you quit more than 15 years ago');
+      et.textContent='You don’t currently meet the routine screening criteria';
+      ex.textContent = (why.length? 'Because '+why.join(', and ')+'. ' : '') + 'That’s reassuring, but if you have any concerns or persistent symptoms, still talk to your doctor.';
+    }
+
+    document.getElementById('r-score').textContent = score;
+    document.getElementById('r-score').style.color = getComputedStyle(document.querySelector('.'+band.replace('band','rb'))).color;
+    document.getElementById('result-band').className = 'result-band '+band;
+    document.getElementById('risk-marker').style.left = markerPct+'%';
+    ['rb-low','rb-moderate','rb-high','rb-very-high'].forEach(function(id){document.getElementById(id).classList.remove('active');});
+    document.getElementById(boxId).classList.add('active');
+
+    var fl=document.getElementById('factors-list'); fl.innerHTML='';
+    factors.forEach(function(f){
+      var d=document.createElement('div'); d.className='factor-chip '+(f[1]?'present':'absent');
+      d.innerHTML='<span class="chip-icon">'+(f[1]?'⚠️':'✓')+'</span>'+f[0]; fl.appendChild(d);
+    });
+
+    var mb=document.getElementById('msg-block'), mh=document.getElementById('msg-heading'), mbody=document.getElementById('msg-body');
+    var colors={'Lower Risk':['#16A34A','#F0FDF4'],'Moderate':['#CA8A04','#FEFCE8'],'High':['#EA580C','#FFF7ED'],'Very High':['#DC2626','#FEF2F2']};
+    mb.style.borderLeftColor=colors[tier][0]; mb.style.background=colors[tier][1];
+    var msgs={
+      'Lower Risk':['Your lung cancer risk appears low','Your risk factors are limited. Keep it that way by staying smoke-free and testing your home for radon. If you ever develop a persistent cough or breathlessness, get it checked promptly.'],
+      'Moderate':['Some risk factors are present','You carry a few meaningful risk factors. If you have a significant smoking history, talk with your doctor about whether screening makes sense for you, and prioritise quitting if you still smoke.'],
+      'High':['Your risk is elevated','You have multiple risk factors. If you meet the screening criteria above, arranging an annual low-dose CT scan is strongly worthwhile — early detection dramatically improves outcomes.'],
+      'Very High':['Your risk is very high — act on screening','A heavy smoking history combined with other factors places you at high risk. Please arrange low-dose CT screening and quit-smoking support as soon as you can. Catching lung cancer early saves lives.']
+    };
+    mh.textContent=msgs[tier][0]; mbody.textContent=msgs[tier][1];
+
+    var tips=document.getElementById('tips-list'); tips.innerHTML='';
+    var T=[];
+    if(eligible) T.push('Ask your doctor to arrange an annual low-dose CT scan — you qualify.');
+    if(A.smoke==='current') T.push('Quitting now lowers your risk at any age. Call a free quitline (1-800-QUIT-NOW in the US) or ask about medication support.');
+    if(A.smoke!=='never') T.push('Even after a heavy smoking history, staying smoke-free continues to reduce your risk year on year.');
+    T.push('Test your home for radon — it is the top cause of lung cancer in non-smokers and easy to fix.');
+    if(A.exposure===1) T.push('Discuss your occupational or radon exposure with your doctor; it may affect screening decisions.');
+    T.push('See a doctor promptly for any cough, breathlessness, chest pain, or coughing up blood lasting more than 2–3 weeks.');
+    T.slice(0,5).forEach(function(t){var li=document.createElement('li');li.textContent=t;tips.appendChild(li);});
+
+    var card=document.getElementById('result-card');
+    card.classList.add('visible');
+    card.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+</script>
+</body>
+</html>

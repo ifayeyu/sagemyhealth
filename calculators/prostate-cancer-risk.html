@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X6K2H9YW2V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X6K2H9YW2V');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prostate Cancer Risk Calculator — When Should You Consider PSA Screening? | SageMyHealth</title>
+  <meta name="description" content="Estimate your prostate cancer risk from age, family history, ancestry, and genetics — and see when to start the PSA screening conversation. Based on current USPSTF and American Cancer Society guidance for men." />
+  <meta name="keywords" content="prostate cancer risk calculator, PSA screening age, prostate cancer risk factors, when to get PSA test, prostate screening, men's cancer risk" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://sagemyhealth.com/calculators/prostate-cancer-risk.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SageMyHealth" />
+  <meta property="og:title" content="Prostate Cancer Risk Calculator — When Should You Consider PSA Screening?" />
+  <meta property="og:description" content="Estimate your prostate cancer risk from age, family history, ancestry and genetics, and see when to start the PSA conversation. Based on USPSTF/ACS guidance." />
+  <meta property="og:url" content="https://sagemyhealth.com/calculators/prostate-cancer-risk.html" />
+  <meta property="og:image" content="https://sagemyhealth.com/calculators/assets/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Prostate Cancer Risk Calculator — When to Consider PSA Screening" />
+  <meta name="twitter:description" content="Estimate your prostate cancer risk and see when to start the PSA screening conversation. Based on USPSTF/ACS guidance." />
+  <meta name="twitter:image" content="https://sagemyhealth.com/calculators/assets/logo.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "name": "Prostate Cancer Risk Calculator",
+    "description": "Estimate your prostate cancer risk from age, family history, ancestry and genetics, and see when to start the PSA screening conversation.",
+    "url": "https://sagemyhealth.com/calculators/prostate-cancer-risk.html",
+    "publisher": { "@type": "Organization", "name": "SageMyHealth", "url": "https://sagemyhealth.com/" },
+    "isAccessibleForFree": true,
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sagemyhealth.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Cancer Risk", "item": "https://sagemyhealth.com/categories/cancer-risk.html" },
+        { "@type": "ListItem", "position": 3, "name": "Prostate Cancer Risk Calculator", "item": "https://sagemyhealth.com/calculators/prostate-cancer-risk.html" }
+      ]
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "At what age should I start prostate screening?", "acceptedAnswer": { "@type": "Answer", "text": "For men at average risk, the USPSTF and American Cancer Society recommend having a shared decision-making conversation about PSA screening starting at age 50–55. Men at higher risk — Black men and those with a father or brother diagnosed with prostate cancer — should start that conversation earlier, around age 45, and men with multiple affected relatives or a known BRCA gene around age 40. Routine screening is generally not recommended after age 70." } },
+      { "@type": "Question", "name": "What is the PSA test?", "acceptedAnswer": { "@type": "Answer", "text": "The PSA (prostate-specific antigen) blood test measures a protein made by the prostate. A higher level can indicate prostate cancer, but it can also be raised by an enlarged prostate (BPH), infection, or recent activity — so it is imperfect. Because screening can lead to further tests and treatment for cancers that may never have caused harm, the decision to test is a personal one made with your doctor, weighing your risk and preferences." } },
+      { "@type": "Question", "name": "Do urinary symptoms mean prostate cancer?", "acceptedAnswer": { "@type": "Answer", "text": "Usually not. Symptoms like a weak stream, frequent urination, or getting up at night are far more commonly caused by benign prostate enlargement (BPH), which is not cancer. Early prostate cancer typically causes no symptoms at all — which is why screening is based on risk rather than symptoms. Still, any new or bothersome urinary symptoms are worth discussing with your doctor." } },
+      { "@type": "Question", "name": "Why are Black men at higher risk?", "acceptedAnswer": { "@type": "Answer", "text": "Men of African ancestry have a substantially higher incidence of prostate cancer, tend to develop it younger, and have higher mortality, for reasons that are partly genetic and partly related to access to care. Because of this, guidelines recommend starting the screening conversation earlier — around age 45, or 40 with additional risk factors." } }
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sage: #3B6A3A; --sage-dark: #0A3D2A; --sage-mid: #5C8A5C; --sage-light: #EBF2EC; --sage-pale: #F2F7F3;
+      --cream: #E3FFB3; --white: #FFFFFF; --text-dark: #1A2E1E; --text-mid: #4A5568; --text-light: #718096;
+      --placeholder: #AAB0B8; --border: #E2EBE4; --border-mid: #C8D9CC;
+      --shadow-xs: 0 1px 2px rgba(59,106,58,.06); --shadow-sm: 0 1px 6px rgba(59,106,58,.08);
+      --shadow-md: 0 4px 16px rgba(59,106,58,.12); --shadow-lg: 0 8px 32px rgba(59,106,58,.16);
+      --r-sm: 8px; --r: 12px; --r-lg: 20px; --r-xl: 28px;
+    }
+    *,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif; color:var(--text-dark); background:var(--sage-pale); line-height:1.6; -webkit-font-smoothing:antialiased; }
+    a { color:inherit; text-decoration:none; }
+    button { cursor:pointer; font-family:inherit; border:none; background:none; }
+
+    .site-nav { position:sticky; top:0; z-index:200; background:rgba(255,255,255,.96); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border-bottom:1px solid var(--border); }
+    .nav-inner { max-width:1200px; margin:0 auto; padding:0 24px; height:68px; display:flex; align-items:center; justify-content:space-between; gap:32px; }
+    .nav-logo { display:flex; align-items:center; flex-shrink:0; }
+    .nav-links { display:flex; align-items:center; gap:28px; list-style:none; flex:1; justify-content:center; }
+    .nav-links a { color:var(--text-mid); font-size:15px; font-weight:500; transition:color .2s; }
+    .nav-links a:hover { color:var(--sage); }
+    .nav-btn { background:var(--sage); color:white; padding:9px 20px; border-radius:var(--r-sm); font-size:14px; font-weight:600; transition:background .2s; }
+    .nav-btn:hover { background:var(--sage-dark); }
+    .nav-hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; padding:8px; margin-left:8px; border-radius:8px; flex-shrink:0; }
+    .nav-hamburger span { display:block; width:22px; height:2.5px; background:var(--text-dark); border-radius:2px; transition:all .2s; }
+    .mobile-menu { display:none; position:fixed; inset:0; z-index:999; }
+    .mobile-menu.open { display:block; }
+    .mobile-overlay { position:absolute; inset:0; background:rgba(0,0,0,.45); backdrop-filter:blur(2px); }
+    .mobile-drawer { position:absolute; top:0; right:0; width:min(300px,84vw); height:100%; background:#fff; display:flex; flex-direction:column; box-shadow:-4px 0 40px rgba(0,0,0,.18); }
+    .mobile-drawer-head { display:flex; align-items:center; justify-content:space-between; padding:18px 20px 14px; border-bottom:1px solid var(--border); }
+    .mobile-drawer-logo { font-size:15px; font-weight:700; }
+    .mobile-close { font-size:20px; padding:4px 8px; color:var(--text-light); border-radius:6px; line-height:1; }
+    .mobile-nav-links { padding:14px 12px; flex:1; display:flex; flex-direction:column; gap:4px; }
+    .mobile-nav-link { display:flex; align-items:center; gap:14px; padding:13px 16px; border-radius:12px; font-size:16px; font-weight:600; color:var(--text-dark); }
+    .mobile-nav-link:hover { background:var(--sage-light); color:var(--sage); }
+    .mobile-link-icon { width:40px; height:40px; background:var(--sage-light); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
+    .mobile-browse-btn { display:block; margin:0 12px 20px; padding:14px; background:var(--sage); color:#fff; border-radius:12px; font-size:15px; font-weight:700; text-align:center; }
+
+    .calc-page { padding:36px 0 72px; }
+    .calc-wrapper { max-width:1200px; margin:0 auto; padding:0 24px; }
+    .breadcrumb { display:flex; align-items:center; gap:8px; font-size:13px; color:var(--text-light); margin-bottom:24px; flex-wrap:wrap; }
+    .breadcrumb a { color:var(--sage); } .breadcrumb a:hover { text-decoration:underline; }
+    .bc-sep { color:var(--border-mid); }
+    .page-header { margin-bottom:28px; }
+    .calc-tag { display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:600; color:var(--sage); background:var(--white); padding:5px 12px; border-radius:20px; margin-bottom:12px; letter-spacing:.3px; border:1px solid var(--border); }
+    .page-header h1 { font-family:'Playfair Display',serif; font-size:clamp(28px,4vw,42px); font-weight:700; color:var(--text-dark); letter-spacing:-.5px; margin-bottom:10px; line-height:1.15; }
+    .page-header p { font-size:15px; color:var(--text-mid); line-height:1.7; max-width:700px; }
+    .stat-banner { display:flex; align-items:center; gap:12px; background:#FFF7ED; border:1px solid #FED7AA; border-radius:var(--r); padding:12px 18px; margin-bottom:28px; max-width:700px; }
+    .stat-banner-num { font-size:18px; font-weight:800; color:#EA580C; flex-shrink:0; }
+    .stat-banner-text { font-size:13px; color:#9A3412; line-height:1.5; }
+
+    .calc-wrapper-inner { display:grid; grid-template-columns:480px 1fr; gap:24px; align-items:start; }
+    .form-card { background:white; border-radius:var(--r-xl); box-shadow:var(--shadow-lg); overflow:hidden; }
+    .form-card-header { padding:24px 28px 0; }
+    .form-card-title { font-size:15px; font-weight:700; color:var(--text-dark); margin-bottom:4px; }
+    .form-card-sub { font-size:13px; color:var(--text-light); margin-bottom:20px; }
+    .form-body { padding:0 28px 28px; }
+    .q-block { margin-bottom:20px; }
+    .q-label { font-size:13px; font-weight:600; color:var(--text-dark); margin-bottom:10px; display:flex; align-items:baseline; gap:8px; }
+    .q-num { display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; background:var(--sage-light); border-radius:50%; font-size:10px; font-weight:700; color:var(--sage); flex-shrink:0; }
+    .q-hint { font-size:11px; color:var(--text-light); font-weight:400; }
+    .pill-grid { display:grid; gap:6px; }
+    .pill-grid-2 { grid-template-columns:1fr 1fr; }
+    .pill-grid-3 { grid-template-columns:repeat(3,1fr); }
+    .pill-btn { padding:10px 8px; border-radius:var(--r-sm); border:1.5px solid var(--border); background:white; font-size:12px; font-weight:600; color:var(--text-mid); text-align:center; transition:all .15s; line-height:1.3; }
+    .pill-btn:hover { border-color:var(--sage-mid); background:var(--sage-pale); color:var(--sage); }
+    .pill-btn.selected { border-color:var(--sage); background:var(--sage-light); color:var(--sage); }
+    .yn-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+    .yn-btn { padding:11px 10px; border-radius:var(--r); border:1.5px solid var(--border); background:white; display:flex; flex-direction:column; align-items:center; gap:3px; font-size:12.5px; font-weight:600; color:var(--text-mid); transition:all .15s; }
+    .yn-btn .yn-icon { font-size:18px; }
+    .yn-btn:hover { border-color:var(--sage-mid); background:var(--sage-pale); color:var(--sage); }
+    .yn-btn.selected-yes { border-color:#DC2626; background:#FEF2F2; color:#DC2626; }
+    .yn-btn.selected-no { border-color:var(--sage); background:var(--sage-light); color:var(--sage); }
+    .err-banner { display:none; background:#FEF2F2; border:1px solid #FECACA; border-radius:var(--r-sm); padding:10px 14px; font-size:13px; color:#DC2626; margin-bottom:12px; font-weight:500; }
+    .calc-btn { width:100%; background:var(--sage); color:white; padding:14px; border-radius:var(--r); font-size:16px; font-weight:700; transition:all .18s; margin-top:6px; }
+    .calc-btn:hover { background:var(--sage-dark); transform:translateY(-1px); box-shadow:var(--shadow-md); }
+
+    .results-col { display:flex; flex-direction:column; gap:20px; }
+    .result-card { background:white; border-radius:var(--r-xl); box-shadow:var(--shadow-lg); overflow:hidden; display:none; }
+    .result-card.visible { display:block; animation:slideUp .35s ease; }
+    @keyframes slideUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+    .result-band { height:6px; }
+    .result-body { padding:24px; }
+    .elig-box { border-radius:var(--r); padding:16px 18px; margin-bottom:18px; display:flex; gap:12px; align-items:flex-start; }
+    .elig-box .elig-icon { font-size:22px; flex-shrink:0; }
+    .elig-box h3 { font-size:14px; font-weight:800; margin-bottom:3px; }
+    .elig-box p { font-size:12.5px; line-height:1.6; }
+    .elig-yes { background:#F0FDF4; border:1px solid #86EFAC; } .elig-yes h3 { color:#166534; } .elig-yes p { color:#15803D; }
+    .elig-no { background:var(--sage-pale); border:1px solid var(--border-mid); } .elig-no h3 { color:var(--text-dark); } .elig-no p { color:var(--text-mid); }
+    .score-row { display:flex; align-items:flex-end; gap:12px; margin-bottom:6px; }
+    .score-big { font-size:60px; font-weight:800; letter-spacing:-3px; line-height:1; }
+    .score-denom { font-size:20px; color:var(--text-light); padding-bottom:8px; }
+    .score-label { font-size:13px; color:var(--text-light); margin-bottom:16px; }
+    .risk-meter { margin-bottom:20px; padding-bottom:20px; border-bottom:1px solid var(--border); }
+    .risk-meter-track { height:12px; background:linear-gradient(90deg,#16A34A 0%,#D97706 45%,#EA580C 70%,#DC2626 100%); border-radius:12px; position:relative; margin-bottom:8px; }
+    .risk-meter-marker { width:20px; height:20px; background:white; border:3px solid var(--text-dark); border-radius:50%; position:absolute; top:50%; transform:translateY(-50%); transition:left .5s; }
+    .risk-labels { display:flex; justify-content:space-between; }
+    .risk-labels span { font-size:10px; font-weight:600; color:var(--text-light); }
+    .risk-boxes { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; margin-bottom:20px; padding-bottom:20px; border-bottom:1px solid var(--border); }
+    .risk-box { border-radius:var(--r-sm); padding:9px 6px; text-align:center; border:1.5px solid transparent; }
+    .risk-box .rb-name { font-size:10px; font-weight:700; line-height:1.3; margin-bottom:2px; }
+    .risk-box .rb-range { font-size:9px; }
+    .rb-low { background:#F0FDF4; color:#16A34A; } .rb-low.active { border-color:#16A34A; }
+    .rb-moderate { background:#FEFCE8; color:#CA8A04; } .rb-moderate.active { border-color:#CA8A04; }
+    .rb-high { background:#FFF7ED; color:#EA580C; } .rb-high.active { border-color:#EA580C; }
+    .rb-very-high { background:#FEF2F2; color:#DC2626; } .rb-very-high.active { border-color:#DC2626; }
+    .factors-title { font-size:13px; font-weight:700; color:var(--text-dark); margin-bottom:10px; }
+    .factors-list { display:flex; flex-direction:column; gap:6px; margin-bottom:20px; }
+    .factor-chip { display:flex; align-items:center; gap:8px; padding:8px 12px; border-radius:var(--r-sm); font-size:12px; font-weight:500; }
+    .factor-chip.present { background:#FEF2F2; color:#991B1B; }
+    .factor-chip.absent { background:var(--sage-light); color:var(--sage-dark); }
+    .factor-chip .chip-icon { font-size:14px; flex-shrink:0; }
+    .msg-block { border-radius:var(--r); padding:18px; margin-bottom:16px; border-left:4px solid; }
+    .msg-block h3 { font-size:14px; font-weight:700; margin-bottom:6px; color:var(--text-dark); }
+    .msg-block p { font-size:13px; color:var(--text-mid); line-height:1.7; }
+    .tips-title { font-size:13px; font-weight:700; color:var(--text-dark); margin-bottom:10px; }
+    .tips-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
+    .tips-list li { display:flex; align-items:flex-start; gap:8px; font-size:13px; color:var(--text-mid); line-height:1.6; }
+    .tips-list li::before { content:'✤'; color:var(--sage); font-size:10px; margin-top:3px; flex-shrink:0; }
+    .info-card { background:white; border-radius:var(--r-xl); box-shadow:var(--shadow-sm); padding:22px 24px; }
+    .info-card h3 { font-size:14px; font-weight:700; margin-bottom:8px; color:var(--text-dark); }
+    .info-card p { font-size:13px; color:var(--text-mid); line-height:1.75; }
+    .info-card p + p { margin-top:10px; }
+    .ref-table { width:100%; border-collapse:collapse; margin-top:12px; font-size:12px; }
+    .ref-table th { background:var(--sage-pale); padding:7px 10px; text-align:left; font-size:11px; font-weight:700; color:var(--text-mid); text-transform:uppercase; letter-spacing:.4px; }
+    .ref-table td { padding:8px 10px; border-bottom:1px solid var(--border); color:var(--text-mid); vertical-align:top; }
+    .ref-table tr:last-child td { border-bottom:none; }
+    .signs-grid { display:grid; grid-template-columns:1fr 1fr; gap:7px; margin-top:12px; }
+    .sign-chip { background:var(--sage-pale); border-radius:var(--r-sm); padding:9px 12px; font-size:12px; color:var(--text-mid); display:flex; align-items:flex-start; gap:7px; line-height:1.4; }
+    .sign-chip-dot { width:5px; height:5px; background:#EA580C; border-radius:50%; flex-shrink:0; margin-top:5px; }
+    .related-title { font-size:16px; font-weight:700; color:var(--text-dark); margin-bottom:12px; }
+    .related-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .related-card { background:white; border:1.5px solid var(--border); border-radius:var(--r); padding:14px 16px; display:flex; align-items:center; gap:12px; transition:all .18s; }
+    .related-card:hover { border-color:var(--sage); box-shadow:var(--shadow-sm); transform:translateY(-1px); }
+    .related-icon { width:36px; height:36px; background:var(--sage-light); border-radius:9px; display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0; }
+    .related-info strong { display:block; font-size:13px; font-weight:600; }
+    .related-info span { font-size:11px; color:var(--text-light); }
+    .note-block { background:var(--cream); border-radius:var(--r); padding:13px 16px; font-size:12px; color:var(--text-light); line-height:1.7; display:flex; gap:8px; align-items:flex-start; }
+    .note-block svg { flex-shrink:0; margin-top:1px; }
+    .band-low { background:linear-gradient(90deg,#4ADE80,#16A34A); }
+    .band-moderate { background:linear-gradient(90deg,#FDE68A,#D97706); }
+    .band-high { background:linear-gradient(90deg,#FB923C,#EA580C); }
+    .band-very-high { background:linear-gradient(90deg,#F87171,#DC2626); }
+
+    .site-footer { background:var(--text-dark); color:#94A99A; padding:48px 0 0; margin-top:48px; }
+    .footer-inner { max-width:1200px; margin:0 auto; padding:0 24px; }
+    .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:48px; padding-bottom:40px; }
+    .footer-logo { display:flex; align-items:center; gap:8px; margin-bottom:12px; }
+    .footer-brand p { font-size:14px; line-height:1.7; max-width:260px; color:#7A958E; }
+    .footer-col h5 { color:white; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.8px; margin-bottom:14px; }
+    .footer-col ul { list-style:none; } .footer-col li { margin-bottom:8px; }
+    .footer-col a { font-size:14px; color:#7A958E; transition:color .2s; } .footer-col a:hover { color:white; }
+    .footer-bottom { border-top:1px solid rgba(255,255,255,.08); padding:22px 0; display:flex; flex-direction:column; gap:6px; }
+    .footer-disclaimer { font-size:12px; color:#5A7568; line-height:1.7; }
+    .footer-copy { font-size:12px; color:#5A7568; }
+
+    .calc-editorial { padding:36px 0 12px; border-top:2px solid #E2EAE4; margin-top:40px; }
+    .calc-editorial-inner { max-width:800px; margin:0 auto; padding:0 24px; }
+    .editorial-h2 { font-size:21px; font-weight:700; color:#1a2e1a; margin:0 0 16px; line-height:1.3; }
+    .editorial-intro { font-size:15px; color:#374151; line-height:1.8; margin-bottom:20px; }
+    .editorial-h3 { font-size:13px; font-weight:700; color:#3B6A3A; text-transform:uppercase; letter-spacing:.08em; margin:26px 0 10px; }
+    .score-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:10px; margin-bottom:4px; }
+    .score-cell { border-radius:8px; padding:12px 14px; border:1px solid #C8D9CC; }
+    .score-cell-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; margin-bottom:3px; }
+    .score-cell-desc { font-size:13px; color:#374151; line-height:1.55; }
+    .score-cell.green { background:#F0FDF4; border-color:#86EFAC; } .score-cell.green .score-cell-label { color:#166534; }
+    .score-cell.yellow { background:#FFFBEB; border-color:#FCD34D; } .score-cell.yellow .score-cell-label { color:#92400E; }
+    .score-cell.orange { background:#FFF7ED; border-color:#FDBA74; } .score-cell.orange .score-cell-label { color:#9A3412; }
+    .score-cell.red { background:#FEF2F2; border-color:#FCA5A5; } .score-cell.red .score-cell-label { color:#991B1B; }
+    .editorial-steps { list-style:none; padding:0; margin:0 0 4px; counter-reset:steps; }
+    .editorial-steps li { counter-increment:steps; display:flex; gap:12px; margin-bottom:12px; font-size:14px; color:#374151; line-height:1.7; }
+    .editorial-steps li::before { content:counter(steps); display:flex; align-items:center; justify-content:center; min-width:24px; height:24px; background:#3B6A3A; color:#fff; border-radius:50%; font-size:12px; font-weight:700; flex-shrink:0; margin-top:2px; }
+    .faq-item { border:1px solid #C8D9CC; border-radius:8px; margin-bottom:8px; overflow:hidden; }
+    .faq-item summary { padding:13px 16px; font-size:14px; font-weight:600; color:#1a2e1a; cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center; background:#F9FCF9; gap:12px; }
+    .faq-item summary::-webkit-details-marker { display:none; }
+    .faq-item summary::after { content:"\002B"; font-size:16px; color:#3B6A3A; flex-shrink:0; }
+    .faq-item[open] summary::after { content:"\2212"; }
+    .faq-item[open] summary { background:#EBF2EC; }
+    .faq-answer { padding:4px 16px 14px; font-size:14px; color:#4A5568; line-height:1.75; border-top:1px solid #E2EAE4; background:#fff; }
+    .refs { font-size:12px; color:var(--text-light); line-height:1.7; margin-top:8px; }
+    .refs a { color:var(--sage); }
+
+    @media (max-width:900px) {
+      .calc-wrapper-inner { grid-template-columns:1fr; }
+      .footer-grid { grid-template-columns:1fr 1fr; } .footer-brand { grid-column:1/-1; }
+    }
+    @media (max-width:660px) {
+      .nav-links,.nav-btn { display:none; } .nav-hamburger { display:flex; }
+      .related-grid { grid-template-columns:1fr; } .risk-boxes { grid-template-columns:1fr 1fr; }
+      .signs-grid { grid-template-columns:1fr; }
+    }
+    @media (max-width:520px) { .footer-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><img src="assets/logo.png" alt="SageMyHealth" style="height:54px;width:auto;object-fit:contain;" /></a>
+    <ul class="nav-links">
+      <li><a href="../index.html#categories">Calculators</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../blog.html">Health Guides</a></li>
+    </ul>
+    <a href="../index.html#categories" class="nav-btn">Browse All</a>
+    <button class="nav-hamburger" id="nav-hamburger" onclick="openMobileMenu()" aria-label="Open navigation menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site navigation">
+  <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
+  <div class="mobile-drawer">
+    <div class="mobile-drawer-head"><span class="mobile-drawer-logo">SageMyHealth</span><button class="mobile-close" onclick="closeMobileMenu()" aria-label="Close menu">&#x2715;</button></div>
+    <nav class="mobile-nav-links">
+      <a href="../index.html#categories" class="mobile-nav-link" onclick="closeMobileMenu()"><span class="mobile-link-icon">&#x1F9EE;</span>Calculators</a>
+      <a href="../about.html" class="mobile-nav-link" onclick="closeMobileMenu()"><span class="mobile-link-icon">&#x1F49A;</span>About</a>
+      <a href="../blog.html" class="mobile-nav-link" onclick="closeMobileMenu()"><span class="mobile-link-icon">&#x1F4D6;</span>Health Guides</a>
+    </nav>
+    <a href="../index.html#categories" class="mobile-browse-btn" onclick="closeMobileMenu()">Browse All Calculators &#x2192;</a>
+  </div>
+</div>
+
+<main class="calc-page">
+  <div class="calc-wrapper">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="bc-sep">›</span>
+      <a href="../categories/cancer-risk.html">Cancer Risk</a>
+      <span class="bc-sep">›</span>
+      <span>Prostate Cancer Risk</span>
+    </nav>
+
+    <header class="page-header">
+      <div class="calc-tag">🎗 Cancer Risk</div>
+      <h1>Prostate Cancer Risk Calculator</h1>
+      <p>Prostate cancer is the most common cancer in men, but it's also highly treatable when found early — and screening is a personal decision, not a one-size-fits-all rule. Answer a few questions about your age, family history, and background to see your risk level and when to start the PSA screening conversation. For men and anyone with a prostate.</p>
+    </header>
+
+    <div class="stat-banner">
+      <div class="stat-banner-num">1 in 8</div>
+      <div class="stat-banner-text">men will be diagnosed with prostate cancer in their lifetime — but most who are diagnosed do not die from it. Knowing your risk helps you and your doctor decide whether and when to screen.</div>
+    </div>
+
+    <div class="calc-wrapper-inner">
+      <!-- FORM -->
+      <div class="form-card">
+        <div class="form-card-header">
+          <div class="form-card-title">Your risk profile</div>
+          <div class="form-card-sub">Based on USPSTF and American Cancer Society guidance and established risk factors. Nothing is stored or shared.</div>
+        </div>
+        <div class="form-body">
+
+          <div class="q-block">
+            <div class="q-label"><span class="q-num">1</span> What is your age?</div>
+            <div class="pill-grid pill-grid-3">
+              <button class="pill-btn" data-q="age" data-val="under40" onclick="selectPill(this,'age')">Under 40</button>
+              <button class="pill-btn" data-q="age" data-val="40_49" onclick="selectPill(this,'age')">40 – 49</button>
+              <button class="pill-btn" data-q="age" data-val="50_54" onclick="selectPill(this,'age')">50 – 54</button>
+              <button class="pill-btn" data-q="age" data-val="55_69" onclick="selectPill(this,'age')">55 – 69</button>
+              <button class="pill-btn" data-q="age" data-val="over70" onclick="selectPill(this,'age')">70+</button>
+            </div>
+          </div>
+
+          <div class="q-block">
+            <div class="q-label"><span class="q-num">2</span> Family history of prostate cancer <span class="q-hint">(father, brother, son)</span></div>
+            <div class="pill-grid">
+              <button class="pill-btn" data-q="family" data-val="none" onclick="selectPill(this,'family')">None that I know of</button>
+              <button class="pill-btn" data-q="family" data-val="one" onclick="selectPill(this,'family')">One relative</button>
+              <button class="pill-btn" data-q="family" data-val="strong" onclick="selectPill(this,'family')">A relative under 65, or two or more relatives</button>
+            </div>
+          </div>
+
+          <div class="q-block">
+            <div class="q-label"><span class="q-num">3</span> Your background / ancestry</div>
+            <div class="pill-grid pill-grid-2">
+              <button class="pill-btn" data-q="ethnicity" data-val="black" onclick="selectPill(this,'ethnicity')">Black / African ancestry</button>
+              <button class="pill-btn" data-q="ethnicity" data-val="white" onclick="selectPill(this,'ethnicity')">White</button>
+              <button class="pill-btn" data-q="ethnicity" data-val="asian" onclick="selectPill(this,'ethnicity')">Asian</button>
+              <button class="pill-btn" data-q="ethnicity" data-val="other" onclick="selectPill(this,'ethnicity')">Other / mixed</button>
+            </div>
+          </div>
+
+          <div class="q-block">
+            <div class="q-label"><span class="q-num">4</span> Family history of breast or ovarian cancer, or a known BRCA gene? <span class="q-hint">(raises prostate risk too)</span></div>
+            <div class="yn-grid">
+              <button class="yn-btn" onclick="selectYN(this,'brca',1)"><span class="yn-icon">✓</span>Yes</button>
+              <button class="yn-btn" onclick="selectYN(this,'brca',0)"><span class="yn-icon">✗</span>No / unsure</button>
+            </div>
+          </div>
+
+          <div class="q-block">
+            <div class="q-label"><span class="q-num">5</span> Your weight status</div>
+            <div class="pill-grid pill-grid-3">
+              <button class="pill-btn" data-q="weight" data-val="healthy" onclick="selectPill(this,'weight')">Healthy weight</button>
+              <button class="pill-btn" data-q="weight" data-val="over" onclick="selectPill(this,'weight')">Overweight</button>
+              <button class="pill-btn" data-q="weight" data-val="obese" onclick="selectPill(this,'weight')">Obese</button>
+            </div>
+          </div>
+
+          <div class="q-block">
+            <div class="q-label"><span class="q-num">6</span> Any urinary symptoms? <span class="q-hint">(weak stream, frequency, waking at night)</span></div>
+            <div class="yn-grid">
+              <button class="yn-btn" onclick="selectYN(this,'symptoms',1)"><span class="yn-icon">✓</span>Yes</button>
+              <button class="yn-btn" onclick="selectYN(this,'symptoms',0)"><span class="yn-icon">✗</span>No</button>
+            </div>
+          </div>
+
+          <div class="err-banner" id="err-banner">Please answer all the questions before calculating your risk.</div>
+          <button class="calc-btn" onclick="calculate()">Estimate my risk &amp; screening timing</button>
+        </div>
+      </div>
+
+      <!-- RESULTS -->
+      <div class="results-col">
+        <div class="result-card" id="result-card">
+          <div class="result-band" id="result-band"></div>
+          <div class="result-body">
+            <div class="elig-box" id="elig-box">
+              <div class="elig-icon" id="elig-icon">🗓️</div>
+              <div><h3 id="elig-title">—</h3><p id="elig-text">—</p></div>
+            </div>
+
+            <div class="score-row">
+              <div class="score-big" id="r-score">—</div>
+              <div class="score-denom">/ 11</div>
+            </div>
+            <div class="score-label">Prostate cancer risk score</div>
+
+            <div class="risk-meter">
+              <div class="risk-meter-track"><div class="risk-meter-marker" id="risk-marker"></div></div>
+              <div class="risk-labels"><span>Low</span><span>Moderate</span><span>High</span><span>Very High</span></div>
+            </div>
+
+            <div class="risk-boxes">
+              <div class="risk-box rb-low" id="rb-low"><div class="rb-name">Lower Risk</div><div class="rb-range">0 – 2</div></div>
+              <div class="risk-box rb-moderate" id="rb-moderate"><div class="rb-name">Moderate</div><div class="rb-range">3 – 5</div></div>
+              <div class="risk-box rb-high" id="rb-high"><div class="rb-name">High</div><div class="rb-range">6 – 8</div></div>
+              <div class="risk-box rb-very-high" id="rb-very-high"><div class="rb-name">Very High</div><div class="rb-range">9+</div></div>
+            </div>
+
+            <div class="factors-title">Your risk factors</div>
+            <div class="factors-list" id="factors-list"></div>
+
+            <div class="msg-block" id="msg-block">
+              <h3 id="msg-heading">—</h3>
+              <p id="msg-body">—</p>
+            </div>
+
+            <p class="tips-title">Recommended next steps:</p>
+            <ul class="tips-list" id="tips-list"></ul>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <h3>When to start the PSA conversation</h3>
+          <p>Screening for prostate cancer is a <strong>shared decision</strong> with your doctor, weighing your risk against the downsides of testing. Guidelines suggest starting that conversation at:</p>
+          <table class="ref-table">
+            <tr><th>Your risk</th><th>Start discussing PSA at</th></tr>
+            <tr><td>Average risk</td><td>Age 50</td></tr>
+            <tr><td>Higher risk (Black, or 1 close relative)</td><td>Age 45</td></tr>
+            <tr><td>Highest risk (multiple relatives / BRCA)</td><td>Age 40</td></tr>
+            <tr><td>Age 70+</td><td>Routine screening not generally advised</td></tr>
+          </table>
+          <p style="margin-top:10px;font-size:11px;color:var(--text-light);">The PSA test is imperfect — it can miss cancers and flag harmless ones — which is why the decision is personal.</p>
+        </div>
+
+        <div class="info-card">
+          <h3>Symptoms &amp; when to see a doctor</h3>
+          <p>Early prostate cancer usually causes <em>no</em> symptoms. Urinary symptoms are far more often benign enlargement (BPH), but still worth discussing:</p>
+          <div class="signs-grid">
+            <div class="sign-chip"><div class="sign-chip-dot"></div>Weak or interrupted urine stream</div>
+            <div class="sign-chip"><div class="sign-chip-dot"></div>Needing to urinate often, especially at night</div>
+            <div class="sign-chip"><div class="sign-chip-dot"></div>Difficulty starting or trouble emptying</div>
+            <div class="sign-chip"><div class="sign-chip-dot"></div>Blood in urine or semen</div>
+            <div class="sign-chip"><div class="sign-chip-dot"></div>New pain in hips, back, or pelvis</div>
+            <div class="sign-chip"><div class="sign-chip-dot"></div>Unexplained weight loss</div>
+          </div>
+        </div>
+
+        <div class="related-section">
+          <p class="related-title">You might also like</p>
+          <div class="related-grid">
+            <a href="colorectal-cancer-risk.html" class="related-card"><div class="related-icon">🎗</div><div class="related-info"><strong>Colorectal Cancer Risk</strong><span>Screening from age 45</span></div></a>
+            <a href="lung-cancer-risk.html" class="related-card"><div class="related-icon">🫁</div><div class="related-info"><strong>Lung Cancer Risk</strong><span>CT screening eligibility</span></div></a>
+            <a href="ascvd-risk.html" class="related-card"><div class="related-icon">❤️</div><div class="related-info"><strong>Heart Risk (ASCVD)</strong><span>Your cardiovascular risk</span></div></a>
+            <a href="waist-to-height.html" class="related-card"><div class="related-icon">📏</div><div class="related-info"><strong>Waist-to-Height</strong><span>Central fat &amp; cancer risk</span></div></a>
+          </div>
+        </div>
+
+        <div class="note-block">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#9CA3AF" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span><strong>NOTE:</strong> This tool is for educational purposes only. It does not diagnose cancer or replace a PSA test or medical exam. Risk and screening timing are estimates based on population guidelines. Please discuss screening with your doctor.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDITORIAL -->
+  <section class="calc-editorial">
+    <div class="calc-editorial-inner">
+      <h2 class="editorial-h2">Understanding Your Prostate Cancer Risk</h2>
+      <p class="editorial-intro">Prostate cancer occupies an unusual place in medicine: it is the most commonly diagnosed cancer in men, yet the majority of men who have it will never die from it — many prostate cancers grow so slowly they would never have caused harm in a man's lifetime. That paradox is exactly why screening is framed as a personal decision rather than a blanket recommendation. The PSA blood test can catch aggressive cancers early, when they're curable, but it can also find slow ones that lead to biopsies and treatment a man never needed. This calculator helps you understand where you sit on the risk spectrum so that conversation with your doctor starts from the right place.</p>
+      <p class="editorial-h3">What Your Risk Level Means</p>
+      <div class="score-grid">
+        <div class="score-cell green"><div class="score-cell-label">Lower Risk</div><div class="score-cell-desc">Few major risk factors. Follow the standard timing — begin discussing PSA screening with your doctor around age 50.</div></div>
+        <div class="score-cell yellow"><div class="score-cell-label">Moderate</div><div class="score-cell-desc">Some meaningful risk factors. Worth starting the screening conversation a little earlier and knowing your family history well.</div></div>
+        <div class="score-cell orange"><div class="score-cell-label">High</div><div class="score-cell-desc">Multiple risk factors, likely including ancestry or family history. Begin the PSA discussion earlier — around 45 — and revisit it regularly.</div></div>
+        <div class="score-cell red"><div class="score-cell-label">Very High</div><div class="score-cell-desc">Strong family history or a hereditary gene. Guidelines suggest starting the screening conversation as early as 40. Bring this profile to your doctor.</div></div>
+      </div>
+      <p class="editorial-h3">What to Do Next</p>
+      <ol class="editorial-steps">
+        <li><strong>Know your family history.</strong> A father or brother with prostate cancer roughly doubles your risk, and a relative diagnosed young matters more. Ask your relatives — it directly changes when you should start screening.</li>
+        <li><strong>Have the shared-decision conversation at the right age.</strong> Average risk: around 50. Higher risk (Black men, or one close relative): around 45. Highest risk (multiple relatives or BRCA): around 40.</li>
+        <li><strong>Understand the PSA trade-off.</strong> Screening reduces the chance of dying from prostate cancer but can lead to over-diagnosis. A good doctor will help you weigh it for your situation — it's genuinely a personal choice.</li>
+        <li><strong>Don't rely on symptoms.</strong> Early prostate cancer is silent; urinary symptoms are usually benign enlargement. But report blood in the urine, or new hip/back/pelvic pain, promptly.</li>
+      </ol>
+      <p class="editorial-h3">Frequently Asked Questions</p>
+      <details class="faq-item"><summary>At what age should I start screening?</summary><div class="faq-answer">Average-risk men should discuss PSA screening with their doctor around 50. Higher-risk men — Black men or those with a father/brother affected — should start around 45, and men with multiple affected relatives or a BRCA gene around 40. Routine screening is generally not advised after 70.</div></details>
+      <details class="faq-item"><summary>What is the PSA test?</summary><div class="faq-answer">A blood test measuring prostate-specific antigen. A higher level can signal cancer but is also raised by benign enlargement, infection, or recent activity — so it's imperfect. Because it can lead to unnecessary tests and treatment, whether to test is a personal decision made with your doctor.</div></details>
+      <details class="faq-item"><summary>Do urinary symptoms mean cancer?</summary><div class="faq-answer">Usually not — a weak stream or night-time urination is far more often benign prostate enlargement (BPH). Early prostate cancer typically causes no symptoms, which is why screening is risk-based. Still, mention any new urinary symptoms, and report blood in urine/semen promptly.</div></details>
+      <details class="faq-item"><summary>Why are Black men at higher risk?</summary><div class="faq-answer">Men of African ancestry have higher incidence, tend to develop it younger, and have higher mortality — partly genetic, partly access to care. Guidelines therefore recommend starting the screening conversation earlier, around 45 (or 40 with other risk factors).</div></details>
+      <p class="editorial-h3">Sources &amp; References</p>
+      <p class="refs">
+        US Preventive Services Task Force. Screening for Prostate Cancer: Recommendation Statement. <em>JAMA.</em> 2018;319(18):1901–1913. <a href="https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/prostate-cancer-screening" target="_blank" rel="noopener">View ↗</a><br>
+        American Cancer Society. Prostate Cancer Screening Guidelines. <em>cancer.org.</em> 2024. <a href="https://www.cancer.org/cancer/types/prostate-cancer/detection-diagnosis-staging/acs-recommendations.html" target="_blank" rel="noopener">View ↗</a>
+      </p>
+      <p class="refs" style="margin-top:14px;">Content prepared by the <strong>SageMyHealth editorial team</strong>, drawing on peer-reviewed literature and current screening guidelines. Last reviewed: <strong>July 2026</strong>.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo"><img src="assets/logo-white.png" alt="SageMyHealth" style="height:45px;width:auto;object-fit:contain;" /></div>
+        <p>Free, trusted health calculators with warm guidance — helping you understand your numbers.</p>
+      </div>
+      <div class="footer-col"><h5>Calculators</h5><ul>
+        <li><a href="breast-cancer-risk.html">Breast Cancer Risk</a></li>
+        <li><a href="colorectal-cancer-risk.html">Colorectal Cancer Risk</a></li>
+        <li><a href="lung-cancer-risk.html">Lung Cancer Risk</a></li>
+        <li><a href="ascvd-risk.html">Heart Risk (ASCVD)</a></li>
+      </ul></div>
+      <div class="footer-col"><h5>Categories</h5><ul>
+        <li><a href="../categories/cancer-risk.html">Cancer Risk</a></li>
+        <li><a href="../categories/heart-cardiovascular.html">Heart &amp; Lungs</a></li>
+        <li><a href="../categories/diabetes-blood-sugar.html">Diabetes &amp; Blood Sugar</a></li>
+        <li><a href="../index.html#categories">All Categories</a></li>
+      </ul></div>
+      <div class="footer-col"><h5>Info</h5><ul>
+        <li><a href="../about.html">About Us</a></li>
+        <li><a href="../privacy.html">Privacy Policy</a></li>
+        <li><a href="../terms.html">Terms of Use</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-disclaimer"><strong style="color:#7A958E">Medical Disclaimer:</strong> SageMyHealth calculators are for informational purposes only and are not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider.</p>
+      <p class="footer-copy">© 2026 SageMyHealth.com — All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function openMobileMenu(){document.getElementById('mobile-menu').classList.add('open');document.body.style.overflow='hidden';}
+  function closeMobileMenu(){document.getElementById('mobile-menu').classList.remove('open');document.body.style.overflow='';}
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMobileMenu();});
+
+  var A = { age:null, family:null, ethnicity:null, brca:null, weight:null, symptoms:null };
+
+  function selectPill(btn, q){
+    document.querySelectorAll('.pill-btn[data-q="'+q+'"]').forEach(function(b){b.classList.remove('selected');});
+    btn.classList.add('selected'); A[q]=btn.dataset.val;
+  }
+  function selectYN(btn, q, val){
+    var parent=btn.parentNode;
+    parent.querySelectorAll('.yn-btn').forEach(function(b){b.classList.remove('selected-yes','selected-no');});
+    btn.classList.add(val===1?'selected-yes':'selected-no'); A[q]=val;
+  }
+
+  function calculate(){
+    var err=document.getElementById('err-banner');
+    for(var k in A){ if(A[k]===null){ err.style.display='block'; err.scrollIntoView({behavior:'smooth',block:'center'}); return; } }
+    err.style.display='none';
+
+    var score=0, factors=[];
+
+    if(A.age==='40_49') score+=1;
+    else if(A.age==='50_54') score+=2;
+    else if(A.age==='55_69') score+=3;
+    else if(A.age==='over70') score+=3;
+    if(A.age==='55_69'||A.age==='over70') factors.push(['Age '+(A.age==='over70'?'70+':'55–69')+' — risk rises steeply with age', true]);
+    else if(A.age==='50_54') factors.push(['Age 50–54', true]);
+
+    if(A.family==='one'){ score+=2; factors.push(['One close relative with prostate cancer', true]); }
+    else if(A.family==='strong'){ score+=3; factors.push(['Strong family history (young or multiple relatives)', true]); }
+    else factors.push(['No known family history of prostate cancer', false]);
+
+    if(A.ethnicity==='black'){ score+=2; factors.push(['Black / African ancestry — higher incidence & earlier onset', true]); }
+    else if(A.ethnicity==='asian'){ factors.push(['Asian ancestry — lower average risk', false]); }
+    else if(A.ethnicity==='other'){ score+=1; }
+
+    if(A.brca===1){ score+=1; factors.push(['Family history of breast/ovarian cancer or BRCA gene', true]); }
+    if(A.weight==='obese'){ score+=1; factors.push(['Obesity — linked to more aggressive disease', true]); }
+
+    if(score<0) score=0;
+
+    var aboveAvg = (A.family==='strong') || (A.ethnicity==='black') || (A.brca===1);
+    var highest = (A.family==='strong') || (A.brca===1 && A.family!=='none');
+
+    var tier, band, boxId, markerPct;
+    if(score<=2){ tier='Lower Risk'; band='band-low'; boxId='rb-low'; markerPct=12; }
+    else if(score<=5){ tier='Moderate'; band='band-moderate'; boxId='rb-moderate'; markerPct=40; }
+    else if(score<=8){ tier='High'; band='band-high'; boxId='rb-high'; markerPct=68; }
+    else { tier='Very High'; band='band-very-high'; boxId='rb-very-high'; markerPct=92; }
+
+    // screening recommendation
+    var eb=document.getElementById('elig-box'), ei=document.getElementById('elig-icon'), et=document.getElementById('elig-title'), ex=document.getElementById('elig-text');
+    if(A.age==='over70'){
+      eb.className='elig-box elig-no'; ei.textContent='🗓️';
+      et.textContent='Routine screening usually stops after 70';
+      ex.textContent='For most men over 70, the harms of PSA screening outweigh the benefits, so it isn’t routinely advised — though it can be individualised if you’re in excellent health. Discuss with your doctor.';
+    } else if(A.age==='under40'){
+      eb.className='elig-box elig-no'; ei.textContent='🗓️';
+      et.textContent='Screening isn’t relevant yet';
+      ex.textContent = highest ? 'Prostate cancer is very rare under 40, but with your strong family history, note your history now and plan to start the PSA conversation around age 40.' : 'Prostate cancer is very rare under 40. Note your family history now, and revisit screening in your 40s–50s.';
+    } else if(aboveAvg){
+      eb.className='elig-box elig-yes'; ei.textContent='🗓️';
+      et.textContent='Start the PSA conversation earlier';
+      ex.textContent='Because of your risk factors, guidelines suggest discussing PSA screening with your doctor now — around age '+(highest?'40':'45')+', rather than waiting until 50. Ask about your options at your next visit.';
+    } else if(A.age==='55_69'){
+      eb.className='elig-box elig-yes'; ei.textContent='✅';
+      et.textContent='This is the shared-decision-making age';
+      ex.textContent='Ages 55–69 is exactly when guidelines recommend discussing PSA screening with your doctor, weighing the benefits and downsides for you. If you haven’t had that conversation, it’s worth booking.';
+    } else {
+      eb.className='elig-box elig-no'; ei.textContent='🗓️';
+      et.textContent='Plan to discuss PSA around age 50';
+      ex.textContent='At average risk, guidelines suggest beginning the shared decision-making conversation about PSA screening at about age 50. Keep an eye on your family history in the meantime.';
+    }
+
+    document.getElementById('r-score').textContent=score;
+    document.getElementById('r-score').style.color=getComputedStyle(document.querySelector('.'+band.replace('band','rb'))).color;
+    document.getElementById('result-band').className='result-band '+band;
+    document.getElementById('risk-marker').style.left=markerPct+'%';
+    ['rb-low','rb-moderate','rb-high','rb-very-high'].forEach(function(id){document.getElementById(id).classList.remove('active');});
+    document.getElementById(boxId).classList.add('active');
+
+    var fl=document.getElementById('factors-list'); fl.innerHTML='';
+    factors.forEach(function(f){var d=document.createElement('div');d.className='factor-chip '+(f[1]?'present':'absent');d.innerHTML='<span class="chip-icon">'+(f[1]?'⚠️':'✓')+'</span>'+f[0];fl.appendChild(d);});
+
+    var mb=document.getElementById('msg-block'), mh=document.getElementById('msg-heading'), mbody=document.getElementById('msg-body');
+    var colors={'Lower Risk':['#16A34A','#F0FDF4'],'Moderate':['#CA8A04','#FEFCE8'],'High':['#EA580C','#FFF7ED'],'Very High':['#DC2626','#FEF2F2']};
+    mb.style.borderLeftColor=colors[tier][0]; mb.style.background=colors[tier][1];
+    var msgs={
+      'Lower Risk':['Your prostate cancer risk appears low','Your risk factors are limited. Follow the standard timing — start discussing PSA screening with your doctor around age 50 — and keep up general healthy habits.'],
+      'Moderate':['Some risk factors are present','You carry a few meaningful risk factors. Know your family history well and consider starting the screening conversation a little earlier than average.'],
+      'High':['Your risk is elevated','You have multiple risk factors. Begin the PSA discussion earlier — around 45 — and make it a regular conversation with your doctor.'],
+      'Very High':['Your risk is high — get a personalised plan','Strong family history or a hereditary gene places you well above average risk. Guidelines suggest starting the PSA conversation as early as 40. Please raise this with your doctor soon.']
+    };
+    mh.textContent=msgs[tier][0]; mbody.textContent=msgs[tier][1];
+
+    var tips=document.getElementById('tips-list'); tips.innerHTML='';
+    var T=[];
+    if(A.age!=='over70') T.push('Have a shared decision-making talk with your doctor about the PSA test — weigh the benefits and downsides for you.');
+    if(aboveAvg) T.push('Given your risk factors, don’t wait until 50 — raise screening at your next appointment.');
+    T.push('Map your family history of prostate, breast, and ovarian cancer — it directly changes your screening timing.');
+    if(A.symptoms===1) T.push('Your urinary symptoms are most likely benign enlargement (BPH), but do get them checked to be sure.');
+    if(A.weight==='obese') T.push('Reaching a healthier weight may lower your risk of aggressive prostate cancer, and helps overall.');
+    T.push('Report blood in the urine or semen, or new hip/back/pelvic pain, to a doctor promptly.');
+    T.slice(0,5).forEach(function(t){var li=document.createElement('li');li.textContent=t;tips.appendChild(li);});
+
+    var card=document.getElementById('result-card');
+    card.classList.add('visible');
+    card.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+</script>
+</body>
+</html>
