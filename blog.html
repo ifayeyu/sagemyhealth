@@ -231,13 +231,28 @@
     .featured-card:hover { transform: translateY(-3px); box-shadow: 0 12px 48px rgba(10,61,42,0.22); }
 
     .featured-left {
-      background:
-        linear-gradient(rgba(255,255,255,0.72), rgba(255,255,255,0.72)),
-        url('blog/images/prediabetes.jpg') center / cover no-repeat;
+      background: var(--sage-light);
       padding: 44px 40px;
       display: flex; flex-direction: column;
       justify-content: space-between;
       position: relative; overflow: hidden;
+    }
+    .featured-bg-img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      z-index: 0;
+    }
+    .featured-left::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(255,255,255,0.58);
+      z-index: 1;
+    }
+    .featured-badge,
+    .featured-stats,
+    .featured-cat-pill {
+      position: relative; z-index: 2;
     }
     .featured-badge {
       display: inline-flex; align-items: center; gap: 6px;
@@ -572,6 +587,7 @@
 
   <a class="featured-card" href="blog/prediabetes-signs-and-risk.html">
     <div class="featured-left">
+      <img src="blog/images/prediabetes.jpg" alt="" aria-hidden="true" class="featured-bg-img" onerror="this.style.display='none'" />
       <span class="featured-badge">&#x2736; Most-Read Guide</span>
       <div class="featured-stats">
         <div class="featured-stat-block">
