@@ -11,170 +11,105 @@
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Health Guides — SageMyHealth</title>
-  <meta name="description" content="Thoughtful reads on nutrition, mental health, relationships, and everyday wellness. Curated health guides to help you live better, one article at a time." />
-  <meta name="keywords" content="health guides, wellness articles, nutrition tips, mental health, healthy living" />
+  <title>Health Guides — Evidence-Based Articles | SageMyHealth</title>
+  <meta name="description" content="Clinical health guides on fatigue, blood pressure, iron deficiency, ADHD burnout, sleep debt, and prediabetes — evidence-based information you can actually use." />
+  <meta name="keywords" content="health guides, fatigue causes, blood pressure explained, iron deficiency, ADHD burnout, sleep debt, prediabetes signs" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <link rel="canonical" href="https://sagemyhealth.com/blog.html" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="SageMyHealth" />
-  <meta property="og:title" content="Health Guides — SageMyHealth" />
-  <meta property="og:description" content="Thoughtful reads on nutrition, mental health, and everyday wellness to help you live better." />
+  <meta property="og:title" content="Health Guides — Evidence-Based Articles | SageMyHealth" />
+  <meta property="og:description" content="Clinical health guides on fatigue, blood pressure, iron deficiency, ADHD burnout, sleep debt, and prediabetes." />
   <meta property="og:url" content="https://sagemyhealth.com/blog.html" />
   <meta property="og:image" content="https://sagemyhealth.com/calculators/assets/logo.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Health Guides — SageMyHealth" />
-  <meta name="twitter:description" content="Thoughtful reads on nutrition, mental health, and everyday wellness." />
+  <meta name="twitter:description" content="Evidence-based health guides you can actually use." />
   <meta name="twitter:image" content="https://sagemyhealth.com/calculators/assets/logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;400i&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
   <style>
+    /* ─── DESIGN TOKENS ─────────────────────────────── */
     :root {
-      --sage: #3B6A3A; --sage-dark: #0A3D2A; --sage-mid: #5C8A6A;
-      --sage-light: #EBF2EC; --sage-pale: #F2F7F3; --cream: #E3FFB3;
-      --text-dark: #1A2E1E; --text-mid: #4A5568; --text-light: #718096;
-      --white: #FFFFFF; --border: #E2EBE4;
+      --sage:       #3B6A3A;
+      --sage-dark:  #0A3D2A;
+      --sage-mid:   #5C8A5C;
+      --sage-light: #EBF2EC;
+      --sage-pale:  #F2F7F3;
+      --cream:      #E3FFB3;
+      --text-dark:  #1A2E1E;
+      --text-mid:   #4A5568;
+      --text-light: #718096;
+      --white:      #FFFFFF;
+      --border:     #E2EBE4;
       --r-sm: 8px; --r: 12px; --r-lg: 20px; --r-xl: 28px;
       --shadow-sm: 0 1px 6px rgba(59,106,58,0.08);
-      --shadow-md: 0 4px 16px rgba(59,106,58,0.12);
+      --shadow-md: 0 4px 20px rgba(59,106,58,0.13);
+      --shadow-lg: 0 8px 40px rgba(59,106,58,0.18);
     }
+
+    /* ─── RESET ─────────────────────────────────────── */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-dark);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
     a { color: var(--sage); text-decoration: none; }
-    a:hover { text-decoration: none; }
 
-    /* ── NAV ── */
-    .site-nav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.96); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
-    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
-    .nav-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
-    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; flex: 1; justify-content: center; }
-    .nav-links a { color: var(--text-mid); font-size: 15px; font-weight: 500; transition: color .2s; }
+    /* ─── NAV ───────────────────────────────────────── */
+    .site-nav {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 24px;
+      height: 68px; display: flex; align-items: center;
+      justify-content: space-between; gap: 32px;
+    }
+    .nav-logo { display: flex; align-items: center; flex-shrink: 0; }
+    .nav-links {
+      display: flex; align-items: center; gap: 28px;
+      list-style: none; flex: 1; justify-content: center;
+    }
+    .nav-links a {
+      color: var(--text-mid); font-size: 15px; font-weight: 500;
+      transition: color .2s;
+    }
     .nav-links a:hover, .nav-links a.active { color: var(--sage); }
-    .nav-btn { background: var(--sage); color: white; border: none; padding: 9px 20px; border-radius: var(--r-sm); font-size: 14px; font-weight: 600; transition: background .2s; cursor: pointer; display: inline-block; }
+    .nav-btn {
+      background: var(--sage); color: white; border: none;
+      padding: 9px 20px; border-radius: var(--r-sm);
+      font-size: 14px; font-weight: 600;
+      transition: background .2s; cursor: pointer; display: inline-block;
+    }
     .nav-btn:hover { background: var(--sage-dark); }
 
-    /* ── HERO ── */
-    .page-hero { background: linear-gradient(150deg, var(--sage-pale) 0%, var(--cream) 60%, #FFF8F0 100%); padding: 56px 24px 60px; }
-    .hero-inner { max-width: 680px; margin: 0 auto; text-align: center; }
-    .hero-inner h1 { font-family: 'Playfair Display', serif; font-size: clamp(32px, 4.5vw, 52px); font-weight: 700; color: var(--text-dark); letter-spacing: -0.8px; line-height: 1.12; margin-bottom: 16px; }
-    .hero-inner p { font-size: 17px; color: var(--text-mid); line-height: 1.75; max-width: 540px; margin: 0 auto 24px; }
-    .hero-source-note { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-light); background: white; border: 1px solid var(--border); border-radius: 24px; padding: 7px 16px; }
-    .hero-source-note a { color: var(--sage); font-weight: 600; }
-
-    /* ── FILTER TABS ── */
-    .filter-bar { border-bottom: 1px solid var(--border); background: white; position: sticky; top: 68px; z-index: 100; }
-    .filter-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
-    .filter-inner::-webkit-scrollbar { display: none; }
-    .filter-tab { padding: 14px 18px; font-size: 14px; font-weight: 500; color: var(--text-mid); border: none; background: none; cursor: pointer; white-space: nowrap; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all .18s; }
-    .filter-tab:hover { color: var(--sage); }
-    .filter-tab.active { color: var(--sage); border-bottom-color: var(--sage); font-weight: 600; }
-
-    /* ── MAIN CONTENT ── */
-    .guides-page { max-width: 1200px; margin: 0 auto; padding: 48px 24px 80px; }
-
-    /* ── FEATURED POST ── */
-    .featured-post { display: grid; grid-template-columns: 1.1fr 1fr; gap: 0; border-radius: var(--r-xl); overflow: hidden; box-shadow: var(--shadow-md); border: 1px solid var(--border); margin-bottom: 48px; text-decoration: none; color: inherit; transition: transform .2s, box-shadow .2s; }
-    .featured-post:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(59,106,58,0.18); }
-    .featured-post-img { position: relative; overflow: hidden; min-height: 340px; }
-    .featured-post-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .featured-post-img .img-fallback { width: 100%; height: 100%; min-height: 340px; background: linear-gradient(135deg, #d8e8d9 0%, #a8c4a0 100%); display: flex; align-items: center; justify-content: center; }
-    .feat-cat { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; padding: 4px 10px; border-radius: 20px; margin-bottom: 14px; }
-    .cat-nourish   { background: #E3FFD3; color: #2D5A1B; }
-    .cat-mind      { background: #E8E3FF; color: #3D1B8C; }
-    .cat-love      { background: #FFE3E3; color: #8C1B1B; }
-    .cat-companion { background: #FDF2E9; color: #7A3B0E; }
-    .featured-post-body { padding: 36px 40px; display: flex; flex-direction: column; justify-content: center; background: white; }
-    .featured-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: var(--sage); margin-bottom: 16px; display: block; }
-    .featured-post-body h2 { font-family: 'Playfair Display', serif; font-size: clamp(22px, 2.5vw, 30px); font-weight: 700; line-height: 1.25; margin-bottom: 14px; color: var(--text-dark); }
-    .featured-post-body p { font-size: 15px; color: var(--text-mid); line-height: 1.8; margin-bottom: 20px; }
-    .post-meta { display: flex; align-items: center; gap: 12px; font-size: 12px; color: var(--text-light); }
-    .post-meta-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--border); }
-    .read-btn { display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; font-size: 14px; font-weight: 600; color: var(--sage); }
-    .read-btn svg { transition: transform .18s; }
-    .featured-post:hover .read-btn svg { transform: translateX(3px); }
-
-    /* ── POST GRID ── */
-    .section-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 24px; }
-    .section-header h2 { font-size: 20px; font-weight: 700; color: var(--text-dark); }
-    .post-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .post-card { display: block; background: white; border-radius: var(--r-lg); overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow-sm); transition: transform .2s, box-shadow .2s; text-decoration: none; color: inherit; }
-    .post-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
-    .post-card-img { position: relative; height: 200px; overflow: hidden; }
-    .post-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s; }
-    .post-card:hover .post-card-img img { transform: scale(1.04); }
-    .post-card-img .img-fallback { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
-    .post-card-body { padding: 20px 22px 22px; }
-    .post-card-body .feat-cat { margin-bottom: 10px; }
-    .post-card-body h3 { font-size: 16px; font-weight: 700; line-height: 1.4; margin-bottom: 8px; color: var(--text-dark); }
-    .post-card-body p { font-size: 13px; color: var(--text-mid); line-height: 1.7; margin-bottom: 14px; }
-    .post-card-body .post-meta { font-size: 12px; }
-
-    /* Post card fallback bg colors by category */
-    .fg-nourish { background: linear-gradient(135deg, #d4edcc 0%, #a8cc9c 100%); }
-    .fg-mind    { background: linear-gradient(135deg, #d5d0f0 0%, #b0a8e0 100%); }
-    .fg-love    { background: linear-gradient(135deg, #f0d0d0 0%, #e0a8a8 100%); }
-    .fg-wellness { background: linear-gradient(135deg, #c8e4f4 0%, #96c4e0 100%); }
-
-    /* ── TAB SECTIONS ── */
-    .tab-section { margin-top: 52px; }
-
-    /* ── BOTTOM CALLOUT ── */
-    .guides-callout { margin-top: 64px; background: var(--sage-pale); border-radius: var(--r-xl); padding: 40px 48px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
-    .guides-callout-text h3 { font-family: 'Playfair Display', serif; font-size: 22px; margin-bottom: 8px; }
-    .guides-callout-text p { font-size: 15px; color: var(--text-mid); max-width: 460px; line-height: 1.75; }
-    .callout-link { background: var(--sage); color: white; padding: 12px 24px; border-radius: var(--r); font-weight: 600; font-size: 14px; white-space: nowrap; transition: background .2s; }
-    .callout-link:hover { background: var(--sage-dark); }
-
-    /* ── FOOTER ── */
-    .site-footer { background: var(--text-dark); color: #94A99A; padding: 56px 0 0; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; }
-    .footer-logo { display: flex; align-items: center; gap: 8px; color: white; font-size: 18px; font-weight: 700; margin-bottom: 12px; }
-    .footer-brand p { font-size: 14px; line-height: 1.7; max-width: 260px; color: #7A958E; }
-    .footer-col h5 { color: white; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; margin-bottom: 14px; }
-    .footer-col ul { list-style: none; }
-    .footer-col li { margin-bottom: 8px; }
-    .footer-col a { font-size: 14px; color: #7A958E; transition: color .2s; }
-    .footer-col a:hover { color: white; }
-    .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding: 22px 0; display: flex; flex-direction: column; gap: 6px; }
-    .footer-disclaimer { font-size: 12px; color: #5A7568; line-height: 1.7; }
-    .footer-copy { font-size: 12px; color: #5A7568; }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 920px) {
-      .featured-post { grid-template-columns: 1fr; }
-      .featured-post-img { min-height: 240px; }
-      .post-grid { grid-template-columns: 1fr 1fr; }
-      .guides-callout { flex-direction: column; text-align: center; }
-      .guides-callout-text p { max-width: 100%; }
-    }
-    @media (max-width: 660px) {
-      .nav-links { display: none; }
-      .nav-hamburger { display: flex !important; }
-      .nav-btn { display: none; }
-      .post-grid { grid-template-columns: 1fr; }
-      .featured-post-body { padding: 24px; }
-    }
-    @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: 1 / -1; } }
-    @media (max-width: 520px) { .footer-grid { grid-template-columns: 1fr; } }
-  
-    /* ── MOBILE HAMBURGER ────────────────────────────── */
+    /* ─── HAMBURGER ─────────────────────────────────── */
     .nav-hamburger {
       display: none; flex-direction: column; justify-content: center; gap: 5px;
       background: none; border: none; padding: 8px; margin-left: 8px;
       border-radius: 8px; cursor: pointer; transition: background .15s; flex-shrink: 0;
     }
-    .nav-hamburger:hover { background: var(--sage-light, #EBF2EC); }
+    .nav-hamburger:hover { background: var(--sage-light); }
     .nav-hamburger span {
       display: block; width: 22px; height: 2.5px;
-      background: var(--text-dark, #1A2E1E); border-radius: 2px; transition: all .2s;
+      background: var(--text-dark); border-radius: 2px; transition: all .2s;
     }
-    /* ── MOBILE DRAWER ───────────────────────────────── */
+
+    /* ─── MOBILE DRAWER ─────────────────────────────── */
     .mobile-menu { display: none; position: fixed; inset: 0; z-index: 999; }
     .mobile-menu.open { display: block; }
-    .mobile-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.45); backdrop-filter: blur(2px); }
+    .mobile-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,.45); backdrop-filter: blur(2px);
+    }
     .mobile-drawer {
       position: absolute; top: 0; right: 0;
       width: min(300px, 84vw); height: 100%;
@@ -185,58 +120,403 @@
     @keyframes drawerIn { from{transform:translateX(100%)} to{transform:translateX(0)} }
     .mobile-drawer-head {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 18px 20px 14px; border-bottom: 1px solid var(--border, #E2EBE4);
+      padding: 18px 20px 14px; border-bottom: 1px solid var(--border);
     }
-    .mobile-drawer-logo { font-size: 15px; font-weight: 700; color: var(--text-dark, #1A2E1E); }
+    .mobile-drawer-logo { font-size: 15px; font-weight: 700; color: var(--text-dark); }
     .mobile-close {
       background: none; border: none; font-size: 20px; padding: 4px 8px;
-      cursor: pointer; color: var(--text-light, #718096); border-radius: 6px; line-height: 1;
+      cursor: pointer; color: var(--text-light); border-radius: 6px; line-height: 1;
       transition: background .15s, color .15s;
     }
-    .mobile-close:hover { background: var(--sage-light, #EBF2EC); color: var(--text-dark, #1A2E1E); }
-    .mobile-nav-links { padding: 14px 12px; flex: 1; display: flex; flex-direction: column; gap: 4px; }
+    .mobile-close:hover { background: var(--sage-light); color: var(--text-dark); }
+    .mobile-nav-links {
+      padding: 14px 12px; flex: 1;
+      display: flex; flex-direction: column; gap: 4px;
+    }
     .mobile-nav-link {
       display: flex; align-items: center; gap: 14px;
       padding: 13px 16px; border-radius: 12px;
-      font-size: 16px; font-weight: 600; color: var(--text-dark, #1A2E1E);
+      font-size: 16px; font-weight: 600; color: var(--text-dark);
       text-decoration: none; transition: background .15s, color .15s;
     }
-    .mobile-nav-link:hover { background: var(--sage-light, #EBF2EC); color: var(--sage, #3B6A3A); }
+    .mobile-nav-link:hover { background: var(--sage-light); color: var(--sage); }
     .mobile-link-icon {
-      width: 40px; height: 40px; background: var(--sage-light, #EBF2EC);
-      border-radius: 10px; display: flex; align-items: center; justify-content: center;
-      font-size: 18px; flex-shrink: 0;
+      width: 40px; height: 40px; background: var(--sage-light);
+      border-radius: 10px; display: flex; align-items: center;
+      justify-content: center; font-size: 18px; flex-shrink: 0;
     }
     .mobile-browse-btn {
       display: block; margin: 0 12px 20px; padding: 14px;
-      background: var(--sage, #3B6A3A); color: #fff; border-radius: 12px;
+      background: var(--sage); color: #fff; border-radius: 12px;
       font-size: 15px; font-weight: 700; text-align: center;
       text-decoration: none; transition: background .15s;
     }
-    .mobile-browse-btn:hover { background: var(--sage-dark, #0A3D2A); }
+    .mobile-browse-btn:hover { background: var(--sage-dark); }
 
+    /* ─── PAGE HERO ─────────────────────────────────── */
+    .page-hero {
+      background: linear-gradient(150deg, var(--sage-dark) 0%, #1A4A30 55%, #2A6040 100%);
+      padding: 60px 24px 64px;
+      position: relative; overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(163,212,120,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-inner { max-width: 680px; margin: 0 auto; text-align: center; position: relative; }
+    .hero-label {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 12px; font-weight: 700; letter-spacing: 1.2px;
+      text-transform: uppercase; color: #A3D478;
+      background: rgba(163,212,120,0.12); border: 1px solid rgba(163,212,120,0.25);
+      border-radius: 20px; padding: 5px 14px; margin-bottom: 20px;
+    }
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(30px, 4.5vw, 48px);
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.6px;
+      line-height: 1.14;
+      margin-bottom: 18px;
+    }
+    .page-hero p {
+      font-size: 17px;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.75;
+      max-width: 520px;
+      margin: 0 auto 28px;
+      font-weight: 400;
+    }
+    .hero-stats {
+      display: flex; align-items: center; justify-content: center;
+      gap: 32px; flex-wrap: wrap;
+    }
+    .hero-stat { display: flex; flex-direction: column; align-items: center; }
+    .hero-stat-num { font-size: 28px; font-weight: 800; color: #fff; line-height: 1; }
+    .hero-stat-label { font-size: 12px; color: rgba(255,255,255,0.55); font-weight: 500; margin-top: 3px; white-space: nowrap; }
+    .hero-stat-divider { width: 1px; height: 36px; background: rgba(255,255,255,0.15); }
+
+    /* ─── MAIN WRAPPER ──────────────────────────────── */
+    .blog-page { max-width: 1200px; margin: 0 auto; padding: 56px 24px 96px; }
+
+    /* ─── SECTION LABEL ─────────────────────────────── */
+    .section-label {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 28px;
+    }
+    .section-label span {
+      font-size: 11px; font-weight: 700; letter-spacing: 1.2px;
+      text-transform: uppercase; color: var(--text-light); white-space: nowrap;
+    }
+    .section-label::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
+    }
+
+    /* ─── FEATURED CARD ─────────────────────────────── */
+    .featured-card {
+      display: grid;
+      grid-template-columns: 2fr 3fr;
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+      margin-bottom: 64px;
+      text-decoration: none;
+      color: inherit;
+      transition: transform .22s, box-shadow .22s;
+    }
+    .featured-card:hover { transform: translateY(-3px); box-shadow: 0 12px 48px rgba(10,61,42,0.22); }
+
+    .featured-left {
+      background: linear-gradient(145deg, var(--sage-dark) 0%, #1A4A30 100%);
+      padding: 44px 40px;
+      display: flex; flex-direction: column;
+      justify-content: space-between;
+      position: relative; overflow: hidden;
+    }
+    .featured-left::after {
+      content: '';
+      position: absolute; bottom: -30px; right: -30px;
+      width: 200px; height: 200px; border-radius: 50%;
+      background: rgba(163,212,120,0.06);
+      pointer-events: none;
+    }
+    .featured-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; color: #A3D478;
+      background: rgba(163,212,120,0.12);
+      border: 1px solid rgba(163,212,120,0.22);
+      border-radius: 20px; padding: 5px 12px;
+      width: fit-content; margin-bottom: 32px;
+    }
+    .featured-stats { flex: 1; }
+    .featured-stat-block { margin-bottom: 24px; }
+    .featured-stat-block .big-num {
+      font-size: clamp(40px, 5vw, 58px);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -2px;
+      line-height: 1;
+      display: block;
+    }
+    .featured-stat-block .big-label {
+      font-size: 14px;
+      color: rgba(255,255,255,0.62);
+      font-weight: 400;
+      margin-top: 4px;
+      display: block;
+    }
+    .featured-cat-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 600;
+      color: rgba(255,255,255,0.75);
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 20px; padding: 5px 12px;
+      margin-top: 8px;
+    }
+
+    .featured-right {
+      background: var(--white);
+      padding: 44px 48px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .featured-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 1.2px;
+      text-transform: uppercase; color: var(--sage);
+      margin-bottom: 14px; display: block;
+    }
+    .featured-right h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(20px, 2.2vw, 27px);
+      font-weight: 700;
+      line-height: 1.28;
+      color: var(--text-dark);
+      margin-bottom: 16px;
+    }
+    .featured-right p {
+      font-size: 15px;
+      color: var(--text-mid);
+      line-height: 1.82;
+      margin-bottom: 24px;
+    }
+    .post-meta-row {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 12px; color: var(--text-light);
+      margin-bottom: 20px;
+    }
+    .meta-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--border); flex-shrink: 0; }
+    .read-link {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 14px; font-weight: 700;
+      color: var(--sage);
+    }
+    .read-link svg { transition: transform .18s; }
+    .featured-card:hover .read-link svg { transform: translateX(4px); }
+
+    /* ─── POST GRID ─────────────────────────────────── */
+    .post-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    /* ─── POST CARD ─────────────────────────────────── */
+    .post-card {
+      display: flex; flex-direction: column;
+      background: var(--white);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      text-decoration: none;
+      color: inherit;
+      transition: transform .22s, box-shadow .22s;
+    }
+    .post-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+
+    /* Card visual zone — lifestyle photography */
+    .card-visual {
+      height: 216px;
+      overflow: hidden;
+      position: relative;
+      flex-shrink: 0;
+      /* Fallback shown while image loads or if it errors */
+      background: linear-gradient(135deg, var(--sage-pale) 0%, #D4E8D4 100%);
+    }
+    .card-img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block;
+      transition: transform .38s ease;
+    }
+    .post-card:hover .card-img { transform: scale(1.05); }
+    /* Hide broken img so the fallback gradient shows through */
+    .card-img.broken { display: none; }
+
+    .card-body { padding: 22px 24px 26px; flex: 1; display: flex; flex-direction: column; }
+
+    /* Category pill */
+    .cat-pill {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.4px;
+      border-radius: 20px; padding: 4px 10px;
+      margin-bottom: 12px; width: fit-content;
+    }
+    .cp-fatigue { background: #FFF8E1; color: #8B6914; }
+    .cp-heart   { background: #FCE4EC; color: #9B1C2E; }
+    .cp-iron    { background: #FFEBEE; color: #8B1A1A; }
+    .cp-adhd    { background: #F3E5F5; color: #6A1B9A; }
+    .cp-sleep   { background: #E8EAF6; color: #283593; }
+    .cp-blood   { background: #E8F5E9; color: #1B5E20; }
+
+    .card-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 16.5px;
+      font-weight: 700;
+      line-height: 1.38;
+      color: var(--text-dark);
+      margin-bottom: 10px;
+      flex: 1;
+    }
+    .card-body p {
+      font-size: 13.5px;
+      color: var(--text-mid);
+      line-height: 1.72;
+      margin-bottom: 18px;
+    }
+    .card-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: auto; padding-top: 4px;
+    }
+    .card-meta {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 12px; color: var(--text-light);
+    }
+    .card-read-link {
+      font-size: 13px; font-weight: 700; color: var(--sage);
+      display: inline-flex; align-items: center; gap: 4px;
+      transition: gap .18s; white-space: nowrap;
+    }
+    .post-card:hover .card-read-link { gap: 7px; }
+
+    /* ─── BOTTOM CTA ─────────────────────────────────── */
+    .blog-cta {
+      margin-top: 72px;
+      background: var(--sage-pale);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      padding: 44px 52px;
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 32px;
+    }
+    .blog-cta-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+    .blog-cta-text p {
+      font-size: 15px; color: var(--text-mid);
+      line-height: 1.75; max-width: 480px;
+    }
+    .cta-btn {
+      background: var(--sage); color: white;
+      padding: 13px 26px; border-radius: var(--r);
+      font-size: 14px; font-weight: 700; white-space: nowrap;
+      transition: background .2s; display: inline-block;
+    }
+    .cta-btn:hover { background: var(--sage-dark); }
+
+    /* ─── FOOTER ─────────────────────────────────────── */
+    .site-footer { background: var(--text-dark); color: #94A99A; padding: 56px 0 0; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px; padding-bottom: 48px;
+    }
+    .footer-logo { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+    .footer-brand p { font-size: 14px; line-height: 1.7; max-width: 260px; color: #7A958E; }
+    .footer-col h5 {
+      color: white; font-size: 12px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .8px; margin-bottom: 14px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { font-size: 14px; color: #7A958E; transition: color .2s; }
+    .footer-col a:hover { color: white; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding: 22px 0; display: flex; flex-direction: column; gap: 6px;
+    }
+    .footer-disclaimer { font-size: 12px; color: #5A7568; line-height: 1.7; }
+    .footer-copy { font-size: 12px; color: #5A7568; }
+
+    /* ─── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .featured-card { grid-template-columns: 1fr 1fr; }
+      .featured-right { padding: 36px 32px; }
+    }
+    @media (max-width: 860px) {
+      .featured-card { grid-template-columns: 1fr; }
+      .featured-left {
+        padding: 28px 28px 24px;
+        flex-direction: row; align-items: center; flex-wrap: wrap; gap: 20px;
+      }
+      .featured-badge { margin-bottom: 0; }
+      .featured-stats { display: flex; flex-direction: row; gap: 20px; }
+      .featured-stat-block { margin-bottom: 0; }
+      .featured-stat-block .big-num { font-size: 34px; }
+      .featured-right { padding: 28px 28px; }
+      .post-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+      .blog-cta { flex-direction: column; align-items: flex-start; padding: 32px 28px; }
+    }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex !important; }
+      .nav-btn { display: none; }
+      .post-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 20px; }
+      .hero-stat-divider { display: none; }
+      .featured-left { flex-direction: column; align-items: flex-start; }
+      .featured-stats { flex-direction: column; gap: 16px; }
+      .page-hero { padding: 44px 20px 48px; }
+      .blog-page { padding: 36px 20px 72px; }
+      .blog-cta { padding: 24px 20px; }
+    }
+    @media (max-width: 900px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 520px) { .footer-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
 
+<!-- ═══ NAV ═══════════════════════════════════════════════════════════════════ -->
 <nav class="site-nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
-      <img src="calculators/assets/logo.png" alt="SageMyHealth" style="height:54px;width:auto;object-fit:contain"/>
+      <img src="calculators/assets/logo.png" alt="SageMyHealth" style="height:54px;width:auto;object-fit:contain" />
     </a>
     <ul class="nav-links">
       <li><a href="index.html#categories">Calculators</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="blog.html" class="active">Health Guides</a></li>
     </ul>
-    <a href="index.html#categories" class="nav-btn">Browse All</a>
+    <a href="index.html#categories" class="nav-btn">Browse Calculators</a>
     <button class="nav-hamburger" id="nav-hamburger"
             onclick="openMobileMenu()" aria-label="Open navigation menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
-<!-- MOBILE MENU -->
+
+<!-- ═══ MOBILE DRAWER ══════════════════════════════════════════════════════════ -->
 <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site navigation">
   <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
   <div class="mobile-drawer">
@@ -259,318 +539,237 @@
   </div>
 </div>
 
-<div class="page-hero">
+<!-- ═══ HERO ═══════════════════════════════════════════════════════════════════ -->
+<section class="page-hero">
   <div class="hero-inner">
-    <h1>Health Guides Worth Reading</h1>
-    <p>Thoughtful, evidence-informed reads on nutrition, mental health, relationships, and everyday wellbeing — to help you make sense of your health, not just track it.</p>
-    <span class="hero-source-note">
-      <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#718096" stroke-width="2" stroke-linejoin="round"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#718096" stroke-width="2" stroke-linejoin="round"/></svg>
-      Curated from <a href="https://www.darlingwhatif.com" target="_blank" rel="noopener">darlingwhatif.com</a> — opens in a new tab
+    <span class="hero-label">
+      <svg width="12" height="12" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 3L14.5 9.5H21L15.5 13.5L17.5 20L12 16L6.5 20L8.5 13.5L3 9.5H9.5L12 3Z" fill="#A3D478"/>
+      </svg>
+      Evidence-Based Health Guides
     </span>
-  </div>
-</div>
-
-<div class="filter-bar">
-  <div class="filter-inner">
-    <button class="filter-tab active" data-filter="all">All Guides</button>
-    <button class="filter-tab" data-filter="nourish">Nourish</button>
-    <button class="filter-tab" data-filter="mind">Mind</button>
-    <button class="filter-tab" data-filter="love">Love</button>
-  </div>
-</div>
-
-<div class="guides-page">
-
-  <!-- FEATURED — visible on All Guides only -->
-  <div id="section-featured">
-    <a class="featured-post" href="https://www.darlingwhatif.com/post-90-30-50.html" target="_blank" rel="noopener">
-      <div class="featured-post-img">
-        <img src="images/90-30-50-hero.jpg" alt="The 90-30-50 Method" onerror="imgFallback(this,'nourish')" />
+    <h1>Understand Your Health,<br>Not Just Track It</h1>
+    <p>Clinical articles on the conditions most people have but few doctors explain clearly — written so you leave informed, not overwhelmed.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-num">6</span>
+        <span class="hero-stat-label">In-depth guides</span>
       </div>
-      <div class="featured-post-body">
-        <span class="featured-label">✦ Featured Guide</span>
-        <span class="feat-cat cat-nourish">Nourish</span>
-        <h2>The 90-30-50 Method: The Protein Formula Everyone's Talking About</h2>
-        <p>The viral protein method that's changing how people think about eating — 90g protein, 30g fiber, 50g healthy fat. No calorie counting, no obsessing over numbers. Just three targets that work together.</p>
-        <div class="post-meta">
-          <span>May 24, 2026</span><span class="post-meta-dot"></span><span>8 min read</span>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">37</span>
+        <span class="hero-stat-label">Free calculators</span>
+      </div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">0</span>
+        <span class="hero-stat-label">Paywalls</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MAIN CONTENT ═══════════════════════════════════════════════════════════ -->
+<main class="blog-page">
+
+  <!-- ── FEATURED: Prediabetes ─────────────────────────────────────────────── -->
+  <div class="section-label"><span>Featured Guide</span></div>
+
+  <a class="featured-card" href="blog/prediabetes-signs-and-risk.html">
+    <div class="featured-left">
+      <span class="featured-badge">&#x2736; Most-Read Guide</span>
+      <div class="featured-stats">
+        <div class="featured-stat-block">
+          <span class="big-num">96M</span>
+          <span class="big-label">Americans have prediabetes</span>
         </div>
-        <span class="read-btn">Read the guide
-          <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="#3B6A3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </span>
+        <div class="featured-stat-block">
+          <span class="big-num">80%</span>
+          <span class="big-label">don&rsquo;t know they have it</span>
+        </div>
+      </div>
+      <span class="featured-cat-pill">🩺 Blood Sugar &amp; Metabolic Health</span>
+    </div>
+    <div class="featured-right">
+      <span class="featured-eyebrow">Blood Sugar &amp; Metabolic Health &nbsp;&middot;&nbsp; 7 min read</span>
+      <h2>Prediabetes: 1 in 3 Americans Have It and Don&rsquo;t Know. These Are the Signs.</h2>
+      <p>There are usually no symptoms — but there are clear diagnostic thresholds, well-established risk factors, and a narrow reversal window. Here&rsquo;s what to check and when to ask your doctor.</p>
+      <div class="post-meta-row">
+        <span>July 2, 2026</span>
+        <span class="meta-dot"></span>
+        <span>7 min read</span>
+        <span class="meta-dot"></span>
+        <span>ADA clinical guidelines</span>
+      </div>
+      <span class="read-link">
+        Read the guide
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M5 12h14M12 5l7 7-7 7" stroke="#3B6A3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </div>
+  </a>
+
+  <!-- ── ARTICLE GRID: Remaining 5 ─────────────────────────────────────────── -->
+  <div class="section-label"><span>Recent Guides</span></div>
+
+  <div class="post-grid">
+
+    <!-- 1. Why Am I Always Tired? -->
+    <a class="post-card" href="blog/why-am-i-always-tired.html">
+      <div class="card-visual">
+        <img class="card-img" src="blog/images/fatige-is-real.jpg"
+             alt="Person resting their head on their hand, looking exhausted at a desk"
+             onerror="this.classList.add('broken')" />
+      </div>
+      <div class="card-body">
+        <span class="cat-pill cp-fatigue">⚡ Fatigue &amp; Energy</span>
+        <h3>Why Am I Always Tired? 6 Reasons That Have Nothing to Do With Sleep</h3>
+        <p>Sleeping enough but still exhausted? These 6 health conditions drain your energy silently — and each one is checkable today.</p>
+        <div class="card-footer">
+          <div class="card-meta">
+            <span>7 min read</span>
+            <span class="meta-dot"></span>
+            <span>July 2, 2026</span>
+          </div>
+          <span class="card-read-link">
+            Read
+            <svg width="13" height="13" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7" stroke="#3B6A3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </div>
       </div>
     </a>
-  </div>
 
-  <!-- NOURISH SECTION -->
-  <div id="section-nourish" class="tab-section">
-    <div class="section-header"><h2>Nourish Your Body</h2></div>
-    <div class="post-grid">
-      <a class="post-card" data-cat="nourish" href="https://www.darlingwhatif.com/post-breakfast.html" target="_blank" rel="noopener">
-        <div class="post-card-img">
-          <img src="images/breakfast-hero.jpg" alt="Before the Coffee" onerror="imgFallback(this,'nourish')" />
+    <!-- 2. Blood Pressure Explained -->
+    <a class="post-card" href="blog/your-blood-pressure-reading-explained.html">
+      <div class="card-visual">
+        <img class="card-img" src="blog/images/water-hero.jpg"
+             alt="Person using a blood pressure monitor cuff at home"
+             onerror="this.classList.add('broken')" />
+      </div>
+      <div class="card-body">
+        <span class="cat-pill cp-heart">❤️ Heart Health</span>
+        <h3>Your Blood Pressure Reading Explained: What Every Number Stage Actually Means</h3>
+        <p>What does 130/85 actually mean? All 5 AHA blood pressure stages decoded — without the jargon.</p>
+        <div class="card-footer">
+          <div class="card-meta">
+            <span>6 min read</span>
+            <span class="meta-dot"></span>
+            <span>July 2, 2026</span>
+          </div>
+          <span class="card-read-link">
+            Read
+            <svg width="13" height="13" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7" stroke="#3B6A3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
         </div>
-        <div class="post-card-body">
-          <span class="feat-cat cat-nourish">Nourish</span>
-          <h3>Before the Coffee: Why Breakfast Matters More Than You Think</h3>
-          <p>What you eat in the first hour after waking sets the tone for your blood sugar, energy, and cravings for the rest of the day.</p>
-          <div class="post-meta"><span>May 12, 2026</span><span class="post-meta-dot"></span><span>5 min read</span></div>
+      </div>
+    </a>
+
+    <!-- 3. Iron Deficiency Without Anemia -->
+    <a class="post-card" href="blog/iron-deficiency-without-anemia.html">
+      <div class="card-visual">
+        <img class="card-img" src="blog/images/fatigue.jpg"
+             alt="Woman sitting by a window looking pale and fatigued"
+             onerror="this.classList.add('broken')" />
+      </div>
+      <div class="card-body">
+        <span class="cat-pill cp-iron">🩸 Iron &amp; Blood Health</span>
+        <h3>Iron Deficiency Without Anemia: Why Your Blood Test Looks Normal But You Feel Terrible</h3>
+        <p>Most tests don&rsquo;t check ferritin — the marker that actually tells you if you&rsquo;re iron deficient. Here&rsquo;s what to ask your doctor instead.</p>
+        <div class="card-footer">
+          <div class="card-meta">
+            <span>7 min read</span>
+            <span class="meta-dot"></span>
+            <span>July 2, 2026</span>
+          </div>
+          <span class="card-read-link">
+            Read
+            <svg width="13" height="13" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7" stroke="#3B6A3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
         </div>
-      </a>
-      <a class="post-card" data-cat="nourish" href="https://www.darlingwhatif.com/post-sugar-cravings.html" target="_blank" rel="noopener">
-        <div class="post-card-img">
-          <img src="images/Sugar_craving_hero.jpg" alt="Sugar Cravings" onerror="imgFallback(this,'nourish')" />
+      </div>
+    </a>
+
+    <!-- 4. ADHD Burnout -->
+    <a class="post-card" href="blog/adhd-burnout-signs-and-recovery.html">
+      <div class="card-visual">
+        <img class="card-img" src="blog/images/ADHD-burnout.jpg"
+             alt="Person sitting at a cluttered desk, head down, visibly overwhelmed"
+             onerror="this.classList.add('broken')" />
+      </div>
+      <div class="card-body">
+        <span class="cat-pill cp-adhd">⚡ ADHD &amp; Brain Health</span>
+        <h3>ADHD Burnout: Why High-Functioning People Collapse Without Warning</h3>
+        <p>ADHD burnout isn&rsquo;t regular burnout. It&rsquo;s the collapse of a lifelong compensation system — hitting hardest in people who look completely fine.</p>
+        <div class="card-footer">
+          <div class="card-meta">
+            <span>8 min read</span>
+            <span class="meta-dot"></span>
+            <span>July 2, 2026</span>
+          </div>
+          <span class="card-read-link">
+            Read
+            <svg width="13" height="13" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7" stroke="#3B6A3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
         </div>
-        <div class="post-card-body">
-          <span class="feat-cat cat-nourish">Nourish</span>
-          <h3>Sugar Cravings Are Not a Character Flaw</h3>
-          <p>The science behind why your body craves sugar — and what it's actually asking for when 3pm hits and the vending machine calls.</p>
-          <div class="post-meta"><span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>7 min read</span></div>
+      </div>
+    </a>
+
+    <!-- 5. Sleep Debt -->
+    <a class="post-card" href="blog/what-is-sleep-debt.html">
+      <div class="card-visual">
+        <img class="card-img" src="blog/images/sleep-debt.jpg"
+             alt="Alarm clock on bedside table next to a sleeping person in dim morning light"
+             onerror="this.classList.add('broken')" />
+      </div>
+      <div class="card-body">
+        <span class="cat-pill cp-sleep">💤 Sleep Health</span>
+        <h3>What Is Sleep Debt and How Much Are You Carrying Right Now?</h3>
+        <p>Sleep debt is the cumulative gap between the sleep you need and the sleep you get — and it compounds. Find out what it&rsquo;s doing to you.</p>
+        <div class="card-footer">
+          <div class="card-meta">
+            <span>6 min read</span>
+            <span class="meta-dot"></span>
+            <span>July 2, 2026</span>
+          </div>
+          <span class="card-read-link">
+            Read
+            <svg width="13" height="13" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7" stroke="#3B6A3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
         </div>
-      </a>
-      <a class="post-card" data-cat="nourish" href="https://www.darlingwhatif.com/post-gut-health.html" target="_blank" rel="noopener">
-        <div class="post-card-img">
-          <img src="images/gut-health-hero.jpg" alt="Gut Health" onerror="imgFallback(this,'nourish')" />
-        </div>
-        <div class="post-card-body">
-          <span class="feat-cat cat-nourish">Nourish</span>
-          <h3>Your Gut Is Talking — Are You Listening?</h3>
-          <p>Bloating, low energy, unpredictable moods. Your gut microbiome might be sending signals you've been ignoring.</p>
-          <div class="post-meta"><span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>8 min read</span></div>
-        </div>
-      </a>
-      <a class="post-card" data-cat="nourish" href="https://darlingwhatif.com/post-acv-honey" target="_blank" rel="noopener">
-        <div class="post-card-img">
-          <img src="images/acv-honey-hero.jpg" alt="ACV and Honey" onerror="imgFallback(this,'nourish')" />
-        </div>
-        <div class="post-card-body">
-          <span class="feat-cat cat-nourish">Nourish</span>
-          <h3>ACV &amp; Honey in Warm Water for Gut Health &amp; Constipation</h3>
-          <p>The simple morning recipe, the gut-health benefits, and what the research actually says about apple cider vinegar and honey.</p>
-          <div class="post-meta"><span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>6 min read</span></div>
-        </div>
-      </a>
-      <a class="post-card" data-cat="nourish" href="https://darlingwhatif.com/post-water" target="_blank" rel="noopener">
-        <div class="post-card-img">
-          <img src="images/water-hero.jpg" alt="Water Timing" onerror="imgFallback(this,'nourish')" />
-        </div>
-        <div class="post-card-body">
-          <span class="feat-cat cat-nourish">Nourish</span>
-          <h3>When to Drink Water: The Timing That Changes Everything</h3>
-          <p>Drinking water at the right times boosts metabolism, reduces hunger, and improves skin and digestion.</p>
-          <div class="post-meta"><span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>5 min read</span></div>
-        </div>
-      </a>
-      <a class="post-card" data-cat="nourish" href="https://darlingwhatif.com/post-tea-timing" target="_blank" rel="noopener">
-        <div class="post-card-img">
-          <img src="images/tea-timing-hero.jpg" alt="Tea Timing" onerror="imgFallback(this,'nourish')" />
-        </div>
-        <div class="post-card-body">
-          <span class="feat-cat cat-nourish">Nourish</span>
-          <h3>The Best Tea to Drink at Every Time of Day</h3>
-          <p>The best tea to drink in the morning, afternoon, and evening — and why timing matters as much as the blend.</p>
-          <div class="post-meta"><span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>5 min read</span></div>
-        </div>
-      </a>
-      <a class="post-card" data-cat="nourish" href="https://darlingwhatif.com/post-gut-axis" target="_blank" rel="noopener">
-        <div class="post-card-img">
-          <img src="images/Gut_axis_hero.jpg" alt="Gut-Brain Axis" onerror="imgFallback(this,'nourish')" />
-        </div>
-        <div class="post-card-body">
-          <span class="feat-cat cat-nourish">Nourish</span>
-          <h3>What If Your Gut Is Running the Show — For Your Skin, Your Hair, and Your Mind?</h3>
-          <p>Your gut communicates with your brain, skin, and hormones. Here's how what's happening inside might be affecting everything else.</p>
-          <div class="post-meta"><span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>8 min read</span></div>
-        </div>
-      </a>
-      <a class="post-card" data-cat="nourish" href="https://darlingwhatif.com/post-period-eat-better" target="_blank" rel="noopener">
-        <div class="post-card-img">
-          <img src="images/Period-eat-better-hero.jpg" alt="Eating Around Your Period" onerror="imgFallback(this,'nourish')" />
-        </div>
-        <div class="post-card-body">
-          <span class="feat-cat cat-nourish">Nourish</span>
-          <h3>Period Cramps? These Foods Help (and These Hurt)</h3>
-          <p>What to eat on your period to reduce cramps, bloating, and fatigue — and what to avoid. A complete, non-restrictive guide.</p>
-          <div class="post-meta"><span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>7 min read</span></div>
-        </div>
-      </a>
+      </div>
+    </a>
+
+  </div><!-- /post-grid -->
+
+  <!-- ── BOTTOM CTA ─────────────────────────────────────────────────────────── -->
+  <div class="blog-cta">
+    <div class="blog-cta-text">
+      <h3>Put the knowledge to work</h3>
+      <p>Each guide links directly to a free calculator so you can check your own numbers — no account, no sign-up, no cost. Our 37 health calculators are built on the same clinical evidence as these articles.</p>
     </div>
+    <a class="cta-btn" href="index.html#categories">Browse All Calculators &rarr;</a>
   </div>
 
-  <!-- MIND SECTION -->
-  <div id="section-mind" class="tab-section">
-    <div class="section-header"><h2>Mind &amp; Mental Health</h2></div>
-    <div class="post-grid">
-      <a class="post-card" data-cat="mind" href="https://www.darlingwhatif.com/post-burnout.html" target="_blank" rel="noopener">
-        <div class="post-card-img">
-          <img src="images/burnout-hero.jpg" alt="Burned Out" onerror="imgFallback(this,'mind')" />
-        </div>
-        <div class="post-card-body">
-          <span class="feat-cat cat-mind">Mind</span>
-          <h3>What If You're Not Lazy — You're Burned Out?</h3>
-          <p>Before you call yourself lazy one more time, consider this: your body might be sending a very different signal.</p>
-          <div class="post-meta"><span>May 7, 2026</span><span class="post-meta-dot"></span><span>7 min read</span></div>
-        </div>
-      </a>
-      <a class="post-card" data-cat="mind" href="https://www.darlingwhatif.com/post-quiet-anxiety.html" target="_blank" rel="noopener">
-        <div class="post-card-img">
-          <img src="images/Quiet_anxiety_hero.jpg" alt="Quiet Anxiety" onerror="imgFallback(this,'mind')" />
-        </div>
-        <div class="post-card-body">
-          <span class="feat-cat cat-mind">Mind</span>
-          <h3>You Are Not the Worry: Understanding Quiet Anxiety</h3>
-          <p>Not all anxiety is loud. Here's how to recognize the quiet kind that runs in the background — and what it's actually trying to tell you.</p>
-          <div class="post-meta"><span>May 22, 2026</span><span class="post-meta-dot"></span><span>10 min read</span></div>
-        </div>
-      </a>
-      <a class="post-card" data-cat="mind" href="https://www.darlingwhatif.com/post-morning-pages.html" target="_blank" rel="noopener">
-        <div class="post-card-img">
-          <img src="images/morning-pages-hero.jpg" alt="Morning Pages" onerror="imgFallback(this,'mind')" />
-        </div>
-        <div class="post-card-body">
-          <span class="feat-cat cat-mind">Mind</span>
-          <h3>Morning Pages: The 20-Minute Practice That Clears Your Head</h3>
-          <p>Three pages, longhand, every morning. Sounds simple — the effect on clarity and anxiety is anything but.</p>
-          <div class="post-meta"><span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>6 min read</span></div>
-        </div>
-      </a>
-      <a class="post-card" data-cat="mind" href="https://darlingwhatif.com/post-anxiety" target="_blank" rel="noopener">
-        <div class="post-card-img">
-          <img src="images/anxiety-hero.jpg" alt="High-Functioning Anxiety" onerror="imgFallback(this,'mind')" />
-        </div>
-        <div class="post-card-body">
-          <span class="feat-cat cat-mind">Mind</span>
-          <h3>High-Functioning Anxiety: Signs You Might Miss</h3>
-          <p>The version of anxiety that looks like success on the outside — and exhaustion on the inside. Here's how to recognize it in yourself.</p>
-          <div class="post-meta"><span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>8 min read</span></div>
-        </div>
-      </a>
-    </div>
-  </div>
+</main>
 
-  <!-- LOVE & CONNECTION SECTION (includes dogs) -->
-  <div id="section-love" class="tab-section">
-    <div class="section-header"><h2>Love &amp; Connection</h2></div>
-    <div class="post-grid">
-      <a class="post-card" data-cat="love" href="https://www.darlingwhatif.com/post-emotional-safety.html" target="_blank" rel="noopener">
-        <div class="post-card-img">
-          <img src="images/emotional_safety_hero.jpg" alt="Feeling Emotionally Safe" onerror="imgFallback(this,'love')" />
-        </div>
-        <div class="post-card-body">
-          <span class="feat-cat cat-love">Love</span>
-          <h3>Feeling Emotionally Safe: What It Means and How to Know If You Have It</h3>
-          <p>Emotional safety is the foundation of any close relationship — but most of us were never taught what it actually looks like.</p>
-          <div class="post-meta"><span>May 30, 2026</span><span class="post-meta-dot"></span><span>6 min read</span></div>
-        </div>
-      </a>
-      <a class="post-card" data-cat="love" href="https://www.darlingwhatif.com/post-softness.html" target="_blank" rel="noopener">
-        <div class="post-card-img">
-          <img src="images/Being-loved-feeling-loved-Hero.jpg" alt="Softness as Strength" onerror="imgFallback(this,'love')" />
-        </div>
-        <div class="post-card-body">
-          <span class="feat-cat cat-love">Love</span>
-          <h3>Softness as Strength: On Letting Yourself Be Cared For</h3>
-          <p>We've spent years learning to be strong. Here's a case for the radical act of allowing someone else to show up for you.</p>
-          <div class="post-meta"><span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>5 min read</span></div>
-        </div>
-      </a>
-      <a class="post-card" data-cat="love" href="https://www.darlingwhatif.com/post-companion-dogs.html" target="_blank" rel="noopener">
-        <div class="post-card-img">
-          <img src="images/companion-dogs-hero.jpg" alt="Dogs and The Science of Connection" onerror="imgFallback(this,'love')" />
-        </div>
-        <div class="post-card-body">
-          <span class="feat-cat cat-companion">Companion</span>
-          <h3>Dogs &amp; The Science of Connection: Why Your Pet Makes You Healthier</h3>
-          <p>The bond between humans and dogs isn't just emotional — it measurably lowers cortisol, raises oxytocin, and supports heart health.</p>
-          <div class="post-meta"><span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>6 min read</span></div>
-        </div>
-      </a>
-      <a class="post-card" data-cat="love" href="https://darlingwhatif.com/post-love-left" target="_blank" rel="noopener">
-        <div class="post-card-img">
-          <img src="images/Love_left_hero.jpg" alt="Love You Still Have Left" onerror="imgFallback(this,'love')" />
-        </div>
-        <div class="post-card-body">
-          <span class="feat-cat cat-love">Love</span>
-          <h3>What to Do With All the Love You Still Have Left</h3>
-          <p>When a relationship ends, you're left with love that has nowhere to go. Here's how to hold it, and what to do with that feeling.</p>
-          <div class="post-meta"><span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>7 min read</span></div>
-        </div>
-      </a>
-      <a class="post-card" data-cat="love" href="https://darlingwhatif.com/post-quiet-love" target="_blank" rel="noopener">
-        <div class="post-card-img">
-          <img src="images/Quiet_love_hero.jpg" alt="Quiet Love" onerror="imgFallback(this,'love')" />
-        </div>
-        <div class="post-card-body">
-          <span class="feat-cat cat-love">Love</span>
-          <h3>The Quiet Ways People Show You They Love You</h3>
-          <p>Real love rarely announces itself. The people who love you most show it in the smallest details — the coffee order they remember, the exhaustion they notice before you do.</p>
-          <div class="post-meta"><span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>6 min read</span></div>
-        </div>
-      </a>
-      <a class="post-card" data-cat="love" href="https://darlingwhatif.com/post-talk-to-dog" target="_blank" rel="noopener">
-        <div class="post-card-img">
-          <img src="images/companion-dogs-hero.jpg" alt="Talking to Your Dog" onerror="imgFallback(this,'love')" />
-        </div>
-        <div class="post-card-body">
-          <span class="feat-cat cat-companion">Companion</span>
-          <h3>Why Talking to Your Dog Makes You More Emotionally Intelligent</h3>
-          <p>Science says people who talk to their dogs score higher on empathy and emotional intelligence — here's what your dog conversations say about you.</p>
-          <div class="post-meta"><span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>6 min read</span></div>
-        </div>
-      </a>
-      <a class="post-card" data-cat="love" href="https://darlingwhatif.com/post-dog-sad" target="_blank" rel="noopener">
-        <div class="post-card-img">
-          <img src="images/Sad_dog_hero.jpg" alt="Dog Senses Sadness" onerror="imgFallback(this,'love')" />
-        </div>
-        <div class="post-card-body">
-          <span class="feat-cat cat-companion">Companion</span>
-          <h3>Why My Dog Knows When I'm Sad Before I Do</h3>
-          <p>Dogs can sense your sadness before you even know it yourself — and there's a beautiful, science-backed reason why.</p>
-          <div class="post-meta"><span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>5 min read</span></div>
-        </div>
-      </a>
-      <a class="post-card" data-cat="love" href="https://darlingwhatif.com/post-dog-love" target="_blank" rel="noopener">
-        <div class="post-card-img">
-          <img src="images/dog-love.jpg" alt="Dog Love" onerror="imgFallback(this,'love')" />
-        </div>
-        <div class="post-card-body">
-          <span class="feat-cat cat-companion">Companion</span>
-          <h3>The Kind of Love Only a Dog Gives You</h3>
-          <p>Unconditional, immediate, and quietly transformative. Science is starting to explain what dog owners have always known.</p>
-          <div class="post-meta"><span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>6 min read</span></div>
-        </div>
-      </a>
-      <a class="post-card" data-cat="love" href="https://darlingwhatif.com/post-dog-routine" target="_blank" rel="noopener">
-        <div class="post-card-img">
-          <img src="images/dog-routine-hero.jpg" alt="Dog Routine" onerror="imgFallback(this,'love')" />
-        </div>
-        <div class="post-card-body">
-          <span class="feat-cat cat-companion">Companion</span>
-          <h3>How My Labrador Became My Best Health Habit</h3>
-          <p>A dog's routine is their mental health — and it turns out, honouring their daily rhythms makes you both healthier.</p>
-          <div class="post-meta"><span>darlingwhatif.com</span><span class="post-meta-dot"></span><span>7 min read</span></div>
-        </div>
-      </a>
-    </div>
-  </div>
-
-  <!-- CALLOUT -->
-  <div class="guides-callout">
-    <div class="guides-callout-text">
-      <h3>More on darlingwhatif.com</h3>
-      <p>These guides are sourced from Darling, What If — a thoughtful editorial site covering nourishment, mind, love, and everyday wellbeing. New essays published regularly.</p>
-    </div>
-    <a class="callout-link" href="https://www.darlingwhatif.com" target="_blank" rel="noopener">Visit darlingwhatif.com ↗</a>
-  </div>
-
-</div>
-
+<!-- ═══ FOOTER ══════════════════════════════════════════════════════════════════ -->
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="footer-logo">
-          <img src="calculators/assets/logo-white.png" alt="SageMyHealth" style="height:45px;width:auto;object-fit:contain"/>
+          <img src="calculators/assets/logo-white.png" alt="SageMyHealth" style="height:45px;width:auto;object-fit:contain" />
         </div>
         <p>Free, trusted health calculators with warm guidance — helping you understand your numbers.</p>
       </div>
@@ -579,19 +778,20 @@
         <ul>
           <li><a href="calculators/bmi.html">BMI</a></li>
           <li><a href="calculators/tdee.html">Daily Calories</a></li>
-          <li><a href="calculators/heart-rate.html">Heart Rate Zones</a></li>
+          <li><a href="calculators/blood-pressure.html">Blood Pressure</a></li>
           <li><a href="calculators/blood-glucose.html">Blood Glucose</a></li>
-          <li><a href="calculators/anxiety-score.html">Anxiety Score</a></li>
+          <li><a href="calculators/iron-deficiency.html">Iron Deficiency</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h5>More Tools</h5>
+        <h5>Health Guides</h5>
         <ul>
-          <li><a href="calculators/brain-fatigue.html">Brain Fatigue</a></li>
-          <li><a href="calculators/sleep-need.html">Sleep Need</a></li>
-          <li><a href="calculators/biological-age.html">Biological Age</a></li>
-          <li><a href="calculators/lung-capacity.html">Lung Capacity</a></li>
-          <li><a href="calculators/iron-deficiency.html">Iron Deficiency</a></li>
+          <li><a href="blog/why-am-i-always-tired.html">Why Am I Tired?</a></li>
+          <li><a href="blog/your-blood-pressure-reading-explained.html">Blood Pressure Explained</a></li>
+          <li><a href="blog/iron-deficiency-without-anemia.html">Iron Without Anemia</a></li>
+          <li><a href="blog/adhd-burnout-signs-and-recovery.html">ADHD Burnout</a></li>
+          <li><a href="blog/what-is-sleep-debt.html">Sleep Debt</a></li>
+          <li><a href="blog/prediabetes-signs-and-risk.html">Prediabetes Signs</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -605,89 +805,14 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-disclaimer"><strong style="color:#7A958E">Medical Disclaimer:</strong> SageMyHealth calculators are for informational purposes only and are not a substitute for professional medical advice, diagnosis, or treatment.</p>
-      <p class="footer-copy">© 2025 SageMyHealth.com — All rights reserved.</p>
+      <p class="footer-disclaimer"><strong style="color:#7A958E">Medical Disclaimer:</strong> SageMyHealth articles and calculators are for informational purposes only and are not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider before making health decisions.</p>
+      <p class="footer-copy">&copy; 2026 SageMyHealth.com &mdash; All rights reserved.</p>
     </div>
   </div>
 </footer>
 
+<!-- ═══ SCRIPTS ═════════════════════════════════════════════════════════════════ -->
 <script>
-  // Image fallback — called by onerror on all post card <img> tags.
-  // Replaces the broken image with a clean category-coloured gradient tile
-  // and a subtle sage leaf SVG. No emoji.
-  var LEAF_SVG =
-    '<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:.18">' +
-      '<path d="M24 44C24 44 8 34 8 20C8 12.27 15.16 6 24 6C32.84 6 40 12.27 40 20C40 34 24 44 24 44Z" fill="#3B6A3A"/>' +
-      '<line x1="24" y1="6" x2="24" y2="44" stroke="#3B6A3A" stroke-width="1.5" stroke-opacity=".5"/>' +
-    '</svg>';
-
-  function imgFallback(img, cat) {
-    img.parentNode.innerHTML =
-      '<div class="img-fallback fg-' + cat + '">' + LEAF_SVG + '</div>';
-  }
-
-  // Populate hardcoded (no-image) fallback divs with the same leaf on page load
-  document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.img-fallback:empty').forEach(function(el) {
-      el.innerHTML = LEAF_SVG;
-    });
-  });
-</script>
-
-<script>
-  // Tab filter — controls full sections, not individual cards
-  var tabs        = document.querySelectorAll('.filter-tab');
-  var secFeatured = document.getElementById('section-featured');
-  var secNourish  = document.getElementById('section-nourish');
-  var secMind     = document.getElementById('section-mind');
-  var secLove     = document.getElementById('section-love');
-  var allSections = [secNourish, secMind, secLove];
-
-  function applyFilter(filter) {
-    // Featured hero: All Guides only
-    secFeatured.style.display = filter === 'all' ? '' : 'none';
-
-    // Content sections
-    secNourish.style.display = (filter === 'all' || filter === 'nourish') ? '' : 'none';
-    secMind.style.display    = (filter === 'all' || filter === 'mind')    ? '' : 'none';
-    secLove.style.display    = (filter === 'all' || filter === 'love')    ? '' : 'none';
-
-    // First visible section: no top margin (no featured above it in tab view)
-    var first = true;
-    allSections.forEach(function(s) {
-      if (s.style.display !== 'none') {
-        s.style.marginTop = first ? '0' : '';
-        first = false;
-      }
-    });
-  }
-
-  var filterBar = document.querySelector('.filter-bar');
-  var siteNav   = document.querySelector('.site-nav');
-
-  // Scroll so the filter bar lands just below the sticky nav,
-  // regardless of where the visitor is on the page.
-  function scrollToFilterBar() {
-    var navH = siteNav ? siteNav.offsetHeight : 0;
-    // Walk offsetParent chain — gives true document position even when sticky
-    var top = 0, el = filterBar;
-    while (el) { top += el.offsetTop; el = el.offsetParent; }
-    window.scrollTo({ top: top - navH, behavior: 'smooth' });
-  }
-
-  tabs.forEach(function(tab) {
-    tab.addEventListener('click', function() {
-      tabs.forEach(function(t) { t.classList.remove('active'); });
-      tab.classList.add('active');
-      applyFilter(tab.getAttribute('data-filter'));
-      scrollToFilterBar();
-    });
-  });
-</script>
-
-
-<script>
-  /* Mobile menu */
   function openMobileMenu() {
     document.getElementById('mobile-menu').classList.add('open');
     document.getElementById('nav-hamburger').setAttribute('aria-expanded', 'true');
