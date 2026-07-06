@@ -11,28 +11,28 @@
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SageMyHealth — Health Calculators for Real Life</title>
-  <meta name="description" content="Free, trusted health calculators across weight, heart health, nutrition, women's health, mental wellbeing, and more. No data stored, no clutter — just clear answers." />
+  <title>SageMyHealth — Know Your Numbers. Own Your Health.</title>
+  <meta name="description" content="62 evidence-based health calculators across every domain — blood pressure, sleep, metabolism, brain health, and more. Free, private, precise." />
   <meta name="keywords" content="health calculators, free health calculator, BMI calculator, TDEE calculator, blood pressure, blood glucose, sleep calculator, period tracker, online health tools" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <link rel="canonical" href="https://sagemyhealth.com/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="SageMyHealth" />
-  <meta property="og:title" content="SageMyHealth — Free Health Calculators for Real Life" />
-  <meta property="og:description" content="Free, evidence-based health calculators with warm, clear guidance. No data stored — just clear answers about your body." />
+  <meta property="og:title" content="SageMyHealth — Know Your Numbers. Own Your Health." />
+  <meta property="og:description" content="62 evidence-based health calculators. Free, private, and built for people who take their health seriously." />
   <meta property="og:url" content="https://sagemyhealth.com/" />
-  <meta property="og:image" content="https://sagemyhealth.com/calculators/assets/logo.png" />
+  <meta property="og:image" content="https://sagemyhealth.com/calculators/assets/sage-logo.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="SageMyHealth — Free Health Calculators" />
-  <meta name="twitter:description" content="Free, evidence-based health calculators with warm, clear guidance. No data stored." />
-  <meta name="twitter:image" content="https://sagemyhealth.com/calculators/assets/logo.png" />
+  <meta name="twitter:title" content="SageMyHealth — Know Your Numbers. Own Your Health." />
+  <meta name="twitter:description" content="62 evidence-based health calculators. Free, private, precise." />
+  <meta name="twitter:image" content="https://sagemyhealth.com/calculators/assets/sage-logo.png" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "SageMyHealth",
     "url": "https://sagemyhealth.com/",
-    "description": "Free, evidence-based health calculators with warm, clear guidance.",
+    "description": "Evidence-based health calculators for people who take their health seriously.",
     "potentialAction": {
       "@type": "SearchAction",
       "target": "https://sagemyhealth.com/#categories?q={search_term_string}",
@@ -48,7 +48,7 @@
     "url": "https://sagemyhealth.com/",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://sagemyhealth.com/calculators/assets/logo.png",
+      "url": "https://sagemyhealth.com/calculators/assets/sage-logo.png",
       "width": 512,
       "height": 512
     },
@@ -60,346 +60,556 @@
       "email": "hello@sagemyhealth.com",
       "url": "https://sagemyhealth.com/about.html"
     },
-    "knowsAbout": [
-      "Health calculators",
-      "Body mass index",
-      "Blood pressure monitoring",
-      "Blood glucose management",
-      "Women's health",
-      "Mental health screening",
-      "Nutrition and dietary health",
-      "Sleep health",
-      "Cardiovascular risk assessment",
-      "Hair and skin health",
-      "Diabetes risk screening"
-    ],
     "areaServed": "Worldwide",
     "foundingDate": "2025",
     "inLanguage": "en"
   }
   </script>
+
+  <!-- Typography: Plus Jakarta Sans — rounded, modern, premium -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
   <style>
+    /* ══════════════════════════════════════════════════════════════
+       DESIGN TOKENS — New Brand System
+       Derived from provided color palette + HORMN reference aesthetic
+    ══════════════════════════════════════════════════════════════ */
     :root {
-      --sage:       #3B6A3A;
-      --sage-dark:  #0A3D2A;
-      --sage-mid:   #5C8A5C;
-      --sage-light: #EBF2EC;
-      --sage-pale:  #F2F7F3;
-      --cream:      #E3FFB3;
-      --text-dark:  #1A2E1E;
-      --text-mid:   #4A5568;
-      --text-light: #718096;
-      --white:      #FFFFFF;
-      --border:     #E2EBE4;
-      --border-mid: #C8D9CC;
-      --amber-soft: #EECA8F;
-      --amber-text: #92400E;
-      --shadow-xs:  0 1px 2px rgba(59,106,58,0.06);
-      --shadow-sm:  0 1px 6px rgba(59,106,58,0.08);
-      --shadow-md:  0 4px 16px rgba(59,106,58,0.12);
-      --shadow-lg:  0 8px 32px rgba(59,106,58,0.16);
-      --shadow-xl:  0 16px 48px rgba(59,106,58,0.18);
-      --r-sm: 8px; --r: 12px; --r-lg: 20px; --r-xl: 28px;
+      /* ── Primary Brand — Sage Green ── */
+      --sage:        #5D7A66;   /* primary CTA, links, icons */
+      --sage-dark:   #3D5044;   /* headings, dark surfaces */
+      --sage-mid:    #86AD95;   /* accents, illustrations */
+      --sage-light:  #BED0BF;   /* borders, dividers */
+      --sage-pale:   #E9F2EB;   /* card backgrounds */
+      --sage-off:    #F3FFF6;   /* page-section backgrounds */
+
+      /* ── Data / Metrics Accent — Steel Blue ── */
+      --data:        #6F9AC5;   /* metric callouts, data labels */
+      --data-dark:   #244368;   /* authority elements, deep blue */
+      --data-pale:   #E4EAF4;   /* data section backgrounds */
+
+      /* ── Warm Neutral ── */
+      --warm:        #B99D8B;   /* warm accents, women's health */
+      --warm-dark:   #56453D;   /* dark warm text */
+      --warm-pale:   #F4EFEE;   /* warm section backgrounds */
+
+      /* ── Violet (Mind / Brain health) ── */
+      --violet:      #A496C8;   /* brain/mental health accent */
+      --violet-dark: #4B4371;   /* deep violet */
+      --violet-pale: #EBE6F6;   /* violet section background */
+
+      /* ── Text ── */
+      --text-dark:   #1E2A23;   /* primary — near black with green cast */
+      --text-mid:    #4A5C52;   /* secondary body text */
+      --text-light:  #7A908A;   /* muted, metadata */
+      --text-inv:    #FFFFFF;   /* on dark backgrounds */
+
+      /* ── Surfaces ── */
+      --white:       #FFFFFF;
+      --bg:          #FAFDF9;   /* page background — near white, slight sage cast */
+      --border:      #D8E8DC;
+      --border-mid:  #BED0BF;
+
+      /* ── Pillar Colors (category sections) ── */
+      --pillar-body:   #86AD95;   /* Body & Fitness */
+      --pillar-heart:  #6F9AC5;   /* Heart, Blood & Sugar */
+      --pillar-mind:   #A496C8;   /* Mind & Sleep */
+      --pillar-women:  #B99D8B;   /* Women & Screening */
+
+      /* ── Radius system (rounded everywhere) ── */
+      --r-xs:  6px;
+      --r-sm:  10px;
+      --r:     14px;
+      --r-lg:  20px;
+      --r-xl:  28px;
+      --r-2xl: 36px;
+      --r-full:100px;
+
+      /* ── Shadow system ── */
+      --shadow-xs:  0 1px 3px rgba(61,80,68,0.05);
+      --shadow-sm:  0 2px 10px rgba(61,80,68,0.08);
+      --shadow-md:  0 4px 24px rgba(61,80,68,0.12);
+      --shadow-lg:  0 8px 40px rgba(61,80,68,0.16);
+      --shadow-xl:  0 16px 60px rgba(61,80,68,0.20);
     }
 
+    /* ── RESET ─────────────────────────────────────────────────── */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       color: var(--text-dark);
-      background: var(--white);
+      background: var(--bg);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
     a { color: inherit; text-decoration: none; }
     button { cursor: pointer; font-family: inherit; }
     img { display: block; max-width: 100%; }
 
-    /* NAV */
+    /* ── NAVIGATION ─────────────────────────────────────────────── */
     .site-nav {
       position: sticky; top: 0; z-index: 200;
-      background: rgba(255,255,255,0.96);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
     }
     .nav-inner {
-      max-width: 1200px; margin: 0 auto; padding: 0 24px;
-      height: 68px; display: flex; align-items: center;
+      max-width: 1200px; margin: 0 auto; padding: 0 28px;
+      height: 70px; display: flex; align-items: center;
       justify-content: space-between; gap: 32px;
     }
     .nav-logo {
       display: flex; align-items: center; gap: 10px;
-      text-decoration: none; color: var(--text-dark); flex-shrink: 0;
+      text-decoration: none; flex-shrink: 0;
     }
-    .nav-logo-icon {
-      width: 36px; height: 36px; background: var(--sage);
-      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    .nav-logo img {
+      height: 47px; width: auto; object-fit: contain;
     }
-    .nav-logo-text { font-size: 19px; font-weight: 700; letter-spacing: -0.3px; }
-    .nav-logo-text .accent { color: var(--sage); }
+    .nav-logo-wordmark {
+      font-size: 17px; font-weight: 700; color: var(--sage-dark);
+      letter-spacing: -0.2px;
+    }
     .nav-links {
-      display: flex; align-items: center; gap: 28px;
+      display: flex; align-items: center; gap: 32px;
       list-style: none; flex: 1; justify-content: center;
     }
     .nav-links a {
-      color: var(--text-mid); font-size: 15px; font-weight: 500; transition: color 0.2s;
+      color: var(--text-mid); font-size: 15px; font-weight: 500;
+      transition: color 0.2s; letter-spacing: -0.1px;
     }
     .nav-links a:hover { color: var(--sage); }
-    .nav-btn {
-      background: var(--sage); color: white; border: none;
-      padding: 9px 20px; border-radius: var(--r-sm);
-      font-size: 14px; font-weight: 600; transition: background 0.2s;
+    .nav-cta {
+      background: var(--sage-dark); color: var(--text-inv); border: none;
+      padding: 10px 22px; border-radius: var(--r-full);
+      font-size: 14px; font-weight: 600; transition: background 0.2s, transform 0.15s;
+      white-space: nowrap; letter-spacing: -0.1px;
     }
-    .nav-btn:hover { background: var(--sage-dark); }
+    .nav-cta:hover { background: var(--sage); transform: translateY(-1px); }
 
-    /* HERO */
+    /* ── HAMBURGER (mobile) ─────────────────────────────────────── */
+    .nav-hamburger {
+      display: none; flex-direction: column; justify-content: center; gap: 5px;
+      background: none; border: none; padding: 8px;
+      border-radius: 10px; cursor: pointer; transition: background .15s; flex-shrink: 0;
+    }
+    .nav-hamburger:hover { background: var(--sage-pale); }
+    .nav-hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--text-dark); border-radius: 2px; transition: all .2s;
+    }
+
+    /* ── HERO ───────────────────────────────────────────────────── */
     .hero {
-      background: linear-gradient(155deg, var(--sage-pale) 0%, var(--cream) 60%, #fff 100%);
-      padding: 88px 24px 96px; text-align: center;
+      background: var(--white);
+      padding: 80px 28px 80px;
       position: relative; overflow: hidden;
     }
+    /* Subtle background texture */
     .hero::before {
-      content: ''; position: absolute; top: -120px; right: -80px;
-      width: 480px; height: 480px;
-      background: radial-gradient(circle, rgba(59,106,58,0.07) 0%, transparent 70%);
-      pointer-events: none;
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 70% 50%, rgba(232,242,235,0.6) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 5% 80%, rgba(228,234,244,0.25) 0%, transparent 60%);
+      pointer-events: none; z-index: 0;
     }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 7px;
-      background: var(--sage-light); color: var(--sage-dark);
-      padding: 7px 16px; border-radius: 24px;
-      font-size: 13px; font-weight: 600; margin-bottom: 28px;
+    .hero-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 440px;
+      gap: 60px; align-items: center;
       position: relative; z-index: 1;
+    }
+    /* Left side */
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--sage-pale); color: var(--sage-dark);
+      padding: 6px 16px; border-radius: var(--r-full);
+      font-size: 12px; font-weight: 600; margin-bottom: 28px;
+      letter-spacing: 0.3px; text-transform: uppercase;
+      border: 1px solid var(--sage-light);
     }
     .hero-badge-dot {
-      width: 7px; height: 7px; background: var(--sage);
-      border-radius: 50%; animation: pulse 2s infinite;
+      width: 6px; height: 6px; background: var(--sage);
+      border-radius: 50%; animation: pulse 2.4s ease-in-out infinite;
     }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.45;transform:scale(0.85)} }
+
     .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(40px, 6vw, 68px); font-weight: 700;
-      line-height: 1.12; color: var(--text-dark);
-      margin-bottom: 22px; letter-spacing: -1.5px;
-      position: relative; z-index: 1;
+      font-size: clamp(38px, 5vw, 62px);
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+      letter-spacing: -2px;
     }
-    .hero h1 em { font-style: normal; color: var(--sage); }
+    .hero h1 .accent { color: var(--sage); }
+    .hero h1 .light { font-weight: 300; color: var(--text-mid); }
+
     .hero-sub {
-      font-size: 18px; color: var(--text-mid);
-      max-width: 540px; margin: 0 auto 44px;
-      line-height: 1.75; position: relative; z-index: 1;
+      font-size: 17px; font-weight: 400; color: var(--text-mid);
+      max-width: 480px; margin-bottom: 36px;
+      line-height: 1.75; letter-spacing: -0.1px;
     }
-    .hero-search-wrap { max-width: 540px; margin: 0 auto 14px; position: relative; z-index: 1; }
+    .hero-search-wrap { max-width: 500px; margin-bottom: 16px; }
     .hero-search {
-      display: flex; background: white; border: 2px solid var(--border);
-      border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-md);
+      display: flex; background: var(--white);
+      border: 1.5px solid var(--border-mid);
+      border-radius: var(--r-lg); overflow: hidden;
+      box-shadow: var(--shadow-md);
       transition: border-color 0.2s, box-shadow 0.2s;
     }
-    .hero-search:focus-within { border-color: var(--sage); box-shadow: 0 4px 24px rgba(59,106,58,0.18); }
+    .hero-search:focus-within {
+      border-color: var(--sage);
+      box-shadow: 0 4px 28px rgba(93,122,102,0.18);
+    }
     .hero-search input {
-      flex: 1; border: none; outline: none; padding: 16px 20px;
-      font-size: 16px; font-family: 'Inter', sans-serif;
-      color: var(--text-dark); background: transparent;
+      flex: 1; border: none; outline: none; padding: 15px 20px;
+      font-size: 15px; font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--text-dark); background: transparent; font-weight: 400;
     }
     .hero-search input::placeholder { color: var(--text-light); }
-    .hero-search button {
-      background: var(--sage); color: white; border: none;
-      padding: 0 28px; font-size: 15px; font-weight: 600;
-      font-family: 'Inter', sans-serif; transition: background 0.2s; white-space: nowrap;
+    .hero-search-btn {
+      background: var(--sage-dark); color: var(--text-inv); border: none;
+      padding: 0 26px; font-size: 14px; font-weight: 600;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      transition: background 0.2s; white-space: nowrap;
+      letter-spacing: -0.1px;
     }
-    .hero-search button:hover { background: var(--sage-dark); }
-    .hero-hint { font-size: 13px; color: var(--text-light); position: relative; z-index: 1; }
-    .hero-hint a { color: var(--sage); font-weight: 500; }
+    .hero-search-btn:hover { background: var(--sage); }
+    .hero-hint { font-size: 13px; color: var(--text-light); }
+    .hero-hint a { color: var(--sage); font-weight: 600; }
     .hero-hint a:hover { text-decoration: underline; }
     .hero-popular {
-      display: flex; align-items: center; justify-content: center;
-      flex-wrap: wrap; gap: 8px; margin-top: 20px; position: relative; z-index: 1;
+      display: flex; align-items: center; flex-wrap: wrap;
+      gap: 8px; margin-top: 20px;
     }
-    .hero-popular span { font-size: 12px; color: var(--text-light); font-weight: 500; }
+    .hero-popular-label { font-size: 12px; color: var(--text-light); font-weight: 600; letter-spacing: 0.2px; }
     .pop-pill {
       font-size: 13px; font-weight: 500; color: var(--text-mid);
-      background: white; border: 1.5px solid var(--border);
-      border-radius: 20px; padding: 5px 14px; transition: all 0.2s;
+      background: var(--white); border: 1.5px solid var(--border);
+      border-radius: var(--r-full); padding: 5px 14px;
+      transition: all 0.18s; letter-spacing: -0.1px;
     }
-    .pop-pill:hover { border-color: var(--sage); color: var(--sage); background: var(--sage-light); }
+    .pop-pill:hover { border-color: var(--sage); color: var(--sage); background: var(--sage-pale); }
 
-    /* STATS BAR */
+    /* Right side — Metric cards visual */
+    .hero-visual {
+      display: flex; flex-direction: column; gap: 12px;
+      position: relative;
+    }
+    .metric-card {
+      background: var(--white); border-radius: var(--r-lg);
+      padding: 20px 24px; box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; gap: 18px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .metric-card:nth-child(2) { margin-left: 20px; }
+    .metric-card:nth-child(3) { margin-left: 8px; }
+    .metric-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+    .metric-icon {
+      width: 48px; height: 48px; border-radius: var(--r);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; flex-shrink: 0;
+    }
+    .metric-icon.green  { background: var(--sage-pale); }
+    .metric-icon.blue   { background: var(--data-pale); }
+    .metric-icon.violet { background: var(--violet-pale); }
+    .metric-icon.warm   { background: var(--warm-pale); }
+    .metric-body { flex: 1; }
+    .metric-label {
+      font-size: 11px; font-weight: 600; color: var(--text-light);
+      text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 4px;
+    }
+    .metric-value {
+      font-size: 26px; font-weight: 800; color: var(--text-dark);
+      letter-spacing: -1px; line-height: 1;
+    }
+    .metric-value span {
+      font-size: 14px; font-weight: 500; color: var(--text-light);
+      letter-spacing: 0; margin-left: 3px;
+    }
+    .metric-status {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 12px; font-weight: 600; padding: 3px 10px;
+      border-radius: var(--r-full); margin-top: 6px;
+    }
+    .metric-status::before { content: ''; width: 6px; height: 6px; border-radius: 50%; }
+    .metric-status.ok    { background: var(--sage-pale);    color: var(--sage-dark); }
+    .metric-status.ok::before { background: var(--sage); }
+    .metric-status.warn  { background: #FEF9EC; color: #7A5C1E; }
+    .metric-status.warn::before { background: #F5A623; }
+    .metric-status.blue  { background: var(--data-pale);    color: var(--data-dark); }
+    .metric-status.blue::before { background: var(--data); }
+    .metric-chart {
+      width: 56px; height: 40px; flex-shrink: 0;
+    }
+    .metric-chart svg { width: 100%; height: 100%; }
+
+    /* ── STATS BAR ──────────────────────────────────────────────── */
     .stats-bar {
-      background: white;
-      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-      padding: 22px 24px;
+      background: var(--sage-dark);
+      padding: 0 28px;
     }
     .stats-inner {
       max-width: 1200px; margin: 0 auto;
-      display: flex; justify-content: center; gap: 64px; flex-wrap: wrap;
+      display: flex; justify-content: space-between;
+      align-items: stretch; flex-wrap: wrap;
     }
-    .stat { text-align: center; }
-    .stat-num { font-size: 24px; font-weight: 800; color: var(--sage); letter-spacing: -0.5px; }
-    .stat-label { font-size: 13px; color: var(--text-light); margin-top: 2px; }
+    .stat-item {
+      flex: 1; min-width: 160px;
+      padding: 28px 24px;
+      display: flex; align-items: center; gap: 16px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-icon {
+      width: 40px; height: 40px; background: rgba(255,255,255,0.08);
+      border-radius: var(--r-sm); display: flex; align-items: center;
+      justify-content: center; font-size: 18px; flex-shrink: 0;
+    }
+    .stat-num {
+      font-size: 28px; font-weight: 800; color: var(--text-inv);
+      letter-spacing: -1.5px; line-height: 1;
+    }
+    .stat-label { font-size: 13px; color: rgba(255,255,255,0.55); margin-top: 2px; font-weight: 400; }
 
-    /* SECTIONS */
+    /* ── POSITIONING STATEMENT ──────────────────────────────────── */
+    .brand-statement {
+      background: var(--bg);
+      padding: 64px 28px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .brand-statement-inner {
+      max-width: 720px; margin: 0 auto;
+    }
+    .brand-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--sage);
+      margin-bottom: 16px;
+    }
+    .brand-headline {
+      font-size: clamp(24px, 3.5vw, 36px);
+      font-weight: 700; color: var(--text-dark);
+      letter-spacing: -1px; line-height: 1.25;
+      margin-bottom: 16px;
+    }
+    .brand-headline .light { font-weight: 300; color: var(--text-mid); }
+    .brand-body {
+      font-size: 16px; font-weight: 400; color: var(--text-mid);
+      line-height: 1.75; max-width: 560px; margin: 0 auto;
+    }
+
+    /* ── SHARED SECTION PATTERNS ────────────────────────────────── */
     .section { padding: 80px 0; }
     .section-sm { padding: 56px 0; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
     .section-header { margin-bottom: 48px; }
     .section-header.center { text-align: center; }
     .section-header.center .section-sub { margin: 0 auto; }
     .section-eyebrow {
-      font-size: 12px; font-weight: 700; letter-spacing: 1.8px;
+      font-size: 11px; font-weight: 700; letter-spacing: 2px;
       text-transform: uppercase; color: var(--sage); margin-bottom: 10px;
     }
     .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(26px, 4vw, 38px); font-weight: 700;
-      color: var(--text-dark); letter-spacing: -0.5px;
+      font-size: clamp(24px, 3.5vw, 36px); font-weight: 700;
+      color: var(--text-dark); letter-spacing: -1px;
       margin-bottom: 12px; line-height: 1.2;
     }
-    .section-sub { font-size: 16px; color: var(--text-mid); line-height: 1.7; max-width: 690px; }
+    .section-sub {
+      font-size: 16px; font-weight: 400; color: var(--text-mid);
+      line-height: 1.75; max-width: 600px;
+    }
 
-    /* CATEGORIES */
-    .cat-section { background: white; }
+    /* ── CATEGORIES ─────────────────────────────────────────────── */
+    .cat-section { background: var(--white); }
     .category-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 14px;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 12px;
     }
-    .cat-group-head {
+    .cat-group-label {
       grid-column: 1 / -1;
-      font-size: 12px; font-weight: 800; letter-spacing: 1.5px;
-      text-transform: uppercase; color: var(--sage);
-      margin: 22px 2px 2px;
+      display: flex; align-items: center; gap: 10px;
+      margin: 24px 0 4px;
     }
-    .cat-group-head:first-child { margin-top: 0; }
+    .cat-group-label:first-child { margin-top: 0; }
+    .cat-group-pill {
+      font-size: 11px; font-weight: 700; letter-spacing: 1.2px;
+      text-transform: uppercase; padding: 4px 12px;
+      border-radius: var(--r-full); color: var(--text-inv);
+    }
+    .cat-group-pill.body   { background: var(--pillar-body); }
+    .cat-group-pill.heart  { background: var(--pillar-heart); }
+    .cat-group-pill.mind   { background: var(--pillar-mind); }
+    .cat-group-pill.women  { background: var(--pillar-women); }
+    .cat-group-line { flex: 1; height: 1px; background: var(--border); }
+
     .cat-card {
-      background: var(--sage-pale); border: 1.5px solid var(--border);
-      border-radius: var(--r); padding: 22px;
-      display: flex; flex-direction: column; gap: 12px;
-      transition: all 0.22s;
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: var(--r-lg); padding: 20px 20px 18px;
+      display: flex; flex-direction: column; gap: 10px;
+      transition: all 0.22s; position: relative; overflow: hidden;
     }
+    .cat-card::before {
+      content: ''; position: absolute;
+      left: 0; top: 0; bottom: 0; width: 3px;
+      border-radius: 3px 0 0 3px;
+      opacity: 0; transition: opacity 0.2s;
+    }
+    .cat-card.body::before   { background: var(--pillar-body); }
+    .cat-card.heart::before  { background: var(--pillar-heart); }
+    .cat-card.mind::before   { background: var(--pillar-mind); }
+    .cat-card.women::before  { background: var(--pillar-women); }
+
     .cat-card:hover {
-      border-color: var(--sage); background: var(--sage-light);
+      border-color: var(--sage-light); background: var(--white);
       box-shadow: var(--shadow-md); transform: translateY(-2px);
     }
+    .cat-card:hover::before { opacity: 1; }
     .cat-icon-wrap {
-      width: 46px; height: 46px; background: white;
-      border-radius: 12px; display: flex; align-items: center;
-      justify-content: center; font-size: 22px; box-shadow: var(--shadow-xs);
+      width: 44px; height: 44px; background: var(--white);
+      border-radius: var(--r-sm); display: flex; align-items: center;
+      justify-content: center; font-size: 21px;
+      border: 1px solid var(--border); box-shadow: var(--shadow-xs);
     }
-    .cat-info-name { font-size: 14px; font-weight: 700; color: var(--text-dark); }
-    .cat-info-count { font-size: 12px; color: var(--text-light); margin-top: 2px; }
+    .cat-info-name { font-size: 14px; font-weight: 700; color: var(--text-dark); letter-spacing: -0.2px; }
+    .cat-info-count { font-size: 12px; color: var(--text-light); margin-top: 2px; font-weight: 400; }
     .cat-arrow {
-      margin-top: auto; font-size: 18px; color: var(--sage);
-      opacity: 0; transition: opacity 0.2s, transform 0.2s;
+      margin-top: auto; font-size: 14px; color: var(--sage);
+      font-weight: 600; opacity: 0;
+      transition: opacity 0.2s, transform 0.2s;
     }
     .cat-card:hover .cat-arrow { opacity: 1; transform: translateX(3px); }
 
-    /* FEATURED CALCULATORS */
-    .featured-section { background: var(--sage-pale); }
+    /* ── FEATURED CALCULATORS ───────────────────────────────────── */
+    .featured-section { background: var(--sage-off); }
     .calc-feat-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 20px;
+      gap: 16px;
     }
     .calc-feat-card {
-      background: white; border-radius: var(--r-lg); padding: 28px;
-      box-shadow: var(--shadow-sm); border: 1.5px solid var(--border);
+      background: var(--white); border-radius: var(--r-xl); padding: 26px;
+      box-shadow: var(--shadow-xs); border: 1.5px solid var(--border);
       transition: all 0.25s; display: block;
     }
     .calc-feat-card:hover {
-      box-shadow: var(--shadow-xl); transform: translateY(-4px); border-color: var(--sage);
+      box-shadow: var(--shadow-lg); transform: translateY(-3px);
+      border-color: var(--sage-light);
     }
     .feat-card-top {
       display: flex; align-items: flex-start;
-      justify-content: space-between; margin-bottom: 16px;
+      justify-content: space-between; margin-bottom: 14px;
     }
     .feat-icon {
-      width: 48px; height: 48px; background: var(--sage-light);
-      border-radius: 13px; display: flex; align-items: center;
+      width: 48px; height: 48px; background: var(--sage-pale);
+      border-radius: var(--r); display: flex; align-items: center;
       justify-content: center; font-size: 22px;
     }
     .feat-badge {
       font-size: 11px; font-weight: 700; padding: 4px 10px;
-      border-radius: 20px; background: var(--amber-soft); color: var(--amber-text);
+      border-radius: var(--r-full);
     }
-    .feat-badge.important { background: #E3FFB3; color: #0A3D2A; }
-    .feat-badge.new { background: #C4DFFE; color: #0A3D2A; }
-    .feat-name { font-size: 17px; font-weight: 700; color: var(--text-dark); margin-bottom: 6px; }
-    .feat-desc { font-size: 14px; color: var(--text-mid); line-height: 1.65; margin-bottom: 18px; }
+    .feat-badge.popular   { background: var(--sage-pale);    color: var(--sage-dark); }
+    .feat-badge.important { background: var(--data-pale);    color: var(--data-dark); }
+    .feat-badge.new       { background: var(--violet-pale);  color: var(--violet-dark); }
+    .feat-name {
+      font-size: 17px; font-weight: 700; color: var(--text-dark);
+      margin-bottom: 6px; letter-spacing: -0.3px;
+    }
+    .feat-desc {
+      font-size: 14px; font-weight: 400; color: var(--text-mid);
+      line-height: 1.65; margin-bottom: 18px;
+    }
     .feat-link {
       display: flex; align-items: center; gap: 6px;
-      font-size: 14px; font-weight: 600; color: var(--sage); transition: gap 0.2s;
+      font-size: 14px; font-weight: 600; color: var(--sage);
+      transition: gap 0.2s;
     }
     .calc-feat-card:hover .feat-link { gap: 10px; }
 
-    /* HOW IT WORKS */
-    .how-section { background: white; }
+    /* ── HOW IT WORKS ───────────────────────────────────────────── */
+    .how-section { background: var(--white); }
     .steps-wrap {
       display: grid; grid-template-columns: repeat(3, 1fr);
       gap: 32px; max-width: 840px; margin: 0 auto; position: relative;
     }
     .steps-wrap::before {
-      content: ''; position: absolute; top: 28px;
-      left: calc(16.666% + 16px); right: calc(16.666% + 16px);
-      height: 2px; background: var(--border);
+      content: ''; position: absolute; top: 26px;
+      left: calc(16.666% + 20px); right: calc(16.666% + 20px);
+      height: 1px; background: var(--border);
     }
     .step { text-align: center; position: relative; }
     .step-num {
-      width: 56px; height: 56px; background: var(--sage); color: white;
+      width: 52px; height: 52px; background: var(--sage-dark); color: var(--text-inv);
       border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      font-size: 20px; font-weight: 800; margin: 0 auto 20px;
+      font-size: 18px; font-weight: 800; margin: 0 auto 20px;
       position: relative; z-index: 1;
-      box-shadow: 0 4px 14px rgba(59,106,58,0.3);
+      box-shadow: 0 4px 16px rgba(61,80,68,0.28);
     }
-    .step h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--text-dark); }
-    .step p { font-size: 14px; color: var(--text-mid); line-height: 1.7; }
+    .step h3 {
+      font-size: 15px; font-weight: 700; margin-bottom: 8px;
+      color: var(--text-dark); letter-spacing: -0.2px;
+    }
+    .step p { font-size: 14px; font-weight: 400; color: var(--text-mid); line-height: 1.7; }
 
-    /* TRUST */
-    .trust-section { background: var(--cream); }
+    /* ── TRUST PILLARS ──────────────────────────────────────────── */
+    .trust-section { background: var(--sage-pale); }
     .trust-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 4px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
     }
     .trust-item {
-      background: white; border-radius: var(--r);
-      padding: 28px 24px; text-align: center; transition: box-shadow 0.2s;
+      background: var(--white); border-radius: var(--r-lg);
+      padding: 28px 24px; transition: box-shadow 0.2s;
+      border: 1px solid var(--border);
     }
     .trust-item:hover { box-shadow: var(--shadow-md); }
     .trust-icon-wrap {
-      width: 52px; height: 52px; background: var(--sage-light);
-      border-radius: 14px; display: flex; align-items: center;
-      justify-content: center; font-size: 24px; margin: 0 auto 14px;
+      width: 48px; height: 48px; background: var(--sage-pale);
+      border-radius: var(--r); display: flex; align-items: center;
+      justify-content: center; font-size: 22px; margin-bottom: 14px;
     }
-    .trust-item h4 { font-size: 15px; font-weight: 700; color: var(--text-dark); margin-bottom: 6px; }
-    .trust-item p { font-size: 13px; color: var(--text-mid); line-height: 1.65; }
+    .trust-item h4 {
+      font-size: 15px; font-weight: 700; color: var(--text-dark);
+      margin-bottom: 6px; letter-spacing: -0.2px;
+    }
+    .trust-item p { font-size: 13px; font-weight: 400; color: var(--text-mid); line-height: 1.65; }
 
-    /* AMAZON PICKS SECTION */
-    .amz-section { padding: 40px 0; background: var(--sage-pale); }
+    /* ── AMAZON SECTION ─────────────────────────────────────────── */
+    .amz-section { padding: 56px 28px; background: var(--bg); border-top: 1px solid var(--border); }
     .amz-card {
-      background: white; border-radius: var(--r-xl);
+      background: var(--white); border-radius: var(--r-2xl);
       box-shadow: var(--shadow-lg); overflow: hidden;
       display: grid; grid-template-columns: 1fr 1fr;
+      border: 1px solid var(--border);
     }
     .amz-left {
-      padding: 32px 40px; border-right: 1px solid var(--border);
-      display: flex; flex-direction: column; justify-content: center; gap: 8px;
+      padding: 36px 40px; border-right: 1px solid var(--border);
+      display: flex; flex-direction: column; justify-content: center; gap: 10px;
     }
     .amz-badge {
       display: inline-flex; align-items: center; gap: 6px;
-      background: var(--sage-light); color: var(--sage-dark);
-      font-size: 12px; font-weight: 700; padding: 5px 12px;
-      border-radius: 20px; letter-spacing: .3px; align-self: flex-start;
+      background: var(--sage-pale); color: var(--sage-dark);
+      font-size: 11px; font-weight: 700; padding: 5px 12px;
+      border-radius: var(--r-full); letter-spacing: 0.5px;
+      text-transform: uppercase; align-self: flex-start;
+      border: 1px solid var(--sage-light);
     }
     .amz-title {
-      font-family: 'Playfair Display', serif;
       font-size: clamp(20px, 2.4vw, 28px); font-weight: 700;
-      color: var(--text-dark); line-height: 1.25;
+      color: var(--text-dark); line-height: 1.25; letter-spacing: -0.8px;
     }
-    .amz-body { font-size: 14px; color: var(--text-mid); line-height: 1.65; }
+    .amz-body { font-size: 14px; font-weight: 400; color: var(--text-mid); line-height: 1.65; }
     .amz-right {
       padding: 28px 32px;
       display: flex; flex-direction: column; gap: 10px; justify-content: center;
@@ -408,160 +618,168 @@
     .amz-cat {
       display: flex; align-items: center; justify-content: space-between; gap: 4px;
       font-size: 12px; font-weight: 600; color: var(--text-dark);
-      background: var(--sage-pale); border: 1px solid var(--border);
-      padding: 10px 12px; border-radius: var(--r-sm);
+      background: var(--bg); border: 1.5px solid var(--border);
+      padding: 10px 12px; border-radius: var(--r);
       text-decoration: none; transition: all .18s; line-height: 1.3;
     }
-    .amz-cat:hover { border-color: var(--sage); background: var(--sage-light); color: var(--sage); }
+    .amz-cat:hover { border-color: var(--sage); background: var(--sage-pale); color: var(--sage); }
     .amz-cat-inner { display: flex; align-items: center; gap: 5px; }
-    .amz-cat-arrow { opacity: .4; font-size: 11px; flex-shrink: 0; }
+    .amz-cat-arrow { opacity: .35; font-size: 10px; flex-shrink: 0; }
     .amz-btn {
       display: flex; align-items: center; justify-content: center; gap: 8px;
-      background: var(--sage); color: white; font-size: 14px; font-weight: 700;
-      padding: 13px 20px; border-radius: var(--r-sm);
-      text-decoration: none; transition: background .2s; text-align: center;
+      background: var(--sage-dark); color: var(--text-inv);
+      font-size: 14px; font-weight: 700;
+      padding: 13px 20px; border-radius: var(--r-full);
+      text-decoration: none; transition: background .2s, transform .15s;
+      text-align: center; letter-spacing: -0.1px;
     }
-    .amz-btn:hover { background: var(--sage-dark); }
-    .amz-disclosure { font-size: 10px; color: var(--text-light); line-height: 1.5; text-align: center; }
-    @media (max-width: 780px) {
-      .amz-card { grid-template-columns: 1fr; }
-      .amz-left { border-right: none; border-bottom: 1px solid var(--border); padding: 28px 24px; }
-      .amz-right { padding: 24px; }
-    }
+    .amz-btn:hover { background: var(--sage); transform: translateY(-1px); }
+    .amz-disclosure { font-size: 11px; color: var(--text-light); line-height: 1.5; text-align: center; }
 
-    /* FOOTER */
-    .site-footer { background: var(--text-dark); color: #94A99A; padding: 56px 0 0; }
+    /* ── FOOTER ─────────────────────────────────────────────────── */
+    .site-footer { background: var(--sage-dark); color: rgba(255,255,255,0.5); padding: 56px 0 0; }
     .footer-grid {
       display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
       gap: 48px; padding-bottom: 48px;
     }
-    .footer-brand-logo {
-      display: flex; align-items: center; gap: 8px;
-      color: white; font-size: 18px; font-weight: 700; margin-bottom: 14px;
+    .footer-logo-wrap {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 14px;
     }
-    .footer-brand-icon {
-      width: 30px; height: 30px; background: var(--sage);
-      border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    .footer-logo-text {
+      font-size: 17px; font-weight: 700; color: rgba(255,255,255,0.9);
+      letter-spacing: -0.2px;
     }
-    .footer-brand p { font-size: 14px; line-height: 1.75; max-width: 270px; color: #7A958E; }
+    .footer-brand p {
+      font-size: 14px; line-height: 1.75; max-width: 260px;
+      color: rgba(255,255,255,0.45); font-weight: 400;
+    }
     .footer-col h5 {
-      color: white; font-size: 12px; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 16px;
+      color: rgba(255,255,255,0.85); font-size: 12px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px;
     }
     .footer-col ul { list-style: none; }
     .footer-col li { margin-bottom: 10px; }
-    .footer-col a { font-size: 14px; color: #7A958E; transition: color 0.2s; }
-    .footer-col a:hover { color: white; }
+    .footer-col a {
+      font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.45);
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: rgba(255,255,255,0.9); }
     .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.08);
+      border-top: 1px solid rgba(255,255,255,0.07);
       padding: 24px 0; display: flex; flex-direction: column; gap: 6px;
     }
-    .footer-disclaimer { font-size: 12px; color: #5A7568; line-height: 1.7; }
-    .footer-copy { font-size: 12px; color: #5A7568; }
+    .footer-disclaimer {
+      font-size: 12px; color: rgba(255,255,255,0.28); line-height: 1.7;
+    }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.28); }
 
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-      .footer-brand { grid-column: 1 / -1; }
-    }
-    @media (max-width: 700px) {
-      .steps-wrap { grid-template-columns: 1fr; }
-      .steps-wrap::before { display: none; }
-      .stats-inner { gap: 32px; }
-    }
-    @media (max-width: 660px) {
-      .nav-links { display: none; }
-      .nav-hamburger { display: flex !important; }
-      .nav-btn { display: none; }
-    }
-    @media (max-width: 520px) {
-      .footer-grid { grid-template-columns: 1fr; }
-      .section { padding: 56px 0; }
-      .hero { padding: 64px 20px 72px; }
-      .hero-popular { display: none; }
-    }
-  
-    /* ── MOBILE HAMBURGER ────────────────────────────── */
-    .nav-hamburger {
-      display: none; flex-direction: column; justify-content: center; gap: 5px;
-      background: none; border: none; padding: 8px; margin-left: 8px;
-      border-radius: 8px; cursor: pointer; transition: background .15s; flex-shrink: 0;
-    }
-    .nav-hamburger:hover { background: var(--sage-light, #EBF2EC); }
-    .nav-hamburger span {
-      display: block; width: 22px; height: 2.5px;
-      background: var(--text-dark, #1A2E1E); border-radius: 2px; transition: all .2s;
-    }
-    /* ── MOBILE DRAWER ───────────────────────────────── */
+    /* ── MOBILE DRAWER ──────────────────────────────────────────── */
     .mobile-menu { display: none; position: fixed; inset: 0; z-index: 999; }
     .mobile-menu.open { display: block; }
-    .mobile-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.45); backdrop-filter: blur(2px); }
+    .mobile-overlay {
+      position: absolute; inset: 0;
+      background: rgba(30,42,35,.5); backdrop-filter: blur(4px);
+    }
     .mobile-drawer {
       position: absolute; top: 0; right: 0;
       width: min(300px, 84vw); height: 100%;
-      background: #fff; display: flex; flex-direction: column;
-      box-shadow: -4px 0 40px rgba(0,0,0,.18);
+      background: var(--white); display: flex; flex-direction: column;
+      box-shadow: -4px 0 48px rgba(0,0,0,.18);
       animation: drawerIn .22s cubic-bezier(.22,.61,.36,1);
     }
     @keyframes drawerIn { from{transform:translateX(100%)} to{transform:translateX(0)} }
     .mobile-drawer-head {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 18px 20px 14px; border-bottom: 1px solid var(--border, #E2EBE4);
+      padding: 20px 20px 16px; border-bottom: 1px solid var(--border);
     }
-    .mobile-drawer-logo { font-size: 15px; font-weight: 700; color: var(--text-dark, #1A2E1E); }
+    .mobile-drawer-logo { font-size: 15px; font-weight: 700; color: var(--text-dark); }
     .mobile-close {
       background: none; border: none; font-size: 20px; padding: 4px 8px;
-      cursor: pointer; color: var(--text-light, #718096); border-radius: 6px; line-height: 1;
-      transition: background .15s, color .15s;
+      cursor: pointer; color: var(--text-light); border-radius: 8px; line-height: 1;
+      transition: background .15s;
     }
-    .mobile-close:hover { background: var(--sage-light, #EBF2EC); color: var(--text-dark, #1A2E1E); }
+    .mobile-close:hover { background: var(--sage-pale); }
     .mobile-nav-links { padding: 14px 12px; flex: 1; display: flex; flex-direction: column; gap: 4px; }
     .mobile-nav-link {
       display: flex; align-items: center; gap: 14px;
-      padding: 13px 16px; border-radius: 12px;
-      font-size: 16px; font-weight: 600; color: var(--text-dark, #1A2E1E);
+      padding: 13px 16px; border-radius: var(--r);
+      font-size: 16px; font-weight: 600; color: var(--text-dark);
       text-decoration: none; transition: background .15s, color .15s;
     }
-    .mobile-nav-link:hover { background: var(--sage-light, #EBF2EC); color: var(--sage, #3B6A3A); }
+    .mobile-nav-link:hover { background: var(--sage-pale); color: var(--sage); }
     .mobile-link-icon {
-      width: 40px; height: 40px; background: var(--sage-light, #EBF2EC);
-      border-radius: 10px; display: flex; align-items: center; justify-content: center;
-      font-size: 18px; flex-shrink: 0;
+      width: 40px; height: 40px; background: var(--sage-pale);
+      border-radius: 10px; display: flex; align-items: center;
+      justify-content: center; font-size: 18px; flex-shrink: 0;
     }
     .mobile-browse-btn {
       display: block; margin: 0 12px 20px; padding: 14px;
-      background: var(--sage, #3B6A3A); color: #fff; border-radius: 12px;
-      font-size: 15px; font-weight: 700; text-align: center;
-      text-decoration: none; transition: background .15s;
+      background: var(--sage-dark); color: var(--text-inv);
+      border-radius: var(--r-full); font-size: 15px; font-weight: 700;
+      text-align: center; text-decoration: none; transition: background .15s;
     }
-    .mobile-browse-btn:hover { background: var(--sage-dark, #0A3D2A); }
+    .mobile-browse-btn:hover { background: var(--sage); }
 
+    /* ── RESPONSIVE ─────────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .hero { text-align: center; }
+      .hero-sub { max-width: none; margin-left: auto; margin-right: auto; }
+      .hero-search-wrap { margin-left: auto; margin-right: auto; }
+      .hero-popular { justify-content: center; }
+    }
+    @media (max-width: 900px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+      .amz-card { grid-template-columns: 1fr; }
+      .amz-left { border-right: none; border-bottom: 1px solid var(--border); padding: 28px 24px; }
+      .amz-right { padding: 24px; }
+    }
+    @media (max-width: 700px) {
+      .steps-wrap { grid-template-columns: 1fr; }
+      .steps-wrap::before { display: none; }
+      .stats-inner { flex-direction: row; flex-wrap: wrap; }
+      .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    }
+    @media (max-width: 660px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex !important; }
+      .nav-cta { display: none; }
+    }
+    @media (max-width: 520px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .section { padding: 56px 0; }
+      .hero { padding: 56px 20px 64px; }
+      .hero-popular { display: none; }
+    }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ════════════════════════════════════════════════════════════════
+     NAVIGATION
+════════════════════════════════════════════════════════════════ -->
 <nav class="site-nav">
   <div class="nav-inner">
-    <!-- LOGO: replace SVG block with <img> tag when your logo is ready -->
-    <a href="index.html" class="nav-logo">
-      <img src="calculators/assets/logo.png" alt="SageMyHealth" style="height: 54px; width: auto; object-fit: contain;"/>
+    <a href="index.html" class="nav-logo" aria-label="SageMyHealth home">
+      <img src="calculators/assets/sage-logo-header.png" alt="SageMyHealth" />
     </a>
     <ul class="nav-links">
       <li><a href="#categories">Calculators</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="blog.html">Health Guides</a></li>
     </ul>
-    <div>
-      <a href="#categories" class="nav-btn">Browse All</a>
-    </div>
+    <a href="#categories" class="nav-cta">Browse All</a>
     <button class="nav-hamburger" id="nav-hamburger"
-            onclick="openMobileMenu()" aria-label="Open navigation menu" aria-expanded="false">
+            onclick="openMobileMenu()" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
-<!-- MOBILE MENU -->
+
+<!-- Mobile Menu -->
 <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site navigation">
   <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
   <div class="mobile-drawer">
@@ -571,103 +789,295 @@
     </div>
     <nav class="mobile-nav-links">
       <a href="index.html#categories" class="mobile-nav-link" onclick="closeMobileMenu()">
-        <span class="mobile-link-icon">&#x1F9EE;</span>Calculators
+        <span class="mobile-link-icon">🧮</span>Calculators
       </a>
       <a href="about.html" class="mobile-nav-link" onclick="closeMobileMenu()">
-        <span class="mobile-link-icon">&#x1F49A;</span>About
+        <span class="mobile-link-icon">🌿</span>About
       </a>
       <a href="blog.html" class="mobile-nav-link" onclick="closeMobileMenu()">
-        <span class="mobile-link-icon">&#x1F4D6;</span>Health Guides
+        <span class="mobile-link-icon">📖</span>Health Guides
       </a>
     </nav>
-    <a href="index.html#categories" class="mobile-browse-btn" onclick="closeMobileMenu()">Browse All Calculators &#x2192;</a>
+    <a href="index.html#categories" class="mobile-browse-btn" onclick="closeMobileMenu()">Browse All Calculators →</a>
   </div>
 </div>
 
-<!-- HERO -->
+<!-- ════════════════════════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════════════════════ -->
 <section class="hero">
-  <div class="hero-badge">
-    <div class="hero-badge-dot"></div>
-    Your everyday health companion
-  </div>
-  <h1>Know your numbers.<br><em>Understand your health.</em></h1>
-  <p class="hero-sub">Free, evidence-based calculators with warm, clear guidance — because taking care of yourself shouldn't be complicated.</p>
-  <div class="hero-search-wrap">
-    <div class="hero-search">
-      <input type="text" id="searchInput" placeholder="Search calculators… try &quot;BMI&quot; or &quot;period&quot;" autocomplete="off" />
-      <button onclick="doSearch()">Search</button>
+  <div class="hero-inner">
+    <!-- Left: messaging -->
+    <div class="hero-left">
+      <div class="hero-badge">
+        <div class="hero-badge-dot"></div>
+        Evidence-based · Free · Private
+      </div>
+      <h1>Know your numbers.<br><span class="accent">Own your health.</span></h1>
+      <p class="hero-sub">62 clinical-grade calculators across every domain of health — built for people who monitor their baseline, not just manage symptoms.</p>
+
+      <div class="hero-search-wrap">
+        <div class="hero-search">
+          <input type="text" id="searchInput"
+                 placeholder='Search — try "blood pressure" or "sleep debt"'
+                 autocomplete="off" />
+          <button class="hero-search-btn" onclick="doSearch()">Search</button>
+        </div>
+      </div>
+      <p class="hero-hint">Or <a href="#categories">browse by category</a> below</p>
+      <div class="hero-popular">
+        <span class="hero-popular-label">Popular:</span>
+        <a href="calculators/bmi.html"          class="pop-pill">BMI</a>
+        <a href="calculators/tdee.html"          class="pop-pill">Daily Calories</a>
+        <a href="calculators/blood-pressure.html" class="pop-pill">Blood Pressure</a>
+        <a href="calculators/sleep-debt.html"    class="pop-pill">Sleep Debt</a>
+        <a href="calculators/biological-age.html" class="pop-pill">Biological Age</a>
+        <a href="calculators/prediabetes-risk.html" class="pop-pill">Prediabetes Risk</a>
+      </div>
     </div>
-  </div>
-  <p class="hero-hint">Or <a href="#categories">browse by category</a> below</p>
-  <div class="hero-popular">
-    <span>Popular:</span>
-    <a href="calculators/bmi.html" class="pop-pill">BMI</a>
-    <a href="calculators/tdee.html" class="pop-pill">Daily Calories</a>
-    <a href="calculators/period-tracker.html" class="pop-pill">Period Tracker</a>
-    <a href="calculators/blood-glucose.html" class="pop-pill">Blood Glucose</a>
-    <a href="calculators/heart-rate.html" class="pop-pill">Heart Rate Zones</a>
-    <a href="calculators/sleep-need.html" class="pop-pill">Sleep Need</a>
+
+    <!-- Right: metric preview cards -->
+    <div class="hero-visual" aria-hidden="true">
+      <div class="metric-card">
+        <div class="metric-icon green">❤️</div>
+        <div class="metric-body">
+          <div class="metric-label">Blood Pressure</div>
+          <div class="metric-value">118<span>/ 76 mmHg</span></div>
+          <div class="metric-status ok">Optimal range</div>
+        </div>
+        <svg class="metric-chart" viewBox="0 0 56 40" fill="none">
+          <polyline points="0,32 8,28 16,30 24,20 32,22 40,14 48,16 56,10"
+            stroke="#5D7A66" stroke-width="2" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="metric-card">
+        <div class="metric-icon blue">🧠</div>
+        <div class="metric-body">
+          <div class="metric-label">Sleep Debt</div>
+          <div class="metric-value">2.5<span>hrs</span></div>
+          <div class="metric-status warn">Recoverable</div>
+        </div>
+        <svg class="metric-chart" viewBox="0 0 56 40" fill="none">
+          <polyline points="0,10 8,14 16,12 24,18 32,22 40,20 48,26 56,24"
+            stroke="#F5A623" stroke-width="2" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="metric-card">
+        <div class="metric-icon violet">⏳</div>
+        <div class="metric-body">
+          <div class="metric-label">Biological Age</div>
+          <div class="metric-value">34<span>yrs</span></div>
+          <div class="metric-status blue">4 yrs below calendar</div>
+        </div>
+        <svg class="metric-chart" viewBox="0 0 56 40" fill="none">
+          <polyline points="0,28 8,22 16,24 24,18 32,16 40,12 48,14 56,8"
+            stroke="#6F9AC5" stroke-width="2" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- STATS BAR -->
+<!-- ════════════════════════════════════════════════════════════════
+     STATS BAR
+════════════════════════════════════════════════════════════════ -->
 <div class="stats-bar">
   <div class="stats-inner">
-    <div class="stat"><div class="stat-num">47</div><div class="stat-label">Free calculators</div></div>
-    <div class="stat"><div class="stat-num">11</div><div class="stat-label">Health categories</div></div>
-    <div class="stat"><div class="stat-num">0</div><div class="stat-label">Data stored</div></div>
-    <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Health-focused</div></div>
+    <div class="stat-item">
+      <div class="stat-icon">🧮</div>
+      <div>
+        <div class="stat-num">62</div>
+        <div class="stat-label">Free calculators</div>
+      </div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-icon">🏥</div>
+      <div>
+        <div class="stat-num">11</div>
+        <div class="stat-label">Health domains</div>
+      </div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-icon">🔒</div>
+      <div>
+        <div class="stat-num">0</div>
+        <div class="stat-label">Data stored ever</div>
+      </div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-icon">⚗️</div>
+      <div>
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Clinical-grade formulas</div>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- CATEGORIES -->
+<!-- ════════════════════════════════════════════════════════════════
+     BRAND POSITIONING STATEMENT
+════════════════════════════════════════════════════════════════ -->
+<section class="brand-statement">
+  <div class="brand-statement-inner">
+    <p class="brand-eyebrow">Our Belief</p>
+    <h2 class="brand-headline">
+      Health is lifelong. <span class="light">So is the practice<br>of knowing your numbers.</span>
+    </h2>
+    <p class="brand-body">Good health isn't a single moment—it's a lifelong practice of measuring, understanding, and adjusting. 
+      SageMyHealth gives you a clearer view of your own body, with thoughtful tools to track what matters, make sense of the data, and make decisions grounded in evidence, not guesswork.</p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════
+     CATEGORIES
+════════════════════════════════════════════════════════════════ -->
 <section class="section cat-section" id="categories">
   <div class="container">
     <div class="section-header">
       <p class="section-eyebrow">Browse by Category</p>
-      <h2 class="section-title">Every area of your health, covered in one place</h2>
-      <p class="section-sub">From body composition to brain health — trusted formulas, warm explanations.</p>
+      <h2 class="section-title">Every domain of your health, covered</h2>
+      <p class="section-sub">From body composition to brain health — precise formulas with clear, honest explanations.</p>
     </div>
+
     <div class="category-grid">
-      <div class="cat-group-head">Body &amp; Fitness</div>
-      <a href="categories/weight-body.html" class="cat-card"><div class="cat-icon-wrap">⚖️</div><div><div class="cat-info-name">Weight &amp; Body</div><div class="cat-info-count">3 calculators</div></div><div class="cat-arrow">&#8594;</div></a>
-      <a href="categories/nutrition-diet.html" class="cat-card"><div class="cat-icon-wrap">🥗</div><div><div class="cat-info-name">Nutrition &amp; Diet</div><div class="cat-info-count">4 calculators</div></div><div class="cat-arrow">&#8594;</div></a>
-      <a href="categories/fitness-exercise.html" class="cat-card"><div class="cat-icon-wrap">🏃</div><div><div class="cat-info-name">Fitness &amp; Longevity</div><div class="cat-info-count">3 calculators</div></div><div class="cat-arrow">&#8594;</div></a>
-      <a href="categories/hair-skin-health.html" class="cat-card"><div class="cat-icon-wrap">💆</div><div><div class="cat-info-name">Hair &amp; Skin Health</div><div class="cat-info-count">4 calculators</div></div><div class="cat-arrow">&#8594;</div></a>
-      <div class="cat-group-head">Heart, Blood &amp; Sugar</div>
-      <a href="categories/heart-cardiovascular.html" class="cat-card"><div class="cat-icon-wrap">❤️</div><div><div class="cat-info-name">Heart &amp; Lungs</div><div class="cat-info-count">5 calculators</div></div><div class="cat-arrow">&#8594;</div></a>
-      <a href="categories/blood-iron-health.html" class="cat-card"><div class="cat-icon-wrap">🩸</div><div><div class="cat-info-name">Blood &amp; Iron Health</div><div class="cat-info-count">4 calculators</div></div><div class="cat-arrow">&#8594;</div></a>
-      <a href="categories/diabetes-blood-sugar.html" class="cat-card"><div class="cat-icon-wrap">💉</div><div><div class="cat-info-name">Diabetes &amp; Blood Sugar</div><div class="cat-info-count">5 calculators</div></div><div class="cat-arrow">&#8594;</div></a>
-      <div class="cat-group-head">Mind &amp; Sleep</div>
-      <a href="categories/mental-health.html" class="cat-card"><div class="cat-icon-wrap">🧠</div><div><div class="cat-info-name">Mind &amp; Brain</div><div class="cat-info-count">9 calculators</div></div><div class="cat-arrow">&#8594;</div></a>
-      <a href="categories/sleep-recovery.html" class="cat-card"><div class="cat-icon-wrap">😴</div><div><div class="cat-info-name">Sleep &amp; Recovery</div><div class="cat-info-count">3 calculators</div></div><div class="cat-arrow">&#8594;</div></a>
-      <div class="cat-group-head">Women &amp; Screening</div>
-      <a href="categories/womens-health.html" class="cat-card"><div class="cat-icon-wrap">🌸</div><div><div class="cat-info-name">Women's Health &amp; Pregnancy</div><div class="cat-info-count">4 calculators</div></div><div class="cat-arrow">&#8594;</div></a>
-      <a href="categories/cancer-risk.html" class="cat-card"><div class="cat-icon-wrap">🎗</div><div><div class="cat-info-name">Cancer Risk</div><div class="cat-info-count">4 calculators</div></div><div class="cat-arrow">&#8594;</div></a>
+
+      <!-- Body & Fitness -->
+      <div class="cat-group-label">
+        <span class="cat-group-pill body">Body &amp; Fitness</span>
+        <div class="cat-group-line"></div>
+      </div>
+      <a href="categories/weight-body.html" class="cat-card body">
+        <div class="cat-icon-wrap">⚖️</div>
+        <div><div class="cat-info-name">Weight &amp; Body</div><div class="cat-info-count">3 calculators</div></div>
+        <div class="cat-arrow">→</div>
+      </a>
+      <a href="categories/nutrition-diet.html" class="cat-card body">
+        <div class="cat-icon-wrap">🥗</div>
+        <div><div class="cat-info-name">Nutrition &amp; Diet</div><div class="cat-info-count">4 calculators</div></div>
+        <div class="cat-arrow">→</div>
+      </a>
+      <a href="categories/fitness-exercise.html" class="cat-card body">
+        <div class="cat-icon-wrap">🏃</div>
+        <div><div class="cat-info-name">Fitness &amp; Longevity</div><div class="cat-info-count">3 calculators</div></div>
+        <div class="cat-arrow">→</div>
+      </a>
+      <a href="categories/hair-skin-health.html" class="cat-card body">
+        <div class="cat-icon-wrap">💆</div>
+        <div><div class="cat-info-name">Hair &amp; Skin Health</div><div class="cat-info-count">4 calculators</div></div>
+        <div class="cat-arrow">→</div>
+      </a>
+
+      <!-- Heart, Blood & Sugar -->
+      <div class="cat-group-label">
+        <span class="cat-group-pill heart">Heart, Blood &amp; Sugar</span>
+        <div class="cat-group-line"></div>
+      </div>
+      <a href="categories/heart-cardiovascular.html" class="cat-card heart">
+        <div class="cat-icon-wrap">❤️</div>
+        <div><div class="cat-info-name">Heart &amp; Lungs</div><div class="cat-info-count">5 calculators</div></div>
+        <div class="cat-arrow">→</div>
+      </a>
+      <a href="categories/blood-iron-health.html" class="cat-card heart">
+        <div class="cat-icon-wrap">🩸</div>
+        <div><div class="cat-info-name">Blood &amp; Iron Health</div><div class="cat-info-count">4 calculators</div></div>
+        <div class="cat-arrow">→</div>
+      </a>
+      <a href="categories/diabetes-blood-sugar.html" class="cat-card heart">
+        <div class="cat-icon-wrap">💉</div>
+        <div><div class="cat-info-name">Diabetes &amp; Blood Sugar</div><div class="cat-info-count">5 calculators</div></div>
+        <div class="cat-arrow">→</div>
+      </a>
+
+      <!-- Mind & Sleep -->
+      <div class="cat-group-label">
+        <span class="cat-group-pill mind">Mind &amp; Sleep</span>
+        <div class="cat-group-line"></div>
+      </div>
+      <a href="categories/mental-health.html" class="cat-card mind">
+        <div class="cat-icon-wrap">🧠</div>
+        <div><div class="cat-info-name">Mind &amp; Brain</div><div class="cat-info-count">9 calculators</div></div>
+        <div class="cat-arrow">→</div>
+      </a>
+      <a href="categories/sleep-recovery.html" class="cat-card mind">
+        <div class="cat-icon-wrap">😴</div>
+        <div><div class="cat-info-name">Sleep &amp; Recovery</div><div class="cat-info-count">4 calculators</div></div>
+        <div class="cat-arrow">→</div>
+      </a>
+
+      <!-- Women & Screening -->
+      <div class="cat-group-label">
+        <span class="cat-group-pill women">Women &amp; Screening</span>
+        <div class="cat-group-line"></div>
+      </div>
+      <a href="categories/womens-health.html" class="cat-card women">
+        <div class="cat-icon-wrap">🌸</div>
+        <div><div class="cat-info-name">Women's Health &amp; Fertility</div><div class="cat-info-count">6 calculators</div></div>
+        <div class="cat-arrow">→</div>
+      </a>
+      <a href="categories/cancer-risk.html" class="cat-card women">
+        <div class="cat-icon-wrap">🎗</div>
+        <div><div class="cat-info-name">Cancer Risk Screening</div><div class="cat-info-count">5 calculators</div></div>
+        <div class="cat-arrow">→</div>
+      </a>
+
     </div>
   </div>
 </section>
 
-<!-- FEATURED CALCULATORS -->
+<!-- ════════════════════════════════════════════════════════════════
+     FEATURED CALCULATORS
+════════════════════════════════════════════════════════════════ -->
 <section class="section featured-section">
   <div class="container">
     <div class="section-header center">
       <p class="section-eyebrow">Most Used</p>
       <h2 class="section-title">Start here</h2>
-      <p class="section-sub">Our most-visited calculators — quick, clear, and completely free.</p>
+      <p class="section-sub">Our most-visited calculators — quick, clinical, and completely free.</p>
     </div>
     <div class="calc-feat-grid">
-      <a href="calculators/bmi.html" class="calc-feat-card"><div class="feat-card-top"><div class="feat-icon">⚖️</div><span class="feat-badge">Popular</span></div><div class="feat-name">BMI Calculator</div><p class="feat-desc">Find out where your weight sits relative to your height — and what it means for your health.</p><div class="feat-link">Calculate now <span>→</span></div></a>
-      <a href="calculators/tdee.html" class="calc-feat-card"><div class="feat-card-top"><div class="feat-icon">🔥</div><span class="feat-badge">Popular</span></div><div class="feat-name">Daily Calorie (TDEE)</div><p class="feat-desc">How many calories does your body actually need? Get a number built around your real life.</p><div class="feat-link">Calculate now <span>→</span></div></a>
-      <a href="calculators/period-tracker.html" class="calc-feat-card"><div class="feat-card-top"><div class="feat-icon">🌸</div><span class="feat-badge">Popular</span></div><div class="feat-name">Period Calculator</div><p class="feat-desc">Predict your next cycle, track your window, and understand your body's natural rhythm.</p><div class="feat-link">Calculate now <span>→</span></div></a>
-      <a href="calculators/blood-glucose.html" class="calc-feat-card"><div class="feat-card-top"><div class="feat-icon">💉</div><span class="feat-badge important">Important</span></div><div class="feat-name">Blood Glucose</div><p class="feat-desc">Check whether your blood sugar reading is in a healthy range — with context you can actually use.</p><div class="feat-link">Calculate now <span>→</span></div></a>
-      <a href="calculators/heart-rate.html" class="calc-feat-card"><div class="feat-card-top"><div class="feat-icon">❤️</div><span class="feat-badge">Popular</span></div><div class="feat-name">Heart Rate Zones</div><p class="feat-desc">Find your target training zones for fat burn, cardio, and peak performance.</p><div class="feat-link">Calculate now <span>→</span></div></a>
-      <a href="calculators/biological-age.html" class="calc-feat-card"><div class="feat-card-top"><div class="feat-icon">⏳</div><span class="feat-badge new">New</span></div><div class="feat-name">Biological Age</div><p class="feat-desc">See how your lifestyle affects how old your body actually is — compared to your chronological age.</p><div class="feat-link">Calculate now <span>→</span></div></a>
+      <a href="calculators/bmi.html" class="calc-feat-card">
+        <div class="feat-card-top"><div class="feat-icon">⚖️</div><span class="feat-badge popular">Popular</span></div>
+        <div class="feat-name">BMI Calculator</div>
+        <p class="feat-desc">Find where your weight sits relative to your height — and what it actually means for your health risk.</p>
+        <div class="feat-link">Calculate now <span>→</span></div>
+      </a>
+      <a href="calculators/tdee.html" class="calc-feat-card">
+        <div class="feat-card-top"><div class="feat-icon">🔥</div><span class="feat-badge popular">Popular</span></div>
+        <div class="feat-name">Daily Calories (TDEE)</div>
+        <p class="feat-desc">How many calories does your body actually burn? Get a personalized energy target built around your real life.</p>
+        <div class="feat-link">Calculate now <span>→</span></div>
+      </a>
+      <a href="calculators/blood-pressure.html" class="calc-feat-card">
+        <div class="feat-card-top"><div class="feat-icon">❤️</div><span class="feat-badge popular">Popular</span></div>
+        <div class="feat-name">Blood Pressure Checker</div>
+        <p class="feat-desc">Understand what your systolic and diastolic numbers actually mean — and what stage your reading falls in.</p>
+        <div class="feat-link">Calculate now <span>→</span></div>
+      </a>
+      <a href="calculators/prediabetes-risk.html" class="calc-feat-card">
+        <div class="feat-card-top"><div class="feat-icon">💉</div><span class="feat-badge important">Important</span></div>
+        <div class="feat-name">Prediabetes Risk</div>
+        <p class="feat-desc">96 million Americans have prediabetes. 8 in 10 don't know. Check your risk in under 2 minutes.</p>
+        <div class="feat-link">Calculate now <span>→</span></div>
+      </a>
+      <a href="calculators/sleep-debt.html" class="calc-feat-card">
+        <div class="feat-card-top"><div class="feat-icon">😴</div><span class="feat-badge popular">Popular</span></div>
+        <div class="feat-name">Sleep Debt Calculator</div>
+        <p class="feat-desc">Calculate how much sleep your body is owed — and understand why being tired isn't always about last night.</p>
+        <div class="feat-link">Calculate now <span>→</span></div>
+      </a>
+      <a href="calculators/biological-age.html" class="calc-feat-card">
+        <div class="feat-card-top"><div class="feat-icon">⏳</div><span class="feat-badge new">New</span></div>
+        <div class="feat-name">Biological Age</div>
+        <p class="feat-desc">Your birthday and your body's age aren't the same number. See how your lifestyle affects how fast you're aging.</p>
+        <div class="feat-link">Calculate now <span>→</span></div>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
+<!-- ════════════════════════════════════════════════════════════════
+     HOW IT WORKS
+════════════════════════════════════════════════════════════════ -->
 <section class="section how-section">
   <div class="container">
     <div class="section-header center">
@@ -675,33 +1085,65 @@
       <h2 class="section-title">Simple as it should be</h2>
     </div>
     <div class="steps-wrap">
-      <div class="step"><div class="step-num">1</div><h3>Choose a calculator</h3><p>Browse by category or search for what you need. Everything is health-focused — no clutter, no noise.</p></div>
-      <div class="step"><div class="step-num">2</div><h3>Enter your numbers</h3><p>A few quick inputs — age, weight, measurements. We never store or share any of your data.</p></div>
-      <div class="step"><div class="step-num">3</div><h3>Get your result + guidance</h3><p>See your score in context, with warm tips if you're outside range, or encouragement to keep going if you're on track.</p></div>
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Choose a calculator</h3>
+        <p>Browse by category or search for what you need. Every tool here is health-focused — nothing else.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Enter your numbers</h3>
+        <p>A few quick inputs — age, weight, measurements. We never store or share any of your data, ever.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Get your result + context</h3>
+        <p>See your score in clinical context, with clear guidance on what it means and what to do next.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- TRUST -->
+<!-- ════════════════════════════════════════════════════════════════
+     TRUST PILLARS
+════════════════════════════════════════════════════════════════ -->
 <section class="section-sm trust-section">
   <div class="container">
     <div class="trust-grid">
-      <div class="trust-item"><div class="trust-icon-wrap">🔬</div><h4>Evidence-Based Formulas</h4><p>Every calculation uses established medical and scientific formulas — the same ones clinicians reference.</p></div>
-      <div class="trust-item"><div class="trust-icon-wrap">🔒</div><h4>Your Data Stays Yours</h4><p>We never store, sell, or share your health data. Calculations happen entirely in your browser.</p></div>
-      <div class="trust-item"><div class="trust-icon-wrap">🌿</div><h4>Health-Only Focus</h4><p>No finance, no engineering, no random calculators. Everything here is about your wellbeing — nothing else.</p></div>
-      <div class="trust-item"><div class="trust-icon-wrap">💬</div><h4>Human, Not Clinical</h4><p>Results are explained in plain language — warm, encouraging, and easy to understand.</p></div>
+      <div class="trust-item">
+        <div class="trust-icon-wrap">🔬</div>
+        <h4>Clinical-Grade Formulas</h4>
+        <p>Every calculation uses the same validated medical formulas that clinicians and researchers rely on.</p>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon-wrap">🔒</div>
+        <h4>Your Data Stays Yours</h4>
+        <p>We never store, sell, or transmit your health data. All calculations happen locally in your browser.</p>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon-wrap">🌿</div>
+        <h4>Health-Only Focus</h4>
+        <p>No finance, no fitness gadgets, no distraction. Everything here is about your health — nothing else.</p>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon-wrap">💬</div>
+        <h4>Clear, Not Clinical</h4>
+        <p>Results are explained in plain language — precise enough to be useful, human enough to understand.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- AMAZON PICKS -->
+<!-- ════════════════════════════════════════════════════════════════
+     AMAZON PICKS
+════════════════════════════════════════════════════════════════ -->
 <section class="amz-section">
   <div class="container">
     <div class="amz-card">
       <div class="amz-left">
         <span class="amz-badge">🌿 SageMyHealth Picks</span>
         <h2 class="amz-title">Health essentials, handpicked for you</h2>
-        <p class="amz-body">Top-rated products curated by category — because acting on your health numbers should be just as easy as calculating them.</p>
+        <p class="amz-body">Top-rated products curated by category — because acting on your numbers should be as easy as calculating them.</p>
       </div>
       <div class="amz-right">
         <div class="amz-cats">
@@ -727,24 +1169,26 @@
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ════════════════════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════════════════ -->
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="footer-brand-logo">
-          <img src="calculators/assets/logo-white.png" alt="SageMyHealth" style="height: 45px; width: auto; object-fit: contain;"/>
+        <div class="footer-logo-wrap">
+          <img src="calculators/assets/sage-logo-footer.png" alt="SageMyHealth" style="height:37px;width:auto;object-fit:contain;" />
         </div>
-        <p>Because understanding your health shouldn't be complicated. Simple tools, clear answers, warm guidance — every day.</p>
+        <p>Health is lifelong. So is the practice of knowing your numbers. Precise tools, clear answers — every day.</p>
       </div>
       <div class="footer-col">
         <h5>Calculators</h5>
         <ul>
           <li><a href="calculators/bmi.html">BMI</a></li>
           <li><a href="calculators/tdee.html">Daily Calories</a></li>
-          <li><a href="calculators/period-tracker.html">Period Tracker</a></li>
+          <li><a href="calculators/blood-pressure.html">Blood Pressure</a></li>
           <li><a href="calculators/blood-glucose.html">Blood Glucose</a></li>
-          <li><a href="calculators/heart-rate.html">Heart Rate Zones</a></li>
+          <li><a href="calculators/sleep-debt.html">Sleep Debt</a></li>
           <li><a href="#categories">View All →</a></li>
         </ul>
       </div>
@@ -752,10 +1196,10 @@
         <h5>More Tools</h5>
         <ul>
           <li><a href="calculators/anxiety-score.html">Anxiety Score</a></li>
-          <li><a href="calculators/brain-fatigue.html">Brain Fatigue</a></li>
-          <li><a href="calculators/sleep-need.html">Sleep Need</a></li>
+          <li><a href="calculators/prediabetes-risk.html">Prediabetes Risk</a></li>
           <li><a href="calculators/biological-age.html">Biological Age</a></li>
-          <li><a href="calculators/lung-capacity.html">Lung Capacity</a></li>
+          <li><a href="calculators/burnout-risk.html">Burnout Risk</a></li>
+          <li><a href="calculators/prevent-risk.html">PREVENT Risk</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -770,12 +1214,15 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-disclaimer"><strong style="color:#7A958E">Medical Disclaimer:</strong> SageMyHealth calculators are for informational purposes only and are not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider with questions about your health.</p>
+      <p class="footer-disclaimer"><strong style="color:rgba(255,255,255,0.4)">Medical Disclaimer:</strong> SageMyHealth calculators are for informational purposes only and are not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider with questions about your health.</p>
       <p class="footer-copy">© 2025 SageMyHealth.com — All rights reserved.</p>
     </div>
   </div>
 </footer>
 
+<!-- ════════════════════════════════════════════════════════════════
+     SCRIPTS (search + mobile menu — unchanged)
+════════════════════════════════════════════════════════════════ -->
 <script>
   function doSearch() {
     var q = document.getElementById('searchInput').value.trim().toLowerCase();
@@ -933,9 +1380,7 @@
   });
 </script>
 
-
 <script>
-  /* Mobile menu */
   function openMobileMenu() {
     document.getElementById('mobile-menu').classList.add('open');
     document.getElementById('nav-hamburger').setAttribute('aria-expanded', 'true');
