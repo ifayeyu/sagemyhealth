@@ -47,38 +47,40 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --sage:       #3B6A3A;
-      --sage-dark:  #0A3D2A;
-      --sage-mid:   #5C8A5C;
-      --sage-light: #EBF2EC;
-      --sage-pale:  #F2F7F3;
-      --cream:      #E3FFB3;
-      --text-dark:  #1A2E1E;
-      --text-mid:   #4A5568;
-      --text-light: #718096;
-      --white:      #FFFFFF;
-      --border:     #E2EBE4;
-      --border-mid: #C8D9CC;
-      --shadow-xs:  0 1px 2px rgba(59,106,58,0.06);
-      --shadow-sm:  0 1px 6px rgba(59,106,58,0.08);
-      --shadow-md:  0 4px 16px rgba(59,106,58,0.12);
-      --shadow-lg:  0 8px 32px rgba(59,106,58,0.16);
-      --r-sm: 8px; --r: 12px; --r-lg: 20px; --r-xl: 28px;
-      /* Zone colours */
-      --z1: #93C5FD; --z1-soft: #EFF6FF; --z1-text: #1E40AF;
-      --z2: #4ADE80; --z2-soft: #F0FDF4; --z2-text: #166534;
-      --z3: #FBBF24; --z3-soft: #FFFBEB; --z3-text: #92400E;
-      --z4: #F97316; --z4-soft: #FFF7ED; --z4-text: #9A3412;
-      --z5: #EF4444; --z5-soft: #FEF2F2; --z5-text: #991B1B;
+      --sage: #5D7A66;
+      --sage-dark: #3D5044;
+      --sage-mid: #86AD95;
+      --sage-light: #BED0BF;
+      --sage-pale: #E9F2EB;
+      --sage-off: #F3FFF6;
+      --data: #6F9AC5;
+      --data-dark: #244368;
+      --data-pale: #E4EAF4;
+      --warm: #B99D8B;
+      --warm-pale: #F4EFEE;
+      --violet: #A496C8;
+      --violet-pale: #EBE6F6;
+      --text-dark: #1E2A23;
+      --text-mid: #4A5C52;
+      --text-light: #7A908A;
+      --white: #FFFFFF;
+      --bg: #FAFDF9;
+      --border: #D8E8DC;
+      --border-mid: #BED0BF;
+      --shadow-xs: 0 1px 3px rgba(61,80,68,0.05);
+      --shadow-sm: 0 2px 10px rgba(61,80,68,0.08);
+      --shadow-md: 0 4px 24px rgba(61,80,68,0.12);
+      --shadow-lg: 0 8px 40px rgba(61,80,68,0.16);
+      --r-sm: 10px; --r: 14px; --r-lg: 20px; --r-xl: 28px; --r-full: 100px;
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       color: var(--text-dark); background: var(--sage-pale);
       line-height: 1.6; -webkit-font-smoothing: antialiased;
     }
@@ -95,8 +97,8 @@
     .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; flex: 1; justify-content: center; }
     .nav-links a { color: var(--text-mid); font-size: 15px; font-weight: 500; transition: color .2s; }
     .nav-links a:hover { color: var(--sage); }
-    .nav-btn { background: var(--sage); color: white; border: none; padding: 9px 20px; border-radius: var(--r-sm); font-size: 14px; font-weight: 600; transition: background .2s; }
-    .nav-btn:hover { background: var(--sage-dark); }
+        .nav-cta { background: var(--sage-dark); color: white; border: none; padding: 10px 22px; border-radius: var(--r-full); font-size: 14px; font-weight: 600; transition: background .2s, transform .15s; white-space: nowrap; display: inline-block; cursor: pointer; }
+    .nav-cta:hover { background: var(--sage); transform: translateY(-1px); }
 
     /* PAGE */
     .calc-page { padding: 36px 0 72px; }
@@ -111,7 +113,7 @@
     /* PAGE HEADER */
     .page-header { margin-bottom: 28px; }
     .calc-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--sage); background: var(--white); padding: 5px 12px; border-radius: 20px; margin-bottom: 12px; letter-spacing: .3px; border: 1px solid var(--border); }
-    .page-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 42px); font-weight: 700; color: var(--text-dark); letter-spacing: -.5px; margin-bottom: 10px; line-height: 1.15; }
+    .page-header h1 { font-size: clamp(28px, 4vw, 42px); font-weight: 700; color: var(--text-dark); letter-spacing: -.5px; margin-bottom: 10px; line-height: 1.15; }
     .page-header p { font-size: 15px; color: var(--text-mid); line-height: 1.7; max-width: 700px; }
 
     /* TWO-COLUMN */
@@ -223,31 +225,31 @@
     .related-icon { width: 36px; height: 36px; background: var(--sage-light); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
     .related-info strong { display: block; font-size: 13px; font-weight: 600; }
     .related-info span  { font-size: 11px; color: var(--text-light); }
-    .note-block { background: var(--cream); border-radius: var(--r); padding: 13px 16px; font-size: 12px; color: var(--text-light); line-height: 1.7; display: flex; gap: 8px; align-items: flex-start; }
+    .note-block { background: var(--sage-pale); border-radius: var(--r); padding: 13px 16px; font-size: 12px; color: var(--text-light); line-height: 1.7; display: flex; gap: 8px; align-items: flex-start; }
     .note-block svg { flex-shrink: 0; margin-top: 1px; }
 
     /* FOOTER */
-    .site-footer { background: var(--text-dark); color: #94A99A; padding: 48px 0 0; margin-top: 48px; }
+    .site-footer { background: var(--sage-dark); color: rgba(255,255,255,.5); padding: 48px 0 0; margin-top: 48px; }
     .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
     .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 40px; }
     .footer-logo { display: flex; align-items: center; gap: 8px; color: white; font-size: 18px; font-weight: 700; margin-bottom: 12px; }
     .footer-logo-icon { width: 28px; height: 28px; background: var(--sage); border-radius: 7px; display: flex; align-items: center; justify-content: center; }
-    .footer-brand p { font-size: 14px; line-height: 1.7; max-width: 260px; color: #7A958E; }
+    .footer-brand p { font-size: 14px; line-height: 1.7; max-width: 260px; color: rgba(255,255,255,.45); }
     .footer-col h5 { color: white; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; margin-bottom: 14px; }
     .footer-col ul { list-style: none; }
     .footer-col li { margin-bottom: 8px; }
-    .footer-col a { font-size: 14px; color: #7A958E; transition: color .2s; }
-    .footer-col a:hover { color: white; }
+    .footer-col a { font-size: 14px; color: rgba(255,255,255,.45); transition: color .2s; }
+    .footer-col a:hover { color: rgba(255,255,255,.9); }
     .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding: 22px 0; display: flex; flex-direction: column; gap: 6px; }
-    .footer-disclaimer { font-size: 12px; color: #5A7568; line-height: 1.7; }
-    .footer-copy { font-size: 12px; color: #5A7568; }
+    .footer-disclaimer { font-size: 12px; color: rgba(255,255,255,.28); line-height: 1.7; }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,.28); }
 
     /* RESPONSIVE */
     @media (max-width: 1000px) { .calc-columns { grid-template-columns: 1fr; } }
     @media (max-width: 900px)  { .footer-grid { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: 1 / -1; } }
     @media (max-width: 660px)  { .nav-links { display: none; }
       .nav-hamburger { display: flex !important; }
-      .nav-btn { display: none; } .related-grid { grid-template-columns: 1fr; } .zone-card { grid-template-columns: 32px 1fr; } .zone-bpm { display: none; } }
+      .nav-cta { display: none; } .related-grid { grid-template-columns: 1fr; } .zone-card { grid-template-columns: 32px 1fr; } .zone-bpm { display: none; } }
     @media (max-width: 520px)  { .footer-grid { grid-template-columns: 1fr; } }
   
     /* ── MOBILE HAMBURGER ────────────────────────────── */
@@ -291,7 +293,7 @@
       font-size: 16px; font-weight: 600; color: var(--text-dark, #1A2E1E);
       text-decoration: none; transition: background .15s, color .15s;
     }
-    .mobile-nav-link:hover { background: var(--sage-light, #EBF2EC); color: var(--sage, #3B6A3A); }
+    .mobile-nav-link:hover { background: var(--sage-pale); color: var(--sage, #3B6A3A); }
     .mobile-link-icon {
       width: 40px; height: 40px; background: var(--sage-light, #EBF2EC);
       border-radius: 10px; display: flex; align-items: center; justify-content: center;
@@ -299,11 +301,11 @@
     }
     .mobile-browse-btn {
       display: block; margin: 0 12px 20px; padding: 14px;
-      background: var(--sage, #3B6A3A); color: #fff; border-radius: 12px;
+      background: var(--sage-dark); color: #fff; border-radius: var(--r-full);
       font-size: 15px; font-weight: 700; text-align: center;
       text-decoration: none; transition: background .15s;
     }
-    .mobile-browse-btn:hover { background: var(--sage-dark, #0A3D2A); }
+    .mobile-browse-btn:hover { background: var(--sage); }
 
   </style>
 <script type="application/ld+json">
@@ -361,14 +363,14 @@
 <nav class="site-nav">
   <div class="nav-inner">
     <a href="../index.html" class="nav-logo">
-      <img src="assets/logo.png" alt="SageMyHealth" style="height: 54px; width: auto; object-fit: contain;"/>
+      <img src="assets/sage-logo-header.png" alt="SageMyHealth" style="height:47px;width: auto; object-fit: contain;"/>
     </a>
     <ul class="nav-links">
       <li><a href="../index.html#categories">Calculators</a></li>
       <li><a href="../about.html">About</a></li>
       <li><a href="../blog.html">Health Guides</a></li>
     </ul>
-    <a href="../index.html#categories" class="nav-btn">Browse All</a>
+    <a href="../index.html#categories" class="nav-cta">Browse All</a>
     <button class="nav-hamburger" id="nav-hamburger"
             onclick="openMobileMenu()" aria-label="Open navigation menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -380,7 +382,7 @@
   <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
   <div class="mobile-drawer">
     <div class="mobile-drawer-head">
-      <span class="mobile-drawer-logo">SageMyHealth</span>
+      <img src="assets/sage-logo-header.png" alt="SageMyHealth" style="height:32px;width:auto;object-fit:contain;"/>
       <button class="mobile-close" onclick="closeMobileMenu()" aria-label="Close menu">&#x2715;</button>
     </div>
     <nav class="mobile-nav-links">
@@ -597,13 +599,6 @@
 .faq-item[open] summary{background:#EBF2EC}
 .faq-answer{padding:4px 16px 14px;font-size:14px;color:#4A5568;line-height:1.75;border-top:1px solid #E2EAE4;background:#fff}
 </style>
-
-        <!-- Related calculators -->
-        <div class="related-section">
-          <p class="related-title">You might also like</p>
-          <div class="related-grid">
-          <a href="blood-pressure.html" class="related-card">
-            <div class="related-icon">🩺</div>
             <div class="related-info"><strong>Blood Pressure</strong><span>Understand your reading</span></div>
           </a>
           <a href="calories-burned.html" class="related-card">
@@ -701,7 +696,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="footer-logo">
-          <img src="assets/logo-white.png" alt="SageMyHealth" style="height: 45px; width: auto; object-fit: contain;"/>
+          <img src="assets/sage-logo-footer.png" alt="SageMyHealth" style="height:37px;width: auto; object-fit: contain;"/>
         </div>
         <p>Free, trusted health calculators with warm guidance — helping you understand your numbers.</p>
       </div>
@@ -734,7 +729,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-copy">© 2025 SageMyHealth.com — All rights reserved.</p>
+      <p class="footer-copy">© 2026 SageMyHealth.com — All rights reserved.</p>
     </div>
   </div>
 
