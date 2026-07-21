@@ -554,54 +554,65 @@
     }
     .calc-feat-card:hover .feat-link { gap: 10px; }
 
-    /* ── HOW IT WORKS ───────────────────────────────────────────── */
-    .how-section { background: var(--white); }
+    /* ── HOW IT WORKS + TRUST — unified blue section ──────────── */
+    .how-section {
+      background: #DDE5F0;
+      padding-bottom: 48px;
+    }
+    .how-section .section-eyebrow { color: var(--data); }
+    .how-section .section-title   { color: var(--data-dark); }
+
     .steps-wrap {
       display: grid; grid-template-columns: repeat(3, 1fr);
       gap: 32px; max-width: 840px; margin: 0 auto; position: relative;
     }
+    /* Connector line — steel blue */
     .steps-wrap::before {
       content: ''; position: absolute; top: 26px;
-      left: calc(16.666% + 20px); right: calc(16.666% + 20px);
-      height: 1px; background: var(--border);
+      left: calc(16.666% + 28px); right: calc(16.666% + 28px);
+      height: 2px; background: var(--data); opacity: 0.45;
     }
     .step { text-align: center; position: relative; }
     .step-num {
-      width: 52px; height: 52px; background: var(--sage-dark); color: var(--text-inv);
+      width: 52px; height: 52px; background: var(--data); color: var(--text-inv);
       border-radius: 50%; display: flex; align-items: center; justify-content: center;
       font-size: 18px; font-weight: 800; margin: 0 auto 20px;
       position: relative; z-index: 1;
-      box-shadow: 0 4px 16px rgba(61,80,68,0.28);
+      box-shadow: 0 4px 16px rgba(36,67,104,0.28);
     }
     .step h3 {
       font-size: 15px; font-weight: 700; margin-bottom: 8px;
-      color: var(--text-dark); letter-spacing: -0.2px;
+      color: var(--data-dark); letter-spacing: -0.2px;
     }
     .step p { font-size: 14px; font-weight: 400; color: var(--text-mid); line-height: 1.7; }
 
-    /* ── TRUST PILLARS ──────────────────────────────────────────── */
-    .trust-section { background: var(--sage-pale); }
+    /* ── TRUST PILLARS — same blue background, flows directly ─── */
+    .trust-section {
+      background: #DDE5F0;
+      padding-top: 16px;
+    }
     .trust-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 12px;
+      gap: 16px;
     }
     .trust-item {
-      background: var(--white); border-radius: var(--r-lg);
+      background: var(--white); border-radius: var(--r-xl);
       padding: 28px 24px; transition: box-shadow 0.2s;
-      border: 1px solid var(--border);
+      border: none;
+      box-shadow: 0 2px 16px rgba(36,67,104,0.07);
     }
-    .trust-item:hover { box-shadow: var(--shadow-md); }
+    .trust-item:hover { box-shadow: 0 8px 32px rgba(36,67,104,0.14); transform: translateY(-2px); transition: box-shadow 0.2s, transform 0.2s; }
     .trust-icon-wrap {
-      width: 48px; height: 48px; background: var(--sage-pale);
+      width: 52px; height: 52px; background: #E6EDF8;
       border-radius: var(--r); display: flex; align-items: center;
-      justify-content: center; font-size: 22px; margin-bottom: 14px;
+      justify-content: center; font-size: 24px; margin-bottom: 16px;
     }
     .trust-item h4 {
-      font-size: 15px; font-weight: 700; color: var(--text-dark);
-      margin-bottom: 6px; letter-spacing: -0.2px;
+      font-size: 15px; font-weight: 700; color: var(--data-dark);
+      margin-bottom: 8px; letter-spacing: -0.2px;
     }
-    .trust-item p { font-size: 13px; font-weight: 400; color: var(--text-mid); line-height: 1.65; }
+    .trust-item p { font-size: 13px; font-weight: 400; color: var(--text-mid); line-height: 1.7; }
 
     /* ── AMAZON SECTION ─────────────────────────────────────────── */
     .amz-section { padding: 56px 28px; background: var(--bg); border-top: 1px solid var(--border); }
@@ -759,7 +770,7 @@
       .steps-wrap { grid-template-columns: 1fr; }
       .steps-wrap::before { display: none; }
       .stats-inner { flex-direction: row; flex-wrap: wrap; }
-      .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+      .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
     }
     @media (max-width: 660px) {
       .nav-links { display: none; }
